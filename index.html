@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Ember Starter Kit</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class='center'>
+  <script type="text/x-handlebars">
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="offer">
+    Offer Items({{itemCount}})
+    <p>
+      {{#if itemCount }}
+        {{partial 'all_items'}}
+      {{else}}
+        {{partial 'zero_items'}}
+      {{/if}}
+    </p>
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="_zero_items">
+    <p class='no_item_text'>
+      "You don't have any items
+      in this offer yet. Please add
+      your first item!"
+    </p>
+    <button  {{action "addItem"}}>Add Item</button>
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="_all_items">
+    <button  {{action "addItem"}}>Add Item</button>
+    <button>All Done, Next</button>
+
+    <p><ul>
+      {{#each this}}
+        <li class='left'>{{title}}</li>
+      {{/each}}
+    </ul></p>
+
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="items">
+    {{outlet}}
+  </script>
+
+  <script type="text/x-handlebars" data-template-name="items/new">
+    <p>
+      {{log controller}}
+      Add New Item:
+      {{input type="text" value=newTitle }}
+      <br>
+      <button {{action "createItem"}}>Next</button>
+    </p>
+  </script>
+
+  <script src="js/libs/jquery-1.10.2.js"></script>
+  <script src="js/libs/handlebars-1.1.2.js"></script>
+  <script src="js/libs/ember-1.5.1.js"></script>
+  <script src="js/libs/ember-data-1.0.0.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/router.js"></script>
+
+  <!-- MODELS -->
+  <script src="js/models/item.js"></script>
+
+  <!-- CONTROLLERS -->
+  <script src="js/controllers/offer_controller.js"></script>
+  <script src="js/controllers/items_new_controller.js"></script>
+
+  <!-- to activate the test runner, add the "?test" query string parameter -->
+  <script src="tests/runner.js"></script>
+</body>
+</html>
