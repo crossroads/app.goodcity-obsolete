@@ -1,0 +1,4 @@
+module('JSHint - goodcity/controllers');
+test('goodcity/controllers/offer.js should pass jshint', function() { 
+  ok(false, 'goodcity/controllers/offer.js should pass jshint.\ngoodcity/controllers/offer.js: line 6, col 42, Missing semicolon.\n\n1 error'); 
+});

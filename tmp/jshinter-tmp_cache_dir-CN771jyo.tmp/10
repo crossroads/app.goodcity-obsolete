@@ -1,0 +1,4 @@
+module('JSHint - goodcity/controllers');
+test('goodcity/controllers/items.js should pass jshint', function() { 
+  ok(true, 'goodcity/controllers/items.js should pass jshint.'); 
+});

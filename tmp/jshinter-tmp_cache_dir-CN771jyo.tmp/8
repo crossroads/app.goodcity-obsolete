@@ -1,0 +1,4 @@
+module('JSHint - goodcity/routes');
+test('goodcity/routes/items.js should pass jshint', function() { 
+  ok(true, 'goodcity/routes/items.js should pass jshint.'); 
+});
