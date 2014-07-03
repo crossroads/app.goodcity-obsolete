@@ -9,6 +9,7 @@ Router.map(function() {
   this.resource('items', { path: '/items' }, function(){
     this.route('new');
   });
+  this.resource('item_types');
 });
 
 export default Router;
