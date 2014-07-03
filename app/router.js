@@ -5,10 +5,15 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-  this.resource('offers', { path: '/' });
+  this.resource('offers', function () {
+    this.route('index', { path: '/'});
+    this.route('show', { path: '/:offer_id'});
+  });
+
   this.resource('items', { path: '/items' }, function(){
     this.route('new');
   });
+
   this.resource('item_types');
 });
 

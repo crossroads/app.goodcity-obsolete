@@ -1,0 +1,13 @@
+<h3>My Offers</h3>
+
+<ul>
+  {{#each}}
+    <li class="contact">
+      {{#with this._data }}
+        Offer_id: {{ id }}
+        <br/>
+        Name: {{ collection_contact_name }}
+      {{/with}}
+    </li><br/>
+  {{/each}}
+</ul>
