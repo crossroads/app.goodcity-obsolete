@@ -2,8 +2,28 @@ Offer Items({{itemCount}})
 
 <p>
   {{#if itemCount }}
-    {{partial 'all_items'}}
+
+    <button  {{action "addItem"}}>Add Item</button>
+    <button>All Done, Next</button>
+
+    <table>
+      <tr><th>Description</th><th>Condition</th></tr>
+      {{#each items}}
+        <tr>
+          <td>{{this._data.donor_description}}</td>
+          <td>{{this._data.donor_condition}}</td>
+        </tr>
+      {{/each}}
+    </table>
+
   {{else}}
-    {{partial 'zero_items'}}
+
+    <p class='no_item_text'>
+      "You don't have any items
+      in this offer yet. Please add
+      your first item!"
+    </p>
+    <button {{action "addItem"}}>Add Item</button>
+
   {{/if}}
 </p>

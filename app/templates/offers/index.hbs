@@ -6,7 +6,9 @@
       {{#with this._data }}
         Offer_id: {{ id }}
         <br/>
-        Name: {{ collection_contact_name }}
+        Name: {{ collectionContactName }}
+        <br/>
+        {{#link-to 'offers.offer' this}}See More..{{/link-to}}
       {{/with}}
     </li><br/>
   {{/each}}

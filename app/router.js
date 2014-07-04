@@ -9,6 +9,7 @@ Router.map(function() {
     this.route('index', { path: '/'});
     this.route('offer', { path: '/:offer_id'});
   });
+
   this.resource('items', { path: '/items' }, function(){
     this.route('new');
   });
