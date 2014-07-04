@@ -1,7 +1,8 @@
 import Ember from 'ember';
 
-export default Ember.Route.extend({
+var offers = Ember.Route.extend({
   model: function() {
     return this.store.find('offer');
   }
 });
+export default offers;
