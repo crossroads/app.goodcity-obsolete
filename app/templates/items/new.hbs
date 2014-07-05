@@ -1,7 +1,11 @@
 <p>
   {{log controller}}
-  Add New Item:
-  {{input type="text" value=newTitle }}
+  <h2>Add New Item</h2>
+
+  <label>Donor description</label>
+  {{input type="text" value=donorDescription name="donorDescription" }}
+  {{input type="hidden" value=offerId name="offerId" }}
+
   <br>
   <button {{action "createItem"}}>Next</button>
 </p>
