@@ -6,21 +6,27 @@ Offer Items({{itemCount}})
     <button  {{action "addItem"}}>Add Item</button>
     <button>All Done, Next</button>
 
-    <table>
-      <tr><th>Description</th><th>Condition</th></tr>
-      {{#each items}}
-        <tr>
-          <td>{{this._data.donor_description}}</td>
-          <td>{{this._data.donor_condition}}</td>
-        </tr>
-      {{/each}}
-    </table>
+    <p>
+      <b>Offer details:</b>
+      <ul>
+        <li>State: {{state}}</li>
+        <li>Collection contact name: {{collectionContactName}}</li>
+      </ul>
+    </p>
+    <br/>
 
-    Offer details:
-    <ul>
-      <li>State: {{state}}</li>
-      <li>Collection contact name: {{collectionContactName}}</li>
-    </ul>
+    <p>
+      <b>Items details:</b>
+      <table>
+        <tr><th>Description</th><th>Condition</th></tr>
+        {{#each items}}
+          <tr>
+            <td>{{this._data.donorDescription}}</td>
+            <td>{{this._data.donorCondition}}</td>
+          </tr>
+        {{/each}}
+      </table>
+    </p>
 
   {{else}}
 
