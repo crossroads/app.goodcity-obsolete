@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
+  needs: ["offer"],
   actions: {
     createItem: function() {
 
@@ -8,27 +9,22 @@ export default Ember.ArrayController.extend({
       if (!donorDescription.trim()) { return; }
 
       // Create the new Item model
-      var store = this.store;
-      var item = store.createRecord('item', {
+      var offer = this.get('controllers.offer').get('model');
+      var item = this.store.createRecord('item', {
         donorDescription: donorDescription,
-        isCompleted: false
-      });
-
-      // set item relationship on offer
-      // NOTE: NOT WORKING QUITE YET - STEVE
-      var offerId = this.get('offerId');
-      store.find('offer', offerId).then(function(offer) {
-        item.set('offer', offer);
+        offer: offer
       });
 
       // Clear the "New Item" text field
       this.set('donorDescription', '');
 
       // Save the new model
-      item.save();
+      item.save().then(function() {
+        offer.addObject(item)
+      });
 
       // Go back to the main offer
-      this.transitionToRoute('offer', offerId);
+      this.transitionToRoute('offer', offer.get('id'));
     }
   }
 });

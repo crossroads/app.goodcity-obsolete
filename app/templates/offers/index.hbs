@@ -2,13 +2,14 @@
 
 <ul>
   {{#each}}
+
     <li class="contact">
       {{#with this._data }}
         Offer_id: {{ id }}
         <br/>
         Name: {{ collectionContactName }}
         <br/>
-        {{#link-to 'offers.offer' this}}See More..{{/link-to}}
+        {{#link-to 'offer.index' this}}See More..{{/link-to}}
       {{/with}}
     </li><br/>
   {{/each}}
