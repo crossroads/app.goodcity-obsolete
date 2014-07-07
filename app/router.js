@@ -13,6 +13,7 @@ Router.map(function() {
       this.route('index', { path: '/'});
       this.resource('items', function(){
         this.route('new');
+        this.resource('item', { path: '/:item_id'})
       });
     });
   });

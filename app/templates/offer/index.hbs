@@ -23,6 +23,7 @@ Offer Items({{itemCount}})
           <tr>
             <td>{{this._data.donorDescription}}</td>
             <td>{{this._data.donorCondition}}</td>
+            <td>{{#link-to 'item' this}}Show{{/link-to}}</td>
           </tr>
         {{/each}}
       </table>

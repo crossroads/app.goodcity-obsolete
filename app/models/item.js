@@ -16,5 +16,6 @@ export default DS.Model.extend({
   updatedAt:            attr('date'),
   packages:             hasMany('package'),
   messages:             hasMany('message'),
+  images:               hasMany('images'),
   offer:                belongsTo('offer')
 });
