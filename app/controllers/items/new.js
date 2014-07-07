@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
+  itemConditions: ["New", "Lightly Used", "Heavily Used", "Broken"],
   donorCondition: "New",
   needs: ["offer"],
   actions: {

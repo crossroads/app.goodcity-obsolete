@@ -9,25 +9,14 @@
   </p>
 
   <p>
-    <label>
-      {{view 'radio-button' name="selectionTest" selectionBinding="donorCondition" value="New"}}
-      New
-    </label>
+    Condition? <br/>
 
-    <label>
-      {{view 'radio-button' name="selectionTest" selectionBinding="donorCondition" value="Lightly Used"}}
-      Lightly Used
-    </label>
-
-    <label>
-      {{view 'radio-button' name="selectionTest" selectionBinding="donorCondition" value="Heavily Used"}}
-      Heavily Used
-    </label>
-
-    <label>
-      {{view 'radio-button' name="selectionTest" selectionBinding="donorCondition" value="Broken"}}
-      Broken
-    </label>
+    {{#each condition in itemConditions}}
+      <label>
+        {{view 'radio-button' name="selectionTest" selectionBinding="donorCondition" value=condition}}
+        {{condition}}
+      </label>
+    {{/each}}
   </p>
 
   <p><button {{action "createItem"}}>Next</button></p>
