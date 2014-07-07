@@ -19,12 +19,10 @@ export default Ember.ArrayController.extend({
       this.set('donorDescription', '');
 
       // Save the new model
+      var route = this;
       item.save().then(function() {
-        offer.addObject(item)
+        route.transitionToRoute('offer', offer.get('id'));
       });
-
-      // Go back to the main offer
-      this.transitionToRoute('offer', offer.get('id'));
     }
   }
 });

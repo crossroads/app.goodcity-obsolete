@@ -10,5 +10,5 @@ export default Ember.ObjectController.extend({
   // get count of all items
   itemCount: function () {
     return this.get('items.length');
-  }.property('@each')
+  }.property('items.@each')
 });
