@@ -2,9 +2,33 @@
   {{log controller}}
   <h2>Add New Item</h2>
 
-  <label>Donor description</label>
-  {{input type="text" value=donorDescription name="donorDescription" }}
-  {{input type="hidden" value=offerId name="offerId" }}
-  <br>
-  <button {{action "createItem"}}>Next</button>
+  <p>
+    <label>Donor description</label>
+    {{input type="text" value=donorDescription name="donorDescription" }}
+    {{input type="hidden" value=offerId name="offerId" }}
+  </p>
+
+  <p>
+    <label>
+      {{view 'radio-button' name="selectionTest" selectionBinding="donorCondition" value="New"}}
+      New
+    </label>
+
+    <label>
+      {{view 'radio-button' name="selectionTest" selectionBinding="donorCondition" value="Lightly Used"}}
+      Lightly Used
+    </label>
+
+    <label>
+      {{view 'radio-button' name="selectionTest" selectionBinding="donorCondition" value="Heavily Used"}}
+      Heavily Used
+    </label>
+
+    <label>
+      {{view 'radio-button' name="selectionTest" selectionBinding="donorCondition" value="Broken"}}
+      Broken
+    </label>
+  </p>
+
+  <p><button {{action "createItem"}}>Next</button></p>
 </p>
