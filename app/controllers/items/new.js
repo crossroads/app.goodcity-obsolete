@@ -9,7 +9,8 @@ export default Ember.ArrayController.extend({
       if (!donorDescription.trim()) { return; }
 
       // Create the new Item model
-      var offer = this.get('controllers.offer').get('model');
+      var offer_id = this.get('controllers.offer').get('id');
+      var offer = this.store.getById('offer', offer_id);
       var item = this.store.createRecord('item', {
         donorDescription: donorDescription,
         offer: offer
@@ -21,7 +22,7 @@ export default Ember.ArrayController.extend({
       // Save the new model
       var route = this;
       item.save().then(function() {
-        route.transitionToRoute('offer', offer.get('id'));
+        route.transitionToRoute('offer', offer_id);
       });
     }
   }
