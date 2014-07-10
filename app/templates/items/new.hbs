@@ -2,6 +2,21 @@
   {{log controller}}
   <h2>Add New Item</h2>
 
+  {{upload-image}}
+
+  <div class='loading_image'>
+    <img src='image-preload.gif' ></img>
+    <span class='progress'></div>
+  </div>
+
+  <div>
+    <ul class='file_names'>
+    </ul>
+  </div>
+
+  <div class='sceneUpBtn'></div>
+
+
   <p>
     <label>Donor description</label>
     {{input type="text" value=donorDescription name="donorDescription" }}
