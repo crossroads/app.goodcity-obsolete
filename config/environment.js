@@ -28,6 +28,15 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
+
+    // Cloudinary Keys
+    ENV.APP.CLOUD_NAME = 'ddoadcjjl';
+    ENV.APP.CLOUD_API_KEY = 926849638736153;
+    ENV.APP.CLOUD_URL = 'https://api.cloudinary.com/v1_1/ddoadcjjl/auto/upload';
+
+    // RESTAdapter Settings
+    ENV.APP.NAMESPACE = 'api/v1';
+    ENV.APP.HOST      = 'http://localhost:3000';
   }
 
   if (environment === 'production') {

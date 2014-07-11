@@ -7,23 +7,39 @@ export default Ember.Component.extend({
   name:    "file",
   classNames: ["cloudinary-fileupload"],
   "data-cloudinary-field": "image_upload",
-  "data-url": "https://api.cloudinary.com/v1_1/kiprosh/auto/upload",
+  "data-url": GoodcityENV.APP.CLOUD_URL,
   attributeBindings: [ "name", "type", "value", "class", "data-cloudinary-field", "data-url", "data-form-data"],
+
   click: function() {
     $('.cloudinary-fileupload').cloudinary_fileupload({
       dropZone: $('.sceneUpBtn'),
       dataType: 'json',
+
       done: function (e, data) {
         console.log("done");
+        var image = $.cloudinary.image(data.result.public_id, {
+          format: data.result.format,
+          version: data.result.version,
+          width: 70,
+          height: 70
+        });
         $(".loading_image").hide();
-        $('ul.file_names').append("<img src='"+data.result.url+"'></img>");
+        $('ul.file_names').prepend(image);
+
+        var ids;
+        var identifier = "v" + data.result.version + "/" + data.result.public_id;
+        ids = $("#images_identifiers").val();
+        ids = (ids === "" ? identifier : (ids + "," + identifier));
+        $("#images_identifiers").val(ids);
       },
+
       progressall: function (e, data) {
         console.log("progress");
         $(".loading_image").show();
         var progress = parseInt(data.loaded / data.total * 100, 10);
         $('.progress').html(progress + '%');
       }
+
     });
   },
 
