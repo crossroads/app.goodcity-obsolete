@@ -1,6 +1,6 @@
 eval("//# sourceURL=assets/ember-cli/loader.js");
 
-;eval("define(\"goodcity/adapters/application\", \n  [\"ember-data\",\"exports\"],\n  function(__dependency1__, __exports__) {\n    \"use strict\";\n    var DS = __dependency1__[\"default\"];\n\n    __exports__[\"default\"] = DS.RESTAdapter.extend({\n      namespace: \'api/v1\',\n      host: \'http://localhost:3000\'\n    });\n  });//# sourceURL=goodcity/adapters/application.js");
+;eval("define(\"goodcity/adapters/application\", \n  [\"ember-data\",\"exports\"],\n  function(__dependency1__, __exports__) {\n    \"use strict\";\n    var DS = __dependency1__[\"default\"];\n\n    __exports__[\"default\"] = DS.RESTAdapter.extend({\n      namespace: \'api/v1\',\n      host: GoodcityENV.APP.API_HOST_URL //defined in config/environment.js\n    });\n  });//# sourceURL=goodcity/adapters/application.js");
 
 ;eval("define(\"goodcity/app\", \n  [\"ember\",\"ember/resolver\",\"ember/load-initializers\",\"exports\"],\n  function(__dependency1__, __dependency2__, __dependency3__, __exports__) {\n    \"use strict\";\n    var Ember = __dependency1__[\"default\"];\n    var Resolver = __dependency2__[\"default\"];\n    var loadInitializers = __dependency3__[\"default\"];\n\n    Ember.MODEL_FACTORY_INJECTIONS = true;\n\n    var App = Ember.Application.extend({\n      modulePrefix: \'goodcity\', // TODO: loaded via config\n      Resolver: Resolver\n    });\n\n    loadInitializers(App, \'goodcity\');\n\n    __exports__[\"default\"] = App;\n  });//# sourceURL=goodcity/app.js");
 
