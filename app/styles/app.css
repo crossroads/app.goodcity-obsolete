@@ -6,3 +6,7 @@ html, body {
   margin: 1% 0 1% -0.5%;
   display: none;
 }
+
+.current_image {
+  margin-right: 1%;
+}

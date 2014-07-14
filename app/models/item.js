@@ -17,5 +17,8 @@ export default DS.Model.extend({
   packages:             hasMany('package'),
   messages:             hasMany('message'),
   images:               hasMany('images'),
-  offer:                belongsTo('offer')
+  offer:                belongsTo('offer'),
+
+  //input to store image public-ids
+  imageIdentifiers:     attr('string')
 });

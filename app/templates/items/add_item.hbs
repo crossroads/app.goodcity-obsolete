@@ -1,0 +1,18 @@
+  <p>
+    <label>Donor description</label>
+    {{input type="text" value=donorDescription name="donorDescription" }}
+    {{input type="hidden" value=offerId name="offerId" }}
+  </p>
+
+  <p>
+    Condition? <br/>
+
+    {{#each condition in itemConditions}}
+      <label>
+        {{view 'radio-button' name="selectionTest" selectionBinding="donorCondition" value=condition}}
+        {{condition}}
+      </label>
+    {{/each}}
+  </p>
+
+  <p><button {{action "createItem"}}>Next</button></p>

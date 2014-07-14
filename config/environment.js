@@ -36,7 +36,8 @@ module.exports = function(environment) {
 
     // RESTAdapter Settings
     ENV.APP.NAMESPACE = 'api/v1';
-    ENV.APP.HOST      = 'http://localhost:3000';
+    ENV.APP.HOST      = 'http://localhost:3000/';
+    ENV.APP.SERVER_PATH = ENV.APP.HOST + ENV.APP.NAMESPACE;
   }
 
   if (environment === 'production') {

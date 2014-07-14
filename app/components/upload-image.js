@@ -20,17 +20,19 @@ export default Ember.Component.extend({
         var image = $.cloudinary.image(data.result.public_id, {
           format: data.result.format,
           version: data.result.version,
-          width: 70,
-          height: 70
+          width: 100,
+          height: 150,
+          class: 'current_image'
         });
         $(".loading_image").hide();
-        $('ul.file_names').prepend(image);
+        $('ul.file_preview').prepend(image);
 
-        var ids;
         var identifier = "v" + data.result.version + "/" + data.result.public_id;
-        ids = $("#images_identifiers").val();
+        var ids = $("#images_identifiers").val();
         ids = (ids === "" ? identifier : (ids + "," + identifier));
         $("#images_identifiers").val(ids);
+
+        $(".add_item_link").removeAttr("disabled");
       },
 
       progressall: function (e, data) {
@@ -39,13 +41,12 @@ export default Ember.Component.extend({
         var progress = parseInt(data.loaded / data.total * 100, 10);
         $('.progress').html(progress + '%');
       }
-
     });
   },
 
   _initialze: function(){
     console.log("init");
-    $.get('http://localhost:3000/api/v1/generate_signature').done(function(data){
+    $.get(GoodcityENV.APP.SERVER_PATH +"/generate_signature").done(function(data){
       $('.cloudinary-fileupload').attr("data-form-data", JSON.stringify(data));
     });
   }.on('didInsertElement')
