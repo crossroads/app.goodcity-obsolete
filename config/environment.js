@@ -15,6 +15,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+      API_HOST_URL: 'http://localhost:3000'
     }
   };
 
@@ -30,18 +31,18 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = true;
 
     // Cloudinary Keys
-    ENV.APP.CLOUD_NAME = 'ddoadcjjl';
+    ENV.APP.CLOUD_NAME    = 'ddoadcjjl';
     ENV.APP.CLOUD_API_KEY = 926849638736153;
-    ENV.APP.CLOUD_URL = 'https://api.cloudinary.com/v1_1/ddoadcjjl/auto/upload';
+    ENV.APP.CLOUD_URL     = 'https://api.cloudinary.com/v1_1/ddoadcjjl/auto/upload';
 
     // RESTAdapter Settings
-    ENV.APP.NAMESPACE = 'api/v1';
-    ENV.APP.HOST      = 'http://localhost:3000/';
+    ENV.APP.NAMESPACE   = 'api/v1';
+    ENV.APP.HOST        = 'http://localhost:3000/';
     ENV.APP.SERVER_PATH = ENV.APP.HOST + ENV.APP.NAMESPACE;
   }
 
   if (environment === 'production') {
-
+    ENV.APP.API_HOST_URL = 'http://api.goodcity.hk';
   }
 
   return ENV;
