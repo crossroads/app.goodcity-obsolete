@@ -15,7 +15,6 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      API_HOST_URL: 'http://localhost:3000'
     }
   };
 
@@ -36,9 +35,9 @@ module.exports = function(environment) {
     ENV.APP.CLOUD_URL     = 'https://api.cloudinary.com/v1_1/ddoadcjjl/auto/upload';
 
     // RESTAdapter Settings
-    ENV.APP.NAMESPACE   = 'api/v1';
-    ENV.APP.HOST        = 'http://localhost:3000/';
-    ENV.APP.SERVER_PATH = ENV.APP.HOST + ENV.APP.NAMESPACE;
+    ENV.APP.NAMESPACE    = 'api/v1';
+    ENV.APP.API_HOST_URL = 'http://localhost:3000/';
+    ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + ENV.APP.NAMESPACE;
   }
 
   if (environment === 'production') {
