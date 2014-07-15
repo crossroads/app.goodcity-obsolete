@@ -1,4 +1,10 @@
-<p>{{#link-to 'offers.new'}}Make a New Donation{{/link-to}}</p>
+<p>
+  {{#if pendingOffer}}
+    Add items to {{#link-to 'offer.index' pendingOffer}}offer{{/link-to}}
+  {{else}}
+    {{#link-to 'offers.new'}}Make a New Donation{{/link-to}}
+  {{/if}}
+</p>
 
 <h3>My Offers</h3>
 
