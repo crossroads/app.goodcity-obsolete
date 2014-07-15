@@ -7,9 +7,10 @@ var Router = Ember.Router.extend({
 Router.map(function() {
 
   this.resource('tour', { path: '/tour/:tour_id' });
-  
+
   this.resource('offers', function () {
     this.route('index', { path: '/'});
+    this.route('new', { path: '/new'});
 
     this.resource('offer', { path: '/:offer_id'}, function() {
       this.route('index', { path: '/'});

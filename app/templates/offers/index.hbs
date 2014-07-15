@@ -1,3 +1,5 @@
+<p>{{#link-to 'offers.new'}}Make a New Donation{{/link-to}}</p>
+
 <h3>My Offers</h3>
 
 <ul>
@@ -8,6 +10,8 @@
         Offer_id: {{ id }}
         <br/>
         Name: {{ collectionContactName }}
+        <br/>
+        Total Items: {{ items.length }}
         <br/>
         {{#link-to 'offer.index' this}}See More..{{/link-to}}
       {{/with}}
