@@ -20,5 +20,14 @@ export default DS.Model.extend({
   offer:                belongsTo('offer'),
 
   //input to store image public-ids
-  imageIdentifiers:     attr('string')
+  imageIdentifiers:     attr('string'),
+
+  defaultImage: function() {
+    var image;
+    if(this._data.images.length>0)
+      image = this._data.images[0]._data.thumbImageUrl;
+    else
+      image = "http://res.cloudinary.com/ddoadcjjl/image/upload/v1405412825/default/default_member_60.jpg";
+    return image;
+  }.property('this.images.@each')
 });
