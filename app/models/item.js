@@ -24,10 +24,12 @@ export default DS.Model.extend({
 
   defaultImage: function() {
     var image;
-    if(this._data.images.length>0)
+    if(this._data.images.length>0) {
       image = this._data.images[0]._data.thumbImageUrl;
-    else
+    }
+    else {
       image = "http://res.cloudinary.com/ddoadcjjl/image/upload/v1405412825/default/default_member_60.jpg";
+    }
     return image;
   }.property('this.images.@each')
 });

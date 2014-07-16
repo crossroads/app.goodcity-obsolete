@@ -5,7 +5,7 @@ export default Ember.Route.extend({
     var offer = this.store.createRecord('offer');
     var route = this;
     offer.save().then(function(){
-      route.transitionTo('offer', offer.id)
+      route.transitionTo('offer', offer.id);
     });
   }
 });
