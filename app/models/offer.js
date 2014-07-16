@@ -16,5 +16,9 @@ export default DS.Model.extend({
   createdAt:                attr('date'),
   updatedAt:                attr('date'),
   items:                    hasMany('item'),
-  messages:                 hasMany('message')
+  messages:                 hasMany('message'),
+
+  itemCount: function() {
+    return this._data.items.length;
+  }.property('this.items.@each')
 });

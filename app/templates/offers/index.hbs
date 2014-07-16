@@ -17,10 +17,12 @@
         <br/>
         Name: {{ collectionContactName }}
         <br/>
-        Total Items: {{ items.length }}
-        <br/>
-        {{#link-to 'offer.index' this}}See More..{{/link-to}}
       {{/with}}
+
+      Total Items: {{ itemCount }}
+      <br/>
+      {{#link-to 'offer.index' this}}See More..{{/link-to}}
+
     </li><br/>
   {{/each}}
 </ul>
