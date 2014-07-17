@@ -46,7 +46,7 @@ export default Ember.Component.extend({
 
   _initialze: function(){
     console.log("init");
-    $.get(GoodcityENV.APP.SERVER_PATH +"/generate_signature").done(function(data){
+    $.get(GoodcityENV.APP.SERVER_PATH +"/images/generate_signature").done(function(data){
       $('.cloudinary-fileupload').attr("data-form-data", JSON.stringify(data));
     });
   }.on('didInsertElement')
