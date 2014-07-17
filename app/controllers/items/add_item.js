@@ -10,7 +10,7 @@ export default Ember.ArrayController.extend({
       var donorDescription = this.get('donorDescription');
       if (!donorDescription.trim()) { return; }
       var donorCondition = this.get('donorCondition');
-      var imageIdentifiers = $("#images_identifiers").val();
+      var imageIdentifiers = Ember.$("#images_identifiers").val();
 
       // Create the new Item model
       var offer_id = this.get('controllers.offer').get('id');
