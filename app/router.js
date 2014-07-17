@@ -23,6 +23,8 @@ Router.map(function() {
   });
 
   this.resource('item_types');
+  this.route('register');
+  this.route('authenticate');
 });
 
 export default Router;
