@@ -28,7 +28,7 @@ export default DS.Model.extend({
       image = this._data.images[0]._data.thumbImageUrl;
     }
     else {
-      image = "http://res.cloudinary.com/ddoadcjjl/image/upload/v1405412825/default/default_member_60.jpg";
+      image = "assets/images/default_item.jpg";
     }
     return image;
   }.property('this.images.@each')
