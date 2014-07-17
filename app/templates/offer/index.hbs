@@ -1,3 +1,4 @@
+<br/>
 Offer Items({{itemCount}})
 
 <p>
@@ -7,22 +8,14 @@ Offer Items({{itemCount}})
     <button>All Done, Next</button>
 
     <p>
-      <b>Offer details:</b>
-      <ul>
-        <li>State: {{state}}</li>
-        <li>Collection contact name: {{collectionContactName}}</li>
-      </ul>
-    </p>
-    <br/>
 
-    <p>
-      <b>Items details:</b>
-      <table>
+      <table cellspacing="20">
         <tr><th>Description</th><th>Condition</th></tr>
         {{#each items}}
           <tr>
-            <td>{{this._data.donorDescription}}</td>
-            <td>{{this._data.donorCondition}}</td>
+            <td><img {{bind-attr src=defaultImage }}></td>
+            <td>{{this._data.donorDescription}}
+            <br/>{{this._data.donorCondition}}</td>
             <td>{{#link-to 'item' this}}Show{{/link-to}}</td>
           </tr>
         {{/each}}

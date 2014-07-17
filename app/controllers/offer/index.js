@@ -5,10 +5,5 @@ export default Ember.ObjectController.extend({
     addItem: function() {
       this.transitionToRoute('items.new');
     }
-  },
-
-  // get count of all items
-  itemCount: function () {
-    return this.get('items.length');
-  }.property('items.@each')
+  }
 });
