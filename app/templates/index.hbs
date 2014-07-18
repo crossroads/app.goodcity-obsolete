@@ -9,4 +9,6 @@
 <div>{{#link-to 'tour' 1}}How Does It Work?{{/link-to}}</div>
 <div>{{#link-to 'offers'}}Skip intro{{/link-to}}</div>
 
-<div>中文 | English</div>
+{{ language-switcher currentLanguage=currentLanguage action="setLang"}}
+
+<div>{{ t user.edit.title }}</div>
