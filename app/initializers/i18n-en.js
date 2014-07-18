@@ -8,7 +8,10 @@ export default {
   
     Ember.I18n.translation_store['en'] = {
       'language': 'en',
-      'user.edit.title': 'Edit User'
+      'items.heading': 'Items',
+      'item.title.one': 'One item',
+      'item.title.other': '{{count}} items',
+      'item.new.title': 'New item'
     };
     
     // this is how we set default language

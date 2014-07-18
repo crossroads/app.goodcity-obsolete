@@ -1,9 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-
-  currentLanguage: function() {
-    return Ember.I18n.translations.language;
-  }.property()
-  
+  needs: ['application'],
+  currentLanguage: Ember.computed.alias('controllers.application.currentLanguage'),
 });
