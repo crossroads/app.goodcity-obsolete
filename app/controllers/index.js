@@ -4,6 +4,6 @@ export default Ember.Controller.extend({
 
   currentLanguage: function() {
     return Ember.I18n.translations.language;
-  }.property('model'),
+  }.property()
   
 });
