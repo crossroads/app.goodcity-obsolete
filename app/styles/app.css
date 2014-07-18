@@ -26,3 +26,9 @@ html, body {
   color: red;
   display: block;
 }
+
+.auth_error {
+  color: red;
+  display: none;
+  margin-bottom: 1%;
+}
