@@ -11,7 +11,7 @@ export default Ember.View.extend({
 
     function set_button_visiblity(){
       var filled = Ember.$('#pin').length > 0 && Ember.$('#pin').val().length >0;
-      Ember.$("button").prop("disabled", !filled);
+      Ember.$("button#submit_pin").prop("disabled", !filled);
     }
   }
 

@@ -4,7 +4,7 @@
 <p>Input 6-digit SMS code we just sent you:</p>
 
 {{input type="text" value=pin name="pin" id="pin"}}
-<button {{action "authenticateUser"}}>OK</button>
+<button {{action "authenticateUser"}} id='submit_pin'>OK</button>
 <div class="auth_error">Sorry! Please enter the correct pin.</div>
 
 <p>Haven't received SMS code?<br/>
