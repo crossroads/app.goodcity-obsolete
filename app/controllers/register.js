@@ -17,6 +17,7 @@ export default Ember.Controller.extend({
         data: {user_auth: user_auth},
         dataType: 'json',
         success: function(data){
+          localStorage.step1_token = data.token;
           _this.transitionToRoute('/authenticate');
         },
         error: function(){
@@ -46,12 +47,12 @@ export default Ember.Controller.extend({
 
     function validate_phone(){
       Ember.$('#mobile').focusout(function(){
-        var phone = $(this).val();
+        var phone = Ember.$(this).val();
         if(Ember.$.trim(phone).length > 0) {
           if(phone.match(/^\+\d+$/)) {
-            check_uniqness(phone)
+            check_uniqness(phone);
           } else {
-            highlight_phone_field()
+            highlight_phone_field();
           }
         }
       });
@@ -60,13 +61,13 @@ export default Ember.Controller.extend({
     function check_uniqness(phone){
       Ember.$.get(GoodcityENV.APP.SERVER_PATH +"/users/check_mobile", {mobile: phone}).done(function(data){
           var is_uniq = data.is_unique_mobile;
-          is_uniq ? remove_highlight() : highlight_phone_field(true)
+          is_uniq ? remove_highlight() : highlight_phone_field(true);
       });
     }
 
     function highlight_phone_field(is_duplicate){
       Ember.$('#mobile').addClass('invalid_input');
-      var error = is_duplicate ? 'Sorry, this number is already registered!' : 'Please include a valid phone number!'
+      var error = is_duplicate ? 'Sorry, this number is already registered!' : 'Please include a valid phone number!';
       Ember.$('#mobile_error').text(error);
     }
 
