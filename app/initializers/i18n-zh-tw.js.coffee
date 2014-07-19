@@ -5,9 +5,10 @@ I18nTranslationsZhTw =
   initialize: ->
 
     Ember.I18n.translation_store = Ember.I18n.translation_store || {}
-    
+
     Ember.I18n.translation_store['zh-tw'] =
-      'language': 'zh-tw'
+      'language': 'zh-tw',
+      'loading': '加載中...',
       'items.heading': '項'
       'item.title.one': '一個項目'
       'item.title.other': '{{count}} 項'
