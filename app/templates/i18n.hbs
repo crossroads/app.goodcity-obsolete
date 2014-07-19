@@ -1,0 +1,13 @@
+<h3>i18n examples</h3>
+{{ language-switcher currentLanguage=currentLanguage action="setLang"}}
+
+<p>See <a href="https://github.com/jamesarosen/ember-i18n">ember-i18n</a> for more examples.</p>
+
+<h4>{{ t items.heading }}</h4>
+
+<ul>
+<li>{{t i18n.pluralisation}}: {{t item.title count='1'}}</li>
+<li>{{t i18n.pluralisation}}: {{t item.title count='3'}}</li>
+<li><a href="" {{translateAttr title='item.new.title'}}>Look at my link title</a></li>
+
+</ul>

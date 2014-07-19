@@ -11,6 +11,8 @@ app.import('vendor/cloudinary/js/jquery.fileupload-process.js');
 app.import('vendor/cloudinary/js/jquery.fileupload-image.js');
 app.import('vendor/cloudinary/js/jquery.fileupload-validate.js');
 app.import('vendor/cloudinary/js/jquery.cloudinary.js');
+app.import('vendor/cldr/plurals.js');
+app.import('vendor/ember-i18n/lib/i18n.js');
 
 app.import({
   development: 'vendor/ember-data/ember-data.js',
