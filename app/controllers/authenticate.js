@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
       Ember.$.ajax({
         type: 'POST',
         url: GoodcityENV.APP.SERVER_PATH +"/verify",
-        data: {pin: user_pin, token: localStorage.step1_token},
+        data: {pin: user_pin},
         dataType: 'json',
         headers: {
           'Authorization': 'Bearer ' + localStorage.step1_token
