@@ -11,27 +11,23 @@ export default Ember.Component.extend({
   attributeBindings: [ "name", "type", "value", "class", "data-cloudinary-field", "data-url", "data-form-data"],
 
   click: function() {
+    var component = this;
+
     Ember.$('.cloudinary-fileupload').cloudinary_fileupload({
       dropZone: Ember.$('.sceneUpBtn'),
       dataType: 'json',
 
       done: function (e, data) {
         console.log("done");
-        var image = Ember.$.cloudinary.image(data.result.public_id, {
-          format: data.result.format,
-          version: data.result.version,
-          width: 100,
-          height: 150,
-          class: 'current_image'
-        });
+
         Ember.$(".loading_image").hide();
-        Ember.$('ul.file_preview').prepend(image);
 
-        var identifier = "v" + data.result.version + "/" + data.result.public_id;
-        var ids = Ember.$("#images_identifiers").val();
-        ids = (ids === "" ? identifier : (ids + "," + identifier));
-        Ember.$("#images_identifiers").val(ids);
+        var identifier = data.result.version + "/" + data.result.public_id + "." + data.result.format;
+        // var ids = Ember.$("#images_identifiers").val();
+        // ids = (ids === "" ? identifier : (ids + "," + identifier));
+        // Ember.$("#images_identifiers").val(ids);
 
+        component.sendAction('action', identifier);
         Ember.$(".add_item_link").removeAttr("disabled");
       },
 

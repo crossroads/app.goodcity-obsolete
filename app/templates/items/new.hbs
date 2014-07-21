@@ -1,20 +1,30 @@
 <p>
   {{log controller}}
-  <h2>Add New Item</h2>
+  <h2>Add Photos of this Item</h2>
 
-  {{upload-image}}
+  <div class='file_preview'>
+    {{#if previewImageId}}
+      {{image-tag previewImageId height=150}}
+      <button {{action "removeImage" previewImageId}}>Delete</button>
+    {{/if}}
+  </div>
+
+  <div>
+    <ul class='image_list'>
+      {{#each imageIds}}
+        {{image-tag this height=50 width=50}}
+      {{/each}}
+    </ul>
+  </div>
+
+  {{upload-image action='updatePreview' image_id=''}}
 
   <div class='loading_image'>
     <img src='image-preload.gif' ></img>
     <span class='progress'></div>
   </div>
 
-  <div>
-    <ul class='file_preview'>
-    </ul>
-  </div>
-
-  <div class='sceneUpBtn'></div>
-
-  <button {{ action 'addDetails'}} disabled class='add_item_link'>Next</button>
+  <p>
+    <button {{ action 'addDetails'}} {{bind-attr disabled="this.noImage"}} class='add_item_link'>Next</button>
+  </p>
 </p>
