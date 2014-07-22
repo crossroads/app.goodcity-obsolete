@@ -10,9 +10,13 @@ export default Ember.Controller.extend({
     return ( arguments.length > 1 ? value : this.get("imageIds.firstObject"));
   }.property('imageIds.[]'),
 
-  noImage: function() {
-    return this.get('imageIds.length') === 0;
+  noImage: function(key, value, previousValue) {
+    return ( arguments.length > 1 ? value : this.get('imageIds.length') === 0);
   }.property('imageIds.[]'),
+
+  addMoreImages: function(key, value, previousValue) {
+    return ( arguments.length > 1 ? value : this.get('noImage'));
+  }.property('noImage'),
 
   actions: {
     addDetails: function() {
@@ -41,5 +45,10 @@ export default Ember.Controller.extend({
       var public_id = Ember.$(this).attr('id');
       controller.set("previewImageId", public_id);
     });
+
+    Ember.$('body').on('click', ".more_image_link", function() {
+      controller.set("addMoreImages", true);
+    });
+
   }
 });

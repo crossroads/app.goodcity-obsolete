@@ -10,3 +10,7 @@ html, body {
 .current_image {
   margin-right: 1%;
 }
+
+.hidden_block {
+  display: none;
+}

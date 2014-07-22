@@ -17,7 +17,14 @@
     </ul>
   </div>
 
-  {{upload-image action='updatePreview' image_id=''}}
+  <div {{bind-attr class='addMoreImages::hidden_block'}} id='more_image'>
+    {{upload-image action='updatePreview' image_id=''}}
+  </div>
+
+  <div {{bind-attr class='addMoreImages:hidden_block'}} id='more_image'>
+    <button class='more_image_link'>Add another image</button>
+    <p>Got all the angles of this item?<p>
+  </div>
 
   <div class='loading_image'>
     <img src='image-preload.gif' ></img>
