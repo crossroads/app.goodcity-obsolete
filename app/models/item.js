@@ -32,4 +32,5 @@ export default DS.Model.extend({
     }
     return image;
   }.property('this.images.@each')
+
 });

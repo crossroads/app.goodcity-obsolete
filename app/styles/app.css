@@ -32,3 +32,7 @@ html, body {
   display: none;
   margin-bottom: 1%;
 }
+
+.hidden_block {
+  display: none;
+}
