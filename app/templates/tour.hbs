@@ -1,7 +1,7 @@
 {{ partial tourStep }}
 
 {{#if lastStep }}
-  <div>{{#link-to 'offers.new'}}Start Now{{/link-to}}</div>
+  <div>{{#link-to 'register'}}Start Now{{/link-to}}</div>
   {{else}}
   <div>{{#link-to 'tour' nextStep}}Next{{/link-to}} | {{#link-to 'offers' }}Skip intro{{/link-to}}</div>
 {{/if}}
