@@ -8,9 +8,11 @@ export default Ember.ArrayController.extend({
     createItem: function() {
 
       var donorDescription = this.get('donorDescription');
-      if (!donorDescription.trim()) { return; }
-      var donorCondition = this.get('donorCondition');
-      var imageIdentifiers = Ember.$("#images_identifiers").val();
+      if (donorDescription && !donorDescription.trim()) { return; }
+      var donorCondition   = this.get('donorCondition');
+      var imageIdentifiers = Object.keys(JSON.parse(localStorage.image_ids || "{}"));
+
+      delete localStorage.image_ids;
 
       // Create the new Item model
       var offer_id = this.get('controllers.offer').get('id');

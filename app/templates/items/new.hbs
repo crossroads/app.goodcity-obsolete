@@ -3,7 +3,7 @@
   <h2>Add Photos of this Item</h2>
 
   <div class='file_preview'>
-    {{#if previewImageId}}
+    {{#if this.previewImageId}}
       {{image-tag previewImageId height=150}}
       <button {{action "removeImage" previewImageId}}>Delete</button>
     {{/if}}
