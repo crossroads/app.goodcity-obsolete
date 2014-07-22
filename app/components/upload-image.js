@@ -19,14 +19,8 @@ export default Ember.Component.extend({
 
       done: function (e, data) {
         console.log("done");
-
         Ember.$(".loading_image").hide();
-
         var identifier = data.result.version + "/" + data.result.public_id + "." + data.result.format;
-        // var ids = Ember.$("#images_identifiers").val();
-        // ids = (ids === "" ? identifier : (ids + "," + identifier));
-        // Ember.$("#images_identifiers").val(ids);
-
         component.sendAction('action', identifier);
         Ember.$(".add_item_link").removeAttr("disabled");
       },
