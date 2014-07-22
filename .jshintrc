@@ -2,7 +2,8 @@
   "predef": {
     "document": true,
     "window": true,
-    "GoodcityENV": true
+    "GoodcityENV": true,
+    "CLDR": true
   },
   "browser" : true,
   "boss" : true,

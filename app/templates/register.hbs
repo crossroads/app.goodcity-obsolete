@@ -1,0 +1,21 @@
+
+<p>
+  Mobile phone # (Hong Kong only)<br>
+  <div id="mobile_error"></div>
+  +852 {{input type="text" value=mobilePhone name="mobilePhone" id="mobile"}}
+
+<p>
+  First Name
+  {{input type="text" value=firstName name="firstName" id="first_name"}}
+</p>
+
+<p>
+  Family Name
+  {{input type="text" value=lastName name="lastName" id="last_name"}}
+</p>
+
+<p>
+</p>
+
+<button {{action "registerUser"}}>Register</button>
+<img src="assets/images/loader.gif" class='loader_image'></img>

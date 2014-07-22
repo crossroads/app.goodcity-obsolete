@@ -11,6 +11,28 @@ html, body {
   margin-right: 1%;
 }
 
+.loader_image {
+  margin-bottom: -1%;
+  display: none;
+}
+
+.invalid_input {
+  background-color: #f8e0e0;
+  border: 1px solid #ff655a;
+  box-shadow: 0 0 1px 1px #f78181;
+}
+
+#mobile_error{
+  color: red;
+  display: block;
+}
+
+.auth_error {
+  color: red;
+  display: none;
+  margin-bottom: 1%;
+}
+
 .hidden_block {
   display: none;
 }
