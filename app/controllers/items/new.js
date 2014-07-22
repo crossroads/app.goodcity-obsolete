@@ -6,15 +6,15 @@ export default Ember.Controller.extend({
     return Object.keys(JSON.parse(localStorage.image_ids || "{}"));
   }.property(),
 
-  previewImageId: function(key, value, previousValue) {
+  previewImageId: function(key, value) {
     return ( arguments.length > 1 ? value : this.get("imageIds.firstObject"));
   }.property('imageIds.[]'),
 
-  noImage: function(key, value, previousValue) {
+  noImage: function(key, value) {
     return ( arguments.length > 1 ? value : this.get('imageIds.length') === 0);
   }.property('imageIds.[]'),
 
-  addMoreImages: function(key, value, previousValue) {
+  addMoreImages: function(key, value) {
     return ( arguments.length > 1 ? value : this.get('noImage'));
   }.property('noImage'),
 
