@@ -43,11 +43,18 @@ export default Ember.Component.extend({
       }
     });
   },
-
   _initialze: function(){
     console.log("init");
-    Ember.$.get(GoodcityENV.APP.SERVER_PATH +"/images/generate_signature").done(function(data){
-      Ember.$('.cloudinary-fileupload').attr("data-form-data", JSON.stringify(data));
+    Ember.$.ajax({
+      type: 'GET',
+      url: GoodcityENV.APP.SERVER_PATH +"/images/generate_signature",
+      dataType: 'json',
+      headers: {
+        'Authorization': 'Bearer ' + localStorage.jwt
+      },
+      success: function(data){
+        Ember.$('.cloudinary-fileupload').attr("data-form-data", JSON.stringify(data));
+      }
     });
   }.on('didInsertElement')
 
