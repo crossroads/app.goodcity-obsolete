@@ -18,7 +18,6 @@ export default Ember.Controller.extend({
         dataType: 'json',
         success: function(data){
           localStorage.step1_token = data.token;
-          _this.transitionToRoute('/authenticate');
         },
         error: function(){
           alert("error");
