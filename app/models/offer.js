@@ -18,6 +18,9 @@ export default DS.Model.extend({
   items:                    hasMany('item'),
   messages:                 hasMany('message'),
 
+  // used for items of current-offer
+  saleable:                 attr('boolean'),
+
   itemCount: function() {
     return this._data.items.length;
   }.property('this.items.@each')

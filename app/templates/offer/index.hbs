@@ -4,8 +4,12 @@ Offer Items({{itemCount}})
 <p>
   {{#if itemCount }}
 
-    <button  {{action "addItem"}}>Add Item</button>
-    <button>All Done, Next</button>
+    {{#if isDrafted}}
+      <button  {{action "addItem"}}>Add Item</button>
+      {{#link-to 'offer.confirm'}}All Done, Next{{/link-to}}
+    {{else}}
+      {{#link-to 'offer.review_status'}}Review Status{{/link-to}}
+    {{/if}}
 
     <p>
 
