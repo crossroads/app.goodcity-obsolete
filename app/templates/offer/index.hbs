@@ -20,7 +20,7 @@ Offer Items({{itemCount}})
           <td>{{this._data.donorDescription}}
           <br/>{{this._data.donorCondition}}</td>
           <td>{{#link-to 'item' this}}Show{{/link-to}}</td>
-          <td><button {{action 'removeItem' this}}>Remove</button></td>
+          <td><button {{action 'removeItem' this}} class='removeItem'>Remove</button></td>
         </tr>
       {{/each}}
     </table>
