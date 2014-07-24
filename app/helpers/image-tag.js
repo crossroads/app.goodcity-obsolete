@@ -7,7 +7,7 @@ export default Ember.Handlebars.makeBoundHelper(function(value, options) {
     height: options.hash['height'],
     width: options.hash['width'],
     class: 'current_image',
-    crop: (options.hash['width'] === '50' ? 'fill' : ''),
+    crop: (options.hash['width'] === '50' ? 'fill' : 'fit'),
     id: value
   });
 

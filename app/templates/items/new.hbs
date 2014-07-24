@@ -3,7 +3,7 @@
 
   <div class='file_preview'>
     {{#if this.previewImageId}}
-      {{image-tag previewImageId height=150}}
+      {{image-tag previewImageId width=200 height=250}}
       <button {{action "removeImage" previewImageId}}>Delete</button>
     {{/if}}
   </div>
