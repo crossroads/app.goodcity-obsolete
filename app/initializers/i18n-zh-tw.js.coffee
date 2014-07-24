@@ -9,10 +9,15 @@ I18nTranslationsZhTw =
     Ember.I18n.translation_store['zh-tw'] =
       'language': 'zh-tw'
       'loading': '加載中...'
+      "goodcity.hk" : "好人好市"
+      "skip_intro" : "跳過介紹"
+
+      "index.title" : "十字路口基金會禮物"
+      "index.donate_goods" : "捐出你的精品給需要的人"
+      "index.how" : "它是如何工作的？"
 
       "tour.register" : "現在開始"
       "tour.next" : "未來"
-      "tour.skip_intro" : "跳過介紹"
       "tour.step1.title" : "第1步：注册"
       "tour.step1.sms_pin" : "我們將短信四位數的PIN碼以確認它就是你！"
       "tour.step2.title" : "第2步：添加項目"

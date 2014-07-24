@@ -9,10 +9,15 @@ I18nTranslationsEn =
     Ember.I18n.translation_store.en =
       "language": "en"
       "loading": "Loading..."
+      "goodcity.hk" : "GoodCity.HK"
+      "skip_intro" : "Skip intro"
+
+      "index.title" : "Crossroads Foundation Presents"
+      "index.donate_goods" : "Donate your quality goods to people in need"
+      "index.how" : "How Does It Work?"
 
       "tour.register" : "Start Now"
       "tour.next" : "Next"
-      "tour.skip_intro" : "Skip intro"
       "tour.step1.title" : "Step 1: Register"
       "tour.step1.sms_pin" : "We'll SMS a four-digit PIN code to confirm it's you!"
       "tour.step2.title" : "Step 2: Add Items"
