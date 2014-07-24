@@ -11,6 +11,8 @@ Offer Items({{itemCount}})
     {{#link-to 'offer.review_status'}}Review Status{{/link-to}}
   {{/if}}
 
+  <p><button {{action 'cancelOffer' this}} class='removeItem'>Cancel Offer</button><p>
+
   <p>
     <table cellspacing="20">
       <tr><th>Description</th><th>Condition</th></tr>

@@ -12,6 +12,11 @@ export default Ember.ObjectController.extend({
       this.transitionToRoute('items.new');
     },
 
+    cancelOffer: function(offer){
+      offer.destroyRecord();
+      this.transitionToRoute('offers');
+    },
+
     removeItem: function(item) {
       this.get('items').removeObject(item);
       item.destroyRecord();
