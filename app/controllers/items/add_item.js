@@ -14,6 +14,10 @@ export default Ember.ArrayController.extend({
 
       delete localStorage.image_ids;
 
+      // 'controllerFor' is deprecated, instead 'needs' can be used here.
+      // Facing issue while using needs, will resolve it soon :Swati
+      this.controllerFor('items.new').set('imageIds', "{}");
+
       // Create the new Item model
       var offer_id = this.get('controllers.offer').get('id');
       var offer = this.store.getById('offer', offer_id);

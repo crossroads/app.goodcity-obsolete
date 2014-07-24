@@ -2,8 +2,9 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-  imageIds: function() {
-    return Object.keys(JSON.parse(localStorage.image_ids || "{}"));
+  imageIds: function(key, value) {
+    var ids = arguments.length > 1 ? value : localStorage.image_ids;
+    return (Object.keys(JSON.parse(ids || "{}")));
   }.property(),
 
   previewImageId: function(key, value) {
