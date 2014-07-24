@@ -1,10 +1,10 @@
-﻿<div>Crossroads Foundation Presents</div>
+﻿<div>{{t index.title}}</div>
 
-<div>GoodCity.HK</div>
+<div>{{t goodcity.hk}}</div>
 
-<div>Donate your quality goods to people in need</div>
+<div>{{t index.donate_goods}}</div>
 
-<div>{{#link-to 'tour' 1}}How Does It Work?{{/link-to}}</div>
-<div>{{#link-to 'offers'}}Skip intro{{/link-to}}</div>
+<div>{{#link-to 'tour' 1}}{{t index.how}}{{/link-to}}</div>
+<div>{{#link-to 'register'}}{{t skip_intro}}{{/link-to}}</div>
 
 {{ language-switcher currentLanguage=currentLanguage action="setLang"}}

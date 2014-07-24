@@ -26,9 +26,35 @@ export default Ember.Controller.extend({
           }
         },
         failure: function(){
+
+        },
+        error: function(){
           Ember.$('.auth_error').show();
           alert("Unable to authenticate");
         }
+      });
+    },
+    resendPin: function() {
+      var _this = this;
+      Ember.$('.loader_image').show();
+      var mobile = this.get('mobilePhone');
+      Ember.$.ajax({
+        type: 'GET',
+        url: GoodcityENV.APP.SERVER_PATH +"/resend",
+        data: {mobile: mobile},
+        dataType: 'json',
+        headers: {
+          'Authorization': 'Bearer ' + localStorage.step1_token
+        },
+        success: function(data){
+          localStorage.step1_token = data.token;
+          _this.transitionToRoute('/authenticate');
+        },
+        error: function(){
+          alert("error");
+        }
+      }).done(function(){
+          Ember.$('.loader_image').hide();
       });
     }
   }

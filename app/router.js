@@ -29,6 +29,8 @@ Router.map(function() {
 
   this.resource('item_types');
   this.route('register');
+  this.route('login');
+  this.route('resend');
   this.route('authenticate');
 });
 
