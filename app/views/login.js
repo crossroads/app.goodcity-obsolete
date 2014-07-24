@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.View.extend({
-
+  isLogin: true,
   didInsertElement: function(){
 
     Ember.$().ready(function (){
