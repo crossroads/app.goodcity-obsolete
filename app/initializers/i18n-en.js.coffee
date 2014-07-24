@@ -40,6 +40,17 @@ I18nTranslationsEn =
       "tour.step5.title" : "Step 5: Double Your Good Deed"
       "tour.step5.financial" : "You are welcome to contribute financially to the costs of helping people receive the items they need. Like Mr Cho who received a washing machine after fire destroyed his home."
 
+      "offer":
+        "confirm":
+          "heading" : "Confirm"
+          "thank": "Thank You!"
+          "review": "Expert volunteers will start reviewing <br> your items immediately."
+          "notice": "Because needs change daily and <br> storage is limited we apologise that <br> we sometimes cannot accept <br> some items."
+
+        "submit":
+          "heading": "Sale of goods"
+          "message": "Occasionally, the best way <br> for a donated item to help the poor <br> is for a charity to sell it. Is sale <br> of item(s) okay?"
+
 
       # The following are for the I18n example template and can be removed soon.
       "i18nexample.items.heading": "Items"
