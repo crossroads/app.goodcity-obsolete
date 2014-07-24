@@ -15,6 +15,10 @@ Router.map(function() {
 
     this.resource('offer', { path: '/:offer_id'}, function() {
       this.route('index', { path: '/'});
+      this.route('confirm');
+      this.route('submit');
+      this.route('review_status');
+
       this.resource('items', function(){
         this.route('new');
         this.route('add_item');

@@ -1,10 +1,9 @@
 <p>
-  {{log controller}}
   <h2>Add Photos of this Item</h2>
 
   <div class='file_preview'>
     {{#if this.previewImageId}}
-      {{image-tag previewImageId height=150}}
+      {{image-tag previewImageId width=200 height=250}}
       <button {{action "removeImage" previewImageId}}>Delete</button>
     {{/if}}
   </div>
