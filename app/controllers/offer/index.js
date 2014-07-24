@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
+
   isDrafted: function(){
     return this.get('state') === 'draft';
   }.property('state'),
@@ -9,6 +10,11 @@ export default Ember.ObjectController.extend({
     addItem: function() {
       localStorage.currentOffer = this.content.id;
       this.transitionToRoute('items.new');
+    },
+
+    removeItem: function(item) {
+      this.get('items').removeObject(item);
+      item.destroyRecord();
     }
   }
 });

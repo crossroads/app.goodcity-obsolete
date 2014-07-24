@@ -5,6 +5,7 @@ export default Ember.Route.extend({
     var offer = this.store.createRecord('offer', {
       state: 'draft'
     });
+
     var route = this;
     offer.save().then(function(){
       route.transitionTo('offer', offer.id);

@@ -21,6 +21,7 @@ export default Ember.ArrayController.extend({
         donorDescription: donorDescription,
         donorCondition: donorCondition,
         imageIdentifiers: imageIdentifiers,
+        state: 'draft',
         offer: offer
       });
 
