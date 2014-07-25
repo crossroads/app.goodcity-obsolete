@@ -11,6 +11,7 @@ I18nTranslationsZhTw =
       'loading': '加載中...'
       "goodcity.hk" : "好人好市"
       "skip_intro" : "跳過介紹"
+      "error.message" : "很抱歉，發生錯誤！"
 
       "index.title" : "十字路口基金會禮物"
       "index.donate_goods" : "捐出你的精品給需要的人"
