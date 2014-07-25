@@ -20,13 +20,13 @@ export default Ember.Controller.extend({
           localStorage.step1_token = data.token;
           _this.transitionToRoute('/authenticate');
         },
-        error: function(){
-          alert("error");
-        }
-      }).done(function(){
+        error: function(xhr){
+          Ember.$('#mobile_error').text(xhr.responseJSON.msg);
+        },
+        complete:function(){
           Ember.$('.loader_image').hide();
+        }
       });
-
     }
   }
 });
