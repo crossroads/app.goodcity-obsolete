@@ -11,6 +11,7 @@ I18nTranslationsEn =
       "loading": "Loading..."
       "goodcity.hk" : "GoodCity.HK"
       "skip_intro" : "Skip intro"
+      "error.message" : "Sorry, an error occurred!"
 
       "index.title" : "Crossroads Foundation Presents"
       "index.donate_goods" : "Donate your quality goods to people in need"
