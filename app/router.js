@@ -22,7 +22,10 @@ Router.map(function() {
       this.resource('items', function(){
         this.route('new');
         this.route('add_item');
-        this.resource('item', { path: '/:item_id'});
+        this.resource('item', { path: '/:item_id'}, function(){
+          this.route('edit');
+          this.route('edit_images');
+        });
       });
     });
   });

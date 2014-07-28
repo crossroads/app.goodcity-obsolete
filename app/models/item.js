@@ -31,6 +31,12 @@ export default DS.Model.extend({
       image = "assets/images/default_item.jpg";
     }
     return image;
+  }.property('this.images.@each'),
+
+  favouriteImageId: function() {
+    if(this._data.images.length>0) {
+      return this._data.images[0]._data.imageId;
+    }
   }.property('this.images.@each')
 
 });

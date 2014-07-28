@@ -1,15 +1,15 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+export default Ember.ObjectController.extend({
 
   imageIds: function(key, value) {
-    var ids = arguments.length > 1 ? value : localStorage.image_ids;
+    var ids = arguments.length > 1 ? value : localStorage.edit_image_ids;
     return (JSON.parse(ids || "[]"));
   }.property(),
 
   previewImageId: function(key, value) {
     var preview = arguments.length > 1 ? value : this.get("imageIds.firstObject");
-    localStorage.preview = preview;
+    localStorage.edit_preview = preview;
     return (preview);
   }.property('imageIds.[]'),
 
@@ -22,21 +22,23 @@ export default Ember.Controller.extend({
   }.property('noImage'),
 
   actions: {
-    addDetails: function() {
-      this.transitionToRoute('items.add_item');
+    updateDetails: function() {
+      localStorage.updated_image_ids = localStorage.edit_image_ids;
+      localStorage.updated_preview = localStorage.edit_preview;
+      this.transitionToRoute('item.edit');
     },
 
     removeImage: function(image_id) {
-      var uploaded = JSON.parse(localStorage.image_ids || "[]");
-      delete uploaded.splice(uploaded.indexOf('image_id'),1);
-      localStorage.image_ids = JSON.stringify(uploaded);
+      var uploaded = JSON.parse(localStorage.edit_image_ids || "[]");
+      uploaded.removeObject(image_id);
+      localStorage.edit_image_ids = JSON.stringify(uploaded);
       this.get("imageIds").removeObject(image_id);
     },
 
     updatePreview: function(image_id){
-      var uploaded = JSON.parse(localStorage.image_ids || "[]");
+      var uploaded = JSON.parse(localStorage.edit_image_ids || "[]");
       uploaded.push(image_id);
-      localStorage.image_ids = JSON.stringify(uploaded);
+      localStorage.edit_image_ids = JSON.stringify(uploaded);
       this.get("imageIds").unshiftObject(image_id);
     }
   },

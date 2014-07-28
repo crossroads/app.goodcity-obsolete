@@ -6,5 +6,6 @@ export default DS.Model.extend({
   imageUrl:      attr('string'),
   thumbImageUrl: attr('string'),
   favourite:     attr('string'),
-  order:         attr('number')
+  order:         attr('number'),
+  imageId:       attr('string')
 });
