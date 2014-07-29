@@ -4,7 +4,7 @@ export default Ember.ObjectController.extend({
 
   previewImageId: function() {
     return localStorage.edit_preview;
-  }.property("this.controllerFor('item.edit_images').previewImageId").volatile(),
+  }.property().volatile(),
 
   actions: {
     submitItem: function(){
