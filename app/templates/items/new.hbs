@@ -31,6 +31,10 @@
   </div>
 
   <p>
-    <button {{ action 'addDetails'}} {{bind-attr disabled="this.noImage"}} class='add_item_link'>Next</button>
+    {{#if this.model}}
+      <button {{ action 'updateDetails'}} {{bind-attr disabled="this.noImage"}} class='add_item_link'>Next</button>
+    {{else}}
+      <button {{ action 'addDetails'}} {{bind-attr disabled="this.noImage"}} class='add_item_link'>Next</button>
+    {{/if}}
   </p>
 </p>

@@ -1,18 +1,23 @@
 import Ember from 'ember';
 
-export default Ember.ArrayController.extend({
-  itemConditions: ["New", "Lightly Used", "Heavily Used", "Broken"],
+export default Ember.Controller.extend({
+
+  previewImageId: function() {
+    return localStorage.preview;
+  }.property().volatile(),
+
   donorCondition: "New",
   needs: ["offer"],
   actions: {
-    createItem: function() {
+    submitItem: function() {
 
       var donorDescription = this.get('donorDescription');
       if (donorDescription && !donorDescription.trim()) { return; }
       var donorCondition   = this.get('donorCondition');
-      var imageIdentifiers = Object.keys(JSON.parse(localStorage.image_ids || "{}"));
+      var imageIdentifiers = JSON.parse(localStorage.image_ids || "[]");
 
       delete localStorage.image_ids;
+      delete localStorage.preview;
 
       // 'controllerFor' is deprecated, instead 'needs' can be used here.
       // Facing issue while using needs, will resolve it soon :Swati

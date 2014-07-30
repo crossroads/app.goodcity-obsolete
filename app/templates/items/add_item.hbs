@@ -1,18 +1,30 @@
   <p>
-    <label>Donor description</label>
-    {{input type="text" value=donorDescription name="donorDescription" }}
+    <div class='edit_image_block'>
+
+      {{image-tag previewImageId width=100 height=150 className='fav_image'}}
+
+      {{#if this.model }}
+        {{#link-to 'item.edit_images' class='edit-image-link'}}Edit Image{{/link-to}}
+      {{else}}
+        {{#link-to 'items.new' class='edit-image-link'}}Edit Image{{/link-to}}
+      {{/if}}
+
+    </div>
+
+    {{textarea type='text' value=donorDescription name="donorDescription" rows=10 cols=20 }}
+
     {{input type="hidden" value=offerId name="offerId" }}
   </p>
 
   <p>
     Condition? <br/>
 
-    {{#each condition in itemConditions}}
+    {{#each condition in GoodcityENV.APP.ITEM_CONDITIONS}}
       <label>
-        {{view 'radio-button' name="selectionTest" selectionBinding="donorCondition" value=condition}}
+        {{view 'radio-button' name="selectionTest" selectionBinding='donorCondition' value=condition}}
         {{condition}}
       </label>
     {{/each}}
   </p>
 
-  <p><button {{action "createItem"}}>Next</button></p>
+  <p><button {{action "submitItem"}}>Next</button></p>
