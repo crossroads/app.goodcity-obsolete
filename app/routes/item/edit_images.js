@@ -8,7 +8,8 @@ export default Ember.Route.extend({
   model: function() {
     var item = this.modelFor('item');
     localStorage.edit_image_ids = JSON.stringify(item.get("imageIdentifiers").split(','));
-    localStorage.edit_preview   = item.get("favouriteImageId");
+    localStorage.edit_preview   = item.get("favouriteImage");
+    localStorage.edit_favourite = item.get("favouriteImage");
     return item;
   }
 });

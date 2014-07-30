@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.ObjectController.extend({
 
   previewImageId: function() {
-    return localStorage.edit_preview;
+    return localStorage.edit_favourite;
   }.property().volatile(),
 
   actions: {
@@ -13,9 +13,11 @@ export default Ember.ObjectController.extend({
       if (donorDescription && !donorDescription.trim()) { return; }
       var donorCondition   = this.get('donorCondition');
       var imageIdentifiers = JSON.parse(localStorage.edit_image_ids || "[]");
+      var favouriteImage   = localStorage.edit_favourite;
 
       delete localStorage.edit_image_ids;
       delete localStorage.edit_preview;
+      delete localStorage.edit_favourite;
 
       // Update Item
       var offer_id = this.get('offerId');
@@ -25,6 +27,7 @@ export default Ember.ObjectController.extend({
         donorDescription: donorDescription,
         donorCondition:   donorCondition,
         imageIdentifiers: imageIdentifiers,
+        favouriteImage: favouriteImage,
         offer: offer
       });
 

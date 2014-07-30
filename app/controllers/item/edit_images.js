@@ -21,6 +21,13 @@ export default Ember.ObjectController.extend({
     return ( arguments.length > 1 ? value : this.get('noImage'));
   }.property('noImage'),
 
+  favourite: function(key, value) {
+    if(arguments.length > 1) {
+      localStorage.edit_favourite = value;
+    }
+    return localStorage.edit_favourite;
+  }.property(),
+
   actions: {
     updateDetails: function() {
       localStorage.updated_image_ids = localStorage.edit_image_ids;
@@ -28,14 +35,26 @@ export default Ember.ObjectController.extend({
       this.transitionToRoute('item.edit');
     },
 
+    favouriteImage: function(image_id) {
+      this.set("favourite", image_id);
+    },
+
     removeImage: function(image_id) {
       var uploaded = JSON.parse(localStorage.edit_image_ids || "[]");
       uploaded.removeObject(image_id);
       localStorage.edit_image_ids = JSON.stringify(uploaded);
       this.get("imageIds").removeObject(image_id);
+
+      if(localStorage.edit_favourite === image_id){
+        this.set("favourite", this.get("imageIds.firstObject") || "");
+      }
     },
 
     updatePreview: function(image_id){
+      if(JSON.parse(localStorage.edit_image_ids|| "[]").length === 0) {
+        this.set("favourite", image_id);
+      }
+
       var uploaded = JSON.parse(localStorage.edit_image_ids || "[]");
       uploaded.push(image_id);
       localStorage.edit_image_ids = JSON.stringify(uploaded);
