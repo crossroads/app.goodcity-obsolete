@@ -32,6 +32,7 @@ export default Ember.ObjectController.extend({
     updateDetails: function() {
       localStorage.updated_image_ids = localStorage.edit_image_ids;
       localStorage.updated_preview = localStorage.edit_preview;
+      localStorage.updated_favourite = localStorage.edit_favourite;
       this.transitionToRoute('item.edit');
     },
 
