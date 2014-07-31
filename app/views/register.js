@@ -31,7 +31,7 @@ export default Ember.View.extend({
     }
 
     function check_uniqness(phone){
-      Ember.$.get(GoodcityENV.APP.SERVER_PATH +"/users/check_mobile", {mobile: phone}).done(function(data){
+      Ember.$.get(GoodcityENV.APP.SERVER_PATH +"/auth/check_mobile", {mobile: phone}).done(function(data){
           var is_uniq = data.is_unique_mobile;
           return is_uniq ? remove_highlight() : highlight_phone_field(true);
       });

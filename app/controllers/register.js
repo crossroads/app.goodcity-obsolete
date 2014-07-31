@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
 
       Ember.$.ajax({
         type: 'POST',
-        url: GoodcityENV.APP.SERVER_PATH +"/signup",
+        url: GoodcityENV.APP.SERVER_PATH +"/auth/signup",
         data: {user_auth: user_auth},
         dataType: 'json',
         success: function(data){

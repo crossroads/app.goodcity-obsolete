@@ -38,7 +38,7 @@ export default Ember.View.extend({
     }
 
     function validate_for_existing_mobile(phone){
-      Ember.$.get(GoodcityENV.APP.SERVER_PATH +"/users/verify_mobile", {mobile: phone}).done(function(data){
+      Ember.$.get(GoodcityENV.APP.SERVER_PATH +"/auth/verify_mobile", {mobile: phone}).done(function(data){
           var is_existing = data.mobile_exist;
           localStorage.step1_token = data.token;
           return is_existing ? remove_highlight() : highlight_phone_field(true);
