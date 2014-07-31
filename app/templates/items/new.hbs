@@ -4,6 +4,7 @@
   <div class='file_preview'>
     {{#if this.previewImageId}}
       {{image-tag previewImageId width=200 height=250}}
+      <button {{action "favouriteImage" previewImageId}}>Favourite</button>
       <button {{action "removeImage" previewImageId}}>Delete</button>
     {{/if}}
   </div>
@@ -12,6 +13,7 @@
     <ul class='image_list'>
       {{#each imageIds}}
         {{image-tag this height=50 width=50}}
+        {{favourite-star this controller.favourite isNew=true}}
       {{/each}}
     </ul>
   </div>

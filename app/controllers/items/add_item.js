@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Controller.extend({
 
   previewImageId: function() {
-    return localStorage.preview;
+    return localStorage.favourite;
   }.property().volatile(),
 
   donorCondition: "New",
@@ -15,13 +15,14 @@ export default Ember.Controller.extend({
       if (donorDescription && !donorDescription.trim()) { return; }
       var donorCondition   = this.get('donorCondition');
       var imageIdentifiers = JSON.parse(localStorage.image_ids || "[]");
+      var favouriteImage   = localStorage.favourite;
 
       delete localStorage.image_ids;
-      delete localStorage.preview;
+      delete localStorage.favourite;
 
       // 'controllerFor' is deprecated, instead 'needs' can be used here.
       // Facing issue while using needs, will resolve it soon :Swati
-      this.controllerFor('items.new').set('imageIds', "{}");
+      this.controllerFor('items.new').set('imageIds', "[]");
 
       // Create the new Item model
       var offer_id = this.get('controllers.offer').get('id');
@@ -30,6 +31,7 @@ export default Ember.Controller.extend({
         donorDescription: donorDescription,
         donorCondition: donorCondition,
         imageIdentifiers: imageIdentifiers,
+        favouriteImage: favouriteImage,
         state: 'draft',
         offer: offer
       });

@@ -21,22 +21,14 @@ export default DS.Model.extend({
 
   //input to store image public-ids
   imageIdentifiers:     attr('string'),
+  favouriteImage:       attr('string'),
 
   defaultImage: function() {
-    var image;
-    if(this._data.images.length>0) {
-      image = this._data.images[0]._data.thumbImageUrl;
-    }
-    else {
-      image = "assets/images/default_item.jpg";
-    }
-    return image;
-  }.property('this.images.@each'),
+    var images    = this.get('images');
+    var fav_image = images && images.findBy('favourite', 'true');
+    var image_url = fav_image ? fav_image.get('thumbImageUrl') : "assets/images/default_item.jpg"
 
-  favouriteImageId: function() {
-    if(this._data.images.length>0) {
-      return this._data.images[0]._data.imageId;
-    }
+    return image_url;
   }.property('this.images.@each')
 
 });
