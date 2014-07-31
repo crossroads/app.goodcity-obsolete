@@ -26,7 +26,7 @@ export default DS.Model.extend({
   defaultImage: function() {
     var images    = this.get('images');
     var fav_image = images && images.findBy('favourite', 'true');
-    var image_url = fav_image ? fav_image.get('thumbImageUrl') : "assets/images/default_item.jpg"
+    var image_url = fav_image ? fav_image.get('thumbImageUrl') : "assets/images/default_item.jpg";
 
     return image_url;
   }.property('this.images.@each')

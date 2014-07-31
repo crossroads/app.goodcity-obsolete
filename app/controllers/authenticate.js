@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
 
       Ember.$.ajax({
         type: 'POST',
-        url: GoodcityENV.APP.SERVER_PATH +"/verify",
+        url: GoodcityENV.APP.SERVER_PATH +"/auth/verify",
         data: {pin: user_pin},
         dataType: 'json',
         headers: {
@@ -40,7 +40,7 @@ export default Ember.Controller.extend({
       var mobile = this.get('mobilePhone');
       Ember.$.ajax({
         type: 'GET',
-        url: GoodcityENV.APP.SERVER_PATH +"/resend",
+        url: GoodcityENV.APP.SERVER_PATH +"/auth/resend",
         data: {mobile: mobile},
         dataType: 'json',
         headers: {
