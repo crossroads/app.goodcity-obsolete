@@ -19,14 +19,12 @@ test('offer is a valid ember-data Model', function () {
 
 test('Count of items within an offer', function () {
   var store  = this.store();
-  var record = null;
   var item_count = null;
 
   Ember.run(function() {
-    store.createRecord('offer', {id: 1, collectionContactName: 'Test'});
-    record = store.getById('offer', 1);
-    store.createRecord('item', {id: 1, state: 'draft', offer: record});
-    store.createRecord('item', {id: 2, state: 'draft', offer: record});
+    var record = store.createRecord('offer', {collectionContactName: 'Test'});
+    store.createRecord('item', { state: 'draft', offer: record });
+    store.createRecord('item', { state: 'draft', offer: record });
     item_count = record.get('itemCount');
   });
 
