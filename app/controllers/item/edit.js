@@ -6,12 +6,21 @@ export default Ember.ObjectController.extend({
     return this.get('favouriteImage');
   }.property().volatile(),
 
+  donorConditions: Ember.computed.alias('controllers.item.donorConditions'),
+
+  donorConditionId: function() {
+    return this.get('model').get('donorCondition').get('id');
+  }.property('model'),
+
+  needs: ["item"],
+
   actions: {
     submitItem: function(){
 
       var donorDescription = this.get('donorDescription');
       if (donorDescription && !donorDescription.trim()) { return; }
-      var donorCondition   = this.get('donorCondition');
+      var donorConditionId = this.get('donorConditionId');
+
       var imageIdentifiers = this.get('imageIdentifiers');
       var favouriteImage   = this.get('favouriteImage');
 
@@ -25,13 +34,14 @@ export default Ember.ObjectController.extend({
       // Update Item
       var offer_id = this.get('offerId');
       var offer = this.store.getById('offer', offer_id);
+      var donorCondition = this.store.getById('donor_condition', donorConditionId);
       var item = this.store.update('item', {
         id: this.get('id'),
         donorDescription: donorDescription,
-        donorCondition:   donorCondition,
         imageIdentifiers: imageIdentifiers,
         favouriteImage: favouriteImage,
-        offer: offer
+        offer: offer,
+        donorCondition: donorCondition
       });
 
       // Save changes to Item

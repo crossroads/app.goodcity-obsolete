@@ -6,14 +6,19 @@ export default Ember.Controller.extend({
     return localStorage.favourite;
   }.property().volatile(),
 
-  donorCondition: "New",
-  needs: ["offer"],
+  donorConditions: Ember.computed.alias('controllers.item.donorConditions'),
+
+  donorConditionId: function() {
+    return this.get('donorConditions').get('firstObject').get('id');
+  },
+
+  needs: ["offer", "item"],
   actions: {
     submitItem: function() {
 
       var donorDescription = this.get('donorDescription');
       if (donorDescription && !donorDescription.trim()) { return; }
-      var donorCondition   = this.get('donorCondition');
+      var donorConditionId = this.get('donorConditionId');
       var imageIdentifiers = JSON.parse(localStorage.image_ids || "[]");
       var favouriteImage   = localStorage.favourite;
 
@@ -27,18 +32,18 @@ export default Ember.Controller.extend({
       // Create the new Item model
       var offer_id = this.get('controllers.offer').get('id');
       var offer = this.store.getById('offer', offer_id);
+      var donorCondition = this.store.getById('donor_condition', donorConditionId);
       var item = this.store.createRecord('item', {
         donorDescription: donorDescription,
-        donorCondition: donorCondition,
         imageIdentifiers: imageIdentifiers,
         favouriteImage: favouriteImage,
         state: 'draft',
-        offer: offer
+        offer: offer,
+        donorCondition: donorCondition
       });
 
       // Clear the "New Item" text field
       this.set('donorDescription', '');
-      this.set('donorCondition', 'New');
 
       // Save the new model
       var route = this;

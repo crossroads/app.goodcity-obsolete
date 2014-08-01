@@ -24,9 +24,6 @@ module.exports = function(environment) {
 
       // RESTAdapter Settings
       NAMESPACE: 'api/v1',
-
-      // Item Constants
-      ITEM_CONDITIONS: ["New", "Lightly Used", "Heavily Used", "Broken"]
     }
   };
 

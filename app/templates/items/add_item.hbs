@@ -17,12 +17,12 @@
   </p>
 
   <p>
-    Condition? <br/>
+    <div>{{t items.add_item.condition}}</div>
 
-    {{#each condition in GoodcityENV.APP.ITEM_CONDITIONS}}
+    {{#each donor_condition in donorConditions}}
       <label>
-        {{view 'radio-button' name="selectionTest" selectionBinding='donorCondition' value=condition}}
-        {{condition}}
+        {{view 'radio-button' name="selectionTest" selectionBinding='donorConditionId' value=donor_condition.id}}
+        {{donor_condition.name}}
       </label>
     {{/each}}
   </p>

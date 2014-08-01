@@ -42,6 +42,7 @@ I18nTranslationsEn =
       "tour.step5.financial" : "You are welcome to contribute financially to the costs of helping people receive the items they need. Like Mr Cho who received a washing machine after fire destroyed his home."
 
       "offer":
+        "no_items" : "You don't have any items in this offer yet. Please add your first item!",
         "confirm":
           "heading" : "Confirm"
           "thank": "Thank You!"
@@ -52,6 +53,9 @@ I18nTranslationsEn =
           "heading": "Sale of goods"
           "message": "Occasionally, the best way <br> for a donated item to help the poor <br> is for a charity to sell it. Is sale <br> of item(s) okay?"
 
+      "items":
+        "add_item":
+          "condition": "Condition?"
 
       # The following are for the I18n example template and can be removed soon.
       "i18nexample.items.heading": "Items"

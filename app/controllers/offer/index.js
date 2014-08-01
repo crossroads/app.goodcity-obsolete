@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 
-  isDrafted: function(){
+  isDraft: function(){
     return this.get('state') === 'draft';
   }.property('state'),
 

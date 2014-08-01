@@ -6,7 +6,6 @@ var attr = DS.attr,
 
 export default DS.Model.extend({
   donorDescription:     attr('string'),
-  donorCondition:       attr('string'),
   state:                attr('string'),
   offerId:              attr('number'),
   itemTypeId:           attr('number'),
@@ -18,6 +17,7 @@ export default DS.Model.extend({
   messages:             hasMany('message'),
   images:               hasMany('images'),
   offer:                belongsTo('offer'),
+  donorCondition:       belongsTo('donor_condition'),
 
   //input to store image public-ids
   imageIdentifiers:     attr('string'),

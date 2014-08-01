@@ -4,7 +4,7 @@ Offer Items({{itemCount}})
 
 {{#if itemCount }}
 
-  {{#if isDrafted}}
+  {{#if isDraft}}
     <button  {{action "addItem"}}>Add Item</button>
     {{#link-to 'offer.confirm'}}All Done, Next{{/link-to}}
   {{else}}
@@ -23,7 +23,7 @@ Offer Items({{itemCount}})
             <div class='item_name'>
               {{#link-to 'item' this}}{{donorDescription}}{{/link-to}}
             </div>
-          <br/>{{donorCondition}}</td>
+          <br/>{{donorCondition.name}}</td>
           <td>{{#link-to 'item.edit' this}}Edit{{/link-to}}</td>
           <td><button {{action 'removeItem' this}} class='removeItem'>Remove</button></td>
         </tr>
@@ -33,11 +33,7 @@ Offer Items({{itemCount}})
 
 {{else}}
 
-  <p class='no_item_text'>
-    "You don't have any items
-    in this offer yet. Please add
-    your first item!"
-  </p>
+  <div>{{t offer.no_items}}</div>
   <button {{action "addItem"}}>Add Item</button>
 
 {{/if}}
