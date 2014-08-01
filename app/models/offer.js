@@ -22,6 +22,6 @@ export default DS.Model.extend({
   saleable:                 attr('boolean'),
 
   itemCount: function() {
-    return this._data.items.length;
+    return this.get("items.length");
   }.property('this.items.@each')
 });
