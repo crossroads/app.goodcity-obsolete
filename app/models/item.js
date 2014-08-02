@@ -29,7 +29,7 @@ export default DS.Model.extend({
 
   // favouriteImage or first image or placeholder image
   defaultImageURL: function() {
-    var image_url
+    var image_url;
     var images    = this.get('images');
     //~ var favourite_image = this.get('favouriteImage');
     var favourite_image = images && images.findBy('favourite', 'true');
