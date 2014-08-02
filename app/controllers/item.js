@@ -4,6 +4,6 @@ export default Ember.ObjectController.extend({
 
   donorConditions: function() {
     return this.store.all('donor_condition').sortBy('id');
-  }.property('donor_condition'),
+  }.property('donor_condition.[]'),
 
 });
