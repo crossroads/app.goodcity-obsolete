@@ -51,10 +51,5 @@ export default Ember.ObjectController.extend({
       });
 
     },
-
-    back: function() {
-      this.transitionToRoute('offer');
-    },
-
   }
 });
