@@ -19,7 +19,7 @@ test('Item is a valid ember-data Model', function () {
 
 test('Default image for item', function () {
   var store = this.store();
-  var defaultImage = null;
+  var defaultImageURL = null;
 
   Ember.run(function() {
     var record = store.createRecord('item', {state: 'draft', donorDescription: 'test-item'});
@@ -29,8 +29,26 @@ test('Default image for item', function () {
     record.get('images').pushObject(image1);
     record.get('images').pushObject(image2);
 
-    defaultImage = record.get('defaultImage');
+    defaultImageURL = record.get('defaultImageURL');
   });
 
-  equal(defaultImage, "testimage2");
+  equal(defaultImageURL, "testimage2");
+});
+
+test('Default image for item when no favourite is selected', function () {
+  var store = this.store();
+  var defaultImageURL = null;
+
+  Ember.run(function() {
+    var record = store.createRecord('item', {state: 'draft', donorDescription: 'test-item'});
+    var image1 = store.createRecord('image', {thumbImageUrl: "testimage1"});
+    var image2 = store.createRecord('image', {thumbImageUrl: "testimage2"});
+
+    record.get('images').pushObject(image1);
+    record.get('images').pushObject(image2);
+
+    defaultImageURL = record.get('defaultImageURL');
+  });
+
+  equal(defaultImageURL, "testimage1");
 });
