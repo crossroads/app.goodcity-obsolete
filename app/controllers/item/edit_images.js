@@ -63,7 +63,12 @@ export default Ember.ObjectController.extend({
 
       image_array.unshiftObject(image_id);
       this.set("imageIds", JSON.stringify(image_array));
+    },
+
+    back: function() {
+      this.transitionToRoute('item.edit');
     }
+
   },
 
   init: function(){

@@ -50,6 +50,11 @@ export default Ember.Controller.extend({
       item.save().then(function() {
         route.transitionToRoute('offer', offer_id);
       });
-    }
+    },
+
+    back: function() {
+      this.transitionToRoute('offer');
+    },
+
   }
 });

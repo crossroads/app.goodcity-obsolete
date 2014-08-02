@@ -11,14 +11,16 @@ I18nTranslationsEn =
       "loading": "Loading..."
       "goodcity.hk" : "GoodCity.HK"
       "skip_intro" : "Skip intro"
+      "next" : "Next"
+      "back" : "Back"
       "error.message" : "Sorry, an error occurred!"
+      "images" : "Images"
 
       "index.title" : "Crossroads Foundation Presents"
       "index.donate_goods" : "Donate your quality goods to people in need"
       "index.how" : "How Does It Work?"
 
       "tour.register" : "Start Now"
-      "tour.next" : "Next"
       "tour.step1.title" : "Step 1: Register"
       "tour.step1.sms_pin" : "We'll SMS a four-digit PIN code to confirm it's you!"
       "tour.step2.title" : "Step 2: Add Items"
@@ -56,6 +58,12 @@ I18nTranslationsEn =
       "items":
         "add_item":
           "condition": "Condition?"
+          "edit_image" : "Edit Image"
+
+      "item":
+        "item_details" : "Item details:"
+        "donor_description": "Description: {{donorDescription}}"
+        "condition": "Condition: {{condition}}"
 
       # The following are for the I18n example template and can be removed soon.
       "i18nexample.items.heading": "Items"

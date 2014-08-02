@@ -34,9 +34,10 @@
 
   <p>
     {{#if this.model}}
-      <button {{ action 'updateDetails'}} {{bind-attr disabled="this.noImage"}} class='add_item_link'>Next</button>
+      <button {{ action 'updateDetails'}} {{bind-attr disabled="this.noImage"}} class='add_item_link'>{{t next}}</button>
     {{else}}
-      <button {{ action 'addDetails'}} {{bind-attr disabled="this.noImage"}} class='add_item_link'>Next</button>
+      <button {{ action 'addDetails'}} {{bind-attr disabled="this.noImage"}} class='add_item_link'>{{t next}}</button>
     {{/if}}
+    <button {{ action 'back'}}>{{t back}}</button>
   </p>
 </p>

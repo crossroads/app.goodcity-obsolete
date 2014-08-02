@@ -55,7 +55,11 @@ export default Ember.Controller.extend({
       uploaded.push(image_id);
       localStorage.image_ids = JSON.stringify(uploaded);
       this.get("imageIds").unshiftObject(image_id);
-    }
+    },
+
+    back: function() {
+      this.transitionToRoute('offer');
+    },
   },
 
   init: function(){
