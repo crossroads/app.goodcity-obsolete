@@ -18,7 +18,7 @@ Offer Items({{itemCount}})
       <tr><th>Description</th><th>Condition</th></tr>
       {{#each items}}
         <tr>
-          <td><img {{bind-attr src=defaultImage }}></td>
+          <td><img {{bind-attr src=defaultImageURL }}></td>
           <td>
             <div class='item_name'>
               {{#link-to 'item' this}}{{donorDescription}}{{/link-to}}
