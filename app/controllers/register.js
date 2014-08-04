@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
           _this.transitionToRoute('/authenticate');
         },
         error: function(xhr){
-          Ember.$('#mobile_error').text(xhr.responseJSON.msg);
+          Ember.$('#mobile_error').text(xhr.responseJSON.error.text);
         },
         complete:function(){
           Ember.$('.loader_image').hide();

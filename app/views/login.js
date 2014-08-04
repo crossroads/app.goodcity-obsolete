@@ -38,16 +38,21 @@ export default Ember.View.extend({
     }
 
     function validate_for_existing_mobile(phone){
-      Ember.$.get(GoodcityENV.APP.SERVER_PATH +"/auth/verify_mobile", {mobile: phone}).done(function(data){
+
+      Ember.$.get(GoodcityENV.APP.SERVER_PATH +"/auth/verify_mobile", {mobile: phone})
+        .done(function(data){
           var is_existing = data.mobile_exist;
           localStorage.step1_token = data.token;
           return is_existing ? remove_highlight() : highlight_phone_field(true);
+        })
+        .fail(function(res) {
+          highlight_phone_field(true, res.responseJSON.error.text);
       });
     }
 
-    function highlight_phone_field(not_existing){
+    function highlight_phone_field(not_existing, msg){
       Ember.$('#mobile').addClass('invalid_input');
-      var error =  not_existing ? 'Sorry, this number is not registered!' : 'Please enter a valid mobile number';
+      var error =  not_existing ? msg : 'Please enter a valid mobile number';
       Ember.$('#mobile_error').text(error);
     }
 
