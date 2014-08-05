@@ -1,9 +1,24 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
-  
+export default Ember.ObjectController.extend({
+
+  isLoggedIn: function(key, value) {
+    return (arguments.length > 1 ? value : (localStorage.jwt === undefined ? false : true));
+  }.property(),
+
   currentLanguage: function() {
     return Ember.I18n.translations.language;
-  }.property()
-  
+  }.property(),
+
+  actions: {
+    logMeOut: function(){
+      delete localStorage.jwt;
+      delete localStorage.step1_token;
+      this.set("isLoggedIn", false);
+      this.transitionTo('login');
+    },
+    logMeIn: function(){
+      this.set("isLoggedIn", true);
+    }
+  }
 });

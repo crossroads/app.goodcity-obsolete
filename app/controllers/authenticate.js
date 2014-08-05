@@ -1,7 +1,9 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  actions: {
+   needs: ['application'],
+
+   actions: {
 
     authenticateUser: function(){
       Ember.$('.auth_error').hide();
@@ -22,6 +24,7 @@ export default Ember.Controller.extend({
           } else {
             delete localStorage.step1_token;
             localStorage.jwt = data.jwt_token;
+            route.get('controllers.application').send('logMeIn');
             route.transitionToRoute('offers');
           }
         },

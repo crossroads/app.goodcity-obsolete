@@ -1,7 +1,13 @@
 <div>
-{{#link-to 'index'}}Home{{/link-to}} |
-{{#link-to 'offers'}}All Offers{{/link-to}} |
-{{#link-to 'i18n'}}I18n examples{{/link-to}} |
-{{#link-to 'logout'}}Logout{{/link-to}}
+  {{#link-to 'index'}}Home{{/link-to}} |
+  {{#link-to 'offers'}}All Offers{{/link-to}} |
+  {{#link-to 'i18n'}}I18n examples{{/link-to}} |
+  {{#if isLoggedIn }}
+    <a href="#" {{action 'logMeOut'}}>Logout</a>
+  {{else}}
+    {{#link-to 'login'}}Login{{/link-to}}|
+    {{#link-to 'register'}}Register{{/link-to}}
+  {{/if}}
 </div>
 {{outlet}}
+
