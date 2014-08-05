@@ -15,7 +15,7 @@ export default Ember.ObjectController.extend({
       delete localStorage.jwt;
       delete localStorage.step1_token;
       this.set("isLoggedIn", false);
-      this.transitionTo('login');
+      this.transitionToRoute('login');
     },
     logMeIn: function(){
       this.set("isLoggedIn", true);

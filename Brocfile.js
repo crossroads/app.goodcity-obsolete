@@ -11,7 +11,6 @@ app.import('vendor/cloudinary/js/jquery.fileupload-process.js');
 app.import('vendor/cloudinary/js/jquery.fileupload-image.js');
 app.import('vendor/cloudinary/js/jquery.fileupload-validate.js');
 app.import('vendor/cloudinary/js/jquery.cloudinary.js');
-
 //~ For the moment, ember-18n requires full version of handlebars.
 //~ This is being removed, see https://github.com/jamesarosen/ember-i18n/pull/114
 app.import({
@@ -28,4 +27,12 @@ app.import({
         'ember-data': ['default']
       }
 });
+app.import({
+development: 'vendor/ember-data-factory-guy/dist/ember-data-factory-guy.js',
+test: 'vendor/ember-data-factory-guy/dist/ember-data-factory-guy.js'
+}, { exports: {
+        'FactoryGuy': ['default']
+  }
+});
+// app.import('vendor/ember-data-factory-guy/dist/factory_guy_has_many.js');
 module.exports = app.toTree();
