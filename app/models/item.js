@@ -22,16 +22,11 @@ export default DS.Model.extend({
   //input to store image public-ids
   imageIdentifiers:     attr('string'),
   favouriteImage:       attr('string'),
-  //~ favouriteImage:       function() {
-    //~ var images = this.get('images');
-    //~ return (images && images.findBy('favourite', 'true'));
-  //~ }.property('this.images.@each'),
 
   // favouriteImage or first image
   defaultImage: function() {
     var image;
     var images = this.get('images');
-    //~ var favourite_image = this.get('favouriteImage');
     var favourite_image = images && images.findBy('favourite', 'true');
     if (favourite_image) {
       image = favourite_image;
