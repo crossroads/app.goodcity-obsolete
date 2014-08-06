@@ -40,7 +40,7 @@ export default Ember.ObjectController.extend({
       this.transitionToRoute('item.edit');
     },
 
-    favouriteImage: function(image_id) {
+    setFavouriteImage: function(image_id) {
       this.set("favourite", image_id);
     },
 
