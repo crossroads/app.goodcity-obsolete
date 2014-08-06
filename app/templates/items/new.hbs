@@ -11,9 +11,9 @@
 
   <div>
     <ul class='image_list'>
-      {{#each imageIds}}
-        {{image-tag this height=50 width=50}}
-        {{favourite-star this controller.favourite isNew=true}}
+      {{#each imageId in imageIds}}
+        {{image-tag imageId height=50 width=50}}
+        {{favourite-star imageId favourite}}
       {{/each}}
     </ul>
   </div>
