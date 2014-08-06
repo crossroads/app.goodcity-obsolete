@@ -96,9 +96,9 @@ ModelDefinition = function (model, config) {
   /**
    Build a list of fixtures
 
-   @param {String} name model name or named model type
-   @param {Integer} number of fixtures to build
-   @param {Object} opts attribute options
+   @param name model name or named model type
+   @param number of fixtures to build
+   @param opts attribute options
    @returns array of fixtures
    */
   this.buildList = function (name, number, opts) {
@@ -400,7 +400,6 @@ DS.Store.reopen({
       return FactoryGuy.pushFixture(modelType, fixture);
     } else {
       var store = this;
-
       var model;
       Em.run(function () {
         store.findEmbeddedBelongsToAssociationsForRESTAdapter(modelType, fixture);
@@ -544,7 +543,6 @@ DS.Store.reopen({
    */
   setAssociationsForRESTAdapter: function (modelType, modelName, model) {
     var self = this;
-
     Ember.get(modelType, 'relationshipsByName').forEach(function (name, relationship) {
       if (relationship.kind == 'hasMany') {
         var children = model.get(name) || [];
@@ -554,18 +552,10 @@ DS.Store.reopen({
             child.constructor,
             model
           );
-          var hasManyName = self.findRelationshipName(
-            'hasMany',
-            child.constructor,
-            model
-          );
-          var inverseName = (relationship.options && relationship.options.inverse)
-          if (belongsToName) {
-            child.set(belongsToName || inverseName, model);
-          } else if (hasManyName) {
-            relation = child.get(hasManyName || inverseName) || [];
-            relation.pushObject(model)
+          if (relationship.options && relationship.options.inverse) {
+            belongsToName = relationship.options.inverse;
           }
+          child.set(belongsToName, model);
         })
       }
 
@@ -577,16 +567,15 @@ DS.Store.reopen({
               'hasMany',
               belongsToRecord.constructor,
               model
-            );
+            )
             if (hasManyName) {
               belongsToRecord.get(hasManyName).addObject(model);
-              return;
             }
             var oneToOneName = self.findRelationshipName(
               'belongsTo',
               belongsToRecord.constructor,
               model
-            );
+            )
             // Guard against a situation where a model can belong to itself.
             // Do not want to set the belongsTo on this case.
             if (oneToOneName && !(belongsToRecord.constructor == model.constructor)) {
@@ -631,7 +620,6 @@ DS.Store.reopen({
     )
     return relationshipName;
   },
-
 
   /**
    Adding a pushPayload for FixtureAdapter, but using the original with
@@ -694,69 +682,38 @@ DS.FixtureAdapter.reopen({
    */
   createRecord: function (store, type, record) {
     var promise = this._super(store, type, record);
+
     promise.then(function () {
-      Em.RSVP.Promise.resolve(Ember.get(type, 'relationshipNames')).then(function (relationShips){
-        if (relationShips.belongsTo) {
-          relationShips.belongsTo.forEach(function (relationship) {
-            Em.RSVP.Promise.resolve(record.get(relationship)).then(function(belongsToRecord){
-              if (belongsToRecord) {
-                var hasManyName = store.findRelationshipName(
-                  'hasMany',
-                  belongsToRecord.constructor,
-                  record
-                );
-                Ember.RSVP.resolve(belongsToRecord.get(hasManyName)).then (function(relationship){
-                  relationship.addObject(record);
-                });
-              }
-            });
-          });
-        }
-        if (relationShips.hasMany) {
-          relationShips.hasMany.forEach(function (relationship) {
-            Em.RSVP.Promise.resolve(record.get(relationship)).then(function(belongsToRecord){
-              if (belongsToRecord && belongsToRecord.get('length') > 0) {
-                var hasManyName = store.findRelationshipName(
-                  'hasMany',
-                  belongsToRecord.constructor,
-                  record
-                );
-                belongsToRecord.forEach(function (child){
-                  child.get(hasManyName).addObject(record)
-                });
-              }
-            });
-          })
-        }
-      });
+      var relationShips = Ember.get(type, 'relationshipNames');
+      if (relationShips.belongsTo) {
+        relationShips.belongsTo.forEach(function (relationship) {
+          var belongsToRecord = record.get(relationship);
+          if (belongsToRecord) {
+            var hasManyName = store.findRelationshipName(
+              'hasMany',
+              belongsToRecord.constructor,
+              record
+            );
+            belongsToRecord.get(hasManyName).addObject(record);
+          }
+        })
+      }
     });
 
     return promise;
   }
 })
-
 FactoryGuyTestMixin = Em.Mixin.create({
 
   // Pass in the app root, which typically is App.
-  setup: function (app) {
+  setup: function(app) {
     this.set('container', app.__container__);
     return this;
   },
 
-  useFixtureAdapter: function (app) {
+  useFixtureAdapter: function(app) {
     app.ApplicationAdapter = DS.FixtureAdapter;
     this.getStore().adapterFor('application').simulateRemoteResponse = false;
-  },
-
-  /**
-   @param {String} model type like user for model User
-   @return {boolean} true if model's serializer is ActiveModelSerializer based
-   */
-  usingActiveModelSerializer: function (type) {
-    var store = this.getStore()
-    var type = store.modelFor(type);
-    var serializer = store.serializerFor(type.typeKey);
-    return serializer instanceof DS.ActiveModelSerializer;
   },
 
   /**
@@ -766,18 +723,11 @@ FactoryGuyTestMixin = Em.Mixin.create({
    @param {Object|String|Integer|null} id
    @return {Promise} promise
    */
-  find: function (type, id) {
+  find: function(type, id) {
     return this.getStore().find(type, id);
   },
 
-  /**
-   Proxy to store's makeFixture method
-
-   @param {String} name name of fixture
-   @param {Object} options fixture options
-   @returns {Object|DS.Model} json or record depending on the adapter type
-   */
-  make: function (name, opts) {
+  make: function(name, opts) {
     return this.getStore().makeFixture(name, opts);
   },
 
@@ -785,20 +735,20 @@ FactoryGuyTestMixin = Em.Mixin.create({
     return this.get('container').lookup('store:main');
   },
 
-  pushPayload: function (type, hash) {
+  pushPayload: function(type, hash) {
     return this.getStore().pushPayload(type, hash);
   },
 
-  pushRecord: function (type, hash) {
+  pushRecord: function(type, hash) {
     return this.getStore().push(type, hash);
   },
 
   /**
-   Using mockjax to stub an http request.
+    Using mockjax to stub an http request.
 
-   @param {String} url request url
-   @param {Object} json response
-   @param {Object} options ajax request options
+    @param {String} url request url
+    @param {Object} json response
+    @param {Object} options ajax request options
    */
   stubEndpointForHttpRequest: function (url, json, options) {
     options = options || {};
@@ -818,107 +768,54 @@ FactoryGuyTestMixin = Em.Mixin.create({
   },
 
   /**
-   Build the json used for creating or finding a record.
+    Handling ajax POST ( create record ) for a model
 
-   @param {String} name of the fixture ( or model ) to create/find
-   @param {Object} opts fixture options
+    @param {String} name of the fixture ( or model ) to create
+    @param {Object} opts fixture options
    */
-  buildAjaxHttpResponse: function (name, opts) {
+  handleCreate: function (name, opts) {
+    var model = FactoryGuy.lookupModelForFixtureName(name);
+    var responseJson = this.buildAjaxCreateResponse(name, opts);
+    var url = "/" + Em.String.pluralize(model);
+    this.stubEndpointForHttpRequest(url, responseJson, {type: 'POST'})
+    return responseJson;
+  },
+
+  /**
+    Build the json used for creating record
+
+    @param {String} name of the fixture ( or model ) to create
+    @param {Object} opts fixture options
+¬  */
+  buildAjaxCreateResponse: function (name, opts) {
     var fixture = FactoryGuy.build(name, opts);
-    var modelName = FactoryGuy.lookupModelForFixtureName(name);
-    if (this.usingActiveModelSerializer(modelName)) {
-      this.toSnakeCase(fixture);
-    }
+    var model = FactoryGuy.lookupModelForFixtureName(name);
     var hash = {};
-    hash[modelName] = fixture;
+    hash[model] = fixture;
     return hash;
   },
 
   /**
-   Convert Object's keys to snake case
+    Handling ajax PUT ( update record ) for a model type
 
-   @param {Object} fixture to convert
+    @param {String} root modelType like 'user' for User
+    @param {String} id id of record to update
    */
-  toSnakeCase: function (fixture) {
-    for (key in fixture) {
-      if (key != Em.String.decamelize(key)) {
-        var value = fixture[key];
-        delete fixture[key];
-        fixture[Em.String.decamelize(key)] = value
-      }
-    }
-  },
-
-  /**
-   Handling ajax GET ( find record ) for a model. You can mock
-   failed find by passing in status of 500.
-
-   @param {String} name of the fixture ( or model ) to find
-   @param {Object} opts fixture options
-   @param {Integer} status Optional HTTP status response code
-   */
-  handleFind: function (name, opts, status) {
-    var modelName = FactoryGuy.lookupModelForFixtureName(name);
-    var responseJson = this.buildAjaxHttpResponse(name, opts);
-    var id = responseJson[modelName].id
-    var url = "/" + Em.String.pluralize(modelName) + "/" + id;
+  handleUpdate: function (root, id) {
     this.stubEndpointForHttpRequest(
-      url,
-      responseJson,
-      {type: 'GET', status: (status || 200)}
-    )
-    return responseJson;
-  },
-
-  /**
-   Handling ajax POST ( create record ) for a model. You can mock
-   failed create by passing in status of 500.
-
-   @param {String} name of the fixture ( or model ) to create
-   @param {Object} opts fixture options
-   @param {Integer} status Optional HTTP status response code
-   */
-  handleCreate: function (name, opts, status) {
-    var modelName = FactoryGuy.lookupModelForFixtureName(name);
-    var responseJson = this.buildAjaxHttpResponse(name, opts);
-    var url = "/" + Em.String.pluralize(modelName);
-    this.stubEndpointForHttpRequest(
-      url,
-      responseJson,
-      {type: 'POST', status: (status || 200)}
-    )
-    return responseJson;
-  },
-
-  /**
-   Handling ajax PUT ( update record ) for a model type. You can mock
-   failed update by passing in status of 500.
-
-   @param {String} root modelType like 'user' for User
-   @param {String} id id of record to update
-   @param {Integer} status Optional HTTP status response code
-   */
-  handleUpdate: function (root, id, status) {
-    this.stubEndpointForHttpRequest(
-        "/" + Em.String.pluralize(root) + "/" + id,
-      {},
-      {type: 'PUT', status: (status || 200)}
+      "/" + Em.String.pluralize(root) + "/" + id, {}, {type: 'PUT'}
     )
   },
 
   /**
-   Handling ajax DELETE ( delete record ) for a model type. You can mock
-   failed delete by passing in status of 500.
+    Handling ajax DELETE ( delete record ) for a model type
 
-   @param {String} root modelType like 'user' for User
-   @param {String} id id of record to update
-   @param {Integer} status Optional HTTP status response code
+    @param {String} root modelType like 'user' for User
+    @param {String} id id of record to update
    */
-  handleDelete: function (root, id, status) {
+  handleDelete: function (root, id) {
     this.stubEndpointForHttpRequest(
-        "/" + Em.String.pluralize(root) + "/" + id,
-      {},
-      {type: 'DELETE', status: (status || 200)}
+      "/" + Em.String.pluralize(root) + "/" + id, {}, {type: 'DELETE'}
     )
   },
 

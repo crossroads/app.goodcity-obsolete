@@ -14,6 +14,8 @@ var minimatch = require('minimatch');
 var remove    = require('lodash-node/compat/arrays/remove');
 var any       = require('lodash-node/compat/collections/some');
 
+var defaultIgnoredFiles = Blueprint.ignoredFiles;
+
 describe('Acceptance: ember init', function() {
   before(function() {
     conf.setup();
@@ -26,6 +28,7 @@ describe('Acceptance: ember init', function() {
   beforeEach(function() {
     tmp.setup('./tmp');
     process.chdir('./tmp');
+    Blueprint.ignoredFiles = defaultIgnoredFiles;
   });
 
   afterEach(function() {
@@ -61,7 +64,8 @@ describe('Acceptance: ember init', function() {
   it('ember init', function() {
     return ember([
       'init',
-      '--dry-run'
+      '--skip-npm',
+      '--skip-bower',
     ]).then(confirmBlueprinted);
   });
 
@@ -71,7 +75,8 @@ describe('Acceptance: ember init', function() {
 
     return ember([
       'init',
-      '--dry-run'
+      '--skip-npm',
+      '--skip-bower'
     ]).then(confirmBlueprinted).then(function() {
       tmp.teardown('./tmp/foo');
     });
@@ -80,11 +85,13 @@ describe('Acceptance: ember init', function() {
   it('init an already init\'d folder', function() {
     return ember([
       'init',
-      '--dry-run'
+      '--skip-npm',
+      '--skip-bower'
     ]).then(function() {
       return ember([
         'init',
-        '--dry-run'
+        '--skip-npm',
+        '--skip-bower'
       ]).then(confirmBlueprinted);
     });
   });

@@ -1,5 +1,3 @@
-import FactoryGuy from 'FactoryGuy';
-
 FactoryGuy.define('offer', {
   sequences: {
     collectionContactName: function(num) {

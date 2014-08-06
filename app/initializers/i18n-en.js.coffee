@@ -1,4 +1,4 @@
-`import Ember from "ember";`
+`import Ember from "ember"`
 
 I18nTranslationsEn =
   name: "i18n-en"
@@ -73,4 +73,4 @@ I18nTranslationsEn =
     # this is how we set default language
     Ember.I18n.translations = Ember.I18n.translation_store.en
 
-`export default I18nTranslationsEn;`
+`export default I18nTranslationsEn`

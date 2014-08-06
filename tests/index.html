@@ -6,12 +6,10 @@
     <title>Goodcity Tests</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
     {{BASE_TAG}}
-
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/goodcity.css">
-    <link rel="stylesheet" href="assets/qunit.css">
+    <link rel="stylesheet" href="assets/test-support.css">
     <style>
       #ember-testing-container {
         position: absolute;
@@ -37,11 +35,10 @@
       window.GoodcityENV = {{ENV}};
       window.EmberENV = window.GoodcityENV.EmberENV;
     </script>
-    <script src="assets/qunit.js"></script>
-    <script src="assets/qunit-notifications.js"></script>
+    <script src="assets/test-support.js"></script>
     <script src="assets/vendor.js"></script>
     <script src="assets/goodcity.js"></script>
-    <script src="assets/ember-data-factory-guy/dist/ember-data-factory-guy.js"></script>
+
     <script src="testem.js"></script>
     <script>
       require('goodcity/tests/test-helper');
