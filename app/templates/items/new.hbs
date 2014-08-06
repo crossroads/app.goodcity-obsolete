@@ -3,7 +3,7 @@
 
   <div class='file_preview'>
     {{#if this.previewImageId}}
-      {{image-tag previewImageId width=200 height=250}}
+      {{cloudinary-image previewImageId width=200 height=250}}
       <button {{action "setFavouriteImage" previewImageId}}>Favourite</button>
       <button {{action "removeImage" previewImageId}}>Delete</button>
     {{/if}}
@@ -12,7 +12,7 @@
   <div>
     <ul class='image_list'>
       {{#each imageId in imageIds}}
-        {{image-tag imageId height=50 width=50}}
+        {{cloudinary-image imageId height=50 width=50}}
         {{favourite-star imageId favourite}}
       {{/each}}
     </ul>

@@ -1,5 +1,6 @@
 import Ember from "ember";
 
+// takes a cloudinary image_id e.g. 1406959628/wjvaksnadntp239n6vwe.png and converts it into an image tag
 export default Ember.Handlebars.makeBoundHelper(function(value, options) {
   var html;
   if (value) {

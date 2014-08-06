@@ -1,7 +1,7 @@
   <p>
     <div class='edit_image_block'>
 
-      {{image-tag previewImageId width=100 height=150 className='fav_image'}}
+      {{cloudinary-image previewImageId width=100 height=150 className='fav_image'}}
 
       {{#if this.model }}
         {{#link-to 'item.edit_images' class='edit-image-link'}}{{t items.add_item.edit_image}}{{/link-to}}
