@@ -27,20 +27,31 @@ export default DS.Model.extend({
     //~ return (images && images.findBy('favourite', 'true'));
   //~ }.property('this.images.@each'),
 
-  // favouriteImage or first image or placeholder image
-  defaultImageURL: function() {
-    var image_url;
-    var images    = this.get('images');
+  // favouriteImage or first image
+  defaultImage: function() {
+    var image;
+    var images = this.get('images');
     //~ var favourite_image = this.get('favouriteImage');
     var favourite_image = images && images.findBy('favourite', 'true');
     if (favourite_image) {
-      image_url = favourite_image.get('thumbImageUrl');
+      image = favourite_image;
     } else if (images.get('length') > 0) {
-      image_url = this.get('images.firstObject').get('thumbImageUrl');
+      image = this.get('images.firstObject');
     } else {
-      image_url = "assets/images/default_item.jpg";
+      image = null;
     }
-    return image_url;
+    return image;
   }.property('this.images.@each'),
+
+  // defaultImage or placeholder
+  defaultImageURL: function() {
+    var image = this.get('defaultImage');
+    return (image ? image.get('thumbImageUrl') : "assets/images/default_item.jpg");
+  }.property('defaultImage'),
+
+  defaultImageId: function() {
+    var image = this.get('defaultImage');
+    return (image ? image.get('imageId') : null);
+  }.property('defaultImage'),
 
 });
