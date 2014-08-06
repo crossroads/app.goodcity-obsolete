@@ -1,0 +1,6 @@
+{{#each donor_condition in donorConditions}}
+  <label>
+    {{view 'radio-button' name="selectionTest" selectionBinding='selectedId' value=donor_condition.id}}
+    {{donor_condition.name}}
+  </label>
+{{/each}}

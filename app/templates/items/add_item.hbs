@@ -18,14 +18,8 @@
 
   <p>
     <div>{{t items.add_item.condition}}</div>
-
-    {{#each donor_condition in donorConditions}}
-      <label>
-        {{view 'radio-button' name="selectionTest" selectionBinding='donorConditionId' value=donor_condition.id}}
-        {{donor_condition.name}}
-      </label>
-    {{/each}}
+    {{donor-conditions selectedId=donorConditionId}}
   </p>
 
   <button {{action "submitItem"}}>{{t next}}</button>
-  <button {{ action 'back'}}>{{t back}}</button>
+  <button {{action 'back'}}>{{t back}}</button>
