@@ -2,23 +2,22 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
+  needs: ["offer", "item"],
+
   previewImageId: function() {
     return localStorage.favourite;
   }.property().volatile(),
 
   donorConditions: Ember.computed.alias('controllers.item.donorConditions'),
+  donorConditionId: null,
 
-  donorConditionId: function() {
-    return this.get('donorConditions').get('firstObject').get('id');
-  },
-
-  needs: ["offer", "item"],
   actions: {
     submitItem: function() {
 
       var donorDescription = this.get('donorDescription');
       if (donorDescription && !donorDescription.trim()) { return; }
       var donorConditionId = this.get('donorConditionId');
+      if (!donorConditionId) { return; }
       var imageIdentifiers = JSON.parse(localStorage.image_ids || "[]");
       var favouriteImage   = localStorage.favourite;
 

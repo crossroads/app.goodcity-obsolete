@@ -2,17 +2,17 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 
+  needs: ["item"],
+
   previewImageId: function() {
     return this.get('favouriteImage');
-  }.property().volatile(),
+  }.property('favouriteImage').volatile(),
 
   donorConditions: Ember.computed.alias('controllers.item.donorConditions'),
 
   donorConditionId: function() {
-    return this.get('model').get('donorCondition').get('id');
-  }.property('model'),
-
-  needs: ["item"],
+    return this.get('donorCondition.id');
+  }.property('donorCondition.id'),
 
   actions: {
     submitItem: function(){
