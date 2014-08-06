@@ -16,6 +16,10 @@ export default Ember.ObjectController.extend({
     return (JSON.parse(ids || "[]"));
   }.property("imageIdentifiers"),
 
+  hasOneImage: function() {
+    return this.get('imageIds.length') > 1;
+  }.property('imageIds.[]'),
+
   previewImageId: function(key, value) {
     return (arguments.length > 1 ? value : this.get('imageIds.firstObject'));
   }.property('imageIds.[]'),
@@ -74,15 +78,14 @@ export default Ember.ObjectController.extend({
   init: function(){
     var controller = this;
 
-    Ember.$('body #current_item').on('click', ".current_image", function() {
+    Ember.$('body').on('click', ".current_image", function() {
       var public_id = Ember.$(this).attr('id');
       controller.set("previewImageId", public_id);
     });
 
-    Ember.$('body #current_item').on('click', ".more_image_link", function() {
+    Ember.$('body').on('click', ".more_image_link", function() {
       controller.set("addMoreImages", true);
     });
-
   }
 
 });

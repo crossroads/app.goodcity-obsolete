@@ -24,11 +24,6 @@ export default Ember.ObjectController.extend({
       var imageIdentifiers = this.get('imageIdentifiers');
       var favouriteImage   = this.get('favouriteImage');
 
-      delete localStorage.edit_image_ids;
-      delete localStorage.edit_favourite;
-      delete localStorage.updated_image_ids;
-      delete localStorage.updated_favourite;
-
       this.controllerFor('item.edit_images').set('imageIds', "[]");
 
       // Update Item
