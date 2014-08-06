@@ -1,6 +1,6 @@
 {
   "name": "ember-data-factory-guy",
-  "version": "0.4.2",
+  "version": "4.0.0",
   "authors": [
     "Daniel Sudol <dansudol@yahoo.com>",
     "Opak Alex <opak.alexandr@gmail.com>"
@@ -35,13 +35,13 @@
     "tests"
   ],
   "homepage": "https://github.com/danielspaniel/ember-data-factory-guy",
-  "_release": "0.4.2",
+  "_release": "4.0.0",
   "_resolution": {
     "type": "version",
-    "tag": "v0.4.2",
-    "commit": "2ad99f559eee1efc6808c28969c272ac91f27a06"
+    "tag": "v4.0.0",
+    "commit": "8743256c5bf1e7f8a90fa456af4075101f534725"
   },
   "_source": "git://github.com/danielspaniel/ember-data-factory-guy.git",
-  "_target": "~0.4.1",
+  "_target": "*",
   "_originalSource": "ember-data-factory-guy"
 }

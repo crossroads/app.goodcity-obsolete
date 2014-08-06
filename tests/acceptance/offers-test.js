@@ -13,7 +13,7 @@ module('Acceptance: Offers', {
     App = startApp();
     testHelper = TestHelper.setup(App);
     store = testHelper.getStore();
-    store.makeList('offer', 1);
+    store.makeList('offer', 4);
   },
   teardown: function() {
     Ember.run(function () {
@@ -21,4 +21,11 @@ module('Acceptance: Offers', {
     });
     Ember.run(App, 'destroy');
   }
+});
+test('index', function() {
+  expect(1);
+  visit('/offers');
+  andThen(function() {
+    equal($('#ember333 > ul > li:nth-child(3)').text(). substring(40,11).trim(), "Offer_id: 1");
+  });
 });

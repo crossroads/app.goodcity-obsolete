@@ -9,11 +9,10 @@ var Builder          = require('../models/builder');
 
 module.exports = Task.extend({
   run: function(options) {
-    var env = options.environment || 'development';
-
-    process.env.EMBER_ENV = process.env.EMBER_ENV || env;
     var builder = new Builder({
-      outputPath: options.outputPath
+      outputPath: options.outputPath,
+      project: this.project,
+      environment: options.environment
     });
 
     var watcher = new Watcher({

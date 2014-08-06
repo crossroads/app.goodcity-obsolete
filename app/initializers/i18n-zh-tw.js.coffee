@@ -1,4 +1,4 @@
-﻿`import Ember from "ember";`
+﻿`import Ember from "ember"`
 
 I18nTranslationsZhTw =
   name: 'i18n-zh-tw'
@@ -49,4 +49,4 @@ I18nTranslationsZhTw =
       'i18nexample.item.new.title': '新項目'
       'i18nexample.i18n.pluralisation': '的複數'
 
-`export default I18nTranslationsZhTw;`
+`export default I18nTranslationsZhTw`

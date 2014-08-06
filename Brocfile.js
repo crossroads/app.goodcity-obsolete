@@ -1,5 +1,6 @@
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+
 var app = new EmberApp();
 
 app.import('vendor/cloudinary/js/jquery.ui.widget.js');
@@ -30,9 +31,9 @@ app.import({
 app.import({
 development: 'vendor/ember-data-factory-guy/dist/ember-data-factory-guy.js',
 test: 'vendor/ember-data-factory-guy/dist/ember-data-factory-guy.js'
-}, { exports: {
+}, {  destDir: 'assets/',
+      exports: {
         'FactoryGuy': ['default']
   }
 });
-// app.import('vendor/ember-data-factory-guy/dist/factory_guy_has_many.js');
 module.exports = app.toTree();
