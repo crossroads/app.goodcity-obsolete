@@ -61,12 +61,12 @@ export default Ember.Controller.extend({
   init: function(){
     var controller = this;
 
-    Ember.$('body #current_item').on('click', ".current_image", function() {
+    Ember.$('body').on('click', ".current_image", function() {
       var public_id = Ember.$(this).attr('id');
       controller.set("previewImageId", public_id);
     });
 
-    Ember.$('body #current_item').on('click', ".more_image_link", function() {
+    Ember.$('body').on('click', ".more_image_link", function() {
       controller.set("addMoreImages", true);
     });
 
