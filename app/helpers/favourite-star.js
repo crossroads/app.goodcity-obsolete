@@ -1,15 +1,14 @@
 import Ember from "ember";
 
-export default Ember.Handlebars.makeBoundHelper(function(current_image, favourite, options) {
+export default Ember.Handlebars.makeBoundHelper(function(current_image_id, favourite_image_id, options) {
 
   var image_tag;
   if(options.hash['isNew']) {
-    if(favourite === current_image){
+    if(favourite_image_id === current_image_id){
       image_tag = "<img src='assets/images/star_circle.png' class='fav_star'></img>";
     }
   }
 
-  var image = image_tag ? (new Ember.Handlebars.SafeString(image_tag)) : null;
-  return image;
+  return image_tag ? (new Ember.Handlebars.SafeString(image_tag)) : null;
 
 });
