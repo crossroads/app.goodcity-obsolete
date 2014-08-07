@@ -17,27 +17,19 @@ export default Ember.ObjectController.extend({
   actions: {
     submitItem: function(){
 
-      var donorDescription = this.get('donorDescription');
-      if (donorDescription && !donorDescription.trim()) { return; }
-      var donorConditionId = this.get('donorConditionId');
-
-      var imageIdentifiers = this.get('imageIdentifiers');
-      var favouriteImage   = this.get('favouriteImage');
+      var newItemProperties = this.getProperties('id', 'donorDescription', 'imageIdentifiers', 'favouriteImage');
+      if (newItemProperties.donorDescription && !newItemProperties.donorDescription.trim()) { return; }
 
       this.controllerFor('item.edit_images').set('imageIds', "[]");
 
       // Update Item
       var offer_id = this.get('offerId');
       var offer = this.store.getById('offer', offer_id);
-      var donorCondition = this.store.getById('donor_condition', donorConditionId);
-      var item = this.store.update('item', {
-        id: this.get('id'),
-        donorDescription: donorDescription,
-        imageIdentifiers: imageIdentifiers,
-        favouriteImage: favouriteImage,
-        offer: offer,
-        donorCondition: donorCondition
-      });
+      newItemProperties.offer = offer;
+      var donor_condition_id = this.get('donorConditionId');
+      var donorCondition = this.store.getById('donor_condition', donor_condition_id);
+      newItemProperties.donorCondition = donorCondition;
+      var item = this.store.update('item', newItemProperties);
 
       // Save changes to Item
       var route = this;
