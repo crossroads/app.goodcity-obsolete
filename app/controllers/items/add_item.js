@@ -13,12 +13,13 @@ export default Ember.Controller.extend({
   actions: {
     submitItem: function() {
 
-      var donorDescription = this.get('donorDescription');
-      if (donorDescription && !donorDescription.trim()) { return; }
+      var newItemProperties = this.getProperties('donorDescription');
+
+      if (newItemProperties.donorDescription && !newItemProperties.donorDescription.trim()) { return; }
       var donorConditionId = this.get('donorConditionId');
       if (!donorConditionId) { return; }
-      var imageIdentifiers = JSON.parse(localStorage.image_ids || "[]");
-      var favouriteImage   = localStorage.favourite;
+      newItemProperties.imageIdentifiers = JSON.parse(localStorage.image_ids || "[]");
+      newItemProperties.favouriteImage   = localStorage.favourite;
 
       delete localStorage.image_ids;
       delete localStorage.favourite;
@@ -28,17 +29,11 @@ export default Ember.Controller.extend({
       this.controllerFor('items.new').set('imageIds', "[]");
 
       // Create the new Item model
+      newItemProperties.state = 'draft';
       var offer_id = this.get('controllers.offer').get('id');
-      var offer = this.store.getById('offer', offer_id);
-      var donorCondition = this.store.getById('donor_condition', donorConditionId);
-      var item = this.store.createRecord('item', {
-        donorDescription: donorDescription,
-        imageIdentifiers: imageIdentifiers,
-        favouriteImage: favouriteImage,
-        state: 'draft',
-        offer: offer,
-        donorCondition: donorCondition
-      });
+      newItemProperties.offer = this.store.getById('offer', offer_id);
+      newItemProperties.donorCondition = this.store.getById('donor_condition', donorConditionId);
+      var item = this.store.createRecord('item', newItemProperties);
 
       // Clear the "New Item" text field
       this.set('donorDescription', '');
