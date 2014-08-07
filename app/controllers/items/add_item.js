@@ -2,13 +2,12 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-  needs: ["offer", "item"],
+  needs: ["offer"],
 
   previewImageId: function() {
     return localStorage.favourite;
   }.property().volatile(),
 
-  donorConditions: Ember.computed.alias('controllers.item.donorConditions'),
   donorConditionId: null,
 
   actions: {
