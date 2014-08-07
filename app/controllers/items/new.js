@@ -7,7 +7,7 @@ export default Ember.Controller.extend({
     return JSON.parse(ids);
   }.property(),
 
-  hasOneImage: function() {
+  hasManyImages: function() {
     return this.get('imageIds.length') > 1;
   }.property('imageIds.[]'),
 

@@ -16,7 +16,7 @@ export default Ember.ObjectController.extend({
     return (JSON.parse(ids || "[]"));
   }.property("imageIdentifiers"),
 
-  hasOneImage: function() {
+  hasManyImages: function() {
     return this.get('imageIds.length') > 1;
   }.property('imageIds.[]'),
 

@@ -4,7 +4,7 @@
   <div class='file_preview'>
     {{#if this.previewImageId}}
       {{cloudinary-image previewImageId width=200 height=250}}
-      {{#if hasOneImage}}
+      {{#if hasManyImages}}
         <button {{action "setFavouriteImage" previewImageId}}>Favourite</button>
       {{/if}}
       <button {{action "removeImage" previewImageId}}>Delete</button>
