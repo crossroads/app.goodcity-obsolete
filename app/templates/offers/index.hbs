@@ -1,4 +1,4 @@
-<p>
+<p class='offer_link'>
   {{#if pendingOffer}}
     Add items to {{#link-to 'offer.index' pendingOffer}}offer{{/link-to}}
   {{else}}
@@ -8,21 +8,17 @@
 
 <h3>My Offers</h3>
 
-<ul>
+<ul class='offer_list'>
   {{#each}}
 
     <li class="contact">
-      {{#with this._data }}
-        Offer_id: {{ id }}
-        <br/>
-        Name: {{ collectionContactName }}
-        <br/>
-      {{/with}}
-
+      Offer_id: {{ id }}
+      <br/>
+      Name: {{ collectionContactName }}
+      <br/>
       Total Items: {{ itemCount }}
       <br/>
       {{#link-to 'offer.index' this}}See More..{{/link-to}}
-
     </li><br/>
   {{/each}}
 </ul>

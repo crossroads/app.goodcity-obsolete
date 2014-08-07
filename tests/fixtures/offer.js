@@ -5,14 +5,13 @@ FactoryGuy.define('offer', {
     }
   },
   default: {
-    name: 'Hi',
     language: 'en',
     state: 'draft',
     collectionContactName: FactoryGuy.generate('collectionContactName'),
     collectionContactPhone: '34324343122',
     origin: 'trial',
-    stairs: 'trial',
-    parking: 'dummy',
+    stairs: true,
+    parking: true,
     estimatedSize: '12cm',
     notes: 'dummy text',
     createdById: 1,
