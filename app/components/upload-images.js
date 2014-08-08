@@ -108,6 +108,10 @@ export default Ember.Component.extend({
       }
     },
 
+    setMoreImages: function() {
+      this.set("addMoreImages", true);
+    },
+
   },
 
   didInsertElement: function() {
@@ -125,14 +129,10 @@ export default Ember.Component.extend({
         controller.set("previewImageId", public_id);
       });
     }
-    Ember.$('body').on('click', ".more_image_link", function() {
-      controller.set("addMoreImages", true);
-    });
   },
 
   willDestroyElement: function() {
     Ember.$('body').off('click', '.current_image');
-    Ember.$('body').off('click', '.more_image_link');
   }
 
 });
