@@ -15,6 +15,7 @@ I18nTranslationsEn =
       "back" : "Back"
       "error.message" : "Sorry, an error occurred!"
       "images" : "Images"
+      "delete" : "Delete"
 
       "index.title" : "Crossroads Foundation Presents"
       "index.donate_goods" : "Donate your quality goods to people in need"
@@ -42,6 +43,7 @@ I18nTranslationsEn =
       "tour.step4.anything_else" : "Anything else"
       "tour.step5.title" : "Step 5: Double Your Good Deed"
       "tour.step5.financial" : "You are welcome to contribute financially to the costs of helping people receive the items they need. Like Mr Cho who received a washing machine after fire destroyed his home."
+
       "offer":
         "no_items" : "You don't have any items in this offer yet. Please add your first item!",
         "confirm":
@@ -62,6 +64,12 @@ I18nTranslationsEn =
         "item_details" : "Item details:"
         "donor_description": "Description: {{donorDescription}}"
         "condition": "Condition: {{condition}}"
+
+      # Components
+      "upload-images":
+        "angles" : "Got all the angles of this item?"
+        "favourite" : "Favourite"
+        "add_another" : "Add another image"
 
       # The following are for the I18n example template and can be removed soon.
       "i18nexample.items.heading": "Items"

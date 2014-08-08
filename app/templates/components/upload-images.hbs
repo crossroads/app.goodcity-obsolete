@@ -2,9 +2,9 @@
   {{#if this.previewImageId}}
     {{cloudinary-image previewImageId width=200 height=250}}
     {{#if hasManyImages}}
-      <button {{action "setFavouriteImage" previewImageId}}>Favourite</button>
+      <button {{action "setFavouriteImage" previewImageId}}>{{t 'upload-images.favourite'}}</button>
     {{/if}}
-    <button {{action "removeImage" previewImageId}}>Delete</button>
+    <button {{action "removeImage" previewImageId}}>{{t 'delete'}}</button>
   {{/if}}
 </div>
 
@@ -22,11 +22,8 @@
 </div>
 
 <div {{bind-attr class='addMoreImages:hidden_block'}} id='more_image'>
-  <button class='more_image_link'>Add another image</button>
-  <p>Got all the angles of this item?<p>
+  <button class='more_image_link'>{{t 'upload-images.add_another'}}</button>
+  <p>{{t 'upload-images.angles'}}<p>
 </div>
 
-<div class='loading_image'>
-  <img src='assets/images/image-preload.gif'></img>
-  <span class='progress'></div>
-</div>
+{{loading-image}}
