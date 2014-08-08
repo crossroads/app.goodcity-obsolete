@@ -13,8 +13,10 @@ FactoryGuy.define('item', {
     donorDescription:     'example1',
     rejectionOtherReason: 'example1',
     imageIdentifiers:     'example1,example2',
-    favouriteImage:       'example1',
-    offer:                {}
+    favouriteImage:       'example1'
+  },
+  item_with_offer: {
+    offer: FactoryGuy.association('offer')
   }
 });
 

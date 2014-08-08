@@ -29,11 +29,21 @@ app.import({
       }
 });
 app.import({
-development: 'vendor/ember-data-factory-guy/dist/ember-data-factory-guy.js',
-test: 'vendor/ember-data-factory-guy/dist/ember-data-factory-guy.js'
-}, {  destDir: 'assets/',
+  development: 'vendor/ember-data-factory-guy/dist/ember-data-factory-guy.js',
+  test: 'vendor/ember-data-factory-guy/dist/ember-data-factory-guy.js'
+  }, {  destDir: 'assets/',
       exports: {
         'FactoryGuy': ['default']
   }
 });
+
+app.import({
+  development: 'vendor/ember-data-factory-guy/dist/factory_guy_has_many.js',
+  test: 'vendor/ember-data-factory-guy/dist/factory_guy_has_many.js',
+  }, {  destDir: 'assets/',
+      exports: {
+        'FactoryGuyHasMany': ['default']
+  }
+});
+
 module.exports = app.toTree();

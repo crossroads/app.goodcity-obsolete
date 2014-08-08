@@ -17,38 +17,38 @@ test('Item is a valid ember-data Model', function () {
   equal(record.get('donorDescription'), 'test-item');
 });
 
-test('Default image for item', function () {
-  var store = this.store();
-  var defaultImageURL = null;
+// test('Default image for item', function () {
+//   var store = this.store();
+//   var defaultImageURL = null;
 
-  Ember.run(function() {
-    var record = store.createRecord('item', {state: 'draft', donorDescription: 'test-item'});
-    var image1 = store.createRecord('image', {thumbImageUrl: "testimage1"});
-    var image2 = store.createRecord('image', {thumbImageUrl: "testimage2", favourite: 'true'});
+//   Ember.run(function() {
+//     var record = store.createRecord('item', {state: 'draft', donorDescription: 'test-item'});
+//     var image1 = store.createRecord('image', {thumbImageUrl: "testimage1"});
+//     var image2 = store.createRecord('image', {thumbImageUrl: "testimage2", favourite: 'true'});
 
-    record.get('images').pushObject(image1);
-    record.get('images').pushObject(image2);
+//     record.get('images').pushObject(image1);
+//     record.get('images').pushObject(image2);
 
-    defaultImageURL = record.get('defaultImageURL');
-  });
+//     defaultImageURL = record.get('defaultImageURL');
+//   });
 
-  equal(defaultImageURL, "testimage2");
-});
+//   equal(defaultImageURL, "testimage2");
+// });
 
-test('Default image for item when no favourite is selected', function () {
-  var store = this.store();
-  var defaultImageURL = null;
+// test('Default image for item when no favourite is selected', function () {
+//   var store = this.store();
+//   var defaultImageURL = null;
 
-  Ember.run(function() {
-    var record = store.createRecord('item', {state: 'draft', donorDescription: 'test-item'});
-    var image1 = store.createRecord('image', {thumbImageUrl: "testimage1"});
-    var image2 = store.createRecord('image', {thumbImageUrl: "testimage2"});
+//   Ember.run(function() {
+//     var record = store.createRecord('item', {state: 'draft', donorDescription: 'test-item'});
+//     var image1 = store.createRecord('image', {thumbImageUrl: "testimage1"});
+//     var image2 = store.createRecord('image', {thumbImageUrl: "testimage2"});
 
-    record.get('images').pushObject(image1);
-    record.get('images').pushObject(image2);
+//     record.get('images').pushObject(image1);
+//     record.get('images').pushObject(image2);
 
-    defaultImageURL = record.get('defaultImageURL');
-  });
+//     defaultImageURL = record.get('defaultImageURL');
+//   });
 
-  equal(defaultImageURL, "testimage1");
-});
+//   equal(defaultImageURL, "testimage1");
+// });

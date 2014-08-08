@@ -4,14 +4,14 @@ import offersFactory from '../fixtures/offer';
 import itemsFactory from '../fixtures/item';
 
 var App,
-    testHelper,
-    store,
-    TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
+  testHelper,
+  store,
+  TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
 
 module('User View', {
   setup: function() {
     App = startApp();
-    testHelper = TestHelper.setup(App); // set up helper
+    testHelper = TestHelper.setup(App);
     store = testHelper.getStore();
   },
   teardown: function() {
@@ -29,16 +29,14 @@ test('Index: Offers List', function() {
   });
 });
 
-// -- In Progress --
-// test("Creates new project", function() {
-//   // create a user in the store
-//   var offer = FactoryGuy.build('offer');
-//   var item = testHelper.make('item', {offer: offer});
-//   offer.items = [item.id]
-//   visit('/offers'); // visit the users route
+test("Index: Link to create new offer", function() {
+  var item = store.makeFixture('item');
+  var offer = store.makeFixture('offer', {collectionContactName: 'TestOffer', items: [item.id]});
+  visit('/offers');
 
-//   andThen(function() {
-//     equal($('p.offer_link a').attr('href'), "/offers/new");
-//     equal($('ul.offer_list li').length, 1);
-//   })
-// })
+  andThen(function() {
+    equal($('p.offer_link a').attr('href'), "/offers/new");
+    equal($('ul.offer_list li').length, 1);
+    equal(/TestOffer/i.test($('ul.offer_list li').text()), true);
+  });
+});
