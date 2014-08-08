@@ -21,7 +21,7 @@
   {{#if addMoreImages}}
     {{upload-image action='updatePreview' image_id=''}}
   {{else}}
-    <button class='more_image_link'>{{t upload-images.add_another}}</button>
+    <button {{action "setMoreImages"}}>{{t upload-images.add_another}}</button>
   {{/if}}
 </div>
 
