@@ -2,9 +2,9 @@
   {{#if this.previewImageId}}
     {{cloudinary-image previewImageId width=200 height=250}}
     {{#if hasManyImages}}
-      <button {{action "setFavouriteImage" previewImageId}}>{{t 'upload-images.favourite'}}</button>
+      <button {{action "setFavouriteImage" previewImageId}}>{{t upload-images.favourite}}</button>
     {{/if}}
-    <button {{action "removeImage" previewImageId}}>{{t 'delete'}}</button>
+    <button {{action "removeImage" previewImageId}}>{{t delete}}</button>
   {{/if}}
 </div>
 
@@ -17,13 +17,16 @@
   </ul>
 </div>
 
-<div {{bind-attr class='addMoreImages::hidden_block'}} id='more_image'>
-  {{upload-image action='updatePreview' image_id=''}}
+<div>
+  {{#if addMoreImages}}
+    {{upload-image action='updatePreview' image_id=''}}
+  {{else}}
+    <button class='more_image_link'>{{t upload-images.add_another}}</button>
+  {{/if}}
 </div>
 
-<div {{bind-attr class='addMoreImages:hidden_block'}} id='more_image'>
-  <button class='more_image_link'>{{t 'upload-images.add_another'}}</button>
-  <p>{{t 'upload-images.angles'}}<p>
-</div>
+{{#unless noImage}}
+  <div>{{t upload-images.angles}}</div>
+{{/unless}}
 
 {{loading-image}}
