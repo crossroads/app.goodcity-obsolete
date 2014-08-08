@@ -1,6 +1,6 @@
 <div class='file_preview'>
   {{#if this.previewImageId}}
-    {{cloudinary-image previewImageId width=200 height=250}}
+    {{cloudinary-image imageId=previewImageId width=200 height=250 action="setPreviewImageId"}}
     {{#if hasManyImages}}
       <button {{action "setFavouriteImage" previewImageId}}>{{t upload-images.favourite}}</button>
     {{/if}}
@@ -11,7 +11,7 @@
 <div>
   <ul class='image_list'>
     {{#each imageId in imageIds}}
-      {{cloudinary-image imageId height=50 width=50}}
+      {{cloudinary-image imageId=imageId height=50 width=50 action="setPreviewImageId"}}
       {{favourite-star imageId favourite}}
     {{/each}}
   </ul>
