@@ -33,10 +33,6 @@ html, body {
   margin-bottom: 1%;
 }
 
-.hidden_block {
-  display: none;
-}
-
 .item_name {
   display: block;
   font-weight: bold;

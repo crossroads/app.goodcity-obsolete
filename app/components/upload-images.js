@@ -31,10 +31,6 @@ export default Ember.Component.extend({
     }
   }.property("item.imageIdentifiers", "isNew"),
 
-  hasManyImages: function() {
-    return this.get('imageIds.length') > 1;
-  }.property('imageIds.[]'),
-
   favourite: function(key, value) {
     if (this.get('isNew')) {
       if(arguments.length > 1) {
@@ -49,9 +45,17 @@ export default Ember.Component.extend({
     }
   }.property("item.favouriteImage", "isNew"), //TODO observe localStorage http://stackoverflow.com/questions/14290316/observe-non-ember-globals
 
-  noImage: function(key, value) {
-    return ( arguments.length > 1 ? value : this.get('imageIds.length') === 0);
+  imageCount: function() {
+    return this.get('imageIds.length');
   }.property('imageIds.[]'),
+
+  hasManyImages: function() {
+    return this.get('imageCount') > 1;
+  }.property('imageCount'),
+
+  noImage: function() {
+    return this.get('imageCount') === 0;
+  }.property('imageCount'),
 
   addMoreImages: function(key, value) {
     return ( arguments.length > 1 ? value : this.get('noImage'));
