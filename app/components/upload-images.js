@@ -112,27 +112,11 @@ export default Ember.Component.extend({
       this.set("addMoreImages", true);
     },
 
-  },
+    setPreviewImageId: function(image_id) {
+      console.log('called setPreviewImageId:' + image_id);
+      this.set("previewImageId", image_id);
+    },
 
-  didInsertElement: function() {
-    var controller = this;
-    if (this.get('isNew')) {
-      Ember.$('body').on('click', ".current_image", function() {
-        if(/new/i.test(window.location.pathname)) {
-          var public_id = Ember.$(this).attr('id');
-          controller.set("previewImageId", public_id);
-        }
-      });
-    } else {
-      Ember.$('body').on('click', ".current_image", function() {
-        var public_id = Ember.$(this).attr('id');
-        controller.set("previewImageId", public_id);
-      });
-    }
-  },
-
-  willDestroyElement: function() {
-    Ember.$('body').off('click', '.current_image');
   }
 
 });
