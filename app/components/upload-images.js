@@ -113,7 +113,6 @@ export default Ember.Component.extend({
     },
 
     setPreviewImageId: function(image_id) {
-      console.log('called setPreviewImageId:' + image_id);
       this.set("previewImageId", image_id);
     },
 
