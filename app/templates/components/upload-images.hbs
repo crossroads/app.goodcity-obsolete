@@ -12,7 +12,7 @@
   <ul class='image_list'>
     {{#each imageId in imageIds}}
       {{cloudinary-image imageId=imageId height=50 width=50 action="setPreviewImageId"}}
-      {{favourite-star imageId favourite}}
+      {{favourite-star imageId=imageId favouriteId=favourite}}
     {{/each}}
   </ul>
 </div>
