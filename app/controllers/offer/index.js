@@ -6,6 +6,10 @@ export default Ember.ObjectController.extend({
     return this.get('state') === 'draft';
   }.property('state'),
 
+  itemsById: function() {
+    return this.get('items').sortBy('id');
+  }.property('items.[]'),
+
   actions: {
     addItem: function() {
       localStorage.currentOffer = this.content.id;

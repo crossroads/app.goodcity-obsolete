@@ -1,0 +1,32 @@
+<div class='file_preview'>
+  {{#if this.previewImageId}}
+    {{cloudinary-image imageId=previewImageId width=200 height=250 action="setPreviewImageId"}}
+    {{#if hasManyImages}}
+      <button {{action "setFavouriteImage" previewImageId}}>{{t upload-images.favourite}}</button>
+    {{/if}}
+    <button {{action "removeImage" previewImageId}}>{{t delete}}</button>
+  {{/if}}
+</div>
+
+<div>
+  <ul class='image_list'>
+    {{#each imageId in imageIds}}
+      {{cloudinary-image imageId=imageId height=50 width=50 action="setPreviewImageId"}}
+      {{favourite-star imageId=imageId favouriteId=favourite}}
+    {{/each}}
+  </ul>
+</div>
+
+<div>
+  {{#if addMoreImages}}
+    {{upload-image action='updatePreview' image_id=''}}
+  {{else}}
+    <button {{action "setMoreImages"}}>{{t upload-images.add_another}}</button>
+  {{/if}}
+</div>
+
+{{#unless noImage}}
+  <div>{{t upload-images.angles}}</div>
+{{/unless}}
+
+{{loading-image}}
