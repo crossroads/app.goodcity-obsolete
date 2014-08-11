@@ -1,11 +1,11 @@
-<p>
+<p class='item_count'>
 Offer Items({{itemCount}})
 </p>
 
 {{#if itemCount }}
 
   {{#if isDraft}}
-    <button  {{action "addItem"}}>Add Item</button>
+    <button {{action "addItem"}}>Add Item</button>
     {{#link-to 'offer.confirm'}}All Done, Next{{/link-to}}
   {{else}}
     {{#link-to 'offer.review_status'}}Review Status{{/link-to}}
@@ -33,7 +33,7 @@ Offer Items({{itemCount}})
 
 {{else}}
 
-  <div>{{t offer.no_items}}</div>
+  <div class='no_item_msg'>{{t offer.no_items}}</div>
   <button {{action "addItem"}}>Add Item</button>
 
 {{/if}}

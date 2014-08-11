@@ -38,7 +38,7 @@ app.import({
 });
 
 app.import({
-  development: 'vendor/ember-data-factory-guy/dist/factory_guy_has_many.js',
+  // development: 'vendor/ember-data-factory-guy/dist/factory_guy_has_many.js',
   test: 'vendor/ember-data-factory-guy/dist/factory_guy_has_many.js',
   }, {  destDir: 'assets/',
       exports: {
