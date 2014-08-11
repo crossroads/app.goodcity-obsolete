@@ -1,6 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+
+  currentSelected: Ember.Object.create({
+    id: '',
+  }),
+
   actions: {
     registerUser: function() {
       var _this = this;
@@ -9,7 +14,8 @@ export default Ember.Controller.extend({
       var mobilePhone = this.get('mobilePhone');
       var firstName = this.get('firstName');
       var lastName = this.get('lastName');
-      var user_auth = { mobile: mobilePhone, first_name: firstName, last_name: lastName};
+      var district_id = this.getWithDefault('currentSelected').id;
+      var user_auth = { mobile: mobilePhone, first_name: firstName, last_name: lastName, district_id: district_id};
 
       Ember.$.ajax({
         type: 'POST',
