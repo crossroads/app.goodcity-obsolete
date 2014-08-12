@@ -22,7 +22,7 @@ export default Ember.Component.extend({
       if(arguments.length > 1) {
         ids = value;
         if(JSON.parse(value).length > 0) {
-          this.set('item.imageIdentifiers', JSON.parse(value));
+          this.set('item.imageIdentifiers', JSON.parse(value).join(','));
         }
       } else {
         ids = JSON.stringify(this.get('item.imageIdentifiers').split(','));
