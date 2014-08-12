@@ -1,39 +1,38 @@
-<p>
-Offer Items({{itemCount}})
-</p>
+<div>{{t offer.index.item_count itemCountBinding=itemCount}}</div>
 
 {{#if itemCount }}
 
   {{#if isDraft}}
-    <button  {{action "addItem"}}>Add Item</button>
-    {{#link-to 'offer.confirm'}}All Done, Next{{/link-to}}
+    <button  {{action "addItem"}}>{{t offer.index.add_item}}</button>
+    {{#link-to 'offer.confirm'}}{{t offer.index.confirm}}{{/link-to}}
   {{else}}
-    {{#link-to 'offer.review_status'}}Review Status{{/link-to}}
+    {{#link-to 'offer.review_status'}}{{t offer.index.review}}{{/link-to}}
   {{/if}}
 
-  <p><button {{action 'cancelOffer' this}} class='removeItem'>Cancel Offer</button><p>
+  <div><button {{action 'cancelOffer' this}} class='removeItem'>{{t offer.index.cancel}}</button></div>
 
-  <p>
-    <table cellspacing="20">
-      <tr><th>Description</th><th>Condition</th></tr>
-      {{#each itemsById}}
-        <tr>
-          <td><img {{bind-attr src=defaultImageURL }}></td>
-          <td>
-            <div class='item_name'>
-              {{#link-to 'item' this}}{{donorDescription}}{{/link-to}}
-            </div>
-          <br/>{{donorCondition.name}}</td>
-          <td>{{#link-to 'item.edit' this}}Edit{{/link-to}}</td>
-          <td><button {{action 'removeItem' this}} class='removeItem'>Remove</button></td>
-        </tr>
-      {{/each}}
-    </table>
-  </p>
+  <table cellspacing="20">
+    <tr>
+      <th>{{t offer.index.description}}</th>
+      <th>{{t offer.index.condition}}</th>
+    </tr>
+    {{#each itemsById}}
+      <tr>
+        <td><img {{bind-attr src=defaultImageURL }}></img></td>
+        <td>
+          <div class='item_name'>
+            {{#link-to 'item' this}}{{donorDescription}}{{/link-to}}
+          </div>
+        <br/>{{donorCondition.name}}</td>
+        <td>{{#link-to 'item.edit' this}}{{t edit}}{{/link-to}}</td>
+        <td><button {{action 'removeItem' this}} class='removeItem'>{{t remove}}</button></td>
+      </tr>
+    {{/each}}
+  </table>
 
 {{else}}
 
   <div>{{t offer.no_items}}</div>
-  <button {{action "addItem"}}>Add Item</button>
+  <button {{action "addItem"}}>{{t offer.index.add_item}}</button>
 
 {{/if}}

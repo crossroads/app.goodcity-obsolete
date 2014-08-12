@@ -2,27 +2,22 @@
   {{#if pendingOffer}}
     Add items to {{#link-to 'offer.index' pendingOffer}}offer{{/link-to}}
   {{else}}
-    {{#link-to 'offers.new'}}Make a New Donation{{/link-to}}
+    {{#link-to 'offers.new'}}{{t offers.index.new_donation}}{{/link-to}}
   {{/if}}
 </p>
 
-<h3>My Offers</h3>
+<h3>{{t offers.index.my_offers}}</h3>
 
 <ul>
   {{#each}}
-
-    <li class="contact">
-      {{#with this._data }}
-        Offer_id: {{ id }}
-        <br/>
-        Name: {{ collectionContactName }}
-        <br/>
-      {{/with}}
-
-      Total Items: {{ itemCount }}
+    <li>
+      Offer_id: {{ id }}
       <br/>
-      {{#link-to 'offer.index' this}}See More..{{/link-to}}
-
-    </li><br/>
+      {{t offers.index.name collectionContactNameBinding=collectionContactName}}
+      <br/>
+      {{t offers.index.total_items itemCountBinding=itemCount}}
+      <br/>
+      {{#link-to 'offer.index' this}}{{t offers.index.see_more}}{{/link-to}}
+    </li>
   {{/each}}
 </ul>
