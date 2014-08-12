@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-// {{upload-images item=this }}
+// {{upload-images item=this back="back" next="next"}}
 
 export default Ember.Component.extend({
 
