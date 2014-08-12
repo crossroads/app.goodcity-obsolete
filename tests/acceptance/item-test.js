@@ -37,7 +37,7 @@ test("Display Item Details", function() {
   });
 });
 
-test("back button redirects to its offer", function() {
+test("Back button redirects to its offer", function() {
   visit("/offers/"+offer.id+"/items/"+item.id);
   andThen(function(){
     click(find('button.backButton')[0]);

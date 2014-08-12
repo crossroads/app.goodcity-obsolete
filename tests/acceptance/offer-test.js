@@ -70,7 +70,6 @@ test("Cancel Offer", function() {
 test("Remove Item", function() {
   visit("/offers/"+offer.id);
   andThen(function() {
-
     // list of all items (header + 2 items)
     equal($('table tr').length, 3);
 
@@ -81,4 +80,31 @@ test("Remove Item", function() {
   });
 });
 
+test("Confirm and Submit Offer", function(){
+  visit("/offers/"+offer.id);
+  andThen(function() {
 
+    click(find("a[href='/offers/"+offer.id+"/confirm']")[0]);
+    andThen(function() {
+
+      equal(/Confirm/i.test($('body h3').text()), true);
+      equal(currentURL(), "/offers/"+offer.id+"/confirm");
+
+      // confirm offer page has submit link
+      equal(find("a[href='/offers/"+offer.id+"/submit']").length, 1);
+
+      click(find("a[href='/offers/"+offer.id+"/submit']")[0]);
+      andThen(function() {
+
+        equal(/Sale of goods/i.test($('body h3').text()), true);
+        equal(currentURL(), "/offers/"+offer.id+"/submit");
+
+        click($("button:contains('Yes')")[0]);
+        andThen(function() {
+
+          equal(currentURL(), "/offers/"+offer.id+"/review_status");
+        });
+      });
+    });
+  });
+});
