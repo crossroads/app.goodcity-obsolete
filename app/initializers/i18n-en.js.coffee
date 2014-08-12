@@ -20,10 +20,24 @@ I18nTranslationsEn =
       "remove" : "Remove"
       "yes" : "Yes"
       "no" : "No"
+      "ok" : "OK"
 
       "index.title" : "Crossroads Foundation Presents"
       "index.donate_goods" : "Donate your quality goods to people in need"
       "index.how" : "How Does It Work?"
+
+      "application":
+        "home" : "Home"
+        "all_offers" : "All Offers"
+        "login" : "Login"
+        "logout" : "Logout"
+        "register" : "Register"
+
+      "authenticate":
+        "input_code" : "Input Code"
+
+      "districts":
+        "all" : "All"
 
       "tour":
         "register" : "Start Now"
@@ -49,8 +63,8 @@ I18nTranslationsEn =
         "step5.title" : "Step 5: Double Your Good Deed"
         "step5.financial" : "You are welcome to contribute financially to the costs of helping people receive the items they need. Like Mr Cho who received a washing machine after fire destroyed his home."
 
-      "offers" :
-        "index" :
+      "offers":
+        "index":
           "new_donation" : "Make a New Donation"
           "my_offers" : "My offers"
           "name" : "Name: {{collectionContactName}}"
@@ -70,6 +84,7 @@ I18nTranslationsEn =
         "index":
           "item_count" : "Offer items ({{itemCount}})"
           "add_item" : "Add item"
+          "add_items" : "Add items to offer"
           "confirm" : "All Done, Next"
           "review" : "Review Status"
           "cancel" : "Cancel Offer"
@@ -89,6 +104,15 @@ I18nTranslationsEn =
         "item_details" : "Item details:"
         "donor_description": "Description: {{donorDescription}}"
         "condition": "Condition: {{condition}}"
+
+      "_resend":
+        "no_sms" : "Haven't received SMS code?"
+        "please_wait" : "Please wait 5 minutes..."
+        "resend" : "Resend"
+
+      "_verification_pin":
+        "input_code" : "Input 6-digit SMS code we just sent you:"
+        "auth_error" : "Sorry! Please enter the correct pin."
 
       # Components
       "upload-images":

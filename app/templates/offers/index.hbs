@@ -1,6 +1,6 @@
 <p>
   {{#if pendingOffer}}
-    Add items to {{#link-to 'offer.index' pendingOffer}}offer{{/link-to}}
+    {{#link-to 'offer.index' pendingOffer}}{{t offer.index.add_items}}{{/link-to}}
   {{else}}
     {{#link-to 'offers.new'}}{{t offers.index.new_donation}}{{/link-to}}
   {{/if}}

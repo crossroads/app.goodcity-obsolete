@@ -1,6 +1,6 @@
 <ul>
   <li class="territory_menu">
-    <a href='#' {{action "findDistrictbyTerritory"}}>All</a>
+    <a href='#' {{action "findDistrictbyTerritory"}}>{{t districts.all}}</a>
   </li>
   {{#each allTerritory}}
     <li class="territory_menu">
@@ -16,5 +16,5 @@
   optionValuePath='content.id'
   selectionBinding='controllers.register.currentSelected'
   value=''
-  prompt="Select a districts"}}
+  prompt="Select a district"}}
 </div>
