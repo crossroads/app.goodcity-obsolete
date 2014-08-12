@@ -114,6 +114,18 @@ I18nTranslationsEn =
         "input_code" : "Input 6-digit SMS code we just sent you:"
         "auth_error" : "Sorry! Please enter the correct pin."
 
+      "login":
+        "hk_only" : "Mobile phone # (Hong Kong only)"
+        "login" : "Login"
+
+      "register":
+        "hk_only" : "Mobile phone # (Hong Kong only)"
+        "given_name" : "Given name"
+        "family_name" : "Family name"
+        "districts" : "Districts"
+        "register" : "Register"
+        "login" : "Login"
+
       # Components
       "upload-images":
         "angles" : "Got all the angles of this item?"
