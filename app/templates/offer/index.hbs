@@ -5,13 +5,13 @@ Offer Items({{itemCount}})
 {{#if itemCount }}
 
   {{#if isDraft}}
-    <button {{action "addItem"}}>Add Item</button>
+    <button {{action "addItem"}} class='add_item'>Add Item</button>
     {{#link-to 'offer.confirm'}}All Done, Next{{/link-to}}
   {{else}}
     {{#link-to 'offer.review_status'}}Review Status{{/link-to}}
   {{/if}}
 
-  <p><button {{action 'cancelOffer' this}} class='removeItem'>Cancel Offer</button><p>
+  <p><button {{action 'cancelOffer' this}} class='removeRecord'>Cancel Offer</button><p>
 
   <p>
     <table cellspacing="20">
@@ -25,7 +25,7 @@ Offer Items({{itemCount}})
             </div>
           <br/>{{donorCondition.name}}</td>
           <td>{{#link-to 'item.edit' this}}Edit{{/link-to}}</td>
-          <td><button {{action 'removeItem' this}} class='removeItem'>Remove</button></td>
+          <td><button {{action 'removeItem' this}} class='removeItem removeRecord'>Remove</button></td>
         </tr>
       {{/each}}
     </table>

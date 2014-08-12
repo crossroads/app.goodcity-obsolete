@@ -6,7 +6,7 @@ import itemsFactory from '../fixtures/item';
 var App, testHelper, store,
   TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
 
-module('User View', {
+module('Offer Index View', {
   setup: function() {
     App = startApp();
     testHelper = TestHelper.setup(App);
@@ -18,7 +18,7 @@ module('User View', {
   }
 });
 
-test('Index: Offers list & link to add items', function() {
+test('Offers list & link to add items', function() {
   store.makeList('offer', 4);
   visit('/offers');
   andThen(function() {
@@ -29,7 +29,7 @@ test('Index: Offers list & link to add items', function() {
   });
 });
 
-test("Index: Link to create new offer", function() {
+test("Link to create new offer", function() {
   var item = store.makeFixture('item');
   var offer = store.makeFixture('offer', {items: [item.id]});
   visit('/offers');
@@ -40,7 +40,7 @@ test("Index: Link to create new offer", function() {
   });
 });
 
-test("Index: Offers Details", function() {
+test("Offers Details", function() {
   var item1 = store.makeFixture('item');
   var item2 = store.makeFixture('item');
   var offer = store.makeFixture('offer', {collectionContactName: 'TestOffer', items: [item1.id, item2.id]});

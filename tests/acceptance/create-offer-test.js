@@ -6,7 +6,7 @@ import itemsFactory from '../fixtures/item';
 var App, testHelper, store,
   TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
 
-module('User View', {
+module('Create New Offer', {
   setup: function() {
     App = startApp();
     testHelper = TestHelper.setup(App);
@@ -18,7 +18,7 @@ module('User View', {
   }
 });
 
-test("Index: Make New Donation link-click should create new offer", function() {
+test("Make New Donation link-click should create new offer", function() {
   var item = store.makeFixture('item');
   var offer = store.makeFixture('offer', {state: 'submit', items: [item.id]});
   visit('/offers');
