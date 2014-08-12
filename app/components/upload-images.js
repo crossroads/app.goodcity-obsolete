@@ -116,6 +116,14 @@ export default Ember.Component.extend({
       this.set("previewImageId", image_id);
     },
 
+    next: function() {
+      this.sendAction('next');
+    },
+
+    back: function() {
+      this.sendAction('back');
+    },
+
   }
 
 });

@@ -30,3 +30,6 @@
 {{/unless}}
 
 {{loading-image}}
+
+<button {{ action 'next'}} {{bind-attr disabled="this.noImage"}} class='add_item_link'>{{t next}}</button>
+<button {{ action 'back'}}>{{t back}}</button>
