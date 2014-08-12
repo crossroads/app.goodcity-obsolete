@@ -9,12 +9,11 @@
   {{/each}}
 </ul>
 <div>
-
 {{view Ember.Select
   contentBinding='districtsByTerritory'
   optionLabelPath='content.name'
   optionValuePath='content.id'
-  selectionBinding='controllers.register.currentSelected'
+  selectionBinding='currentSelected'
   value=''
-  prompt="Select a district"}}
+  prompt="Select a districts"}}
 </div>
