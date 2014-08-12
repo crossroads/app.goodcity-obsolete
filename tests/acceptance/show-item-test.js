@@ -7,7 +7,7 @@ import offersFactory from '../fixtures/offer';
 var App, testHelper, store, image1, image2, item, offer,
   TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
 
-module('Create New Offer', {
+module('Display Item', {
   setup: function() {
     App = startApp();
     testHelper = TestHelper.setup(App);
@@ -25,7 +25,7 @@ module('Create New Offer', {
   }
 });
 
-test("Display Item", function() {
+test("Display Item Details", function() {
   visit("/offers/"+offer.id+"/items/"+item.id);
   andThen(function(){
 

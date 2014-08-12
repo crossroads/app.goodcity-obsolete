@@ -4,14 +4,22 @@ import itemsFactory from '../fixtures/image';
 import itemsFactory from '../fixtures/item';
 import offersFactory from '../fixtures/offer';
 
-var App, testHelper, store,
+var App, testHelper, store, image1, image2, item, item2 , offer,
   TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
 
-module('Create New Offer', {
+module('Display Offer', {
   setup: function() {
     App = startApp();
     testHelper = TestHelper.setup(App);
     store = testHelper.getStore();
+
+    image1 = store.makeFixture('image');
+    image2 = store.makeFixture('image', {favourite: 'true'});
+    item   = store.makeFixture('item', {images: [image1.id, image2.id]});
+
+    item2  = store.makeFixture('item');
+    offer  = store.makeFixture('offer', {items: [item.id, item2.id]});
+
   },
   teardown: function() {
     Em.run(function() { testHelper.teardown(); });
@@ -19,14 +27,7 @@ module('Create New Offer', {
   }
 });
 
-test("Display offer", function() {
-  var image1 = store.makeFixture('image');
-  var image2 = store.makeFixture('image', {favourite: 'true'});
-  var item   = store.makeFixture('item', {images: [image1.id, image2.id]});
-
-  var item2 = store.makeFixture('item');
-  var offer = store.makeFixture('offer', {items: [item.id, item2.id]});
-
+test("Display offer details", function() {
   visit('/offers');
   andThen(function() {
 
@@ -54,3 +55,30 @@ test("Display offer", function() {
     });
   });
 });
+
+test("Cancel Offer", function() {
+  visit("/offers/"+offer.id);
+  andThen(function() {
+
+    click($("button:contains('Cancel Offer')")[0]);
+    andThen(function() {
+      equal(currentURL(), "/offers");
+    });
+  });
+});
+
+test("Remove Item", function() {
+  visit("/offers/"+offer.id);
+  andThen(function() {
+
+    // list of all items (header + 2 items)
+    equal($('table tr').length, 3);
+
+    click($("button.removeItem")[0]);
+    andThen(function() {
+      equal($('table tr').length, 2);
+    });
+  });
+});
+
+
