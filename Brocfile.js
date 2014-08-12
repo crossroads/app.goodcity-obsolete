@@ -46,4 +46,6 @@ app.import({
   }
 });
 
+app.import('vendor/jquery-mockjax/jquery.mockjax.js');
+
 module.exports = app.toTree();
