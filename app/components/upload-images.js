@@ -22,11 +22,7 @@ export default Ember.Component.extend({
       if(arguments.length > 1) {
         ids = value;
         if(JSON.parse(value).length > 0) {
-<<<<<<< HEAD
-          this.set('item.imageIdentifiers', JSON.parse(value));
-=======
           this.set('item.imageIdentifiers', JSON.parse(value).join(','));
->>>>>>> master
         }
       } else {
         ids = JSON.stringify(this.get('item.imageIdentifiers').split(','));
@@ -120,8 +116,6 @@ export default Ember.Component.extend({
       this.set("previewImageId", image_id);
     },
 
-<<<<<<< HEAD
-=======
     next: function() {
       this.sendAction('next');
     },
@@ -129,8 +123,6 @@ export default Ember.Component.extend({
     back: function() {
       this.sendAction('back');
     },
-
->>>>>>> master
   }
 
 });

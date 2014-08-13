@@ -62,8 +62,6 @@ I18nTranslationsEn =
         "step5.title" : "Step 5: Double Your Good Deed"
         "step5.financial" : "You are welcome to contribute financially to the costs of helping people receive the items they need. Like Mr Cho who received a washing machine after fire destroyed his home."
 
-<<<<<<< HEAD
-=======
       "offers":
         "index":
           "new_donation" : "Make a New Donation"
@@ -72,7 +70,6 @@ I18nTranslationsEn =
           "total_items" : "Total items: {{itemCount}}"
           "see_more" : "See more..."
 
->>>>>>> master
       "offer":
         "no_items" : "You don't have any items in this offer yet. Please add your first item!",
         "confirm":
@@ -107,8 +104,6 @@ I18nTranslationsEn =
         "donor_description": "Description: {{donorDescription}}"
         "condition": "Condition: {{condition}}"
 
-<<<<<<< HEAD
-=======
       "_resend":
         "no_sms" : "Haven't received SMS code?"
         "please_wait" : "Please wait 5 minutes..."
@@ -130,7 +125,6 @@ I18nTranslationsEn =
         "register" : "Register"
         "login" : "Login"
 
->>>>>>> master
       # Components
       "upload-images":
         "angles" : "Got all the angles of this item?"
