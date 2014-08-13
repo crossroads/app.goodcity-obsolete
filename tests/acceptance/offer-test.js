@@ -37,10 +37,10 @@ test("Display offer details", function() {
 
       // offer show page
       equal(currentURL(), "/offers/"+offer.id);
-      equal($.trim($('.item_count').text()), "Offer Items(2)");
+      equal($.trim($('.itemCount').text()), "Offer items (2)");
 
       // add-item & remove-item buttons and confirm offer link
-      equal($("button.add_item").length, 1);
+      equal($("button.addItem").length, 1);
       equal($("button.removeItem").length, 2);
       equal(find("a[href='/offers/"+offer.id+"/confirm']").length, 1);
 

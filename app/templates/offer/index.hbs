@@ -1,9 +1,9 @@
-<div>{{t offer.index.item_count itemCountBinding=itemCount}}</div>
+<div class='itemCount'>{{t offer.index.item_count itemCountBinding=itemCount}}</div>
 
 {{#if itemCount }}
 
   {{#if isDraft}}
-    <button  {{action "addItem"}}>{{t offer.index.add_item}}</button>
+    <button {{action "addItem"}} class='addItem'>{{t offer.index.add_item}}</button>
     {{#link-to 'offer.confirm'}}{{t offer.index.confirm}}{{/link-to}}
   {{else}}
     {{#link-to 'offer.review_status'}}{{t offer.index.review}}{{/link-to}}
@@ -32,7 +32,7 @@
 
 {{else}}
 
-  <div>{{t offer.no_items}}</div>
+  <div class='noItemMsg'>{{t offer.no_items}}</div>
   <button {{action "addItem"}}>{{t offer.index.add_item}}</button>
 
 {{/if}}

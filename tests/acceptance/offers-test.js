@@ -52,7 +52,7 @@ test("Offers Details", function() {
     var offer_detail_text = $.trim(offer_detail.replace(/\s+/g, " "));
 
     // test: offer details
-    equal(offer_detail_text, "Offer_id: 1 Name: TestOffer Total Items: 2 See More..");
+    equal(offer_detail_text, "Offer_id: 1 Name: TestOffer Total items: 2 See more...");
 
     // test: offer name
     equal(/TestOffer/i.test($('ul.offer_list li').text()), true);

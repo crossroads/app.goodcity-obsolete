@@ -64,7 +64,7 @@ test("Add Image: display previously added images", function() {
   visit("/offers/"+offer.id);
 
   andThen(function() {
-    click($("button.add_item")[0]);
+    click($("button.addItem")[0]);
     andThen(function() {
       equal(currentURL(), "/offers/"+offer.id+"/items/new");
 

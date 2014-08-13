@@ -33,10 +33,10 @@ test("Make New Donation link-click should create new offer", function() {
       equal(currentURL(), '/offers/fixture-0');
 
       //test: item count zero
-      equal($.trim($('.item_count').text()), "Offer Items(0)");
+      equal($.trim($('.itemCount').text()), "Offer items (0)");
 
       //test: no items message
-      equal($.trim($('.no_item_msg').text()), "You don't have any items in this offer yet. Please add your first item!");
+      equal($.trim($('.noItemMsg').text()), "You don't have any items in this offer yet. Please add your first item!");
     });
   });
 });
