@@ -2,7 +2,7 @@
   {{#if this.previewImageId}}
     {{cloudinary-image imageId=previewImageId width=200 height=250 action="setPreviewImageId"}}
     {{#if hasManyImages}}
-      <button {{action "setFavouriteImage" previewImageId}}>{{t upload-images.favourite}}</button>
+      <button {{action "setFavouriteImage" previewImageId}} class='setFavourite'>{{t upload-images.favourite}}</button>
     {{/if}}
     <button {{action "removeImage" previewImageId}}>{{t delete}}</button>
   {{/if}}
