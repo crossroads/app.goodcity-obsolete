@@ -3,7 +3,8 @@ import startApp from '../helpers/start-app';
 import offersFactory from '../fixtures/offer';
 import itemsFactory from '../fixtures/item';
 
-var App, testHelper, store;
+var App, testHelper, store, testImage1, testImage2,
+  item, offer;
 
 var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin,{
   // override setup to do a few extra things for view tests
@@ -26,8 +27,17 @@ module('Create New Item', {
     testHelper = TestHelper.setup(App);
     store = testHelper.getStore();
 
-    delete localStorage.image_ids;
-    delete localStorage.favourite;
+    item = store.makeFixture('item');
+    offer = store.makeFixture('offer', {items: [item.id]});
+
+    delete window.localStorage.image_ids;
+    delete window.localStorage.favourite;
+
+    testImage1 = "1407764294/default/test_image.jpg";
+    testImage2 = "1407916714/default/test_image2.jpg";
+
+    window.localStorage.image_ids = JSON.stringify([testImage1, testImage2]);
+    window.localStorage.favourite = testImage1;
 
     $.mockjax({
       type: 'GET',
@@ -38,38 +48,19 @@ module('Create New Item', {
         "signature": "0ff551d3b047a18ff4c28fe0f95b0b39ad344474",
         "timestamp": 1407854176}
     });
-
-    $.mockjax({
-      type: 'POST',
-      url: "https://api.cloudinary.com/v1_1/ddoadcjjl/auto/upload",
-      responseText: {
-        "public_id":"zptqt06poc9cmhubob6f",
-        "version":1407854479,
-        "signature":"647f2d5bcbbc5dd7dee4304808fa318c5fa99a4f",
-        "width":240,
-        "height":240,
-        "format":"png",
-        "resource_type":"image",
-        "created_at":"2014-08-12T14:41:19Z",
-        "bytes":37444,
-        "type":"upload",
-        "etag":"ab5ebd08ad5491b4967545594cd80dc9",
-        "url":"http://res.cloudinary.com/ddoadcjjl/image/upload/v1407854479/zptqt06poc9cmhubob6f.png",
-        "secure_url":"https://res.cloudinary.com/ddoadcjjl/image/upload/v1407854479/zptqt06poc9cmhubob6f.png"}
-    });
   },
 
   teardown: function() {
+    delete window.localStorage.image_ids;
+    delete window.localStorage.favourite;
+
     Em.run(function() { testHelper.teardown(); });
     Ember.run(App, 'destroy');
   }
 });
 
-// **WIP**
-test("Add Item with Image", function() {
-  var item = store.makeFixture('item');
-  var offer = store.makeFixture('offer', {items: [item.id]});
-
+// Display previously uploaded images
+test("Add Image: display previously added images", function() {
   visit("/offers/"+offer.id);
 
   andThen(function() {
@@ -77,10 +68,16 @@ test("Add Item with Image", function() {
     andThen(function() {
       equal(currentURL(), "/offers/"+offer.id+"/items/new");
 
-      $.post("https://api.cloudinary.com/v1_1/ddoadcjjl/auto/upload");
-      andThen(function(){
+      // preview-image
+      var preview_image = $('.file_preview img')[0];
+      equal($(preview_image).attr('id'), testImage1);
 
-      });
+      // thumbnail-image-list
+      equal($("ul.image_list img.current_image").length, 2);
+
+      // favourite-image
+      var fav_image = $("img.favourite").closest('li').find('img.current_image');
+      equal($(fav_image).attr('id'), testImage1);
     });
   });
 });

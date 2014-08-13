@@ -67,3 +67,7 @@ textarea {
   width: 1.5%;
   margin: 0% 0 3.5% -2%;
 }
+
+.image_list li {
+  display: inline;
+}
