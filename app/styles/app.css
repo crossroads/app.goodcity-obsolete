@@ -67,7 +67,12 @@ textarea {
   width: 1.5%;
   margin: 0% 0 3.5% -2%;
 }
-.territory_menu{
+
+.image_list li {
+  display: inline;
+}
+
+.territory_menu {
   width:130px;
   height:50px;
   background-color:#ccc;

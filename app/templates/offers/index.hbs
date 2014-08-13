@@ -1,4 +1,4 @@
-<p>
+<p class='offer_link'>
   {{#if pendingOffer}}
     {{#link-to 'offer.index' pendingOffer}}{{t offer.index.add_items}}{{/link-to}}
   {{else}}
@@ -8,9 +8,9 @@
 
 <h3>{{t offers.index.my_offers}}</h3>
 
-<ul>
+<ul class='offer_list'>
   {{#each}}
-    <li>
+    <li class="contact">
       Offer_id: {{ id }}
       <br/>
       {{t offers.index.name collectionContactNameBinding=collectionContactName}}

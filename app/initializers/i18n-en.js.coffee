@@ -21,7 +21,6 @@ I18nTranslationsEn =
       "yes" : "Yes"
       "no" : "No"
       "ok" : "OK"
-
       "index.title" : "Crossroads Foundation Presents"
       "index.donate_goods" : "Donate your quality goods to people in need"
       "index.how" : "How Does It Work?"

@@ -9,7 +9,7 @@
     {{#link-to 'offer.review_status'}}{{t offer.index.review}}{{/link-to}}
   {{/if}}
 
-  <div><button {{action 'cancelOffer' this}} class='removeItem'>{{t offer.index.cancel}}</button></div>
+  <div><button {{action 'cancelOffer' this}} class='removeRecord'>{{t offer.index.cancel}}</button></div>
 
   <table cellspacing="20">
     <tr>
@@ -25,7 +25,7 @@
           </div>
         <br/>{{donorCondition.name}}</td>
         <td>{{#link-to 'item.edit' this}}{{t edit}}{{/link-to}}</td>
-        <td><button {{action 'removeItem' this}} class='removeItem'>{{t remove}}</button></td>
+        <td><button {{action 'removeItem' this}} class='removeItem removeRecord'>{{t remove}}</button></td>
       </tr>
     {{/each}}
   </table>

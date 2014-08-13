@@ -123,7 +123,6 @@ export default Ember.Component.extend({
     back: function() {
       this.sendAction('back');
     },
-
   }
 
 });

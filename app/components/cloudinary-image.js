@@ -7,7 +7,8 @@ export default Ember.Component.extend({
   tagName: 'span',
 
   imagePath: function() {
-    return this.get('imageId').split('/')[1];
+    var id = this.get('imageId');
+    return id.substring(id.indexOf('/')+1);
   }.property('imageId'),
 
   version: function() {
