@@ -1,14 +1,3 @@
-<p>
-  <h2>Add Photos of this Item</h2>
+<h2>{{t items.new.add_photos}}</h2>
 
-  {{upload-images item=this }}
-
-  <p>
-    {{#if this.model}}
-      <button {{ action 'updateDetails'}} {{bind-attr disabled="this.noImage"}} class='add_item_link'>{{t next}}</button>
-    {{else}}
-      <button {{ action 'addDetails'}} {{bind-attr disabled="this.noImage"}} class='add_item_link'>{{t next}}</button>
-    {{/if}}
-    <button {{ action 'back'}}>{{t back}}</button>
-  </p>
-</p>
+{{upload-images item=this next="next" back="back"}}

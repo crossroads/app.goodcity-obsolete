@@ -3,7 +3,8 @@ import Ember from 'ember';
 export default Ember.ObjectController.extend({
 
   actions: {
-    updateDetails: function() {
+
+    next: function() {
       this.transitionToRoute('item.edit');
     },
 

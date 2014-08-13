@@ -16,10 +16,27 @@ I18nTranslationsEn =
       "error.message" : "Sorry, an error occurred!"
       "images" : "Images"
       "delete" : "Delete"
-
+      "edit" : "Edit"
+      "remove" : "Remove"
+      "yes" : "Yes"
+      "no" : "No"
+      "ok" : "OK"
       "index.title" : "Crossroads Foundation Presents"
       "index.donate_goods" : "Donate your quality goods to people in need"
       "index.how" : "How Does It Work?"
+
+      "application":
+        "home" : "Home"
+        "all_offers" : "All Offers"
+        "login" : "Login"
+        "logout" : "Logout"
+        "register" : "Register"
+
+      "authenticate":
+        "input_code" : "Input Code"
+
+      "districts":
+        "all" : "All"
 
       "tour":
         "register" : "Start Now"
@@ -45,6 +62,17 @@ I18nTranslationsEn =
         "step5.title" : "Step 5: Double Your Good Deed"
         "step5.financial" : "You are welcome to contribute financially to the costs of helping people receive the items they need. Like Mr Cho who received a washing machine after fire destroyed his home."
 
+<<<<<<< HEAD
+=======
+      "offers":
+        "index":
+          "new_donation" : "Make a New Donation"
+          "my_offers" : "My offers"
+          "name" : "Name: {{collectionContactName}}"
+          "total_items" : "Total items: {{itemCount}}"
+          "see_more" : "See more..."
+
+>>>>>>> master
       "offer":
         "no_items" : "You don't have any items in this offer yet. Please add your first item!",
         "confirm":
@@ -55,17 +83,54 @@ I18nTranslationsEn =
         "submit":
           "heading": "Sale of goods"
           "message": "Occasionally, the best way <br> for a donated item to help the poor <br> is for a charity to sell it. Is sale <br> of item(s) okay?"
+        "index":
+          "item_count" : "Offer items ({{itemCount}})"
+          "add_item" : "Add item"
+          "add_items" : "Add items to offer"
+          "confirm" : "All Done, Next"
+          "review" : "Review Status"
+          "cancel" : "Cancel Offer"
+          "description" : "Description"
+          "condition" : "Condition"
+        "review-status" :
+          "heading" : "Review Status"
 
       "items":
         "add_item":
           "condition": "Condition?"
           "edit_image" : "Edit Image"
+        "new":
+          "add_photos" : "Add photos of this item"
 
       "item":
         "item_details" : "Item details:"
         "donor_description": "Description: {{donorDescription}}"
         "condition": "Condition: {{condition}}"
 
+<<<<<<< HEAD
+=======
+      "_resend":
+        "no_sms" : "Haven't received SMS code?"
+        "please_wait" : "Please wait 5 minutes..."
+        "resend" : "Resend"
+
+      "_verification_pin":
+        "input_code" : "Input 6-digit SMS code we just sent you:"
+        "auth_error" : "Sorry! Please enter the correct pin."
+
+      "login":
+        "hk_only" : "Mobile phone # (Hong Kong only)"
+        "login" : "Login"
+
+      "register":
+        "hk_only" : "Mobile phone # (Hong Kong only)"
+        "given_name" : "Given name"
+        "family_name" : "Family name"
+        "districts" : "Districts"
+        "register" : "Register"
+        "login" : "Login"
+
+>>>>>>> master
       # Components
       "upload-images":
         "angles" : "Got all the angles of this item?"

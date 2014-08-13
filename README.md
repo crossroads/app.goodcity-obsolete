@@ -1,29 +1,29 @@
-# Goodcity
-## Installtion Steps for Ember-cli
-1. Install node.js, if you don’t already have Node installed, you can get it from <a href="http://nodejs.org/">nodejs.org </a>
-2. Once node is installed you will have npm installed as well
-3. Now run `npm install -g ember-cli`
-4. You might get error for access issue and it might ask you to use SUDO access
-So do not try it will SUDO instead set persmissions for you path
-e.g.
-```
-sudo chown -R `whoami` ~/.npm
-sudo chown -R `whoami` /usr/local/lib/node_modules
-```
-5. Install `npm install -g bower`
-Once you have done that then use command to create a new app
-```
-ember new myapp
-```
-This will install all the dependencies and it will also install phantomjs for testing.
+# GoodCity App
 
-This README outlines the details of collaborating on this Ember application.
+The GoodCity initiative is a new way to donate quality goods in Hong Kong. See www.goodcity.hk for more details.
 
 ## Installation
 
+* Install and configure nodejs (see below)
 * `git clone` this repository
 * `npm install`
 * `bower install`
+
+## Setting up your development environment
+
+Install node.js in your home folder and configure it to run there (you will have to deal with sudo issues if you install system-wide). This is much easier.
+
+```shell
+cd ~/tmp
+curl http://nodejs.org/dist/v0.10.30/node-v0.10.30-linux-x64.tar.gz
+tar zxvf node-v0.10.30-linux-x64.tar.gz
+cd node-v0.10.30-linux-x64
+./configure --prefix=~/.local && make && make install"
+echo prefix = ~/.local >> ~/.npmrc
+curl https://www.npmjs.org/install.sh | sh
+npm install -g ember-cli
+npm install -g bower
+```
 
 ## Running
 
@@ -34,9 +34,24 @@ This README outlines the details of collaborating on this Ember application.
 
 * `ember test`
 * `ember test --server`
+* http://localhost:4200/tests
 
 ## Building
 
 * `ember build`
+* `ember build --environment=production`
+
+## Deployment to production server
+
+Stop any running instance of `ember server` and type `./deploy`. This will build the files in production mode, put them in dist/ and upload them to the goodcity.hk server.
+
+```shell
+echo "Building app.goodcity.hk [production]" && \
+ember build --environment=production && \
+echo "Removing existing files on app.goodcity.hk" && \
+ssh deployer@app.goodcity.hk 'rm -rf /var/www/html/app.goodcity.hk/*' && \
+echo "Uploading new files to app.goodcity.hk" && \
+scp -r dist/* deployer@app.goodcity.hk:/var/www/html/app.goodcity.hk/
+```
 
 For more information on using ember-cli, visit [http://iamstef.net/ember-cli/](http://iamstef.net/ember-cli/).

@@ -1,15 +1,21 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
+
+  Selected: Ember.Object.create({
+    id: '',
+  }),
+
   actions: {
     registerUser: function() {
       var _this = this;
       Ember.$('.loader_image').show();
-
+      var ele_selected = Ember.$('.district-selection');
       var mobilePhone = this.get('mobilePhone');
       var firstName = this.get('firstName');
       var lastName = this.get('lastName');
-      var user_auth = { mobile: mobilePhone, first_name: firstName, last_name: lastName};
+      var district_id = ele_selected.attr('selected_id') === undefined ? null : ele_selected.attr('selected_id');
+      var user_auth = { mobile: mobilePhone, first_name: firstName, last_name: lastName, district_id: district_id};
 
       Ember.$.ajax({
         type: 'POST',

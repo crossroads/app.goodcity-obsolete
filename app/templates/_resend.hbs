@@ -1,7 +1,7 @@
-<p>Haven't received SMS code?<br/>
-Please wait 5 minutes...</p>
+<div>{{t _resend.no_sms}}</div>
+<div>{{t _resend.please_wait}}</div>
 {{#if view.isLogin}}
-  <button id='resend-pin'>Resend</button>
+  <button id='resend-pin'>{{t _resend.resend}}</button>
 {{else}}
-  <button {{action "resendPin"}} id='resend-pin'>Resend</button>
+  <button {{action "resendPin"}} id='resend-pin'>{{t _resend.resend}}</button>
 {{/if}}

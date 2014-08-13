@@ -23,12 +23,12 @@
   {{#if addMoreImages}}
     {{upload-image action='updatePreview' image_id=''}}
   {{else}}
+    <div>{{t upload-images.angles}}</div>
     <button {{action "setMoreImages"}}>{{t upload-images.add_another}}</button>
   {{/if}}
 </div>
 
-{{#unless noImage}}
-  <div>{{t upload-images.angles}}</div>
-{{/unless}}
-
 {{loading-image}}
+
+<button {{ action 'next'}} {{bind-attr disabled="this.noImage"}} class='add_item_link'>{{t next}}</button>
+<button {{ action 'back'}}>{{t back}}</button>

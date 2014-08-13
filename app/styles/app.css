@@ -71,3 +71,15 @@ textarea {
 .image_list li {
   display: inline;
 }
+
+.territory_menu {
+  width:130px;
+  height:50px;
+  background-color:#ccc;
+  list-style:none;
+  marging-right:10px;
+  display:table-cell;
+  border: solid 1px white;
+  vertical-align:middle;
+  text-align:center;
+}

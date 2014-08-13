@@ -1,0 +1,19 @@
+<ul>
+  <li class="territory_menu">
+    <a href='#' {{action "findDistrictbyTerritory"}}>{{t districts.all}}</a>
+  </li>
+  {{#each allTerritory}}
+    <li class="territory_menu">
+      <a href='#' {{action "findDistrictbyTerritory" this}}>{{name}}</a>
+    </li>
+  {{/each}}
+</ul>
+<div>
+{{view Ember.Select
+  contentBinding='districtsByTerritory'
+  optionLabelPath='content.name'
+  optionValuePath='content.id'
+  selectionBinding='currentSelected'
+  value=''
+  prompt="Select a districts"}}
+</div>

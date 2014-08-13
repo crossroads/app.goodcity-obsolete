@@ -1,10 +1,10 @@
-<p>
-  Mobile phone # (Hong Kong only)<br>
+<div>
+  <div>{{t login.hk_only}}</div>
   <div id="mobile_error"></div>
   +852 {{input type="text" value=mobilePhone name="mobilePhone" id="mobile"}}
-</p>
-<p>
+</div>
+<div>
   {{partial 'verification_pin'}}
-</p>
-<button {{action "authenticateUser"}} id='submit_pin'>Login</button>
+</div>
+<button {{action "authenticateUser"}} id='submit_pin'>{{t login.login}}</button>
 {{partial 'resend'}}
