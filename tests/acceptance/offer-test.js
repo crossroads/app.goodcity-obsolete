@@ -76,6 +76,7 @@ test("Remove Item", function() {
     click($("button.removeItem")[0]);
     andThen(function() {
       equal($('table tr').length, 2);
+      equal($.trim($('.itemCount').text()), "Offer items (1)");
     });
   });
 });

@@ -2,9 +2,10 @@ import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import offersFactory from '../fixtures/offer';
 import itemsFactory from '../fixtures/item';
+import donorConditionsFactory from '../fixtures/donor_condition';
 
 var App, testHelper, store, testImage1, testImage2,
-  item, offer;
+  item, offer, donor_condition;
 
 var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin,{
   // override setup to do a few extra things for view tests
@@ -29,6 +30,11 @@ module('Create New Item', {
 
     item = store.makeFixture('item');
     offer = store.makeFixture('offer', {items: [item.id]});
+    donor_condition = store.makeFixture('donor_condition', {name: 'New'});
+
+    Ember.run(function(){
+      store.find('donor_condition', donor_condition.id);
+    });
 
     delete window.localStorage.image_ids;
     delete window.localStorage.favourite;
@@ -118,6 +124,30 @@ test("Change favourite image", function() {
         var fav_image = $("img.favourite").closest('li').find('img.current_image');
         equal($(fav_image).attr('id'), testImage2);
         equal($(fav_image).attr('id'), testImage2);
+      });
+    });
+  });
+});
+
+test("Create Item with details", function(){
+  visit("/offers/"+offer.id+"/items/new");
+  andThen(function(){
+    click(find('button.add_item_link'));
+    andThen(function(){
+      equal(currentURL(), "/offers/"+offer.id+"/items/add_item");
+      equal($('img.fav_image').attr('id'), testImage1);
+
+      fillIn("textarea[name=donorDescription]", "this is test item");
+      click(find(":radio[value=1]"));
+      andThen(function(){
+
+        equal($("textarea[name=donorDescription]").val(),"this is test item");
+        click(find("button:contains('Next')"));
+        andThen(function(){
+
+          equal(currentURL(), "/offers/"+offer.id);
+          equal($.trim($('.itemCount').text()), "Offer items (2)");
+        });
       });
     });
   });

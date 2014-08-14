@@ -3,7 +3,7 @@ import startApp from '../helpers/start-app';
 import offersFactory from '../fixtures/offer';
 import itemsFactory from '../fixtures/item';
 
-var App, testHelper, store,
+var App, testHelper, store, item, offer,
   TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
 
 module('Create New Offer', {
@@ -11,6 +11,10 @@ module('Create New Offer', {
     App = startApp();
     testHelper = TestHelper.setup(App);
     store = testHelper.getStore();
+
+    item = store.makeFixture('item');
+    offer = store.makeFixture('offer', {state: 'submit', items: [item.id]});
+
   },
   teardown: function() {
     Em.run(function() { testHelper.teardown(); });
@@ -19,8 +23,6 @@ module('Create New Offer', {
 });
 
 test("Make New Donation link-click should create new offer", function() {
-  var item = store.makeFixture('item');
-  var offer = store.makeFixture('offer', {state: 'submit', items: [item.id]});
   visit('/offers');
 
   andThen(function() {
@@ -30,7 +32,7 @@ test("Make New Donation link-click should create new offer", function() {
     click(link[0]);
     andThen(function() {
       // test: created new offer and redirected to its show page.
-      equal(currentURL(), '/offers/fixture-0');
+      equal(currentURL().split('-')[0], '/offers/fixture');
 
       //test: item count zero
       equal($.trim($('.itemCount').text()), "Offer items (0)");
