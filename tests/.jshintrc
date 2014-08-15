@@ -47,7 +47,8 @@
     "currentRouteName",
     "mockjax",
     "FactoryGuy",
-    "FactoryGuyTestMixin"
+    "FactoryGuyTestMixin",
+    "mockApi"
   ],
   "node" : false,
   "browser" : false,
