@@ -55,3 +55,17 @@ scp -r dist/* deployer@app.goodcity.hk:/var/www/html/app.goodcity.hk/
 ```
 
 For more information on using ember-cli, visit [http://iamstef.net/ember-cli/](http://iamstef.net/ember-cli/).
+
+#### CustomAsynchelper for MockAjax call is mockApi.
+
+*Example to show how to use it*
+
+```
+   mockApi('get', '/route_name', {json:data})
+
+   To use it with FactoryGuy use like given example
+
+    mockApi('get',
+            '/territories',
+            {territories: FactoryGuy.buildList('territory_with_many_districts', 3)});
+```
