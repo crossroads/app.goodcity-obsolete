@@ -3,8 +3,22 @@ import startApp from '../helpers/start-app';
 import offersFactory from '../fixtures/offer';
 import itemsFactory from '../fixtures/item';
 
-var App, testHelper, store,
-  TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
+var App, testHelper, store;
+
+var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin,{
+  // override setup to do a few extra things for view tests
+  setup: function (app, opts) {
+    app.reset();  // reset ember app before test
+    $.mockjaxSettings.logging = false;   // mockjax settings
+    $.mockjaxSettings.responseTime = 0;  // mockjax settings
+    return this._super(app); // still call the base setup from FactoryGuyTestMixin
+  },
+  // override teardown to clear mockjax declarations
+  teardown: function() {
+    $.mockjaxClear();
+    this._super();
+  }
+});
 
 module('Offer Index View', {
   setup: function() {
@@ -19,7 +33,12 @@ module('Offer Index View', {
 });
 
 test('Offers list & link to add items', function() {
-  store.makeList('offer', 4);
+  $.mockjax({
+    type: 'GET',
+    url: "/offers",
+    responseText: { offers: FactoryGuy.buildList('offer', 4) }
+  });
+
   visit('/offers');
   andThen(function() {
     equal($('ul.offer_list li').length, 4);
@@ -30,8 +49,14 @@ test('Offers list & link to add items', function() {
 });
 
 test("Link to create new offer", function() {
-  var item = store.makeFixture('item');
-  var offer = store.makeFixture('offer', {items: [item.id]});
+  mockApi(
+    'GET',
+    "/offers",
+    {
+      "offers": [ {"id": "1", "state": "draft", "item_ids": ["1"] } ],
+      "items":  [ {"id": "1", "offer_id": "1"}]
+    });
+
   visit('/offers');
 
   andThen(function() {
@@ -41,9 +66,18 @@ test("Link to create new offer", function() {
 });
 
 test("Offers Details", function() {
-  var item1 = store.makeFixture('item');
-  var item2 = store.makeFixture('item');
-  var offer = store.makeFixture('offer', {collectionContactName: 'TestOffer', items: [item1.id, item2.id]});
+  var offer_json = {"id": "1", "state": "draft", "collection_contact_name": 'TestOffer', "item_ids": ["1", "2"] };
+  var item1_json = {"id": "1", "offer_id": "1"};
+  var item2_json = {"id": "2", "offer_id": "1"};
+
+  mockApi(
+    'GET',
+    "/offers",
+    {
+      "offers": [ offer_json ],
+      "items":  [ item1_json, item2_json ]
+    });
+
   visit('/offers');
 
   andThen(function() {
