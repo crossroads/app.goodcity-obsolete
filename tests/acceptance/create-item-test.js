@@ -146,7 +146,6 @@ test("Create Item with details", function(){
         andThen(function(){
 
           equal(currentURL(), "/offers/"+offer.id);
-          equal($.trim($('.itemCount').text()), "Offer items (2)");
         });
       });
     });
