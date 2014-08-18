@@ -2,7 +2,7 @@
 
 var Application = require('goodcity/app')['default'];
 var Router = require('goodcity/router')['default'];
-import mockApi from './mock-api';
+import mockApi from './mockjax-custom-helpers';
 
 export default function startApp(attrs) {
   var App;

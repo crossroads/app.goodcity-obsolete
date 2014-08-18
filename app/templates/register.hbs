@@ -1,18 +1,18 @@
-<div>
+<div><br/>
   <div>{{t register.hk_only}}</div>
   <div id="mobile_error"></div>
-  +852 {{input type="text" value=mobilePhone name="mobilePhone" id="mobile"}}
+  +852 {{input type="text" value=mobilePhone name="mobilePhone" id="mobile" maxlength="8" class="input input_size_lg"}}
 </div>
 <div  style="float:left;">
-  <label>{{t register.given_name}}</label><br/>
-  {{input type="text" value=firstName name="firstName" id="first_name"}}
+  <label class="input input_size_sm">{{t register.given_name}}</label><br/>
+  {{input type="text" value=firstName name="firstName" id="first_name" class="input input_size_sm"}}
 </div>
 <div>
-  <label>{{t register.family_name}}</label><br/>
-  {{input type="text" value=lastName name="lastName" id="last_name"}}
+  <label class="input input_size_sm">{{t register.family_name}}</label><br/>
+  {{input type="text" value=lastName name="lastName" id="last_name" class="input input_size_sm"}}
 </div>
-<label>{{t register.districts}}</label>
+<label class="input input_size_sm">{{t register.districts}}</label>
 {{districts-territory}}
-<button {{action "registerUser" }}>{{t register.register}}</button>
+<button {{action "registerUser" }}  class="input input_size_sm">{{t register.register}}</button>
 {{#link-to "login"}}{{t register.login}}{{/link-to}}
 <img src="assets/images/loader.gif" class='loader_image'></img>

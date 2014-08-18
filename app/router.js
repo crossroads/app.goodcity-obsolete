@@ -36,6 +36,8 @@ Router.map(function() {
   this.route('login');
   this.route('resend');
   this.route('authenticate');
+  this.route('territories');
+  this.route('districts');
 });
 
 export default Router;
