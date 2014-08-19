@@ -1,10 +1,10 @@
 <ul>
-  <li class="territory_menu">
-    <a href='#' {{action "findDistrictbyTerritory"}}>{{t districts.all}}</a>
+  <li id="all" class="territory_menu" {{action "findDistrictbyTerritory"}}>
+    <span>{{t districts.all}}</span>
   </li>
   {{#each allTerritory}}
-    <li class="territory_menu">
-      <a href='#' {{action "findDistrictbyTerritory" this}}>{{name}}</a>
+    <li class="territory_menu" {{action "findDistrictbyTerritory" this}}>
+      {{name}}
     </li>
   {{/each}}
 </ul>
@@ -15,5 +15,6 @@
   optionValuePath='content.id'
   selectionBinding='currentSelected'
   value=''
-  prompt="Select a districts"}}
+  prompt="Select a districts"
+  optionClassPath='dropdowncls'}}
 </div>

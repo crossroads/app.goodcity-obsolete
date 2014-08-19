@@ -3,12 +3,17 @@ import Ember from 'ember';
 export default Ember.View.extend({
 
   didInsertElement: function(){
+    var COUNTRYCODE = "+852";
 
     Ember.$().ready(function (){
       set_button_visiblity();
       validate_phone();
       Ember.$('#mobile, #first_name, #last_name').keyup(set_button_visiblity);
     });
+
+    function actual_phone_number(phone){
+      return (COUNTRYCODE + phone);
+    }
 
     function set_button_visiblity(){
       var filled = (Ember.$('#mobile').val().length > 0 &&
@@ -20,12 +25,10 @@ export default Ember.View.extend({
     function validate_phone(){
       Ember.$('#mobile').focusout(function(){
         var phone = Ember.$(this).val();
-        if(Ember.$.trim(phone).length > 0) {
-          if(phone.match(/^\+\d+$/)) {
-            check_uniqness(phone);
-          } else {
-            highlight_phone_field();
-          }
+        if (phone.search(/^\d{8}$/) === 0) {
+          check_uniqness(actual_phone_number(phone));
+        }else {
+          highlight_phone_field();
         }
       });
     }
@@ -48,7 +51,5 @@ export default Ember.View.extend({
       Ember.$('#mobile').removeClass('invalid_input');
       Ember.$('#mobile_error').empty();
     }
-
   }
-
 });

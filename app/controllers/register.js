@@ -1,11 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-
-  Selected: Ember.Object.create({
-    id: '',
-  }),
-
   actions: {
     registerUser: function() {
       var _this = this;

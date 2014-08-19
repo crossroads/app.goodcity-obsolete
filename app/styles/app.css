@@ -72,6 +72,10 @@ textarea {
   display: inline;
 }
 
+.district-selection ul{
+  padding: 0em;
+}
+
 .territory_menu {
   width:130px;
   height:50px;
@@ -82,4 +86,15 @@ textarea {
   border: solid 1px white;
   vertical-align:middle;
   text-align:center;
+  cursor: pointer;
+}
+.input{
+  height: 2.5em;
+  margin: 1em 0.5em;
+}
+.input_size_sm{
+  width: 14em;
+}
+.input_size_lg{
+  width: 26em;
 }

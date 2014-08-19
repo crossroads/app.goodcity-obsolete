@@ -4,7 +4,13 @@ import Ember from 'ember';
 var Adapter;
 
 if(window.GoodcityENV.environment === "test") {
-  Adapter = DS.RESTAdapter.extend();
+  Adapter = DS.RESTAdapter.extend({
+    namespace: GoodcityENV.APP.NAMESPACE,
+    headers: {
+      "Authorization":  'Bearer ' + localStorage.jwt,
+      "Accept-Language": Ember.I18n.translations.language
+    }
+  });
 } else {
   Adapter = DS.RESTAdapter.extend({
     namespace: GoodcityENV.APP.NAMESPACE,
