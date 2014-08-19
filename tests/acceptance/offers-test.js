@@ -33,16 +33,15 @@ module('Offer Index View', {
 });
 
 test('Offers list & link to add items', function() {
-  $.mockjax({
-    type: 'GET',
-    url: "/offers",
-    responseText: { offers: FactoryGuy.buildList('offer', 4) }
-  });
+  mockApi(
+    'GET',
+    "/offers",
+    { offers: FactoryGuy.buildList('offer', 4) }
+  );
 
   visit('/offers');
   andThen(function() {
     equal($('ul.offer_list li').length, 4);
-
     // test: link to add items to existing offer
     equal($('p.offer_link a').attr('href'), "/offers/1");
   });
