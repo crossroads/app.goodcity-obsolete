@@ -546,6 +546,7 @@ DS.Store.reopen({
     Ember.get(modelType, 'relationshipsByName').forEach(function (name, relationship) {
       if (relationship.kind == 'hasMany') {
         var children = model.get(name) || [];
+        var childrenIds = [];
         children.forEach(function (child) {
           var belongsToName = self.findRelationshipName(
             'belongsTo',
@@ -556,7 +557,10 @@ DS.Store.reopen({
             belongsToName = relationship.options.inverse;
           }
           child.set(belongsToName, model);
+          child.set(belongsToName+"_id", model.id);
+          childrenIds.push(child.id)
         })
+        model.set(name.slice(0, -1)+"_ids", childrenIds);
       }
 
       if (relationship.kind == 'belongsTo') {

@@ -1,26 +1,19 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
-import itemsFactory from '../fixtures/image';
-import itemsFactory from '../fixtures/item';
-import offersFactory from '../fixtures/offer';
 
-var App, testHelper, store, image1, image2, item, item2 , offer,
+var App, testHelper,
   TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
 
 module('Display Offer', {
   setup: function() {
     App = startApp();
     testHelper = TestHelper.setup(App);
-    store = testHelper.getStore();
 
-    image1 = store.makeFixture('image');
-    image2 = store.makeFixture('image', {favourite: 'true'});
-    item   = store.makeFixture('item', {images: [image1.id, image2.id]});
-
-    item2  = store.makeFixture('item');
-    offer  = store.makeFixture('offer', {items: [item.id, item2.id]});
-
+    window.confirm = function() {
+      return true;
+    };
   },
+
   teardown: function() {
     Em.run(function() { testHelper.teardown(); });
     Ember.run(App, 'destroy');
@@ -28,36 +21,33 @@ module('Display Offer', {
 });
 
 test("Display offer details", function() {
-  visit('/offers');
+  var image_url = "http://res.cloudinary.com/ddoadcjjl/image/upload/v1407764294/default/test_image.jpg";
+
+  visit('/offers/1');
   andThen(function() {
+    // offer show page
+    equal(currentURL(), "/offers/1");
+    equal($.trim($('.itemCount').text()), "Offer items (2)");
 
-    var link = find("a[href='/offers/"+offer.id+"']");
-    click(link[0]);
-    andThen(function() {
+    // add-item & remove-item buttons and confirm offer link
+    equal($("button.addItem").length, 1);
+    equal($("button.removeItem").length, 2);
+    equal(find("a[href='/offers/1/confirm']").length, 1);
 
-      // offer show page
-      equal(currentURL(), "/offers/"+offer.id);
-      equal($.trim($('.itemCount').text()), "Offer items (2)");
+    // list of all items (header + 2 items)
+    equal($('table tr').length, 3);
 
-      // add-item & remove-item buttons and confirm offer link
-      equal($("button.addItem").length, 1);
-      equal($("button.removeItem").length, 2);
-      equal(find("a[href='/offers/"+offer.id+"/confirm']").length, 1);
+    // favourite image for 'item2': default image
+    equal($('img[src="assets/images/default_item.jpg"]').length, 1);
 
-      // list of all items (header + 2 items)
-      equal($('table tr').length, 3);
-
-      // favourite image for 'item2': default image
-      equal($('img[src="assets/images/default_item.jpg"]').length, 1);
-
-      // favourite image for 'item': image2
-      equal($("img[src='"+image2.thumbImageUrl+"']").length, 1);
-    });
+    // favourite image for 'item': image2
+    equal($("img[src='"+image_url+"']").length, 1);
   });
+
 });
 
 test("Cancel Offer", function() {
-  visit("/offers/"+offer.id);
+  visit("/offers/1");
   andThen(function() {
 
     click($("button:contains('Cancel Offer')")[0]);
@@ -68,7 +58,7 @@ test("Cancel Offer", function() {
 });
 
 test("Remove Item", function() {
-  visit("/offers/"+offer.id);
+  visit("/offers/1");
   andThen(function() {
     // list of all items (header + 2 items)
     equal($('table tr').length, 3);
@@ -82,28 +72,28 @@ test("Remove Item", function() {
 });
 
 test("Confirm and Submit Offer", function(){
-  visit("/offers/"+offer.id);
+  visit("/offers/1");
   andThen(function() {
 
-    click(find("a[href='/offers/"+offer.id+"/confirm']")[0]);
+    click(find("a[href='/offers/1/confirm']")[0]);
     andThen(function() {
 
       equal(/Confirm/i.test($('body h3').text()), true);
-      equal(currentURL(), "/offers/"+offer.id+"/confirm");
+      equal(currentURL(), "/offers/1/confirm");
 
       // confirm offer page has submit link
-      equal(find("a[href='/offers/"+offer.id+"/submit']").length, 1);
+      equal(find("a[href='/offers/1/submit']").length, 1);
 
-      click(find("a[href='/offers/"+offer.id+"/submit']")[0]);
+      click(find("a[href='/offers/1/submit']")[0]);
       andThen(function() {
 
         equal(/Sale of goods/i.test($('body h3').text()), true);
-        equal(currentURL(), "/offers/"+offer.id+"/submit");
+        equal(currentURL(), "/offers/1/submit");
 
         click($("button:contains('Yes')")[0]);
         andThen(function() {
 
-          equal(currentURL(), "/offers/"+offer.id+"/review_status");
+          equal(currentURL(), "/offers/1/review_status");
         });
       });
     });

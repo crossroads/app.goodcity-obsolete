@@ -72,11 +72,12 @@ test("cannot register unless mobile number details are entered", function() {
   fillIn("input#first_name",  hk_user.firstName );
   fillIn('input#last_name', hk_user.lastName);
   andThen(function() {
-    equal($('span:contains("Register")').closest('button').attr("disabled"), "disabled")
-  })
+    equal($('span:contains("Register")').closest('button').attr("disabled"), "disabled");
+    // equal("", "");
+  });
 });
 
-test(" should prepend country code +852 internally for api call", function() {
+test("should prepend country code +852 internally for api call", function() {
   expect(2);
   visit('/register');
   andThen(function() {

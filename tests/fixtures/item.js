@@ -1,3 +1,5 @@
+import offersFactory from './offer';
+
 FactoryGuy.define('item', {
   sequences: {
     collectionContactName: function(num) {
@@ -12,6 +14,9 @@ FactoryGuy.define('item', {
     rejectionOtherReason: 'example1',
     imageIdentifiers:     'example1,example2',
     favouriteImage:       'example1'
+  },
+  item_with_offer: {
+    offer: FactoryGuy.association('offer')
   }
 });
 
