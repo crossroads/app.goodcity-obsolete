@@ -11,6 +11,10 @@ export default Ember.View.extend({
       Ember.$('#mobile, #first_name, #last_name').keyup(set_button_visiblity);
     });
 
+    Ember.$('#mobile').change(function(){
+      this.setAttribute("data-actual-mobile", actual_phone_number(this.value));
+    });
+
     function actual_phone_number(phone){
       return (COUNTRYCODE + phone);
     }

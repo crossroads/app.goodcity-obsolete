@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
       var _this = this;
       Ember.$('.loader_image').show();
       var ele_selected = Ember.$('.district-selection');
-      var mobilePhone = this.get('mobilePhone');
+      var mobilePhone = Ember.$("#mobile")[0].getAttribute("data-actual-mobile");
       var firstName = this.get('firstName');
       var lastName = this.get('lastName');
       var district_id = ele_selected.attr('selected_id') === undefined ? null : ele_selected.attr('selected_id');
