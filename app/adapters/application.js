@@ -4,7 +4,7 @@ import Ember from 'ember';
 var Adapter;
 
 if(window.GoodcityENV.environment === "test") {
-  Adapter = DS.RESTAdapter.extend({
+  Adapter = DS.ActiveModelAdapter.extend({
     namespace: GoodcityENV.APP.NAMESPACE,
     headers: {
       "Authorization":  'Bearer ' + localStorage.jwt,
@@ -12,7 +12,7 @@ if(window.GoodcityENV.environment === "test") {
     }
   });
 } else {
-  Adapter = DS.RESTAdapter.extend({
+  Adapter = DS.ActiveModelAdapter.extend({
     namespace: GoodcityENV.APP.NAMESPACE,
     host:      GoodcityENV.APP.API_HOST_URL,
     headers: {
