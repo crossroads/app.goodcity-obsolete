@@ -24,10 +24,6 @@ export default Ember.Controller.extend({
       delete localStorage.image_ids;
       delete localStorage.favourite;
 
-      // 'controllerFor' is deprecated, instead 'needs' can be used here.
-      // Facing issue while using needs, will resolve it soon :Swati
-      this.controllerFor('items.new').set('imageIds', "[]");
-
       // Create the new Item model
       newItemProperties.state = 'draft';
       var offer_id = this.get('controllers.offer').get('id');

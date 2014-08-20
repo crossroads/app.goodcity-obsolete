@@ -20,8 +20,6 @@ export default Ember.ObjectController.extend({
       var newItemProperties = this.getProperties('id', 'donorDescription', 'imageIdentifiers', 'favouriteImage');
       if (newItemProperties.donorDescription && !newItemProperties.donorDescription.trim()) { return; }
 
-      this.controllerFor('item.edit_images').set('imageIds', "[]");
-
       // Update Item
       var offer_id = this.get('offerId');
       var offer = this.store.getById('offer', offer_id);
