@@ -9,6 +9,7 @@ export default Ember.Controller.extend({
       Ember.$('.auth_error').hide();
       var user_pin = this.get('pin');
       var route = this;
+      var attemptedTransition = route.get('attemptedTransition');
 
       Ember.$.ajax({
         type: 'POST',
@@ -25,7 +26,15 @@ export default Ember.Controller.extend({
             delete localStorage.step1_token;
             localStorage.jwt = data.jwt_token;
             route.get('controllers.application').send('logMeIn');
-            route.transitionToRoute('offers');
+
+            // After login, redirect user to requested url
+            if (attemptedTransition) {
+              attemptedTransition.retry();
+              route.set('attemptedTransition', null);
+            } else {
+              // Redirect to 'articles' by default.
+              route.transitionToRoute('offers');
+            }
           }
         },
         failure: function(){

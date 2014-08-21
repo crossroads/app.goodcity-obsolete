@@ -1,5 +1,5 @@
-import Ember from 'ember';
+import SessionRoute from './session';
 
-export default Ember.Route.extend({
+export default SessionRoute.extend({
   controllerName: 'authenticate'
 });
