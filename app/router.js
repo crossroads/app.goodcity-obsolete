@@ -5,7 +5,6 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-
   this.resource('tour', { path: '/tour/:tour_id' });
   this.resource('i18n', { path: '/i18n' });
   this.resource('logout', { path: '/logout' });

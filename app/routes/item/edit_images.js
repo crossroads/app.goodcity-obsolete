@@ -1,6 +1,6 @@
-import Ember from 'ember';
+import AuthorizeRoute from '../authorize';
 
-export default Ember.Route.extend({
+export default AuthorizeRoute.extend({
   renderTemplate: function() {
     this.render('items.new', {controller: 'item.edit_images'});
   },
