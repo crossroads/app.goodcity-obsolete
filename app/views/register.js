@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.View.extend({
 
   didInsertElement: function(){
-    var COUNTRYCODE = "+852";
 
     Ember.$().ready(function (){
       set_button_visiblity();
@@ -11,12 +10,9 @@ export default Ember.View.extend({
       Ember.$('#mobile, #first_name, #last_name').keyup(set_button_visiblity);
     });
 
-    Ember.$('#mobile').change(function(){
-      this.setAttribute("data-actual-mobile", actual_phone_number(this.value));
-    });
-
     function actual_phone_number(phone){
-      return (COUNTRYCODE + phone);
+      var mobile_with_cc = GoodcityENV.APP.HK_COUNTRY_CODE + phone;
+      Ember.$("#mobile")[0].setAttribute("data-actual-mobile", mobile_with_cc);
     }
 
     function set_button_visiblity(){
@@ -30,7 +26,8 @@ export default Ember.View.extend({
       Ember.$('#mobile').focusout(function(){
         var phone = Ember.$(this).val();
         if (phone.search(/^\d{8}$/) === 0) {
-          check_uniqness(actual_phone_number(phone));
+          actual_phone_number(phone);
+          check_uniqness(this.getAttribute("data-actual-mobile"));
         }else {
           highlight_phone_field();
         }

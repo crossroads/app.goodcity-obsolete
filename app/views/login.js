@@ -6,49 +6,52 @@ export default Ember.View.extend({
 
     Ember.$().ready(function (){
       set_button_visiblity();
+      if(Ember.$("#mobile")[0].getAttribute("data-actual-mobile") != null){
+        actual_phone_number(this.value);
+      }
       validate_phone();
       Ember.$('#mobile, #pin').keyup(set_button_visiblity);
-      Ember.$('#resend-pin').on('click', function(){
-        is_phone_valid();
-      });
     });
 
+    function actual_phone_number(phone){
+      var mobile_with_cc = GoodcityENV.APP.HK_COUNTRY_CODE + phone;
+      Ember.$("#mobile")[0].setAttribute("data-actual-mobile", mobile_with_cc);
+    }
+
     function set_button_visiblity(){
-      var filled = (Ember.$('#mobile').val().length > 0 &&
-        Ember.$('#pin').val().length > 0);
-      Ember.$("button#submit_pin").prop("disabled", !filled);
+      var filled = (Ember.$('#mobile').val().length > 0);
+       // && Ember.$('#pin').val().length > 0);
+      Ember.$("button#getsmscode").prop("disabled", !filled);
     }
 
     function validate_phone(){
       Ember.$('#mobile').focusout(function(){
+        actual_phone_number(this.value);
         is_phone_valid();
       });
     }
 
    function is_phone_valid(){
       var phone = Ember.$('#mobile').val();
-      if((Ember.$.trim(phone).length > 0) && (phone.match(/^\+\d+$/))){
+      if (phone.search(/^\d{8}$/) === 0) {
         remove_highlight();
-        validate_for_existing_mobile(phone);
       }
-      else
-      {
+      else{
         highlight_phone_field();
       }
     }
 
-    function validate_for_existing_mobile(phone){
-
-      Ember.$.get(GoodcityENV.APP.SERVER_PATH +"/auth/verify_mobile", {mobile: phone})
-        .done(function(data){
-          var is_existing = data.mobile_exist;
-          localStorage.step1_token = data.token;
-          return is_existing ? remove_highlight() : highlight_phone_field(true);
-        })
-        .fail(function(res) {
-          highlight_phone_field(true, res.responseJSON.error.text);
-      });
-    }
+    // function validate_for_existing_mobile(phone){
+    //   Ember.$.get(GoodcityENV.APP.SERVER_PATH +"/auth/verify_mobile", {mobile: phone})
+    //     .done(function(data){
+    //       var is_existing = data.mobile_exist;
+    //       localStorage.step1_token = data.token;
+    //       return is_existing ? remove_highlight() : highlight_phone_field(true);
+    //     })
+    //     .fail(function(res) {
+    //       highlight_phone_field(true, res.responseJSON.error.text);
+    //   });
+    // }
 
     function highlight_phone_field(not_existing, msg){
       Ember.$('#mobile').addClass('invalid_input');

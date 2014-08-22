@@ -1,10 +1,8 @@
 <div>
   <div>{{t login.hk_only}}</div>
   <div id="mobile_error"></div>
-  +852 {{input type="text" value=mobilePhone name="mobilePhone" id="mobile"}}
+  +852 {{input type="text" value=mobilePhone name="mobilePhone" id="mobile" maxlength="8" class="input input_size_lg" data-actual-mobile=""}}
 </div>
 <div>
-  {{partial 'verification_pin'}}
+  <button {{action "resendPin" }} id="getsmscode" class="input input_size_lg">{{t login.smscode}}</button>
 </div>
-<button {{action "authenticateUser"}} id='submit_pin'>{{t login.login}}</button>
-{{partial 'resend'}}

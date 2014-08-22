@@ -11,7 +11,9 @@ export default Ember.Controller.extend({
       var lastName = this.get('lastName');
       var district_id = ele_selected.attr('selected_id') === undefined ? null : ele_selected.attr('selected_id');
       var user_auth = { mobile: mobilePhone, first_name: firstName, last_name: lastName, district_id: district_id};
-
+      console.log('resgisterUser made call to : ' + GoodcityENV.APP.SERVER_PATH +"/auth/signup");
+      console.log('with localStorage 1: ' + localStorage.step1_token);
+      console.log('with localStorage 2: ' + localStorage.jwt);
       Ember.$.ajax({
         type: 'POST',
         url: GoodcityENV.APP.SERVER_PATH +"/auth/signup",

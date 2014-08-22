@@ -1,7 +1,5 @@
 <div>{{t _resend.no_sms}}</div>
 <div>{{t _resend.please_wait}}</div>
-{{#if view.isLogin}}
-  <button id='resend-pin'>{{t _resend.resend}}</button>
-{{else}}
-  <button {{action "resendPin"}} id='resend-pin'>{{t _resend.resend}}</button>
-{{/if}}
+<div>
+  <button {{action "resendPin"}} id='resend-pin' class="input input_size_sm">{{t _resend.resend}}</button>
+</div>
