@@ -3,15 +3,15 @@ import AuthorizeRoute from './authorize';
 export default AuthorizeRoute.extend({
 
   beforeModel: function() {
+    this._super();
     var route = this;
     this.store.find('offer').then(function(my_offers){
-      var count = my_offers.get('length');
-      if ( count === 0) {
-        route.transitionTo('offers.new');
-      } else {
-        if (count === 1 && my_offers.get('firstObject.state') === 'draft') {
-          route.transitionTo('offer', my_offers.get('firstObject.id'));
-        }
+      switch(my_offers.get('length')) {
+        case 0 : route.transitionTo('offers.new'); break;
+        case 1 :
+          if(my_offers.get('firstObject.state') === 'draft') {
+            route.transitionTo('offer', my_offers.get('firstObject.id'));
+          }
       }
     });
   },
