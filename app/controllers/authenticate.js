@@ -27,6 +27,8 @@ export default Ember.Controller.extend({
             localStorage.jwt = data.jwt_token;
             route.get('controllers.application').send('logMeIn');
 
+            Goodcity.set('authToken', localStorage.jwt);
+
             // After login, redirect user to requested url
             if (attemptedTransition) {
               attemptedTransition.retry();
