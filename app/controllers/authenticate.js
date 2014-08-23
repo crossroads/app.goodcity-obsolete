@@ -11,9 +11,7 @@ export default Ember.Controller.extend({
       var route = this;
       var attemptedTransition = route.get('attemptedTransition');
       var token = localStorage.step1_token === undefined  ? localStorage.jwt : localStorage.step1_token;
-      console.log('made call to : ' + GoodcityENV.APP.SERVER_PATH +"/auth/verify");
-      console.log('localStorage 1: ' + localStorage.step1_token );
-      console.log('localStorage 2: ' + localStorage.jwt );
+
       Ember.$.ajax({
         type: 'POST',
         url: GoodcityENV.APP.SERVER_PATH +"/auth/verify",
@@ -25,19 +23,22 @@ export default Ember.Controller.extend({
         success: function(data){
           if(data.error && data.error.length > 0) {
             Ember.$('.auth_error').show();
-          } else {
-              localStorage.jwt = data.jwt_token;
-              route.get('controllers.application').send('logMeIn');
-              // After login, redirect user to requested url
-              console.log('attempt: ' + attemptedTransition);
-              if (attemptedTransition) {
-                attemptedTransition.retry();
-                route.set('attemptedTransition', null);
-              } else {
-                delete localStorage.step1_token;
-                // Redirect to 'articles' by default.
-                route.transitionToRoute('offers');
-              }
+          }
+          else {
+            delete localStorage.step1_token;
+            localStorage.jwt = data.jwt_token;
+            route.get('controllers.application').send('logMeIn');
+
+            Goodcity.set('authToken', localStorage.jwt);
+
+            // After login, redirect user to requested url
+            if (attemptedTransition) {
+              attemptedTransition.retry();
+              route.set('attemptedTransition', null);
+            } else {
+              // Redirect to 'articles' by default.
+              route.transitionToRoute('offers');
+            }
           }
         },
         failure: function(){
@@ -58,7 +59,6 @@ export default Ember.Controller.extend({
         mobile = GoodcityENV.APP.HK_COUNTRY_CODE + this.get('mobilePhone');
       }
 
-      console.log('made call to : ' + GoodcityENV.APP.SERVER_PATH +"/auth/resend");
       Ember.$.ajax({
         type: 'GET',
         url: GoodcityENV.APP.SERVER_PATH +"/auth/resend",
