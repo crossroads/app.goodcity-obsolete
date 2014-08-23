@@ -15,10 +15,12 @@ if(window.GoodcityENV.environment === "test") {
   Adapter = DS.ActiveModelAdapter.extend({
     namespace: GoodcityENV.APP.NAMESPACE,
     host:      GoodcityENV.APP.API_HOST_URL,
-    headers: {
-      "Authorization":  'Bearer ' + localStorage.jwt,
-      "Accept-Language": Ember.I18n.translations.language
-    }
+    headers: function() {
+      return {
+        "Authorization":  'Bearer ' + Goodcity.get('authToken') || localStorage.jwt,
+        "Accept-Language": Ember.I18n.translations.language
+      }
+    }.property("Goodcity.authToken")
   });
 }
 
