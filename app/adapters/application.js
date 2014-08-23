@@ -19,7 +19,7 @@ if(window.GoodcityENV.environment === "test") {
       return {
         "Authorization":  'Bearer ' + (Goodcity.get('authToken') || localStorage.jwt),
         "Accept-Language": Ember.I18n.translations.language
-      }
+      };
     }.property("Goodcity.authToken")
   });
 }
