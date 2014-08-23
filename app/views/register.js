@@ -6,6 +6,7 @@ export default Ember.View.extend({
     var COUNTRYCODE = "+852";
 
     Ember.$().ready(function (){
+      clear_content();
       set_button_visiblity();
       validate_phone();
       Ember.$('#mobile, #first_name, #last_name').keyup(set_button_visiblity);
@@ -17,6 +18,10 @@ export default Ember.View.extend({
 
     function actual_phone_number(phone){
       return (COUNTRYCODE + phone);
+    }
+
+    function clear_content(){
+      Ember.$(".ember-view :input").each(function(){ Ember.$(this).val('');});
     }
 
     function set_button_visiblity(){
