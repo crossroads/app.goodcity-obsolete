@@ -10,6 +10,7 @@ export default Ember.Controller.extend({
       var user_pin = this.get('pin');
       var route = this;
       var attemptedTransition = route.get('attemptedTransition');
+      var token = localStorage.step1_token === undefined  ? localStorage.jwt : localStorage.step1_token;
 
       Ember.$.ajax({
         type: 'POST',
@@ -17,12 +18,13 @@ export default Ember.Controller.extend({
         data: {pin: user_pin},
         dataType: 'json',
         headers: {
-          'Authorization': 'Bearer ' + localStorage.step1_token
+          'Authorization': 'Bearer ' + token
         },
         success: function(data){
           if(data.error && data.error.length > 0) {
             Ember.$('.auth_error').show();
-          } else {
+          }
+          else {
             delete localStorage.step1_token;
             localStorage.jwt = data.jwt_token;
             route.get('controllers.application').send('logMeIn');
@@ -40,25 +42,30 @@ export default Ember.Controller.extend({
           }
         },
         failure: function(){
-
+          console.log('Fail token: ' + token);
         },
         error: function(){
           Ember.$('.auth_error').show();
-          alert("Unable to authenticate");
+          console.log("Unable to authenticate");
         }
       });
     },
     resendPin: function() {
       var _this = this;
+      var mobile = "";
       Ember.$('.loader_image').show();
-      var mobile = this.get('mobilePhone');
+      var token = localStorage.step1_token === undefined  ? localStorage.jwt : localStorage.step1_token;
+      if (this.get('mobilePhone') !== "undefinded") {
+        mobile = GoodcityENV.APP.HK_COUNTRY_CODE + this.get('mobilePhone');
+      }
+
       Ember.$.ajax({
         type: 'GET',
         url: GoodcityENV.APP.SERVER_PATH +"/auth/resend",
         data: {mobile: mobile},
         dataType: 'json',
         headers: {
-          'Authorization': 'Bearer ' + localStorage.step1_token
+          'Authorization': 'Bearer ' + token
         },
         success: function(data){
           localStorage.step1_token = data.token;
