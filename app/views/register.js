@@ -20,10 +20,6 @@ export default Ember.View.extend({
       Ember.$(".ember-view :input").each(function(){ Ember.$(this).val('');});
     }
 
-    function clear_content(){
-      Ember.$(".ember-view :input").each(function(){ Ember.$(this).val('');});
-    }
-
     function set_button_visiblity(){
       var filled = (Ember.$('#mobile').val().length > 0 &&
         Ember.$('#first_name').val().length > 0 &&
