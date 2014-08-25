@@ -1,6 +1,8 @@
-<p class='offer_link'>
-  {{#link-to 'offers.new'}}{{t offers.index.new_donation}}{{/link-to}}
-</p>
+{{#if powerUser}}
+  <p class='offer_link'>
+    {{#link-to 'offers.new'}}{{t offers.index.new_donation}}{{/link-to}}
+  </p>
+{{/if}}
 
 <h3>{{t offers.index.my_offers}}</h3>
 
