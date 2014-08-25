@@ -15,7 +15,7 @@ var AuthorizeRoute =  Ember.Route.extend({
   },
 
   actions: {
-    error: function(reason, transition) {
+    error: function(reason) {
       if (reason.status === 401) {
         this.transitionTo('login');
       } else {

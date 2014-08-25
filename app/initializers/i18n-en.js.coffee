@@ -116,7 +116,7 @@ I18nTranslationsEn =
       "login":
         "hk_only" : "Mobile phone # (Hong Kong only)"
         "login" : "Login"
-
+        "smscode": "Get 4-digit SMS code"
       "register":
         "hk_only" : "Mobile phone # (Hong Kong only)"
         "given_name" : "Given name"

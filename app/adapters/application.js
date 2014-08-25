@@ -17,9 +17,9 @@ if(window.GoodcityENV.environment === "test") {
     host:      GoodcityENV.APP.API_HOST_URL,
     headers: function() {
       return {
-        "Authorization":  'Bearer ' + (Goodcity.get('authToken') || localStorage.jwt),
+        "Authorization":  'Bearer ' + (window.Goodcity.get('authToken') || localStorage.jwt),
         "Accept-Language": Ember.I18n.translations.language
-      }
+      };
     }.property("Goodcity.authToken")
   });
 }
