@@ -38,6 +38,28 @@ I18nTranslationsEn =
       "districts":
         "all" : "All"
 
+      "plan_delivery":
+        "title" : "Plan Delivery"
+        "fastest" :
+          "title" : "Fastest"
+          "info" : "Book a van & drivar at your<br/>preferred time with 1 click!<br/>Recommended!"
+          "cost" : "Cost $390-$600"
+          "discount" : "Get 5% off with our<br/>partner"
+          "booking_button" : "Go to Booking"
+
+        "alternate" :
+          "title" : "Alternative"
+          "info" : "Wait 12-14 days until our<br/>volunteers can collect."
+          "cost" : "Cost $150"
+          "cost.info" : "About this charge"
+          "booking_button" : "Go to Booking"
+
+        "crossroads" :
+          "title" : "Deliver to Us"
+          "info" : "Drop off at Tuen Mun during<br/>our hours of operation."
+          "free" : "Free"
+          "booking_button" : "Details & Booking"
+
       "tour":
         "register" : "Start Now"
         "step1.title" : "Step 1: Register"

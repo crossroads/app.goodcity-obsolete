@@ -1,22 +1,17 @@
-<h3>Plan Delivery</h3>
+{{t plan_delivery.title tagName='h3'}}
 <div class='plan_delivery'>
 
   <hr width="400px" align="left">
 
   <table>
     <td>
-      <strong>Fastest</strong>
-      <p>
-        Book a van & drivar at your <br/>
-        preferred time with 1 click! <br/>
-        Recommended!
-      </p>
-      <button>Go to Booking</button>
+      {{t plan_delivery.fastest.title tagName='strong'}}
+      {{t plan_delivery.fastest.info tagName='p'}}
+      <button>{{t plan_delivery.fastest.booking_button}}</button>
     </td>
     <td align='right'>
-      Cost $390-$600<br/>
-      Get 5% off with our<br/>
-      partner<br/>
+      {{t plan_delivery.fastest.cost}}<br/>
+      {{t plan_delivery.fastest.discount}}<br/>
       <img src="assets/images/gogo-van.png" class='delivery-image'/>
     </td>
   </table>
@@ -25,16 +20,13 @@
 
   <table>
     <td>
-      <strong>Alternative</strong>
-      <p>
-        Wait 12-14 days until our<br/>
-        volunteers can collect. <br/>
-      </p>
-      <button>Go to Booking</button>
+      {{t plan_delivery.alternate.title tagName='strong'}}
+      {{t plan_delivery.alternate.info tagName='p'}}
+      <button>{{t plan_delivery.alternate.booking_button}}</button>
     </td>
     <td align='right'>
-      Cost $150<br/>
-      {{#link-to ''}}About this charge{{/link-to}}<br/>
+      {{t plan_delivery.alternate.cost}}<br/>
+      {{#link-to ''}}{{t plan_delivery.alternate.cost.info}}{{/link-to}}<br/>
       <img src="assets/images/alternate-delivery.jpeg" class='delivery-image'/>
     </td>
   </table>
@@ -43,15 +35,12 @@
 
   <table>
     <td>
-      <strong>Deliver to Us</strong>
-      <p>
-        Drop off at Tuen Mun during <br/>
-        our hours of operation. <br/>
-      </p>
-      <button>Details & Booking</button>
+      {{t plan_delivery.crossroads.title tagName='strong'}}
+      {{t plan_delivery.crossroads.info tagName='p'}}
+      <button>{{t plan_delivery.crossroads.booking_button}}</button>
     </td>
     <td align='right'>
-      Free <br/>
+      {{t plan_delivery.crossroads.free}}<br/>
       <img src="assets/images/logo_foundation.png" class='delivery-image'/>
     </td>
   </table>
