@@ -18,6 +18,8 @@ Router.map(function() {
       this.route('confirm');
       this.route('submit');
       this.route('review_status');
+      this.route('plan_delivery');
+      this.route('donation_details');
 
       this.resource('items', function(){
         this.route('new');
@@ -27,8 +29,6 @@ Router.map(function() {
           this.route('edit_images');
         });
       });
-
-      this.route('plan_delivery');
     });
   });
 
