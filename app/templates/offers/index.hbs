@@ -1,10 +1,8 @@
-<p class='offer_link'>
-  {{#if pendingOffer}}
-    {{#link-to 'offer.index' pendingOffer}}{{t offer.index.add_items}}{{/link-to}}
-  {{else}}
+{{#if powerUser}}
+  <p class='offer_link'>
     {{#link-to 'offers.new'}}{{t offers.index.new_donation}}{{/link-to}}
-  {{/if}}
-</p>
+  </p>
+{{/if}}
 
 <h3>{{t offers.index.my_offers}}</h3>
 
@@ -13,11 +11,10 @@
     <li class="contact">
       Offer_id: {{ id }}
       <br/>
-      {{t offers.index.name collectionContactNameBinding=collectionContactName}}
-      <br/>
       {{t offers.index.total_items itemCountBinding=itemCount}}
       <br/>
-      {{#link-to 'offer.index' this}}{{t offers.index.see_more}}{{/link-to}}
+      {{complete-offer offer=this}}
     </li>
+    <br/>
   {{/each}}
 </ul>

@@ -19,8 +19,9 @@ test('Offers list & link to add items', function() {
   visit('/offers');
   andThen(function() {
     equal($('ul.offer_list li').length, 2);
-    // test: link to add items to existing offer
-    equal($('p.offer_link a').attr('href'), "/offers/2");
+
+    // test: link to complete offers
+    equal($("a:contains('Complete this Offer')").length, 2);
   });
 });
 
@@ -34,12 +35,11 @@ test("Offers Details", function() {
     var offer_detail_text = $.trim(offer_detail.replace(/\s+/g, " "));
 
     // test: offer details
-    equal(offer_detail_text, "Offer_id: 1 Name: TestOffer Total items: 2 See more...");
+    equal(offer_detail_text, "Offer_id: 1 Total items: 2 Complete this Offer");
 
-    // test: offer name
-    equal(/TestOffer/i.test($('ul.offer_list li').text()), true);
-
-    // test: show offer details link
-    equal($('ul.offer_list li').first().find('a').attr('href'), "/offers/1");
+    // test: complete this offer link
+    var complete_offer_link = $('ul.offer_list li').first().find('a');
+    equal(complete_offer_link.attr('href'), "/offers/1");
+    equal($.trim(complete_offer_link.text()), "Complete this Offer");
   });
 });
