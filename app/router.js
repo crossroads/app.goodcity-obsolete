@@ -27,6 +27,8 @@ Router.map(function() {
           this.route('edit_images');
         });
       });
+
+      this.route('plan_delivery');
     });
   });
 

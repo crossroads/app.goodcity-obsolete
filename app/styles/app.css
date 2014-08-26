@@ -98,3 +98,13 @@ textarea {
 .input_size_lg{
   width: 26em;
 }
+
+.delivery-image{
+  width: 60px;
+  height: 60px;
+  margin-top: 10px;
+}
+
+.plan_delivery table {
+  width: 400px;
+}
