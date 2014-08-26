@@ -144,3 +144,24 @@ table.donation_details tr td:last-child {
 }
 
 /*--End--*/
+
+/*contact_details*/
+
+.contact_details {
+  width: 350px;
+}
+
+.contact_details label {
+  width: 20%;
+  display: inline-block;
+}
+
+.contact_details input {
+  width: 60%;
+}
+
+#mobile {
+  width: 50%;
+}
+
+/*--End--*/
