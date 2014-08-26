@@ -22,7 +22,7 @@ I18nTranslationsZhTw =
         "title" : "Plan Delivery"
         "fastest" :
           "title" : "Fastest"
-          "info" : "Book a van & drivar at your<br/>preferred time with 1 click!<br/>Recommended!"
+          "info" : "Book a van & driver at your<br/>preferred time with 1 click!<br/>Recommended!"
           "cost" : "Cost $390-$600"
           "discount" : "Get 5% off with our<br/>partner"
           "booking_button" : "Go to Booking"

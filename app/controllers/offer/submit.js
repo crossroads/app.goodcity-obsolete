@@ -6,7 +6,7 @@ export default Ember.ObjectController.extend({
 
       var offer = this.store.update('offer', {
         id: this.get('id'),
-        state: 'submit',
+        state: 'submitted',
         saleable: saleable
       });
 
