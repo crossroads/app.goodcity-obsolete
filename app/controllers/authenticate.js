@@ -27,10 +27,10 @@ export default Ember.Controller.extend({
           else {
             delete localStorage.step1_token;
             localStorage.jwt = data.jwt_token;
-            route.get('controllers.application').send('logMeIn');
-
+            Ember.run(function(){
+              route.get('controllers.application').send('logMeIn');
+            });
             window.Goodcity.set('authToken', localStorage.jwt);
-
             // After login, redirect user to requested url
             if (attemptedTransition) {
               attemptedTransition.retry();

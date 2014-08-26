@@ -11,7 +11,7 @@ export default Ember.View.extend({
         actual_phone_number(this.value);
       }
       validate_phone();
-      Ember.$('#mobile, #pin').keyup(set_button_visiblity);
+      Ember.$('#mobile, #pin').change(set_button_visiblity);
     });
 
     function actual_phone_number(phone){
@@ -25,7 +25,6 @@ export default Ember.View.extend({
 
     function set_button_visiblity(){
       var filled = (Ember.$('#mobile').val().length > 0);
-       // && Ember.$('#pin').val().length > 0);
       Ember.$("button#getsmscode").prop("disabled", !filled);
     }
 

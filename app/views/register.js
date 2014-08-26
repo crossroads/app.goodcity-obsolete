@@ -3,12 +3,11 @@ import Ember from 'ember';
 export default Ember.View.extend({
 
   didInsertElement: function(){
-
     Ember.$().ready(function (){
       clear_content();
       set_button_visiblity();
       validate_phone();
-      Ember.$('#mobile, #first_name, #last_name').keyup(set_button_visiblity);
+      Ember.$('#mobile, #first_name, #last_name').change(set_button_visiblity);
     });
 
     function actual_phone_number(phone){
@@ -28,7 +27,7 @@ export default Ember.View.extend({
     }
 
     function validate_phone(){
-      Ember.$('#mobile').focusout(function(){
+      Ember.$('#mobile').change(function(){
         var phone = Ember.$(this).val();
         if (phone.search(/^\d{8}$/) === 0) {
           actual_phone_number(phone);
@@ -40,7 +39,7 @@ export default Ember.View.extend({
     }
 
     function check_uniqness(phone){
-      Ember.$.get(GoodcityENV.APP.SERVER_PATH +"/auth/check_mobile",
+      Ember.$.getJSON(GoodcityENV.APP.SERVER_PATH +"/auth/check_mobile",
         {mobile: phone}).done(function(data){
           var is_uniq = data.is_unique_mobile;
           return is_uniq ? remove_highlight() : highlight_phone_field(true);
