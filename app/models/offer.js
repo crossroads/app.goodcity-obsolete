@@ -18,6 +18,10 @@ export default DS.Model.extend({
   items:                    hasMany('item'),
   messages:                 hasMany('message'),
 
+  // User details
+  userName:                 attr('string'),
+  userPhone:                attr('string'),
+
   // used for items of current-offer
   saleable:                 attr('boolean'),
 
