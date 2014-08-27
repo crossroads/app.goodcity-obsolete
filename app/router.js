@@ -22,6 +22,7 @@ Router.map(function() {
       this.route('donation_details');
       this.route('book_timeslot');
       this.route('contact_details');
+      this.route('thank_offer');
 
       this.resource('items', function(){
         this.route('new');
