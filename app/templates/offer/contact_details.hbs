@@ -13,6 +13,25 @@
 
   <br/>
 
+  {{view Ember.Select
+    content=territories
+    optionValuePath="content.id"
+    optionLabelPath="content.name"
+    selectionBinding='selectedTerritory'
+    value=''
+    prompt="All"
+    classNames='selectAddress'
+  }}
+
+  {{view Ember.Select
+    contentBinding='districtsByTerritory'
+    optionValuePath="content.id"
+    optionLabelPath="content.name"
+    selectionBinding='selectedDistrict'
+    value=''
+    prompt="Select District"
+    classNames='selectAddress'
+  }}
 
   <br/>
 
