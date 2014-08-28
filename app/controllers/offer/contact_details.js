@@ -7,13 +7,25 @@ export default Ember.ObjectController.extend({
     return this.get('controllers.offer').get('userName');
   }.property(),
 
-  mobilePhone: function(){
+  mobile: function(){
     return this.get('controllers.offer').get('userPhone');
   }.property(),
 
   actions: {
     saveContactDetails: function() {
-      this.transitionToRoute('offer.thank_offer');
+      var addressProperties = this.getProperties('street', 'flat', 'building');
+      var address = this.store.createRecord('address', addressProperties);
+
+      var contactProperties = this.getProperties('name', 'mobile');
+      var contact = this.store.createRecord('contact', contactProperties);
+
+      // Save the new model
+      var route = this;
+      address.save().then(function() {
+        contact.save().then(function(contact) {
+          route.transitionToRoute('offer.thank_offer');
+        });
+      });
     }
   }
 });
