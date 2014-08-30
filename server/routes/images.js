@@ -15,6 +15,6 @@ module.exports = function(app) {
     });
   });
 
-  app.use('/api/v1/images', imagesRouter);
-  app.use('/api/v1/images/generate_signature', imagesRouter);
+  app.use('/api/v1/images/', imagesRouter);
+  // app.use('/api/v1/images/generate_signature', imagesRouter);
 };
