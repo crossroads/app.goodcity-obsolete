@@ -4,19 +4,14 @@ export default Ember.View.extend({
 
   didInsertElement: function(){
     Ember.$().ready(function (){
-      clear_content();
       set_button_visiblity();
       validate_phone();
-      Ember.$('#mobile, #first_name, #last_name').change(set_button_visiblity);
+      Ember.$('#mobile, #first_name, #last_name').focusout(set_button_visiblity);
     });
 
     function actual_phone_number(phone){
       var mobile_with_cc = GoodcityENV.APP.HK_COUNTRY_CODE + phone;
       Ember.$("#mobile")[0].setAttribute("data-actual-mobile", mobile_with_cc);
-    }
-
-    function clear_content(){
-      Ember.$(".ember-view :input").each(function(){ Ember.$(this).val('');});
     }
 
     function set_button_visiblity(){
@@ -27,7 +22,7 @@ export default Ember.View.extend({
     }
 
     function validate_phone(){
-      Ember.$('#mobile').change(function(){
+      Ember.$('#mobile').focusout(function(){
         var phone = Ember.$(this).val();
         if (phone.search(/^\d{8}$/) === 0) {
           actual_phone_number(phone);

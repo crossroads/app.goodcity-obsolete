@@ -27,6 +27,7 @@ test("User able to enter mobile number and get the sms code", function() {
   expect(1);
   visit('/login');
   fillIn('input#mobile', hk_user.mobile);
+  triggerEvent('input#mobile', 'blur');
   click($("#getsmscode")[0]);
   andThen(function(){
     equal(currentURL(), "/authenticate");
@@ -39,7 +40,8 @@ test("User is able to enter sms code and confirm and redirected to offers", func
   expect(2);
 
   visit('/authenticate');
-  fillIn('input#pin', "123456");
+  fillIn('input#pin', "12345");
+  triggerEvent('input#pin', 'blur');
   andThen(function() {
     window.localStorage.jwt = jwt_token;
     equal(find('input#pin').val().length, 6);
