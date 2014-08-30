@@ -18,7 +18,7 @@ export default Ember.ObjectController.extend({
     return this.get('controllers.offer').get('userPhone');
   }.property(),
 
-  districtsByTerritory: function(key, value) {
+  districtsByTerritory: function() {
     if(this.selectedTerritory && this.selectedTerritory.id) {
       return this.selectedTerritory.get('districts');
     } else {
@@ -30,15 +30,16 @@ export default Ember.ObjectController.extend({
     saveContactDetails: function() {
       var addressProperties = this.getProperties('street', 'flat', 'building');
       addressProperties.district = this.selectedDistrict;
-      var address = this.store.createRecord('address', addressProperties);
 
       var contactProperties = this.getProperties('name', 'mobile');
       var contact = this.store.createRecord('contact', contactProperties);
 
       // Save the new model
       var route = this;
-      address.save().then(function() {
-        contact.save().then(function(contact) {
+      contact.save().then(function(contact) {
+        addressProperties.addressable = contact;
+        var address = route.store.createRecord('address', addressProperties);
+        address.save().then(function() {
           route.transitionToRoute('offer.thank_offer');
         });
       });

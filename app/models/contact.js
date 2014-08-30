@@ -1,10 +1,9 @@
 import DS from 'ember-data';
+import Addressable from './addressable';
 
-var attr = DS.attr,
-    belongsTo = DS.belongsTo;
+var attr = DS.attr;
 
-export default DS.Model.extend({
-  name:    attr('string'),
-  mobile:  attr('string'),
-  address: belongsTo('address')
+export default Addressable.extend({
+  name:   attr('string'),
+  mobile: attr('string')
 });
