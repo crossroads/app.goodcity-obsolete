@@ -6,11 +6,17 @@ export default Ember.ObjectController.extend({
   selectedTerritory: {id: null},
   selectedDistrict: {id: null},
 
+  isDisable: function(){
+    return !((this.selectedDistrict && this.selectedDistrict.id) &&
+      userName.value.length && mobile.value.length &&
+      street.value.length && building.value.length && flat.value.length);
+  }.property('selectedDistrict', 'userName', 'mobile', 'street', 'building', 'flat'),
+
   territories: function(){
     return this.store.findAll('territory');
   }.property(),
 
-  name: function(){
+  userName: function(){
     return this.get('controllers.offer').get('userName');
   }.property(),
 
@@ -30,8 +36,10 @@ export default Ember.ObjectController.extend({
     saveContactDetails: function() {
       var addressProperties = this.getProperties('street', 'flat', 'building');
       addressProperties.district = this.selectedDistrict;
+      addressProperties.addressType = 'collection';
 
-      var contactProperties = this.getProperties('name', 'mobile');
+      var contactProperties = this.getProperties('mobile');
+      contactProperties.name = this.get('userName');
       var contact = this.store.createRecord('contact', contactProperties);
 
       // Save the new model

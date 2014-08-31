@@ -4,7 +4,7 @@
   <p>Who should we call to confirm location & address detail?</p>
 
   <label>Name</label>
-  {{input type="text" value=name name="name" id="name"}}
+  {{input type="text" value=userName name="name" id="userName"}}
 
   <br/>
 
@@ -50,5 +50,5 @@
 
   <br/>
 
-  <button {{action 'saveContactDetails'}} disabled>Done</button>
+  <button {{action 'saveContactDetails'}} {{bind-attr disabled="this.isDisable"}} >Done</button>
 </div>
