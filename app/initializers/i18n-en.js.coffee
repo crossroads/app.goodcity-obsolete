@@ -113,6 +113,7 @@ I18nTranslationsEn =
         "submit":
           "heading": "Sale of goods"
           "message": "Occasionally, the best way <br> for a donated item to help the poor <br> is for a charity to sell it. Is sale <br> of item(s) okay?"
+
         "index":
           "item_count" : "Offer items ({{itemCount}})"
           "add_item" : "Add item"
@@ -143,7 +144,7 @@ I18nTranslationsEn =
         "resend" : "Resend"
 
       "_verification_pin":
-        "input_code" : "Input 6-digit SMS code we just sent you:"
+        "input_code" : "Input 4-digit SMS code we just sent you:"
         "auth_error" : "Sorry! Please enter the correct pin."
 
       "login":

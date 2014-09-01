@@ -1,8 +1,10 @@
 /* global require */
+import mockjaxCustomHelpers from './mockjax-custom-helpers';
+import customHelpers from './custom-helpers';
 
 var Application = require('goodcity/app')['default'];
 var Router = require('goodcity/router')['default'];
-import mockApi from './mockjax-custom-helpers';
+
 
 export default function startApp(attrs) {
   var App;

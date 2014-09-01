@@ -5,13 +5,12 @@ export default Ember.View.extend({
   didInsertElement: function(){
 
     Ember.$().ready(function (){
-      clear_content();
       set_button_visiblity();
       if(Ember.$("#mobile")[0].getAttribute("data-actual-mobile") != null){
         actual_phone_number(this.value);
       }
       validate_phone();
-      Ember.$('#mobile, #pin').keyup(set_button_visiblity);
+      Ember.$('#mobile, #pin').focusout(set_button_visiblity);
     });
 
     function actual_phone_number(phone){
@@ -19,13 +18,8 @@ export default Ember.View.extend({
       Ember.$("#mobile")[0].setAttribute("data-actual-mobile", mobile_with_cc);
     }
 
-    function clear_content(){
-      Ember.$(".ember-view :input").each(function(){ Ember.$(this).val('');});
-    }
-
     function set_button_visiblity(){
       var filled = (Ember.$('#mobile').val().length > 0);
-       // && Ember.$('#pin').val().length > 0);
       Ember.$("button#getsmscode").prop("disabled", !filled);
     }
 

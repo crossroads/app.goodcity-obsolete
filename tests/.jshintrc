@@ -48,7 +48,9 @@
     "mockjax",
     "FactoryGuy",
     "FactoryGuyTestMixin",
-    "mockApi"
+    "mockApi",
+    "loginUser",
+    "logoutUser"
   ],
   "node" : false,
   "browser" : false,

@@ -27,11 +27,12 @@ export default Ember.Controller.extend({
           else {
             delete localStorage.step1_token;
             localStorage.jwt = data.jwt_token;
-            route.get('controllers.application').send('logMeIn');
-
+            Ember.run(function(){
+              route.get('controllers.application').send('logMeIn');
+            });
             window.Goodcity.set('authToken', localStorage.jwt);
-
             // After login, redirect user to requested url
+
             if (attemptedTransition) {
               attemptedTransition.retry();
               route.set('attemptedTransition', null);
@@ -40,6 +41,7 @@ export default Ember.Controller.extend({
               route.transitionToRoute('offers');
             }
           }
+          route.setProperties({mobilePhone:null, pin: null});
         },
         failure: function(){
           console.log('Fail token: ' + token);
@@ -69,6 +71,7 @@ export default Ember.Controller.extend({
         },
         success: function(data){
           localStorage.step1_token = data.token;
+          _this.setProperties({mobilePhone:null, pin:null});
           _this.transitionToRoute('/authenticate');
         },
         error: function(){
