@@ -35,6 +35,17 @@ I18nTranslationsEn =
       "authenticate":
         "input_code" : "Input Code"
 
+      "contact":
+        "title" : "Contact Details"
+        "confirm_location" : "Who should we call to confirm location & address detail?"
+        "name" : "Name"
+        "phone" : "Phone"
+        "address" : "Collection address (Hong Kong)"
+        "street" : "Street"
+        "building" : "Building"
+        "flat" : "Flat"
+        "done" : "Done"
+
       "districts":
         "all" : "All"
 

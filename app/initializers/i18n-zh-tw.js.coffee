@@ -18,6 +18,17 @@ I18nTranslationsZhTw =
       "index.donate_goods" : "捐出你的精品給需要的人"
       "index.how" : "它是如何工作的？"
 
+      "contact":
+        "title" : "Contact Details"
+        "confirm_location" : "Who should we call to confirm location & address detail?"
+        "name" : "Name"
+        "phone" : "Phone"
+        "address" : "Collection address (Hong Kong)"
+        "street" : "Street"
+        "building" : "Building"
+        "flat" : "Flat"
+        "done" : "Done"
+
       "plan_delivery":
         "title" : "Plan Delivery"
         "fastest" :

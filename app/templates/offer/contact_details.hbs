@@ -1,18 +1,19 @@
 <div class='contact_details'>
-  <h3>Contact Details</h3>
+  {{t contact.title tagName='h3'}}
   <hr>
-  <p>Who should we call to confirm location & address detail?</p>
+  {{t contact.confirm_location tagName='p'}}
 
-  <label>Name</label>
+  {{t contact.name tagName='label'}}
   {{input type="text" value=userName name="name" id="userName"}}
 
   <br/>
 
-  <label>Phone</label>
+  {{t contact.phone tagName='label'}}
   <span>+852 {{input type="text" value=mobile name="mobile" id="mobile" maxlength="8" data-actual-mobile=""}}</span>
 
   <br/>
 
+  <div>{{t contact.address}}</div>
   {{view Ember.Select
     content=territories
     optionValuePath="content.id"
@@ -35,20 +36,20 @@
 
   <br/>
 
-  <label>Street</label>
+  {{t contact.street tagName='label'}}
   {{input type="text" value=street name="street" id="street"}}
 
   <br/>
 
-  <label>Building</label>
+  {{t contact.building tagName='label'}}
   {{input type="text" value=building name="building" id="building"}}
 
   <br/>
 
-  <label>Flat</label>
+  {{t contact.flat tagName='label'}}
   {{input type="text" value=flat name="flat" id="flat"}}
 
   <br/>
 
-  <button {{action 'saveContactDetails'}} {{bind-attr disabled="this.isDisable"}} >Done</button>
+  <button {{action 'saveContactDetails'}} {{bind-attr disabled="this.isDisable"}} >{{t contact.done}}</button>
 </div>
