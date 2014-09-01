@@ -104,6 +104,23 @@ I18nTranslationsZhTw =
           "condition" : "條件"
         "review-status" :
           "heading" : "複查狀態"
+      "items":
+        "add_item":
+          "condition": "條件?"
+          "edit_image" : "編輯形像"
+        "new":
+          "add_photos" : "添加照片本項"
+
+      "item":
+        "item_details" : "項詳情:"
+        "donor_description": "說明: {{donorDescription}}"
+        "condition": "條件: {{condition}}"
+
+      "_resend":
+        "no_sms" : "沒有收到短信代碼?"
+        "please_wait" : "請請等待5分鐘..."
+        "resend" : "再次發送"
+
       # The following are for the I18n example template and can be removed soon.
       'i18nexample.items.heading': '項'
       'i18nexample.item.title.one': '一個項目'
