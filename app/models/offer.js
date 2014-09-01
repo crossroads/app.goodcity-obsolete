@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 var attr = DS.attr,
-    hasMany = DS.hasMany;
+    hasMany = DS.hasMany,
+    belongsTo = DS.belongsTo;
 
 export default DS.Model.extend({
   language:                 attr('string'),
@@ -21,6 +22,9 @@ export default DS.Model.extend({
   // User details
   userName:                 attr('string'),
   userPhone:                attr('string'),
+
+  userId:                   attr('number'),
+  user:                     belongsTo('user'),
 
   // used for items of current-offer
   saleable:                 attr('boolean'),

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-  needs: ["offer"],
+  needs: ["offer", "delivery"],
 
   selectedTerritory: {id: null},
   selectedDistrict: {id: null},
@@ -42,13 +42,24 @@ export default Ember.ObjectController.extend({
       contactProperties.name = this.get('userName');
       var contact = this.store.createRecord('contact', contactProperties);
 
+      var deliveryId = this.get('controllers.delivery').get('id');
+      var offerId = this.get('controllers.offer').get('id');
+
       // Save the new model
       var route = this;
       contact.save().then(function(contact) {
         addressProperties.addressable = contact;
         var address = route.store.createRecord('address', addressProperties);
         address.save().then(function() {
-          route.transitionToRoute('offer.thank_offer');
+          var delivery = route.store.update('delivery', {
+            id: deliveryId,
+            contact: contact,
+            offer: route.store.getById('offer', offerId)
+          });
+
+          delivery.save().then(function() {
+            route.transitionToRoute('delivery.thank_offer');
+          });
         });
       });
     }

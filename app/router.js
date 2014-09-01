@@ -19,10 +19,13 @@ Router.map(function() {
       this.route('submit');
       this.route('review_status');
       this.route('plan_delivery');
-      this.route('donation_details');
-      this.route('book_timeslot');
-      this.route('contact_details');
-      this.route('thank_offer');
+
+      this.resource('delivery', { path: '/delivery/:delivery_id'}, function(){
+        this.route('book_timeslot');
+        this.route('contact_details');
+        this.route('thank_offer');
+        this.route('donation_details');
+      });
 
       this.resource('items', function(){
         this.route('new');
