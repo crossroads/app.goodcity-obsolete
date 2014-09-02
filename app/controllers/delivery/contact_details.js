@@ -6,18 +6,23 @@ export default Ember.ObjectController.extend({
   selectedTerritory: {id: null},
   selectedDistrict: {id: null},
 
+  userName: function(){
+    return this.get('controllers.offer').get('userName');
+  }.property(),
+
   isDisable: function(){
-    return !((this.selectedDistrict && this.selectedDistrict.id) &&
-      userName.value.length && mobile.value.length &&
-      street.value.length && building.value.length && flat.value.length);
+    var districtId = this.selectedDistrict && this.selectedDistrict.id;
+    var name = this.get('userName.length');
+    var mobile = this.get('mobile.length');
+    var street = this.get('street.length');
+    var flat = this.get('flat.length');
+    var building = this.get('building.length');
+
+    return !(districtId && name && mobile && street && building && flat);
   }.property('selectedDistrict', 'userName', 'mobile', 'street', 'building', 'flat'),
 
   territories: function(){
     return this.store.findAll('territory');
-  }.property(),
-
-  userName: function(){
-    return this.get('controllers.offer').get('userName');
   }.property(),
 
   mobile: function(){
