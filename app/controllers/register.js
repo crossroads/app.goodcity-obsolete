@@ -10,7 +10,8 @@ export default Ember.Controller.extend({
       var firstName = this.get('firstName');
       var lastName = this.get('lastName');
       var district_id = ele_selected.attr('selected_id') === undefined ? null : ele_selected.attr('selected_id');
-      var user_auth = { mobile: mobilePhone, first_name: firstName, last_name: lastName, district_id: district_id};
+      var user_auth = { mobile: mobilePhone, first_name: firstName, last_name: lastName,
+        address_attributes: {district_id: district_id, address_type: "profile"}};
 
       Ember.$.ajax({
         type: 'POST',
