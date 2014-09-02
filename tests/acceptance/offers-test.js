@@ -18,10 +18,11 @@ module('Offer Index View', {
 test('Offers list & link to add items', function() {
   visit('/offers');
   andThen(function() {
-    equal($('ul.offer_list li').length, 2);
+    // display offers that have at least 1 items
+    equal($('ul.offer_list li').length, 1);
 
     // test: link to complete offers
-    equal($("a:contains('Complete this Offer')").length, 2);
+    equal($("a:contains('Complete this Offer')").length, 1);
   });
 });
 
@@ -30,7 +31,7 @@ test("Offers Details", function() {
   visit('/offers');
 
   andThen(function() {
-    equal($('ul.offer_list li').length, 2);
+    equal($('ul.offer_list li').length, 1);
     var offer_detail = $('ul.offer_list li').first().text();
     var offer_detail_text = $.trim(offer_detail.replace(/\s+/g, " "));
 
