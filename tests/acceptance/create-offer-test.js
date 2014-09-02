@@ -31,7 +31,7 @@ test("should create new offer", function() {
   });
 });
 
-test("should create new offer", function() {
+test("should redirect to previous empty offer", function() {
 
   visit("/offers");
   andThen(function() {
