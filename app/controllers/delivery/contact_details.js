@@ -63,7 +63,7 @@ export default Ember.ObjectController.extend({
           });
 
           delivery.save().then(function() {
-            route.transitionToRoute('delivery.thank_offer');
+            route.transitionToRoute('delivery.thank_offer', contact);
           });
         });
       });
