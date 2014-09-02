@@ -13,7 +13,7 @@
       <br/>
 
       {{#if this.isDraft }}
-        {{#link-to 'offer' this}}Complete this Offer{{/link-to}}
+        {{#link-to 'offer' this}}{{t offers.index.complete_offer}}{{/link-to}}
       {{else}}
         {{#link-to 'offer.review_status' this}}{{t offers.index.see_more}}{{/link-to}}
       {{/if}}

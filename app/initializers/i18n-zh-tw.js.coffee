@@ -83,6 +83,8 @@ I18nTranslationsZhTw =
           "name" : "Name: {{collectionContactName}}"
           "total_items" : "總筆數: {{itemCount}}"
           "see_more" : "查看更多..."
+          "complete_offer" : "Complete this Offer"
+
       "offer":
         "no_items" : "您不必在此優惠的任何物品呢。請添加您的第一個項目!"
         "confirm":

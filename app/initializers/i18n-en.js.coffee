@@ -91,6 +91,7 @@ I18nTranslationsEn =
           "name" : "Name: {{collectionContactName}}"
           "total_items" : "Total items: {{itemCount}}"
           "see_more" : "See more..."
+          "complete_offer" : "Complete this Offer"
 
       "offer":
         "no_items" : "You don't have any items in this offer yet. Please add your first item!",
