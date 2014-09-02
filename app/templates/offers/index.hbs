@@ -1,19 +1,23 @@
-{{#if powerUser}}
-  <p class='offer_link'>
-    {{#link-to 'offers.new'}}{{t offers.index.new_donation}}{{/link-to}}
-  </p>
-{{/if}}
+<p class='offer_link'>
+  <button {{action 'newOffer'}}>{{t offers.index.new_donation}}</button>
+</p>
 
 <h3>{{t offers.index.my_offers}}</h3>
 
 <ul class='offer_list'>
-  {{#each}}
+  {{#each offersWithItems}}
     <li class="contact">
       Offer_id: {{ id }}
       <br/>
       {{t offers.index.total_items itemCountBinding=itemCount}}
       <br/>
-      {{complete-offer offer=this}}
+
+      {{#if this.isDraft }}
+        {{#link-to 'offer' this}}Complete this Offer{{/link-to}}
+      {{else}}
+        {{#link-to 'offer.review_status' this}}{{t offers.index.see_more}}{{/link-to}}
+      {{/if}}
+
     </li>
     <br/>
   {{/each}}

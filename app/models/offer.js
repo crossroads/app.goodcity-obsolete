@@ -23,5 +23,9 @@ export default DS.Model.extend({
 
   itemCount: function() {
     return this.get("items.length");
-  }.property('this.items.@each')
+  }.property('this.items.@each'),
+
+  isDraft: function() {
+    return this.get('state') === 'draft';
+  }.property('this.state')
 });
