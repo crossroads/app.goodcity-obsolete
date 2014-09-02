@@ -7,6 +7,7 @@ I18nTranslationsZhTw =
     Ember.I18n.translation_store = Ember.I18n.translation_store || {}
 
     Ember.I18n.translation_store['zh-tw'] =
+
       'language': 'zh-tw'
       'loading': '加載中...'
       "goodcity.hk" : "好人好市"
@@ -24,6 +25,7 @@ I18nTranslationsZhTw =
       "index.title" : "十字路口基金會禮物"
       "index.donate_goods" : "捐出你的精品給需要的人"
       "index.how" : "它是如何工作的？"
+
       "application":
         "home" : "首頁"
         "all_offers" : "所有優惠"
@@ -34,8 +36,19 @@ I18nTranslationsZhTw =
         "input_code" : "輸入代碼"
       "districts":
         "all" : "所有"
+      "contact":
+        "title" : "Contact Details"
+        "confirm_location" : "Who should we call to confirm location & address detail?"
+        "name" : "Name"
+        "phone" : "Phone"
+        "address" : "Collection address (Hong Kong)"
+        "street" : "Street"
+        "building" : "Building"
+        "flat" : "Flat"
+        "done" : "Done"
+
       "plan_delivery":
-          "title" : "計劃交付"
+        "title" : "計劃交付"
         "fastest" :
           "title" : "最快"
           "info" : "預訂一輛麵包車和驅動程序在你的<br/>首選 時間同1點擊!<br/>推薦!"
@@ -53,6 +66,7 @@ I18nTranslationsZhTw =
           "info" : "Drop off at Tuen Mun during<br/>our hours of operation."
           "free" : "免費"
           "booking_button" : "詳情及預訂"
+
       "tour":
         "register" : "現在開始"
         "step1.title" : "第1步：注册"
@@ -75,7 +89,8 @@ I18nTranslationsZhTw =
         "step4.logistics" : "物流資訊"
         "step4.anything_else" : "還要別的嗎"
         "step5.title" : "第5步：雙擊您的好人好事"
-        "step5.financial" : "歡迎您到財政幫助人們得到他們所需要的物品的成本做出貢獻。像趙先生誰收到了洗衣機後, 大火燒毀了他的家。"
+        "step5.financial" : "歡迎您到財政幫助人們得到他們所需要的物品的成本做出貢獻。像趙先生誰收到了洗衣機後，大火燒毀了他的家。"
+
       "offers":
         "index":
           "new_donation" : "做一個新的捐贈"
@@ -127,4 +142,5 @@ I18nTranslationsZhTw =
       'i18nexample.item.title.other': '{{count}} 項'
       'i18nexample.item.new.title': '新項目'
       'i18nexample.i18n.pluralisation': '的複數'
+
 `export default I18nTranslationsZhTw`

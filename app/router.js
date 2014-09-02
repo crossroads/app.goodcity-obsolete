@@ -18,6 +18,14 @@ Router.map(function() {
       this.route('confirm');
       this.route('submit');
       this.route('review_status');
+      this.route('plan_delivery');
+
+      this.resource('delivery', { path: '/delivery/:delivery_id'}, function(){
+        this.route('book_timeslot');
+        this.route('contact_details');
+        this.route('thank_offer');
+        this.route('donation_details');
+      });
 
       this.resource('items', function(){
         this.route('new');
@@ -27,8 +35,6 @@ Router.map(function() {
           this.route('edit_images');
         });
       });
-
-      this.route('plan_delivery');
     });
   });
 

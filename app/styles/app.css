@@ -108,3 +108,65 @@ textarea {
 .plan_delivery table {
   width: 400px;
 }
+
+/* Donation Details Page */
+/*--Start--*/
+
+.donation_details_block {
+  width: 350px;
+}
+
+.confirmed_block {
+  margin: 20px 0 20px;
+}
+
+table.donation_details {
+  border-collapse: collapse;
+  margin-top: 10px;
+  width: 350px;
+}
+
+table.donation_details tr td {
+  padding: 5px;
+  border-bottom: 1px solid #999999;
+}
+
+table.donation_details tr td:last-child {
+  text-align: right;
+}
+
+.confirmed_title, .confirmed_link {
+  display: inline;
+}
+
+.confirmed_link {
+  float: right;
+}
+
+/*--End--*/
+
+/*contact_details*/
+
+.contact_details {
+  width: 350px;
+}
+
+.contact_details label {
+  width: 20%;
+  display: inline-block;
+}
+
+.contact_details input {
+  width: 60%;
+}
+
+#mobile {
+  width: 50%;
+}
+
+.selectAddress {
+  width: 140px;
+  margin-right: 3px;
+}
+
+/*--End--*/
