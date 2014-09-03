@@ -15,7 +15,7 @@ module('Create New Offer', {
   }
 });
 
-test("Make New Donation link-click should create new offer", function() {
+test("should create new offer", function() {
 
   visit("/offers/new");
   andThen(function() {
@@ -28,5 +28,24 @@ test("Make New Donation link-click should create new offer", function() {
 
     //test: no items message
     equal($.trim($('.noItemMsg').text()), "You don't have any items in this offer yet. Please add your first item!");
+  });
+});
+
+test("should redirect to previous empty offer", function() {
+
+  visit("/offers");
+  andThen(function() {
+    equal(currentURL(), '/offers');
+
+    click(find("button:contains('Make a New Donation')"));
+    andThen(function(){
+      equal(currentURL(), '/offers/2');
+
+      //test: item count zero
+      equal($.trim($('.itemCount').text()), "Offer items (0)");
+
+      //test: no items message
+      equal($.trim($('.noItemMsg').text()), "You don't have any items in this offer yet. Please add your first item!");
+    });
   });
 });
