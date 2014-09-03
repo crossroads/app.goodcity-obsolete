@@ -1,0 +1,55 @@
+<div class='contact_details'>
+  {{t contact.title tagName='h3'}}
+  <hr>
+  {{t contact.confirm_location tagName='p'}}
+
+  {{t contact.name tagName='label'}}
+  {{input type="text" value=userName name="name" id="userName"}}
+
+  <br/>
+
+  {{t contact.phone tagName='label'}}
+  <span>+852 {{input type="text" value=mobile name="mobile" id="mobile" maxlength="8" data-actual-mobile=""}}</span>
+
+  <br/>
+
+  <div>{{t contact.address}}</div>
+  {{view Ember.Select
+    content=territories
+    optionValuePath="content.id"
+    optionLabelPath="content.name"
+    selectionBinding='selectedTerritory'
+    value=''
+    prompt="All"
+    classNames='selectAddress'
+  }}
+
+  {{view Ember.Select
+    contentBinding='districtsByTerritory'
+    optionValuePath="content.id"
+    optionLabelPath="content.name"
+    selectionBinding='selectedDistrict'
+    value=''
+    prompt="Select District"
+    classNames='selectAddress district'
+  }}
+
+  <br/>
+
+  {{t contact.street tagName='label'}}
+  {{input type="text" value=street name="street" id="street"}}
+
+  <br/>
+
+  {{t contact.building tagName='label'}}
+  {{input type="text" value=building name="building" id="building"}}
+
+  <br/>
+
+  {{t contact.flat tagName='label'}}
+  {{input type="text" value=flat name="flat" id="flat"}}
+
+  <br/>
+
+  <button {{action 'saveContactDetails'}} {{bind-attr disabled="this.isDisable"}} >{{t contact.done}}</button>
+</div>
