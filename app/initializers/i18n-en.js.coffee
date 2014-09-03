@@ -124,8 +124,10 @@ I18nTranslationsEn =
           "cancel" : "Cancel Offer"
           "description" : "Description"
           "condition" : "Condition"
+
         "review-status" :
           "heading" : "Review Status"
+          "plan_delivery" : "Plan Delivery"
 
       "items":
         "add_item":

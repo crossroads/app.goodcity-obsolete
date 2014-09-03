@@ -119,8 +119,11 @@ I18nTranslationsZhTw =
           "cancel" : "取消獻"
           "description" : "說明"
           "condition" : "條件"
+
         "review-status" :
           "heading" : "複查狀態"
+          "plan_delivery" : "Plan Delivery"
+
       "items":
         "add_item":
           "condition": "條件?"
