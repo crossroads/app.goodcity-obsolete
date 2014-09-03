@@ -17,6 +17,11 @@ export default Ember.ObjectController.extend({
     },
 
     cancelOffer: function(offer){
+      var items = offer.get('items').content;
+      items.forEach(function(item) {
+        item.unloadRecord();
+      });
+
       offer.destroyRecord();
       this.transitionToRoute('offers');
     },
