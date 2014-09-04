@@ -11,5 +11,12 @@ export default Addressable.extend({
   mobile:  attr('string'),
   district:  belongsTo('district'),
   messages:  hasMany('message'),
-  offers:  hasMany('offer')
+  offers:  hasMany('offer'),
+  permissions: hasMany('permission'),
+
+  isReviewer: function() {
+    var roles = this.get('permissions');
+    var reviewer = roles.filterBy('name', 'Reviewer');
+    return reviewer.length;
+  }.property()
 });

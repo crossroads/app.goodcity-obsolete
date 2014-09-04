@@ -45,6 +45,8 @@ Router.map(function() {
   this.route('authenticate');
   this.route('territories');
   this.route('districts');
+
+  this.route('inbox');
 });
 
 export default Router;

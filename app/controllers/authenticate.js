@@ -30,16 +30,22 @@ export default Ember.Controller.extend({
             Ember.run(function(){
               route.get('controllers.application').send('logMeIn');
             });
-            window.Goodcity.set('authToken', localStorage.jwt);
-            // After login, redirect user to requested url
 
-            if (attemptedTransition) {
-              attemptedTransition.retry();
-              route.set('attemptedTransition', null);
-            } else {
-              // Redirect to 'articles' by default.
-              route.transitionToRoute('offers');
-            }
+            window.Goodcity.set('authToken', localStorage.jwt);
+
+            route.store.find('user', data.user_id).then(function(user){
+              // After login, redirect user to requested url
+              if (attemptedTransition) {
+                attemptedTransition.retry();
+                route.set('attemptedTransition', null);
+              } else {
+                if(user.get('isReviewer')){
+                  route.transitionToRoute('inbox');
+                } else {
+                  route.transitionToRoute('offers');
+                }
+              }
+            })
           }
           route.setProperties({mobilePhone:null, pin: null});
         },
