@@ -1,7 +1,20 @@
 <h3>Inbox({{this.length}})</h3>
 
 {{#each}}
-  {{this.userName}}<br/>
-  New Items: {{this.itemCount}}<br/>
-  {{cloudinary-image imageId=displayImageId width=50 height=50 className='fav_image'}}<br/>
+  <table>
+    <td>
+      <img {{bind-attr src="this.user.image"}}><br/>
+    </td>
+
+    <td>
+      {{this.user.fullName}}<br/>
+      New Items: {{this.itemCount}}<br/>
+      {{this.user.district}}<br/>
+      {{this.submittedAt}}
+    </td>
+
+    <td>
+      {{cloudinary-image imageId=displayImageId width=50 height=50 className='fav_image'}}<br/>
+    </td>
+  </table>
 {{/each}}

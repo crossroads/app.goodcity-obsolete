@@ -16,14 +16,13 @@ export default DS.Model.extend({
   createdById:              attr('number'),
   createdAt:                attr('date'),
   updatedAt:                attr('date'),
+  submittedAt:              attr('date'),
   items:                    hasMany('item'),
   messages:                 hasMany('message'),
 
   // User details
   userName:                 attr('string'),
   userPhone:                attr('string'),
-
-  userId:                   attr('number'),
   user:                     belongsTo('user'),
 
   // used for items of current-offer

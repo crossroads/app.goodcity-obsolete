@@ -9,8 +9,9 @@ export default Addressable.extend({
   firstName:   attr('string'),
   lastName:    attr('string'),
   mobile:      attr('string'),
+  fullName:    attr('string'),
+  district:    attr('string'),
 
-  district:    belongsTo('district'),
   messages:    hasMany('message'),
   offers:      hasMany('offer'),
   permissions: hasMany('permission'),
@@ -19,5 +20,9 @@ export default Addressable.extend({
     var roles = this.get('permissions');
     var reviewer = roles.filterBy('name', 'Reviewer');
     return reviewer.length;
+  }.property(),
+
+  image: function(){
+    return "assets/images/default_item.jpg";
   }.property()
 });
