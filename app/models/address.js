@@ -7,12 +7,10 @@ export default DS.Model.extend({
   flat:        attr('string'),
   building:    attr('string'),
   street:      attr('string'),
-  districtId:  attr('number'),
   addressType: attr('string'),
 
+  district:   belongsTo('district'),
   addressable: belongsTo('addressable', {
     polymorphic: true
-  }),
-
-  district:   belongsTo('district')
+  })
 });

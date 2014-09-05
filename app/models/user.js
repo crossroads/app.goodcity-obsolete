@@ -2,15 +2,12 @@ import DS from 'ember-data';
 import Addressable from './addressable';
 
 var attr = DS.attr,
-  hasMany = DS.hasMany,
-  belongsTo = DS.belongsTo;
+  hasMany = DS.hasMany;
 
 export default Addressable.extend({
   firstName:   attr('string'),
   lastName:    attr('string'),
   mobile:      attr('string'),
-  fullName:    attr('string'),
-  district:    attr('string'),
 
   messages:    hasMany('message'),
   offers:      hasMany('offer'),
@@ -24,5 +21,10 @@ export default Addressable.extend({
 
   image: function(){
     return "assets/images/default_item.jpg";
+  }.property(),
+
+  fullName: function(){
+    var name = this.get('firstName').capitalize() + " " + this.get('lastName').capitalize();
+    return name;
   }.property()
 });

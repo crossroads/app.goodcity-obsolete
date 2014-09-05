@@ -45,7 +45,7 @@ export default Ember.Controller.extend({
                   route.transitionToRoute('offers');
                 }
               }
-            })
+            });
           }
           route.setProperties({mobilePhone:null, pin: null});
         },

@@ -4,6 +4,7 @@ var attr = DS.attr,
     belongsTo = DS.belongsTo;
 
 export default DS.Model.extend({
-  name: attr('string'),
-  territory:  belongsTo('territory')
+  name:      attr('string'),
+  territory: belongsTo('territory'),
+  addresses: hasMany('address')
 });
