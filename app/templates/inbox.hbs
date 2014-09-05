@@ -1,9 +1,17 @@
 <h3>Inbox({{this.length}})</h3>
 
 {{#each}}
-  <table>
+  <table cellspacing='10'>
     <td>
-      <img {{bind-attr src="this.user.image"}}><br/>
+      {{#if this.user.image}}
+        <img {{bind-attr src="this.user.image"}}><br/>
+      {{else}}
+        <div id="default_profile_image">
+          <div id="background">
+            <div id='name'>{{this.user.nameInitial}}</div>
+          </div>
+        </div>
+      {{/if}}
     </td>
 
     <td>

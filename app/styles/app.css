@@ -170,3 +170,27 @@ table.donation_details tr td:last-child {
 }
 
 /*--End--*/
+
+/*---Dfault Profile Pic */
+#default_profile_image {
+  height:80px;
+  width:80px;
+}
+
+#background {
+  height:50px;
+  width:50px;
+  background:#E6005C;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  margin-left:25%;
+  margin-top:25%;
+}
+
+#background #name {
+  padding-top: 24%;
+  padding-left: 32%;
+  font-weight: 900;
+  font-size: 23px;
+}
+/*---End----*/
