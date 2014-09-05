@@ -168,5 +168,14 @@ table.donation_details tr td:last-child {
   width: 140px;
   margin-right: 3px;
 }
-
+ul.radio-ul{
+  list-style: none;
+}
+ul.radio-ul li p{
+   padding-left: 2%;
+}
+.center{
+  vertical-align: middle;
+  text-align: center;
+}
 /*--End--*/

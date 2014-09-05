@@ -1,10 +1,18 @@
-<h3>Select Time</h3>
-
-<hr>
-
-<p>Pick preferred date/time. First available times listed below.</p>
-
-<hr>
-
+<h3 class="center">Select Time</h3>
+<ul class="radio-ul">
+  <hr>
+    <p>Pick preferred date/time. First available times listed below.</p>
+  <hr>
+  {{#each}}
+    <li>
+      {{view 'radio-button' name="timeslot" selection=this.controller.isSelected value=id}}
+      {{scheduled_at}}
+      <p>
+        {{slot_name}}
+      </p>
+    </li>
+    <hr>
+  {{/each}}
+  </ul>
 <button {{action 'assignSchedule'}}>Book Time</button>
 <button>Show More</button>

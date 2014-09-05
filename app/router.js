@@ -22,6 +22,7 @@ Router.map(function() {
 
       this.resource('delivery', { path: '/delivery/:delivery_id'}, function(){
         this.route('book_timeslot');
+        this.route('available_time_slots');
         this.route('contact_details');
         this.route('thank_offer');
         this.route('donation_details');

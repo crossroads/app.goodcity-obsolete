@@ -12,5 +12,6 @@ export default DS.Model.extend({
   deliveryType:  attr('string'),
 
   offer:         belongsTo('offer'),
-  contact:       belongsTo('contact')
+  contact:       belongsTo('contact'),
+  schedule:      belongsTo('schedule')
 });
