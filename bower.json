@@ -15,7 +15,8 @@
     "cloudinary": "*",
     "cldr": "~1.0.1",
     "ember-i18n": "~2.0.0",
-    "ember-data-factory-guy": "*"
+    "ember-data-factory-guy": "*",
+    "moment": "~2.8.2"
   },
   "devDependencies": {
     "qunit-notifications": "~0.0.2",

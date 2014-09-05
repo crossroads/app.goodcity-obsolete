@@ -45,10 +45,13 @@ export default Ember.ObjectController.extend({
 
       var contactProperties = this.getProperties('mobile');
       contactProperties.name = this.get('userName');
+
       var contact = this.store.createRecord('contact', contactProperties);
 
-      var deliveryId = this.get('controllers.delivery').get('id');
-      var offerId = this.get('controllers.offer').get('id');
+      // As scheduleId and OfferId already saved in last steps so we utilize
+      // those values instead of making call to controllers.
+      var deliveryDetails = this.get('controllers.delivery').getProperties('id',
+                            'scheduleId', 'offerId');
 
       // Save the new model
       var route = this;
@@ -57,9 +60,10 @@ export default Ember.ObjectController.extend({
         var address = route.store.createRecord('address', addressProperties);
         address.save().then(function() {
           var delivery = route.store.update('delivery', {
-            id: deliveryId,
+            id: deliveryDetails.id,
             contact: contact,
-            offer: route.store.getById('offer', offerId)
+            offer: deliveryDetails.offerId,
+            schedule: deliveryDetails.scheduleId
           });
 
           delivery.save().then(function() {
