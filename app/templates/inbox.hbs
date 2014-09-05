@@ -1,0 +1,7 @@
+<h3>Inbox({{this.length}})</h3>
+
+{{#each}}
+  {{this.userName}}<br/>
+  New Items: {{this.itemCount}}<br/>
+  {{cloudinary-image imageId=displayImageId width=50 height=50 className='fav_image'}}<br/>
+{{/each}}

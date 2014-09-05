@@ -35,5 +35,10 @@ export default DS.Model.extend({
 
   isDraft: function() {
     return this.get('state') === 'draft';
-  }.property('this.state')
+  }.property('this.state'),
+
+  displayImageId: function(){
+    var item = this.get("items.content.firstObject");
+    return item.get('favouriteImage');
+  }.property('this.items.@each')
 });
