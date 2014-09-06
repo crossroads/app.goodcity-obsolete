@@ -3,7 +3,8 @@
     "document": true,
     "window": true,
     "GoodcityENV": true,
-    "CLDR": true
+    "CLDR": true,
+    "moment" : true
   },
   "browser" : true,
   "boss" : true,

@@ -12,6 +12,8 @@ app.import('vendor/cloudinary/js/jquery.fileupload-process.js');
 app.import('vendor/cloudinary/js/jquery.fileupload-image.js');
 app.import('vendor/cloudinary/js/jquery.fileupload-validate.js');
 app.import('vendor/cloudinary/js/jquery.cloudinary.js');
+app.import('vendor/moment/moment.js');
+
 //~ For the moment, ember-18n requires full version of handlebars.
 //~ This is being removed, see https://github.com/jamesarosen/ember-i18n/pull/114
 app.import({
