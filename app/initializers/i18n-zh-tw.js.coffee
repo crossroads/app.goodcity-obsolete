@@ -95,7 +95,6 @@ I18nTranslationsZhTw =
         "index":
           "new_donation" : "做一個新的捐贈"
           "my_offers" : "我的供應信息"
-          "name" : "Name: {{collectionContactName}}"
           "total_items" : "總筆數: {{itemCount}}"
           "see_more" : "查看更多..."
           "complete_offer" : "Complete this Offer"
