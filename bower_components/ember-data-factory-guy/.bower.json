@@ -1,0 +1,47 @@
+{
+  "name": "ember-data-factory-guy",
+  "version": "0.6.2",
+  "authors": [
+    "Daniel Sudol <dansudol@yahoo.com>",
+    "Opak Alex <opak.alexandr@gmail.com>"
+  ],
+  "description": "Factory for testing Ember application using Ember Data",
+  "main": "dist/ember-data-factory-guy.js",
+  "keywords": [
+    "Factory",
+    "Ember",
+    "Data",
+    "FixtureAdapter"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "handlebars": "~1.1.2",
+    "jquery": "1.10.2",
+    "ember": "~1.6.0",
+    "ember-data": "~1.0.0-beta.7",
+    "chance": "latest",
+    "qunit": "latest"
+  },
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "bower.json",
+    "gruntfile.js",
+    "package.json",
+    "README.md",
+    "src",
+    "test",
+    "tests"
+  ],
+  "homepage": "https://github.com/danielspaniel/ember-data-factory-guy",
+  "_release": "0.6.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.6.2",
+    "commit": "0eede93daba45ad43a6b0dde9272fb28252235e2"
+  },
+  "_source": "git://github.com/danielspaniel/ember-data-factory-guy.git",
+  "_target": "*",
+  "_originalSource": "ember-data-factory-guy"
+}
