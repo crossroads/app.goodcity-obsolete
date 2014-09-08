@@ -23,11 +23,6 @@ export default Addressable.extend({
     return false; //"assets/images/default_item.jpg";
   }.property(),
 
-  fullName: function(){
-    var name = this.get('firstName').capitalize() + " " + this.get('lastName').capitalize();
-    return name;
-  }.property('firstName', 'lastName'),
-
   nameInitial: function(){
     return this.get('firstName').charAt(0).capitalize();
   }.property('firstName'),

@@ -135,6 +135,11 @@ I18nTranslationsZhTw =
         "donor_description": "說明: {{donorDescription}}"
         "condition": "條件: {{condition}}"
 
+      "inbox":
+        "title" : "Inbox"
+        "new_items" : "New Items"
+        "full_name" : "{{lastName}} {{firstName}}"
+
       "_resend":
         "no_sms" : "沒有收到短信代碼?"
         "please_wait" : "請請等待5分鐘..."

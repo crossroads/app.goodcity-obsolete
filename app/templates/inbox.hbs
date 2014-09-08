@@ -1,4 +1,4 @@
-<h3>Inbox({{this.length}})</h3>
+<h3>{{t inbox.title}}({{this.length}})</h3>
 
 {{#each}}
   <table cellspacing='10'>
@@ -15,9 +15,9 @@
     </td>
 
     <td>
-      {{this.user.fullName}}<br/>
-      New Items: {{this.itemCount}}<br/>
-      {{this.user.address.district.name}}<br/>
+      {{t inbox.full_name firstNameBinding=user.firstName lastNameBinding=user.lastName}}<br/>
+      {{t inbox.new_items}}: {{itemCount}}<br/>
+      {{user.address.district.name}}<br/>
       {{display-timeago this.submittedAt}}
     </td>
 
