@@ -3,34 +3,34 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp();
 
-app.import('vendor/cloudinary/js/jquery.ui.widget.js');
-app.import('vendor/cloudinary/js/jquery.iframe-transport.js');
-app.import('vendor/cloudinary/js/jquery.fileupload.js');
-app.import('vendor/cloudinary/js/load-image.min.js');
-app.import('vendor/cloudinary/js/canvas-to-blob.min.js');
-app.import('vendor/cloudinary/js/jquery.fileupload-process.js');
-app.import('vendor/cloudinary/js/jquery.fileupload-image.js');
-app.import('vendor/cloudinary/js/jquery.fileupload-validate.js');
-app.import('vendor/cloudinary/js/jquery.cloudinary.js');
+app.import('bower_components/cloudinary/js/jquery.ui.widget.js');
+app.import('bower_components/cloudinary/js/jquery.iframe-transport.js');
+app.import('bower_components/cloudinary/js/jquery.fileupload.js');
+app.import('bower_components/cloudinary/js/load-image.min.js');
+app.import('bower_components/cloudinary/js/canvas-to-blob.min.js');
+app.import('bower_components/cloudinary/js/jquery.fileupload-process.js');
+app.import('bower_components/cloudinary/js/jquery.fileupload-image.js');
+app.import('bower_components/cloudinary/js/jquery.fileupload-validate.js');
+app.import('bower_components/cloudinary/js/jquery.cloudinary.js');
 //~ For the moment, ember-18n requires full version of handlebars.
 //~ This is being removed, see https://github.com/jamesarosen/ember-i18n/pull/114
 app.import({
-  development: 'vendor/handlebars/handlebars.js',
-  production:  'vendor/handlebars/handlebars.js'
+  development: 'bower_components/handlebars/handlebars.js',
+  production:  'bower_components/handlebars/handlebars.js'
 });
-app.import('vendor/cldr/plurals.js');
-app.import('vendor/ember-i18n/lib/i18n.js');
+app.import('bower_components/cldr/plurals.js');
+app.import('bower_components/ember-i18n/lib/i18n.js');
 
 app.import({
-  development: 'vendor/ember-data/ember-data.js',
-  production:  'vendor/ember-data/ember-data.prod.js'
+  development: 'bower_components/ember-data/ember-data.js',
+  production:  'bower_components/ember-data/ember-data.prod.js'
   }, { exports: {
         'ember-data': ['default']
       }
 });
 app.import({
-  development: 'vendor/ember-data-factory-guy/dist/ember-data-factory-guy.js',
-  test: 'vendor/ember-data-factory-guy/dist/ember-data-factory-guy.js'
+  development: 'bower_components/ember-data-factory-guy/dist/ember-data-factory-guy.js',
+  test: 'bower_components/ember-data-factory-guy/dist/ember-data-factory-guy.js'
   }, {  destDir: 'assets/',
       exports: {
         'FactoryGuy': ['default']
@@ -38,14 +38,14 @@ app.import({
 });
 
 app.import({
-  development: 'vendor/ember-data-factory-guy/dist/factory_guy_has_many.js',
-  test: 'vendor/ember-data-factory-guy/dist/factory_guy_has_many.js',
+  development: 'bower_components/ember-data-factory-guy/dist/factory_guy_has_many.js',
+  test: 'bower_components/ember-data-factory-guy/dist/factory_guy_has_many.js',
   }, {  destDir: 'assets/',
       exports: {
         'FactoryGuyHasMany': ['default']
   }
 });
 
-app.import('vendor/jquery-mockjax/jquery.mockjax.js');
+app.import('bower_components/jquery-mockjax/jquery.mockjax.js');
 
 module.exports = app.toTree();
