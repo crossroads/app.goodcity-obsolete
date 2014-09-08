@@ -99,7 +99,6 @@ I18nTranslationsEn =
         "index":
           "new_donation" : "Make a New Donation"
           "my_offers" : "My offers"
-          "name" : "Name: {{collectionContactName}}"
           "total_items" : "Total items: {{itemCount}}"
           "see_more" : "See more..."
           "complete_offer" : "Complete this Offer"
