@@ -11,5 +11,11 @@ export default Ember.ObjectController.extend({
 
   contactMobile: function() {
     return this.get('contact.mobile');
-  }.property()
+  }.property(),
+
+  actions:{
+    done: function(){
+      this.transitionToRoute('offers.index');
+    }
+  }
 });
