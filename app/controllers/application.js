@@ -2,6 +2,13 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 
+  isReviewer: function(key, value) {
+    if(arguments.length > 1) {
+      localStorage.isReviewer = value;
+    }
+    return localStorage.isReviewer === "true";
+  }.property(),
+
   isLoggedIn: function(key, value) {
     return (arguments.length > 1 ? value : (localStorage.jwt === undefined ? false : true));
   }.property(),

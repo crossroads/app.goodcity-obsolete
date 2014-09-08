@@ -27,6 +27,7 @@ export default Ember.Controller.extend({
           else {
             delete localStorage.step1_token;
             localStorage.jwt = data.jwt_token;
+
             Ember.run(function(){
               route.get('controllers.application').send('logMeIn');
             });
@@ -39,7 +40,10 @@ export default Ember.Controller.extend({
                 attemptedTransition.retry();
                 route.set('attemptedTransition', null);
               } else {
-                if(user.get('isReviewer')){
+                var isReviewer = user.get('isReviewer');
+                route.get('controllers.application').set('isReviewer', isReviewer);
+
+                if(isReviewer){
                   route.transitionToRoute('inbox');
                 } else {
                   route.transitionToRoute('offers');
