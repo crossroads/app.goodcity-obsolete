@@ -161,6 +161,11 @@ I18nTranslationsEn =
         "register" : "Register"
         "login" : "Login"
 
+      "inbox":
+        "title" : "Inbox"
+        "new_items" : "New Items"
+        "full_name" : "{{firstName}} {{lastName}}"
+
       # Components
       "upload-images":
         "angles" : "Got all the angles of this item?"

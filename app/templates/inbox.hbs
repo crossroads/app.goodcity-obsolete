@@ -1,0 +1,28 @@
+<h3>{{t inbox.title}}({{this.length}})</h3>
+
+{{#each}}
+  <table cellspacing='10'>
+    <td>
+      {{#if this.user.image}}
+        <img {{bind-attr src="this.user.image"}}><br/>
+      {{else}}
+        <div id="default_profile_image">
+          <div id="background">
+            <div id='name'>{{this.user.nameInitial}}</div>
+          </div>
+        </div>
+      {{/if}}
+    </td>
+
+    <td>
+      {{t inbox.full_name firstNameBinding=user.firstName lastNameBinding=user.lastName}}<br/>
+      {{t inbox.new_items}}: {{itemCount}}<br/>
+      {{user.address.district.name}}<br/>
+      {{display-timeago this.submittedAt}}
+    </td>
+
+    <td>
+      {{cloudinary-image imageId=displayImageId width=50 height=50 className='fav_image'}}<br/>
+    </td>
+  </table>
+{{/each}}

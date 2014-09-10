@@ -14,14 +14,13 @@ export default DS.Model.extend({
   createdById:              attr('number'),
   createdAt:                attr('date'),
   updatedAt:                attr('date'),
+  submittedAt:              attr('string'),
   items:                    hasMany('item'),
   messages:                 hasMany('message'),
 
   // User details
   userName:                 attr('string'),
   userPhone:                attr('string'),
-
-  userId:                   attr('number'),
   user:                     belongsTo('user'),
 
   // used for items of current-offer
@@ -33,5 +32,10 @@ export default DS.Model.extend({
 
   isDraft: function() {
     return this.get('state') === 'draft';
-  }.property('this.state')
+  }.property('this.state'),
+
+  displayImageId: function(){
+    var item = this.get("items.content.firstObject");
+    return item.get('favouriteImage');
+  }.property('this.items.@each')
 });

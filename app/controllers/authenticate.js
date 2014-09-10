@@ -27,19 +27,29 @@ export default Ember.Controller.extend({
           else {
             delete localStorage.step1_token;
             localStorage.jwt = data.jwt_token;
+
             Ember.run(function(){
               route.get('controllers.application').send('logMeIn');
             });
-            window.Goodcity.set('authToken', localStorage.jwt);
-            // After login, redirect user to requested url
 
-            if (attemptedTransition) {
-              attemptedTransition.retry();
-              route.set('attemptedTransition', null);
-            } else {
-              // Redirect to 'articles' by default.
-              route.transitionToRoute('offers');
-            }
+            window.Goodcity.set('authToken', localStorage.jwt);
+
+            route.store.find('user', data.user_id).then(function(user){
+              // After login, redirect user to requested url
+              if (attemptedTransition) {
+                attemptedTransition.retry();
+                route.set('attemptedTransition', null);
+              } else {
+                var isReviewer = user.get('isReviewer');
+                route.get('controllers.application').set('isReviewer', isReviewer);
+
+                if(isReviewer){
+                  route.transitionToRoute('inbox');
+                } else {
+                  route.transitionToRoute('offers');
+                }
+              }
+            });
           }
           route.setProperties({mobilePhone:null, pin: null});
         },
