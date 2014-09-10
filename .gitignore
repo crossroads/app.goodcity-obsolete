@@ -5,7 +5,7 @@
 #   git config --global core.excludesfile '~/.gitignore_global'
 
 # Ignore all logfiles and tempfiles.
-/log/*.log
-/dist
-/node_modules
-/tmp
+**/*.log
+dist
+node_modules/
+tmp
