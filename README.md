@@ -14,11 +14,12 @@ The GoodCity initiative is a new way to donate quality goods in Hong Kong. See w
 Install node.js in your home folder and configure it to run there (you will have to deal with sudo issues if you install system-wide). This is much easier.
 
 ```shell
+mkdir ~/tmp
 cd ~/tmp
-curl http://nodejs.org/dist/v0.10.30/node-v0.10.30-linux-x64.tar.gz
-tar zxvf node-v0.10.30-linux-x64.tar.gz
-cd node-v0.10.30-linux-x64
-./configure --prefix=~/.local && make && make install"
+wget http://nodejs.org/dist/v0.10.31/node-v0.10.31.tar.gz
+tar zxvf node-v0.10.31.tar.gz
+cd node-v0.10.31
+./configure --prefix=~/.local && make && make install
 echo prefix = ~/.local >> ~/.npmrc
 curl https://www.npmjs.org/install.sh | sh
 npm install -g ember-cli
