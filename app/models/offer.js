@@ -22,6 +22,7 @@ export default DS.Model.extend({
   userName:                 attr('string'),
   userPhone:                attr('string'),
   user:                     belongsTo('user'),
+  delivery:                 belongsTo('delivery'),
 
   // used for items of current-offer
   saleable:                 attr('boolean'),
@@ -34,8 +35,17 @@ export default DS.Model.extend({
     return this.get('state') === 'draft';
   }.property('this.state'),
 
+  isSubmitted: function() {
+    return this.get('state') === 'submitted';
+  }.property('this.state'),
+
+  isScheduled: function() {
+    return this.get('state') === 'scheduled';
+  }.property('this.state'),
+
   displayImageId: function(){
     var item = this.get("items.content.firstObject");
     return item.get('favouriteImage');
   }.property('this.items.@each')
+
 });

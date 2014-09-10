@@ -16,7 +16,7 @@ export default Addressable.extend({
   isReviewer: function() {
     var roles = this.get('permissions');
     var reviewer = roles.filterBy('name', 'Reviewer');
-    return reviewer.length == 0 ? false : true;
+    return reviewer.length === 0 ? false : true;
   }.property(),
 
   image: function(){
