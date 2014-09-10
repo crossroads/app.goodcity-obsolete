@@ -22,7 +22,7 @@
     <td>
       {{t plan_delivery.alternate.title tagName='strong'}}
       {{t plan_delivery.alternate.info tagName='p'}}
-      <button>{{t plan_delivery.alternate.booking_button}}</button>
+      <button {{action 'startDelivery' 'crossroads'}}>{{t plan_delivery.alternate.booking_button}}</button>
     </td>
     <td align='right'>
       {{t plan_delivery.alternate.cost}}<br/>
@@ -37,7 +37,7 @@
     <td>
       {{t plan_delivery.crossroads.title tagName='strong'}}
       {{t plan_delivery.crossroads.info tagName='p'}}
-      <button {{action 'startDelivery' 'crossroads'}}>{{t plan_delivery.crossroads.booking_button}}</button>
+      <button>{{t plan_delivery.crossroads.booking_button}}</button>
     </td>
     <td align='right'>
       {{t plan_delivery.crossroads.free}}<br/>
