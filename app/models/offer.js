@@ -5,7 +5,7 @@ var attr = DS.attr,
 
 export default DS.Model.extend({
   language:                 attr('string'),
-  state:                    attr('string'),
+  state:                    attr('string', {defaultValue: 'draft'}),
   origin:                   attr('string'),
   stairs:                   attr('boolean'),
   parking:                  attr('boolean'),

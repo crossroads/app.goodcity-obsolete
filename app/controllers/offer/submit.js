@@ -6,11 +6,12 @@ export default Ember.ObjectController.extend({
 
       var offer = this.store.update('offer', {
         id: this.get('id'),
-        state: 'submitted',
+        state_event: 'submit',
         saleable: saleable
       });
 
       var route = this;
+
       offer.save().then(function() {
         route.transitionToRoute('offer.review_status');
       });
