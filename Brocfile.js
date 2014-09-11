@@ -14,6 +14,10 @@ app.import('bower_components/cloudinary/js/jquery.fileupload-validate.js');
 app.import('bower_components/cloudinary/js/jquery.cloudinary.js');
 app.import('bower_components/moment/moment.js');
 
+app.import('bower_components/ember-pusher/pusher.js');
+app.import('bower_components/ember-pusher/ember-pusher.js');
+app.import('bower_components/ember-pushable/lib/ember-pushable.js');
+
 //~ For the moment, ember-18n requires full version of handlebars.
 //~ This is being removed, see https://github.com/jamesarosen/ember-i18n/pull/114
 app.import({

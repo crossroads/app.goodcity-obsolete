@@ -22,6 +22,7 @@ module.exports = function(environment) {
       CLOUD_URL: 'https://api.cloudinary.com/v1_1/ddoadcjjl/auto/upload',
       IMAGE_PATH: 'http://res.cloudinary.com/ddoadcjjl/image/upload/',
       HK_COUNTRY_CODE: '+852',
+      PUSHER_API_KEY: 'ef16f3c0f3a2f14f5498',
       // RESTAdapter Settings
       NAMESPACE: 'api/v1',
     }

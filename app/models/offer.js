@@ -14,7 +14,7 @@ export default DS.Model.extend({
   createdById:              attr('number'),
   createdAt:                attr('date'),
   updatedAt:                attr('date'),
-  submittedAt:              attr('string'),
+  submittedAt:              attr('date'),
   items:                    hasMany('item'),
   messages:                 hasMany('message'),
 
