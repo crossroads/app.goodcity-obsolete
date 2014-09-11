@@ -18,7 +18,7 @@ export default Ember.ArrayController.extend(EmberPusher.Bindings, {
   actions: {
     submitOffer: function(data){
       this.store.pushPayload(data);
-      this.get('content').pushObject(data['offer']);
+      // this.get('model').pushObject(data['offer']);
     }
   }
 
