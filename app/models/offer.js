@@ -15,6 +15,7 @@ export default DS.Model.extend({
   createdAt:                attr('date'),
   updatedAt:                attr('date'),
   submittedAt:              attr('date'),
+  state_event:              attr('string'),
   items:                    hasMany('item'),
   messages:                 hasMany('message'),
 
