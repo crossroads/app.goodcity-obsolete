@@ -17,7 +17,8 @@
     "ember-i18n": "~2.0.0",
     "ember-data-factory-guy": "*",
     "moment": "~2.8.2",
-    "ember-data": "~0.0.14"
+    "ember-data": "~0.0.14",
+    "pusher": "~2.2.3"
   },
   "devDependencies": {
     "qunit-notifications": "~0.0.2",

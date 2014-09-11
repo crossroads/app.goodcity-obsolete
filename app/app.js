@@ -6,7 +6,8 @@ import loadInitializers from 'ember/load-initializers';
 
 var App = Ember.Application.extend({
   modulePrefix: 'goodcity', // TODO: loaded via config
-  Resolver: Resolver
+  Resolver: Resolver,
+  PUSHER_OPTS: { key: GoodcityENV.APP.PUSHER_API_KEY, connection: {}, logAllEvents: true }
 });
 
 loadInitializers(App, 'goodcity');
