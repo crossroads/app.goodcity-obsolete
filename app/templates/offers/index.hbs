@@ -10,14 +10,15 @@
       Offer_id: {{ id }}
       <br/>
       {{t offers.index.total_items itemCountBinding=itemCount}}
-      <br/>
-
       {{#if this.isDraft }}
         {{#link-to 'offer' this}}{{t offers.index.complete_offer}}{{/link-to}}
-      {{else}}
+      {{/if}}
+      {{#if this.isScheduled }}
+        {{#link-to 'delivery.donation_details' this delivery}}{{t offer.details}}{{/link-to}}
+      {{/if}}
+      {{#if this.isSubmitted}}
         {{#link-to 'offer.review_status' this}}{{t offers.index.see_more}}{{/link-to}}
       {{/if}}
-
     </li>
     <br/>
   {{/each}}

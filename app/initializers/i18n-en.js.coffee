@@ -104,6 +104,7 @@ I18nTranslationsEn =
           "complete_offer" : "Complete this Offer"
 
       "offer":
+        "details" : "Offer details"
         "no_items" : "You don't have any items in this offer yet. Please add your first item!",
         "confirm":
           "heading" : "Confirm"

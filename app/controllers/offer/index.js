@@ -2,10 +2,6 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 
-  isDraft: function(){
-    return this.get('state') === 'draft';
-  }.property('state'),
-
   itemsById: function() {
     return this.get('items').sortBy('id');
   }.property('items.[]'),

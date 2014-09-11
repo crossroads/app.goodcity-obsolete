@@ -100,6 +100,7 @@ I18nTranslationsZhTw =
           "complete_offer" : "Complete this Offer"
 
       "offer":
+        "details" : "优惠详情"
         "no_items" : "您不必在此優惠的任何物品呢。請添加您的第一個項目!"
         "confirm":
           "heading" : "確認"
