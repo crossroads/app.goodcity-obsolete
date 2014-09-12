@@ -5,11 +5,15 @@ var attr = DS.attr,
 
 export default DS.Model.extend({
   body: attr('string'),
-  recipientType: attr('string'),
+  createdAt: attr('date'),
+  isPrivate: attr('boolean'),
+  itemId: attr('number'),
+  offerId: attr('number'),
   recipientId: attr('number'),
   senderId: attr('number'),
-  private: attr('boolean'),
-  createdAt: attr('date'),
+  state: attr('string'),
   updatedAt: attr('date'),
-  sender: belongsTo('sender')
+
+  sender: belongsTo('sender'),
+  recipient: belongsTo('recipient')
 });
