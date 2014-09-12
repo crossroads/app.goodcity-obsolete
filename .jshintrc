@@ -4,7 +4,8 @@
     "window": true,
     "GoodcityENV": true,
     "CLDR": true,
-    "moment" : true
+    "moment" : true,
+    "EmberPusher" : true
   },
   "browser" : true,
   "boss" : true,

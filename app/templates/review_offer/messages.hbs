@@ -1,0 +1,10 @@
+<h3>Messages</h3>
+
+{{#each}}
+  {{body}}<br/> <br/>
+{{/each}}
+
+{{textarea type='text' value=body name="body" rows=10 cols=20 }}
+
+<br/>
+<button {{action "sendMassage"}}>Send</button>

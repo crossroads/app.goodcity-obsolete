@@ -203,3 +203,7 @@ ul.radio-ul li p{
   font-size: 23px;
 }
 /*---End----*/
+
+.inbox_offers a {
+  color: black;
+}

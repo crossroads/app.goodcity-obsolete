@@ -36,6 +36,10 @@ Router.map(function() {
           this.route('edit_images');
         });
       });
+
+      this.resource('review_offer', function(){
+        this.route('messages');
+      });
     });
   });
 
