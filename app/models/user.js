@@ -4,7 +4,7 @@ import Addressable from './addressable';
 var attr = DS.attr,
   hasMany = DS.hasMany;
 
-export default Addressable.extend({
+var User = Addressable.extend({
   firstName:   attr('string'),
   lastName:    attr('string'),
   mobile:      attr('string'),
@@ -27,3 +27,5 @@ export default Addressable.extend({
     return this.get('firstName').charAt(0).capitalize();
   }.property('firstName'),
 });
+
+export default User;
