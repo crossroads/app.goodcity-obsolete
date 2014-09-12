@@ -29,7 +29,7 @@ export default Ember.Controller.extend({
             localStorage.jwt = data.jwt_token;
 
             Ember.run(function(){
-              route.get('controllers.application').send('logMeIn');
+              route.get('controllers.application').send('logMeIn', data.user_id);
             });
 
             window.Goodcity.set('authToken', localStorage.jwt);
