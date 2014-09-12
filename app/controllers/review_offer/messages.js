@@ -3,6 +3,9 @@ import Ember from 'ember';
 export default Ember.ArrayController.extend({
 
   needs: ["offer"],
+  content: [],
+  sortProperties: ['createdAt'],
+  sortAscending: true,
 
   actions: {
     sendMassage: function() {

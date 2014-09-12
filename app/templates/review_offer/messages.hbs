@@ -4,25 +4,14 @@
   <div class='message_box'>
   <div class='message_details'>
     {{t inbox.full_name firstNameBinding=this.sender.firstName lastNameBinding=this.sender.lastName}}
-
-    {{#if this.sender.isReviewer}}
-      (v)
-    {{else}}
-      (d)
-    {{/if}}
+    {{this.sender.roleSign}}
 
     →
 
     {{t inbox.full_name firstNameBinding=this.recipient.firstName lastNameBinding=this.recipient.lastName}}
-
-    {{#if this.recipient.isReviewer}}
-      (v)
-    {{else}}
-      (d)
-    {{/if}}
+    {{this.recipient.roleSign}}
 
     <br/>
-
     {{display-timeago this.createdAt}}
   </div>
 

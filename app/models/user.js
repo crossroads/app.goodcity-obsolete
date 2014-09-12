@@ -26,6 +26,10 @@ var User = Addressable.extend({
   nameInitial: function(){
     return this.get('firstName').charAt(0).capitalize();
   }.property('firstName'),
+
+  roleSign: function(){
+    return this.get('isReviewer') ? "(v)" : "(d)";
+  }.property()
 });
 
 export default User;
