@@ -9,8 +9,8 @@ export default AuthorizeRoute.extend({
   },
 
   model: function() {
-    this.store.find('offer', {state: 'submitted'});
-    return this.store.all('offer');
-    // return this.store.find('offer', {state: 'submitted'});
+    return this.store.filter('offer', {state: 'submitted'}, function(offer) {
+        return offer.get('state') == 'submitted';
+    });
   }
 });
