@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.ObjectController.extend({
+export default Ember.ObjectController.extend(EmberPusher.Bindings, {
 
   isReviewer: function(key, value) {
     if(arguments.length > 1) {
@@ -24,6 +24,10 @@ export default Ember.ObjectController.extend({
     return Ember.I18n.translations.language;
   }.property(),
 
+  unreadMessage: function() {
+    return this.store.all('message').get('firstObject');
+  }.property(),
+
   actions: {
     logMeOut: function(){
       delete localStorage.jwt;
@@ -35,6 +39,18 @@ export default Ember.ObjectController.extend({
     logMeIn: function(user_id){
       this.set("isLoggedIn", true);
       this.set("currentUserId", user_id);
+    },
+    message: function(data){
+      this.store.pushPayload(data);
     }
+  },
+
+  init: function(data){
+    var subscription = {};
+    if(localStorage.currentUserId !== undefined){
+      subscription["user_" + localStorage.currentUserId] = ['data'];
+      this.PUSHER_SUBSCRIPTIONS = subscription;
+    }
+    this._super();
   }
 });
