@@ -11,11 +11,6 @@ export default DS.Model.extend({
   updatedAt:   attr('date'),
   state:       attr('string'),
 
-  // senderId:    attr('number'),
-  // itemId:      attr('number'),
-  // offerId:     attr('number'),
-  // recipientId: attr('number'),
-
   sender:      belongsTo('user'),
   recipient:   belongsTo('user'),
   item:        belongsTo('item'),
