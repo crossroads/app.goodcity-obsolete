@@ -51,9 +51,7 @@ Router.map(function() {
   this.route('territories');
   this.route('districts');
 
-  this.resource('messages', function(){
-    this.route('unread');
-  });
+  this.route('messages');
 
   this.route('inbox');
 });

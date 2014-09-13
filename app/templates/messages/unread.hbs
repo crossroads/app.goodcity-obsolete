@@ -1,7 +1,6 @@
 <ul>
-  Messages
-  {{#each message}}
-    <li>id: {{id}}</li>
-    <li>{{body}}</li>
-  {{/each}}
+ {{t messages.unread unreadCountBinding=unread.length}}
+ <div>
+   {{t messages.message_text messageTextBinding=unreadFirst.body}}
+ </div>
 </ul>

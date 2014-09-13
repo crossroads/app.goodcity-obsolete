@@ -24,10 +24,6 @@ export default Ember.ObjectController.extend(EmberPusher.Bindings, {
     return Ember.I18n.translations.language;
   }.property(),
 
-  unreadMessage: function() {
-    return this.store.all('message').get('firstObject');
-  }.property(),
-
   actions: {
     logMeOut: function(){
       delete localStorage.jwt;
@@ -45,10 +41,10 @@ export default Ember.ObjectController.extend(EmberPusher.Bindings, {
     }
   },
 
-  init: function(data){
+  init: function() {
     var subscription = {};
     if(localStorage.currentUserId !== undefined){
-      subscription["user_" + localStorage.currentUserId] = ['data'];
+      subscription["user_" + localStorage.currentUserId] = ['message'];
       this.PUSHER_SUBSCRIPTIONS = subscription;
     }
     this._super();

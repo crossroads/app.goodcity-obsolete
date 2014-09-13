@@ -14,6 +14,6 @@
     {{#link-to 'register'}}{{t application.register}}{{/link-to}}
   {{/if}}
 </div>
-{{render "messages/unread" "message"}}
-{{outlet}}
 
+{{outlet}}
+{{outlet unreadMessages}}
