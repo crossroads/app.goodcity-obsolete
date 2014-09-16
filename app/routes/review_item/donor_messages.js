@@ -5,7 +5,7 @@ export default AuthorizeRoute.extend({
     this.render('message_template', {controller: 'review_item.donor_messages'});
   },
 
-  model: function(args) {
+  model: function() {
     var itemId = this.modelFor('reviewItem').get('id');
 
     return this.store.filter('message', function(message) {

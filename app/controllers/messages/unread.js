@@ -1,8 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
-  sortProperties: ['id'],
-  sortAscending: false,
 
   content: function() {
     this.store.find('message');
@@ -13,7 +11,10 @@ export default Ember.ArrayController.extend({
     return this.get('content').filterBy('state', 'unread');
   }.property('content.[]'),
 
+  unreadSortingDesc:  ['id:desc'],
+  unreadSorted: Ember.computed.sort('unread', 'unreadSortingDesc'),
+
   unreadFirst: function() {
-    return this.get('content').filterBy('state', 'unread')[0] || null;
+    return this.get('unreadSorted')[0] || null;
   }.property('content.[]')
 });
