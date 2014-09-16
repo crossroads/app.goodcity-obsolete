@@ -167,6 +167,10 @@ I18nTranslationsEn =
         "new_items" : "New Items"
         "full_name" : "{{firstName}} {{lastName}}"
 
+      "messages":
+        "unread" : "Unread ({{unreadCount}})"
+        "message_text" : "Message: {{messageText}}"
+
       # Components
       "upload-images":
         "angles" : "Got all the angles of this item?"

@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.ObjectController.extend({
+export default Ember.ObjectController.extend(EmberPusher.Bindings, {
 
   isReviewer: function(key, value) {
     if(arguments.length > 1) {
@@ -35,6 +35,18 @@ export default Ember.ObjectController.extend({
     logMeIn: function(user_id){
       this.set("isLoggedIn", true);
       this.set("currentUserId", user_id);
+    },
+    message: function(data){
+      this.store.pushPayload(data);
     }
+  },
+
+  init: function() {
+    var subscription = {};
+    if(localStorage.currentUserId !== undefined){
+      subscription["user_" + localStorage.currentUserId] = ['message'];
+      this.PUSHER_SUBSCRIPTIONS = subscription;
+    }
+    this._super();
   }
 });
