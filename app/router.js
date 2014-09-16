@@ -40,6 +40,7 @@ Router.map(function() {
       this.resource('review_offer', function(){
         this.route('items');
         this.route('messages');
+        this.route('supervisor_messages');
       });
 
       this.resource('review_item', {path: '/review_item/:item_id'},function() {

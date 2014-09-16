@@ -8,7 +8,7 @@ export default Ember.ArrayController.extend({
   sortAscending: true,
   offerMessage: true,
 
-  filteredContent: Ember.computed.filterBy('arrangedContent', 'isPrivate', false),
+  filteredContent: Ember.computed.filterBy('arrangedContent', 'isPrivate'),
 
   actions: {
     sendMessage: function() {
@@ -17,8 +17,7 @@ export default Ember.ArrayController.extend({
 
       var newMessageProperties = this.getProperties('body');
       newMessageProperties.offer = offer;
-      newMessageProperties.recipient = offer.get('user');
-      newMessageProperties.isPrivate = false;
+      newMessageProperties.isPrivate = true;
       newMessageProperties.createdAt = Date.now();
 
       this.set('body', '');
