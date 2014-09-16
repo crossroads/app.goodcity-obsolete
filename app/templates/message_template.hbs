@@ -1,0 +1,32 @@
+{{#each}}
+  <div class='message_box' {{bind-attr id=this.id}}>
+    <div class='message_details'>
+      {{t inbox.full_name firstNameBinding=this.sender.firstName lastNameBinding=this.sender.lastName}}
+      {{this.sender.roleSign}}
+
+      →
+
+      {{t inbox.full_name firstNameBinding=this.recipient.firstName lastNameBinding=this.recipient.lastName}}
+      {{this.recipient.roleSign}}
+
+      <br/>
+      {{display-timeago this.createdAt}}
+
+      {{#if controller.itemMessage}}
+        <a href="#/" {{action showMessage this}}>see here</a>
+      {{/if}}
+
+    </div>
+
+  <br/>
+
+  {{#if controller.offerMessage}}
+    {{body}}<br/> <br/>
+  {{/if}}
+  </div>
+{{/each}}
+
+{{textarea type='text' value=body name="body" rows=5 cols=20 }}
+
+<br/>
+<button {{action "sendMassage"}}>Send</button>
