@@ -18,6 +18,7 @@ Router.map(function() {
       this.route('confirm');
       this.route('submit');
       this.route('review_status');
+      this.route('messages');
       this.route('plan_delivery');
 
       this.resource('delivery', { path: '/delivery/:delivery_id'}, function(){

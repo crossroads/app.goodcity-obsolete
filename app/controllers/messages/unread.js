@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.ArrayController.extend({
 
   sortProperties: ['createdAt'],
-  sortAscending: true,
+  sortAscending: false,
 
   content: function() {
     return this.store.filter('message', {state: 'unread'}, function(message) {
@@ -18,13 +18,8 @@ export default Ember.ArrayController.extend({
   }.property('content.[]'),
 
   actions: {
-    sendMessage: function(){
-      return;
+    reply: function(id, offerId){
+      this.transitionToRoute("/offers/" + offerId + "/messages");
+      }
     }
-  }
-
 });
-
-
-
-
