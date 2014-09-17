@@ -17,16 +17,13 @@ export default Ember.ArrayController.extend({
 
       var newMessageProperties = this.getProperties('body');
       newMessageProperties.offer = offer;
-      newMessageProperties.recipient = offer.get('user');
       newMessageProperties.isPrivate = false;
       newMessageProperties.createdAt = Date.now();
 
       this.set('body', '');
 
       var message = this.store.createRecord('message', newMessageProperties);
-      message.save().then( function() {
-        message.reload(); // a bug in ember-data requires us to reload the message or we get duplicate messages in the store.
-      });
+      message.save();
     }
   }
 

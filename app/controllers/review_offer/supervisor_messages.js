@@ -23,9 +23,7 @@ export default Ember.ArrayController.extend({
       this.set('body', '');
 
       var message = this.store.createRecord('message', newMessageProperties);
-      message.save().then( function() {
-        message.reload(); // a bug in ember-data requires us to reload the message or we get duplicate messages in the store.
-      });
+      message.save();
     }
   }
 

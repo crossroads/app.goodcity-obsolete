@@ -2,22 +2,19 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
 
+  sortProperties: ['createdAt'],
+  sortAscending: true,
+
   content: function() {
-    this.store.find('message');
-    return this.store.all('message');
-  }.property(),
+    return this.store.filter('message', {state: 'unread'}, function(message) {
+      return message.get('state') === 'unread';
+    });
+  }.property('message.[]'),
 
-  unread: function() {
-    return this.get('content')
-    .filterBy('recipient.id', localStorage.currentUserId)
-    .filterBy('state', 'unread');
-  }.property('content.[]'),
-
-  unreadSortingDesc:  ['id:desc'],
-  unreadSorted: Ember.computed.sort('unread', 'unreadSortingDesc'),
+  unread: Ember.computed.filterBy('arrangedContent', 'recipient.id', localStorage.currentUserId),
 
   unreadFirst: function() {
-    return this.get('unreadSorted')[0] || null;
+    return this.get('unread')[0] || null;
   }.property('content.[]'),
 
   actions: {
@@ -25,4 +22,9 @@ export default Ember.ArrayController.extend({
       return;
     }
   }
+
 });
+
+
+
+

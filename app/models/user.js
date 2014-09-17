@@ -9,9 +9,10 @@ var User = Addressable.extend({
   lastName:    attr('string'),
   mobile:      attr('string'),
 
-  messages:    hasMany('message', {async: true}),
-  offers:      hasMany('offer'),
-  permissions: hasMany('permission'),
+  messages:      hasMany('message', { inverse: 'recipient', async: true } ),
+  sent_messages: hasMany('message', { inverse: 'sender', async: true } ),
+  offers:        hasMany('offer'),
+  permissions:   hasMany('permission'),
 
   isReviewer: function() {
     var roles = this.get('permissions');
