@@ -10,6 +10,7 @@ export default DS.Model.extend({
   addressType: attr('string'),
 
   district:   belongsTo('district'),
+
   addressable: belongsTo('addressable', {
     polymorphic: true
   })
