@@ -23,7 +23,14 @@ if(window.GoodcityENV.environment === "test") {
         "Authorization":  'Bearer ' + (window.Goodcity.get('authToken') || localStorage.jwt),
         "Accept-Language": Ember.I18n.translations.language
       };
-    }.property("Goodcity.authToken")
+    }.property("Goodcity.authToken"),
+
+    ajaxError: function(jqXHR){
+      if (jqXHR && jqXHR.status === 500) {
+        alert("Server Error. Please try again later.");
+      }
+      this._super(jqXHR);
+    }
   });
 }
 
