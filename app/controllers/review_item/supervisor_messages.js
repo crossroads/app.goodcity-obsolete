@@ -8,7 +8,7 @@ export default Ember.ArrayController.extend({
   sortAscending: true,
   itemMessage: true,
 
-  filteredContent: Ember.computed.filterBy('arrangedContent', 'isPrivate', false),
+  filteredContent: Ember.computed.filterBy('arrangedContent', 'isPrivate'),
 
   actions: {
     sendMessage: function() {
@@ -21,7 +21,7 @@ export default Ember.ArrayController.extend({
       var newMessageProperties = this.getProperties('body');
       newMessageProperties.offer = offer;
       newMessageProperties.item = item;
-      newMessageProperties.isPrivate = false;
+      newMessageProperties.isPrivate = true;
       newMessageProperties.createdAt = Date.now();
 
       this.set('body', '');
@@ -34,7 +34,7 @@ export default Ember.ArrayController.extend({
       var scrollTo = function() {
         window.setTimeout(function() { Ember.$('body').scrollTop(Ember.$("#"+message.get('id')).offset().top); }, 0);
       };
-      this.transitionToRoute('review_offer.messages').then(scrollTo);
+      this.transitionToRoute('review_offer.supervisor_messages').then(scrollTo);
     }
   }
 
