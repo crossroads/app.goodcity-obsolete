@@ -8,7 +8,9 @@ export default Ember.ArrayController.extend({
   }.property(),
 
   unread: function() {
-    return this.get('content').filterBy('state', 'unread');
+    return this.get('content')
+    .filterBy('recipient.id', localStorage.currentUserId)
+    .filterBy('state', 'unread');
   }.property('content.[]'),
 
   unreadSortingDesc:  ['id:desc'],
@@ -16,5 +18,11 @@ export default Ember.ArrayController.extend({
 
   unreadFirst: function() {
     return this.get('unreadSorted')[0] || null;
-  }.property('content.[]')
+  }.property('content.[]'),
+
+  actions: {
+    sendMessage: function(){
+      return;
+    }
+  }
 });

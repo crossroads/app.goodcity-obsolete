@@ -170,6 +170,7 @@ I18nTranslationsEn =
       "messages":
         "unread" : "Unread ({{unreadCount}})"
         "message_text" : "Message: {{messageText}}"
+        "reply": "Reply"
 
       # Components
       "upload-images":

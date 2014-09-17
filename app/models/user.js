@@ -9,7 +9,7 @@ var User = Addressable.extend({
   lastName:    attr('string'),
   mobile:      attr('string'),
 
-  messages:    hasMany('message'),
+  messages:    hasMany('message', {async: true}),
   offers:      hasMany('offer'),
   permissions: hasMany('permission'),
 
