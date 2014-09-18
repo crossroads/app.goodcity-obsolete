@@ -9,7 +9,7 @@ export default AuthorizeRoute.extend({
     var itemId = this.modelFor('reviewItem').get('id');
 
     return this.store.filter('message', {item_id: itemId}, function(message) {
-      return message.get('item.id') === itemId;
+      return message.get('itemId') === parseInt(itemId);
     });
   }
 

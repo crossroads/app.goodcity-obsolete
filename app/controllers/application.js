@@ -1,10 +1,8 @@
 import Ember from 'ember';
 
-export default Ember.ObjectController.extend(EmberPusher.Bindings, {
+export default Ember.ObjectController.extend({
 
-  pusherChannelName: function(key, value){
-    return (arguments.length > 1 ? value : '');
-  }.property(),
+  needs: ['subscriptions'],
 
   isReviewer: function(key, value) {
     if(arguments.length > 1) {
@@ -34,27 +32,18 @@ export default Ember.ObjectController.extend(EmberPusher.Bindings, {
       delete localStorage.step1_token;
       delete localStorage.currentUserId;
       this.set("isLoggedIn", false);
+      this.get('controllers.subscriptions').send('unwire');
       window.Goodcity.reset();
-      this.pusher.unwire(this, this.get("pusherChannelName"));
     },
     logMeIn: function(user_id){
       this.set("isLoggedIn", true);
       this.set("currentUserId", user_id);
-      this.set("pusherChannelName", "user_" + localStorage.currentUserId);
-      this.pusher.wire(this, this.get("pusherChannelName"), ['message']);
-    },
-    message: function(data){
-      this.store.pushPayload(data);
+      this.get('controllers.subscriptions').send('wire');
     }
   },
 
   init: function() {
-    var subscription = {};
-    if(localStorage.currentUserId !== undefined){
-      this.set("pusherChannelName", "user_" + localStorage.currentUserId);
-      subscription[this.get("pusherChannelName")] = ['message'];
-      this.PUSHER_SUBSCRIPTIONS = subscription;
-    }
+    this.get('controllers.subscriptions').init();
     this._super();
   }
 });
