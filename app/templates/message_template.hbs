@@ -2,13 +2,13 @@
   <div class='message_box' {{bind-attr id=this.id}}>
     <div class='message_details'>
       {{t inbox.full_name firstNameBinding=this.sender.firstName lastNameBinding=this.sender.lastName}}
-      {{this.sender.roleSign}}
+      {{this.sender.roleInitials}}
 
       {{#if this.recipient}}
         →
 
         {{t inbox.full_name firstNameBinding=this.recipient.firstName lastNameBinding=this.recipient.lastName}}
-        {{this.recipient.roleSign}}
+        {{this.recipient.roleInitials}}
       {{/if}}
 
       <br/>

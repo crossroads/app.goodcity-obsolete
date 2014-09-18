@@ -1,8 +1,10 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 import Addressable from './addressable';
 
 var attr = DS.attr,
-  hasMany = DS.hasMany;
+  hasMany = DS.hasMany,
+  belongsTo = DS.belongsTo;
 
 var User = Addressable.extend({
   firstName:   attr('string'),
@@ -12,13 +14,7 @@ var User = Addressable.extend({
   messages:      hasMany('message', { inverse: 'recipient', async: true } ),
   sent_messages: hasMany('message', { inverse: 'sender', async: true } ),
   offers:        hasMany('offer'),
-  permissions:   hasMany('permission'),
-
-  isReviewer: function() {
-    var roles = this.get('permissions');
-    var reviewer = roles.filterBy('name', 'Reviewer');
-    return reviewer.length === 0 ? false : true;
-  }.property(),
+  permission:   belongsTo('permission'),
 
   image: function(){
     return false; //"assets/images/default_item.jpg";
@@ -28,9 +24,11 @@ var User = Addressable.extend({
     return this.get('firstName').charAt(0).capitalize();
   }.property('firstName'),
 
-  roleSign: function(){
-    return this.get('isReviewer') ? "(v)" : "(d)";
+  roleInitials: function(){
+    var _this = this.get('permission');
+    return Ember.empty(_this) ? "(D)" : "("+ _this.get("name").capitalize().charAt(0) +")";
   }.property()
+
 });
 
 export default User;
