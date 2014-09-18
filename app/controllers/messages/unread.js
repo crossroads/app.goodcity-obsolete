@@ -19,7 +19,8 @@ export default Ember.ArrayController.extend({
 
   actions: {
     reply: function(id, offerId){
-      this.transitionToRoute("/offers/" + offerId + "/messages");
+      var offer = this.store.getById('offer', offerId);
+      this.transitionToRoute("offer.messages", offer);
       }
     }
 });
