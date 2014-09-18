@@ -16,6 +16,11 @@ var User = Addressable.extend({
   offers:        hasMany('offer'),
   permission:   belongsTo('permission'),
 
+  isReviewer: function(){
+    var _this = this.get('permission');
+    return Ember.empty(_this) ? false : true;
+  }.property(),
+
   image: function(){
     return false; //"assets/images/default_item.jpg";
   }.property(),
