@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.ArrayController.extend(EmberPusher.Bindings,{
+export default Ember.ArrayController.extend({
 
   needs: ["offer", "review_item"],
   content: [],
@@ -9,10 +9,6 @@ export default Ember.ArrayController.extend(EmberPusher.Bindings,{
   itemMessage: true,
 
   filteredContent: Ember.computed.filterBy('arrangedContent', 'isPrivate'),
-
-  PUSHER_SUBSCRIPTIONS: {
-    supervisors: ['notify_message']
-  },
 
   actions: {
     sendMessage: function() {
@@ -40,10 +36,6 @@ export default Ember.ArrayController.extend(EmberPusher.Bindings,{
       };
       this.transitionToRoute('review_offer.supervisor_messages').then(scrollTo);
     },
-
-    notifyMessage: function(data){
-      this.store.pushPayload(data);
-    }
   }
 
 });

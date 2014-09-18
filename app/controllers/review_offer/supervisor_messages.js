@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.ArrayController.extend(EmberPusher.Bindings,{
+export default Ember.ArrayController.extend({
 
   needs: ["offer"],
   content: [],
@@ -9,10 +9,6 @@ export default Ember.ArrayController.extend(EmberPusher.Bindings,{
   offerMessage: true,
 
   filteredContent: Ember.computed.filterBy('arrangedContent', 'isPrivate'),
-
-  PUSHER_SUBSCRIPTIONS: {
-    supervisors: ['notify_message']
-  },
 
   actions: {
     sendMessage: function() {
@@ -27,11 +23,9 @@ export default Ember.ArrayController.extend(EmberPusher.Bindings,{
       this.set('body', '');
 
       var message = this.store.createRecord('message', newMessageProperties);
-      message.save();
-    },
-
-    notifyMessage: function(data){
-      this.store.pushPayload(data);
+      message.save().then(function(message){
+        message.reload();
+      });
     }
   }
 

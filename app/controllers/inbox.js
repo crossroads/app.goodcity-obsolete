@@ -1,18 +1,7 @@
 import Ember from 'ember';
 
-export default Ember.ArrayController.extend(EmberPusher.Bindings, {
+export default Ember.ArrayController.extend({
   content: [],
   sortProperties: ['submittedAt'],
   sortAscending: false,
-
-  PUSHER_SUBSCRIPTIONS: {
-    reviewer: ['submit_offer']
-  },
-
-  actions: {
-    submitOffer: function(data){
-      this.store.pushPayload(data);
-    }
-  }
-
 });
