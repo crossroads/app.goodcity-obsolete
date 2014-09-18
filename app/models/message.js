@@ -14,6 +14,7 @@ export default DS.Model.extend({
   sender:      belongsTo('user', { inverse: 'sent_messages' }),
   recipient:   belongsTo('user', { inverse: 'messages' } ),
   item:        belongsTo('item'),
+  itemId:      attr('number'),
   offer:       belongsTo('offer'),
   offerId:     attr('number')
 });
