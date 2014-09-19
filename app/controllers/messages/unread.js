@@ -18,9 +18,23 @@ export default Ember.ArrayController.extend({
   }.property('content.[]'),
 
   actions: {
-    reply: function(id, offerId){
+    reply: function(id, offerId) {
       var offer = this.store.getById('offer', offerId);
       this.transitionToRoute("offer.messages", offer);
+    },
+
+    viewUnread: function() {
+      var uniqueOfferIds = this.get('unread')
+        .map(function(item) { return item.get('offerId'); })
+        .uniq();
+
+      if (uniqueOfferIds.length > 1) {
+        this.transitionToRoute("offers.index");
+      }
+      else if (uniqueOfferIds.length == 1) {
+        var offer = this.store.getById('offer', this.get('unreadFirst.offerId'));
+        this.transitionToRoute("offer.messages", offer);
       }
     }
+  }
 });
