@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
 
-  sortProperties: ['createdAt'],
+  sortProperties: ['id'],
   sortAscending: false,
 
   content: function() {
@@ -15,7 +15,7 @@ export default Ember.ArrayController.extend({
 
   unreadFirst: function() {
     return this.get('unread')[0] || null;
-  }.property('content.[]'),
+  }.property('arrangedContent.[]'),
 
   actions: {
     reply: function(id, offerId) {
@@ -24,15 +24,13 @@ export default Ember.ArrayController.extend({
     },
 
     viewUnread: function() {
-      var uniqueOfferIds = this.get('unread')
-        .map(function(item) { return item.get('offerId'); })
-        .uniq();
+      var uniqueOfferIds = this.get('unread').mapBy('offerId').uniq();
 
       if (uniqueOfferIds.length > 1) {
         this.transitionToRoute("offers.index");
       }
-      else if (uniqueOfferIds.length == 1) {
-        var offer = this.store.getById('offer', this.get('unreadFirst.offerId'));
+      else{
+        var offer = this.store.getById('offer', uniqueOfferIds.get('firstObject'));
         this.transitionToRoute("offer.messages", offer);
       }
     }
