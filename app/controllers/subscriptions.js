@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend(EmberPusher.Bindings, {
-
   currentUserId: function() {
     return localStorage.currentUserId;
   }.property().volatile(),

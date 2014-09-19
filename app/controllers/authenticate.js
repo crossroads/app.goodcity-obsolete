@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-   needs: ['application'],
+   needs: ['application', 'authorize'],
 
    actions: {
 
@@ -34,6 +34,8 @@ export default Ember.Controller.extend({
             });
 
             route.store.find('user', data.user_id).then( function(user){
+              route.get('controllers.authorize').send('setPermissions', user);
+
               // After login, redirect user to requested url
               if (attemptedTransition) {
                 attemptedTransition.retry();

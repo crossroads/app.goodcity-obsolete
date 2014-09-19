@@ -4,36 +4,36 @@ export default Ember.Controller.extend({
 
   isDonor: function(key, value) {
     if (arguments.length > 1) {
-      var permissions_object = JSON.parse(localStorage.permissions ? localStorage.permissions : "{}");
-      permissions_object[key] = value;
-      localStorage.permissions = JSON.stringify(permissions_object);
+      this.send('setPermissionValue', key, value);
     }
     return JSON.parse(localStorage.permissions)['isDonor'];
   }.property(),
 
   isReviewer: function(key, value) {
-    var permissions_object = JSON.parse(localStorage.permissions);
     if (arguments.length > 1) {
-      permissions_object['isReviewer'] = value;
-      localStorage.permissions = permissions_object;
+      this.send('setPermissionValue', key, value);
     }
-    return permissions_object['isReviewer'];
+    return JSON.parse(localStorage.permissions)['isReviewer'];
   }.property(),
 
   isSupervisor: function(key, value) {
-    var permissions_object = JSON.parse(localStorage.permissions);
     if (arguments.length > 1) {
-      permissions_object['isSupervisor'] = value;
-      localStorage.permissions = permissions_object;
+      this.send('setPermissionValue', key, value);
     }
-    return permissions_object['isSupervisor'];
+    return JSON.parse(localStorage.permissions)['isSupervisor'];
   }.property(),
 
    actions: {
-     setPermissions: function(user) {
-       this.set('isDonor', user.get('isDonor'));
-       this.set('isReviewer', user.get('isReviewer'));
-       this.set('isSupervisor', user.get('isSupervisor'));
-     }
-   }
+    setPermissions: function(user) {
+      this.set('isDonor', user.get('isDonor'));
+      this.set('isReviewer', user.get('isReviewer'));
+      this.set('isSupervisor', user.get('isSupervisor'));
+    },
+
+    setPermissionValue: function(key, value){
+      var permissions_object = JSON.parse(localStorage.permissions ? localStorage.permissions : "{}");
+      permissions_object[key] = value;
+      localStorage.permissions = JSON.stringify(permissions_object);
+    }
+  }
 });
