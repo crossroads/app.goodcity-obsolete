@@ -14,7 +14,7 @@ var User = Addressable.extend({
   messages:      hasMany('message', { inverse: 'recipient', async: true } ),
   sent_messages: hasMany('message', { inverse: 'sender', async: true } ),
   offers:        hasMany('offer'),
-  permission:   belongsTo('permission'),
+  permission:    belongsTo('permission'),
 
   image: function(){
     return false; //"assets/images/default_item.jpg";
@@ -25,9 +25,36 @@ var User = Addressable.extend({
   }.property('firstName'),
 
   roleInitials: function(){
-    var _this = this.get('permission');
-    return Ember.empty(_this) ? "(D)" : "("+ _this.get("name").capitalize().charAt(0) +")";
-  }.property()
+    return this.get('isDonor') ? "(D)" : "("+ this.get("permission.name").capitalize().charAt(0) +")";
+  }.property('permission'),
+
+  isDonor: function(){
+    var permission = this.get('permission');
+    return Ember.empty(permission);
+  }.property('permission'),
+
+  isReviewer: function(){
+    var permission_name = this.get('permission.name');
+    return permission_name === "Reviewer";
+  }.property('permission'),
+
+  isSupervisor: function(){
+    var permission_name = this.get('permission.name');
+    return permission_name === "Supervisor";
+  }.property('permission'),
+
+  subscriptions: function() {
+    var channels = {};
+    if(this.get('isDonor')) {
+      var userChannelName = "user_" + this.get('id');
+      channels[userChannelName] = ['message'];
+    }
+    if((this.get('isReviewer')) || (this.get('isSupervisor'))) {
+      channels['reviewer'] = ['message'];
+      channels['supervisor'] = ['message'];
+    }
+    return channels;
+  }.property('permission'),
 
 });
 

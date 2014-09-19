@@ -6,45 +6,32 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
     return (arguments.length > 1 ? value : '');
   }.property(),
 
+  currentUserId: function() {
+    return localStorage.currentUserId;
+  }.property().volatile(),
+
   actions: {
 
-    setupSubscriptions: function() {
-      var subscription = {};
-      if(localStorage.currentUserId !== undefined){
-        // User Channel
-        this.set("pusherChannelName", "user_" + localStorage.currentUserId);
-        subscription[this.get("pusherChannelName")] = ['message'];
-
-        // Reviewer Channel
-        subscription["reviewer"] = ['message'];
-
-        // Subscriber Channel
-        subscription["supervisors"] = ['message'];
-
-        // Assign subscription channels
-        this.PUSHER_SUBSCRIPTIONS = subscription;
+    wire: function() {
+      var userId = this.get('currentUserId');
+      var channels = {}, channel, controller = this;
+      if(userId) {
+        return this.store.find('user', this.get('currentUserId')).then( function(user) {
+          var channels = user.get('subscriptions');
+          for(channel in channels){
+            controller.pusher.wire(controller, channel, channels[channel]);
+          }
+        });
       }
     },
 
-    wire: function() {
-      this.set("pusherChannelName", "user_" + localStorage.currentUserId);
-      this.pusher.wire(this, this.get("pusherChannelName"), ['message']);
-
-      // connect to reviewer channel
-      this.pusher.wire(this, "reviewer", ['message']);
-
-      // connect to superviser channel
-      this.pusher.wire(this, "supervisors", ['message']);
-    },
-
     unwire: function() {
-      this.pusher.unwire(this, this.get("pusherChannelName"));
-
-      // disconnect reviewer channel
-      this.pusher.unwire(this, "reviewer");
-
-      // disconnect supervisors channel
-      this.pusher.unwire(this, "supervisors");
+      var channels = {}, channel, controller = this;
+      var user = this.store.getById('user', this.get('currentUserId'))
+      var channels = user.get('subscriptions');
+      for(channel in channels){
+        controller.pusher.unwire(controller, channel, channels[channel]);
+      }
     },
 
     // each action below is an event in a channel
@@ -55,8 +42,8 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
   },
 
   init: function() {
-    this.send('setupSubscriptions');
     this._super();
+    this.send('wire');
   }
 
 });

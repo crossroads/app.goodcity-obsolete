@@ -34,22 +34,20 @@ export default Ember.Controller.extend({
 
             window.Goodcity.set('authToken', localStorage.jwt);
 
-            route.store.find('user', data.user_id).then(function(user){
+            route.store.find('user', data.user_id).then( function(user){
               // After login, redirect user to requested url
               if (attemptedTransition) {
                 attemptedTransition.retry();
                 route.set('attemptedTransition', null);
               } else {
-                var isReviewer = user.get('isReviewer');
-                route.get('controllers.application').set('isReviewer', isReviewer);
-
-                if(isReviewer){
+                if (user.get('isReviewer')) {
                   route.transitionToRoute('inbox');
                 } else {
                   route.transitionToRoute('offers');
                 }
               }
             });
+
           }
           route.setProperties({mobilePhone:null, pin: null});
         },

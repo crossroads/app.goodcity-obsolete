@@ -28,22 +28,26 @@ export default Ember.ObjectController.extend({
 
   actions: {
     logMeOut: function(){
+      this.get('controllers.subscriptions').send('unwire');
       delete localStorage.jwt;
       delete localStorage.step1_token;
       delete localStorage.currentUserId;
       this.set("isLoggedIn", false);
-      this.get('controllers.subscriptions').send('unwire');
       window.Goodcity.reset();
     },
-    logMeIn: function(user_id){
+    logMeIn: function(userId){
       this.set("isLoggedIn", true);
-      this.set("currentUserId", user_id);
+      this.set("currentUserId", userId);
+      this.send('setSubscriptions');
+    },
+    setSubscriptions: function() {
       this.get('controllers.subscriptions').send('wire');
     }
   },
 
   init: function() {
-    this.get('controllers.subscriptions').init();
+    this.send('setSubscriptions');
     this._super();
   }
+
 });
