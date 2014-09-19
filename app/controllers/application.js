@@ -33,6 +33,7 @@ export default Ember.ObjectController.extend({
       delete localStorage.jwt;
       delete localStorage.step1_token;
       delete localStorage.currentUserId;
+      this.set("currentUser", null);
       this.set("isLoggedIn", false);
       window.Goodcity.reset();
     },

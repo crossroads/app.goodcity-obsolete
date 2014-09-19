@@ -10,11 +10,11 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
 
     wire: function() {
       var userId = this.get('currentUserId');
-      var channels = {}, channel, controller = this;
+      var controller = this;
       if(userId) {
         return this.store.find('user', this.get('currentUserId')).then( function(user) {
           var channels = user.get('subscriptions');
-          for(channel in channels){
+          for(var channel in channels){
             controller.pusher.wire(controller, channel, channels[channel]);
           }
         });
@@ -22,10 +22,10 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
     },
 
     unwire: function() {
-      var channels = {}, channel, controller = this;
-      var user = this.store.getById('user', this.get('currentUserId'))
+      var controller = this;
+      var user = this.store.getById('user', this.get('currentUserId'));
       var channels = user.get('subscriptions');
-      for(channel in channels){
+      for(var channel in channels){
         controller.pusher.unwire(controller, channel, channels[channel]);
       }
     },

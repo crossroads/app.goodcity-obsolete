@@ -33,6 +33,11 @@ var User = Addressable.extend({
     return Ember.empty(permission);
   }.property('permission'),
 
+  isStaff: function(){
+    var permission = this.get('permission');
+    return !Ember.empty(permission);
+  }.property('permission'),
+
   isReviewer: function(){
     var permission_name = this.get('permission.name');
     return permission_name === "Reviewer";
