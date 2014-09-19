@@ -27,12 +27,11 @@ export default Ember.Controller.extend({
           else {
             delete localStorage.step1_token;
             localStorage.jwt = data.jwt_token;
+            window.Goodcity.set('authToken', localStorage.jwt);
 
             Ember.run(function(){
               route.get('controllers.application').send('logMeIn', data.user_id);
             });
-
-            window.Goodcity.set('authToken', localStorage.jwt);
 
             route.store.find('user', data.user_id).then( function(user){
               // After login, redirect user to requested url
@@ -40,10 +39,10 @@ export default Ember.Controller.extend({
                 attemptedTransition.retry();
                 route.set('attemptedTransition', null);
               } else {
-                if (user.get('isReviewer')) {
-                  route.transitionToRoute('inbox');
-                } else {
+                if (user.get('isDonor')) {
                   route.transitionToRoute('offers');
+                } else {
+                  route.transitionToRoute('inbox');
                 }
               }
             });

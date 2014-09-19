@@ -2,10 +2,6 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend(EmberPusher.Bindings, {
 
-  pusherChannelName: function(key, value){
-    return (arguments.length > 1 ? value : '');
-  }.property(),
-
   currentUserId: function() {
     return localStorage.currentUserId;
   }.property().volatile(),

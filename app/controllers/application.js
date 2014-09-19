@@ -4,11 +4,12 @@ export default Ember.ObjectController.extend({
 
   needs: ['subscriptions'],
 
-  isReviewer: function(key, value) {
-    if(arguments.length > 1) {
-      localStorage.isReviewer = value;
+  currentUser: function(key, value){
+    if (arguments.length > 1) {
+      return value;
+    } else {
+      return this.store.getById('user', this.get('currentUserId'));
     }
-    return localStorage.isReviewer === "true";
   }.property(),
 
   currentUserId: function(key, value) {

@@ -1,9 +1,9 @@
 <div>
   {{#link-to 'index'}}{{t application.home}}{{/link-to}} |
-  {{#if isReviewer}}
-    {{#link-to 'inbox'}}{{t inbox.title}}{{/link-to}} |
-  {{else}}
+  {{#if currentUser.isDonor}}
     {{#link-to 'offers'}}{{t application.all_offers}}{{/link-to}} |
+  {{else}}
+    {{#link-to 'inbox'}}{{t inbox.title}}{{/link-to}} |
   {{/if}}
 
   {{#link-to 'i18n'}}I18n examples{{/link-to}} |

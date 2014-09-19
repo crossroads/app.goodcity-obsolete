@@ -7,6 +7,16 @@ var AuthorizeRoute =  Ember.Route.extend({
     }
   },
 
+  afterModel: function(){
+    var route = this;
+    var currentUserId = route.controllerFor('application').get('currentUserId');
+    if(currentUserId) {
+      route.store.find('user', currentUserId).then(function(user){
+        route.controllerFor('application').set('currentUser', user);
+      });
+    }
+  }
+,
   redirectToLogin: function(transition) {
     alert('You must log in!');
     var loginController = this.controllerFor('login');
