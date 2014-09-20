@@ -4,31 +4,33 @@ var attr = DS.attr,
     belongsTo = DS.belongsTo;
 
 export default DS.Model.extend({
-  language:                 attr('string'),
-  state:                    attr('string', {defaultValue: 'draft'}),
-  origin:                   attr('string'),
-  stairs:                   attr('boolean'),
-  parking:                  attr('boolean'),
-  estimatedSize:            attr('string'),
-  notes:                    attr('string'),
-  createdById:              attr('number'),
-  createdAt:                attr('date'),
-  updatedAt:                attr('date'),
-  submittedAt:              attr('date'),
-  state_event:              attr('string'),
-  items:                    hasMany('item'),
-  messages:                 hasMany('message'),
-
-  // User details
-  userName:                 attr('string'),
-  userPhone:                attr('string'),
-  user:                     belongsTo('user'),
-  delivery:                 belongsTo('delivery'),
-  reviewedBy:               belongsTo('user'),
-  reviewedAt:               attr('date'),
+  language:       attr('string'),
+  state:          attr('string', {defaultValue: 'draft'}),
+  origin:         attr('string'),
+  stairs:         attr('boolean'),
+  parking:        attr('boolean'),
+  estimatedSize:  attr('string'),
+  notes:          attr('string'),
+  createdById:    attr('number'),
+  createdAt:      attr('date'),
+  updatedAt:      attr('date'),
+  submittedAt:    attr('date'),
+  state_event:    attr('string'),
+  reviewedAt:     attr('date'),
 
   // used for items of current-offer
-  saleable:                 attr('boolean'),
+  saleable:       attr('boolean'),
+
+  items:          hasMany('item'),
+  messages:       hasMany('message'),
+
+  delivery:       belongsTo('delivery'),
+  user:           belongsTo('user', { inverse: 'offers'}),
+  reviewedBy:     belongsTo('user', { inverse: 'reviewed_offers'}),
+
+  // User details
+  userName:       attr('string'),
+  userPhone:      attr('string'),
 
   itemCount: function() {
     return this.get("items.length");

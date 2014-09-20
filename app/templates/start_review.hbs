@@ -2,7 +2,6 @@
 {{#if offer.reviewedBy }}
   {{ t review_offer.review_started_by firstNameBinding=reviewer.firstName lastNameBinding=reviewer.lastName}}
   {{ display-timeago offer.reviewedAt}}
-  {{offer.reviewedAt}}
 {{ else }}
   <button {{action 'startReview'}}>Start Review</button>
 {{/if}}
