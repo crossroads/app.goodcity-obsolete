@@ -26,7 +26,7 @@ export default DS.Model.extend({
 
   delivery:       belongsTo('delivery'),
   user:           belongsTo('user', { inverse: 'offers'}),
-  reviewedBy:     belongsTo('user', { inverse: 'reviewed_offers'}),
+  reviewedBy:     belongsTo('user', { inverse: 'reviewedOffers'}),
 
   // User details
   userName:       attr('string'),

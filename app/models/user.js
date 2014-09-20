@@ -12,10 +12,10 @@ var User = Addressable.extend({
   mobile:      attr('string'),
 
   messages:      hasMany('message', { inverse: 'recipient', async: true } ),
-  sent_messages: hasMany('message', { inverse: 'sender', async: true } ),
+  sentMessages:  hasMany('message', { inverse: 'sender', async: true } ),
 
   offers:          hasMany('offer', { inverse: 'user', async: true }),
-  reviewed_offers: hasMany('offer', { inverse: 'reviewedBy', async: true }),
+  reviewedOffers:  hasMany('offer', { inverse: 'reviewedBy', async: true }),
 
   permission:    belongsTo('permission'),
 
