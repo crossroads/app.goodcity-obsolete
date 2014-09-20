@@ -15,8 +15,8 @@ var AuthorizeRoute =  Ember.Route.extend({
         route.controllerFor('application').set('currentUser', user);
       });
     }
-  }
-,
+  },
+
   redirectToLogin: function(transition) {
     alert('You must log in!');
     var loginController = this.controllerFor('login');
@@ -37,7 +37,7 @@ var AuthorizeRoute =  Ember.Route.extend({
         into: 'application',
         outlet: 'unreadMessageCount',
         controller: 'messages/unread'
-      })
+      });
     }
   },
 
