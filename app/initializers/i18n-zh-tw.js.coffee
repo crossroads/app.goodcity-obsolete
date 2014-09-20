@@ -25,6 +25,7 @@ I18nTranslationsZhTw =
       "index.title" : "十字路口基金會禮物"
       "index.donate_goods" : "捐出你的精品給需要的人"
       "index.how" : "它是如何工作的？"
+      "full_name" : "{{lastName}} {{firstName}}"
 
       "application":
         "home" : "首頁"
@@ -139,12 +140,14 @@ I18nTranslationsZhTw =
       "inbox":
         "title" : "Inbox"
         "new_items" : "New Items"
-        "full_name" : "{{lastName}} {{firstName}}"
 
       "_resend":
         "no_sms" : "沒有收到短信代碼?"
         "please_wait" : "請請等待5分鐘..."
         "resend" : "再次發送"
+
+      "review_offer":
+        "review_started_by" : "Started by {{lastName}} {{firstName}}"
 
       # The following are for the I18n example template and can be removed soon.
       'i18nexample.items.heading': '項'

@@ -24,6 +24,7 @@ I18nTranslationsEn =
       "index.title" : "Crossroads Foundation Presents"
       "index.donate_goods" : "Donate your quality goods to people in need"
       "index.how" : "How Does It Work?"
+      "full_name" : "{{firstName}} {{lastName}}"
 
       "application":
         "home" : "Home"
@@ -165,7 +166,6 @@ I18nTranslationsEn =
       "inbox":
         "title" : "Inbox"
         "new_items" : "New Items"
-        "full_name" : "{{firstName}} {{lastName}}"
 
       "messages":
         "unread" : "Unread ({{unreadCount}})"
@@ -184,6 +184,9 @@ I18nTranslationsEn =
       "i18nexample.item.title.other": "{{count}} items"
       "i18nexample.item.new.title": "New item"
       "i18nexample.i18n.pluralisation": "Pluralisation"
+
+      "review_offer":
+        "review_started_by" : "Started by {{firstName}} {{lastName}}"
 
     # this is how we set default language
     Ember.I18n.translations = Ember.I18n.translation_store.en

@@ -1,7 +1,7 @@
 {{#each filteredContent}}
   <div class='message_box' {{bind-attr id=this.id}}>
     <div class='message_details'>
-      {{t inbox.full_name firstNameBinding=this.sender.firstName lastNameBinding=this.sender.lastName}}
+      {{t full_name firstNameBinding=this.sender.firstName lastNameBinding=this.sender.lastName}}
       {{this.sender.roleInitials}}
       <br/>
       {{display-timeago this.createdAt}}

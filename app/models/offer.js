@@ -24,6 +24,8 @@ export default DS.Model.extend({
   userPhone:                attr('string'),
   user:                     belongsTo('user'),
   delivery:                 belongsTo('delivery'),
+  reviewedBy:               belongsTo('user'),
+  reviewedAt:               attr('date'),
 
   // used for items of current-offer
   saleable:                 attr('boolean'),
