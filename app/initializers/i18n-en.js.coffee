@@ -164,7 +164,7 @@ I18nTranslationsEn =
         "login" : "Login"
 
       "inbox":
-        "title" : "Inbox"
+        "title" : "New Donations"
         "new_items" : "New Items"
 
       "messages":

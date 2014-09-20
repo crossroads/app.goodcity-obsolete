@@ -61,7 +61,10 @@ Router.map(function() {
 
   this.route('messages');
 
-  this.route('inbox');
+  this.resource('inbox', function(){
+    this.route('index', {path: '/'});
+    this.route('under_review');
+  });
 });
 
 export default Router;

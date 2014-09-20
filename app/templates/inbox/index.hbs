@@ -1,0 +1,44 @@
+<h3>
+  {{#if controller.newOffers}}
+    {{t inbox.title}}
+  {{else}}
+    In Review Process
+  {{/if}}
+  ({{this.length}})</h3>
+
+<div class='inbox_offers'>
+  {{#each}}
+    {{#link-to 'review_offer' this}}
+      <table cellspacing='10'>
+        <td>
+          {{#if this.user.image}}
+            <img {{bind-attr src="this.user.image"}}><br/>
+          {{else}}
+            <div id="default_profile_image">
+              <div id="background">
+                <div id='name'>{{this.user.nameInitial}}</div>
+              </div>
+            </div>
+          {{/if}}
+        </td>
+
+        <td>
+          {{t full_name firstNameBinding=user.firstName lastNameBinding=user.lastName}}<br/>
+          {{t inbox.new_items}}: {{itemCount}}<br/>
+          {{user.address.district.name}}<br/>
+
+          {{#if controller.newOffers}}
+            {{display-timeago this.submittedAt}}
+          {{else}}
+            {{display-timeago this.reviewedAt}}
+          {{/if}}
+
+        </td>
+
+        <td>
+          {{cloudinary-image imageId=displayImageId width=50 height=50 className='fav_image'}}<br/>
+        </td>
+      </table>
+    {{/link-to}}
+  {{/each}}
+</div>
