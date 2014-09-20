@@ -1,7 +1,4 @@
-<ul>
- {{t messages.unread unreadCountBinding=unread.length}}
  <div>
     {{t messages.message_text messageTextBinding=unreadFirst.body}}
     <button {{action 'reply' unreadFirst.id unreadFirst.offerId}} class="input input_size_sm">{{t messages.reply}}</button>
  </div>
-</ul>

@@ -3,14 +3,6 @@
     <div class='message_details'>
       {{t inbox.full_name firstNameBinding=this.sender.firstName lastNameBinding=this.sender.lastName}}
       {{this.sender.roleInitials}}
-
-      {{#if this.recipient}}
-        →
-
-        {{t inbox.full_name firstNameBinding=this.recipient.firstName lastNameBinding=this.recipient.lastName}}
-        {{this.recipient.roleInitials}}
-      {{/if}}
-
       <br/>
       {{display-timeago this.createdAt}}
 
