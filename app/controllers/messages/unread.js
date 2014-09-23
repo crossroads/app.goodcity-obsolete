@@ -11,11 +11,11 @@ export default Ember.ArrayController.extend({
     });
   }.property('message.[]'),
 
-  unread: Ember.computed.filterBy('arrangedContent', 'recipient.id', localStorage.currentUserId),
+  unread: Ember.computed.defaultTo("arrangedContent"),
 
   unreadFirst: function() {
-    return this.get('unread')[0] || null;
-  }.property('arrangedContent.[]'),
+    return this.get('arrangedContent.lastObject') || null;
+  }.property('content.[]'),
 
   actions: {
     reply: function(id, offerId) {

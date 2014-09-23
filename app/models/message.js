@@ -9,8 +9,7 @@ export default DS.Model.extend({
   isPrivate:   attr('boolean'),
   createdAt:   attr('date'),
   updatedAt:   attr('date'),
-  state:       attr('string'),
-
+  state:       attr('string', {defaultValue: 'read'}),
   sender:      belongsTo('user', { inverse: 'sentMessages' }),
   recipient:   belongsTo('user', { inverse: 'messages' } ),
   item:        belongsTo('item'),
