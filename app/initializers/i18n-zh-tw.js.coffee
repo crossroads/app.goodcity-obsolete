@@ -99,6 +99,7 @@ I18nTranslationsZhTw =
           "total_items" : "總筆數: {{itemCount}}"
           "see_more" : "查看更多..."
           "complete_offer" : "Complete this Offer"
+          "unread_messages" : "Unread messages: {{unreadMessagesCount}}"
 
       "offer":
         "details" : "优惠详情"
@@ -140,6 +141,7 @@ I18nTranslationsZhTw =
       "inbox":
         "title" : "Inbox"
         "new_items" : "New Items"
+        "unread_messages" : "Unread Messages: {{unreadMessagesCount}}"
 
       "_resend":
         "no_sms" : "沒有收到短信代碼?"

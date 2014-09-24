@@ -103,6 +103,7 @@ I18nTranslationsEn =
           "total_items" : "Total items: {{itemCount}}"
           "see_more" : "See more..."
           "complete_offer" : "Complete this Offer"
+          "unread_messages" : "Unread messages: {{unreadMessagesCount}}"
 
       "offer":
         "details" : "Offer details"
@@ -166,6 +167,7 @@ I18nTranslationsEn =
       "inbox":
         "title" : "New Donations"
         "new_items" : "New Items"
+        "unread_messages" : "Unread Messages: {{unreadMessagesCount}}"
 
       "messages":
         "unread" : "Unread ({{unreadCount}})"

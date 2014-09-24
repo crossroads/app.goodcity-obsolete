@@ -35,6 +35,10 @@ export default DS.Model.extend({
   itemCount: function() {
     return this.get("items.length");
   }.property('this.items.@each'),
+  
+  unreadMessagesCount: function() {
+    return this.get('messages').filterBy('state', 'unread').length;
+  }.property('this.messages.@each'),
 
   isDraft: function() {
     return this.get('state') === 'draft';
