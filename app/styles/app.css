@@ -220,3 +220,8 @@ ul.radio-ul li p{
 .message_details {
   font-size: 13px;
 }
+
+.item_message {
+  float: right;
+  margin-top: -5%;
+}

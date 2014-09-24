@@ -15,5 +15,11 @@ export default DS.Model.extend({
   item:        belongsTo('item'),
   itemId:      attr('number'),
   offer:       belongsTo('offer'),
-  offerId:     attr('number')
+  offerId:     attr('number'),
+
+  itemImageId: function() {
+    var itemId = this.get('itemId');
+    var item = this.store.getById('item', itemId);
+    return item ? item.get('defaultImageId') : null;
+  }.property()
 });

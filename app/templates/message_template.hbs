@@ -11,6 +11,12 @@
         <a href="#/" {{action showMessage this}}>see here</a>
       {{/if}}
 
+      {{#if controller.offerMessage}}
+        {{#if itemImageId}}
+          <div class='item_message'>{{cloudinary-image imageId=this.itemImageId width=50 height=50 className='fav_image'}}</div>
+        {{/if}}
+      {{/if}}
+
     </div>
 
   <br/>
