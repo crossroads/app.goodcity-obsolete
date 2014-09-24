@@ -25,6 +25,9 @@
         <td>
           {{t full_name firstNameBinding=user.firstName lastNameBinding=user.lastName}}<br/>
           {{t inbox.new_items}}: {{itemCount}}<br/>
+          {{#if this.unreadMessagesCount}}
+            {{t inbox.unread_messages unreadMessagesCountBinding=unreadMessagesCount}}<br/>
+          {{/if}}
           {{user.address.district.name}}<br/>
 
           {{#if controller.newOffers}}

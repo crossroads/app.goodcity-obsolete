@@ -30,9 +30,9 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
     },
 
     // each action below is an event in a channel
-    message: function(data){
+    updateStore: function(data){
       this.store.pushPayload(data);
-    }
+    },
 
   },
 
