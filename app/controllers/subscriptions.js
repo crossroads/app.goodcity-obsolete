@@ -34,11 +34,5 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
       this.store.pushPayload(data);
     },
 
-  },
-
-  init: function() {
-    this._super();
-    this.send('wire');
   }
-
 });
