@@ -55,11 +55,11 @@ var User = Addressable.extend({
     var channels = {};
     if(this.get('isDonor')) {
       var userChannelName = "user_" + this.get('id');
-      channels[userChannelName] = ['message'];
+      channels[userChannelName] = ['update_store'];
     }
     if((this.get('isReviewer')) || (this.get('isSupervisor'))) {
-      channels['reviewer'] = ['message'];
-      channels['supervisor'] = ['message'];
+      channels['reviewer'] = ['update_store'];
+      channels['supervisor'] = ['update_store'];
     }
     return channels;
   }.property('permission'),
