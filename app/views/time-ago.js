@@ -18,8 +18,9 @@ export default Ember.View.extend({
   },
 
   timeString: function(){
-    var time = this.timeValue.toString();
-    return (new Date(time).toISOString());
+    var timeValue = this.timeValue || (new Date());
+    var timeString = timeValue.toString();
+    return (new Date(timeString).toISOString());
   }.property()
 
 });
