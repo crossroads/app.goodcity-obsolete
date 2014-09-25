@@ -31,9 +31,9 @@
           {{user.address.district.name}}<br/>
 
           {{#if controller.newOffers}}
-            {{display-timeago this.submittedAt}}
+            {{view 'time-ago' timeValue=submittedAt}}
           {{else}}
-            {{display-timeago this.reviewedAt}}
+            {{view 'time-ago' timeValue=reviewedAt}}
           {{/if}}
 
         </td>
