@@ -5,7 +5,7 @@
       {{t full_name firstNameBinding=this.sender.firstName lastNameBinding=this.sender.lastName}}
       {{this.sender.roleInitials}}
       <br/>
-      {{display-timeago this.createdAt}}
+      {{view 'time-ago' timeValue=createdAt}}
 
       {{#if controller.itemMessage}}
         <a href="#/" {{action showMessage this}}>see here</a>
