@@ -1,8 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.View.extend({
-  template: Ember.Handlebars.compile("<time class='timeago' {{bind-attr datetime='view.timeString'}}> Right Now </time>"),
-
+  templateName: 'time-ago',
   timeValue: new Date(),
 
   didInsertElement: function() {
