@@ -17,6 +17,7 @@ export default DS.Model.extend({
 
   fullAddress: function(){
     var addressDetails = [this.get('flat'), this.get('building'), this.get('street')];
-    return addressDetails.join('<br>');
+    var formattedAddress = addressDetails.join('<br>');
+    return new Ember.Handlebars.SafeString(formattedAddress);
   }.property('flat','building','street')
 });
