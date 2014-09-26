@@ -6,8 +6,14 @@
   <button {{action 'cancelOffer' this.offer}} class='removeRecord'>Cancel Donation</button>
 
   <div class='confirmed_block'>
-    <h4 class='confirmed_title'>Confirmed Items(11)</h4>
+    <h4 class='confirmed_title'>Confirmed Items({{confirmedItems.length}})</h4>
     <span class='confirmed_link'>{{#link-to 'offer.review_status' this.offer}}View all{{/link-to}}</span>
+
+    <div>
+      {{#each confirmedItems}}
+        {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
+      {{/each}}
+    </div>
   </div>
 
   <table class='donation_details'>
