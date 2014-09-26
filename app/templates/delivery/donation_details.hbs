@@ -1,49 +1,55 @@
 <h3>Donation Details</h3>
 
 <div class='donation_details_block'>
-  {{#link-to ''}}Modify{{/link-to}}
-  <button>Cancel Donation</button>
+  {{#link-to 'offer' this.offer}}Modify{{/link-to}}
+
+  <button {{action 'cancelOffer' this.offer}} class='removeRecord'>Cancel Donation</button>
 
   <div class='confirmed_block'>
-    <h4 class='confirmed_title'>Confirmed Items(11)</h4>
-    <span class='confirmed_link'>{{#link-to ''}}View all{{/link-to}}</span>
-  </div>
+    <h4 class='confirmed_title'>Confirmed Items({{confirmedItems.length}})</h4>
+    <span class='confirmed_link'>{{#link-to 'offer.review_status' this.offer}}View all{{/link-to}}</span>
 
+    <div>
+      {{#each confirmedItems}}
+        {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
+      {{/each}}
+    </div>
+  </div>
 
   <table class='donation_details'>
     <tr>
       <td>Charitable sale approved?</td>
-      <td>Yes</td>
+      <td>{{offer.isCharitableSale}}</td>
     </tr>
 
     <tr>
       <td>Transportation</td>
-      <td>Collection</td>
+      <td>{{this.deliveryType}}</td>
     </tr>
 
     <tr>
       <td>Date</td>
-      <td>Monday 24th November</td>
+      <td>{{display-date schedule.scheduledAt}}</td>
     </tr>
 
     <tr>
       <td>Time</td>
-      <td>11am - 1pm</td>
+      <td>{{schedule.slotName}}</td>
     </tr>
 
     <tr>
       <td>Contact Name</td>
-      <td>Mary Smith</td>
+      <td>{{contact.name}}</td>
     </tr>
 
     <tr>
       <td>Contact Phone</td>
-      <td>962-47622</td>
+      <td>+852 {{contact.mobile}}</td>
     </tr>
 
     <tr>
       <td>Address</td>
-      <td></td>
+      <td>{{html-safestring contact.address.fullAddress}}</td>
     </tr>
   </table>
 </div>
