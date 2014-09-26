@@ -13,5 +13,10 @@ export default DS.Model.extend({
 
   addressable: belongsTo('addressable', {
     polymorphic: true
-  })
+  }),
+
+  fullAddress: function(){
+    var addressDetails = [this.get('flat'), this.get('building'), this.get('street')];
+    return addressDetails.join('<br>');
+  }.property('flat','building','street')
 });

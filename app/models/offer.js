@@ -35,7 +35,7 @@ export default DS.Model.extend({
   itemCount: function() {
     return this.get("items.length");
   }.property('this.items.@each'),
-  
+
   unreadMessagesCount: function() {
     return this.get('messages').filterBy('state', 'unread').length;
   }.property('this.messages.@each'),
@@ -55,6 +55,11 @@ export default DS.Model.extend({
   displayImageId: function(){
     var item = this.get("items.content.firstObject");
     return item.get('favouriteImage');
+  }.property('this.items.@each'),
+
+  isCharitableSale: function() {
+    var item = this.get("items.content.firstObject");
+    return (item.get('saleable') ? "Yes" : "No");
   }.property('this.items.@each')
 
 });
