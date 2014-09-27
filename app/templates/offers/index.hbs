@@ -4,27 +4,48 @@
 
 <h3>{{t offers.index.my_offers}}</h3>
 
-<ul class='offer_list'>
+<table class='offer_list' cellspacing='10' cellpadding='5'>
+  <tbody>
   {{#each offersWithItems}}
-    <li class="contact">
-      Offer_id: {{ id }}
-      <br/>
-      {{#if this.unreadMessagesCount}}
-        {{t offers.index.unread_messages unreadMessagesCountBinding=unreadMessagesCount}}
-        {{#link-to 'offer.messages' this}}{{t offers.index.see_more}}{{/link-to}}
-        <br/>
-      {{/if}}
-      {{t offers.index.total_items itemCountBinding=itemCount}}
-      {{#if this.isDraft }}
-        {{#link-to 'offer' this}}{{t offers.index.complete_offer}}{{/link-to}}
-      {{/if}}
-      {{#if this.isScheduled }}
-        {{#link-to 'delivery.donation_details' this delivery}}{{t offer.details}}{{/link-to}}
-      {{/if}}
-      {{#if this.isSubmitted}}
-        {{#link-to 'offer.review_status' this}}{{t offers.index.see_more}}{{/link-to}}
-      {{/if}}
-    </li>
-    <br/>
+    <tr class="contact">
+      <td>
+        {{cloudinary-image imageId=displayImageId width=50 height=50 className='fav_image'}}
+      </td>
+
+      <td>
+        <b>{{status}} ({{itemCount}} items)</b>
+        <br>
+
+        {{#if this.isScheduled }}
+          {{display-date delivery.schedule.scheduledAt}}<br/>
+          {{delivery.schedule.slotName}}<br/>
+          {{#link-to 'delivery.donation_details' this delivery}}{{t offer.details}}{{/link-to}}
+        {{/if}}
+
+        {{#if this.isUnderReview}}
+          Approved Items: {{approvedtems.length}}<br/>
+          Rejected Items: {{rejectedItems.length}}<br/>
+          {{#link-to 'offer.review_status' this}}Review Status{{/link-to}}
+        {{/if}}
+
+        {{#if this.isSubmitted}}
+          {{#link-to 'offer.review_status' this}}Review Status{{/link-to}}
+        {{/if}}
+
+        {{#if this.isDraft }}
+          {{#link-to 'offer' this}}{{t offers.index.complete_offer}}{{/link-to}}
+        {{/if}}
+      </td>
+
+      <td class='message_block'>
+        {{#if this.unreadMessagesCount}}
+          {{#link-to 'offer.messages' this}}
+            <img src='assets/images/unread_message.png' class='unread_message'>
+            <div class='message_count'>{{unreadMessagesCount}}</div>
+          {{/link-to}}
+        {{/if}}
+      </td>
+    </tr>
   {{/each}}
-</ul>
+  </tbody>
+</table>
