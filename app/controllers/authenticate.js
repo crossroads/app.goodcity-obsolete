@@ -84,7 +84,8 @@ export default Ember.Controller.extend({
           _this.transitionToRoute('/authenticate');
         },
         error: function(){
-          alert("error");
+          Ember.$('#mobile').addClass('invalid_input');
+          Ember.$('#mobile_error').text('Please enter a valid mobile number');
         }
       }).done(function(){
           Ember.$('.loader_image').hide();

@@ -1,48 +1,44 @@
 import Ember from 'ember';
 
 export default Ember.View.extend({
-  isLogin: true,
+
   didInsertElement: function(){
 
     Ember.$().ready(function (){
-      set_button_visiblity();
-      if(Ember.$("#mobile")[0].getAttribute("data-actual-mobile") != null){
-        actual_phone_number(this.value);
-      }
       validate_phone();
-      Ember.$('#mobile, #pin').focusout(set_button_visiblity);
+      submitForm();
     });
-
-    function actual_phone_number(phone){
-      var mobile_with_cc = GoodcityENV.APP.HK_COUNTRY_CODE + phone;
-      Ember.$("#mobile")[0].setAttribute("data-actual-mobile", mobile_with_cc);
-    }
-
-    function set_button_visiblity(){
-      var filled = (Ember.$('#mobile').val().length > 0);
-      Ember.$("button#getsmscode").prop("disabled", !filled);
-    }
 
     function validate_phone(){
       Ember.$('#mobile').focusout(function(){
-        actual_phone_number(this.value);
-        is_phone_valid();
+        return is_phone_valid();
+      });
+      Ember.$('#mobile').focus(function(){
+        remove_highlight();
       });
     }
 
-   function is_phone_valid(){
+    function submitForm(){
+      Ember.$('#getsmscode').click(function(){
+        return is_phone_valid();
+      });
+    }
+
+    function is_phone_valid(){
       var phone = Ember.$('#mobile').val();
       if (phone.search(/^\d{8}$/) === 0) {
         remove_highlight();
+        return true;
       }
       else{
         highlight_phone_field();
+        return false;
       }
     }
 
-    function highlight_phone_field(not_existing, msg){
+    function highlight_phone_field(){
       Ember.$('#mobile').addClass('invalid_input');
-      var error =  not_existing ? msg : 'Please enter a valid mobile number';
+      var error = 'Please enter a valid mobile number';
       Ember.$('#mobile_error').text(error);
     }
 
