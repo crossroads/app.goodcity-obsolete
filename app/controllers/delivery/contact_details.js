@@ -6,15 +6,6 @@ export default Ember.ObjectController.extend({
   selectedTerritory: {id: null},
   selectedDistrict: {id: null},
 
-  isDisable: function(){
-    var districtId = this.selectedDistrict && this.selectedDistrict.id;
-    var street = this.get('street.length');
-    var flat = this.get('flat.length');
-    var building = this.get('building.length');
-
-    return !(districtId && street && building && flat);
-  }.property('selectedDistrict', 'street', 'building', 'flat'),
-
   territories: function(){
     return this.store.findAll('territory');
   }.property(),
