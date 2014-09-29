@@ -6,9 +6,9 @@
   {{#each}}
     <li>
       {{view 'radio-button' name="timeslot" selection=this.controller.isSelected value=id}}
-      {{scheduled_at}}
+      {{scheduledAt}}
       <p>
-        {{slot_name}}
+        {{slotName}}
       </p>
     </li>
     <hr>

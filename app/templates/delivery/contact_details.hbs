@@ -4,12 +4,12 @@
   {{t contact.confirm_location tagName='p'}}
 
   {{t contact.name tagName='label'}}
-  {{input type="text" value=userName name="name" id="userName"}}
+  {{full-name-input user=user}}
 
   <br/>
 
   {{t contact.phone tagName='label'}}
-  <span>+852 {{input type="text" value=mobile name="mobile" id="mobile" maxlength="8" data-actual-mobile=""}}</span>
+  <span>+852 {{input type="text" value=user.mobile name="mobile" id="mobile" maxlength="8" data-actual-mobile=""}}</span>
 
   <br/>
 

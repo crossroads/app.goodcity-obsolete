@@ -35,7 +35,17 @@ export default DS.Model.extend({
   itemCount: function() {
     return this.get("items.length");
   }.property('this.items.@each'),
-  
+
+  approvedtems: function(){
+    var items = this.get('items');
+    return items.filterBy('state', 'accepted');
+  }.property('offer.items.@each'),
+
+  rejectedItems: function(){
+    var items = this.get('items');
+    return items.filterBy('state', 'rejected');
+  }.property('offer.items.@each'),
+
   unreadMessagesCount: function() {
     return this.get('messages').filterBy('state', 'unread').length;
   }.property('this.messages.@each'),
@@ -52,9 +62,32 @@ export default DS.Model.extend({
     return this.get('state') === 'scheduled';
   }.property('this.state'),
 
+  isUnderReview: function() {
+    return this.get('state') === 'under_review';
+  }.property('this.state'),
+
   displayImageId: function(){
     var item = this.get("items.content.firstObject");
     return item.get('favouriteImage');
-  }.property('this.items.@each')
+  }.property('this.items.@each'),
+
+  isCharitableSale: function() {
+    var item = this.get("items.content.firstObject");
+    return (item.get('saleable') ? "Yes" : "No");
+  }.property('this.items.@each'),
+
+  status: function(){
+    var state = this.get('state');
+    var status;
+    switch(state) {
+      case 'draft': status = 'Draft'; break;
+      case 'under_review' : status = 'In review'; break;
+      case 'submitted' : status = 'Submitted'; break;
+      case 'reviewed' : status = 'Collection'; break;
+      case 'scheduled' : status = 'Collection'; break;
+    }
+    return status;
+  }.property('state')
+
 
 });

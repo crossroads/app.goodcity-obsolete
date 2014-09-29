@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 var attr = DS.attr,
@@ -13,5 +14,11 @@ export default DS.Model.extend({
 
   addressable: belongsTo('addressable', {
     polymorphic: true
-  })
+  }),
+
+  fullAddress: function(){
+    var addressDetails = [this.get('flat'), this.get('building'), this.get('street')];
+    var formattedAddress = addressDetails.join('<br>');
+    return new Ember.Handlebars.SafeString(formattedAddress);
+  }.property('flat','building','street')
 });

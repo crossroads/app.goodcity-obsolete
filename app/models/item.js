@@ -18,6 +18,7 @@ export default DS.Model.extend({
   images:               hasMany('image'),
   offer:                belongsTo('offer'),
   donorCondition:       belongsTo('donor_condition'),
+  saleable:             attr('boolean'),
 
   //input to store image public-ids
   imageIdentifiers:     attr('string'),

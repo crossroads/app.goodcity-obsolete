@@ -6,9 +6,9 @@ var attr = DS.attr,
 export default DS.Model.extend({
   resource:    attr('string'),
   slot:        attr('number'),
-  slot_name:   attr('string'),
+  slotName:    attr('string'),
   zone:        attr('string'),
-  scheduled_at: attr('date'),
+  scheduledAt: attr('date'),
 
-   deliveries:   hasMany('delivery')
+  deliveries:   hasMany('delivery')
 });

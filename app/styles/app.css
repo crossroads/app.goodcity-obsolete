@@ -225,3 +225,25 @@ ul.radio-ul li p{
   float: right;
   margin-top: -5%;
 }
+
+.unread_message {
+  width: 40px;
+  height: 40px;
+  display: inline;
+  z-index: 10;
+}
+
+.message_count {
+  margin-left: 24%;
+  display: inline;
+  margin-top: -37px;
+  float: left;
+  position: relative;
+  font-size: 19px;
+  font-weight: bolder;
+}
+
+td.message_block a {
+  text-decoration: none;
+  color: black;
+}
