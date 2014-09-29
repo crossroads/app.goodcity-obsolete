@@ -5,27 +5,30 @@ export default Ember.View.extend({
   didInsertElement: function(){
 
     Ember.$().ready(function (){
-      set_button_visiblity();
       validate_pin();
-      Ember.$('#pin').focusout(set_button_visiblity);
+      Ember.$('#pin').focus(function(){ remove_highlight(); });
     });
-
-    function set_button_visiblity(){
-      var filled = Ember.$('#pin').length > 0 && Ember.$('#pin').val().length >0;
-      Ember.$("button#submit_pin").prop("disabled", !filled);
-    }
 
     function validate_pin(){
       Ember.$('#pin').focusout(function(){
-        var pin =  Ember.$('#pin')[0].value;
+        var pin = Ember.$('#pin')[0].value;
         if (pin.search(/^\d{4}$/) === 0) {
-          Ember.$('.auth_error').css("display","none");
-        }
-        else
-        {
-          Ember.$('.auth_error').text("Please enter valid pin").css("display","block");
+          remove_highlight();
+        } else {
+          highlight_pin_field();
         }
       });
     }
+
+    function highlight_pin_field(){
+      Ember.$('#pin').addClass('invalid_input');
+      Ember.$('.auth_error').show();
+    }
+
+    function remove_highlight(){
+      Ember.$('#pin').removeClass('invalid_input');
+      Ember.$('.auth_error').hide();
+    }
+
   }
 });
