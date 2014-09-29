@@ -4,9 +4,8 @@ export default Ember.View.extend({
 
   didInsertElement: function(){
     Ember.$().ready(function (){
-      set_button_visiblity();
-      validate_phone();
-      Ember.$('#mobile, #first_name, #last_name').focusout(set_button_visiblity);
+      validate_fields();
+      verifyFormInput();
     });
 
     function actual_phone_number(phone){
@@ -14,14 +13,27 @@ export default Ember.View.extend({
       Ember.$("#mobile")[0].setAttribute("data-actual-mobile", mobile_with_cc);
     }
 
-    function set_button_visiblity(){
-      var filled = (Ember.$('#mobile').val().length > 0 &&
-        Ember.$('#first_name').val().length > 0 &&
-        Ember.$('#last_name').val().length > 0);
-      Ember.$("button").prop("disabled", !filled);
+    function verifyFormInput(){
+      Ember.$("#registerUser").click(function(){
+
+        var formInputs = ['mobile', 'first_name', 'last_name'];
+        Ember.$.each(formInputs, function(index, value) {
+          if(Ember.$('#' + value).val().length < 1) {
+            Ember.$('#' + value).addClass('invalid_input');
+          }
+        });
+
+        if(!Ember.$('.district-selection').attr('selected_id')) {
+          Ember.$('.ember-select').addClass('invalid_input');
+        }
+
+        if(Ember.$('.invalid_input').length > 0) {
+          return false;
+        }
+      });
     }
 
-    function validate_phone(){
+    function validate_fields(){
       Ember.$('#mobile').focusout(function(){
         var phone = Ember.$(this).val();
         if (phone.search(/^\d{8}$/) === 0) {
@@ -30,6 +42,10 @@ export default Ember.View.extend({
         }else {
           highlight_phone_field();
         }
+      });
+
+      Ember.$('#mobile, #first_name, #last_name, .ember-select').focus(function(){
+        remove_highlight(this);
       });
     }
 
@@ -47,8 +63,8 @@ export default Ember.View.extend({
       Ember.$('#mobile_error').text(error);
     }
 
-    function remove_highlight(){
-      Ember.$('#mobile').removeClass('invalid_input');
+    function remove_highlight(input){
+      Ember.$(input).removeClass('invalid_input');
       Ember.$('#mobile_error').empty();
     }
   }

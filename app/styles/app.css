@@ -74,6 +74,7 @@ textarea {
 
 .district-selection ul{
   padding: 0em;
+  width: 33%;
 }
 
 .territory_menu {
@@ -161,7 +162,11 @@ table.donation_details tr td:last-child {
 }
 
 #mobile {
-  width: 50%;
+  width: 29%;
+}
+
+.reg_fname_input{
+  float: left;
 }
 
 .selectAddress {
