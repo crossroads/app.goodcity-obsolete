@@ -26,8 +26,9 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
       var channels = user.get('subscriptions');
       var bindings = this.pusher.get("bindings");
       for(var channel in channels){
-        if (typeof bindings[channel] !== "undefined")
+        if (typeof bindings[channel] !== "undefined") {
           controller.pusher.unwire(controller, channel, channels[channel]);
+        }
       }
     },
 
