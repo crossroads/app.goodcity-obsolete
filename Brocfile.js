@@ -1,4 +1,5 @@
 /* global require, module */
+
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp();
@@ -14,9 +15,11 @@ app.import('bower_components/cloudinary/js/jquery.fileupload-validate.js');
 app.import('bower_components/cloudinary/js/jquery.cloudinary.js');
 app.import('bower_components/moment/moment.js');
 
-app.import('bower_components/ember-pusher/pusher.js');
-app.import('bower_components/ember-pusher/ember-pusher.js');
-app.import('bower_components/ember-pushable/lib/ember-pushable.js');
+app.import({
+  development: 'vendor/pusher.js',
+  test: 'vendor/pusher-test-stub.js'
+});
+app.import('vendor/ember-pusher.js');
 app.import('bower_components/jquery-timeago/jquery.timeago.js');
 
 //~ For the moment, ember-18n requires full version of handlebars.

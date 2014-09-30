@@ -2,6 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
+    modulePrefix: 'goodcity',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
@@ -15,7 +16,7 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-
+      
       // Cloudinary Keys
       CLOUD_NAME: 'ddoadcjjl',
       CLOUD_API_KEY: 926849638736153,
@@ -29,30 +30,36 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    // LOG_MODULE_RESOLVER is needed for pre-1.6.0
-    ENV.LOG_MODULE_RESOLVER = true;
-
     ENV.APP.LOG_RESOLVER = true;
     ENV.APP.LOG_ACTIVE_GENERATION = true;
-    ENV.APP.LOG_MODULE_RESOLVER = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
-
+    
     // RESTAdapter Settings
     ENV.APP.API_HOST_URL = 'http://localhost:3000';
+    ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + '/' + ENV.APP.NAMESPACE;
+  }
+
+  if (environment === 'test') {
+    // Testem prefers this...
+    ENV.baseURL = '/';
+    ENV.locationType = 'auto';
+
+    // keep test console output quieter
+    ENV.APP.LOG_ACTIVE_GENERATION = false;
+    ENV.APP.LOG_VIEW_LOOKUPS = false;
+
+    ENV.APP.rootElement = '#ember-testing';
+    
+    // RESTAdapter Settings
+    ENV.APP.API_HOST_URL = 'http://localhost:4200';
     ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + '/' + ENV.APP.NAMESPACE;
   }
 
   if (environment === 'production') {
     // RESTAdapter Settings
     ENV.APP.API_HOST_URL = 'http://api.goodcity.hk';
-    ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + '/' + ENV.APP.NAMESPACE;
-  }
-
-  if (environment === 'test') {
-    // RESTAdapter Settings
-    ENV.APP.API_HOST_URL = 'http://localhost:4200';
     ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + '/' + ENV.APP.NAMESPACE;
   }
 

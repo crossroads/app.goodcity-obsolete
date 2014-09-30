@@ -2,6 +2,7 @@
   "predef": {
     "document": true,
     "window": true,
+    "-Promise": true,
     "GoodcityENV": true,
     "CLDR": true,
     "moment" : true,
