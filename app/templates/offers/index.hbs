@@ -1,8 +1,8 @@
 <p class='offer_link'>
-  <button {{action 'newOffer'}}>{{t offers.index.new_donation}}</button>
+  <button {{action 'newOffer'}}>{{t "offers.index.new_donation"}}</button>
 </p>
 
-<h3>{{t offers.index.my_offers}}</h3>
+<h3>{{t "offers.index.my_offers"}}</h3>
 
 <table class='offer_list' cellspacing='10' cellpadding='5'>
   <tbody>
@@ -19,7 +19,7 @@
         {{#if this.isScheduled }}
           {{display-date delivery.schedule.scheduledAt}}<br/>
           {{delivery.schedule.slotName}}<br/>
-          {{#link-to 'delivery.donation_details' this delivery}}{{t offer.details}}{{/link-to}}
+          {{#link-to 'delivery.donation_details' this delivery}}{{t "offer.details"}}{{/link-to}}
         {{/if}}
 
         {{#if this.isUnderReview}}
@@ -33,7 +33,7 @@
         {{/if}}
 
         {{#if this.isDraft }}
-          {{#link-to 'offer' this}}{{t offers.index.complete_offer}}{{/link-to}}
+          {{#link-to 'offer' this}}{{t "offers.index.complete_offer"}}{{/link-to}}
         {{/if}}
       </td>
 

@@ -1,6 +1,6 @@
 <h3>
   {{#if controller.newOffers}}
-    {{t inbox.title}}
+    {{t "inbox.title"}}
   {{else}}
     In Review Process
   {{/if}}
@@ -23,10 +23,10 @@
         </td>
 
         <td>
-          {{t full_name firstNameBinding=user.firstName lastNameBinding=user.lastName}}<br/>
-          {{t inbox.new_items}}: {{itemCount}}<br/>
+          {{t "full_name" firstNameBinding=user.firstName lastNameBinding=user.lastName}}<br/>
+          {{t "inbox.new_items"}}: {{itemCount}}<br/>
           {{#if this.unreadMessagesCount}}
-            {{t inbox.unread_messages unreadMessagesCountBinding=unreadMessagesCount}}<br/>
+            {{t "inbox.unread_messages" unreadMessagesCountBinding=unreadMessagesCount}}<br/>
           {{/if}}
           {{user.address.district.name}}<br/>
 

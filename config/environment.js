@@ -10,13 +10,16 @@ module.exports = function(environment) {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
-      }
+
+        I18N_TRANSLATE_HELPER_SPAN: false //switch to future version default to suppress warning
+      },
+      I18N_COMPILE_WITHOUT_HANDLEBARS: true //switch to future version default to suppress warning
     },
 
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-      
+
       // Cloudinary Keys
       CLOUD_NAME: 'ddoadcjjl',
       CLOUD_API_KEY: 926849638736153,
@@ -35,7 +38,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
-    
+
     // RESTAdapter Settings
     ENV.APP.API_HOST_URL = 'http://localhost:3000';
     ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + '/' + ENV.APP.NAMESPACE;
@@ -51,7 +54,7 @@ module.exports = function(environment) {
     ENV.APP.LOG_VIEW_LOOKUPS = false;
 
     ENV.APP.rootElement = '#ember-testing';
-    
+
     // RESTAdapter Settings
     ENV.APP.API_HOST_URL = 'http://localhost:4200';
     ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + '/' + ENV.APP.NAMESPACE;
