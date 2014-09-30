@@ -1,20 +1,20 @@
-<div class='itemCount'>{{t offer.index.item_count itemCountBinding=itemCount}}</div>
+<div class='itemCount'>{{t "offer.index.item_count" itemCountBinding=itemCount}}</div>
 
 {{#if itemCount }}
 
   {{#if isDraft}}
-    <button {{action "addItem"}} class='addItem'>{{t offer.index.add_item}}</button>
-    {{#link-to 'offer.confirm'}}{{t offer.index.confirm}}{{/link-to}}
+    <button {{action "addItem"}} class='addItem'>{{t "offer.index.add_item"}}</button>
+    {{#link-to 'offer.confirm'}}{{t "offer.index.confirm"}}{{/link-to}}
   {{else}}
-    {{#link-to 'offer.review_status'}}{{t offer.index.review}}{{/link-to}}
+    {{#link-to 'offer.review_status'}}{{t "offer.index.review"}}{{/link-to}}
   {{/if}}
 
-  <div><button {{action 'cancelOffer' this}} class='removeRecord'>{{t offer.index.cancel}}</button></div>
+  <div><button {{action 'cancelOffer' this}} class='removeRecord'>{{t "offer.index.cancel"}}</button></div>
 
   <table cellspacing="20">
     <tr>
-      <th>{{t offer.index.description}}</th>
-      <th>{{t offer.index.condition}}</th>
+      <th>{{t "offer.index.description"}}</th>
+      <th>{{t "offer.index.condition"}}</th>
     </tr>
     {{#each itemsById}}
       <tr>
@@ -24,15 +24,15 @@
             {{#link-to 'item' this}}{{donorDescription}}{{/link-to}}
           </div>
         <br/>{{donorCondition.name}}</td>
-        <td>{{#link-to 'item.edit' this}}{{t edit}}{{/link-to}}</td>
-        <td><button {{action 'removeItem' this}} class='removeItem removeRecord'>{{t remove}}</button></td>
+        <td>{{#link-to 'item.edit' this}}{{t "edit"}}{{/link-to}}</td>
+        <td><button {{action 'removeItem' this}} class='removeItem removeRecord'>{{t "remove"}}</button></td>
       </tr>
     {{/each}}
   </table>
 
 {{else}}
 
-  <div class='noItemMsg'>{{t offer.no_items}}</div>
-  <button {{action "addItem"}}>{{t offer.index.add_item}}</button>
+  <div class='noItemMsg'>{{t "offer.no_items"}}</div>
+  <button {{action "addItem"}}>{{t "offer.index.add_item"}}</button>
 
 {{/if}}

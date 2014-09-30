@@ -1,20 +1,20 @@
 {{outlet unreadMessageCount}}
 
 <div>
-  {{#link-to 'index'}}{{t application.home}}{{/link-to}} |
+  {{#link-to 'index'}}{{t "application.home"}}{{/link-to}} |
 
   {{#if currentUser.isStaff}}
-    {{#link-to 'inbox'}}{{t inbox.title}}{{/link-to}} |
+    {{#link-to 'inbox'}}{{t "inbox.title"}}{{/link-to}} |
   {{else}}
-    {{#link-to 'offers'}}{{t application.all_offers}}{{/link-to}} |
+    {{#link-to 'offers'}}{{t "application.all_offers"}}{{/link-to}} |
   {{/if}}
 
   {{#link-to 'i18n'}}I18n examples{{/link-to}} |
   {{#if isLoggedIn }}
-    <a href="#" {{action 'logMeOut'}}>{{t application.logout}}</a>
+    <a href="#" {{action 'logMeOut'}}>{{t "application.logout"}}</a>
   {{else}}
-    {{#link-to 'login'}}{{t application.login}}{{/link-to}} |
-    {{#link-to 'register'}}{{t application.register}}{{/link-to}}
+    {{#link-to 'login'}}{{t "application.login"}}{{/link-to}} |
+    {{#link-to 'register'}}{{t "application.register"}}{{/link-to}}
   {{/if}}
 </div>
 

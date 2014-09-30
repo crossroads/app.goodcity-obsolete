@@ -3,31 +3,28 @@
   "dependencies": {
     "handlebars": "~1.3.0",
     "jquery": "^1.11.1",
-    "qunit": "~1.12.0",
-    "ember-qunit": "~0.1.8",
-    "ember": "~1.7.0",
-    "ember-resolver": "~0.1.5",
-    "loader": "stefanpenner/loader.js#1.0.0",
-    "ember-cli-shims": "stefanpenner/ember-cli-shims#0.0.2",
+    "ember": "1.7.0",
+    "ember-data": "1.0.0-beta.9",
+    "ember-resolver": "~0.1.7",
+    "loader": "stefanpenner/loader.js#1.0.1",
+    "ember-cli-shims": "stefanpenner/ember-cli-shims#0.0.3",
+    "ember-cli-test-loader": "rwjblue/ember-cli-test-loader#0.0.4",
     "ember-load-initializers": "stefanpenner/ember-load-initializers#0.0.2",
-    "ember-qunit-notifications": "^0.0.3",
-    "ember-cli-test-loader": "rjackson/ember-cli-test-loader#0.0.2",
-    "cloudinary": "*",
-    "cldr": "~1.0.1",
-    "ember-i18n": "~2.0.0",
-    "ember-data-factory-guy": "*",
-    "moment": "~2.8.2",
-    "ember-data": "~0.0.14",
-    "pusher": "~2.2.3"
-  },
-  "devDependencies": {
-    "qunit-notifications": "~0.0.2",
-    "chance": "*",
+    "ember-qunit": "0.1.8",
+    "ember-qunit-notifications": "0.0.4",
+    "qunit": "~1.15.0",
+    "cloudinary": "~1.0.12",
+    "cldr": "~1.0.2",
+    "ember-i18n": "~2.2.2",
+    "ember-data-factory-guy": "~0.7.0",
+    "moment": "~2.8.3",
+    "jquery-mockjax": "~1.5.4",
     "jquery-timeago": "~1.4.1"
   },
   "resolutions": {
-    "ember": "^1.3.0",
+    "handlebars": "~1.3.0",
     "jquery": ">=1.7 <3",
-    "ember-data": "~1.0.0-beta.7"
+    "ember": "1.7.0",
+    "ember-data": "~1.0.0-beta.9"
   }
 }

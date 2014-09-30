@@ -8,7 +8,7 @@ export default Ember.ObjectController.extend({
 
   actions: {
     addItem: function() {
-      localStorage.currentOffer = this.content.id;
+      localStorage.currentOffer = this.get("id");
       this.transitionToRoute('items.new');
     },
 

@@ -1,14 +1,14 @@
-<div>{{t item.item_details}}</div>
+<div>{{t "item.item_details"}}</div>
 
 <div>
-  <div>{{t item.donor_description donorDescriptionBinding="donorDescription"}}</div>
-  <div>{{t item.condition conditionBinding="donorCondition.name"}}</div>
+  <div>{{t "item.donor_description" donorDescriptionBinding="donorDescription"}}</div>
+  <div>{{t "item.condition" conditionBinding="donorCondition.name"}}</div>
 </div>
 
-<div>{{t images}}</div>
+<div>{{t "images"}}</div>
 
 {{#each images}}
   <img {{bind-attr src="thumbImageUrl"}}>
 {{/each}}
 
-<button {{action 'back' this}} class='backButton'>{{t back }}</button>
+<button {{action 'back' this}} class='backButton'>{{t "back" }}</button>

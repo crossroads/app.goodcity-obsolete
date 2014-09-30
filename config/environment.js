@@ -2,6 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
+    modulePrefix: 'goodcity',
     environment: environment,
     baseURL: '/',
     locationType: 'auto',
@@ -9,7 +10,10 @@ module.exports = function(environment) {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
-      }
+
+        I18N_TRANSLATE_HELPER_SPAN: false //switch to future version default to suppress warning
+      },
+      I18N_COMPILE_WITHOUT_HANDLEBARS: true //switch to future version default to suppress warning
     },
 
     APP: {
@@ -29,12 +33,8 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
-    // LOG_MODULE_RESOLVER is needed for pre-1.6.0
-    ENV.LOG_MODULE_RESOLVER = true;
-
     ENV.APP.LOG_RESOLVER = true;
     ENV.APP.LOG_ACTIVE_GENERATION = true;
-    ENV.APP.LOG_MODULE_RESOLVER = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
     ENV.APP.LOG_VIEW_LOOKUPS = true;
@@ -44,15 +44,25 @@ module.exports = function(environment) {
     ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + '/' + ENV.APP.NAMESPACE;
   }
 
-  if (environment === 'production') {
+  if (environment === 'test') {
+    // Testem prefers this...
+    ENV.baseURL = '/';
+    ENV.locationType = 'auto';
+
+    // keep test console output quieter
+    ENV.APP.LOG_ACTIVE_GENERATION = false;
+    ENV.APP.LOG_VIEW_LOOKUPS = false;
+
+    ENV.APP.rootElement = '#ember-testing';
+
     // RESTAdapter Settings
-    ENV.APP.API_HOST_URL = 'http://api.goodcity.hk';
+    ENV.APP.API_HOST_URL = 'http://localhost:4200';
     ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + '/' + ENV.APP.NAMESPACE;
   }
 
-  if (environment === 'test') {
+  if (environment === 'production') {
     // RESTAdapter Settings
-    ENV.APP.API_HOST_URL = 'http://localhost:4200';
+    ENV.APP.API_HOST_URL = 'http://api.goodcity.hk';
     ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + '/' + ENV.APP.NAMESPACE;
   }
 

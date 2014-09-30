@@ -4,7 +4,6 @@ var customHelpers = function() {
     var hk_user;
     hk_user = FactoryGuy.build('with_hk_mobile');
     var jwt_token = window.localStorage.jwt;
-    // "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0MDkwMzgzNjUsImlzcyI6Ikdvb2RDaXR5SEsiLCJleHAiOjE0MTAyNDc5NjUsIm1vYmlsZSI6Iis4NTI2MTA5MjAwMSIsIm90cF9zZWNyZXRfa2V5IjoiemRycGZ4c2VnM3cyeWt2aSJ9.lZQaME1oKw7E5cdfks0jG3A_gxlOZ7VfUVG4IMJbc08";
     visit(url);
     fillIn('input#mobile', hk_user.mobile);
     click($("#getsmscode")[0]);

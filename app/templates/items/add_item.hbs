@@ -4,9 +4,9 @@
       {{cloudinary-image imageId=previewImageId width=100 height=150 className='fav_image'}}
 
       {{#if this.model }}
-        {{#link-to 'item.edit_images' class='edit-image-link'}}{{t items.add_item.edit_image}}{{/link-to}}
+        {{#link-to 'item.edit_images' class='edit-image-link'}}{{t "items.add_item.edit_image"}}{{/link-to}}
       {{else}}
-        {{#link-to 'items.new' class='edit-image-link'}}{{t items.add_item.edit_image}}{{/link-to}}
+        {{#link-to 'items.new' class='edit-image-link'}}{{t "items.add_item.edit_image"}}{{/link-to}}
       {{/if}}
 
     </div>
@@ -17,9 +17,9 @@
   </p>
 
   <p>
-    <div>{{t items.add_item.condition}}</div>
+    <div>{{t "items.add_item.condition"}}</div>
     {{donor-conditions selectedId=donorConditionId}}
   </p>
 
-  <button {{action "submitItem"}}>{{t next}}</button>
-  <button {{action 'back'}}>{{t back}}</button>
+  <button {{action "submitItem"}}>{{t "next"}}</button>
+  <button {{action 'back'}}>{{t "back"}}</button>

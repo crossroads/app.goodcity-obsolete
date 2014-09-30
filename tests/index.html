@@ -32,14 +32,13 @@
     <div id="qunit-fixture"></div>
 
     <script>
-      window.GoodcityENV = {{ENV}};
+      window.GoodcityENV = {{EMBER_ENV}};
       window.EmberENV = window.GoodcityENV.EmberENV;
       window.GoodcityENV.environment = "test"
     </script>
-    <script src="assets/test-support.js"></script>
     <script src="assets/vendor.js"></script>
+    <script src="assets/test-support.js"></script>
     <script src="assets/goodcity.js"></script>
-
     <script src="testem.js"></script>
     <script>
       require('goodcity/tests/test-helper');
