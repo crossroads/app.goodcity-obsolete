@@ -34,6 +34,15 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
     // each action below is an event in a channel
     updateStore: function(data){
       this.store.pushPayload(data);
+
+      // pushPayload does not update hasMany relationship
+      // https://github.com/emberjs/data/issues/1864
+      var offerId = data['message'] && data['message']['offerId'];
+      if(offerId) {
+        var offer = this.store.getById('offer', offerId);
+        var message = this.store.getById('message', data['message']['id']);
+        offer.get('messages').addObject(message);
+      }
     },
 
   }

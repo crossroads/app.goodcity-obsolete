@@ -1,3 +1,4 @@
-{{#if unread.length}}
-  <a href="javascript:;" {{action viewUnread}}>{{t "messages.unread" unreadCountBinding=content.length}}</a>
+{{#if content.length}}
+  {{t "messages.unread" unreadCountBinding=content.length}}</a>
 {{/if}}
+<br/>
