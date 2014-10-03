@@ -252,3 +252,8 @@ td.message_block a {
   text-decoration: none;
   color: black;
 }
+
+.unread_count_header {
+  display: block;
+  margin: 1% 0 1%;
+}

@@ -32,12 +32,6 @@ var AuthorizeRoute =  Ember.Route.extend({
         outlet: 'unreadMessages', // the name of the outlet in that template
         controller: 'messages/unread'   // the controller to use for the template
       });
-
-      this.render('messages/unreadMessageCount', {
-        into: 'application',
-        outlet: 'unreadMessageCount',
-        controller: 'messages/unread'
-      });
     }
   },
 

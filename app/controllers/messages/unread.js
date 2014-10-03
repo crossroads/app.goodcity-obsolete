@@ -6,15 +6,15 @@ export default Ember.ArrayController.extend({
   sortProperties: ['id'],
   sortAscending: false,
 
-  content: function() {
+  model: function() {
     return this.store.filter('message', {state: 'unread'}, function(message) {
       return message.get('state') === 'unread';
     });
   }.property('message.[]'),
 
   unreadFirst: function() {
-    return this.get('content.lastObject') || null;
-  }.property('content.[]'),
+    return this.get('model.lastObject') || null;
+  }.property('model.[]'),
 
   actions: {
     reply: function(id, offerId) {
