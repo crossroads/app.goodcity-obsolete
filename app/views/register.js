@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from '../config/environment';
 
 export default Ember.View.extend({
 
@@ -9,7 +10,7 @@ export default Ember.View.extend({
     });
 
     function actual_phone_number(phone){
-      var mobile_with_cc = GoodcityENV.APP.HK_COUNTRY_CODE + phone;
+      var mobile_with_cc = config.APP.HK_COUNTRY_CODE + phone;
       Ember.$("#mobile")[0].setAttribute("data-actual-mobile", mobile_with_cc);
     }
 
@@ -50,7 +51,7 @@ export default Ember.View.extend({
     }
 
     function check_uniqness(phone){
-      Ember.$.getJSON(GoodcityENV.APP.SERVER_PATH +"/auth/check_mobile",
+      Ember.$.getJSON(config.APP.SERVER_PATH +"/auth/check_mobile",
         {mobile: phone}).done(function(data){
           var is_uniq = data.is_unique_mobile;
           return is_uniq ? remove_highlight() : highlight_phone_field(true);

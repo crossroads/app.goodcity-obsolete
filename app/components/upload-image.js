@@ -1,4 +1,5 @@
 import Ember from "ember";
+import config from '../config/environment';
 
 export default Ember.Component.extend({
   tagName: "input",
@@ -7,7 +8,7 @@ export default Ember.Component.extend({
   name:    "file",
   classNames: ["cloudinary-fileupload"],
   "data-cloudinary-field": "image_upload",
-  "data-url": GoodcityENV.APP.CLOUD_URL,
+  "data-url": config.APP.CLOUD_URL,
   attributeBindings: [ "name", "type", "value", "class", "data-cloudinary-field", "data-url", "data-form-data"],
 
   click: function() {
@@ -37,7 +38,7 @@ export default Ember.Component.extend({
     console.log("init");
     Ember.$.ajax({
       type: 'GET',
-      url: GoodcityENV.APP.SERVER_PATH +"/images/generate_signature",
+      url: config.APP.SERVER_PATH +"/images/generate_signature",
       dataType: 'json',
       headers: {
         'Authorization': 'Bearer ' + localStorage.jwt

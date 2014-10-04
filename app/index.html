@@ -6,19 +6,12 @@
     <title>GoodCity</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {{BASE_TAG}}
+    {{content-for 'head'}}
     <link rel="stylesheet" href="assets/vendor.css">
     <link rel="stylesheet" href="assets/goodcity.css">
   </head>
   <body>
-    <script>
-      window.GoodcityENV = {{EMBER_ENV}};
-      window.EmberENV = window.GoodcityENV.EmberENV;
-    </script>
     <script src="assets/vendor.js"></script>
     <script src="assets/goodcity.js"></script>
-    <script>
-      window.Goodcity = require('goodcity/app')['default'].create(GoodcityENV.APP);
-    </script>
   </body>
 </html>

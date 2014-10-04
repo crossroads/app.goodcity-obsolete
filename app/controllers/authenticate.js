@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from '../config/environment';
 
 export default Ember.Controller.extend({
    needs: ['application', 'authorize'],
@@ -14,7 +15,7 @@ export default Ember.Controller.extend({
 
       Ember.$.ajax({
         type: 'POST',
-        url: GoodcityENV.APP.SERVER_PATH +"/auth/verify",
+        url: config.APP.SERVER_PATH +"/auth/verify",
         data: {pin: user_pin},
         dataType: 'json',
         headers: {
@@ -67,12 +68,12 @@ export default Ember.Controller.extend({
       Ember.$('.loader_image').show();
       var token = localStorage.step1_token === undefined  ? localStorage.jwt : localStorage.step1_token;
       if (this.get('mobilePhone') !== "undefinded") {
-        mobile = GoodcityENV.APP.HK_COUNTRY_CODE + this.get('mobilePhone');
+        mobile = config.APP.HK_COUNTRY_CODE + this.get('mobilePhone');
       }
 
       Ember.$.ajax({
         type: 'GET',
-        url: GoodcityENV.APP.SERVER_PATH +"/auth/resend",
+        url: config.APP.SERVER_PATH +"/auth/resend",
         data: {mobile: mobile},
         dataType: 'json',
         headers: {

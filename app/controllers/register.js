@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from '../config/environment';
 
 export default Ember.Controller.extend({
   actions: {
@@ -15,7 +16,7 @@ export default Ember.Controller.extend({
 
       Ember.$.ajax({
         type: 'POST',
-        url: GoodcityENV.APP.SERVER_PATH +"/auth/signup",
+        url: config.APP.SERVER_PATH +"/auth/signup",
         data: {user_auth: user_auth},
         dataType: 'json',
         success: function(data){
