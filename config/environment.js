@@ -41,6 +41,7 @@ module.exports = function(environment) {
 
     // RESTAdapter Settings
     ENV.APP.API_HOST_URL = 'http://localhost:3000';
+    ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + '/' + ENV.APP.NAMESPACE;
   }
 
   if (environment === 'test') {
@@ -58,6 +59,7 @@ module.exports = function(environment) {
   if (environment === 'production') {
     // RESTAdapter Settings
     ENV.APP.API_HOST_URL = 'http://api.goodcity.hk';
+    ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + '/' + ENV.APP.NAMESPACE;
   }
 
   return ENV;
