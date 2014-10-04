@@ -16,7 +16,7 @@ FactoryGuy.define('item', {
     favouriteImage:       'example1'
   },
   item_with_offer: {
-    offer: FactoryGuy.association('offer')
+    offer: FactoryGuy.belongsTo('offer')
   }
 });
 

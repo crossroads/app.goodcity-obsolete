@@ -12,7 +12,7 @@ FactoryGuy.define('district', {
             territory_id: 1
   },
   district_belongs_territory: {
-    territory: FactoryGuy.association('territory')
+    territory: FactoryGuy.belongsTo('territory')
   },
 });
 export default {};
