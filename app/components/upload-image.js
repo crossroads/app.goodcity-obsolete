@@ -41,7 +41,7 @@ export default Ember.Component.extend({
       url: config.APP.SERVER_PATH +"/images/generate_signature",
       dataType: 'json',
       headers: {
-        'Authorization': 'Bearer ' + localStorage.jwt
+        'Authorization': 'Bearer ' + this.get('session.authToken')
       },
       success: function(data){
         Ember.$('.cloudinary-fileupload').attr("data-form-data", JSON.stringify(data));

@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
       var user_pin = this.get('pin');
       var route = this;
       var attemptedTransition = route.get('attemptedTransition');
-      var token = localStorage.step1_token === undefined  ? localStorage.jwt : localStorage.step1_token;
+      var token = localStorage.step1_token || this.get('session.authToken');
 
       Ember.$.ajax({
         type: 'POST',
@@ -27,8 +27,7 @@ export default Ember.Controller.extend({
           }
           else {
             delete localStorage.step1_token;
-            localStorage.jwt = data.jwt_token;
-            window.Goodcity.set('authToken', localStorage.jwt);
+            route.set('session.authToken', data.jwt_token);
 
             Ember.run(function(){
               route.get('controllers.application').send('logMeIn', data.user_id);
@@ -66,7 +65,15 @@ export default Ember.Controller.extend({
       var _this = this;
       var mobile = "";
       Ember.$('.loader_image').show();
-      var token = localStorage.step1_token === undefined  ? localStorage.jwt : localStorage.step1_token;
+
+      var header = {};
+      if (localStorage.step1_token) {
+        header.Authorization = "Bearer " + localStorage.step1_token;
+      }
+      else if (this.get('session.authToken')) {
+        header.Authorization = "Bearer " + this.get('session.authToken');
+      }
+
       if (this.get('mobilePhone') !== "undefinded") {
         mobile = config.APP.HK_COUNTRY_CODE + this.get('mobilePhone');
       }
@@ -76,9 +83,7 @@ export default Ember.Controller.extend({
         url: config.APP.SERVER_PATH +"/auth/resend",
         data: {mobile: mobile},
         dataType: 'json',
-        headers: {
-          'Authorization': 'Bearer ' + token
-        },
+        headers: header,
         success: function(data){
           localStorage.step1_token = data.token;
           _this.setProperties({mobilePhone:null, pin:null});

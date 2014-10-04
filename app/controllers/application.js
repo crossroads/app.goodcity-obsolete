@@ -20,7 +20,7 @@ export default Ember.ObjectController.extend({
   }.property(),
 
   isLoggedIn: function(key, value) {
-    return (arguments.length > 1 ? value : (localStorage.jwt === undefined ? false : true));
+    return (arguments.length > 1 ? value : (Ember.isNone(this.get('session.authToken')) ? false : true));
   }.property(),
 
   currentLanguage: function() {
@@ -30,12 +30,13 @@ export default Ember.ObjectController.extend({
   actions: {
     logMeOut: function(){
       this.get('controllers.subscriptions').send('unwire');
-      delete localStorage.jwt;
+      this.set("session.authToken", null);
       delete localStorage.step1_token;
       delete localStorage.currentUserId;
       this.set("currentUser", null);
       this.set("isLoggedIn", false);
-      window.Goodcity.reset();
+      //TODO figure out how to retrieve App variable
+      //App.reset();
     },
     logMeIn: function(userId){
       this.set("isLoggedIn", true);
