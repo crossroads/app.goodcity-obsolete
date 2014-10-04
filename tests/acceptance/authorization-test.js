@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
+import offersFactory from '../fixtures/offer';
 
 var App, testHelper, jwt_token,
   TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
@@ -8,10 +9,11 @@ module('Authorization', {
   setup: function() {
     App = startApp();
     testHelper = TestHelper.setup(App);
+    $.mockjax({ url: '/api/v1/offers', type: 'GET', responseText: { offers: FactoryGuy.buildList("offer", 2) } });
     window.alert = function() { return true; };
   },
   teardown: function() {
-    Em.run(function() { testHelper.teardown(); });
+    Ember.run(function() { $.mockjaxClear(); testHelper.teardown(); });
     Ember.run(App, 'destroy');
   }
 });
