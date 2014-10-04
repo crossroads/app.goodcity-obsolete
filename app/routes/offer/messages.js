@@ -10,6 +10,15 @@ export default AuthorizeRoute.extend({
     return this.store.filter('message', {offer_id: offerId}, function(message) {
       return message.get('offerId') === parseInt(offerId);
     });
+  },
+
+  afterModel: function(messages) {
+    var unreadMessages = messages.filterBy('state', 'unread');
+    unreadMessages.forEach(function(message) {
+      message.set('state', 'read');
+    });
+
+    return Ember.RSVP.all(unreadMessages.invoke('save'));
   }
 
 });
