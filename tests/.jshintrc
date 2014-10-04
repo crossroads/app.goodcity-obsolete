@@ -50,8 +50,7 @@
     "currentRouteName",
     "FactoryGuy",
     "FactoryGuyTestMixin",
-    "logoutUser",
-    "localStorage"
+    "logoutUser"
   ],
   "node": false,
   "browser": false,

@@ -35,7 +35,7 @@ test("User able to enter mobile number and get the sms code", function() {
 });
 
 test("User is able to enter sms code and confirm and redirected to offers", function(){
-  var jwt_token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0MDkwMzgzNjUsImlzcyI6Ikdvb2RDaXR5SEsiLCJleHAiOjE0MTAyNDc5NjUsIm1vYmlsZSI6Iis4NTI2MTA5MjAwMSIsIm90cF9zZWNyZXRfa2V5IjoiemRycGZ4c2VnM3cyeWt2aSJ9.lZQaME1oKw7E5cdfks0jG3A_gxlOZ7VfUVG4IMJbc08";
+  var authToken = window.localStorage.authToken;
   logoutUser('/authenticate');
   expect(2);
 
@@ -43,7 +43,7 @@ test("User is able to enter sms code and confirm and redirected to offers", func
   fillIn('input#pin', "12345");
   triggerEvent('input#pin', 'blur');
   andThen(function() {
-    window.localStorage.jwt = jwt_token;
+    window.localStorage.authToken = authToken;
     equal(find('input#pin').val().length, 6);
   });
   andThen(function(){

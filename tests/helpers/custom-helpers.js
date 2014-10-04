@@ -3,7 +3,7 @@ var customHelpers = function() {
  Ember.Test.registerAsyncHelper('loginUser', function (app, url) {
     var hk_user;
     hk_user = FactoryGuy.build('with_hk_mobile');
-    var jwt_token = window.localStorage.jwt;
+    var authToken = window.localStorage.authToken;
     visit(url);
     fillIn('input#mobile', hk_user.mobile);
     click($("#getsmscode")[0]);
@@ -11,7 +11,7 @@ var customHelpers = function() {
       equal(currentURL(), "/authenticate");
       fillIn('input#pin', "123456");
       click($("#submit_pin")[0]);
-      window.localStorage.jwt  = jwt_token;
+      window.localStorage.authToken  = authToken;
     });
  });
 

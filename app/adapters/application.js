@@ -16,6 +16,6 @@ export default DS.ActiveModelAdapter.extend({
     if (jqXHR && jqXHR.status === 500) {
       alert("Server Error. Please try again later.");
     }
-    this._super(jqXHR);
+    return this._super(jqXHR);
   }
 });
