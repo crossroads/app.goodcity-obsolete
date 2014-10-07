@@ -74,7 +74,7 @@ export default Ember.Controller.extend({
         header.Authorization = "Bearer " + this.get('session.authToken');
       }
 
-      if (this.get('mobilePhone') !== "undefinded") {
+      if (this.get('mobilePhone')) {
         mobile = config.APP.HK_COUNTRY_CODE + this.get('mobilePhone');
       }
 
