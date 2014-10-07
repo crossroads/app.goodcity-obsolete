@@ -1,8 +1,10 @@
 <div>
-{{#if offer.reviewedBy }}
-  {{t "review_offer.review_started_by" firstNameBinding=reviewer.firstName lastNameBinding=reviewer.lastName}}
-  {{ display-timeago offer.reviewedAt}}
-{{ else }}
-  <button {{action 'startReview'}}>Start Review</button>
-{{/if}}
+  {{#if offer.reviewedBy }}
+    {{t "review_offer.review_started_by" firstNameBinding=reviewer.firstName lastNameBinding=reviewer.lastName}}
+    {{ display-timeago offer.reviewedAt}}
+  {{ else }}
+    {{#if isReviewer}}
+      <button {{action 'startReview'}}>Start Review</button>
+    {{/if}}
+  {{/if}}
 </div>
