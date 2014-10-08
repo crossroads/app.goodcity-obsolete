@@ -9,10 +9,10 @@ module('Authorization', {
   setup: function() {
     App = startApp();
     testHelper = TestHelper.setup(App);
-    $.mockjax({ url: '/api/v1/offers', type: 'GET', responseText: { offers: FactoryGuy.buildList("offer", 2) } });
   },
   teardown: function() {
-    Ember.run(function() { $.mockjaxClear(); testHelper.teardown(); });
+    Ember.run(function() {
+      testHelper.teardown(); });
     Ember.run(App, 'destroy');
   }
 });
