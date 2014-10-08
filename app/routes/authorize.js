@@ -11,9 +11,7 @@ var AuthorizeRoute =  Ember.Route.extend({
     var route = this;
     var currentUserId = route.controllerFor('application').get('currentUserId');
     if(currentUserId) {
-      route.store.find('user', currentUserId).then(function(user){
-        route.controllerFor('application').set('currentUser', user);
-      });
+      route.store.find('user', currentUserId);
     }
   },
 

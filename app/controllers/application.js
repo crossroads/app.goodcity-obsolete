@@ -4,12 +4,8 @@ export default Ember.ObjectController.extend({
 
   needs: ['subscriptions'],
 
-  currentUser: function(key, value){
-    if (arguments.length > 1) {
-      return value;
-    } else {
-      return this.store.getById('user', this.get('currentUserId'));
-    }
+  currentUser: function() {
+    return this.store.getById('user', this.get('currentUserId'));
   }.property(),
 
   currentUserId: function(key, value) {
@@ -33,12 +29,13 @@ export default Ember.ObjectController.extend({
       this.set("session.authToken", null);
       delete localStorage.step1_token;
       delete localStorage.currentUserId;
-      this.set("currentUser", null);
+      delete localStorage.permissions;
       this.set("isLoggedIn", false);
-      //TODO figure out how to retrieve App variable
-      //App.reset();
+      this.transitionTo('/login');
     },
     logMeIn: function(userId){
+      delete localStorage.step1_token;
+      delete localStorage.permissions;
       this.set("isLoggedIn", true);
       this.set("currentUserId", userId);
       this.send('setSubscriptions');
