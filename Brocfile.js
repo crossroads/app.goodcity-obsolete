@@ -56,6 +56,4 @@ app.import({
   }
 });
 
-app.import('bower_components/jquery-mockjax/jquery.mockjax.js');
-
 module.exports = app.toTree();
