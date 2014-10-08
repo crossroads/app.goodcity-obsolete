@@ -4,7 +4,7 @@ export default Ember.ArrayController.extend({
 
   needs: ["offer", "review_item"],
   content: [],
-  sortProperties: ['id'],
+  sortProperties: ['createdAt'],
   sortAscending: true,
   itemMessage: true,
 
