@@ -1,6 +1,6 @@
-import AuthorizeRoute from './../authorize';
+import ReadMessagesRoute from './../read_messages';
 
-export default AuthorizeRoute.extend({
+export default ReadMessagesRoute.extend({
   renderTemplate: function() {
     this.render('message_template', {controller: 'review_offer.messages'});
   },
