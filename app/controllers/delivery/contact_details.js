@@ -52,7 +52,9 @@ export default Ember.ObjectController.extend({
           });
 
           delivery.save().then(function() {
-            route.transitionToRoute('delivery.thank_offer', contact);
+            route.transitionToRoute('delivery.thank_offer').then(function(newRoute) {
+              newRoute.controller.set('contact', contact);
+            });
           });
         });
       });

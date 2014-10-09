@@ -10,11 +10,8 @@ export default DS.Model.extend({
   street:      attr('string'),
   addressType: attr('string'),
 
-  district:   belongsTo('district'),
-
-  addressable: belongsTo('addressable', {
-    polymorphic: true
-  }),
+  district:    belongsTo('district'),
+  addressable: belongsTo('addressable', { polymorphic: true }),
 
   fullAddress: function(){
     var addressDetails = [this.get('flat'), this.get('building'), this.get('street')];
