@@ -35,20 +35,19 @@ test("Add Image: display previously added images", function() {
   visit("/offers/2");
 
   andThen(function() {
-    click($("button:contains('Add item')")[0]);
+    click("button.addItem");
     andThen(function() {
       equal(currentURL(), "/offers/2/items/new");
 
       // preview-image
-      var preview_image = $('.file_preview img')[0];
-      equal($(preview_image).attr('id'), testImage1);
+      equal(find('.file_preview img').attr('id'), testImage1);
 
       // thumbnail-image-list
-      equal($("ul.image_list img.current_image").length, 2);
+      equal(find("ul.image_list img.current_image").length, 2);
 
       // favourite-image
-      var fav_image = $("img.favourite").closest('li').find('img.current_image');
-      equal($(fav_image).attr('id'), testImage1);
+      var fav_image = find("img.favourite").closest('li').find('img.current_image');
+      equal(fav_image.attr('id'), testImage1);
     });
   });
 });
