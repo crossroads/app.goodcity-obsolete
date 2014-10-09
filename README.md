@@ -24,6 +24,7 @@ echo prefix = ~/.local >> ~/.npmrc
 curl https://www.npmjs.org/install.sh | sh
 npm install -g ember-cli
 npm install -g bower
+npm install -g phantomjs
 ```
 
 ## Running
