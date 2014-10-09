@@ -257,3 +257,15 @@ td.message_block a {
   display: block;
   margin: 1% 0 1%;
 }
+
+.unread_message_box {
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  border: solid 1px;
+  width: 25%;
+  padding: 1%;
+  background-color: #EEEEEE;
+  z-index: 100;
+  margin-bottom: 1%;
+}
