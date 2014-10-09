@@ -13,6 +13,8 @@ install:
   - bower install
 
 script:
+  - ember server &
+  - sleep 5
   - npm test
 
 notifications:
