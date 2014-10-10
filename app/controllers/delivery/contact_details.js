@@ -5,13 +5,10 @@ export default Ember.ObjectController.extend({
 
   selectedTerritory: {id: null},
   selectedDistrict: {id: null},
+  user: Ember.computed.alias('controllers.application.currentUser'),
 
   territories: function(){
     return this.store.findAll('territory');
-  }.property(),
-
-  user: function(){
-    return this.get('controllers.application').get('currentUser');
   }.property(),
 
   districtsByTerritory: function() {
