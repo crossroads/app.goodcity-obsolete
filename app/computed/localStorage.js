@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.computed.storage = function() {
+export default Ember.computed.localStorage = function() {
   return Ember.computed(function(key, value) {
     //get
     if (arguments.length === 1) {
