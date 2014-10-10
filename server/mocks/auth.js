@@ -11,7 +11,7 @@ module.exports = function(app) {
   });
 
   authRouter.get('/resend', function(req, res) {
-    res.send({"mobile_exist":true,"token":"zdrpfxseg3w2ykvi"});
+    res.send({"token":"zdrpfxseg3w2ykvi"});
   });
 
   authRouter.post('/verify', function(req, res){

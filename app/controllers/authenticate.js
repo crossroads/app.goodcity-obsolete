@@ -2,50 +2,52 @@ import Ember from 'ember';
 import config from '../config/environment';
 
 export default Ember.Controller.extend({
-   needs: ['application', 'authorize'],
+  needs: ['application', 'authorize'],
 
-   actions: {
+  mobile: function() {
+    return config.APP.HK_COUNTRY_CODE + this.get('mobilePhone');
+  }.property('mobilePhone'),
+
+  actions: {
 
     authenticateUser: function(){
       Ember.$('.auth_error').hide();
-      var user_pin = this.get('pin');
-      var route = this;
-      var attemptedTransition = route.get('attemptedTransition');
-      var token = localStorage.step1_token || this.get('session.authToken');
+      var pin = this.get('pin');
+      var otp_auth_key = this.get('session.otpAuthKey');
+      var _this = this;
+      var attemptedTransition = _this.get('attemptedTransition');
 
       Ember.$.ajax({
         type: 'POST',
         url: config.APP.SERVER_PATH +"/auth/verify",
-        data: {pin: user_pin},
+        data: {pin: pin, otp_auth_key: otp_auth_key},
         dataType: 'json',
-        headers: {
-          'Authorization': 'Bearer ' + token
-        },
         success: function(data) {
           Ember.run(function() {
             if(data.error && data.error.length > 0) {
               Ember.$('.auth_error').show();
             }
             else {
-              delete localStorage.step1_token;
-              route.set('session.authToken', data.jwt_token);
+              _this.setProperties({pin:null, mobilePhone: null});
+              _this.set('session.authToken', data.jwt_token);
+              _this.set('session.otpAuthKey', null);
 
               Ember.run(function(){
-                route.get('controllers.application').send('logMeIn', data.user_id);
+                _this.get('controllers.application').send('logMeIn', data.user_id);
               });
 
-              route.store.find('user', data.user_id).then( function(user){
-                route.get('controllers.authorize').send('setPermissions', user);
+              _this.store.find('user', data.user_id).then( function(user){
+                _this.get('controllers.authorize').send('setPermissions', user);
 
                 // After login, redirect user to requested url
                 if (attemptedTransition) {
                   attemptedTransition.retry();
-                  route.set('attemptedTransition', null);
+                  _this.set('attemptedTransition', null);
                 } else {
                   if (user.get('isDonor')) {
-                    route.transitionToRoute('offers');
+                    _this.transitionToRoute('offers');
                   } else {
-                    route.transitionToRoute('inbox');
+                    _this.transitionToRoute('inbox');
                   }
                 }
               });
@@ -56,7 +58,7 @@ export default Ember.Controller.extend({
         },
         failure: function() {
           Ember.run(function() {
-            console.log('Fail token: ' + token);
+            console.log('Login failure!');
           });
         },
         error: function() {
@@ -69,30 +71,17 @@ export default Ember.Controller.extend({
     },
     resendPin: function() {
       var _this = this;
-      var mobile = "";
+      var mobile = this.get('mobile');
       Ember.$('.loader_image').show();
 
-      var header = {};
-      if (localStorage.step1_token) {
-        header.Authorization = "Bearer " + localStorage.step1_token;
-      }
-      else if (this.get('session.authToken')) {
-        header.Authorization = "Bearer " + this.get('session.authToken');
-      }
-
-      if (this.get('mobilePhone')) {
-        mobile = config.APP.HK_COUNTRY_CODE + this.get('mobilePhone');
-      }
-
       Ember.$.ajax({
-        type: 'GET',
-        url: config.APP.SERVER_PATH +"/auth/resend",
+        type: 'POST',
+        url: config.APP.SERVER_PATH + "/auth/send_pin",
         data: {mobile: mobile},
         dataType: 'json',
-        headers: header,
         success: function(data) {
           Ember.run(function() {
-            localStorage.step1_token = data.token;
+            _this.set('session.otpAuthKey', data.otp_auth_key);
             _this.setProperties({mobilePhone:null, pin:null});
             _this.transitionToRoute('/authenticate');
           });
