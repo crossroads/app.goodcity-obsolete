@@ -93,28 +93,27 @@ test("Change favourite image", function() {
   });
 });
 
-test("Create Item with details", function(){
+test("Create Item with details", function() {
   visit("/offers");
+  visit("/offers/2/items/new");
+  click('button.add_item_link');
+
+  andThen(function() {
+    equal(currentURL(), "/offers/2/items/add_item");
+    equal(find('img.fav_image').attr('id'), testImage1);
+  });
+
+  fillIn("textarea[name=donorDescription]", "this is test item");
+  click(":radio[value=1]");
+
+  andThen(function() {
+    equal(find("textarea[name=donorDescription]").val(), "this is test item");
+  });
+
+  click("button:contains('Next')");
+
   andThen(function(){
-    visit("/offers/2/items/new");
-    andThen(function(){
-      click(find('button.add_item_link'));
-      andThen(function(){
-        equal(currentURL(), "/offers/2/items/add_item");
-        equal($('img.fav_image').attr('id'), testImage1);
-
-        fillIn("textarea[name=donorDescription]", "this is test item");
-        click(find(":radio[value=1]"));
-        andThen(function(){
-
-          equal($("textarea[name=donorDescription]").val(),"this is test item");
-          click(find("button:contains('Next')"));
-          andThen(function(){
-            equal(currentURL(), "/offers/2");
-            equal($.trim($(".item_name").text()), "this is test item");
-          });
-        });
-      });
-    });
+    equal(currentURL(), "/offers/2");
+    equal(find(".item_name").text(), "this is test item");
   });
 });

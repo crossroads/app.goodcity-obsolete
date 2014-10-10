@@ -26,7 +26,7 @@ export default Ember.Controller.extend({
 
       // Create the new Item model
       newItemProperties.state = 'draft';
-      var offer_id = this.get('controllers.offer').get('id');
+      var offer_id = this.get('controllers.offer.id');
       newItemProperties.offer = this.store.getById('offer', offer_id);
       newItemProperties.donorCondition = this.store.getById('donor_condition', donorConditionId);
       var item = this.store.createRecord('item', newItemProperties);

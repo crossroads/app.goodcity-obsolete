@@ -20,10 +20,9 @@
       <tr>
         <td><img {{bind-attr src=defaultImageURL }}></img></td>
         <td>
-          <div class='item_name'>
-            {{#link-to 'item' this}}{{donorDescription}}{{/link-to}}
-          </div>
-        <br/>{{donorCondition.name}}</td>
+          {{#link-to 'item' this class='item_name'}}{{donorDescription}}{{/link-to}}<br/>
+          {{donorCondition.name}}
+        </td>
         <td>{{#link-to 'item.edit' this}}{{t "edit"}}{{/link-to}}</td>
         <td><button {{action 'removeItem' this}} class='removeItem removeRecord'>{{t "remove"}}</button></td>
       </tr>
