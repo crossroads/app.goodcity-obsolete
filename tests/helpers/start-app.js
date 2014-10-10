@@ -20,6 +20,10 @@ export default function startApp(attrs) {
 
   window.alert = function(message) { console.log("Alert: " + message); };
 
+  Ember.RSVP.configure('onerror', function(e) {
+    console.log(e.stack);
+  });
+
   Ember.run(function() {
     App = Application.create(attributes);
     App.setupForTesting();
