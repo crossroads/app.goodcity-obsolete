@@ -94,22 +94,25 @@ test("Change favourite image", function() {
 });
 
 test("Create Item with details", function(){
-  visit("/offers/2/items/new");
+  visit("/offers");
   andThen(function(){
-    click(find('button.add_item_link'));
+    visit("/offers/2/items/new");
     andThen(function(){
-      equal(currentURL(), "/offers/2/items/add_item");
-      equal($('img.fav_image').attr('id'), testImage1);
-
-      fillIn("textarea[name=donorDescription]", "this is test item");
-      click(find(":radio[value=1]"));
+      click(find('button.add_item_link'));
       andThen(function(){
+        equal(currentURL(), "/offers/2/items/add_item");
+        equal($('img.fav_image').attr('id'), testImage1);
 
-        equal($("textarea[name=donorDescription]").val(),"this is test item");
-        click(find("button:contains('Next')"));
+        fillIn("textarea[name=donorDescription]", "this is test item");
+        click(find(":radio[value=1]"));
         andThen(function(){
-          equal(currentURL(), "/offers/2");
-          equal($.trim($(".item_name").text()), "this is test item");
+
+          equal($("textarea[name=donorDescription]").val(),"this is test item");
+          click(find("button:contains('Next')"));
+          andThen(function(){
+            equal(currentURL(), "/offers/2");
+            equal($.trim($(".item_name").text()), "this is test item");
+          });
         });
       });
     });

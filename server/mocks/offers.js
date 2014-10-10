@@ -8,9 +8,9 @@ module.exports = function(app) {
   var offers_json = {
     "offers": [ {"id": "1", "state": "draft", "collection_contact_name": 'TestOffer', "item_ids": ["1", "2"] },
       {"id": "2", "state": "draft"} ],
-    "items": [{"id": "1", "donor_description":'example1', "offer_id": "1", "image_ids": ["1", "2"]}, {"id": "2", "offer_id": "1"}],
-    "images": [{"id": "1", "image_url": image_url, "thumb_image_url": image_url, "favourite": "false", "order": 1, "image_id": image_id },
-      {"id": "2", "image_url": image_url, "thumb_image_url": image_url, "favourite": "true", "order": 1, "image_id": image_id }],
+    "items": [{"id": "1", "donor_description":'example1', "offer_id": "1", "image_ids": ["1", "2"]}, {"id": "2", "donor_description":'example2', "offer_id": "1"}],
+    "images": [{"id": "1", "image_url": image_url, "thumb_image_url": image_url, "favourite": "false", "image_id": image_id },
+      {"id": "2", "image_url": image_url, "thumb_image_url": image_url, "favourite": "true", "image_id": image_id }],
     "donor_conditions": [{ "id": 1, "name": "New" },{"id": 4,"name": "Broken"},{"id": 2,"name": "Lightly Used"},{"id": 3,"name": "Heavily Used"}]
 
   };
