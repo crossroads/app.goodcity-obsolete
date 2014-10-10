@@ -259,7 +259,7 @@ td.message_block a {
 }
 
 .unread_message_box {
-  position: absolute;
+  position: fixed;
   bottom: 0%;
   right: 0%;
   border: solid 1px;
