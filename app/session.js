@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import './computed/storage';
+import './computed/localstorage';
 
 export default Ember.Object.extend({
   authToken: Ember.computed.localStorage()
