@@ -38,8 +38,8 @@ export default Ember.View.extend({
       Ember.$('#mobile').focusout(function(){
         var phone = Ember.$(this).val();
         if (phone.search(/^\d{8}$/) === 0) {
+          // should also start with 5, 6 or 9
           actual_phone_number(phone);
-          check_uniqness(this.getAttribute("data-actual-mobile"));
         }else {
           highlight_phone_field();
         }
@@ -47,14 +47,6 @@ export default Ember.View.extend({
 
       Ember.$('#mobile, #first_name, #last_name, .ember-select').focus(function(){
         remove_highlight(this);
-      });
-    }
-
-    function check_uniqness(phone){
-      Ember.$.getJSON(config.APP.SERVER_PATH +"/auth/check_mobile",
-        {mobile: phone}).done(function(data){
-          var is_uniq = data.is_unique_mobile;
-          return is_uniq ? remove_highlight() : highlight_phone_field(true);
       });
     }
 

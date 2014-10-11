@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
         dataType: 'json',
         success: function(data){
           Ember.run(function() {
-            localStorage.step1_token = data.token;
+            _this.set('session.otpAuthKey', data.otp_auth_key)
             _this.setProperties({mobilePhone:null, firstName:null, lastName:null});
             _this.transitionToRoute('/authenticate');
           });

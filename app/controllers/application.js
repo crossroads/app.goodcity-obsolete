@@ -27,14 +27,12 @@ export default Ember.ObjectController.extend({
     logMeOut: function(){
       this.get('controllers.subscriptions').send('unwire');
       this.set("session.authToken", null);
-      delete localStorage.step1_token;
       delete localStorage.currentUserId;
       delete localStorage.permissions;
       this.set("isLoggedIn", false);
       this.transitionToRoute('login');
     },
     logMeIn: function(userId){
-      delete localStorage.step1_token;
       delete localStorage.permissions;
       this.set("isLoggedIn", true);
       this.set("currentUserId", userId);
