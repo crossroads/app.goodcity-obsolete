@@ -55,7 +55,7 @@ export default Ember.Controller.extend({
               }
 
             }
-            route.setProperties({mobilePhone:null, pin: null});
+            _this.setProperties({mobilePhone:null, pin: null});
           });
         },
         failure: function() {
