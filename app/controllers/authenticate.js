@@ -32,25 +32,27 @@ export default Ember.Controller.extend({
               _this.set('session.authToken', data.jwt_token);
               _this.set('session.otpAuthKey', null);
 
+              _this.store.pushPayload(data['user']);
+              var userId = data['user']['user']['id'];
+              var user = _this.store.getById('user', userId);
+
               Ember.run(function(){
-                _this.get('controllers.application').send('logMeIn', data.user_id);
+                _this.get('controllers.application').send('logMeIn', userId);
               });
 
-              _this.store.find('user', data.user_id).then( function(user){
-                _this.get('controllers.authorize').send('setPermissions', user);
+              _this.get('controllers.authorize').send('setPermissions', user);
 
-                // After login, redirect user to requested url
-                if (attemptedTransition) {
-                  attemptedTransition.retry();
-                  _this.set('attemptedTransition', null);
+              // After login, redirect user to requested url
+              if (attemptedTransition) {
+                attemptedTransition.retry();
+                _this.set('attemptedTransition', null);
+              } else {
+                if (user.get('isDonor')) {
+                  _this.transitionToRoute('offers');
                 } else {
-                  if (user.get('isDonor')) {
-                    _this.transitionToRoute('offers');
-                  } else {
-                    _this.transitionToRoute('inbox');
-                  }
+                  _this.transitionToRoute('inbox');
                 }
-              });
+              }
 
             }
             route.setProperties({mobilePhone:null, pin: null});
