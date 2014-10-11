@@ -41,6 +41,7 @@ var AuthorizeRoute =  Ember.Route.extend({
         controller: 'messages/unread'
       });
     }
+  },
 
   actions: {
     error: function(reason) {
