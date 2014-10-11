@@ -28,7 +28,7 @@ module('Acceptance: Register', {
 });
 
 test("All required registration details are filled", function() {
-  expect(6);
+  expect(5);
 
   visit('/register');
   fillIn('#mobile', hk_user.mobile);
@@ -36,22 +36,22 @@ test("All required registration details are filled", function() {
   fillIn('#first_name',  hk_user.firstName );
   fillIn('#last_name', hk_user.lastName);
   click("#all");
-  click(find('select.ember-select>option:contains("Tung Chung")'));
 
   andThen(function() {
-    equal(find('select.ember-select').find(":selected").text(), "Tung Chung");
-    equal(find('#mobile').val(), hk_user.mobile);
+    var districtId = find('.district-selection option:contains("Tung Chung")').val();
+    find('.district-selection select').val(districtId).change();
   });
 
   triggerEvent('#mobile', 'blur');
 
   andThen(function() {
+    equal(find('#mobile').val(), hk_user.mobile);
     equal(find('#first_name').val(), hk_user.firstName);
     equal(find('#last_name').val(), hk_user.lastName);
-    equal(find('select.ember-select').find(":selected").text(), "Tung Chung");
+    equal(find('.district-selection :selected').text(), "Tung Chung");
   });
 
-  click("button:contains('Register')");
+  click("#registerUser");
 
   andThen(function(){
     equal(currentURL(), "/authenticate");

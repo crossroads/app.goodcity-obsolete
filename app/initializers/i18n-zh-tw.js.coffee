@@ -1,4 +1,4 @@
-﻿`import Ember from "ember"`
+`import Ember from "ember"`
 
 I18nTranslationsZhTw =
   name: 'i18n-zh-tw'
@@ -7,7 +7,6 @@ I18nTranslationsZhTw =
     Ember.I18n.translation_store = Ember.I18n.translation_store || {}
 
     Ember.I18n.translation_store['zh-tw'] =
-
       'language': 'zh-tw'
       'loading': '加載中...'
       "goodcity.hk" : "好人好市"
@@ -26,6 +25,7 @@ I18nTranslationsZhTw =
       "index.donate_goods" : "捐出你的精品給需要的人"
       "index.how" : "它是如何工作的？"
       "full_name" : "{{lastName}} {{firstName}}"
+      "select_district" : "Select a district"
 
       "application":
         "home" : "首頁"

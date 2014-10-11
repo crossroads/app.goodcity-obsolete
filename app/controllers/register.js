@@ -6,11 +6,10 @@ export default Ember.Controller.extend({
     registerUser: function() {
       var _this = this;
       Ember.$('.loader_image').show();
-      var ele_selected = Ember.$('.district-selection');
-      var mobilePhone = Ember.$("#mobile")[0].getAttribute("data-actual-mobile");
+      var mobilePhone = Ember.$("#mobile").data("actual-mobile");
       var firstName = this.get('firstName');
       var lastName = this.get('lastName');
-      var district_id = ele_selected.attr('selected_id') === undefined ? null : ele_selected.attr('selected_id');
+      var district_id = Ember.$('.district-selection').attr('selected_id') || null;
       var user_auth = { mobile: mobilePhone, first_name: firstName, last_name: lastName,
         address_attributes: {district_id: district_id, address_type: "profile"}};
 

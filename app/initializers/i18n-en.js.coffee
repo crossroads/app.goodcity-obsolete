@@ -25,6 +25,7 @@ I18nTranslationsEn =
       "index.donate_goods" : "Donate your quality goods to people in need"
       "index.how" : "How Does It Work?"
       "full_name" : "{{firstName}} {{lastName}}"
+      "select_district" : "Select a district"
 
       "application":
         "home" : "Home"
