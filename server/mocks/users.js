@@ -25,8 +25,14 @@ module.exports = function(app) {
   };
 
   usersRouter.get('/:id', function(req, res) {
+    if (req.params.id == 2) {
+      users_json.user.id = 2;
+      users_json.user.permission_id = 1;
+      users_json.permissions = [{id:1,name:"Reviewer"}];
+    }
     res.send(users_json);
   });
 
   app.use('/api/v1/users', usersRouter);
+  app.use('/api/v1/users/:id', usersRouter);
 };

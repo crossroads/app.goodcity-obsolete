@@ -17,10 +17,12 @@ var customHelpers = function() {
 
   Ember.Test.registerAsyncHelper('logoutUser', function (app, url) {
     visit(url);
-    var ele_logout = $("a:contains('Logout')");
-    if(ele_logout.length > 0){
-      click(ele_logout[0]);
-    }
+    andThen(function() {
+      var ele_logout = $("a:contains('Logout')");
+      if(ele_logout.length > 0){
+        click(ele_logout[0]);
+      }
+    });
   });
 
   Ember.Test.registerHelper('lookup', function(app, name) {
