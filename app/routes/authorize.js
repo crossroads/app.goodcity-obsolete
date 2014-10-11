@@ -45,9 +45,15 @@ var AuthorizeRoute =  Ember.Route.extend({
   actions: {
     error: function(reason) {
       if (reason.status === 401) {
-        this.transitionTo('login');
+        if (reason.responseJSON.error === "Expired token") {
+          this.controllerFor('application').send('logMeOut');
+        }
+        else {
+          this.transitionTo('login');
+        }
       } else {
         alert('Something went wrong');
+        console.log(reason);
       }
     }
   }
