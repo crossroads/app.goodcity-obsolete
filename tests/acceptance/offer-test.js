@@ -48,15 +48,30 @@ test("Display offer details", function() {
   });
 });
 
-test("Cancel Offer", function() {
+test("Cancel Offer - delete offer called", function() {
   expect(1);
+
+  var offerController = lookup('controller:offer.index');
+  offerController.transitionToRoute = function(){};
+  var mockedOffer = {
+    get: function() { return { content: [] }; },
+    destroyRecord: function() {
+      ok(true, 'destroyRecord called on offer');
+    }
+  };
+
+  offerController.send('cancelOffer', mockedOffer);
+});
+
+test("Cancel Offer - redirect to offers", function() {
+  expect(1);
+
+  lookup('controller:offer.index').transitionToRoute = function (routePath) {
+    equal(routePath, 'offers.index');
+  };
 
   visit("/offers/1");
   click("button:contains('Cancel Offer')");
-
-  andThen(function() {
-    equal(currentURL(), "/offers");
-  });
 });
 
 test("Remove Item", function() {

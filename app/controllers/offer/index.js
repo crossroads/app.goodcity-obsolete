@@ -19,7 +19,7 @@ export default Ember.ObjectController.extend({
       });
 
       offer.destroyRecord();
-      this.transitionToRoute('offers');
+      this.transitionToRoute('offers.index');
     },
 
     removeItem: function(item) {
