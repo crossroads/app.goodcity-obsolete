@@ -28,9 +28,8 @@ export default function startApp(attrs) {
   window.alert = function(message) { console.log("Alert: " + message); };
 
   //http://emberjs.com/guides/understanding-ember/debugging/#toc_errors-within-an-code-rsvp-promise-code
-  Ember.RSVP.configure('error', function(e) {
-    Ember.Logger.assert(false, e.message);
-    console.log(e.stack);
+  Ember.RSVP.on('error', function(error) {
+    Ember.Logger.error(error);
   });
 
   //needed by application controller init
