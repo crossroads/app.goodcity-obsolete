@@ -94,6 +94,8 @@ test("Change favourite image", function() {
 });
 
 test("Create Item with details", function() {
+  expect(5);
+
   visit("/offers");
   visit("/offers/2/items/new");
   click('button.add_item_link');

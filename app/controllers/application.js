@@ -31,7 +31,7 @@ export default Ember.ObjectController.extend({
       delete localStorage.currentUserId;
       delete localStorage.permissions;
       this.set("isLoggedIn", false);
-      this.transitionTo('/login');
+      this.transitionToRoute('login');
     },
     logMeIn: function(userId){
       delete localStorage.step1_token;

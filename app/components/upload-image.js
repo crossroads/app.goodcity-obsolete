@@ -44,7 +44,9 @@ export default Ember.Component.extend({
         'Authorization': 'Bearer ' + this.get('session.authToken')
       },
       success: function(data){
-        Ember.$('.cloudinary-fileupload').attr("data-form-data", JSON.stringify(data));
+        Ember.run(function() {
+          Ember.$('.cloudinary-fileupload').attr("data-form-data", JSON.stringify(data));
+        });
       }
     });
   }.on('didInsertElement')

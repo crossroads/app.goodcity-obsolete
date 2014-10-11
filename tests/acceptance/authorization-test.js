@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
-import offersFactory from '../fixtures/offer';
 
 var App, testHelper, jwt_token,
   TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);

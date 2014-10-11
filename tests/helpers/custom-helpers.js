@@ -1,6 +1,6 @@
 import userFactory from '../fixtures/user';
 var customHelpers = function() {
- Ember.Test.registerAsyncHelper('loginUser', function (app, url) {
+  Ember.Test.registerAsyncHelper('loginUser', function (app, url) {
     var hk_user;
     hk_user = FactoryGuy.build('with_hk_mobile');
     var authToken = window.localStorage.authToken;
@@ -13,16 +13,19 @@ var customHelpers = function() {
       click($("#submit_pin")[0]);
       window.localStorage.authToken  = authToken;
     });
- });
+  });
 
- Ember.Test.registerAsyncHelper('logoutUser', function (app, url) {
+  Ember.Test.registerAsyncHelper('logoutUser', function (app, url) {
     visit(url);
     var ele_logout = $("a:contains('Logout')");
     if(ele_logout.length > 0){
       click(ele_logout[0]);
     }
- });
+  });
 
+  Ember.Test.registerHelper('lookup', function(app, name) {
+    return app.__container__.lookup(name);
+  });
 }();
 
 export default customHelpers;

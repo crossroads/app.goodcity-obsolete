@@ -21,43 +21,49 @@ export default Ember.Controller.extend({
         headers: {
           'Authorization': 'Bearer ' + token
         },
-        success: function(data){
-          if(data.error && data.error.length > 0) {
-            Ember.$('.auth_error').show();
-          }
-          else {
-            delete localStorage.step1_token;
-            route.set('session.authToken', data.jwt_token);
+        success: function(data) {
+          Ember.run(function() {
+            if(data.error && data.error.length > 0) {
+              Ember.$('.auth_error').show();
+            }
+            else {
+              delete localStorage.step1_token;
+              route.set('session.authToken', data.jwt_token);
 
-            Ember.run(function(){
-              route.get('controllers.application').send('logMeIn', data.user_id);
-            });
+              Ember.run(function(){
+                route.get('controllers.application').send('logMeIn', data.user_id);
+              });
 
-            route.store.find('user', data.user_id).then( function(user){
-              route.get('controllers.authorize').send('setPermissions', user);
+              route.store.find('user', data.user_id).then( function(user){
+                route.get('controllers.authorize').send('setPermissions', user);
 
-              // After login, redirect user to requested url
-              if (attemptedTransition) {
-                attemptedTransition.retry();
-                route.set('attemptedTransition', null);
-              } else {
-                if (user.get('isDonor')) {
-                  route.transitionToRoute('offers');
+                // After login, redirect user to requested url
+                if (attemptedTransition) {
+                  attemptedTransition.retry();
+                  route.set('attemptedTransition', null);
                 } else {
-                  route.transitionToRoute('inbox');
+                  if (user.get('isDonor')) {
+                    route.transitionToRoute('offers');
+                  } else {
+                    route.transitionToRoute('inbox');
+                  }
                 }
-              }
-            });
+              });
 
-          }
-          route.setProperties({mobilePhone:null, pin: null});
+            }
+            route.setProperties({mobilePhone:null, pin: null});
+          });
         },
-        failure: function(){
-          console.log('Fail token: ' + token);
+        failure: function() {
+          Ember.run(function() {
+            console.log('Fail token: ' + token);
+          });
         },
-        error: function(){
-          Ember.$('.auth_error').show();
-          console.log("Unable to authenticate");
+        error: function() {
+          Ember.run(function() {
+            Ember.$('.auth_error').show();
+            console.log("Unable to authenticate");
+          });
         }
       });
     },
@@ -84,17 +90,22 @@ export default Ember.Controller.extend({
         data: {mobile: mobile},
         dataType: 'json',
         headers: header,
-        success: function(data){
-          localStorage.step1_token = data.token;
-          _this.setProperties({mobilePhone:null, pin:null});
-          _this.transitionToRoute('/authenticate');
+        success: function(data) {
+          Ember.run(function() {
+            localStorage.step1_token = data.token;
+            _this.setProperties({mobilePhone:null, pin:null});
+            _this.transitionToRoute('/authenticate');
+          });
+        },
+        complete: function() {
+          Ember.run(Ember.$('.loader_image').hide);
         },
         error: function(){
-          Ember.$('#mobile').addClass('invalid_input');
-          Ember.$('#mobile_error').text('Please enter a valid mobile number');
+          Ember.run(function() {
+            Ember.$('#mobile').addClass('invalid_input');
+            Ember.$('#mobile_error').text('Please enter a valid mobile number');
+          });
         }
-      }).done(function(){
-          Ember.$('.loader_image').hide();
       });
     }
   }

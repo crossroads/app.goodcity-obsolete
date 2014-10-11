@@ -20,15 +20,19 @@ export default Ember.Controller.extend({
         data: {user_auth: user_auth},
         dataType: 'json',
         success: function(data){
-          localStorage.step1_token = data.token;
-          _this.setProperties({mobilePhone:null, firstName:null, lastName:null});
-          _this.transitionToRoute('/authenticate');
+          Ember.run(function() {
+            localStorage.step1_token = data.token;
+            _this.setProperties({mobilePhone:null, firstName:null, lastName:null});
+            _this.transitionToRoute('/authenticate');
+          });
         },
         error: function(xhr){
-          Ember.$('#mobile_error').text(xhr.responseJSON.error.text);
+          Ember.run(function() {
+            Ember.$('#mobile_error').text(xhr.responseJSON.error.text);
+          });
         },
         complete:function(){
-          Ember.$('.loader_image').hide();
+          Ember.run(Ember.$('.loader_image').hide);
         }
       });
     }

@@ -15,7 +15,7 @@ module.exports = function(app) {
   });
 
   authRouter.post('/verify', function(req, res){
-    res.send({"jwt_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0MDkwNDA0MTQsImlzcyI6Ikdvb2RDaXR5SEsiLCJleHAiOjE0MTAyNTAwMTQsIm1vYmlsZSI6Iis4NTI2MTA5MjAwMSIsIm90cF9zZWNyZXRfa2V5IjoiemRycGZ4c2VnM3cyeWt2aSJ9.0nokBv047aUR-xcilAOwudkkHyQem47L7vYiO6irvKE"});
+    res.send({"user_id":"1","jwt_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0MDkwNDA0MTQsImlzcyI6Ikdvb2RDaXR5SEsiLCJleHAiOjE0MTAyNTAwMTQsIm1vYmlsZSI6Iis4NTI2MTA5MjAwMSIsIm90cF9zZWNyZXRfa2V5IjoiemRycGZ4c2VnM3cyeWt2aSJ9.0nokBv047aUR-xcilAOwudkkHyQem47L7vYiO6irvKE"});
   });
 
   app.use('/api/v1/auth/', authRouter);

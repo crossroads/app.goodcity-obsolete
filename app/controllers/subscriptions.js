@@ -1,6 +1,8 @@
 import Ember from 'ember';
+import { Bindings as emberPusherBindings } from 'ember-pusher';
 
-export default Ember.Controller.extend(EmberPusher.Bindings, {
+export default Ember.Controller.extend(emberPusherBindings, {
+
   currentUserId: function() {
     return localStorage.currentUserId;
   }.property().volatile(),

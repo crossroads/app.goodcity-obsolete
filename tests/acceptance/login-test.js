@@ -1,6 +1,7 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
-import userFactory from '../fixtures/user';
+import testSkip from '../helpers/test-skip';
+import '../fixtures/user';
 
 var App, testHelper, hk_user, non_hk_user;
 
@@ -13,6 +14,11 @@ module('Acceptance: Login', {
 
     hk_user = FactoryGuy.build('with_hk_mobile');
     non_hk_user = FactoryGuy.build('with_non_hk_mobile');
+
+    lookup("controller:subscriptions").pusher = {
+      get: function() { return {}; },
+      wire: function() {}
+    };
   },
   teardown: function() {
     Ember.run(function () {
@@ -23,37 +29,47 @@ module('Acceptance: Login', {
 });
 
 test("User able to enter mobile number and get the sms code", function() {
-  logoutUser('/login');
   expect(1);
-  visit('/login');
-  fillIn('input#mobile', hk_user.mobile);
-  triggerEvent('input#mobile', 'blur');
-  click($("#getsmscode")[0]);
-  andThen(function(){
+
+  logoutUser('/login');
+  fillIn('#mobile', hk_user.mobile);
+  triggerEvent('#mobile', 'blur');
+  click("#getsmscode");
+
+  andThen(function() {
     equal(currentURL(), "/authenticate");
   });
 });
 
-test("User is able to enter sms code and confirm and redirected to offers", function(){
-  var authToken = window.localStorage.authToken;
-  logoutUser('/authenticate');
+test("User is able to enter sms code and confirm and redirected to offers", function() {
   expect(2);
 
+  var authToken = window.localStorage.authToken;
+  logoutUser('/authenticate');
   visit('/authenticate');
-  fillIn('input#pin', "12345");
-  triggerEvent('input#pin', 'blur');
+  fillIn('#pin', "1234");
+  triggerEvent('#pin', 'blur');
+
   andThen(function() {
+    equal(find('#pin').val().length, 4);
     window.localStorage.authToken = authToken;
-    equal(find('input#pin').val().length, 6);
   });
-  andThen(function(){
-    click($("#submit_pin")[0]);
-  });
+
+  click("#submit_pin");
+
   andThen(function(){
     equal(currentURL(), "/offers");
   });
 });
 
-test("User is able to resend the sms code", function(){
+test("Logout clears authToken", function() {
+  visit("/offers");
+  click("a:contains('Logout')");
+  andThen(function() {
+    equal(typeof window.localStorage.authToken, "undefined");
+  });
+});
+
+testSkip("User is able to resend the sms code", function() {
 
 });

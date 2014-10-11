@@ -50,7 +50,9 @@
     "currentRouteName",
     "FactoryGuy",
     "FactoryGuyTestMixin",
-    "logoutUser"
+    "logoutUser",
+    "lookup",
+    "skipTest"
   ],
   "node": false,
   "browser": false,
