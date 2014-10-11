@@ -63,6 +63,8 @@ test("User is able to enter sms code and confirm and redirected to offers", func
 });
 
 test("Logout clears authToken", function() {
+  expect(1);
+
   visit("/offers");
   click("a:contains('Logout')");
   andThen(function() {
@@ -71,5 +73,5 @@ test("Logout clears authToken", function() {
 });
 
 testSkip("User is able to resend the sms code", function() {
-
+  expect(1);
 });

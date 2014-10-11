@@ -17,23 +17,32 @@ module('Authorization', {
 });
 
 test("Rediect to login if not logged-in", function() {
+  expect(1);
+
   delete window.localStorage.authToken;
 
   visit("/offers");
+
   andThen(function() {
     equal(currentURL(), '/login');
   });
 });
 
 test("Redirect to home-page if already logged-in", function() {
+  expect(1);
+
   visit("/login");
+
   andThen(function() {
     equal(currentURL(), '/offers');
   });
 });
 
 test("Redirect to home-page is already registered", function() {
+  expect(1);
+
   visit("/register");
+
   andThen(function() {
     equal(currentURL(), '/offers');
   });

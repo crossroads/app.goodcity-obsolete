@@ -7,6 +7,8 @@ moduleForModel('item', 'Item Model', {
 });
 
 test('Item is a valid ember-data Model', function () {
+  expect(1);
+
   var store  = this.store();
   var record = null;
 
@@ -19,6 +21,8 @@ test('Item is a valid ember-data Model', function () {
 });
 
 testSkip('Default image for item', function () {
+  expect(1);
+
   var store = this.store();
   var defaultImageURL = null;
 
@@ -37,6 +41,8 @@ testSkip('Default image for item', function () {
 });
 
 testSkip('Default image for item when no favourite is selected', function () {
+  expect(1);
+
   var store = this.store();
   var defaultImageURL = null;
 

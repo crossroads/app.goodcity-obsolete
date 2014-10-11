@@ -16,23 +16,26 @@ module('Display Item', {
 });
 
 test("Display Item Details", function() {
-  visit("/offers/1/items/1");
-  andThen(function(){
+  expect(3);
 
+  visit("/offers/1/items/1");
+
+  andThen(function(){
     equal(currentURL(), "/offers/1/items/1");
     equal(/Description: example1/i.test($('body').text()), true);
 
     // item images count
-    equal($("img").length, 2);
+    equal(find("img").length, 2);
   });
 });
 
 test("Back button redirects to its offer", function() {
+  expect(1);
+
   visit("/offers/1/items/1");
-  andThen(function(){
-    click(find('button.backButton')[0]);
-    andThen(function() {
-      equal(currentURL(), "/offers/1");
-    });
+  click('button.backButton');
+
+  andThen(function() {
+    equal(currentURL(), "/offers/1");
   });
 });

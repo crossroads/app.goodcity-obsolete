@@ -60,9 +60,11 @@ test("All required registration details are filled", function() {
 
 test("cannot register unless mobile number details are entered", function() {
   expect(1);
+
   visit('/register');
   fillIn("#first_name",  hk_user.firstName );
   fillIn('#last_name', hk_user.lastName);
+
   andThen(function() {
     equal(currentURL(), '/register');
   });
@@ -70,9 +72,11 @@ test("cannot register unless mobile number details are entered", function() {
 
 test("should prepend country code +852 internally for api call", function() {
   expect(3);
+
   visit('/register');
   fillIn('#mobile', hk_user.mobile);
   triggerEvent('#mobile', 'blur');
+
   andThen(function() {
     equal(find('#mobile').val(), hk_user.mobile);
     equal(find('#mobile').attr("data-actual-mobile").substr(0,4), '+852');
@@ -82,11 +86,13 @@ test("should prepend country code +852 internally for api call", function() {
 
 test("mobile number length should be 8 digit (excluding country code)", function() {
   expect(1);
+
   visit('/register');
   fillIn('#mobile', hk_user.mobile);
   triggerEvent('#mobile', 'blur');
   fillIn("#first_name",  hk_user.firstName );
   fillIn('#last_name', hk_user.lastName);
+
   andThen(function() {
     equal(find('#mobile').val().length, 8);
   });

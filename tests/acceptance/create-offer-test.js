@@ -16,10 +16,11 @@ module('Create New Offer', {
 });
 
 test("should create new offer", function() {
+  expect(3);
 
   visit("/offers/new");
-  andThen(function() {
 
+  andThen(function() {
     // test: created new offer and redirected to its show page.
     equal(currentURL(), '/offers/3');
 
@@ -32,20 +33,23 @@ test("should create new offer", function() {
 });
 
 test("should redirect to previous empty offer", function() {
+  expect(4);
 
   visit("/offers");
+
   andThen(function() {
     equal(currentURL(), '/offers');
+  });
 
-    click(find("button:contains('Make a New Donation')"));
-    andThen(function(){
-      equal(currentURL(), '/offers/2');
+  click("button:contains('Make a New Donation')");
 
-      //test: item count zero
-      equal($.trim($('.itemCount').text()), "Offer items (0)");
+  andThen(function(){
+    equal(currentURL(), '/offers/2');
 
-      //test: no items message
-      equal($.trim($('.noItemMsg').text()), "You don't have any items in this offer yet. Please add your first item!");
-    });
+    //test: item count zero
+    equal($.trim(find('.itemCount').text()), "Offer items (0)");
+
+    //test: no items message
+    equal($.trim(find('.noItemMsg').text()), "You don't have any items in this offer yet. Please add your first item!");
   });
 });

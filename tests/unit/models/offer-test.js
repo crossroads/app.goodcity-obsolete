@@ -8,6 +8,8 @@ moduleForModel('offer', 'Offer Model', {
 });
 
 test('offer is a valid ember-data Model', function () {
+  expect(1);
+
   var store  = this.store();
   var record = null;
 
@@ -20,6 +22,8 @@ test('offer is a valid ember-data Model', function () {
 });
 
 testSkip('Count of items within an offer', function () {
+  expect(1);
+
   var store  = this.store();
 
   Ember.run(function() {

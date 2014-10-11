@@ -32,64 +32,66 @@ module('Create New Item', {
 
 // Display previously uploaded images from localStorage
 test("Add Image: display previously added images", function() {
+  expect(4);
+
   visit("/offers/2");
+  click("button.addItem");
 
-  andThen(function() {
-    click("button.addItem");
-    andThen(function() {
-      equal(currentURL(), "/offers/2/items/new");
-
-      // preview-image
-      equal(find('.file_preview img').attr('id'), testImage1);
-
-      // thumbnail-image-list
-      equal(find("ul.image_list img.current_image").length, 2);
-
-      // favourite-image
-      var fav_image = find("img.favourite").closest('li').find('img.current_image');
-      equal(fav_image.attr('id'), testImage1);
-    });
-  });
-});
-
-test("Clicking on thumbnail image should change preview-image", function() {
-  visit("/offers/2/items/new");
   andThen(function() {
     equal(currentURL(), "/offers/2/items/new");
 
     // preview-image
-    var preview_image = $('.file_preview img')[0];
-    equal($(preview_image).attr('id'), testImage1);
+    equal(find('.file_preview img').attr('id'), testImage1);
 
-    // find other thumbnail-image
-    click(find("img[id='"+testImage2+"']"));
-    andThen(function(){
-      var preview_image = $('.file_preview img')[0];
-      equal($(preview_image).attr('id'), testImage2);
-    });
+    // thumbnail-image-list
+    equal(find("ul.image_list img.current_image").length, 2);
+
+    // favourite-image
+    var fav_image = find("img.favourite").closest('li').find('img.current_image');
+    equal(fav_image.attr('id'), testImage1);
+  });
+});
+
+test("Clicking on thumbnail image should change preview-image", function() {
+  expect(3);
+
+  visit("/offers/2/items/new");
+
+  andThen(function() {
+    equal(currentURL(), "/offers/2/items/new");
+
+    // preview-image
+    equal(find('.file_preview img').attr('id'), testImage1);
+  });
+
+  // find other thumbnail-image
+  click("img[id='"+testImage2+"']");
+
+  andThen(function(){
+    equal(find('.file_preview img').attr('id'), testImage2);
   });
 });
 
 test("Change favourite image", function() {
+  expect(3);
+
   visit("/offers/2/items/new");
+
   andThen(function() {
     equal(currentURL(), "/offers/2/items/new");
 
     // favourite-image
-    var fav_image = $("img.favourite").closest('li').find('img.current_image');
-    equal($(fav_image).attr('id'), testImage1);
+    var fav_image = find("img.favourite").closest('li').find('img.current_image');
+    equal(fav_image.attr('id'), testImage1);
+  });
 
-    // find other thumbnail-image
-    click(find("img[id='"+testImage2+"']"));
-    andThen(function(){
+  // find other thumbnail-image
+  click("img[id='"+testImage2+"']");
+  click('button.setFavourite');
 
-      click(find('button.setFavourite'));
-      andThen(function(){
-        var fav_image = $("img.favourite").closest('li').find('img.current_image');
-        equal($(fav_image).attr('id'), testImage2);
-        equal($(fav_image).attr('id'), testImage2);
-      });
-    });
+  andThen(function(){
+    var fav_image = find("img.favourite").closest('li').find('img.current_image');
+    equal(fav_image.attr('id'), testImage2);
   });
 });
 
