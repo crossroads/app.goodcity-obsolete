@@ -2,11 +2,11 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
 
-  needs: ['application', 'offer'],
+  needs: ['offer'],
 
   reviewer: Ember.computed.alias('offer.reviewedBy'),
   currentOfferId: Ember.computed.alias('controllers.offer.id'),
-  currentUser: Ember.computed.alias('controllers.application.currentUser'),
+  currentUser: Ember.computed.alias('session.currentUser'),
   isReviewer: Ember.computed.alias('currentUser.isReviewer'),
 
   offer: function() {

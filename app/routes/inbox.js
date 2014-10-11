@@ -3,8 +3,7 @@ import AuthorizeRoute from './authorize';
 export default AuthorizeRoute.extend({
   beforeModel: function(){
     this._super();
-    var isDonor = this.controllerFor('authorize').get('isDonor');
-    if (isDonor) {
+    if (this.get('session.currentUser.isDonor')) {
       this.transitionTo('offers');
     }
     return true;
