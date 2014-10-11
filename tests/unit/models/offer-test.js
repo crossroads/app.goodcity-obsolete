@@ -3,7 +3,8 @@ import { test, moduleForModel } from 'ember-qunit';
 import testSkip from '../../helpers/test-skip';
 
 moduleForModel('offer', 'Offer Model', {
-  needs: ['model:item', 'model:message', 'model:package', 'model:image', 'model:donor_condition']
+  needs: ['model:item', 'model:message', 'model:package', 'model:image', 'model:donor_condition',
+          'model:delivery', 'model:user']
 });
 
 test('offer is a valid ember-data Model', function () {
