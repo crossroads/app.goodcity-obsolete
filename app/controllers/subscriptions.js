@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import { Bindings as emberPusherBindings } from 'ember-pusher';
 
-export default Ember.Controller.extend(emberPusherBindings, {
+export default Ember.Controller.extend(EmberPusher.Bindings, {
 
   currentUserId: function() {
     return localStorage.currentUserId;

@@ -19,9 +19,7 @@ app.import({
   development: 'vendor/pusher.js',
   test: 'vendor/pusher-test-stub.js'
 });
-app.import('vendor/ember-pusher.amd.js', {
-  exports: { 'ember-pusher': ['Controller', 'Bindings', 'ClientEvents', 'initialize'] }
-});
+app.import('vendor/ember-pusher.js');
 app.import('bower_components/jquery-timeago/jquery.timeago.js');
 
 //~ For the moment, ember-18n requires full version of handlebars.
