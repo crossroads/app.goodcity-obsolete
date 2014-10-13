@@ -4,18 +4,38 @@ export default Ember.ObjectController.extend({
 
   needs: ['subscriptions'],
 
-  isLoggedIn: Ember.computed.notEmpty('session.authToken'),
-  currentLanguage: Ember.computed.readOnly('Ember.I18n.translations.language'),
+  currentUser: function() {
+    return this.store.getById('user', this.get('currentUserId'));
+  }.property(),
+
+  currentUserId: function(key, value) {
+    if (arguments.length > 1) {
+      localStorage.currentUserId = value;
+    }
+    return parseInt(localStorage.currentUserId);
+  }.property(),
+
+  isLoggedIn: function(key, value) {
+    return (arguments.length > 1 ? value : (Ember.isNone(this.get('session.authToken')) ? false : true));
+  }.property(),
+
+  currentLanguage: function() {
+    return Ember.I18n.translations.language;
+  }.property(),
 
   actions: {
     logMeOut: function(){
       this.get('controllers.subscriptions').send('unwire');
       this.set("session.authToken", null);
-      this.set('session.currentUserId', null);
+      delete localStorage.currentUserId;
+      delete localStorage.permissions;
+      this.set("isLoggedIn", false);
       this.transitionToRoute('login');
     },
     logMeIn: function(userId){
-      this.set("session.currentUserId", userId);
+      delete localStorage.permissions;
+      this.set("isLoggedIn", true);
+      this.set("currentUserId", userId);
       this.send('setSubscriptions');
     },
     setSubscriptions: function() {

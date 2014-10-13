@@ -1,11 +1,11 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-  needs: ["delivery"],
+  needs: ["delivery", "application"],
 
   selectedTerritory: {id: null},
   selectedDistrict: {id: null},
-  user: Ember.computed.alias('session.currentUser'),
+  user: Ember.computed.alias('controllers.application.currentUser'),
 
   territories: function(){
     return this.store.findAll('territory');

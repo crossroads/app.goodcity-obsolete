@@ -2,7 +2,7 @@ import Ember from 'ember';
 import config from '../config/environment';
 
 export default Ember.Controller.extend({
-  needs: ['application'],
+  needs: ['application', 'authorize'],
 
   mobile: function() {
     return config.APP.HK_COUNTRY_CODE + this.get('mobilePhone');
@@ -32,13 +32,15 @@ export default Ember.Controller.extend({
               _this.set('session.authToken', data.jwt_token);
               _this.set('session.otpAuthKey', null);
 
-              _this.store.pushPayload(data.user);
-              var userId = data.user.user.id;
+              _this.store.pushPayload(data['user']);
+              var userId = data['user']['user']['id'];
               var user = _this.store.getById('user', userId);
 
               Ember.run(function(){
                 _this.get('controllers.application').send('logMeIn', userId);
               });
+
+              _this.get('controllers.authorize').send('setPermissions', user);
 
               // After login, redirect user to requested url
               if (attemptedTransition) {

@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
 
-  needs: ['application'],
+  needs: ['authorize', 'application'],
   sortProperties: ['id'],
   sortAscending: false,
 
@@ -18,10 +18,11 @@ export default Ember.ArrayController.extend({
 
   actions: {
     reply: function(messageId, offerId) {
+      var currentUser = this.get('controllers.application.currentUser');
       var offer = this.store.getById('offer', offerId);
       var message = this.store.getById('message', messageId);
 
-      if(this.get('session.currentUser.isDonor')) {
+      if(currentUser.get('isDonor')) {
         this.transitionToRoute("offer.messages", offer);
       } else {
         if(message.get('isPrivate')) {
@@ -34,7 +35,7 @@ export default Ember.ArrayController.extend({
     },
 
     viewUnread: function() {
-      if (this.get('session.currentUser.isReviewer')) {
+      if (this.get('controllers.authorize.isReviewer')) {
         this.transitionToRoute("inbox.under_review");
         return;
       }
