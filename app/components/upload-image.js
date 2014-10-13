@@ -17,6 +17,7 @@ export default Ember.Component.extend({
     Ember.$('.cloudinary-fileupload').cloudinary_fileupload({
       dropZone: Ember.$('.sceneUpBtn'),
       dataType: 'json',
+      timeout: 60000,// 1 minute
 
       done: function (e, data) {
         console.log("done");
@@ -31,6 +32,12 @@ export default Ember.Component.extend({
         Ember.$(".loading_image").show();
         var progress = parseInt(data.loaded / data.total * 100, 10);
         Ember.$('.progress').html(progress + '%');
+      },
+
+      fail: function(e, data) {
+        console.log("error " + data.errorThrown);
+        Ember.$(".loading_image").hide();
+        alert('There is an error with your image upload. Please try again after some time.');
       }
     });
   },
