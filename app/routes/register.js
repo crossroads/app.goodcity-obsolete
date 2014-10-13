@@ -1,9 +1,6 @@
-import AuthorizeRoute from './authorize';
+import SessionRoute from './session';
 
-export default AuthorizeRoute.extend({
-  allowAnonymous: true,
-  redirectIfLoggedIn: true,
-
+export default SessionRoute.extend({
   model: function() {
     return this.store.find('territory');
   }

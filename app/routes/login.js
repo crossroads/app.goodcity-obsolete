@@ -1,7 +1,5 @@
-import AuthorizeRoute from './authorize';
+import SessionRoute from './session';
 
-export default AuthorizeRoute.extend({
-  controllerName: 'authenticate',
-  allowAnonymous: true,
-  redirectIfLoggedIn: true
+export default SessionRoute.extend({
+  controllerName: 'authenticate'
 });

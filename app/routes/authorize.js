@@ -1,29 +1,17 @@
 import Ember from 'ember';
 
 var AuthorizeRoute =  Ember.Route.extend({
-  allowAnonymous: false,
-  staffRestricted: false,
-  redirectIfLoggedIn: false,
-
   beforeModel: function(transition) {
-    if (!this.get('allowAnonymous') && !this.controllerFor('application').get('isLoggedIn')) {
-      alert('You must log in!');
-      var loginController = this.controllerFor('login');
-      loginController.set('attemptedTransition', transition);
-      this.transitionTo('login');
+    if (!this.controllerFor('application').get('isLoggedIn')) {
+      this.redirectToLogin(transition);
     }
+  },
 
-    if (this.get('staffRestricted') && !this.get('session.currentUser.isStaff')) {
-      this.transitionTo('offers');
-    }
-
-    if (this.get('redirectIfLoggedIn') && this.controllerFor('application').get('isLoggedIn')) {
-      if (this.get('session.currentUser.isStaff')) {
-        this.transitionTo('/inbox');
-      } else {
-        this.transitionTo('/offers');
-      }
-    }
+  redirectToLogin: function(transition) {
+    alert('You must log in!');
+    var loginController = this.controllerFor('login');
+    loginController.set('attemptedTransition', transition);
+    this.transitionTo('login');
   },
 
   renderTemplate: function() {
@@ -41,6 +29,7 @@ var AuthorizeRoute =  Ember.Route.extend({
         controller: 'messages/unread'
       });
     }
+  },
 
   actions: {
     error: function(reason) {
