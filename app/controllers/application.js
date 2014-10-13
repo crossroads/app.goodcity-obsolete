@@ -6,7 +6,7 @@ export default Ember.ObjectController.extend({
 
   currentUser: function() {
     return this.store.getById('user', this.get('currentUserId'));
-  }.property(),
+  }.property('currentUserId'),
 
   currentUserId: function(key, value) {
     if (arguments.length > 1) {
