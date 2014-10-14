@@ -4,7 +4,9 @@
     {{#if hasManyImages}}
       <button {{action "setFavouriteImage" previewImageId}} class='setFavourite'>{{t "upload-images.favourite"}}</button>
     {{/if}}
-    <button {{action "removeImage" previewImageId}}>{{t "delete"}}</button>
+    {{#if requireImageAtEdit}}
+      <button {{action "removeImage" previewImageId}}>{{t "delete"}}</button>
+    {{/if}}
   {{/if}}
 </div>
 

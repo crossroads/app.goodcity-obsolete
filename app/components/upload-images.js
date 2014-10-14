@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-// {{upload-images item=this back="back" next="next"}}
+// {{upload-images item=this back="back" next="next"  updateItem="updateItem"}}
 
 export default Ember.Component.extend({
 
@@ -9,9 +9,13 @@ export default Ember.Component.extend({
     return !(item && item.get('isNew') === false);
   }.property('item.isNew'),
 
+  requireImageAtEdit: function() {
+    return (this.get('hasManyImages') || this.get('isNew'));
+  }.property('hasManyImages', 'isNew'),
+
   previewImageId: function(key, value) {
-    return (arguments.length > 1 ? value : this.get("imageIds.firstObject"));
-  }.property('imageIds.[]'),
+    return (arguments.length > 1 ? value : this.get("favourite"));
+  }.property('favourite', 'imageIds.[]'),
 
   imageIds: function(key, value) {
     var ids;
@@ -21,9 +25,7 @@ export default Ember.Component.extend({
     } else {
       if(arguments.length > 1) {
         ids = value;
-        if(JSON.parse(value).length > 0) {
-          this.set('item.imageIdentifiers', JSON.parse(value).join(','));
-        }
+        this.set('item.imageIdentifiers', JSON.parse(value).join(','));
       } else {
         ids = JSON.stringify(this.get('item.imageIdentifiers').split(','));
       }
@@ -65,6 +67,8 @@ export default Ember.Component.extend({
 
     setFavouriteImage: function(image_id) {
       this.set("favourite", image_id);
+      if(!this.get('isNew')) { this.sendAction('updateItem'); }
+      return true;
     },
 
     removeImage: function(image_id) {
@@ -84,6 +88,7 @@ export default Ember.Component.extend({
         if(this.get("favourite") === image_id){
           this.set("favourite", this.get("imageIds.firstObject") || "");
         }
+        this.sendAction('updateItem');
       }
     },
 
@@ -105,7 +110,10 @@ export default Ember.Component.extend({
 
         image_array.unshiftObject(image_id);
         this.set("imageIds", JSON.stringify(image_array));
+        this.sendAction('updateItem');
       }
+
+      this.send('setPreviewImageId', image_id);
     },
 
     setMoreImages: function() {
@@ -122,7 +130,7 @@ export default Ember.Component.extend({
 
     back: function() {
       this.sendAction('back');
-    },
+    }
   }
 
 });
