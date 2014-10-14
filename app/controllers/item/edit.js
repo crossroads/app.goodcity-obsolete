@@ -18,7 +18,7 @@ export default Ember.ObjectController.extend({
     submitItem: function(){
 
       var newItemProperties = this.getProperties('id', 'donorDescription', 'imageIdentifiers', 'favouriteImage');
-      if (newItemProperties.donorDescription && !newItemProperties.donorDescription.trim()) { return; }
+      if(!(newItemProperties.donorDescription && newItemProperties.donorDescription.trim().length)) { return; }
 
       // Update Item
       var offer_id = this.get('offerId');

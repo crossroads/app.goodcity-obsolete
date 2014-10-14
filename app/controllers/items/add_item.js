@@ -15,7 +15,7 @@ export default Ember.Controller.extend({
 
       var newItemProperties = this.getProperties('donorDescription');
 
-      if (newItemProperties.donorDescription && !newItemProperties.donorDescription.trim()) { return; }
+      if(!(newItemProperties.donorDescription && newItemProperties.donorDescription.trim().length)) { return; }
       var donorConditionId = this.get('donorConditionId');
       if (!donorConditionId) { return; }
       newItemProperties.imageIdentifiers = JSON.parse(localStorage.image_ids || "[]");
