@@ -1,17 +1,10 @@
 import AuthorizeRoute from './../authorize';
 
 export default AuthorizeRoute.extend({
+  staffRestricted: true,
+
   renderTemplate: function() {
     this.render('inbox.index', {controller: 'inbox.under_review'});
-  },
-
-  beforeModel: function(){
-    this._super();
-    var isDonor = this.controllerFor('authorize').get('isDonor');
-    if (isDonor) {
-      this.transitionTo('offers');
-    }
-    return true;
   },
 
   model: function() {

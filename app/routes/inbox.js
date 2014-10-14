@@ -1,14 +1,7 @@
 import AuthorizeRoute from './authorize';
 
 export default AuthorizeRoute.extend({
-  beforeModel: function(){
-    this._super();
-    var isDonor = this.controllerFor('authorize').get('isDonor');
-    if (isDonor) {
-      this.transitionTo('offers');
-    }
-    return true;
-  },
+  staffRestricted: true,
 
   model: function() {
     return this.store.filter('offer', {state: 'submitted'}, function(offer) {

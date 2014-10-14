@@ -28,7 +28,7 @@ test("Rediect to login if not logged-in", function() {
   });
 });
 
-test("Redirect to home-page if already logged-in", function() {
+test("On login page redirect to home-page if already logged-in", function() {
   expect(1);
 
   visit("/login");
@@ -38,12 +38,45 @@ test("Redirect to home-page if already logged-in", function() {
   });
 });
 
-test("Redirect to home-page is already registered", function() {
+test("On register page redirect to home-page if already logged-in", function() {
   expect(1);
 
   visit("/register");
 
   andThen(function() {
     equal(currentURL(), '/offers');
+  });
+});
+
+test("On restricted page redirect to offers page if not staff", function() {
+  expect(2);
+
+  visit('/');
+
+  andThen(function() {
+    equal(currentURL(), '/');
+  });
+
+  visit('/inbox');
+
+  andThen(function() {
+    equal(currentURL(), '/offers');
+  });
+});
+
+test("On restricted page doesn't redirect if staff", function() {
+  expect(2);
+
+  window.localStorage.permissions = '{"isDonor":false,"isReviewer":false,"isSupervisor":true}';
+  visit('/');
+
+  andThen(function() {
+    equal(currentURL(), '/');
+  });
+
+  visit('/inbox');
+
+  andThen(function() {
+    equal(currentURL(), '/inbox');
   });
 });

@@ -1,9 +1,18 @@
 import Ember from 'ember';
 
 var AuthorizeRoute =  Ember.Route.extend({
+  staffRestricted: false,
+
   beforeModel: function(transition) {
     if (!this.controllerFor('application').get('isLoggedIn')) {
-      this.redirectToLogin(transition);
+      alert('You must log in!');
+      var loginController = this.controllerFor('login');
+      loginController.set('attemptedTransition', transition);
+      this.transitionTo('login');
+    }
+
+    if (this.get('staffRestricted') && this.controllerFor('authorize').get('isDonor')) {
+      this.transitionTo('offers');
     }
   },
 
@@ -13,13 +22,6 @@ var AuthorizeRoute =  Ember.Route.extend({
     if(currentUserId) {
       route.store.find('user', currentUserId);
     }
-  },
-
-  redirectToLogin: function(transition) {
-    alert('You must log in!');
-    var loginController = this.controllerFor('login');
-    loginController.set('attemptedTransition', transition);
-    this.transitionTo('login');
   },
 
   renderTemplate: function() {
