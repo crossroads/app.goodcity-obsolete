@@ -13,18 +13,22 @@ export default Ember.ObjectController.extend({
     },
 
     cancelOffer: function(offer){
-      var items = offer.get('items').content;
-      items.forEach(function(item) {
-        item.unloadRecord();
-      });
+      if(confirm("Are you sure? This cannot be undone.")) {
+        var items = offer.get('items').content;
+        items.forEach(function(item) {
+          item.unloadRecord();
+        });
 
-      offer.destroyRecord();
-      this.transitionToRoute('offers.index');
+        offer.destroyRecord();
+        this.transitionToRoute('offers.index');
+      }
     },
 
     removeItem: function(item) {
-      this.get('items').removeObject(item);
-      item.destroyRecord();
+      if(confirm("Are you sure? This cannot be undone.")) {
+        this.get('items').removeObject(item);
+        item.destroyRecord();
+      }
     }
   }
 });
