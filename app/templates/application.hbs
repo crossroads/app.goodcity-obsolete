@@ -1,7 +1,7 @@
 <div>
   {{#link-to 'index'}}{{t "application.home"}}{{/link-to}} |
 
-  {{#if currentUser.isStaff}}
+  {{#if session.currentUser.isStaff}}
     {{#link-to 'inbox'}}{{t "inbox.title"}}{{/link-to}} |
   {{else}}
     {{#link-to 'offers'}}{{t "application.all_offers"}}{{/link-to}} |

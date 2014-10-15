@@ -16,7 +16,7 @@ module('Acceptance: Register', {
   setup: function() {
     App = startApp();
     testHelper = TestHelper.setup(App);
-    delete window.localStorage.authToken;
+    lookup('session:current').set('authToken', null);
     hk_user = FactoryGuy.build('with_hk_mobile');
   },
   teardown: function() {

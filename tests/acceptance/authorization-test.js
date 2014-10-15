@@ -19,7 +19,7 @@ module('Authorization', {
 test("Rediect to login if not logged-in", function() {
   expect(1);
 
-  delete window.localStorage.authToken;
+  lookup('session:current').set('authToken', null);
 
   visit("/offers");
 
@@ -67,7 +67,8 @@ test("On restricted page redirect to offers page if not staff", function() {
 test("On restricted page doesn't redirect if staff", function() {
   expect(2);
 
-  window.localStorage.permissions = '{"isDonor":false,"isReviewer":false,"isSupervisor":true}';
+  lookup('session:current').set('currentUserId', 2);
+
   visit('/');
 
   andThen(function() {

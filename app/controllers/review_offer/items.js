@@ -2,21 +2,13 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
 
-  needs: ['application', 'offer'],
+  needs: ['offer'],
 
-  reviewer: Ember.computed.alias('offer.reviewedBy'),
-  currentOfferId: Ember.computed.alias('controllers.offer.id'),
-  currentUser: Ember.computed.alias('controllers.application.currentUser'),
-  isReviewer: Ember.computed.alias('currentUser.isReviewer'),
-
-  offer: function() {
-    var offerId = this.get('currentOfferId');
-    return this.store.getById('offer', offerId);
-  }.property('currentOfferId'),
+  offer: Ember.computed.alias('controllers.offer'),
 
   actions: {
     startReview: function() {
-      var reviewedBy = this.get('currentUser');
+      var reviewedBy = this.get('session.currentUser');
       var offerId = this.get('offer.id');
 
       var offer = this.store.update('offer', {
