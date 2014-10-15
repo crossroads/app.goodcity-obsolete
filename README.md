@@ -43,6 +43,23 @@ npm install -g phantomjs
 * `ember build`
 * `ember build --environment=production`
 
+## Upgrading Ember CLI
+
+Follow these steps to update the project version of ember-cli.
+If someone else has done the upgrade and you're just refreshing code ignore the SKIP lines.
+
+```shell
+npm uninstall -g ember-cli
+npm cache clean
+bower cache clean
+npm install -g ember-cli
+rm -rf node_modules bower_components dist tmp
+npm install --save-dev ember-cli (SKIP if someone else has updated ember-cli already)
+npm install
+bower install
+ember init (SKIP if someone else has updated ember-cli already)
+```
+
 ## Deployment to production server
 
 Stop any running instance of `ember server` and type `./deploy`. This will build the files in production mode, put them in dist/ and upload them to the goodcity.hk server.
