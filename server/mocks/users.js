@@ -13,7 +13,10 @@ module.exports = function(app) {
       "addressable_type": "User"
     }],
     "districts": [],
-    "permissions": [],
+    "permissions": [{
+      "id": 1,
+      "name": "Reviewer"
+    }],
     "user": {
       "id": 1,
       "first_name": "Tom",
@@ -28,11 +31,12 @@ module.exports = function(app) {
     if (req.params.id == 2) {
       users_json.user.id = 2;
       users_json.user.permission_id = 1;
-      users_json.permissions = [{id:1,name:"Reviewer"}];
+    } else {
+      users_json.user.id = 1;
+      users_json.user.permission_id = null;
     }
     res.send(users_json);
   });
 
   app.use('/api/v1/users', usersRouter);
-  app.use('/api/v1/users/:id', usersRouter);
 };
