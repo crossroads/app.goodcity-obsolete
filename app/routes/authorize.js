@@ -11,7 +11,7 @@ var AuthorizeRoute =  Ember.Route.extend({
       this.transitionTo('login');
     }
 
-    if (this.get('staffRestricted') && this.get('session.currentUser.isDonor')) {
+    if (this.get('staffRestricted') && !this.get('session.currentUser.isStaff')) {
       this.transitionTo('offers');
     }
   },

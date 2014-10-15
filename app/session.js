@@ -11,7 +11,7 @@ export default Ember.Object.extend({
       return null;
     }
     var store = this.container.lookup('store:main');
-    return store.find('user', this.get('currentUserId'));
+    return store.getById('user', this.get('currentUserId'));
   }.property('currentUserId'),
 
   clear: function() {
