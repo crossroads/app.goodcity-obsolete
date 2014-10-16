@@ -15,6 +15,13 @@ app.import('bower_components/cloudinary/js/jquery.fileupload-validate.js');
 app.import('bower_components/cloudinary/js/jquery.cloudinary.js');
 app.import('bower_components/moment/moment.js');
 
+app.import('bower_components/fastclick/lib/fastclick.js');
+app.import('bower_components/foundation/js/foundation.min.js');
+app.import('bower_components/jquery-placeholder/jquery.placeholder.js');
+app.import('bower_components/jquery.cookie/jquery.cookie.js');
+app.import('bower_components/modernizr/modernizr.js');
+app.import('bower_components/js/app.js');
+
 app.import({
   development: 'vendor/pusher.js',
   test: 'vendor/pusher-test-stub.js'

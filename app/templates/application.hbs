@@ -1,21 +1,54 @@
-<div>
-  {{#link-to 'index'}}{{t "application.home"}}{{/link-to}} |
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GoodCity.HK</title>
+</head>
+<body>
 
-  {{#if session.currentUser.isStaff}}
-    {{#link-to 'inbox'}}{{t "inbox.title"}}{{/link-to}} |
-  {{else}}
-    {{#link-to 'offers'}}{{t "application.all_offers"}}{{/link-to}} |
-  {{/if}}
+<div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
 
-  {{#link-to 'i18n'}}I18n examples{{/link-to}} |
-  {{#if isLoggedIn }}
-    <a href="#" {{action 'logMeOut'}}>{{t "application.logout"}}</a>
-  {{else}}
-    {{#link-to 'login'}}{{t "application.login"}}{{/link-to}} |
-    {{#link-to 'register'}}{{t "application.register"}}{{/link-to}}
-  {{/if}}
-  {{outlet unreadMessageCount}}
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <li><label>App menu</label></li>
+        <li><a href="#">Your Donations</a></li>
+        <li><a href="#">Donate $ via the app</a></li>
+        <li><a href="#">See the Impact</a></li>
+        <li><a href="#">View Intro Tour</a></li>
+        <li><a href="#">Help &amp; FAQs</a></li>
+        <li><a href="#">Rate our app</a></li>
+        <li><a href="#">Send us feedback</a></li>
+      </ul>
+    </aside>
+
+
+    <div>
+      {{#link-to 'index'}}{{t "application.home"}}{{/link-to}} |
+
+      {{#if session.currentUser.isStaff}}
+        {{#link-to 'inbox'}}{{t "inbox.title"}}{{/link-to}} |
+      {{else}}
+        {{#link-to 'offers'}}{{t "application.all_offers"}}{{/link-to}} |
+      {{/if}}
+
+      {{#link-to 'i18n'}}I18n examples{{/link-to}} |
+      {{#if isLoggedIn }}
+        <a href="#" {{action 'logMeOut'}}>{{t "application.logout"}}</a>
+      {{else}}
+        {{#link-to 'login'}}{{t "application.login"}}{{/link-to}} |
+        {{#link-to 'register'}}{{t "application.register"}}{{/link-to}}
+      {{/if}}
+      {{outlet unreadMessageCount}}
+    </div>
+
+    {{outlet}}
+    {{outlet unreadMessages}}
+
+
+  </div>
 </div>
 
-{{outlet}}
-{{outlet unreadMessages}}
+</body>
+</html>
