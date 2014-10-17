@@ -15791,7 +15791,7 @@ hr {
   margin-left: 0.9375rem;
   float: left; }
   .back:before {
-    background: url("../img/icon-back.png") no-repeat right center;
+    background: url("/assets/images/icon-back.png") no-repeat right center;
     background-size: 13px 16px;
     vertical-align: middle;
     content: "";
@@ -16139,7 +16139,7 @@ ul.off-canvas-list li a:hover {
     border-radius: 50%;
     display: block;
     border: 1px solid #8091a9; }
-  .nav-steps li.active a {
+  .nav-steps li a.active {
     background: #f34d4f;
     border-color: #f34d4f; }
 
@@ -16220,7 +16220,7 @@ input[type="radio"]:checked + label {
   border: 2px solid #bbd147;
   color: #c2b8d0;
   text-transform: uppercase;
-  background: #fff url(../img/arrow.png) no-repeat 97%;
+  background: #fff url(/assets/images/arrow.png) no-repeat 97%;
   font-size: 1.3125rem;
   font-family: 'museo_sans300'; }
   .styled-select select {
@@ -16250,7 +16250,7 @@ input[type="radio"]:checked + label {
   display: block;
   width: 160px;
   height: 160px;
-  background: url("../img/logo-art.png") no-repeat;
+  background: url("/assets/images/logo-art.png") no-repeat;
   background-size: 160px 160px;
   margin: 0 auto; }
 
@@ -16258,55 +16258,55 @@ input[type="radio"]:checked + label {
   display: block;
   width: 35px;
   height: 30px;
-  background: url("../img/icon-photograph.png") no-repeat;
+  background: url("/assets/images/icon-photograph.png") no-repeat;
   background-size: 35px 30px; }
 
 .icon-describe {
   display: block;
   width: 25px;
   height: 30px;
-  background: url("../img/icon-describe.png") no-repeat;
+  background: url("/assets/images/icon-describe.png") no-repeat;
   background-size: 25px 30px; }
 
 .icon-repeat {
   display: block;
   width: 30px;
   height: 30px;
-  background: url("../img/icon-repeat.png") no-repeat;
+  background: url("/assets/images/icon-repeat.png") no-repeat;
   background-size: 30px 30px; }
 
 .icon-confirmed {
   display: block;
   width: 33px;
   height: 33px;
-  background: url("../img/icon-confirmed.png") no-repeat;
+  background: url("/assets/images/icon-confirmed.png") no-repeat;
   background-size: 33px 33px; }
 
 .icon-rush {
   display: block;
   width: 35px;
   height: 36px;
-  background: url("../img/icon-rush.png") no-repeat;
+  background: url("/assets/images/icon-rush.png") no-repeat;
   background-size: 35px 36px; }
 
 .icon-wait {
   display: block;
   width: 33px;
   height: 33px;
-  background: url("../img/icon-wait.png") no-repeat;
+  background: url("/assets/images/icon-wait.png") no-repeat;
   background-size: 33px 33px; }
 
 .icon-drop-off {
   display: block;
   width: 38px;
   height: 31px;
-  background: url("../img/icon-drop-off.png") no-repeat;
+  background: url("/assets/images/icon-drop-off.png") no-repeat;
   background-size: 38px 31px; }
 
 .icon-no-items {
   width: 70px;
   height: 70px;
-  background: url("../img/icon-no-items.png") no-repeat;
+  background: url("/assets/images/icon-no-items.png") no-repeat;
   background-size: 70px 70px;
   margin: 0px auto;
   display: block; }
@@ -16314,7 +16314,7 @@ input[type="radio"]:checked + label {
 .icon-add {
   display: inline-block;
   margin-right: 10px;
-  background: url("../img/icon-photo.png") no-repeat;
+  background: url("/assets/images/icon-photo.png") no-repeat;
   background-size: 17px 16px;
   vertical-align: middle;
   width: 17px;
@@ -16325,14 +16325,14 @@ input[type="radio"]:checked + label {
   width: 144px;
   height: 123px;
   margin: 0 auto;
-  background: url("../img/icon-step-register.png") no-repeat;
+  background: url("/assets/images/icon-step-register.png") no-repeat;
   background-size: 144px 123px; }
 
 .icon-delete {
   display: inline-block;
   width: 21px;
   height: 22px;
-  background: url("../img/icon-delete.png") no-repeat;
+  background: url("/assets/images/icon-delete.png") no-repeat;
   background-size: 21px 22px;
   margin-top: 10px; }
 
@@ -16340,7 +16340,7 @@ input[type="radio"]:checked + label {
   display: inline-block;
   width: 22px;
   height: 22px;
-  background: url("../img/icon-favorite.png") no-repeat;
+  background: url("/assets/images/icon-favorite.png") no-repeat;
   background-size: 22px 22px;
   margin-top: 10px; }
 
@@ -16348,7 +16348,7 @@ input[type="radio"]:checked + label {
   display: inline-block;
   width: 15px;
   height: 17px;
-  background: url("../img/icon-previous.png") no-repeat;
+  background: url("/assets/images/icon-previous.png") no-repeat;
   background-size: 15px 17px;
   margin-top: 14px; }
 
@@ -16356,7 +16356,7 @@ input[type="radio"]:checked + label {
   display: inline-block;
   width: 15px;
   height: 17px;
-  background: url("../img/icon-next.png") no-repeat;
+  background: url("/assets/images/icon-next.png") no-repeat;
   background-size: 15px 17px;
   margin-top: 14px; }
 
@@ -16364,7 +16364,7 @@ input[type="radio"]:checked + label {
   width: 15px;
   height: 15px;
   display: block;
-  background: url("../img/icon-star.png") no-repeat;
+  background: url("/assets/images/icon-star.png") no-repeat;
   background-size: 15px 15px;
   position: absolute;
   left: 100%;

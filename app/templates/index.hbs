@@ -1,11 +1,25 @@
-﻿<div>{{t "index.title"}}</div>
+﻿<div class="small-12 columns with-btm intro intro-home">
 
-<div>{{t "goodcity.hk"}}</div>
+<p><span class="icon-home"></span></p>
 
-<div>{{t "index.donate_goods"}}</div>
+<p>{{t "index.title"}}</p>
 
-<div>{{#link-to 'tour' 1}}{{t "index.how"}}{{/link-to}}</div>
-<div>{{#link-to 'register'}}{{t "skip_intro"}}{{/link-to}}</div>
+<p><img src="/assets/images/logo.png" alt=""></p>
 
-{{ language-switcher currentLanguage=currentLanguage action="setLang"}}
+<div class="btm">
 
+  <p>{{t "index.donate_goods"}}</p>
+
+  <div class="row">
+    <div class="small-12 columns">
+      {{#link-to 'tour' 1 classNames="button expand"}}{{t "index.how"}}{{/link-to}}
+    </div>
+  </div>
+
+  <ul class="nav-lang">
+    {{ language-switcher currentLanguage=currentLanguage action="setLang"}}
+  </ul>
+
+</div>
+
+</div>

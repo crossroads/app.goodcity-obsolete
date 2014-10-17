@@ -1,7 +1,33 @@
-{{ partial tourStep }}
+<div class="small-12 columns with-btm intro">
+  {{ partial tourStep }}
 
-{{#if lastStep }}
-  <div>{{#link-to 'register'}}{{t "tour.register" }}{{/link-to}}</div>
-  {{else}}
-  <div>{{#link-to 'tour' nextStep}}{{t "next" }}{{/link-to}} | {{#link-to 'register' }}{{t "skip_intro"}}{{/link-to}}</div>
-{{/if}}
+  <div class="btm">
+
+    <ul class="nav-steps">
+      <li>{{#link-to 'tour' 1}}1{{/link-to}}</li>
+      <li>{{#link-to 'tour' 2}}2{{/link-to}}</li>
+      <li>{{#link-to 'tour' 3}}3{{/link-to}}</li>
+      <li>{{#link-to 'tour' 4}}4{{/link-to}}</li>
+      <li>{{#link-to 'tour' 5}}5{{/link-to}}</li>
+    </ul>
+
+    <div class="row">
+
+      {{#if lastStep }}
+        <div class="small-10 small-offset-1 columns">
+          {{#link-to 'register' classNames="button expand"}}{{t "tour.register" }}{{/link-to}}
+        </div>
+      {{else}}
+        <div class="small-6 columns">
+          {{#link-to 'tour' nextStep classNames="button expand"}}{{t "next" }}{{/link-to}}
+        </div>
+        <div class="small-6 columns">
+          {{#link-to 'register' classNames="button secondary expand"}}{{t "skip_intro"}}{{/link-to}}
+        </div>
+      {{/if}}
+
+    </div>
+
+  </div>
+
+</div>
