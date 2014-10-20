@@ -4,9 +4,7 @@ export default Ember.View.extend({
 
   didInsertElement: function(){
 
-    Ember.$(document).foundation();
-
-    Ember.$(document).ready(function() {
+    Ember.$().ready(function() {
       var btmButtons = function() {
 
        Ember.$(".with-btm").css('height', 'auto');

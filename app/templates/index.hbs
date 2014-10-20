@@ -1,25 +1,20 @@
-﻿<div class="small-12 columns with-btm intro intro-home">
-
-<p><span class="icon-home"></span></p>
-
-<p>{{t "index.title"}}</p>
-
-<p><img src="/assets/images/logo.png" alt=""></p>
-
-<div class="btm">
-
-  <p>{{t "index.donate_goods"}}</p>
-
+﻿<section class="main-section">
   <div class="row">
-    <div class="small-12 columns">
-      {{#link-to 'tour' 1 classNames="button expand"}}{{t "index.how"}}{{/link-to}}
+    <div class="small-12 columns with-btm intro intro-home">
+      <p><span class="icon-home"></span></p>
+      <p>{{t "index.title"}}</p>
+      <p><img src="/assets/images/logo.png" alt=""></p>
+      <div class="btm">
+        <p>{{t "index.donate_goods"}}</p>
+        <div class="row">
+          <div class="small-12 columns">
+            {{#link-to 'tour' 1 classNames="button expand"}}{{t "index.how"}}{{/link-to}}
+          </div>
+        </div>
+        <ul class="nav-lang">
+          {{ language-switcher currentLanguage=currentLanguage action="setLang"}}
+        </ul>
+      </div>
     </div>
   </div>
-
-  <ul class="nav-lang">
-    {{ language-switcher currentLanguage=currentLanguage action="setLang"}}
-  </ul>
-
-</div>
-
-</div>
+</section>

@@ -1,129 +1,157 @@
-<nav class="tab-bar">
-  <section class="left-small">
-    <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
-  </section>
+<div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
 
-  <section class="middle tab-bar-section">
-    <h1 class="title">Donations</h1>
-  </section>
-</nav>
+    <aside class="left-off-canvas-menu">
+      <ul class="off-canvas-list">
+        <li><label>App menu</label></li>
+        <li>{{#link-to 'index'}}{{t "application.home"}}{{/link-to}}</li>
+        <li>
+          {{#if session.currentUser.isStaff}}
+            {{#link-to 'inbox'}}{{t "inbox.title"}}{{/link-to}}
+          {{else}}
+            {{#link-to 'offers'}}{{t "application.all_offers"}}{{/link-to}}
+          {{/if}}
+        </li>
+        <li>{{#link-to 'i18n'}}I18n examples{{/link-to}}</li>
+        <li>{{outlet unreadMessageCount}}</li>
 
-<section class="main-section">
-
-  <div class="row">
-    <div class="small-12 columns">
-
-      <a href="#" {{action 'newOffer'}} class="button expand">{{t "offers.index.new_donation"}}</a>
-
-      <ul class="list list-items">
-
-        {{#each offersWithItems}}
-
-          <li>
-            {{#if this.isScheduled }}
-              {{#link-to 'delivery.donation_details' this delivery}}
-                {{partial 'thumb_item_image'}}
-                <span class="info">
-                  <h3>{{status}} ({{itemCount}} items)</h3>
-                  {{display-date delivery.schedule.scheduledAt}}<br/>
-                  {{delivery.schedule.slotName}}<br/>
-                  {{partial 'unread_message_bubble'}}
-                </span>
-
-              {{/link-to}}
-            {{/if}}
-
-            {{#if this.isUnderReview}}
-              {{#link-to 'offer.review_status' this}}
-                {{partial 'thumb_item_image'}}
-                <span class="info">
-                  <h3>{{status}} ({{itemCount}} items)</h3>
-                  Approved Items: {{approvedtems.length}}<br/>
-                  Rejected Items: {{rejectedItems.length}}<br/>
-                  {{partial 'unread_message_bubble'}}
-                </span>
-
-              {{/link-to}}
-            {{/if}}
-
-
-            {{#if this.isSubmitted}}
-              {{#link-to 'offer.review_status' this}}
-                {{partial 'thumb_item_image'}}
-                <span class="info">
-                  <h3>{{status}} ({{itemCount}} items)</h3>
-                  Approved Items: {{approvedtems.length}}<br/>
-                  Rejected Items: {{rejectedItems.length}}
-                  {{partial 'unread_message_bubble'}}
-                </span>
-
-              {{/link-to}}
-            {{/if}}
-
-            {{#if this.isDraft }}
-              {{#link-to 'offer' this}}
-                {{partial 'thumb_item_image'}}
-                <span class="info">
-                  {{t "offers.index.complete_offer"}}
-                  {{partial 'unread_message_bubble'}}
-                </span>
-
-              {{/link-to}}
-            {{/if}}
-
-
-          </li>
-        {{/each}}
-
+        {{#if isLoggedIn }}
+          <li><a href="#" {{action 'logMeOut'}}>{{t "application.logout"}}</a></li>
+        {{else}}
+          <li>{{#link-to 'login'}}{{t "application.login"}}{{/link-to}}</li>
+          <li>{{#link-to 'register'}}{{t "application.register"}}{{/link-to}}</li>
+        {{/if}}
       </ul>
+    </aside>
 
-      <hr>
+    <nav class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+      </section>
 
-      <h2>Be a Hong-Kong Hero</h2>
+      <section class="middle tab-bar-section">
+        <h1 class="title">Donations</h1>
+      </section>
+    </nav>
 
-      <ul class="list">
-        <li>
-          <a href="#">
-            <span class="thumb">
-              <img src="assets/images/thumb.jpg" alt="">
-            </span>
-            <span class="info">
-              One of your Facebook friends has something to give to GoodCity.HK. Help them find out how!
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="thumb">
-              <img src="assets/images/thumb.jpg" alt="">
-            </span>
-            <span class="info">
-              Donate a “top five” item & get 20% off a replacement from Fortress.
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="thumb">
-              <img src="assets/images/thumb.jpg" alt="">
-            </span>
-            <span class="info">
-              Donate a “top five” item & get 20% off a replacement from Fortress.
-            </span>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <span class="thumb">
-              <img src="assets/images/thumb.jpg" alt="">
-            </span>
-            <span class="info">
-              Donate a “top five” item & get 20% off a replacement from Fortress.
-            </span>
-          </a>
-        </li>
-      </ul>
-    </div>
+    <section class="main-section">
+      <div class="row">
+        <div class="small-12 columns">
+
+          <a href="#" {{action 'newOffer'}} class="button expand">{{t "offers.index.new_donation"}}</a>
+
+          <ul class="list list-items">
+
+            {{#each offersWithItems}}
+
+              <li>
+                {{#if this.isScheduled }}
+                  {{#link-to 'delivery.donation_details' this delivery}}
+                    {{partial 'thumb_item_image'}}
+                    <span class="info">
+                      <h3>{{status}} ({{itemCount}} items)</h3>
+                      {{display-date delivery.schedule.scheduledAt}}<br/>
+                      {{delivery.schedule.slotName}}<br/>
+                      {{partial 'unread_message_bubble'}}
+                    </span>
+
+                  {{/link-to}}
+                {{/if}}
+
+                {{#if this.isUnderReview}}
+                  {{#link-to 'offer.review_status' this}}
+                    {{partial 'thumb_item_image'}}
+                    <span class="info">
+                      <h3>{{status}} ({{itemCount}} items)</h3>
+                      Approved Items: {{approvedtems.length}}<br/>
+                      Rejected Items: {{rejectedItems.length}}<br/>
+                      {{partial 'unread_message_bubble'}}
+                    </span>
+
+                  {{/link-to}}
+                {{/if}}
+
+
+                {{#if this.isSubmitted}}
+                  {{#link-to 'offer.review_status' this}}
+                    {{partial 'thumb_item_image'}}
+                    <span class="info">
+                      <h3>{{status}} ({{itemCount}} items)</h3>
+                      Approved Items: {{approvedtems.length}}<br/>
+                      Rejected Items: {{rejectedItems.length}}
+                      {{partial 'unread_message_bubble'}}
+                    </span>
+
+                  {{/link-to}}
+                {{/if}}
+
+                {{#if this.isDraft }}
+                  {{#link-to 'offer' this}}
+                    {{partial 'thumb_item_image'}}
+                    <span class="info">
+                      {{t "offers.index.complete_offer"}}
+                      {{partial 'unread_message_bubble'}}
+                    </span>
+
+                  {{/link-to}}
+                {{/if}}
+
+
+              </li>
+            {{/each}}
+
+          </ul>
+
+          <hr>
+
+          <h2>Be a Hong-Kong Hero</h2>
+
+          <ul class="list">
+            <li>
+              <a href="#">
+                <span class="thumb">
+                  <img src="assets/images/thumb.jpg" alt="">
+                </span>
+                <span class="info">
+                  One of your Facebook friends has something to give to GoodCity.HK. Help them find out how!
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="thumb">
+                  <img src="assets/images/thumb.jpg" alt="">
+                </span>
+                <span class="info">
+                  Donate a “top five” item & get 20% off a replacement from Fortress.
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="thumb">
+                  <img src="assets/images/thumb.jpg" alt="">
+                </span>
+                <span class="info">
+                  Donate a “top five” item & get 20% off a replacement from Fortress.
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="thumb">
+                  <img src="assets/images/thumb.jpg" alt="">
+                </span>
+                <span class="info">
+                  Donate a “top five” item & get 20% off a replacement from Fortress.
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
   </div>
+</div>
 
-</section>

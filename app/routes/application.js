@@ -8,14 +8,6 @@ export default Ember.Route.extend({
     CLDR.defaultLanguage = language;
   },
 
-  renderTemplate: function() {
-    if(this.controllerFor('application').get('isLoggedIn')) {
-      this.render('application');
-    } else {
-      this.render('home');
-    }
-  },
-
   actions: {
     setLang: function(language) {
       Ember.I18n.translations = Ember.I18n.translation_store[language];
