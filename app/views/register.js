@@ -20,15 +20,15 @@ export default Ember.View.extend({
         var formInputs = ['mobile', 'first_name', 'last_name'];
         Ember.$.each(formInputs, function(index, value) {
           if(Ember.$('#' + value).val().length < 1) {
-            Ember.$('#' + value).addClass('invalid_input');
+            Ember.$('#' + value).closest('div').addClass('error');
           }
         });
 
         if(!Ember.$('.district-selection').attr('selected_id')) {
-          Ember.$('.ember-select').addClass('invalid_input');
+          Ember.$('.ember-select').addClass('error');
         }
 
-        if(Ember.$('.invalid_input').length > 0) {
+        if(Ember.$('.error').length > 0) {
           return false;
         }
       });
@@ -51,14 +51,11 @@ export default Ember.View.extend({
     }
 
     function highlight_phone_field(is_duplicate){
-      Ember.$('#mobile').addClass('invalid_input');
-      var error = is_duplicate ? 'Sorry, this number is already registered!' : 'Please include a valid phone number!';
-      Ember.$('#mobile_error').text(error);
+      Ember.$('#mobile').addClass('error');
     }
 
     function remove_highlight(input){
-      Ember.$(input).removeClass('invalid_input');
-      Ember.$('#mobile_error').empty();
+      Ember.$(input).removeClass('error');
     }
   }
 });

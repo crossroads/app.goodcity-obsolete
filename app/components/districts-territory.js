@@ -12,7 +12,7 @@ export default Ember.Component.extend({
 
   districtsByTerritory: function(key, value) {
     var store = this.get('targetObject.store');
-    return (arguments.length > 1 ? value : store.all('district').sortBy('name'));
+    return (arguments.length  > 1 && value !== '' ? value : store.all('district').sortBy('name'));
   }.property(),
 
   allTerritory: function(){
@@ -26,9 +26,8 @@ export default Ember.Component.extend({
 
   actions: {
     findDistrictbyTerritory: function(territory){
-      if(territory){
-        this.set('districtsByTerritory', territory.get('districts').sortBy('name'));
-      }
+      var districts = territory ? territory.get('districts').sortBy('name') : '';
+      this.set('districtsByTerritory', districts);
     }
   }
 });

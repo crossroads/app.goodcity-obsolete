@@ -1,22 +1,61 @@
-<div><br/>
-  <div>{{t "register.hk_only"}}</div>
-  <div id="mobile_error"></div>
-  +852 {{input type="text" value=mobilePhone name="mobilePhone" id="mobile" maxlength="8" class="input input_size_lg" data-actual-mobile=""}}
-</div>
+<nav class="tab-bar">
+  <section class="left-small">
+    {{#link-to 'tour' 1 classNames='back'}}Tour{{/link-to}}
+  </section>
 
-<div class='reg_fname_input'>
-  <label class="input input_size_sm">{{t "register.given_name"}}</label><br/>
-  {{input type="text" value=firstName name="firstName" id="first_name" class="input input_size_sm"}}
-</div>
+  <section class="middle tab-bar-section">
+    <h1 class="title">Register</h1>
+  </section>
+</nav>
 
-<div>
-  <label class="input input_size_sm">{{t "register.family_name"}}</label><br/>
-  {{input type="text" value=lastName name="lastName" id="last_name" class="input input_size_sm"}}
-</div>
+<section class="main-section">
 
-<label class="input input_size_sm">{{t "register.districts"}}</label>
-{{districts-territory}}
-<button {{action "registerUser" }} id="registerUser" class="input input_size_sm">{{t "register.register"}}</button>
+  <div class="row">
+    <div class="small-12 columns with-btm">
 
-{{#link-to "login"}}{{t "register.login"}}{{/link-to}}
-<img src="assets/images/loader.gif" class='loader_image'></img>
+      <form>
+
+        <div class="row">
+          <div class="small-12 columns">
+           <label class="form-label">{{t "register.hk_only"}}</label>
+          </div>
+        </div>
+
+        <div class="row collapse">
+          <div class="small-3 columns">
+            <span class="prefix">+852</span>
+          </div>
+          <div class="small-9 columns">
+            {{input type="text" value=mobilePhone name="mobilePhone" id="mobile" maxlength="8" data-actual-mobile=""}}
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="small-6 columns">
+            <label>{{t "register.given_name"}}
+              {{input type="text" value=firstName name="firstName" id='first_name' placeholder="John"}}
+            </label>
+          </div>
+          <div class="small-6 columns">
+            <label>{{t "register.family_name"}}
+              {{input type="text" value=lastName name="lastName" id='last_name' placeholder="Doe"}}
+            </label>
+          </div>
+        </div>
+
+        {{districts-territory}}
+
+      </form>
+
+      <p class="form-note">Please fill in all the fields. <a href="#">How we use your personal information</a></p>
+
+      <div class="btm">
+        <div class="row">
+          <div class="small-10 small-offset-1 columns">
+            <a href="#" {{action "registerUser" }} id="registerUser" class="button expand">{{t "register.register"}}</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
