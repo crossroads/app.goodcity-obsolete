@@ -1,0 +1,15 @@
+<aside class="left-off-canvas-menu">
+  <ul class="off-canvas-list">
+    <li><label>App menu</label></li>
+    <li>{{#link-to 'index'}}{{t "application.home"}}{{/link-to}}</li>
+    <li>
+      {{#if session.currentUser.isStaff}}
+        {{#link-to 'inbox'}}{{t "inbox.title"}}{{/link-to}}
+      {{else}}
+        {{#link-to 'offers'}}{{t "application.all_offers"}}{{/link-to}}
+      {{/if}}
+    </li>
+    <li>{{#link-to 'i18n'}}I18n examples{{/link-to}}</li>
+    <li><a href="#" {{action 'logMeOut'}}>{{t "application.logout"}}</a></li>
+  </ul>
+</aside>

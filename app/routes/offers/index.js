@@ -15,6 +15,15 @@ export default AuthorizeRoute.extend({
           route.transitionTo('offer', my_offers.get('firstObject'));
         }
     }
+  },
+
+  renderTemplate: function() {
+    this.render(); // default template
+    this.render('appMenuList', {
+      into: 'offers/index',
+      outlet: 'appMenuList',
+      controller: 'application'
+    });
   }
 
 });

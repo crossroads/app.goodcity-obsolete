@@ -1,28 +1,6 @@
 <div class="off-canvas-wrap" data-offcanvas>
   <div class="inner-wrap">
-
-    <aside class="left-off-canvas-menu">
-      <ul class="off-canvas-list">
-        <li><label>App menu</label></li>
-        <li>{{#link-to 'index'}}{{t "application.home"}}{{/link-to}}</li>
-        <li>
-          {{#if session.currentUser.isStaff}}
-            {{#link-to 'inbox'}}{{t "inbox.title"}}{{/link-to}}
-          {{else}}
-            {{#link-to 'offers'}}{{t "application.all_offers"}}{{/link-to}}
-          {{/if}}
-        </li>
-        <li>{{#link-to 'i18n'}}I18n examples{{/link-to}}</li>
-        <li>{{outlet unreadMessageCount}}</li>
-
-        {{#if isLoggedIn }}
-          <li><a href="#" {{action 'logMeOut'}}>{{t "application.logout"}}</a></li>
-        {{else}}
-          <li>{{#link-to 'login'}}{{t "application.login"}}{{/link-to}}</li>
-          <li>{{#link-to 'register'}}{{t "application.register"}}{{/link-to}}</li>
-        {{/if}}
-      </ul>
-    </aside>
+    {{outlet appMenuList}}
 
     <nav class="tab-bar">
       <section class="left-small">
