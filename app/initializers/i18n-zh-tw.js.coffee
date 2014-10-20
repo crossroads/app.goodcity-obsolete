@@ -151,6 +151,14 @@ I18nTranslationsZhTw =
       "review_offer":
         "review_started_by" : "Started by {{lastName}} {{firstName}}"
 
+      # Components
+      "upload-images":
+        "angles" : "Got all the angles of this item?"
+        "favourite" : "Favourite"
+        "add_another" : "Add another image"
+      "upload-image":
+        "upload_error" : "There is an error with your image upload. Please try again after some time."
+
       # The following are for the I18n example template and can be removed soon.
       'i18nexample.items.heading': '項'
       'i18nexample.item.title.one': '一個項目'

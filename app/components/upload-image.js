@@ -9,12 +9,13 @@ export default Ember.Component.extend({
   classNames: ["cloudinary-fileupload"],
   "data-cloudinary-field": "image_upload",
   "data-url": config.APP.CLOUD_URL,
-  attributeBindings: [ "name", "type", "value", "class", "data-cloudinary-field", "data-url", "data-form-data"],
+  disabled: true,
+  attributeBindings: [ "name", "type", "value", "class", "data-cloudinary-field",
+    "data-url", "data-form-data", "disabled"],
 
-  click: function() {
+  _initialze: function(){
     var component = this;
-
-    Ember.$('.cloudinary-fileupload').cloudinary_fileupload({
+    var options = {
       dropZone: Ember.$('.sceneUpBtn'),
       dataType: 'json',
       timeout: 60000,// 1 minute
@@ -37,12 +38,10 @@ export default Ember.Component.extend({
       fail: function(e, data) {
         console.log("error " + data.errorThrown);
         Ember.$(".loading_image").hide();
-        alert('There is an error with your image upload. Please try again after some time.');
+        alert(Ember.I18n.t('upload-image.upload_error'));
       }
-    });
-  },
-  _initialze: function(){
-    console.log("init");
+    };
+
     Ember.$.ajax({
       type: 'GET',
       url: config.APP.SERVER_PATH +"/images/generate_signature",
@@ -52,7 +51,10 @@ export default Ember.Component.extend({
       },
       success: function(data){
         Ember.run(function() {
-          Ember.$('.cloudinary-fileupload').attr("data-form-data", JSON.stringify(data));
+          Ember.$('.cloudinary-fileupload')
+            .attr("data-form-data", JSON.stringify(data))
+            .cloudinary_fileupload(options);
+          component.set('disabled', false);
         });
       }
     });

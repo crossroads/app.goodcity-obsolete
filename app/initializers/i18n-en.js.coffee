@@ -175,11 +175,16 @@ I18nTranslationsEn =
         "message_text" : "Message: {{messageText}}"
         "reply": "Reply"
 
+      "review_offer":
+        "review_started_by" : "Started by {{firstName}} {{lastName}}"
+
       # Components
       "upload-images":
         "angles" : "Got all the angles of this item?"
         "favourite" : "Favourite"
         "add_another" : "Add another image"
+      "upload-image":
+        "upload_error" : "There is an error with your image upload. Please try again after some time."
 
       # The following are for the I18n example template and can be removed soon.
       "i18nexample.items.heading": "Items"
@@ -187,9 +192,6 @@ I18nTranslationsEn =
       "i18nexample.item.title.other": "{{count}} items"
       "i18nexample.item.new.title": "New item"
       "i18nexample.i18n.pluralisation": "Pluralisation"
-
-      "review_offer":
-        "review_started_by" : "Started by {{firstName}} {{lastName}}"
 
     # this is how we set default language
     Ember.I18n.translations = Ember.I18n.translation_store.en
