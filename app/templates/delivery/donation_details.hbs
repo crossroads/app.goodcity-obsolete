@@ -1,55 +1,66 @@
-<h3>Donation Details</h3>
+<nav class="tab-bar">
+  <section class="left-small">
+    {{#link-to 'offers' classNames="back"}}{{t "application.home"}}{{/link-to}}
+  </section>
 
-<div class='donation_details_block'>
-  {{#link-to 'offer' this.offer}}Modify{{/link-to}}
+  <section class="middle tab-bar-section">
+    <h1 class="title">Donation Details</h1>
+  </section>
+</nav>
 
-  <button {{action 'cancelOffer' this.offer}} class='removeRecord'>Cancel Donation</button>
+<section class="main-section">
+  <div class="row">
+    <div class="small-12 columns">
 
-  <div class='confirmed_block'>
-    <h4 class='confirmed_title'>Confirmed Items({{confirmedItems.length}})</h4>
-    <span class='confirmed_link'>{{#link-to 'offer.review_status' this.offer}}View all{{/link-to}}</span>
+      <div class="row">
+        <div class="small-5 columns">
+          {{#link-to 'offer' this.offer classNames='button expand'}}Modify{{/link-to}}
+        </div>
+        <div class="small-7 columns">
+          <a href="#" {{action 'cancelOffer' this.offer}} class="button secondary expand">Cancel Donation</a>
+        </div>
+      </div>
 
-    <div>
-      {{#each confirmedItems}}
-        {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
-      {{/each}}
-    </div>
+      <h2>Confirmed Items <span>{{confirmedItems.length}}</span>{{#link-to 'offer.review_status' this.offer classNames="right"}}View all{{/link-to}}</h2>
+
+      <ul class="small-block-grid-8 medium-block-grid-12 large-block-grid-12 confirmed-items">
+        {{#each confirmedItems}}
+          <li>
+            <a href="#">{{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}</a>
+          </li>
+        {{/each}}
+      </ul>
+
+      <ul class="items-info">
+        <li>
+          <span class="left">Charitable sale approved?</span>
+          <strong class="right">{{offer.isCharitableSale}}</strong>
+        </li>
+        <li>
+          <span class="left">Transportation</span>
+          <strong class="right">{{this.deliveryType}}</strong>
+        </li>
+        <li>
+          <span class="left">Date</span>
+          <strong class="right">{{display-date schedule.scheduledAt}}</strong>
+        </li>
+        <li>
+          <span class="left">Time</span>
+          <strong class="right">{{schedule.slotName}}</strong>
+        </li>
+        <li>
+          <span class="left">Contact Name</span>
+          <strong class="right">{{contact.name}}</strong>
+        </li>
+        <li>
+          <span class="left">Contact Phone</span>
+          <strong class="right">{{contact.mobile}}</strong>
+        </li>
+        <li>
+          <span class="left">Address</span>
+          <strong class="right text-right">{{{contact.address.fullAddress}}}</strong>
+        </li>
+      <ul>
+     </div>
   </div>
-
-  <table class='donation_details'>
-    <tr>
-      <td>Charitable sale approved?</td>
-      <td>{{offer.isCharitableSale}}</td>
-    </tr>
-
-    <tr>
-      <td>Transportation</td>
-      <td>{{this.deliveryType}}</td>
-    </tr>
-
-    <tr>
-      <td>Date</td>
-      <td>{{display-date schedule.scheduledAt}}</td>
-    </tr>
-
-    <tr>
-      <td>Time</td>
-      <td>{{schedule.slotName}}</td>
-    </tr>
-
-    <tr>
-      <td>Contact Name</td>
-      <td>{{contact.name}}</td>
-    </tr>
-
-    <tr>
-      <td>Contact Phone</td>
-      <td>{{contact.mobile}}</td>
-    </tr>
-
-    <tr>
-      <td>Address</td>
-      <td>{{{contact.address.fullAddress}}}</td>
-    </tr>
-  </table>
-</div>
+</section>
