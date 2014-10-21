@@ -15,18 +15,20 @@
 
       <form>
 
-        <div class="row">
-          <div class="small-12 columns">
-           <label class="form-label">{{t "register.hk_only"}}</label>
+        <div class="mobile">
+          <div class="row">
+            <div class="small-12 columns">
+             <label class="form-label">{{t "register.hk_only"}}</label>
+            </div>
           </div>
-        </div>
 
-        <div class="row collapse">
-          <div class="small-3 columns">
-            <span class="prefix">+852</span>
-          </div>
-          <div class="small-9 columns">
-            {{input type="text" value=mobilePhone name="mobilePhone" id="mobile" maxlength="8" data-actual-mobile=""}}
+          <div class="row collapse">
+            <div class="small-3 columns">
+              <span class="prefix">+852</span>
+            </div>
+            <div class="small-9 columns">
+              {{input type="text" value=mobilePhone name="mobilePhone" id="mobile" maxlength="8" data-actual-mobile=""}}
+            </div>
           </div>
         </div>
 

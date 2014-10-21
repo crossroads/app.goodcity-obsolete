@@ -20,7 +20,11 @@ export default Ember.View.extend({
         var formInputs = ['mobile', 'first_name', 'last_name'];
         Ember.$.each(formInputs, function(index, value) {
           if(Ember.$('#' + value).val().length < 1) {
-            Ember.$('#' + value).closest('div').addClass('error');
+            if(value === 'mobile'){
+              highlight_phone_field()
+            } else {
+              Ember.$('#' + value).closest('div').addClass('error');
+            }
           }
         });
 
@@ -50,12 +54,13 @@ export default Ember.View.extend({
       });
     }
 
-    function highlight_phone_field(is_duplicate){
-      Ember.$('#mobile').addClass('error');
+    function highlight_phone_field(){
+      Ember.$('#mobile').closest('.mobile').addClass('error');
     }
 
     function remove_highlight(input){
-      Ember.$(input).removeClass('error');
+      Ember.$(input).closest('div').removeClass('error');
+      Ember.$(input).closest('.mobile').removeClass('error');
     }
   }
 });

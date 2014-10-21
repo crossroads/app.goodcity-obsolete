@@ -12,7 +12,7 @@ export default Ember.Component.extend({
 
   districtsByTerritory: function(key, value) {
     var store = this.get('targetObject.store');
-    return (arguments.length  > 1 && value !== '' ? value : store.all('district').sortBy('name'));
+    return (arguments.length > 1 && value !== '' ? value : store.all('district').sortBy('name'));
   }.property(),
 
   allTerritory: function(){

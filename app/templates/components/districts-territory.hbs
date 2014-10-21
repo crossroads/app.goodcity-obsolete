@@ -3,18 +3,14 @@
     <span class="form-label">{{t "register.districts"}}</span>
     <div class="radio-buttons">
       <span class="radio">
-        <label class="radio-wrap">
-          <input type="radio" name="district" {{action 'findDistrictbyTerritory'}}>
-          All
-        </label>
+        <input type="radio" name="district" id='all' {{action 'findDistrictbyTerritory'}}>
+        <label class="radio-wrap" for='all'>All</label>
       </span>
 
       {{#each allTerritory}}
         <span class="radio">
-          <label class="radio-wrap">
-            <input type="radio" name="district" {{action 'findDistrictbyTerritory' this}}>
-              {{name}}
-          </label>
+          <input type="radio" name="district" {{action 'findDistrictbyTerritory' this}}{{bind-attr id=name}}>
+          <label class="radio-wrap" {{bind-attr for=name}}>{{name}}</label>
         </span>
       {{/each}}
 
