@@ -21,7 +21,7 @@ export default Ember.View.extend({
         Ember.$.each(formInputs, function(index, value) {
           if(Ember.$('#' + value).val().length < 1) {
             if(value === 'mobile'){
-              highlight_phone_field()
+              highlight_phone_field();
             } else {
               Ember.$('#' + value).closest('div').addClass('error');
             }

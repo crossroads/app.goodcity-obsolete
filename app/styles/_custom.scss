@@ -1,0 +1,182 @@
+.unread_message {
+  height: 30px;
+  width: 30px;
+  background: #999999;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  float: right;
+  margin-right: 4%;
+  margin-top: -5.5%;
+}
+
+.unread_message a {
+  background: none !important;
+}
+
+.message_count {
+  font-size: 20px;
+  font-weight: bolder;
+  color: black;
+  margin-left: 35%;
+}
+
+/*
+.loading_image {
+  margin: 1% 0 1% -0.5%;
+  display: none;
+}
+
+.current_image {
+  margin-right: 1%;
+}
+
+.loader_image {
+  margin-bottom: -1%;
+  display: none;
+}
+
+.item_name {
+  display: block;
+  font-weight: bold;
+  margin-bottom: -3%;
+  text-decoration: none;
+}
+
+textarea {
+  resize: none;
+  display: inline;
+}
+
+.fav_image {
+  vertical-align: top;
+}
+
+.edit-image-link {
+  vertical-align: top;
+  display: block;
+}
+
+.edit_image_block {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.fav_star img {
+  display: inline-block;
+  width: 1.5%;
+  margin: 0% 0 3.5% -2%;
+}
+
+.image_list li {
+  display: inline;
+}
+
+.district-selection ul{
+  padding: 0em;
+  width: 33%;
+}
+
+.territory_menu {
+  width:130px;
+  height:50px;
+  background-color:#ccc;
+  list-style:none;
+  marging-right:10px;
+  display:table-cell;
+  border: solid 1px white;
+  vertical-align:middle;
+  text-align:center;
+  cursor: pointer;
+}
+
+.delivery-image{
+  width: 60px;
+  height: 60px;
+  margin-top: 10px;
+}
+
+.plan_delivery table {
+  width: 400px;
+}
+
+.selectAddress {
+  width: 140px;
+  margin-right: 3px;
+}
+ul.radio-ul{
+  list-style: none;
+}
+ul.radio-ul li p{
+   padding-left: 2%;
+}
+.center{
+  vertical-align: middle;
+  text-align: center;
+}
+
+#default_profile_image {
+  height:80px;
+  width:80px;
+}
+
+#background {
+  height:50px;
+  width:50px;
+  background:#E6005C;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  margin-left:25%;
+  margin-top:25%;
+}
+
+#background #name {
+  padding-top: 24%;
+  padding-left: 32%;
+  font-weight: 900;
+  font-size: 23px;
+}
+
+.inbox_offers a {
+  color: black;
+}
+
+.message_box {
+  background-color: #DDDDDD;
+  color: black;
+  width: 300px;
+  border-radius: 10px;
+  padding: 13px;
+  margin-bottom: 10px;
+}
+
+.message_details {
+  font-size: 13px;
+}
+
+.item_message {
+  float: right;
+  margin-top: -5%;
+}
+
+td.message_block a {
+  text-decoration: none;
+  color: black;
+}
+
+.unread_count_header {
+  display: block;
+  margin: 1% 0 1%;
+}
+
+.unread_message_box {
+  position: fixed;
+  bottom: 0%;
+  right: 0%;
+  border: solid 1px;
+  width: 25%;
+  padding: 1%;
+  background-color: #EEEEEE;
+  z-index: 100;
+  margin-bottom: 1%;
+}
+*/
