@@ -132,5 +132,4 @@ export default Ember.Component.extend({
       this.sendAction('back');
     }
   }
-
 });

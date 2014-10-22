@@ -20,10 +20,16 @@
   margin-left: 35%;
 }
 
-/*
 .loading_image {
   margin: 1% 0 1% -0.5%;
   display: none;
+  background: none;
+  color: white;
+}
+
+.progress {
+  background: none;
+  border: none;
 }
 
 .current_image {
@@ -71,6 +77,34 @@ textarea {
   display: inline;
 }
 
+.image-buttons {
+  display: inline;
+  position: absolute;
+  margin-top: 55%;
+  margin-left: 12%;
+  bottom: 0;
+}
+
+.file-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.file-button input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  display: block;
+  height: 90%
+}
+
+.file-input {
+  margin-top: 2%;
+}
+
+/*
 .district-selection ul{
   padding: 0em;
   width: 33%;

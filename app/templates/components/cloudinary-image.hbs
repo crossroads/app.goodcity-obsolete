@@ -1,5 +1,5 @@
 {{#if hasImageId}}
-  <span {{action 'selectImage'}}>{{{outputImgTag}}}</span>
+  <a href="#" {{action 'selectImage'}}>{{{outputImgTag}}}</a>
 {{else}}
-  <img src="assets/images/default_item.jpg"></img>
+  <a href="#"><img src="assets/images/default_item.jpg"></img></a>
 {{/if}}

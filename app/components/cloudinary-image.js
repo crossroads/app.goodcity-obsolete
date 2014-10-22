@@ -30,8 +30,8 @@ export default Ember.Component.extend({
       height: height,
       width: width,
       class: 'current_image '+ (this.get('className') || ''),
-      crop: (width === 50 ? 'fill' : 'fit'),
-      border: (width === 50 ? '2px_solid_grey' : '0px_solid_grey'),
+      crop: (width === 60 ? 'fill' : 'fit'),
+      border: (width === 60 ? '2px_solid_grey' : '0px_solid_grey'),
       id: image_id
     });
     return new Ember.Handlebars.SafeString(tag[0].outerHTML);
