@@ -157,6 +157,7 @@ I18nTranslationsEn =
         "hk_only" : "Mobile phone # (Hong Kong only)"
         "login" : "Login"
         "smscode": "Get 4-digit SMS code"
+
       "register":
         "hk_only" : "Mobile phone # (Hong Kong only)"
         "given_name" : "Given name"
@@ -172,8 +173,10 @@ I18nTranslationsEn =
 
       "messages":
         "unread" : "Unread ({{unreadCount}})"
-        "message_text" : "Message: {{messageText}}"
-        "reply": "Reply"
+
+      "notifications":
+        "text" : "{{text}}"
+        "view": "View"
 
       "review_offer":
         "review_started_by" : "Started by {{firstName}} {{lastName}}"

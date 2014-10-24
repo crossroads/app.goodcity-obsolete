@@ -4,7 +4,7 @@ export default Ember.View.extend({
 
   notifyMessage: function(){
     Ember.run.next(this, this.animateNotification);
-  }.observes('controller.unreadFirst').on('didInsertElement'),
+  }.observes('controller.mostRecent').on('didInsertElement'),
 
   animateNotification: function(){
     Ember.$('.unread_message_box').show();

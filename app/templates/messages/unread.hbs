@@ -1,6 +1,0 @@
-{{#if unreadFirst}}
-  <div class='unread_message_box'>
-    {{t "messages.message_text" messageTextBinding=unreadFirst.body}}
-    <button {{action 'reply' unreadFirst.id unreadFirst.offerId}}>{{t "messages.reply"}}</button>
-  </div>
-{{/if}}

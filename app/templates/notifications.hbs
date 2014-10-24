@@ -1,0 +1,6 @@
+{{#if mostRecent}}
+  <div class='unread_message_box'>
+    {{t "notifications.text" textBinding=mostRecent.text}}
+    <button {{action 'view'}}>{{t "notifications.view"}}</button>
+  </div>
+{{/if}}

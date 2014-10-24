@@ -19,10 +19,10 @@ var AuthorizeRoute =  Ember.Route.extend({
   renderTemplate: function() {
     this.render(); // default template
     if(this.controllerFor('application').get("isLoggedIn")){
-      this.render('messages/unread', {   // the template to render
+      this.render('notifications', {   // the template to render
         into: 'application',      // the template to render into
-        outlet: 'unreadMessages', // the name of the outlet in that template
-        controller: 'messages/unread'   // the controller to use for the template
+        outlet: 'notifications', // the name of the outlet in that template
+        controller: 'notifications'   // the controller to use for the template
       });
 
       this.render('messages/unreadMessageCount', {
