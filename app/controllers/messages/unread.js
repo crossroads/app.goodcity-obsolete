@@ -9,7 +9,7 @@ export default Ember.ArrayController.extend({
     return this.store.filter('message', {state: 'unread'}, function(message) {
       return message.get('state') === 'unread';
     });
-  }.property('message.[]'),
+  }.property('message.@each.state'),
 
   unreadFirst: function() {
     return this.get('model.lastObject') || null;

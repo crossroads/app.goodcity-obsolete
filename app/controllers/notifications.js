@@ -34,7 +34,8 @@ export default Ember.ArrayController.extend({
     if (notification.entity_type === "message") {
       this.setMessageRoute(notification);
     } else if (notification.entity_type === "offer") {
-      notification.route = ["offer", notification.entity.id];
+      var routeName = this.get("session.currentUser.isDonor") ? "offer" : "review_offer";
+      notification.route = [routeName, notification.entity.id];
     }
   },
 
