@@ -1,3 +1,3 @@
 {{#if content.length}}
-  {{#link-to 'offers'}}{{t "messages.unread" unreadCountBinding=content.length}}{{/link-to}}</a>
+  <a href="#" {{action "viewUnread"}}>{{t "messages.unread" unreadCountBinding=content.length}}</a>
 {{/if}}
