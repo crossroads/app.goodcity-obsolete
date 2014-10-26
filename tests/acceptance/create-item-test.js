@@ -35,20 +35,22 @@ test("Add Image: display previously added images", function() {
   expect(4);
 
   visit("/offers/2");
-  click("button.addItem");
-
   andThen(function() {
-    equal(currentURL(), "/offers/2/items/new");
+    click("a:contains('Add item')");
 
-    // preview-image
-    equal(find('.file_preview img').attr('id'), testImage1);
+    andThen(function() {
+      equal(currentURL(), "/offers/2/items/new");
 
-    // thumbnail-image-list
-    equal(find("ul.image_list img.current_image").length, 2);
+      // preview-image
+      equal(find('.frame-photo img').attr('id'), testImage1);
 
-    // favourite-image
-    var fav_image = find("img.favourite").closest('li').find('img.current_image');
-    equal(fav_image.attr('id'), testImage1);
+      // thumbnail-image-list
+      equal(find("ul.photo-list img.current_image").length, 2);
+
+      // favourite-image
+      var fav_image = find(".icon-key-photo").closest('li').find('img.current_image');
+      equal(fav_image.attr('id'), testImage1);
+    });
   });
 });
 
@@ -61,14 +63,14 @@ test("Clicking on thumbnail image should change preview-image", function() {
     equal(currentURL(), "/offers/2/items/new");
 
     // preview-image
-    equal(find('.file_preview img').attr('id'), testImage1);
+    equal(find('.frame-photo img').attr('id'), testImage1);
   });
 
   // find other thumbnail-image
   click("img[id='"+testImage2+"']");
 
   andThen(function(){
-    equal(find('.file_preview img').attr('id'), testImage2);
+    equal(find('.frame-photo img').attr('id'), testImage2);
   });
 });
 
@@ -81,23 +83,21 @@ test("Change favourite image", function() {
     equal(currentURL(), "/offers/2/items/new");
 
     // favourite-image
-    var fav_image = find("img.favourite").closest('li').find('img.current_image');
+    var fav_image = find(".icon-key-photo").closest('li').find('img.current_image');
     equal(fav_image.attr('id'), testImage1);
   });
 
   // find other thumbnail-image
   click("img[id='"+testImage2+"']");
-  click('button.setFavourite');
+  click('a.setFavourite');
 
   andThen(function(){
-    var fav_image = find("img.favourite").closest('li').find('img.current_image');
+    var fav_image = find(".icon-key-photo").closest('li').find('img.current_image');
     equal(fav_image.attr('id'), testImage2);
   });
 });
 
 test("Create Item with details", function() {
-  expect(5);
-
   visit("/offers");
   visit("/offers/2/items/new");
   click('button.add_item_link');
@@ -118,6 +118,7 @@ test("Create Item with details", function() {
 
   andThen(function(){
     equal(currentURL(), "/offers/2");
-    equal(find(".item_name").text(), "this is test item");
+    equal($.trim(find('.tab-bar-section .title').text()), "Offer items (1)");
+    // equal(find(".item_name").text(), "this is test item");
   });
 });
