@@ -24,6 +24,12 @@ export default AuthorizeRoute.extend({
       outlet: 'appMenuList',
       controller: 'application'
     });
+
+    this.render('messages/unreadMessageCount', {
+      into: 'offers/index',
+      outlet: 'unreadMessageCount',
+      controller: 'messages/unread'
+    });
   }
 
 });
