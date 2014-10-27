@@ -22,7 +22,7 @@ test('Offers list & link to add items', function() {
 
   andThen(function() {
     // display offers that have at least 1 items
-    equal(find('.offer_list tr').length, 1);
+    equal(find('.list-items li').length, 1);
 
     // test: link to complete offers
     equal(find("a:contains('Complete this Offer')").length, 1);
@@ -35,15 +35,15 @@ test("Offers Details", function() {
   visit('/offers');
 
   andThen(function() {
-    equal(find('.offer_list tr').length, 1);
-    var offer_detail = find('.offer_list tr').first().text();
-    var offer_detail_text = $.trim(offer_detail.replace(/\s+/g, " "));
+    equal(find('.list-items li').length, 1);
+    var offer_detail = find('.list-items li').first().text();
+      var offer_detail_text = $.trim(offer_detail.replace(/\s+/g, " "));
 
-    // test: offer details
-    equal(offer_detail_text, "Draft (2 items) Complete this Offer");
+      // test: offer details
+      equal(offer_detail_text, "Complete this Offer");
 
     // test: complete this offer link
-    var complete_offer_link = find('.offer_list tr').first().find('a');
+    var complete_offer_link = find('.list-items li').first().find('a');
     equal(complete_offer_link.attr('href'), "/offers/1");
     equal($.trim(complete_offer_link.text()), "Complete this Offer");
   });

@@ -1,37 +1,62 @@
-<div class='itemCount'>{{t "offer.index.item_count" itemCountBinding=itemCount}}</div>
+<nav class="tab-bar">
+  <section class="left-small">
+    {{#link-to 'offers' classNames="back"}}{{t "application.home"}}{{/link-to}}
+  </section>
 
-{{#if itemCount }}
+  <section class="middle tab-bar-section">
+    <h1 class="title">{{t "offer.index.item_count" itemCountBinding=itemCount}}</h1>
+  </section>
+</nav>
 
-  {{#if isDraft}}
-    <button {{action "addItem"}} class='addItem'>{{t "offer.index.add_item"}}</button>
-    {{#link-to 'offer.confirm'}}{{t "offer.index.confirm"}}{{/link-to}}
-  {{else}}
-    {{#link-to 'offer.review_status'}}{{t "offer.index.review"}}{{/link-to}}
-  {{/if}}
+<section class="main-section">
+  <div class="row">
+    <div class="small-12 columns">
 
-  <div><button {{action 'cancelOffer' this}} class='removeRecord'>{{t "offer.index.cancel"}}</button></div>
+      {{#if itemCount }}
 
-  <table cellspacing="20">
-    <tr>
-      <th>{{t "offer.index.description"}}</th>
-      <th>{{t "offer.index.condition"}}</th>
-    </tr>
-    {{#each itemsById}}
-      <tr>
-        <td><img {{bind-attr src=defaultImageURL }}></img></td>
-        <td>
-          {{#link-to 'item' this class='item_name'}}{{donorDescription}}{{/link-to}}<br/>
-          {{donorCondition.name}}
-        </td>
-        <td>{{#link-to 'item.edit' this}}{{t "edit"}}{{/link-to}}</td>
-        <td><button {{action 'removeItem' this}} class='removeItem removeRecord'>{{t "remove"}}</button></td>
-      </tr>
-    {{/each}}
-  </table>
+        <div class="row">
+          {{#if isDraft}}
+            <div class="small-6 columns">
+              <a href="#" {{action 'addItem'}} class="button secondary expand"><span class="icon-add"></span>{{t "offer.index.add_item"}}</a>
+            </div>
+            <div class="small-6 columns">
+              {{#link-to 'offer.confirm' classNames='button expand'}}{{t "offer.index.confirm"}}{{/link-to}}
+            </div>
+          {{else}}
+            {{#link-to 'offer.review_status' classNames='button expand'}}{{t "offer.index.review"}}{{/link-to}}
+          {{/if}}
+        </div>
 
-{{else}}
+        <p class="link text-right"><a href="#" {{action 'cancelOffer' this}}>{{t "offer.index.cancel"}}</a></p>
 
-  <div class='noItemMsg'>{{t "offer.no_items"}}</div>
-  <button {{action "addItem"}} class='addItem'>{{t "offer.index.add_item"}}</button>
+        <ul class="list list-offer-items">
+          {{#each itemsById}}
+            <li>
+              {{#link-to 'item.edit' this}}
+                <span class="thumb">
+                  <img {{bind-attr src=defaultImageURL }}>
+                </span>
+                <span class="info">
+                  <h3>{{donorDescription}}</h3>
+                  <p>{{donorCondition.name}}</p>
+                </span>
+              {{/link-to}}
+            </li>
+          {{/each}}
+        </ul>
 
-{{/if}}
+      {{else}}
+
+        <p><span class="icon-no-items"></span></p>
+        <p class="no-items">You don't have any items in this offer yet. Please add your first item!</p>
+
+        <div class="row">
+          <div class="small-10 small-offset-1 columns">
+            <a href="#" {{action "addItem"}} class="button expand"><span class="icon-add"></span>{{t "offer.index.add_item"}}</a>
+          </div>
+        </div>
+
+      {{/if}}
+    </div>
+  </div>
+</section>

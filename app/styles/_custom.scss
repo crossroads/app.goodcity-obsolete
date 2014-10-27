@@ -1,10 +1,35 @@
-html, body {
-  margin: 20px;
+.unread_message {
+  height: 30px;
+  width: 30px;
+  background: #999999;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  float: right;
+  margin-right: 4%;
+  margin-top: -5.5%;
+}
+
+.unread_message a {
+  background: none !important;
+}
+
+.message_count {
+  font-size: 20px;
+  font-weight: bolder;
+  color: black;
+  margin-left: 35%;
 }
 
 .loading_image {
   margin: 1% 0 1% -0.5%;
   display: none;
+  background: none;
+  color: white;
+}
+
+.progress {
+  background: none;
+  border: none;
 }
 
 .current_image {
@@ -14,23 +39,6 @@ html, body {
 .loader_image {
   margin-bottom: -1%;
   display: none;
-}
-
-.invalid_input {
-  background-color: #f8e0e0;
-  border: 1px solid #ff655a;
-  box-shadow: 0 0 1px 1px #f78181;
-}
-
-#mobile_error{
-  color: red;
-  display: block;
-}
-
-.auth_error {
-  color: red;
-  display: none;
-  margin-bottom: 1%;
 }
 
 .item_name {
@@ -69,6 +77,39 @@ textarea {
   display: inline;
 }
 
+.image-buttons {
+  display: inline;
+  position: absolute;
+  margin-top: 55%;
+  margin-left: 12%;
+  bottom: 0;
+}
+
+.file-button {
+  position: relative;
+  overflow: hidden;
+}
+
+.file-button input[type=file] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  filter: alpha(opacity=0);
+  opacity: 0;
+  display: block;
+  height: 90%
+}
+
+.file-input {
+  margin-top: 2%;
+}
+
+.right-small {
+  margin-right: 2%;
+  width: 5rem;
+}
+
+/*
 .district-selection ul{
   padding: 0em;
   width: 33%;
@@ -86,16 +127,6 @@ textarea {
   text-align:center;
   cursor: pointer;
 }
-.input{
-  height: 2.5em;
-  margin: 1em 0.5em;
-}
-.input_size_sm{
-  width: 14em;
-}
-.input_size_lg{
-  width: 26em;
-}
 
 .delivery-image{
   width: 60px;
@@ -105,65 +136,6 @@ textarea {
 
 .plan_delivery table {
   width: 400px;
-}
-
-/* Donation Details Page */
-/*--Start--*/
-
-.donation_details_block {
-  width: 350px;
-}
-
-.confirmed_block {
-  margin: 20px 0 20px;
-}
-
-table.donation_details {
-  border-collapse: collapse;
-  margin-top: 10px;
-  width: 350px;
-}
-
-table.donation_details tr td {
-  padding: 5px;
-  border-bottom: 1px solid #999999;
-}
-
-table.donation_details tr td:last-child {
-  text-align: right;
-}
-
-.confirmed_title, .confirmed_link {
-  display: inline;
-}
-
-.confirmed_link {
-  float: right;
-}
-
-/*--End--*/
-
-/*contact_details*/
-
-.contact_details {
-  width: 350px;
-}
-
-.contact_details label {
-  width: 20%;
-  display: inline-block;
-}
-
-.contact_details input {
-  width: 60%;
-}
-
-#mobile {
-  width: 29%;
-}
-
-.reg_fname_input{
-  float: left;
 }
 
 .selectAddress {
@@ -180,9 +152,7 @@ ul.radio-ul li p{
   vertical-align: middle;
   text-align: center;
 }
-/*--End--*/
 
-/*---Dfault Profile Pic */
 #default_profile_image {
   height:80px;
   width:80px;
@@ -204,7 +174,6 @@ ul.radio-ul li p{
   font-weight: 900;
   font-size: 23px;
 }
-/*---End----*/
 
 .inbox_offers a {
   color: black;
@@ -228,23 +197,6 @@ ul.radio-ul li p{
   margin-top: -5%;
 }
 
-.unread_message {
-  width: 40px;
-  height: 40px;
-  display: inline;
-  z-index: 10;
-}
-
-.message_count {
-  margin-left: 24%;
-  display: inline;
-  margin-top: -37px;
-  float: left;
-  position: relative;
-  font-size: 19px;
-  font-weight: bolder;
-}
-
 td.message_block a {
   text-decoration: none;
   color: black;
@@ -266,3 +218,4 @@ td.message_block a {
   z-index: 100;
   margin-bottom: 1%;
 }
+*/

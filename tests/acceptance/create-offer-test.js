@@ -25,10 +25,10 @@ test("should create new offer", function() {
     equal(currentURL(), '/offers/3');
 
     //test: item count zero
-    equal($.trim($('.itemCount').text()), "Offer items (0)");
+    equal($.trim(find('.tab-bar-section .title').text()), "Offer items (0)");
 
     //test: no items message
-    equal($.trim($('.noItemMsg').text()), "You don't have any items in this offer yet. Please add your first item!");
+    equal($.trim($('.no-items').text()), "You don't have any items in this offer yet. Please add your first item!");
   });
 });
 
@@ -39,17 +39,17 @@ test("should redirect to previous empty offer", function() {
 
   andThen(function() {
     equal(currentURL(), '/offers');
-  });
 
-  click("button:contains('Make a New Donation')");
+    click("a:contains('Make a New Donation')");
 
-  andThen(function(){
-    equal(currentURL(), '/offers/2');
+    andThen(function(){
+      equal(currentURL(), '/offers/2');
 
-    //test: item count zero
-    equal($.trim(find('.itemCount').text()), "Offer items (0)");
+      //test: item count zero
+      equal($.trim(find('.tab-bar-section .title').text()), "Offer items (0)");
 
-    //test: no items message
-    equal($.trim(find('.noItemMsg').text()), "You don't have any items in this offer yet. Please add your first item!");
+      //test: no items message
+      equal($.trim(find('.no-items').text()), "You don't have any items in this offer yet. Please add your first item!");
+    });
   });
 });

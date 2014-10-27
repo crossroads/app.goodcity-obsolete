@@ -1,51 +1,139 @@
-<p class='offer_link'>
-  <button {{action 'newOffer'}}>{{t "offers.index.new_donation"}}</button>
-</p>
+<div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+    {{outlet appMenuList}}
 
-<h3>{{t "offers.index.my_offers"}}</h3>
+    <nav class="tab-bar">
+      <section class="left-small">
+        <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+      </section>
 
-<table class='offer_list' cellspacing='10' cellpadding='5'>
-  <tbody>
-  {{#each offersWithItems}}
-    <tr class="contact">
-      <td>
-        {{cloudinary-image imageId=displayImageId width=50 height=50 className='fav_image'}}
-      </td>
+      <section class="middle tab-bar-section">
+        <h1 class="title">Donations</h1>
+      </section>
 
-      <td>
-        <b>{{status}} ({{itemCount}} items)</b>
-        <br>
+      <section class='right-small'>
+        {{outlet unreadMessageCount}}
+      </section>
+    </nav>
 
-        {{#if this.isScheduled }}
-          {{display-date delivery.schedule.scheduledAt}}<br/>
-          {{delivery.schedule.slotName}}<br/>
-          {{#link-to 'delivery.donation_details' this delivery}}{{t "offer.details"}}{{/link-to}}
-        {{/if}}
+    <section class="main-section">
+      <div class="row">
+        <div class="small-12 columns">
 
-        {{#if this.isUnderReview}}
-          Approved Items: {{approvedtems.length}}<br/>
-          Rejected Items: {{rejectedItems.length}}<br/>
-          {{#link-to 'offer.review_status' this}}Review Status{{/link-to}}
-        {{/if}}
+          <a href="#" {{action 'newOffer'}} class="button expand">{{t "offers.index.new_donation"}}</a>
 
-        {{#if this.isSubmitted}}
-          {{#link-to 'offer.review_status' this}}Review Status{{/link-to}}
-        {{/if}}
+          <ul class="list list-items">
 
-        {{#if this.isDraft }}
-          {{#link-to 'offer' this}}{{t "offers.index.complete_offer"}}{{/link-to}}
-        {{/if}}
-      </td>
+            {{#each offersWithItems}}
 
-      <td class='message_block'>
-        {{#if this.unreadMessagesCount}}
-          {{#link-to 'offer.messages' this}}
-            <img src='assets/images/unread_message.png' class='unread_message'>
-            <div class='message_count'>{{unreadMessagesCount}}</div>
-          {{/link-to}}
-        {{/if}}
-      </td>
-    </tr>
-  {{/each}}
-  </tbody>
-</table>
+              <li>
+                {{#if this.isScheduled }}
+                  {{#link-to 'delivery.donation_details' this delivery}}
+                    {{partial 'thumb_item_image'}}
+                    <span class="info">
+                      <h3>{{status}} ({{itemCount}} items)</h3>
+                      {{display-date delivery.schedule.scheduledAt}}<br/>
+                      {{delivery.schedule.slotName}}<br/>
+                      {{partial 'unread_message_bubble'}}
+                    </span>
+
+                  {{/link-to}}
+                {{/if}}
+
+                {{#if this.isUnderReview}}
+                  {{#link-to 'offer.review_status' this}}
+                    {{partial 'thumb_item_image'}}
+                    <span class="info">
+                      <h3>{{status}} ({{itemCount}} items)</h3>
+                      Approved Items: {{approvedtems.length}}<br/>
+                      Rejected Items: {{rejectedItems.length}}<br/>
+                      {{partial 'unread_message_bubble'}}
+                    </span>
+
+                  {{/link-to}}
+                {{/if}}
+
+
+                {{#if this.isSubmitted}}
+                  {{#link-to 'offer.review_status' this}}
+                    {{partial 'thumb_item_image'}}
+                    <span class="info">
+                      <h3>{{status}} ({{itemCount}} items)</h3>
+                      Approved Items: {{approvedtems.length}}<br/>
+                      Rejected Items: {{rejectedItems.length}}
+                      {{partial 'unread_message_bubble'}}
+                    </span>
+
+                  {{/link-to}}
+                {{/if}}
+
+                {{#if this.isDraft }}
+                  {{#link-to 'offer' this}}
+                    {{partial 'thumb_item_image'}}
+                    <span class="info">
+                      {{t "offers.index.complete_offer"}}
+                      {{partial 'unread_message_bubble'}}
+                    </span>
+
+                  {{/link-to}}
+                {{/if}}
+
+
+              </li>
+            {{/each}}
+
+          </ul>
+
+          <hr>
+
+          <h2>Be a Hong-Kong Hero</h2>
+
+          <ul class="list">
+            <li>
+              <a href="#">
+                <span class="thumb">
+                  <img src="assets/images/thumb.jpg" alt="">
+                </span>
+                <span class="info">
+                  One of your Facebook friends has something to give to GoodCity.HK. Help them find out how!
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="thumb">
+                  <img src="assets/images/thumb.jpg" alt="">
+                </span>
+                <span class="info">
+                  Donate a “top five” item & get 20% off a replacement from Fortress.
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="thumb">
+                  <img src="assets/images/thumb.jpg" alt="">
+                </span>
+                <span class="info">
+                  Donate a “top five” item & get 20% off a replacement from Fortress.
+                </span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <span class="thumb">
+                  <img src="assets/images/thumb.jpg" alt="">
+                </span>
+                <span class="info">
+                  Donate a “top five” item & get 20% off a replacement from Fortress.
+                </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+

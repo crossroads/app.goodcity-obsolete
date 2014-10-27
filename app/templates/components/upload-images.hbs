@@ -1,36 +1,61 @@
-<div class='file_preview'>
-  {{#if this.previewImageId}}
-    {{cloudinary-image imageId=previewImageId width=200 height=250 action="setPreviewImageId"}}
-    {{#if hasManyImages}}
-      <button {{action "setFavouriteImage" previewImageId}} class='setFavourite'>{{t "upload-images.favourite"}}</button>
-    {{/if}}
-    {{#if requireImageAtEdit}}
-      <button {{action "removeImage" previewImageId}}>{{t "delete"}}</button>
-    {{/if}}
-  {{/if}}
+<div class="add-photo-frame text-center">
+  <div class="frame-out">
+    <div class="frame-in">
+
+      <div class="frame-photo">
+        {{#if this.previewImageId}}
+          {{cloudinary-image imageId=previewImageId width=320 height=320 action="setPreviewImageId"}}
+        {{else}}
+          <img src="assets/images/default_item.jpg" width=320 height=320>
+          <div class="frame-overlay">
+            <h3>What are you donating?</h3>
+            <p>Take some photos</p>
+          </div>
+        {{/if}}
+      </div>
+    </div>
+
+    <div class='image-buttons'>
+      {{#if this.previewImageId}}
+        {{#if hasManyImages}}
+          <a href='#' {{action "setFavouriteImage" previewImageId}} class='setFavourite'><span class="icon-favorite"></span></a>
+        {{/if}}
+        {{#if requireImageAtEdit}}
+          <a href='#' {{action "removeImage" previewImageId}}><span class="icon-delete"></span></a>
+        {{/if}}
+      {{/if}}
+    </div>
+  </div>
 </div>
 
-<div>
-  <ul class='image_list'>
+<ul class="photo-list">
+  {{#if imageIds}}
     {{#each imageId in imageIds}}
       <li>
-        {{cloudinary-image imageId=imageId height=50 width=50 action="setPreviewImageId"}}
+        {{cloudinary-image imageId=imageId height=60 width=60 action="setPreviewImageId"}}
         {{favourite-star imageId=imageId favouriteId=favourite}}
       </li>
     {{/each}}
-  </ul>
-</div>
-
-<div>
-  {{#if addMoreImages}}
-    {{upload-image action='updatePreview' image_id=''}}
   {{else}}
-    <div>{{t "upload-images.angles"}}</div>
-    <button {{action "setMoreImages"}}>{{t "upload-images.add_another"}}</button>
+    <li> <img src="assets/images/default_item.jpg" width=320 height=320> </li>
   {{/if}}
+</ul>
+
+<div class='file-input'>
+  <button class="expand file-button">
+    Upload Image {{upload-image action='updatePreview' image_id=''}}
+  </button>
 </div>
 
 {{loading-image}}
 
-<button {{ action 'next'}} {{bind-attr disabled="this.noImage"}} class='add_item_link'>{{t "next"}}</button>
-<button {{ action 'back'}}>{{t "back"}}</button>
+<div class="btm">
+  <div class="row">
+    <div class="small-6 columns">
+      <button {{ action 'next'}} {{bind-attr disabled="this.noImage"}} class='add_item_link button secondary expand'>{{t "next"}}</button>
+    </div>
+    <div class="small-6 columns">
+      <a href="#" {{ action 'back'}} class="button expand">{{t "back"}}</a>
+    </div>
+  </div>
+</div>

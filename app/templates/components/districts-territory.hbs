@@ -1,20 +1,34 @@
-<ul>
-  <li id="all" class="territory_menu" {{action "findDistrictbyTerritory"}}>
-    <span>{{t "districts.all"}}</span>
-  </li>
-  {{#each allTerritory}}
-    <li class="territory_menu" {{action "findDistrictbyTerritory" this}}>
-      {{name}}
-    </li>
-  {{/each}}
-</ul>
-<div>
-{{view Ember.Select
-  contentBinding='districtsByTerritory'
-  optionLabelPath='content.name'
-  optionValuePath='content.id'
-  selectionBinding='currentSelected'
-  value=''
-  promptBinding='selectDistrictLabel'
-  optionClassPath='dropdowncls'}}
+<div class="row">
+  <div class="small-12 columns">
+    <span class="form-label">{{t "register.districts"}}</span>
+    <div class="radio-buttons">
+      <span class="radio">
+        <input type="radio" name="district" id='all' checked {{action 'findDistrictbyTerritory'}}>
+        <label class="radio-wrap" for='all'>All</label>
+      </span>
+
+      {{#each allTerritory}}
+        <span class="radio">
+          <input type="radio" name="district" {{action 'findDistrictbyTerritory' this}}{{bind-attr id=name}}>
+          <label class="radio-wrap" {{bind-attr for=name}}>{{name}}</label>
+        </span>
+      {{/each}}
+
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="small-12 columns">
+    <label>
+      {{view Ember.Select
+        contentBinding='districtsByTerritory'
+        optionLabelPath='content.name'
+        optionValuePath='content.id'
+        selectionBinding='currentSelected'
+        value=''
+        promptBinding='selectDistrictLabel'
+        optionClassPath='dropdowncls'}}
+    </label>
+  </div>
 </div>
