@@ -30,6 +30,7 @@
     "ember-cli-inject-live-reload": "^1.2.2",
     "ember-cli-qunit": "0.1.0",
     "ember-data": "~1.0.0-beta.8",
+    "ember-select-2": "Rodrigora/ember-select-2#add-emberdata-support",
     "express": "^4.8.5",
     "glob": "^4.0.5"
   }
