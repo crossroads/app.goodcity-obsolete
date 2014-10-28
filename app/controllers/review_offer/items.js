@@ -8,15 +8,17 @@ export default Ember.ArrayController.extend({
 
   actions: {
     startReview: function() {
-      var reviewedBy = this.get('session.currentUser');
-      var offerId = this.get('offer.id');
+      var offer = this.store.getById('offer', this.get('offer.id'));
+      var adapter = this.container.lookup('adapter:application');
+      var url = adapter.buildURL('offer', offer.get('id')) + '/review';
+      var controller = this;
 
-      var offer = this.store.update('offer', {
-        id: offerId,
-        state_event: 'start_review',
-        reviewedBy: reviewedBy
+      adapter.ajax(url, 'PUT').then(function(response) {
+        offer.set('reviewedAt', response.offer.reviewed_at )
+        controller.store.find('user', response.offer.reviewed_by_id).then(function(reviewer){
+            offer.set('reviewedBy', reviewer);
+        });
       });
-      offer.save();
     }
   }
 

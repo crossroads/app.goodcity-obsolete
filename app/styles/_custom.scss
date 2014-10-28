@@ -109,6 +109,10 @@ textarea {
   width: 5rem;
 }
 
+.review_block .ember-view, .review_message {
+  display: inline;
+}
+
 /*
 .district-selection ul{
   padding: 0em;

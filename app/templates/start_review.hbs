@@ -1,7 +1,9 @@
-<div>
+<div class='review_block'>
   {{#if offer.reviewedBy }}
-    {{t "review_offer.review_started_by" firstNameBinding=offer.reviewedBy.firstName lastNameBinding=offer.reviewedBy.lastName}}
-    {{ display-timeago offer.reviewedAt}}
+    <div class='review_message'>
+      {{t "review_offer.review_started_by" firstNameBinding=offer.reviewedBy.firstName lastNameBinding=offer.reviewedBy.lastName}}
+    </div>
+    {{view 'time-ago' timeValue=offer.reviewedAt}}
   {{ else }}
     <button {{action 'startReview'}}>Start Review</button>
   {{/if}}
