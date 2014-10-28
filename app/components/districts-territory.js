@@ -39,4 +39,5 @@ export default Ember.Component.extend({
         Ember.$(this).addClass('active');
       });
     });
+  }
 });
