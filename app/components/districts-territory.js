@@ -29,5 +29,15 @@ export default Ember.Component.extend({
       var districts = territory ? territory.get('districts').sortBy('name') : '';
       this.set('districtsByTerritory', districts);
     }
+  },
+
+  didInsertElement: function(){
+
+    Ember.$().ready(function (){
+      Ember.$(".radio a").click(function(){
+        Ember.$(".radio a").removeClass('active');
+        Ember.$(this).addClass('active');
+      });
+    });
   }
 });
