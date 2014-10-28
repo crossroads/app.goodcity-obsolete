@@ -1,17 +1,36 @@
-<h3>Review Item</h3>
+<nav class="tab-bar">
+  <section class="left-small">
+    {{#link-to 'review_offer' classNames="back"}}{{t "back"}}{{/link-to}}
+  </section>
 
-<table>
-  <td>
-  {{cloudinary-image imageId=defaultImageId width=100 height=100 className='fav_image'}}<br/>
-  </td>
-  <td>
-  {{donorDescription}}
-  </td>
-</table>
-
-{{#link-to 'review_item.donor_messages'}}Donor{{/link-to}}
-{{#link-to 'review_item.supervisor_messages'}}Supervisor{{/link-to}}
-
-
-<br/><br/>
-{{outlet}}
+  <section class="middle tab-bar-section">
+    <h1 class="title">Review Item</h1>
+  </section>
+</nav>
+<section class="main-section">
+  <div class="row">
+    <div class="small-12 columns">
+      <div class="row top-bottom-margin">
+        <div class="small-2 columns">
+          {{cloudinary-image imageId=defaultImageId width=100 height=100 className='fav_image'}}
+        </div>
+        <div class="small-10 columns">
+          {{donorDescription}}
+        </div>
+      </div>
+      <div class="row top-bottom-margin">
+        <div class="small-12 columns">
+          {{item-type}}
+        </div>
+     </div>
+    <div class="row top-bottom-margin">
+      <div class="small-12 columns">
+        {{#link-to 'review_item.donor_messages'}}Donor{{/link-to}}
+        {{#link-to 'review_item.supervisor_messages'}}Supervisor{{/link-to}}
+        <br/>
+        {{outlet}}
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
