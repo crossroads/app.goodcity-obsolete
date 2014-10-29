@@ -37,14 +37,11 @@ export default Ember.View.extend({
     }
 
     function highlight_phone_field(){
-      Ember.$('#mobile').addClass('invalid_input');
-      var error = 'Please enter a valid mobile number';
-      Ember.$('#mobile_error').text(error);
+      Ember.$('#mobile').closest('.mobile').addClass('error');
     }
 
     function remove_highlight(){
-      Ember.$('#mobile').removeClass('invalid_input');
-      Ember.$('#mobile_error').empty();
+     Ember.$("#mobile").closest('.mobile').removeClass('error');
     }
   }
 

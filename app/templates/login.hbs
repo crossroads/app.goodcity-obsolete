@@ -1,9 +1,45 @@
-<div>
-  <div>{{t "login.hk_only"}}</div>
-    <div id="mobile_error"></div>
-      +852 {{input type="text" value=mobilePhone name="mobilePhone" id="mobile" maxlength="8" class="input input_size_lg"}}
-    </div>
-  <div>
+<nav class="tab-bar">
+  <section class="left-small">
+    {{#link-to 'register' classNames='back'}}Register{{/link-to}}
+  </section>
 
-  <button {{action "resendPin" }} id="getsmscode" class="input input_size_lg">{{t "login.smscode"}}</button>
-</div>
+  <section class="middle tab-bar-section">
+    <h1 class="title">Login</h1>
+  </section>
+</nav>
+
+<section class="main-section">
+
+  <div class="row">
+    <div class="small-12 columns with-btm">
+      <form>
+
+        <div class="mobile">
+          <div class="row">
+            <div class="small-12 columns">
+             <label class="form-label">{{t "login.hk_only"}}</label>
+            </div>
+          </div>
+
+          <div class="row collapse">
+            <div class="small-3 large-1 columns">
+              <span class="prefix">+852</span>
+            </div>
+            <div class="small-9 large-11 columns">
+              {{input type="text" value=mobilePhone name="mobilePhone" id="mobile" maxlength="8" data-actual-mobile=""}}
+            </div>
+          </div>
+        </div>
+      <form>
+
+      <div class="btm">
+        <div class="row">
+          <div class="small-10 small-offset-1 columns">
+            <a href="#" {{action "resendPin" }} id="getsmscode" class="button expand">{{t "login.smscode"}}</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
