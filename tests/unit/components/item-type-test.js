@@ -1,13 +1,12 @@
-import { test, moduleFor } from 'ember-qunit';
+import { test, moduleForComponent } from 'ember-qunit';
 
-moduleFor('item-type', 'ItemTypeComponent', {
+moduleForComponent('item-type', 'ItemTypeComponent', {
 });
 
-test('it renders', function() {
+test('it renders select2', function() {
   var component;
-  expect(2);
+  expect(1);
   component = this.subject();
   equal(component.state, 'preRender');
-  this.append();
-  return equal(component.state, 'inDOM');
+  return;
 });
