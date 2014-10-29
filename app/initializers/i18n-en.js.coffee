@@ -135,7 +135,8 @@ I18nTranslationsEn =
       "items":
         "add_item":
           "condition": "Condition?"
-          "edit_image" : "Edit Image"
+          "edit_image" : "Edit photos"
+          "save" : "Save Details"
         "new":
           "add_photos" : "Add photos of this item"
 

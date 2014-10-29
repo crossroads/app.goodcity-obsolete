@@ -114,7 +114,7 @@ test("Create Item with details", function() {
     equal(find("textarea[name=donorDescription]").val(), "this is test item");
   });
 
-  click("button:contains('Next')");
+  click("button:contains('Save Details')");
 
   andThen(function(){
     equal(currentURL(), "/offers/2");

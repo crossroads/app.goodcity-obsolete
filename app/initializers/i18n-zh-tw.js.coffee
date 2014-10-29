@@ -130,6 +130,7 @@ I18nTranslationsZhTw =
         "add_item":
           "condition": "條件?"
           "edit_image" : "編輯形像"
+          "save" : "Save Details"
         "new":
           "add_photos" : "添加照片本項"
 

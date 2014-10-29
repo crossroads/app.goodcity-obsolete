@@ -1,3 +1,23 @@
+.item-details
+  .fav-item-image {
+    text-align: center;
+  }
+  span {
+    font-size: 0.80rem !important;
+    color: #a3aab6;
+    font-family: sans-serif;
+  }
+  textarea {
+    font-size: 0.90rem !important;
+    color: #a3aab6;
+    font-family: sans-serif;
+  }
+
+input[type="radio"] + label {
+  font-size: 0.80rem !important;
+  vertical-align: middle;
+}
+
 .radio a.active {
   background: #f34d4f;
   border: 1px solid #f34d4f; }
