@@ -1,6 +1,18 @@
-{{#each donor_condition in donorConditions}}
-  <label>
-    {{view 'radio-button' name="selectionTest" selectionBinding='selectedId' value=donor_condition.id}}
-    {{donor_condition.name}}
-  </label>
-{{/each}}
+<div class="row">
+  <div class="small-12 columns">
+    <span class="form-label">{{t "items.add_item.condition"}}</span>
+    <div class="radio-buttons">
+
+      {{#each donor_condition in donorConditions}}
+        <span class="radio">
+
+          {{view 'radio-button' name="selectionTest" selectionBinding='selectedId' value=donor_condition.id id=donor_condition.id}}
+          <label class="radio-wrap" {{bind-attr for=donor_condition.id}}>
+            {{donor_condition.name}}
+          </label>
+
+        </span>
+      {{/each}}
+    </div>
+  </div>
+</div>

@@ -14,7 +14,7 @@ export default Ember.ArrayController.extend({
       var controller = this;
 
       adapter.ajax(url, 'PUT').then(function(response) {
-        offer.set('reviewedAt', response.offer.reviewed_at );
+        offer.set('reviewedAt', response.offer.reviewed_at);
         controller.store.find('user', response.offer.reviewed_by_id).then(function(reviewer){
             offer.set('reviewedBy', reviewer);
         });

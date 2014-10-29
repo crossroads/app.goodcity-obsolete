@@ -34,7 +34,6 @@ export default Ember.ObjectController.extend({
       item.save().then(function() {
         route.transitionToRoute('offer', offer_id);
       });
-
     },
   }
 });
