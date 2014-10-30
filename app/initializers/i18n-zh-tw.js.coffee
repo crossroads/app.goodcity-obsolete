@@ -139,15 +139,39 @@ I18nTranslationsZhTw =
         "donor_description": "說明: {{donorDescription}}"
         "condition": "條件: {{condition}}"
 
-      "inbox":
-        "title" : "Inbox"
-        "new_items" : "New Items"
-        "unread_messages" : "Unread Messages: {{unreadMessagesCount}}"
-
       "_resend":
         "no_sms" : "沒有收到短信代碼?"
         "please_wait" : "請請等待5分鐘..."
         "resend" : "再次發送"
+
+      "_verification_pin":
+        "input_code" : "Input 4-digit SMS code we just sent you:"
+        "auth_error" : "Sorry! Please enter the correct pin."
+
+      "login":
+        "hk_only" : "Mobile phone # (Hong Kong only)"
+        "login" : "Login"
+        "smscode": "Get 4-digit SMS code"
+
+      "register":
+        "hk_only" : "Mobile phone # (Hong Kong only)"
+        "given_name" : "Given name"
+        "family_name" : "Family name"
+        "districts" : "Districts"
+        "register" : "Register"
+        "login" : "Login"
+
+      "inbox":
+        "title" : "New Donations"
+        "new_items" : "New Items"
+        "unread_messages" : "Unread Messages: {{unreadMessagesCount}}"
+
+      "messages":
+        "unread" : "Unread ({{unreadCount}})"
+
+      "notifications":
+        "text" : "{{text}}"
+        "view": "View"
 
       "review_offer":
         "review_started_by" : "Started by {{lastName}} {{firstName}}"

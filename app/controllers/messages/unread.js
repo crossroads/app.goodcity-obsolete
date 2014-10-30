@@ -2,7 +2,6 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
 
-  needs: ['application'],
   sortProperties: ['id'],
   sortAscending: false,
 
@@ -10,29 +9,13 @@ export default Ember.ArrayController.extend({
     return this.store.filter('message', {state: 'unread'}, function(message) {
       return message.get('state') === 'unread';
     });
-  }.property('message.[]'),
+  }.property('message.@each.state'),
 
   unreadFirst: function() {
     return this.get('model.lastObject') || null;
   }.property('model.[]'),
 
   actions: {
-    reply: function(messageId, offerId) {
-      var offer = this.store.getById('offer', offerId);
-      var message = this.store.getById('message', messageId);
-
-      if(this.get('session.currentUser.isDonor')) {
-        this.transitionToRoute("offer.messages", offer);
-      } else {
-        if(message.get('isPrivate')) {
-          this.transitionToRoute("review_offer.supervisor_messages", offer);
-        } else {
-          this.transitionToRoute("review_offer.messages", offer);
-        }
-      }
-
-    },
-
     viewUnread: function() {
       if (this.get('session.currentUser.isReviewer')) {
         this.transitionToRoute("inbox.under_review");

@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend(EmberPusher.Bindings, {
+  needs: ["notifications"],
 
   actions: {
 
@@ -37,5 +38,9 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
       }
     },
 
+    notification: function(data) {
+      data.date = new Date(data.date);
+      this.get("controllers.notifications").pushObject(data);
+    }
   }
 });

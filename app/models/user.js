@@ -53,10 +53,15 @@ var User = Addressable.extend({
 
   subscriptions: function() {
     var channels = {};
-    var userChannelName = "user_" + this.get('id');
-    channels[userChannelName] = ['update_store'];
+    var events = ["update_store","notification"];
+    channels["user_" + this.get('id')] = events;
+    if (this.get("isReviewer")) {
+      channels["reviewer"] = events;
+    } else if (this.get("isSupervisor")) {
+      channels["supervisor"] = events;
+    }
     return channels;
-  }.property('permission'),
+  }.property(),
 
 });
 
