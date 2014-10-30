@@ -1,17 +1,20 @@
-.item-details
+.inner-wrap {
+  height: 100vh;
+}
+
+.item-details {
   .fav-item-image {
     text-align: center;
   }
   span {
     font-size: 0.80rem !important;
     color: #a3aab6;
-    font-family: sans-serif;
   }
   textarea {
     font-size: 0.90rem !important;
     color: #a3aab6;
-    font-family: sans-serif;
   }
+}
 
 input[type="radio"] + label {
   font-size: 0.80rem !important;
@@ -109,23 +112,22 @@ textarea {
   bottom: 0;
 }
 
-.file-button {
-  position: relative;
-  overflow: hidden;
-}
-
-.file-button input[type=file] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  display: block;
-  height: 90%
-}
 
 .file-input {
   margin-top: 2%;
+  .file-button {
+    position: relative;
+    overflow: hidden;
+    input[type=file] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      display: block;
+      height: 90%
+    }
+  }
 }
 
 .right-small {
@@ -146,6 +148,7 @@ textarea {
   color: #000000;
   min-width: 21rem;
 }
+
 /*
 .district-selection ul{
   padding: 0em;
@@ -188,28 +191,6 @@ ul.radio-ul li p{
 .center{
   vertical-align: middle;
   text-align: center;
-}
-
-#default_profile_image {
-  height:80px;
-  width:80px;
-}
-
-#background {
-  height:50px;
-  width:50px;
-  background:#E6005C;
-  -moz-border-radius: 30px;
-  -webkit-border-radius: 30px;
-  margin-left:25%;
-  margin-top:25%;
-}
-
-#background #name {
-  padding-top: 24%;
-  padding-left: 32%;
-  font-weight: 900;
-  font-size: 23px;
 }
 
 .inbox_offers a {

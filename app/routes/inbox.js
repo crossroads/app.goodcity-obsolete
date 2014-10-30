@@ -7,5 +7,14 @@ export default AuthorizeRoute.extend({
     return this.store.filter('offer', {state: 'submitted'}, function(offer) {
         return offer.get('state') === 'submitted';
     });
+  },
+
+  renderTemplate: function() {
+    this.render(); // default template
+    this.render('appMenuList', {
+      into: 'inbox',
+      outlet: 'appMenuList',
+      controller: 'application'
+    });
   }
 });

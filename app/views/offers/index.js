@@ -1,12 +1,4 @@
-import Ember from 'ember';
+import Init from './../init';
 
-export default Ember.View.extend({
-
-  didInsertElement: function(){
-    Ember.$(document).foundation({
-      offcanvas: {
-        close_on_click: true
-      }
-    });
-  }
+export default Init.extend({
 });

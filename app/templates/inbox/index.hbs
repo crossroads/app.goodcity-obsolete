@@ -1,47 +1,55 @@
-<h3>
-  {{#if controller.newOffers}}
-    {{t "inbox.title"}}
-  {{else}}
-    In Review Process
-  {{/if}}
-  ({{this.length}})</h3>
+<nav class="tab-bar">
+  <section class="left-small">
+    <a class="left-off-canvas-toggle menu-icon" href="#"><span></span></a>
+  </section>
 
-<div class='inbox_offers'>
-  {{#each}}
-    {{#link-to 'review_offer' this}}
-      <table cellspacing='10'>
-        <td>
-          {{#if this.user.image}}
-            <img {{bind-attr src="this.user.image"}}><br/>
-          {{else}}
-            <div id="default_profile_image">
-              <div id="background">
-                <div id='name'>{{this.user.nameInitial}}</div>
-              </div>
-            </div>
-          {{/if}}
-        </td>
+  <section class="middle tab-bar-section">
+    <h1 class="title">
+      {{#if controller.newOffers}}
+        {{t "inbox.title"}}
+      {{else}}
+        {{t "inbox.in_review"}}
+      {{/if}}({{this.length}})
+    </h1>
+  </section>
+</nav>
 
-        <td>
-          {{t "full_name" firstNameBinding=user.firstName lastNameBinding=user.lastName}}<br/>
-          {{t "inbox.new_items"}}: {{itemCount}}<br/>
-          {{#if this.unreadMessagesCount}}
-            {{t "inbox.unread_messages" unreadMessagesCountBinding=unreadMessagesCount}}<br/>
-          {{/if}}
-          {{user.address.district.name}}<br/>
+<section class="main-section">
+  <div class="row">
+    <div class="small-12 columns">
+      <ul class="list list-activity">
+        {{#each}}
+          <li>
+            {{#link-to 'review_offer' this}}
+              <span class="avatar">
+                <span class="no-avatar">{{this.user.nameInitial}}</span>
+              </span>
 
-          {{#if controller.newOffers}}
-            {{view 'time-ago' timeValue=submittedAt}}
-          {{else}}
-            {{view 'time-ago' timeValue=reviewedAt}}
-          {{/if}}
+              <span class="info">
+                <h3>
+                  {{t "full_name" firstNameBinding=user.firstName lastNameBinding=user.lastName}}
+                </h3>
+                <p>{{t "inbox.new_items"}}: {{itemCount}}</p>
+                {{#if this.unreadMessagesCount}}
+                  <p>{{t "inbox.unread_messages" unreadMessagesCountBinding=unreadMessagesCount}}</p>
+                {{/if}}
+                <p>{{user.address.district.name}}</p>
 
-        </td>
+                {{#if controller.newOffers}}
+                  {{view 'time-ago' timeValue=submittedAt}}
+                {{else}}
+                  {{view 'time-ago' timeValue=reviewedAt}}
+                {{/if}}
+              </span>
 
-        <td>
-          {{cloudinary-image imageId=displayImageId width=50 height=50 className='fav_image'}}<br/>
-        </td>
-      </table>
-    {{/link-to}}
-  {{/each}}
-</div>
+              <span class="thumb">
+                {{cloudinary-image imageId=displayImageId width=50 height=50 className='fav_image'}}<br/>
+              </span>
+
+            {{/link-to}}
+          </li>
+        {{/each}}
+      </ul>
+    </div>
+  </div>
+</section>

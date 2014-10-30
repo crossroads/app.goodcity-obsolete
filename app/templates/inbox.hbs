@@ -1,24 +1,6 @@
-<nav class="tab-bar">
-  <section class="left-small">
-    {{#link-to 'inbox' classNames="back"}}{{t "application.home"}}{{/link-to}}
-  </section>
-</nav>
-<section class="main-section">
-  <div class="row">
-    <div class="small-12 columns">
-      <div class="row">
-        <div class="small-6 columns">
-          {{#link-to 'inbox'}}New Donations{{/link-to}}
-        </div>
-        <div class="small-6 columns">
-          {{#link-to 'inbox.under_review'}}In Review{{/link-to}}
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="small-12 columns">
-        {{outlet}}
-      </div>
-    </div>
+<div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+    {{outlet appMenuList}}
+    {{outlet}}
   </div>
-
+</div>

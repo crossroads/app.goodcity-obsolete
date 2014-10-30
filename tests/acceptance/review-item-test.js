@@ -16,7 +16,7 @@ module('Display review Item', {
 });
 
 test("Display Item under review", function() {
-  expect(5);
+  expect(6);
   visit("/offers/1/review_item/4");
 
   andThen(function(){
@@ -24,6 +24,7 @@ test("Display Item under review", function() {
     equal(/Review Item:/i.test($('body').text()), true);
     equal(/Velit fugit amet quos ut minima quis/i.test($('body').text()), true);
     equal(/Condition: New/i.test($('body').text()), true);
+    equal(find('.select2-chosen').text(), "Add item label");
     equal(find("img").length, 1);
   });
 });
