@@ -1,3 +1,12 @@
+.review-items img.current_image {
+  width: inherit !important;
+  float: right;
+}
+
+.inner-wrap {
+  height: 100vh;
+}
+
 .item-details
   .fav-item-image {
     text-align: center;
@@ -137,6 +146,28 @@ textarea {
   display: inline;
 }
 
+#default_profile_image {
+  height: 50px;
+  width: 50px;
+}
+
+#background {
+  height:50px;
+  width:50px;
+  background:#E6005C;
+  -moz-border-radius: 30px;
+  -webkit-border-radius: 30px;
+  margin-left:10%;
+  margin-top:10%;
+}
+
+#background #name {
+  padding-top: 20%;
+  padding-left: 35%;
+  font-weight: 900;
+  font-size: 23px;
+}
+
 /*
 .district-selection ul{
   padding: 0em;
@@ -179,28 +210,6 @@ ul.radio-ul li p{
 .center{
   vertical-align: middle;
   text-align: center;
-}
-
-#default_profile_image {
-  height:80px;
-  width:80px;
-}
-
-#background {
-  height:50px;
-  width:50px;
-  background:#E6005C;
-  -moz-border-radius: 30px;
-  -webkit-border-radius: 30px;
-  margin-left:25%;
-  margin-top:25%;
-}
-
-#background #name {
-  padding-top: 24%;
-  padding-left: 32%;
-  font-weight: 900;
-  font-size: 23px;
 }
 
 .inbox_offers a {

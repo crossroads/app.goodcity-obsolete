@@ -1,4 +1,6 @@
-{{#link-to 'inbox'}}New Donations{{/link-to}} |
-{{#link-to 'inbox.under_review'}}In Review{{/link-to}}
-
-<div>{{outlet}}</div>
+<div class="off-canvas-wrap" data-offcanvas>
+  <div class="inner-wrap">
+    {{outlet appMenuList}}
+    {{outlet}}
+  </div>
+</div>

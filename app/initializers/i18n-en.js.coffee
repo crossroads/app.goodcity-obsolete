@@ -168,9 +168,11 @@ I18nTranslationsEn =
         "login" : "Login"
 
       "inbox":
-        "title" : "New Donations"
+        "title" : "New Offers"
         "new_items" : "New Items"
         "unread_messages" : "Unread Messages: {{unreadMessagesCount}}"
+        "in_review" : "In Review"
+        "my_list" : "My List"
 
       "messages":
         "unread" : "Unread ({{unreadCount}})"
