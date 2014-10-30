@@ -135,10 +135,19 @@ textarea {
   width: 5rem;
 }
 
+.row .top-bottom-margin {
+  margin-top: 2%;
+  margin-bottom: 2%;
+}
+
 .review_block .ember-view, .review_message {
   display: inline;
 }
 
+.select2-chosen{
+  color: #000000;
+  min-width: 21rem;
+}
 
 /*
 .district-selection ul{

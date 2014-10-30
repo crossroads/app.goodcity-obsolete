@@ -22,7 +22,7 @@
     "broccoli-asset-rev": "0.3.0",
     "broccoli-ember-hbs-template-compiler": "^1.6.1",
     "broccoli-sass": "^0.3.0",
-    "connect-restreamer": "^1.0.0",
+    "connect-restreamer": "^1.0.1",
     "cors": "^2.4.2",
     "ember-cli": "^0.1.1",
     "ember-cli-coffeescript": "^0.1.0",
@@ -30,6 +30,7 @@
     "ember-cli-inject-live-reload": "^1.2.2",
     "ember-cli-qunit": "0.1.0",
     "ember-data": "~1.0.0-beta.8",
+    "ember-select-2": "Rodrigora/ember-select-2#add-emberdata-support",
     "express": "^4.8.5",
     "glob": "^4.0.5"
   }
