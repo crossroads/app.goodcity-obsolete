@@ -112,23 +112,22 @@ textarea {
   bottom: 0;
 }
 
-.file-button {
-  position: relative;
-  overflow: hidden;
-}
-
-.file-button input[type=file] {
-  position: absolute;
-  top: 0;
-  right: 0;
-  filter: alpha(opacity=0);
-  opacity: 0;
-  display: block;
-  height: 90%
-}
 
 .file-input {
   margin-top: 2%;
+  .file-button {
+    position: relative;
+    overflow: hidden;
+    input[type=file] {
+      position: absolute;
+      top: 0;
+      right: 0;
+      filter: alpha(opacity=0);
+      opacity: 0;
+      display: block;
+      height: 90%
+    }
+  }
 }
 
 .right-small {
