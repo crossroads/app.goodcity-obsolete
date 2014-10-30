@@ -16,7 +16,7 @@ module('Display review Item', {
 });
 
 test("Display Item under review", function() {
-  expect(6);
+  expect(5);
   visit("/offers/1/review_item/4");
 
   andThen(function(){
@@ -29,7 +29,7 @@ test("Display Item under review", function() {
 });
 
 test("Back button redirects to review offer page", function() {
-  expect(2);
+  expect(1);
   visit("/offers/1/review_item/4");
   click("a:contains('Back')");
 
