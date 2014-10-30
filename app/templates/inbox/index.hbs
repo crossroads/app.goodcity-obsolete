@@ -17,41 +17,34 @@
 <section class="main-section">
   <div class="row">
     <div class="small-12 columns">
-      <ul class="list review-items">
+      <ul class="list list-activity">
         {{#each}}
           <li>
             {{#link-to 'review_offer' this}}
-              <div class="small-3 columns">
-                {{#if this.user.image}}
-                  <img {{bind-attr src="this.user.image"}}><br/>
-                {{else}}
-                  <div id="default_profile_image">
-                    <div id="background">
-                      <div id='name'>{{this.user.nameInitial}}</div>
-                    </div>
-                  </div>
-                {{/if}}
-              </div>
+              <span class="avatar">
+                <span class="no-avatar">{{this.user.nameInitial}}</span>
+              </span>
 
-              <div class="small-6 columns">
-
-                {{t "full_name" firstNameBinding=user.firstName lastNameBinding=user.lastName}}<br/>
-                {{t "inbox.new_items"}}: {{itemCount}}<br/>
+              <span class="info">
+                <h3>
+                  {{t "full_name" firstNameBinding=user.firstName lastNameBinding=user.lastName}}
+                </h3>
+                <p>{{t "inbox.new_items"}}: {{itemCount}}</p>
                 {{#if this.unreadMessagesCount}}
-                  {{t "inbox.unread_messages" unreadMessagesCountBinding=unreadMessagesCount}}<br/>
+                  <p>{{t "inbox.unread_messages" unreadMessagesCountBinding=unreadMessagesCount}}</p>
                 {{/if}}
-                {{user.address.district.name}}<br/>
+                <p>{{user.address.district.name}}</p>
 
                 {{#if controller.newOffers}}
                   {{view 'time-ago' timeValue=submittedAt}}
                 {{else}}
                   {{view 'time-ago' timeValue=reviewedAt}}
                 {{/if}}
-              </div>
+              </span>
 
-              <div class="small-3 columns">
+              <span class="thumb">
                 {{cloudinary-image imageId=displayImageId width=50 height=50 className='fav_image'}}<br/>
-              </div>
+              </span>
 
             {{/link-to}}
           </li>
