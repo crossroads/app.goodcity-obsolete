@@ -65,6 +65,7 @@ Router.map(function() {
   this.resource('inbox', function(){
     this.route('index', {path: '/'});
     this.route('under_review');
+    this.route('my_list');
   });
 });
 

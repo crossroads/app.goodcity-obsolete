@@ -173,6 +173,7 @@ I18nTranslationsEn =
         "unread_messages" : "Unread Messages: {{unreadMessagesCount}}"
         "in_review" : "In Review"
         "my_list" : "My List"
+        "my_offers" : "My Offers"
 
       "messages":
         "unread" : "Unread ({{unreadCount}})"

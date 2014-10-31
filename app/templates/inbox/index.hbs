@@ -8,7 +8,11 @@
       {{#if controller.newOffers}}
         {{t "inbox.title"}}
       {{else}}
-        {{t "inbox.in_review"}}
+        {{#if controller.myOffers}}
+          {{t "inbox.my_offers"}}
+        {{else}}
+          {{t "inbox.in_review"}}
+        {{/if}}
       {{/if}}({{this.length}})
     </h1>
   </section>

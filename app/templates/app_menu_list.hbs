@@ -6,7 +6,9 @@
     {{#if session.currentUser.isStaff}}
       <li>{{#link-to 'inbox'}}{{t "inbox.title"}}{{/link-to}}</li>
       <li>{{#link-to 'inbox.under_review'}}{{t "inbox.in_review"}}{{/link-to}}</li>
-      <li>{{#link-to ''}}{{t "inbox.my_list"}}{{/link-to}}</li>
+      {{#if session.currentUser.isReviewer}}
+        <li>{{#link-to 'inbox.my_list'}}{{t "inbox.my_list"}}{{/link-to}}</li>
+      {{/if}}
     {{else}}
       <li>{{#link-to 'offers'}}{{t "application.all_offers"}}{{/link-to}}</li>
       <li>{{#link-to 'i18n'}}I18n examples{{/link-to}}</li>
