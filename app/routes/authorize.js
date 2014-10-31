@@ -16,17 +16,6 @@ var AuthorizeRoute =  Ember.Route.extend({
     }
   },
 
-  renderTemplate: function() {
-    this.render(); // default template
-    if(this.controllerFor('application').get("isLoggedIn")){
-      this.render('notifications', {   // the template to render
-        into: 'application',      // the template to render into
-        outlet: 'notifications', // the name of the outlet in that template
-        controller: 'notifications'   // the controller to use for the template
-      });
-    }
-  },
-
   actions: {
     error: function(reason) {
       if (reason.status === 401) {

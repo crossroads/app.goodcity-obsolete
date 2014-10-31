@@ -1,3 +1,19 @@
+.right-small {
+  border: none;
+  display: block;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: normal;
+  height: 45px;
+  line-height: 45px;
+  margin-right: 23.4801139831543px;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  width: 80px;
+  z-index: 1000;
+}
+
 .inner-wrap {
   height: 100vh;
 }
@@ -248,11 +264,6 @@ ul.radio-ul li p{
 td.message_block a {
   text-decoration: none;
   color: black;
-}
-
-.unread_count_header {
-  display: block;
-  margin: 1% 0 1%;
 }
 
 .unread_message_box {

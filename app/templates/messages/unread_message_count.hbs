@@ -1,3 +1,5 @@
 {{#if content.length}}
-  <a href="#" {{action "viewUnread"}}>{{t "messages.unread" unreadCountBinding=content.length}}</a>
+  <span class='right-small'>
+    <a href="#" {{action "viewUnread"}}>{{t "messages.unread" unreadCountBinding=content.length}}</a>
+  </span>
 {{/if}}
