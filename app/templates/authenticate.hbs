@@ -1,4 +1,40 @@
-<h3>{{t "authenticate.input_code"}}</h3>
-{{partial 'verification_pin'}}
-<button {{action "authenticateUser"}} id='submit_pin' class="input input_size_sm">{{t "ok"}}</button>
-{{partial 'resend'}}
+<nav class="tab-bar">
+  <section class="left-small">
+    {{#link-to 'tour' 1 classNames='back'}}Tour{{/link-to}}
+  </section>
+
+  <section class="middle tab-bar-section">
+    <h1 class="title">{{t "authenticate.input_code"}}</h1>
+  </section>
+</nav>
+
+<section class="main-section">
+  <div class="small-12 columns with-btm">
+    <form>
+      <div class="row">
+        <div class="small-12 columns">
+          <label class="form-label">{{t "_verification_pin.input_code"}}</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-8 columns">
+          {{input type="text" value=pin name="pin" id="pin" placeholder="XXXX"}}
+        </div>
+        <div class="small-4 columns">
+          <a href="#" {{action "authenticateUser" }} id="submit_pin" class="button expand">{{t "ok"}}</a>
+        </div>
+      </div>
+    <form>
+
+    <div class="row">
+      <div class="small-8 columns">
+        <label class="form-label">{{t "_resend.no_sms"}}</label>
+        <label class="form-label">{{t "_resend.please_wait"}}</label>
+      </div>
+      <div class="small-4 columns">
+        <a href="#" {{action "resendPin" }} id="resend-pin" class="button secondary expand">{{t "_resend.resend"}}</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -6,17 +6,11 @@ export default Ember.View.extend({
 
     Ember.$().ready(function (){
       validateForm();
-      Ember.$('#pin').focus(function(){ remove_highlight(); });
     });
 
     function validateForm(){
-      Ember.$('#submit_pin').click(function(){
-        return isValidPin();
-      });
-
-      Ember.$('#pin').focusout(function(){
-        return isValidPin();
-      });
+      Ember.$('#submit_pin').click(function(){ return isValidPin(); });
+      Ember.$('#pin').focus(function(){ remove_highlight(); });
     }
 
     function isValidPin(){
@@ -31,13 +25,11 @@ export default Ember.View.extend({
     }
 
     function highlight_pin_field(){
-      Ember.$('#pin').addClass('invalid_input');
-      Ember.$('.auth_error').show();
+      Ember.$('#pin').closest('div').addClass('error');
     }
 
     function remove_highlight(){
-      Ember.$('#pin').removeClass('invalid_input');
-      Ember.$('.auth_error').hide();
+      Ember.$('#pin').closest('div').removeClass('error');
     }
 
   }
