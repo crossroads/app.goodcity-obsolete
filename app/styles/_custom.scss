@@ -144,9 +144,39 @@ textarea {
   display: inline;
 }
 
-.select2-chosen{
-  color: #000000;
-  min-width: 21rem;
+.select2-container{
+  width: 100% !important;
+  .select2-chosen{
+    color: #000000;
+  }
+  .select2-choice{
+    padding: 0.5rem;
+    border: 2px solid #fff;
+    height: 2.5625rem;
+    background-color: #FAFAFA;
+    -webkit-appearance: none !important;
+    -webkit-border-radius: 0px;
+    background-color: #FAFAFA !important;
+    background-position: 100% center;
+    background-repeat: no-repeat;
+    border: 1px solid #FAFAFA;
+    font-size: 1.125rem;
+    color: rgba(0, 0, 0, 0.75);
+    line-height: normal;
+    border-radius: 0;
+    .select2-arrow{
+      border: none;
+      background: #FAFAFA;
+    }
+  }
+  .select2-input{
+    width: 100%;
+    border: solid 2px red;
+  }
+  .select2-drop-mask{
+    width: 100%;
+    border: solid 2px red;
+  }
 }
 
 /*
