@@ -33,6 +33,7 @@ I18nTranslationsEn =
         "login" : "Login"
         "logout" : "Logout"
         "register" : "Register"
+        "tour" : "Tour"
 
       "authenticate":
         "input_code" : "Input Code"

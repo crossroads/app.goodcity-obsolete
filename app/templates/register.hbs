@@ -1,10 +1,14 @@
 <nav class="tab-bar">
   <section class="left-small">
-    {{#link-to 'tour' 1 classNames='back'}}Tour{{/link-to}}
+    {{#link-to 'tour' 1 classNames='back'}}{{t "application.tour"}}{{/link-to}}
   </section>
 
   <section class="middle tab-bar-section">
-    <h1 class="title">Register</h1>
+    <h1 class="title">{{t "application.register"}}</h1>
+  </section>
+
+  <section class="right-small">
+    {{#link-to 'login'}}{{t "application.login"}}{{/link-to}}
   </section>
 </nav>
 
