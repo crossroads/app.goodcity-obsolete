@@ -13,6 +13,98 @@
   width: 80px;
   z-index: 1000;
 }
+/**************Styles to truncate the text using and show ellipses**********/
+.vcenter{
+  -webkit-transform: translateY(20%);
+  -ms-transform: translateY(20%);
+  transform: translateY(20%);
+}
+.ellipsis-container {
+  position: relative;
+}
+.ellipsis {
+  background: inherit;
+  display: inline;
+}
+
+.ellipsis:before,
+.ellipsis:after {
+  background: inherit;
+  position: absolute;
+}
+
+.ellipsis:before {
+  content: '\2026';
+  bottom: 0;
+  right: 0;
+}
+
+.ellipsis:after {
+  content: '';
+  height: 100%;
+  width: 100%;
+}
+.one-line {
+  line-height: 1.5;
+  max-height: 1.0rem;
+  max-height: 1.4rem;
+  overflow: hidden;
+}
+.two-line {
+  max-height: 2.9rem;
+}
+.three-line {
+  max-height: 4.5rem;
+}
+/***********************************************************/
+.tabs {
+margin-bottom: 0 !important;
+margin-left: 0;
+}
+.tabs:before, .tabs:after {
+  content: " ";
+  display: table;
+}
+.tabs:after {
+  clear: both;
+}
+.tabs dd{
+  .arrow-down {
+    width: 0;
+    height: 0;
+    border-left: 20px solid transparent;
+    border-right: 20px solid transparent;
+    border-top: 20px solid #f00;
+  }
+}
+.tabs dd, .tabs .tab-title {
+  position: relative;
+  margin-bottom: 0 !important;
+  list-style: none;
+  float: left;
+  }
+.tabs dd > a, .tabs .tab-title > a {
+  display: block;
+  background-color: #002352;
+  color: #222222;
+  padding: 1rem 1rem;
+  }
+.tabs dd > a:hover, .tabs .tab-title > a:hover {
+  background-color: #002352;
+  color: #222222;
+}
+.tabs dd.active a, .tabs .tab-title.active a {
+  background-color: #002352;
+  color: #222222;
+}
+.tabs-content {
+  background-color: #FAFAFA;
+  color: #000000;
+  padding: 1rem;
+  .tabs-content > .content {
+    padding: 0.2125rem 0;
+  }
+}
 
 .inner-wrap {
   height: 100vh;
