@@ -1,12 +1,18 @@
 .right-small {
   border: none;
+  a {
+    float: right;
+    font-size:14px; }
+}
+
+.unread_message_count {
+  border: none;
   display: block;
   font-size: 14px;
   font-style: normal;
   font-weight: normal;
   height: 45px;
   line-height: 45px;
-  margin-right: 23.4801139831543px;
   position: absolute;
   right: 0px;
   top: 0px;
