@@ -19,15 +19,13 @@
           <a href="#" {{action 'newOffer'}} class="button expand">{{t "offers.index.new_donation"}}</a>
 
           <ul class="list list-items">
-
             {{#each offersWithItems}}
-
               <li>
                 {{#if this.isScheduled }}
                   {{#link-to 'delivery.donation_details' this delivery}}
                     {{partial 'thumb_item_image'}}
                     <span class="info">
-                      <h3>{{status}} ({{itemCount}} items)</h3>
+                      <h4>{{status}} ({{itemCount}} items)</h4>
                       {{display-date delivery.schedule.scheduledAt}}<br/>
                       {{delivery.schedule.slotName}}<br/>
                       {{partial 'unread_message_bubble'}}

@@ -26,14 +26,33 @@
           <a href="#" class="right">View labeling guide</a>
         </div>
      </div>
-    <div class="row top-bottom-margin">
-      <div class="small-12 columns">
-        {{#link-to 'review_item.donor_messages'}}Donor{{/link-to}}
+    <div class="row row-grey">
+        <dl class="tabs" data-tab>
+          <dd class="active small-3 columns text-center arrow-down"><a href="#panel1">Accept</a></dd>
+          <dd class="small-3 columns text-center"><a href="#panel2">Reject</a></dd>
+          <dd class="small-3 columns text-center">{{#link-to 'review_item.donor_messages'}}Donor{{/link-to}}</dd>
+          <dd class="small-3 columns text-center">{{#link-to 'review_item.supervisor_messages'}}Supervisor{{/link-to}}</dd>
+        </dl>
+        <div class="tabs-content">
+         {{!--  <div class="content active" id="panel1">
+            <p>This is the first panel of the basic tab example. This is the first panel of the basic tab example.</p>
+          </div>
+          <div class="content" id="panel2">
+            <p>This is the second panel of the basic tab example. This is the second panel of the basic tab example.</p>
+          </div>
+          <div class="content" id="panel3"> --}}
+            <br/>
+            {{outlet}}
+          {{!-- </div>
+          <div class="content" id="panel4">
+            <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
+          </div> --}}
+        </div>
+        {{!-- {{#link-to 'review_item.donor_messages'}}Donor{{/link-to}}
         {{#link-to 'review_item.supervisor_messages'}}Supervisor{{/link-to}}
-        <br/>
-        {{outlet}}
+        <br/> --}}
+
       </div>
     </div>
-  </div>
   </div>
 </section>
