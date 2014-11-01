@@ -68,7 +68,7 @@ export default DS.Model.extend({
 
   displayImageId: function(){
     var item = this.get("items.content.firstObject");
-    return item.get('favouriteImage');
+    return item ? item.get('favouriteImage'): "";
   }.property('this.items.@each'),
 
   isCharitableSale: function() {
