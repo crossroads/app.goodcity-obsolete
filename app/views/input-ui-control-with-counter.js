@@ -30,12 +30,15 @@ export default Ember.View.extend({
   rows: null,
   // dataType:{String}
   message: null,
+  // dataType:{String}
+  name: null,
 
   currentCountBinding: 'inputControl.value.length',
 
   charactersKeyedIn: function () {
-    var special_chars = this.get('inputControl.value').match(/(\r\n|\n|\r)/g);
-    var total_count = 0;
+    var control_val = this.get('inputControl.value');
+    var total_count = 0, special_chars;
+    special_chars = control_val ? control_val.match(/(\r\n|\n|\r)/g) : "";
     total_count = special_chars != null ? (special_chars.length  + this.get('currentCount')) : this.get('currentCount');
     return total_count;
   }.property('currentCount'),

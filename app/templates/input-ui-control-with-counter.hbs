@@ -5,17 +5,21 @@
       {{view Ember.TextArea
         viewName="inputControl"
         valueBinding="view.value"
+        nameBinding="view.name"
         placeholderBinding="view.placeholder"
         maxlengthBinding="view.maxlength"
-        rowsBinding="view.rows"}}
+        rowsBinding="view.rows"
+        }}
 
     {{else}}
 
       {{view Ember.TextField
         viewName="inputControl"
+        nameBinding="view.name"
         valueBinding="view.value"
         placeholderBinding="view.placeholder"
-        maxlengthBinding="view.maxlength"}}
+        maxlengthBinding="view.maxlength"
+        }}
 
     {{/if}}
 
