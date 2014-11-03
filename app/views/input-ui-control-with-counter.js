@@ -3,14 +3,9 @@ import Ember from 'ember';
 export default Ember.View.extend({
   templateName: 'input-ui-control-with-counter',
 
-  template: function () {
-    switch (this.get('type')) {
-      case 'textarea':
-        return Ember.Handlebars.compile('{{view Ember.TextArea viewName="inputControl" valueBinding="view.value" placeholderBinding="view.placeholder" maxlengthBinding="view.maxlength" rowsBinding="view.rows"}}');
-      default:
-        return Ember.Handlebars.compile('{{view Ember.TextField viewName="inputControl" valueBinding="view.value" placeholderBinding="view.placeholder" maxlengthBinding="view.maxlength"}}');
-    }
-  }.property(),
+  isTextArea: function(){
+    return this.get('type') === 'textarea';
+  }.property('type'),
 
   /* dataType: {String} ['textarea']
    * type  -> (description: Type of Input Field, by default - its a text input

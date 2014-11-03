@@ -1,5 +1,24 @@
 <div class="input_container">
-  {{yield}}
+
+    {{#if view.isTextArea}}
+
+      {{view Ember.TextArea
+        viewName="inputControl"
+        valueBinding="view.value"
+        placeholderBinding="view.placeholder"
+        maxlengthBinding="view.maxlength"
+        rowsBinding="view.rows"}}
+
+    {{else}}
+
+      {{view Ember.TextField
+        viewName="inputControl"
+        valueBinding="view.value"
+        placeholderBinding="view.placeholder"
+        maxlengthBinding="view.maxlength"}}
+
+    {{/if}}
+
   <span {{bindAttr class="view.isMaxCharLengthReached :char-count :right"}}>
     {{view.message}}
   </span>
