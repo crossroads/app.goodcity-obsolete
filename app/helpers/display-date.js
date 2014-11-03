@@ -2,5 +2,5 @@ import Ember from "ember";
 
 export default Ember.Handlebars.makeBoundHelper(function(value) {
   var parseDate = Date.parse(value);
-  return moment(parseDate).format('LL');
+  return moment(parseDate).format('dddd, MMMM Do');
 });

@@ -1,3 +1,31 @@
+.book-timeslot {
+  ul {
+    list-style-type: none;
+    list-style-position: outside;
+    li {
+      margin: 1% 0 1%;
+      display: block;
+      border-bottom: 1px solid #1c3b65;
+      padding: 2% 0 2%; }
+  }
+  input[type="radio"] {
+    display: inline-block !important;
+    margin-right: 4%;
+    vertical-align: top;
+    margin-top: 2% }
+  label, span {
+    display: inline-block;
+    font-size: 0.8rem;
+    .schdule-date {
+      font-weight: bolder;
+      font-size: 0.9rem;
+      color: white; }
+    }
+  input[type="radio"]:checked + label {
+    border: none;
+    background: inherit; }
+}
+
 .right-small {
   border: none;
   a {

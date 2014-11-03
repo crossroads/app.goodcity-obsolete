@@ -1,18 +1,41 @@
-<h3 class="center">Select Time</h3>
-<ul class="radio-ul">
-  <hr>
-    <p>Pick preferred date/time. First available times listed below.</p>
-  <hr>
-  {{#each}}
-    <li>
-      {{view 'radio-button' name="timeslot" selection=this.controller.isSelected value=id}}
-      {{scheduledAt}}
-      <p>
-        {{slotName}}
-      </p>
-    </li>
-    <hr>
-  {{/each}}
-  </ul>
-<button {{action 'assignSchedule'}} class="input input_size_sm">Book Time</button>
-<button class="input input_size_sm">Show More</button>
+<nav class="tab-bar">
+  <section class="left-small">
+    {{#link-to 'offers' classNames="back"}}{{t "application.home"}}{{/link-to}}
+  </section>
+
+  <section class="middle tab-bar-section">
+    <h1 class="title">Select Time</h1>
+  </section>
+</nav>
+
+<section class="main-section book-timeslot">
+  <div class="row">
+    <div class="small-12 columns with-btm">
+
+      <span>Pick preferred date/time. First available times listed below.</span>
+
+      <ul>
+        {{#each}}
+          <li>
+            {{view 'radio-button' name="timeslot" selection=this.controller.isSelected value=id id=id}}
+            <label {{bind-attr for=id}}>
+              <label class='schdule-date' {{bind-attr for=id}}>{{display-date scheduledAt}}</label><br/>
+              {{slotName}}
+            </label>
+          </li>
+        {{/each}}
+      </ul>
+
+      <div class="btm">
+        <div class="row">
+          <div class="small-6 columns">
+            <button {{ action 'assignSchedule'}} class='button secondary expand'>Book Time</button>
+          </div>
+          <div class="small-6 columns">
+            <a href="#" {{ action ''}} class="button expand">Show More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
