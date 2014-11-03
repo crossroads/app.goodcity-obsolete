@@ -25,7 +25,7 @@
                   {{#link-to 'delivery.donation_details' this delivery}}
                     {{partial 'thumb_item_image'}}
                     <span class="info">
-                      <h4>{{status}} ({{itemCount}} items)</h4>
+                      <h3>{{status}} ({{itemCount}} items)</h3>
                       {{display-date delivery.schedule.scheduledAt}}<br/>
                       {{delivery.schedule.slotName}}<br/>
                       {{partial 'unread_message_bubble'}}
@@ -47,7 +47,6 @@
                   {{/link-to}}
                 {{/if}}
 
-
                 {{#if this.isSubmitted}}
                   {{#link-to 'offer.review_status' this}}
                     {{partial 'thumb_item_image'}}
@@ -65,17 +64,14 @@
                   {{#link-to 'offer' this}}
                     {{partial 'thumb_item_image'}}
                     <span class="info">
-                      {{t "offers.index.complete_offer"}}
+                      <h3>{{t "offers.index.complete_offer"}}<h3>
                       {{partial 'unread_message_bubble'}}
                     </span>
-
                   {{/link-to}}
                 {{/if}}
 
-
               </li>
             {{/each}}
-
           </ul>
 
           <hr>
