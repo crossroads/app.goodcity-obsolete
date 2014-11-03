@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.View.extend({
-  layout: Ember.Handlebars.compile('<div class="input_container">{{yield}}<span {{bindAttr class="view.isMaxCharLengthReached :char-count :right"}}>{{view.message}}</span>{{view.label}}</div>'),
+  templateName: 'input-ui-control-with-counter',
 
   template: function () {
     switch (this.get('type')) {
