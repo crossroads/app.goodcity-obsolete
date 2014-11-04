@@ -19,8 +19,10 @@ export default Ember.ObjectController.extend({
           item.unloadRecord();
         });
 
-        offer.destroyRecord();
-        this.transitionToRoute('offers.index');
+        var route = this;
+        offer.destroyRecord().then(function(){
+          route.transitionToRoute('offers.index');
+        });
       }
     },
 
