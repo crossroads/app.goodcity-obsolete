@@ -1,6 +1,6 @@
 <nav class="tab-bar">
   <section class="left-small">
-    {{#link-to 'offers' classNames="back"}}{{t "application.home"}}{{/link-to}}
+    {{#link-to 'offer.plan_delivery' classNames="back"}}{{t "back"}}{{/link-to}}
   </section>
 
   <section class="middle tab-bar-section">
@@ -12,7 +12,7 @@
   <div class="row">
     <div class="small-12 columns with-btm">
 
-      <span>Pick preferred date/time. First available times listed below.</span>
+      <div class='schedule-info'>Pick preferred date/time. First available times listed below.</div>
 
       <ul>
         {{#each}}
@@ -29,10 +29,10 @@
       <div class="btm">
         <div class="row">
           <div class="small-6 columns">
-            <button {{ action 'assignSchedule'}} class='button secondary expand'>Book Time</button>
+            <button {{ action 'assignSchedule'}} class='button expand'>Book Time</button>
           </div>
           <div class="small-6 columns">
-            <a href="#" {{ action ''}} class="button expand">Show More</a>
+            <a href="#" {{ action ''}} class="button secondary expand">Show More</a>
           </div>
         </div>
       </div>
