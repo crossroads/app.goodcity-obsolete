@@ -28,10 +28,29 @@
      </div>
     <div class="row row-grey">
         <dl class="tabs" data-tab>
-          <dd class="active small-3 columns text-center arrow-down"><a href="#panel1">Accept</a></dd>
-          <dd class="small-3 columns text-center"><a href="#panel2">Reject</a></dd>
-          <dd class="small-3 columns text-center">{{#link-to 'review_item.donor_messages'}}Donor{{/link-to}}</dd>
-          <dd class="small-3 columns text-center">{{#link-to 'review_item.supervisor_messages'}}Supervisor{{/link-to}}</dd>
+          <dd class="active small-3 columns text-center arrow-down">
+          <a href="#panel1">
+            <i class="fa fa-check-circle fa-2x"></i>
+            <div>Accept</div>
+          </a>
+          </dd>
+          <dd class="small-3 columns text-center">
+            <a href="#panel2">
+              <i class="fa fa-times-circle fa-2x"></i>
+              <div>Reject</div>
+            </a>
+          </dd>
+          <dd class="small-3 columns text-center">
+            {{#link-to 'review_item.donor_messages'}}
+            <i class="fa fa-comment-o fa-2x"></i>
+            <div>Donor</div>
+          {{/link-to}}</dd>
+          <dd class="small-3 columns text-center">
+            {{#link-to 'review_item.supervisor_messages'}}
+              <i class="fa fa-comment-o fa-2x"></i>
+              <div>Supervisor</div>
+            {{/link-to}}
+          </dd>
         </dl>
         <div class="tabs-content">
          {{!--  <div class="content active" id="panel1">
