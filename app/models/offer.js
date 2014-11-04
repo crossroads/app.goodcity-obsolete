@@ -1,4 +1,6 @@
+import Ember from 'ember';
 import DS from 'ember-data';
+
 var attr = DS.attr,
     hasMany = DS.hasMany,
     belongsTo = DS.belongsTo;
@@ -11,7 +13,6 @@ export default DS.Model.extend({
   parking:        attr('boolean'),
   estimatedSize:  attr('string'),
   notes:          attr('string'),
-  createdById:    attr('number'),
   createdAt:      attr('date'),
   updatedAt:      attr('date'),
   submittedAt:    attr('date'),
@@ -25,7 +26,7 @@ export default DS.Model.extend({
   messages:       hasMany('message'),
 
   delivery:       belongsTo('delivery'),
-  user:           belongsTo('user', { inverse: 'offers'}),
+  createdBy:      belongsTo('user', { inverse: 'offers'}),
   reviewedBy:     belongsTo('user', { inverse: 'reviewedOffers'}),
 
   // User details
@@ -36,35 +37,16 @@ export default DS.Model.extend({
     return this.get("items.length");
   }.property('this.items.@each'),
 
-  approvedtems: function(){
-    var items = this.get('items');
-    return items.filterBy('state', 'accepted');
-  }.property('offer.items.@each'),
-
-  rejectedItems: function(){
-    var items = this.get('items');
-    return items.filterBy('state', 'rejected');
-  }.property('offer.items.@each'),
-
   unreadMessagesCount: function() {
     return this.get('messages').filterBy('state', 'unread').length;
   }.property('this.messages.@each'),
 
-  isDraft: function() {
-    return this.get('state') === 'draft';
-  }.property('this.state'),
-
-  isSubmitted: function() {
-    return this.get('state') === 'submitted';
-  }.property('this.state'),
-
-  isScheduled: function() {
-    return this.get('state') === 'scheduled';
-  }.property('this.state'),
-
-  isUnderReview: function() {
-    return this.get('state') === 'under_review';
-  }.property('this.state'),
+  approvedtems: Ember.computed.filterBy("items", "state", "accepted"),
+  rejectedItems: Ember.computed.filterBy("items", "state", "rejected"),
+  isDraft: Ember.computed.equal("state", "draft"),
+  isSubmitted: Ember.computed.equal("state", "submitted"),
+  isScheduled: Ember.computed.equal("state", "scheduled"),
+  isUnderReview: Ember.computed.equal("state", "under_review"),
 
   displayImageId: function(){
     var item = this.get("items.content.firstObject");

@@ -26,18 +26,18 @@
           <li>
             {{#link-to 'review_offer' this}}
               <span class="avatar">
-                <span class="no-avatar">{{this.user.nameInitial}}</span>
+                <span class="no-avatar">{{this.createdBy.nameInitial}}</span>
               </span>
 
               <span class="info">
                 <h3>
-                  {{t "full_name" firstNameBinding=user.firstName lastNameBinding=user.lastName}}
+                  {{t "full_name" firstNameBinding=createdBy.firstName lastNameBinding=createdBy.lastName}}
                 </h3>
                 <p>{{t "inbox.new_items"}}: {{itemCount}}</p>
                 {{#if this.unreadMessagesCount}}
                   <p>{{t "inbox.unread_messages" unreadMessagesCountBinding=unreadMessagesCount}}</p>
                 {{/if}}
-                <p>{{user.address.district.name}}</p>
+                <p>{{createdBy.address.district.name}}</p>
 
                 {{#if controller.newOffers}}
                   {{view 'time-ago' timeValue=submittedAt}}
