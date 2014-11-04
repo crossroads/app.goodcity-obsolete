@@ -131,6 +131,8 @@ I18nTranslationsZhTw =
           "condition": "條件?"
           "edit_image" : "編輯形像"
           "save" : "Save Details"
+          "description_placeholder" : "What is it? How many items? What's the size?"
+
         "new":
           "add_photos" : "添加照片本項"
 

@@ -19,19 +19,19 @@
             {{#if this.model }}
               {{#link-to 'item.edit_images' class='edit-image-link'}}
                 {{cloudinary-image imageId=previewImageId width=100 height=150 className='fav_image'}}
-                <span>{{t "items.add_item.edit_image"}}({{images.length}})</span>
+                <div>{{t "items.add_item.edit_image"}}({{images.length}})</div>
               {{/link-to}}
             {{else}}
               {{#link-to 'items.new' class='edit-image-link'}}
                 {{cloudinary-image imageId=previewImageId width=100 height=150 className='fav_image'}}
-                {{t "items.add_item.edit_image"}}
+                <div>{{t "items.add_item.edit_image"}}</div>
               {{/link-to}}
             {{/if}}
 
           </div>
 
           <div class="small-8 large-10 columns">
-            {{view "input-ui-control-with-counter" type="textarea" value=donorDescription label="" name="donorDescription" rows=5 placeholder="Enter details" maxlength="180"}}
+            {{view "input-ui-control-with-counter" type="textarea" value=donorDescription label="" name="donorDescription" rows=5 placeholder="item_description" maxlength="180"}}
             {{input type="hidden" value=offerId name="offerId" }}
           </div>
         </div>

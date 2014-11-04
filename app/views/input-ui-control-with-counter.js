@@ -54,5 +54,10 @@ export default Ember.View.extend({
     if (!this.get('maxlength')) {
       Ember.assert('InputWithCounter doesn\'t work without a maxlength attribute');
     }
+
+    if(this.get('placeholder') === 'item_description') {
+      var placeholderText = Ember.I18n.t("items.add_item.description_placeholder");
+      this.set('placeholder', placeholderText);
+    }
   }
 });
