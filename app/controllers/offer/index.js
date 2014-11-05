@@ -21,7 +21,9 @@ export default Ember.ObjectController.extend({
 
         var route = this;
         offer.destroyRecord().then(function(){
-          route.transitionToRoute('offers.index');
+          if(!(offer.isSaving || offer.isDirty)) {
+            route.transitionToRoute('offers.index');
+          }
         });
       }
     },
