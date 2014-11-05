@@ -12,52 +12,58 @@
   <div class="row">
     <div class="small-12 columns">
 
-      {{#if itemCount }}
-
-        <div class="row">
-          {{#if isDraft}}
-            <div class="small-6 columns">
-              <a href="#" {{action 'addItem'}} class="button secondary expand"><span class="icon-add"></span>{{t "offer.index.add_item"}}</a>
-            </div>
-            <div class="small-6 columns">
-              {{#link-to 'offer.confirm' classNames='button expand'}}{{t "offer.index.confirm"}}{{/link-to}}
-            </div>
-          {{else}}
-            {{#link-to 'offer.review_status' classNames='button expand'}}{{t "offer.index.review"}}{{/link-to}}
-          {{/if}}
-        </div>
-
-        <p class="link text-right"><a href="#" {{action 'cancelOffer' this}}>{{t "offer.index.cancel"}}</a></p>
-
-        <ul class="list list-offer-items">
-          {{#each itemsById}}
-            <li>
-              {{#link-to 'item.edit' this}}
-                <div class="thumb small-1 large-1 column">
-                  <img {{bind-attr src=defaultImageURL }}>
-                </div>
-                <div class="vcenter small-8 large-10 column">
-                  <h3 class="ellipsis one-line-ellipsis">
-                    {{{donorDescription}}}
-                  </h3>
-                  <div>{{donorCondition.name}}</div>
-                </div>
-                <div class="thumb small-2 large-1 column"></div>
-              {{/link-to}}
-            </li>
-          {{/each}}
-        </ul>
-
+      {{#if isDirty}}
+        {{partial 'loading'}}
       {{else}}
 
-        <p><span class="icon-no-items"></span></p>
-        <p class="no-items">You don't have any items in this offer yet. Please add your first item!</p>
+        {{#if itemCount }}
 
-        <div class="row">
-          <div class="small-10 small-offset-1 columns">
-            <a href="#" {{action "addItem"}} class="button expand"><span class="icon-add"></span>{{t "offer.index.add_item"}}</a>
+          <div class="row">
+            {{#if isDraft}}
+              <div class="small-6 columns">
+                <a href="#" {{action 'addItem'}} class="button secondary expand"><span class="icon-add"></span>{{t "offer.index.add_item"}}</a>
+              </div>
+              <div class="small-6 columns">
+                {{#link-to 'offer.confirm' classNames='button expand'}}{{t "offer.index.confirm"}}{{/link-to}}
+              </div>
+            {{else}}
+              {{#link-to 'offer.review_status' classNames='button expand'}}{{t "offer.index.review"}}{{/link-to}}
+            {{/if}}
           </div>
-        </div>
+
+          <p class="link text-right"><a href="#" {{action 'cancelOffer' this}}>{{t "offer.index.cancel"}}</a></p>
+
+          <ul class="list list-offer-items">
+            {{#each itemsById}}
+              <li>
+                {{#link-to 'item.edit' this}}
+                  <div class="thumb small-1 large-1 column">
+                    <img {{bind-attr src=defaultImageURL }}>
+                  </div>
+                  <div class="vcenter small-8 large-10 column">
+                    <h3 class="ellipsis one-line-ellipsis">
+                      {{{donorDescription}}}
+                    </h3>
+                    <div>{{donorCondition.name}}</div>
+                  </div>
+                  <div class="thumb small-2 large-1 column"></div>
+                {{/link-to}}
+              </li>
+            {{/each}}
+          </ul>
+
+        {{else}}
+
+          <p><span class="icon-no-items"></span></p>
+          <p class="no-items">You don't have any items in this offer yet. Please add your first item!</p>
+
+          <div class="row">
+            <div class="small-10 small-offset-1 columns">
+              <a href="#" {{action "addItem"}} class="button expand"><span class="icon-add"></span>{{t "offer.index.add_item"}}</a>
+            </div>
+          </div>
+
+        {{/if}}
 
       {{/if}}
     </div>
