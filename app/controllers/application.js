@@ -11,6 +11,7 @@ export default Ember.ObjectController.extend({
     logMeOut: function(){
       this.get('controllers.subscriptions').send('unwire');
       this.session.clear();
+      this.store.init();
       this.transitionToRoute('login');
     },
     logMeIn: function(userId){
