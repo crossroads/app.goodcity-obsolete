@@ -6,6 +6,20 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+.reject-offer {
+  ul {
+    list-style-type: none;
+    list-style-position: outside;
+    input[type="radio"] {
+      display: inline-block !important; }
+    input[type="radio"] + label {
+      font-size: 1.0rem !important;
+      color: black !important; }
+    input[type="radio"]:checked + label {
+      border: none;
+      background: inherit; }
+  }
+}
 
 .book-timeslot {
   ul {
