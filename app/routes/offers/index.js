@@ -3,7 +3,7 @@ import AuthorizeRoute from './../authorize';
 export default AuthorizeRoute.extend({
 
   model: function() {
-    return this.store.find('offer');
+    return this.store.all('offer');
   },
 
   afterModel: function(my_offers) {

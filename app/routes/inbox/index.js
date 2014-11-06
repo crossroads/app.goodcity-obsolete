@@ -4,7 +4,7 @@ export default AuthorizeRoute.extend({
   staffRestricted: true,
 
   model: function() {
-    return this.store.filter('offer', {state: 'submitted'}, function(offer) {
+    return this.store.filter('offer', function(offer) {
       return offer.get('state') === 'submitted';
     });
   }

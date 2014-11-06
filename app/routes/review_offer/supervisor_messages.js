@@ -9,7 +9,7 @@ export default ReadMessagesRoute.extend({
 
   model: function() {
     var offerId = this.modelFor('offer').get('id');
-    return this.store.filter('message', {offer_id: offerId}, function(message) {
+    return this.store.filter('message', function(message) {
       return message.get('offerId') === parseInt(offerId);
     });
   }
