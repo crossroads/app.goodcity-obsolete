@@ -17,8 +17,12 @@ export default Ember.ArrayController.extend({
 
   actions: {
     viewUnread: function() {
-      if (this.get('session.currentUser.isReviewer')) {
-        this.transitionToRoute("inbox.under_review");
+      if (this.get('session.currentUser.isStaff')) {
+        if(this.isEvery('forNewOffer', true)) {
+          this.transitionToRoute("inbox");
+        } else {
+          this.transitionToRoute("inbox.under_review");
+        }
         return;
       }
 
