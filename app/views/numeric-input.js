@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.TextField.extend({
   tagName: "input",
   type: "number",
-  attributeBindings: [ "name", "type", "value", "maxlength", "data-actual-mobile", "id" ],
+  attributeBindings: [ "name", "type", "value", "maxlength", "id" ],
 
   keyDown: function(e) {
 
@@ -19,4 +19,8 @@ export default Ember.TextField.extend({
         (key >= 48 && key <= 57) ||
         (key >= 96 && key <= 105));
   },
+
+  keyPress: function() {
+    return ((this.value && this.value.length) < this.maxlength);
+  }
 });
