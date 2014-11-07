@@ -188,6 +188,17 @@ I18nTranslationsEn =
       "review_offer":
         "review_started_by" : "Started by {{firstName}} {{lastName}}"
 
+      "review_item":
+        "accept" : "Accept"
+        "accept_item" : "Accept Item"
+        "reject" : "Reject"
+        "reject_item" : "reject Item"
+        "not_now" : "Not Now"
+        "donor_message" : "Donor"
+        "supervisor_message" : "Supervisors"
+        "view_lable_guide": "View labeling guide"
+        "condition": "Condition"
+
       # Components
       "upload-images":
         "angles" : "Got all the angles of this item?"
