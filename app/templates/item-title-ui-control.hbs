@@ -1,0 +1,30 @@
+<div class="row top">
+  <div class="small-3 columns">
+    <img src="assets/images/default_item.jpg"></img>
+  </div>
+  <div class="small-7 columns head">
+    <span class="ellipsis one-line-ellipsis" {{ bind-attr id=view.titleid }}>
+      {{view.titlevalue}}
+    </span>
+  </div>
+  <div class="small-2 columns icon">
+    <i {{ bind-attr class=":fa :fa-lg view.isHide:fa-plus:is-hide" }}></i>
+    {{view}}
+  </div>
+</div>
+
+<div {{bind-attr class="view.isHide :row :bottom" }}>
+  <div class="small-11 columns head">
+    {{view Ember.TextField
+      viewIdBinding="view.id"
+      viewName="itemCommentControl"
+      nameBinding="view.name"
+      valueBinding="view.value"
+      placeholderBinding="view.placeholder"
+      maxlengthBinding="view.maxlength"
+    }}
+    </div>
+    <div class="small-1 columns icon">
+      <i class="fa fa-minus fa-lg"></i>
+    </div>
+</div>

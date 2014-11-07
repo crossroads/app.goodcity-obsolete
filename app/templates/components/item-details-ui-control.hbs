@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="small-2 columns">
+    &nbsp;
+  </div>
+  <div class="small-8 columns detail_container">
+    {{view "item-title-ui-control" name="itemCommentControl" placeholder="Comments" titleid=selectedItemTypeId  titlevalue=selectedItemTypeName }}
+    <div class="row bottom">
+      <div class="small-6 columns inner">1</div>
+      {{view "item-grid-ui-control" type="text" value="" name="length" placeholder="L" maxlength="8" }}
+      {{view "item-grid-ui-control" type="text" value="" name="width" placeholder="W" maxlength="8"}}
+      {{view "item-grid-ui-control" type="text" value="" name="height" placeholder="H" maxlength="8"}}
+    </div>
+  </div>
+  <div class="small-1 columns">
+    &nbsp;
+  </div>
+</div>
