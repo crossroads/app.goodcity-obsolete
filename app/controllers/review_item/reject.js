@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
 
-  rejectionReasonId: null,
+  selectedId: 1,
   needs: ["review_item", "offer"],
 
   rejectionOptions: function(key, value) {
@@ -25,11 +25,11 @@ export default Ember.Controller.extend({
 
   actions: {
     rejectOffer: function(){
-      var selectedReason = this.get('rejectReasonId');
+      var selectedReason = this.get('selectedId');
       var rejectProperties = this.getProperties('rejectReason', 'rejectionComments');
 
       rejectProperties.rejectionReason = this.store.getById('rejection_reason', selectedReason);
-      rejectProperties.state_event = 'reject'
+      rejectProperties.state_event = 'reject';
 
       var item_id = this.get('controllers.review_item.id');
       rejectProperties.id = item_id;
@@ -39,12 +39,16 @@ export default Ember.Controller.extend({
 
       var item = this.store.update('item', rejectProperties);
 
+      // Clear fields
+      this.set('rejectReason', '');
+      this.set('rejectionComments', '');
+      this.set('selectedId', 1);
+
       // Save changes to Item
       var route = this;
       item.save().then(function() {
         route.transitionToRoute('review_offer.items');
       });
-
     }
   }
 

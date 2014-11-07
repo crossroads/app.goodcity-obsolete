@@ -6,9 +6,9 @@
           {{#each rejectionOptions}}
             <li>
 
-              {{view 'radio-button' name="rejectReasonId" selectionBinding=rejectionReasonId value=id id=id}}
+              {{view 'radio-button' name="selectReason" selection=controller.selectedId value=id id=id}}
 
-              <label class="" {{bind-attr for=id}}>
+              <label {{bind-attr for=id}}>
                 {{name}}
               </label>
 
@@ -24,7 +24,7 @@
       <div class="btm">
         <div class="row">
           <div class="small-10 small-offset-1 columns">
-            <a href="#" {{action "rejectOffer" }} class="button expand">Reject Item</a>
+            <a href="#" {{action "rejectOffer" }} class="button expand rejectOffer">Reject Item</a>
           </div>
         </div>
       </div>
