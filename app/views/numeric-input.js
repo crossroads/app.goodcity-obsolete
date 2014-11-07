@@ -21,6 +21,7 @@ export default Ember.TextField.extend({
   },
 
   keyPress: function() {
-    return ((this.value && this.value.length) < this.maxlength);
+    var inputValue = this.value || "";
+    return (inputValue.length < this.maxlength);
   }
 });
