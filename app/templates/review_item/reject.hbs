@@ -5,13 +5,11 @@
         <ul>
           {{#each rejectionOptions}}
             <li>
-
               {{view 'radio-button' name="selectReason" selection=controller.selectedId value=id id=id}}
 
               <label {{bind-attr for=id}}>
                 {{name}}
               </label>
-
             </li>
           {{/each}}
         </ul>
