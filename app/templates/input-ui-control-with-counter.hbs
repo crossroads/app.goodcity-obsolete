@@ -2,7 +2,7 @@
 
     {{#if view.isTextArea}}
 
-      {{view Ember.TextArea
+      {{textarea
         viewName="inputControl"
         valueBinding="view.value"
         nameBinding="view.name"
@@ -13,7 +13,7 @@
 
     {{else}}
 
-      {{view Ember.TextField
+      {{input
         viewName="inputControl"
         nameBinding="view.name"
         valueBinding="view.value"
@@ -23,7 +23,7 @@
 
     {{/if}}
 
-  <span {{bindAttr class="view.isMaxCharLengthReached :char-count :right"}}>
+  <span {{bind-attr class="view.isMaxCharLengthReached :char-count :right"}}>
     {{view.message}}
   </span>
   {{view.label}}

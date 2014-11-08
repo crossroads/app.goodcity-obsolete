@@ -5,8 +5,16 @@ export default Ember.ObjectController.extend({
 
   confirmedItems: function(){
     var items = this.get('offer.items');
-    return items.filterBy('state', 'accepted');
+    return items && items.filterBy('state', 'accepted');
   }.property('offer.items.@each'),
+
+  isDeleting: function(key, value){
+    if (arguments.length > 1) {
+      return value;
+    } else {
+      return this.get('offer') ? this.get('offer.isDeleted') : true;
+    }
+  }.property('offer'),
 
   actions:{
     cancelOffer: function(offer){

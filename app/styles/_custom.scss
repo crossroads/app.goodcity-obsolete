@@ -6,6 +6,24 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+.reject-offer {
+  ul {
+    list-style-type: none;
+    list-style-position: outside;
+    input[type="radio"] {
+      display: inline-block !important; }
+    input[type="radio"] + label {
+      font-size: 1.0rem !important;
+      color: black !important; }
+    input[type="radio"]:checked + label {
+      border: none;
+      background: inherit; }
+  }
+  .error {
+    border-color: #f34d4f!important;
+    background: #fddbdc!important;
+    margin-bottom: 1.5rem; }
+}
 
 .book-timeslot {
   ul {
@@ -177,7 +195,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 /*********************** TABS ******************************/
 .inner-wrap {
-  height: 100vh;
+  min-height:100vh
 }
 
 .item-details {
@@ -355,7 +373,13 @@ textarea {
     border: solid 2px red;
   }
 }
-
+.icon-empty-items {
+  width: 70px;
+  height: 70px;
+  color: #fafafa;
+  background-size: 70px 70px;
+  margin: 0px auto;
+  display: block; }
 /*
 .district-selection ul {
   padding: 0em;

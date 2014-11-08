@@ -1,0 +1,54 @@
+.detail_container {
+  color: #000000;
+  background-color: #fff;
+  border-left: 2px solid #a3aab6 ;
+  border-bottom: 2px solid #a3aab6 ;
+  border-top: 2px solid #a3aab6 ;
+  line-height: 3.5rem !important;
+  .top{
+    border-right: solid 2px #a3aab6;
+    height: 100%;
+    .sq_img {
+    // height: 50px;
+    // width: 50px;
+    }
+    .head {
+      top: 1rem;
+      span {
+        top: 1rem;
+        font-size: 1rem;
+        font-family: Museo700;
+        font-weight: normal;
+        font-style: normal;
+      }
+    }
+   }
+}
+.icon {
+    color: #f34d4f;
+    text-align: right;
+  }
+.bottom {
+  height: 100%;
+  border-top: solid 2px #a3aab6;
+  border-right: solid 2px #a3aab6;
+  .inner {
+    border-top: none;
+    border-right: solid 2px #a3aab6;
+    right: -0.14rem;
+  }
+}
+
+
+.item-ui input[type="text"][disabled]{
+  border: none;
+  background: #ffffff;
+  box-shadow: none;
+  -webkit-box-sizing: none;
+  -moz-box-sizing: none;
+  box-sizing: none;
+  transition: none;
+}
+.is-hide{
+  display: none
+}

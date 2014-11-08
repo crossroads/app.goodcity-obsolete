@@ -6,7 +6,7 @@ export default Ember.Controller.extend({
     registerUser: function() {
       var _this = this;
       Ember.$('.loader_image').show();
-      var mobilePhone = Ember.$("#mobile").data("actual-mobile");
+      var mobilePhone = config.APP.HK_COUNTRY_CODE + this.get('mobilePhone');
       var firstName = this.get('firstName');
       var lastName = this.get('lastName');
       var district_id = Ember.$('.district-selection').attr('selected_id') || null;

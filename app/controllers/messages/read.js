@@ -4,7 +4,7 @@ export default Ember.ArrayController.extend({
   sortProperties: ['createdAt'],
   sortAscending: false,
 
-  content: function(){
+  model: function(){
      return this.store.filter('message', function(message) {
         return message.get('state') === 'read';
     });

@@ -1,0 +1,11 @@
+<div {{bind-attr class=":small-2 :columns :item-ui :inner"}}>
+  {{view Ember.TextField
+    viewIdBinding="view.id"
+    viewName="itemControl"
+    nameBinding="view.name"
+    valueBinding="view.value"
+    placeholderBinding="view.placeholder"
+    maxlengthBinding="view.maxlength"
+    disabledBinding="view.isDisabled"
+  }}
+</div>

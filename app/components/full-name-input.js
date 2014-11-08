@@ -6,7 +6,7 @@ export default Ember.Component.extend({
   name:    "userName",
   value:   '',
   classNames: 'fullUserName',
-  attributeBindings: [ "name", "type", "id", "value", "class"],
+  attributeBindings: [ "name", "type", "id", "value"],
 
   _initialze: function(){
     var user = this.get('user');

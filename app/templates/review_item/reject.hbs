@@ -1,0 +1,32 @@
+<section class="main-section reject-offer">
+  <div class="row">
+    <div class="small-12 columns with-btm">
+      <form>
+        <ul>
+          {{#each rejectionOptions}}
+            <li>
+              {{view 'radio-button' name="selectReason" selection=controller.selectedId value=id id=id}}
+
+              <label {{bind-attr for=id}}>
+                {{name}}
+              </label>
+            </li>
+          {{/each}}
+        </ul>
+
+        {{input type="text" value=rejectReason name="rejectReason" id='rejectReason' placeholder="Custom Reason"}}
+
+        {{textarea type="text" value=rejectionComments name="rejectionComments" id='rejectionComments' placeholder="Additional Comments"}}
+      </form>
+
+      <div class="btm">
+        <div class="row">
+          <div class="small-10 small-offset-1 columns">
+            <a href="#" {{action "rejectOffer" }} class="button expand rejectOffer">Reject Item</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

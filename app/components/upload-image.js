@@ -10,7 +10,7 @@ export default Ember.Component.extend({
   "data-cloudinary-field": "image_upload",
   "data-url": config.APP.CLOUD_URL,
   disabled: true,
-  attributeBindings: [ "name", "type", "value", "class", "data-cloudinary-field",
+  attributeBindings: [ "name", "type", "value", "data-cloudinary-field",
     "data-url", "data-form-data", "disabled"],
 
   _initialze: function(){
