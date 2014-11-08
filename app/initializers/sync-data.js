@@ -21,9 +21,23 @@ export default {
       promises = promises.concat(retrieve(config.APP.PRELOAD_AUTHORIZED_TYPES));
     }
 
-    Ember.RSVP.allSettled(promises).finally(function() {
-      application.advanceReadiness();
-      Ember.$("#splashScreen").remove();
-    });
+    Ember.RSVP.allSettled(promises)
+      .then(function(results) {
+        var rejected = results.filter(function(item) { return item.state === "rejected"; });
+
+        if (rejected.some(function(item) { return item.reason.status === 401; })) {
+          session.set('currentUserId', null);
+          store.init();
+          window.location = config.baseURL;
+        }
+        else if (rejected.length > 0) {
+          rejected.forEach(function(item) { Ember.Logger.error(item.reason); });
+          alert('Something went wrong');
+        }
+      })
+      .finally(function() {
+        application.advanceReadiness();
+        Ember.$("#splashScreen").remove();
+      });
   }
 };

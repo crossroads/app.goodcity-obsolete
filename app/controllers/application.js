@@ -31,13 +31,17 @@ export default Ember.ObjectController.extend({
         }
       } else {
         alert('Something went wrong');
-        console.log(reason);
+        Ember.Logger.error(reason);
       }
     }
   },
 
   init: function() {
+    var _this = this;
     this.send('setSubscriptions');
+    Ember.RSVP.on('error', function(error) {
+      _this.send('error', error);
+    });
     this._super();
   }
 
