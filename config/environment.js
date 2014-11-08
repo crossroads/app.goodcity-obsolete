@@ -29,6 +29,9 @@ module.exports = function(environment) {
       PUSHER_API_KEY: 'ef16f3c0f3a2f14f5498',
       // RESTAdapter Settings
       NAMESPACE: 'api/v1',
+
+      PRELOAD_TYPES: ["territory"],
+      PRELOAD_AUTHORIZED_TYPES: ["offer","item_type"]
     }
   };
 
