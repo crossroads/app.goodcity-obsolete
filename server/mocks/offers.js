@@ -47,8 +47,12 @@ module.exports = function(app) {
     res.send(offers_json);
   });
 
+  offersRouter.get("/:id", function(req, res) {
+    res.send(offers_json);
+  });
+
   offersRouter.delete("/:id", function(req, res) {
-    res.send();
+    res.send({});
   });
 
   offersRouter.put("/:id", function(req, res) {
