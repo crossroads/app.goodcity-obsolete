@@ -20,6 +20,19 @@ export default Ember.ObjectController.extend({
     },
     setSubscriptions: function() {
       this.get('controllers.subscriptions').send('wire');
+    },
+    error: function(reason) {
+      if (reason.status === 401) {
+        if (reason.responseJSON.error === "Expired token") {
+          this.controllerFor('application').send('logMeOut');
+        }
+        else {
+          this.transitionTo('login');
+        }
+      } else {
+        alert('Something went wrong');
+        console.log(reason);
+      }
     }
   },
 

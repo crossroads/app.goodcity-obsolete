@@ -15,22 +15,6 @@ var AuthorizeRoute =  Ember.Route.extend({
       this.transitionTo('offers');
     }
   },
-
-  actions: {
-    error: function(reason) {
-      if (reason.status === 401) {
-        if (reason.responseJSON.error === "Expired token") {
-          this.controllerFor('application').send('logMeOut');
-        }
-        else {
-          this.transitionTo('login');
-        }
-      } else {
-        alert('Something went wrong');
-        console.log(reason);
-      }
-    }
-  }
 });
 
 export default AuthorizeRoute;
