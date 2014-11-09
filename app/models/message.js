@@ -15,7 +15,6 @@ export default DS.Model.extend({
   itemId:      attr('number'),
   offer:       belongsTo('offer'),
   offerId:     attr('number'),
-  forNewOffer: attr('boolean'),
 
   itemImageId: function() {
     var itemId = this.get('itemId');
