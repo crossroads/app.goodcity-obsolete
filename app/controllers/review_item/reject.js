@@ -5,23 +5,9 @@ export default Ember.Controller.extend({
   selectedId: 1,
   needs: ["review_item", "offer"],
 
-  rejectionOptions: function(key, value) {
-
-    if (arguments.length > 1) {
-      return value;
-    } else {
-
-      var sortConditions, _this = this;
-      var store = this.get('store');
-
-      store.find('rejection_reason').then( function(objs) {
-        sortConditions = objs.sortBy('id');
-        _this.set("rejectionOptions", sortConditions);
-        value = sortConditions;
-      });
-      return value;
-    }
-  }.property('rejection_reason.[]'),
+  rejectionOptions: function() {
+    return this.store.all('rejection_reason').sortBy('id');
+  }.property(),
 
   actions: {
     rejectOffer: function(){
