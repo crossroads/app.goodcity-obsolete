@@ -8,14 +8,14 @@ export default Ember.ObjectController.extend({
   user: Ember.computed.alias('session.currentUser'),
 
   territories: function(){
-    return this.store.findAll('territory');
+    return this.store.all('territory');
   }.property(),
 
   districtsByTerritory: function() {
     if(this.selectedTerritory && this.selectedTerritory.id) {
       return this.selectedTerritory.get('districts');
     } else {
-      return this.store.findAll('district');
+      return this.store.all('district');
     }
   }.property('selectedTerritory'),
 

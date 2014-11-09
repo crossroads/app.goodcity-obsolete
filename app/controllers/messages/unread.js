@@ -6,7 +6,7 @@ export default Ember.ArrayController.extend({
   sortAscending: false,
 
   model: function() {
-    return this.store.filter('message', {state: 'unread'}, function(message) {
+    return this.store.filter('message', function(message) {
       return message.get('state') === 'unread';
     });
   }.property('message.@each.state'),
