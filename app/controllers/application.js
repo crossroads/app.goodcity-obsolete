@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from '../config/environment';
 
 export default Ember.ObjectController.extend({
 
@@ -12,6 +13,10 @@ export default Ember.ObjectController.extend({
       this.get('controllers.subscriptions').send('unwire');
       this.session.clear();
       this.store.init();
+      var _this = this;
+      config.APP.PRELOAD_TYPES.forEach(function(type) {
+        _this.store.find(type);
+      });
       this.transitionToRoute('login');
     },
     logMeIn: function(userId){
