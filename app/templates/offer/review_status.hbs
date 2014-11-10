@@ -1,3 +1,45 @@
-<h3>{{t "offer.review-status.heading"}}</h3>
-<hr>
-{{#link-to 'offer.plan_delivery'}}Plan Delivery{{/link-to}}
+<nav class="tab-bar">
+  <section class="left-small">
+    {{#link-to 'offers.index' classNames="back"}}{{t "back"}}{{/link-to}}
+  </section>
+
+  <section class="middle tab-bar-section">
+    <h1 class="title">{{t "offer.review-status.heading"}}</h1>
+  </section>
+</nav>
+<section class="main-section">
+  <div class="row">
+    <div class="small-12 columns with-btm">
+
+      <h3>Awaiting Review({{awaitingReview.length}})</h3>
+      <div class= 'row'>
+        {{#each awaitingReview}}
+          {{#link-to 'review_item' this}}
+            {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
+          {{/link-to}}
+        {{/each}}
+      </div>
+
+      <br/>
+
+      <h3>Rejected({{rejected.length}})</h3>
+      <div class= 'row'>
+        {{#each rejected}}
+          {{#link-to 'review_item' this}}
+            {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
+          {{/link-to}}
+        {{/each}}
+      </div>
+
+
+      <div class="btm">
+        <div class="row">
+          <div class="small-10 small-offset-1 columns">
+            {{#link-to 'offer.plan_delivery' classNames='button expand'}}Plan Delivery{{/link-to}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
