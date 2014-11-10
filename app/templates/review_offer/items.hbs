@@ -1,7 +1,7 @@
 {{partial 'start_review'}}
 
 {{#each}}
-  {{#link-to 'review_item' this}}
+  {{#link-to 'review_item.accept' this}}
     {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
   {{/link-to}}
 {{/each}}
