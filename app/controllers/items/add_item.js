@@ -12,6 +12,8 @@ export default Ember.Controller.extend({
     return JSON.parse(localStorage.image_ids || "[]").length;
   }.property(),
 
+  isNewItem: true,
+
   donorConditionId: null,
 
   actions: {

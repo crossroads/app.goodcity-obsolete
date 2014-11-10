@@ -52,4 +52,8 @@ export default DS.Model.extend({
     return (image ? image.get('imageId') : null);
   }.property('defaultImage'),
 
+  imageCount: function() {
+    return this.get("images.length");
+  }.property('images.@each')
+
 });
