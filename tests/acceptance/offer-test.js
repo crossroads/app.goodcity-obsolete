@@ -74,10 +74,8 @@ test("Confirm and Submit Offer", function(){
 
 test("Cancel Offer - redirect to offers", function() {
   visit("/offers/1");
+  click("a:contains('Cancel Offer')");
   andThen(function() {
-    click("a:contains('Cancel Offer')");
-    andThen(function() {
-      equal(currentURL(), "/offers/1");
-    });
+    equal(currentURL(), "/offers");
   });
 });

@@ -8,6 +8,12 @@ export default Ember.Controller.extend({
     return localStorage.favourite;
   }.property().volatile(),
 
+  imageCount: function() {
+    return JSON.parse(localStorage.image_ids || "[]").length;
+  }.property(),
+
+  isNewItem: true,
+
   donorConditionId: null,
 
   actions: {

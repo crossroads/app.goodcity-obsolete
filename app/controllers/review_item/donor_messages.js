@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.ArrayController.extend({
 
   needs: ["offer", "review_item"],
-  content: [],
   sortProperties: ['createdAt'],
   sortAscending: true,
   itemMessage: true,

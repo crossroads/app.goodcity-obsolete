@@ -9,8 +9,8 @@ export default DS.Model.extend({
   state:                attr('string'),
   offerId:              attr('number'),
   itemTypeId:           attr('number'),
-  rejectionReasonId:    attr('number'),
-  rejectionOtherReason: attr('string'),
+  rejectReason:         attr('string'),
+  rejectionComments:    attr('string'),
   createdAt:            attr('date'),
   updatedAt:            attr('date'),
   packages:             hasMany('package'),
@@ -18,7 +18,9 @@ export default DS.Model.extend({
   images:               hasMany('image'),
   offer:                belongsTo('offer'),
   donorCondition:       belongsTo('donor_condition'),
+  rejectionReason:      belongsTo('rejection_reason'),
   saleable:             attr('boolean'),
+  state_event:          attr('string'),
 
   //input to store image public-ids
   imageIdentifiers:     attr('string'),
@@ -49,5 +51,9 @@ export default DS.Model.extend({
     var image = this.get('defaultImage');
     return (image ? image.get('imageId') : null);
   }.property('defaultImage'),
+
+  imageCount: function() {
+    return this.get("images.length");
+  }.property('images.@each')
 
 });

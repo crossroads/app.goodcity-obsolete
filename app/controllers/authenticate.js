@@ -40,25 +40,26 @@ export default Ember.Controller.extend({
                 _this.get('controllers.application').send('logMeIn', userId);
               });
 
-              // After login, redirect user to requested url
-              if (attemptedTransition) {
-                attemptedTransition.retry();
-                _this.set('attemptedTransition', null);
-              } else {
-                if (user.get('isDonor')) {
-                  _this.transitionToRoute('offers');
-                } else {
-                  _this.transitionToRoute('inbox');
-                }
-              }
+              _this.transitionToRoute('loading');
 
+              var promises = config.APP.PRELOAD_AUTHORIZED_TYPES
+                .map(function(type) { return _this.store.find(type); });
+
+              Ember.RSVP.allSettled(promises).finally(function() {
+                // After login, redirect user to requested url
+                if (attemptedTransition) {
+                  attemptedTransition.retry();
+                  _this.set('attemptedTransition', null);
+                } else {
+                  if (user.get('isDonor')) {
+                    _this.transitionToRoute('offers');
+                  } else {
+                    _this.transitionToRoute('inbox');
+                  }
+                }
+              });
             }
             _this.setProperties({mobilePhone:null, pin: null});
-          });
-        },
-        failure: function() {
-          Ember.run(function() {
-            console.log('Login failure!');
           });
         },
         error: function() {

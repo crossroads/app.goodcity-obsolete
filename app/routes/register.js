@@ -2,6 +2,6 @@ import SessionRoute from './session';
 
 export default SessionRoute.extend({
   model: function() {
-    return this.store.find('territory');
+    return this.store.all('territory');
   }
 });

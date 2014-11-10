@@ -16,15 +16,15 @@
         <div class="row">
           <div class="small-4 large-2 columns fav-item-image">
 
-            {{#if this.model }}
-              {{#link-to 'item.edit_images' class='edit-image-link'}}
-                {{cloudinary-image imageId=previewImageId width=100 height=150 className='fav_image'}}
-                <div>{{t "items.add_item.edit_image"}}({{images.length}})</div>
-              {{/link-to}}
-            {{else}}
+            {{#if isNewItem }}
               {{#link-to 'items.new' class='edit-image-link'}}
                 {{cloudinary-image imageId=previewImageId width=100 height=150 className='fav_image'}}
-                <div>{{t "items.add_item.edit_image"}}</div>
+                <div>{{t "items.add_item.edit_image"}} ({{imageCount}})</div>
+              {{/link-to}}
+            {{else}}
+              {{#link-to 'item.edit_images' class='edit-image-link'}}
+                {{cloudinary-image imageId=previewImageId width=100 height=150 className='fav_image'}}
+                <div>{{t "items.add_item.edit_image"}} ({{imageCount}})</div>
               {{/link-to}}
             {{/if}}
 

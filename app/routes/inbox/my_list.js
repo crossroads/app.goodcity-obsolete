@@ -9,7 +9,7 @@ export default AuthorizeRoute.extend({
 
   model: function() {
     var currentUser = this.get('session.currentUser');
-    return this.store.filter('offer', {reviewed_by_id: currentUser.get('id')}, function(offer) {
+    return this.store.filter('offer', function(offer) {
         return offer.get('reviewedBy') === currentUser;
     });
   }

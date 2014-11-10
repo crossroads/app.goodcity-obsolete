@@ -4,5 +4,10 @@ var attr = DS.attr;
 
 export default DS.Model.extend({
   name: attr('string'),
-  code: attr('string')
+  code: attr('string'),
+
+  text: "",
+  nameChanged: function() {
+    this.set("text", this.get("name"));
+  }.observes("name").on("init")
 });

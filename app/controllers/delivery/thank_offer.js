@@ -7,15 +7,10 @@ export default Ember.ObjectController.extend({
     if(arguments.length > 1) {
       return value;
     } else {
-      var _this = this;
-      var deliveryId = _this.get('controllers.delivery.id');
-      _this.store.find('delivery', deliveryId).then(function(delivery){
-        value = delivery.get('contact');
-        _this.set('contact', value);
-      });
-      return value;
+      var deliveryId = this.get('controllers.delivery.id');
+      return this.store.getById('delivery', deliveryId);
     }
-  }.property('delivery.[]'),
+  }.property(),
 
   actions:{
     done: function(){
