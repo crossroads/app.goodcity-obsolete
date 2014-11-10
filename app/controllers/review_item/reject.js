@@ -1,9 +1,11 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
-
-  selectedId: 1,
+export default Ember.ObjectController.extend({
   needs: ["review_item", "offer"],
+
+  selectedId: function(key, value){
+    return (arguments.length > 1) ? value : this.get('rejectionReason.id');
+  }.property('rejectionReason.id'),
 
   rejectionOptions: function() {
     return this.store.all('rejection_reason').sortBy('id');
@@ -24,11 +26,6 @@ export default Ember.Controller.extend({
       rejectProperties.offer = this.store.getById('offer', offer_id);
 
       var item = this.store.update('item', rejectProperties);
-
-      // Clear fields
-      this.set('rejectReason', '');
-      this.set('rejectionComments', '');
-      this.set('selectedId', 1);
 
       // Save changes to Item
       var route = this;
