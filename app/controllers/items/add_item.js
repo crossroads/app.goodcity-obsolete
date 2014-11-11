@@ -10,7 +10,7 @@ export default Ember.Controller.extend({
 
   imageCount: function() {
     return JSON.parse(localStorage.image_ids || "[]").length;
-  }.property(),
+  }.property().volatile(),
 
   isNewItem: true,
 

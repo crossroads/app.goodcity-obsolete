@@ -2,13 +2,13 @@ import Ember from 'ember';
 
 export default Ember.TextField.extend({
   tagName: "input",
-  type: "tel",
+  type: "number",
   attributeBindings: [ "name", "type", "value", "maxlength", "id" ],
 
   keyDown: function(e) {
 
     var key = e.charCode || e.keyCode || 0;
-    // allow ctrl+v, enter, backspace, tab, delete, arrows, numbers, keypad numbers
+    // allow ctrl+v, enter, backspace, tab, delete, numbers, keypad numbers
     // home, end only.
     return (
         (key === 17 || key === 86) ||
