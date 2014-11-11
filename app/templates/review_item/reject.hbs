@@ -12,9 +12,15 @@
               </label>
             </li>
           {{/each}}
-        </ul>
 
-        {{input type="text" value=rejectReason name="rejectReason" id='rejectReason' placeholder="Custom Reason"}}
+          <li>
+            {{view 'radio-button' name="selectReason" selection=controller.selectedId value="-1" id="-1" labelText=rejectReason}}
+
+            <label class='reject_label' for="-1">
+              {{input type="text" value=rejectReason name="rejectReason" id='rejectReason' placeholder="Custom Reason" classBinding="isBlank:error"}}
+            </label>
+          </li>
+        </ul>
 
         {{textarea type="text" value=rejectionComments name="rejectionComments" id='rejectionComments' placeholder="Additional Comments"}}
       </form>

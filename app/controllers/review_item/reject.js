@@ -3,9 +3,22 @@ import Ember from 'ember';
 export default Ember.ObjectController.extend({
   needs: ["review_item", "offer"],
 
+  isBlank: function(key, value){
+    return (arguments.length >1) ? value : false;
+  }.property(),
+
   selectedId: function(key, value){
-    return (arguments.length > 1) ? value : this.get('rejectionReason.id');
-  }.property('rejectionReason.id'),
+    this.set("isBlank", false);
+    if(arguments.length > 1) {
+      return value;
+    } else {
+      if(this.get("rejectReason") && this.get("rejectReason").length > 0) {
+        return this.set("selectedId", "-1");
+      } else {
+        return (this.get('rejectionReason.id') || "1");
+      }
+    }
+  }.property('rejectionReason.id', 'rejectReason'),
 
   rejectionOptions: function() {
     return this.store.all('rejection_reason').sortBy('id');
@@ -15,6 +28,10 @@ export default Ember.ObjectController.extend({
     rejectOffer: function(){
       var selectedReason = this.get('selectedId');
       var rejectProperties = this.getProperties('rejectReason', 'rejectionComments');
+
+      if(selectedReason === "-1" && Ember.$.trim(rejectProperties.rejectReason).length === 0) {
+        this.set("isBlank", true);
+        return false; }
 
       rejectProperties.rejectionReason = this.store.getById('rejection_reason', selectedReason);
       rejectProperties.state_event = 'reject';
