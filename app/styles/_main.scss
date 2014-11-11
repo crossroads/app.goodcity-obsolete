@@ -22,7 +22,7 @@
 
 
 h1 {
-  margin: rem-calc(0 0 20 0) !important
+  margin: rem-calc(0 0 20 0) !important;
 }
 
 h2 {
@@ -84,7 +84,7 @@ hr {
   display: block;
   margin-left: rem-calc(15);
   float: left;
-  
+
   &:before {
     background: url("../img/icon-back.png") no-repeat right center;
     background-size: 13px 16px;
@@ -120,27 +120,27 @@ hr {
   min-height: 100%;
 }
 
-.off-canvas-wrap{  
+.off-canvas-wrap{
   height: 100%;
   overflow-y: auto;
 }
 */
 
 ul.off-canvas-list li label {
-  border-bottom: 1px solid #3d4959
+  border-bottom: 1px solid #3d4959;
 }
 
 ul.off-canvas-list li a:hover  {
-  background: #2b384a !important
+  background: #2b384a !important;
 }
 
 .off-canvas-list {
   padding-right: 15px !important;
   font-size: rem-calc(15);
 
-  a, 
+  a,
   label {
-    padding: 10px 20px !important
+    padding: 10px 20px !important;
   }
 
   label {
@@ -166,7 +166,7 @@ ul.off-canvas-list li a:hover  {
 .with-btm {
   position: relative;
   padding-bottom: 80px;
-  
+
   &.intro {
     padding-bottom: 150px;
   }
@@ -202,14 +202,11 @@ ul.off-canvas-list li a:hover  {
   @include panel();
   margin-bottom: rem-calc(15);
   border-radius: 5px;
-  
+
   p {
     margin: 0;
   }
-  
-  
 }
-
 
 
 /* === Page Specifc === */
@@ -269,11 +266,11 @@ ul.off-canvas-list li a:hover  {
   position: absolute;
 
   padding: 15px;
-  
-  top: 50%; 
+
+  top: 50%;
   left: 50%;
-  
-  h3, 
+
+  h3,
   p {
     margin: 0;
   }
@@ -287,20 +284,20 @@ ul.off-canvas-list li a:hover  {
   padding: 0;
   list-style: none;
   font-size: rem-calc(12);
-  
+
   li {
     margin-bottom: rem-calc(10);
   }
 
   img {
     width: 100%;
-    height: auto
+    height: auto;
   }
 
   p {
     font-size: rem-calc(12);
   }
-  
+
   .thumb {
     padding-right: 16px;
     width: 76px;
@@ -312,18 +309,18 @@ ul.off-canvas-list li a:hover  {
     width: 50px;
     padding-right: 10px;
     vertical-align: top;
-    
+
     img {
       border-radius: 50%;
       width: 40px !important;
       height: 40px;
       display: block;
     }
-    
+
   }
 
   a {
-    display: table; 
+    display: table;
     width: 100%;
     color: #a3aab6 !important;
   }
@@ -333,14 +330,14 @@ ul.off-canvas-list li a:hover  {
     vertical-align: middle;
   }
 
-  .info h3, 
+  .info h3,
   .info p {
-    margin: 0; 
-    line-height: 1.3
+    margin: 0;
+    line-height: 1.3;
   }
 
   .info h3 {
-    margin-bottom: 3px !important
+    margin-bottom: 3px !important;
   }
 
   &.list-items a {
@@ -354,10 +351,10 @@ ul.off-canvas-list li a:hover  {
   }
 
   &.list-activity {
-  
+
     margin-left: -15px;
     margin-right: -15px;
-  
+
     li {
       border-bottom: 1px solid #1c3b65;
       margin: 0 !important;
@@ -372,12 +369,12 @@ ul.off-canvas-list li a:hover  {
       //text-overflow: ellipsis;
       //white-space: nowrap;
     }
-    
+
     .info {
       padding-left: 0;
       padding-right: 0;
     }
-    
+
   }
 
 }
@@ -414,8 +411,6 @@ ul.off-canvas-list li a:hover  {
   position: relative;
 }
 
-
-
 .list-intro {
   text-align: left;
   margin: 0;
@@ -433,7 +428,7 @@ ul.off-canvas-list li a:hover  {
       margin-bottom: 0;
     }
   }
-  
+
   span {
     display: block;
     position: absolute;
@@ -519,7 +514,7 @@ ul.off-canvas-list li a:hover  {
 }
 
 .nav-steps {
-  text-align: center; 
+  text-align: center;
   margin: rem-calc(0 0 45 0);
   padding: 0;
   list-style: none;
@@ -528,7 +523,7 @@ ul.off-canvas-list li a:hover  {
     display: inline-block;
     margin: rem-calc(0 3);
   }
-  
+
   a {
     font: 0/0 a;
     width: 10px;
@@ -536,7 +531,7 @@ ul.off-canvas-list li a:hover  {
     border-radius: 50%;
     display: block;
     border: 1px solid #8091a9;
-  } 
+  }
 
   li.active a {
     background: #f34d4f;
@@ -547,7 +542,7 @@ ul.off-canvas-list li a:hover  {
 .nav-lang {
   margin: rem-calc(0 0 20 0);
   padding: 0;
-  list-style: none; 
+  list-style: none;
 
   li {
     display: inline-block;
@@ -574,7 +569,7 @@ ul.off-canvas-list li a:hover  {
 }
 
 .form-note {
-  font-size: rem-calc(12) !important; 
+  font-size: rem-calc(12) !important;
 
   a {
     color: #a3aab6 !important;
@@ -682,7 +677,7 @@ select {
 /* === Icons === to clean up w/ sprite */
 
 .icon-home {
-  display: block; 
+  display: block;
   width: 160px;
   height: 160px;
   background: url("../img/logo-art.png") no-repeat;
@@ -762,7 +757,7 @@ select {
   height: 22px;
   background: url("../img/icon-delete.png") no-repeat;
   background-size: 21px 22px;
-  
+
   margin-top: 10px;
 }
 .icon-favorite {
@@ -771,7 +766,7 @@ select {
   height: 22px;
   background: url("../img/icon-favorite.png") no-repeat;
   background-size: 22px 22px;
-  
+
    margin-top: 10px;
 }
 .icon-previous {
@@ -780,7 +775,7 @@ select {
   height: 17px;
   background: url("../img/icon-previous.png") no-repeat;
   background-size: 15px 17px;
-  
+
    margin-top: 14px;
 }
 .icon-next {
@@ -789,7 +784,7 @@ select {
   height: 17px;
   background: url("../img/icon-next.png") no-repeat;
   background-size: 15px 17px;
-  
+
   margin-top: 14px;
 }
 
