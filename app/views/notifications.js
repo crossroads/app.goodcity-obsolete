@@ -6,13 +6,13 @@ export default Ember.View.extend({
     Ember.run.next(this, this.animateNotification);
   }.observes('controller.mostRecent').on('didInsertElement'),
 
-  animateNotification: function(){
-    Ember.$('.unread_message_box').show();
-    Ember.$('.unread_message_box').animate({"left": "2%"}, "slow");
+  timeoutId: 0,
 
-    window.setTimeout(function() {
-      Ember.$('.unread_message_box').fadeOut('slow');
-      Ember.$('.unread_message_box').animate({"left": "0"});
-    }, 6000);
+  animateNotification: function(){
+    clearTimeout(this.get('timeoutId'));
+    var box = Ember.$('.notification_box').hide();
+    box.slideDown();
+    var id = window.setTimeout(function() { box.slideUp(); }, 6000);
+    this.set('timeoutId', id);
   }
 });
