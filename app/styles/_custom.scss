@@ -6,8 +6,19 @@ input[type=number] {-moz-appearance: textfield;}
 input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
-  margin: 0;
-}
+  margin: 0; }
+
+// placeholder-color
+::-webkit-input-placeholder { /* WebKit browsers */
+  color: $medium-blue; }
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+  color: $medium-blue;
+  opacity: $medium-blue; }
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+  color: $medium-blue;
+  opacity: $medium-blue; }
+:-ms-input-placeholder { /* Internet Explorer 10+ */
+  color: $medium-blue; }
 
 .reject-offer {
   ul {
