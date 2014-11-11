@@ -64,7 +64,7 @@
 // If you want your base font-size to be different and not have it affect the grid breakpoints,
 // set $rem-base to $base-font-size and make sure $base-font-size is a px value.
 // $base-font-size: 100%;
-$base-font-size: 16px;
+$base-font-size: 18px;
 
 // The $base-font-size is 100% while $base-line-height is 150%
 // $base-line-height: 150%;
@@ -110,7 +110,7 @@ $body-bg: $dark-blue;
 // $body-font-color: $jet;
 $body-font-color: #a3aab6;
 // $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
-$body-font-family: Museo300, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+$body-font-family: MuseoSans300, Museo300, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
 // $body-font-weight: $font-weight-normal;
 // $body-font-style: normal;
 
