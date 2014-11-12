@@ -1,6 +1,6 @@
 <div class="row top">
   <div class="small-3 columns">
-    <img src="assets/images/default_item.jpg"></img>
+    {{cloudinary-image imageId=itemSelected.defaultImageId width=70 height=70 className='fav_image'}}
   </div>
   <div class="small-7 columns head">
     <span class="ellipsis one-line-ellipsis" {{ bind-attr id=view.titleid }}>

@@ -6,5 +6,6 @@ export default Ember.Component.extend({
 
   selectedItemTypeId: Ember.computed.alias('name'),
   selectedItemTypeName:  Ember.computed.alias('value'),
+  itemSelected: Ember.computed.alias('itemval'),
 
 });
