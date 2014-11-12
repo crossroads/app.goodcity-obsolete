@@ -1,3 +1,16 @@
+.tour_slides {
+  text-align: center;
+  // padding: 0 2rem 0 2rem;
+  img {
+    display: inline-block; }
+  .slick-dots {
+    display: block;
+    position: inherit;
+    margin: 0;
+    bottom: 0;
+  }
+}
+
 .reject_label {
   width: 90%; }
 
