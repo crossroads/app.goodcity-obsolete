@@ -1,23 +1,42 @@
-{{partial 'start_review'}}
+<div class='review_block'>
+  {{#if offer.reviewedBy }}
+    <div class='review_message'>
+      {{t "review_offer.review_started_by" firstNameBinding=offer.reviewedBy.firstName lastNameBinding=offer.reviewedBy.lastName}}
+    </div>
+    {{view 'time-ago' timeValue=offer.reviewedAt}}
 
-<br/>
+    <br/>
 
-<h3>Awaiting Review({{awaitingReview.length}})</h3>
-<div class= 'row'>
-  {{#each awaitingReview}}
-    {{#link-to 'review_item' this}}
-      {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
-    {{/link-to}}
-  {{/each}}
-</div>
+    <h3>Awaiting Review({{awaitingReview.length}})</h3>
+    <div class= 'row'>
+      {{#each awaitingReview}}
+        {{#link-to 'review_item' this}}
+          {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
+        {{/link-to}}
+      {{/each}}
+    </div>
 
-<br/>
+    <br/>
 
-<h3>Rejected({{rejected.length}})</h3>
-<div class= 'row'>
-  {{#each rejected}}
-    {{#link-to 'review_item' this}}
-      {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
-    {{/link-to}}
-  {{/each}}
+    <h3>Rejected({{rejected.length}})</h3>
+    <div class= 'row'>
+      {{#each rejected}}
+        {{#link-to 'review_item' this}}
+          {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
+        {{/link-to}}
+      {{/each}}
+    </div>
+
+  {{ else }}
+    <button {{action 'startReview'}}>Start Review</button>
+    <br/>
+
+    <h3>Items({{content.length}})</h3>
+    <div class= 'row'>
+      {{#each}}
+        {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
+      {{/each}}
+    </div>
+
+  {{/if}}
 </div>
