@@ -14,7 +14,7 @@
       <h3>Awaiting Review({{awaitingReview.length}})</h3>
       <div class= 'row'>
         {{#each awaitingReview}}
-          {{#link-to 'review_item' this}}
+          {{#link-to 'item.index' this}}
             {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
           {{/link-to}}
         {{/each}}
@@ -25,12 +25,11 @@
       <h3>Rejected({{rejected.length}})</h3>
       <div class= 'row'>
         {{#each rejected}}
-          {{#link-to 'review_item' this}}
+          {{#link-to 'item.index' this}}
             {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
           {{/link-to}}
         {{/each}}
       </div>
-
 
       <div class="btm">
         <div class="row">
