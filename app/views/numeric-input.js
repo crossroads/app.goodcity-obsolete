@@ -8,14 +8,15 @@ export default Ember.TextField.extend({
   keyDown: function(e) {
 
     var key = e.charCode || e.keyCode || 0;
-    // allow enter, backspace, tab, delete, arrows, numbers, keypad numbers
+    // allow ctrl+v, enter, backspace, tab, delete, numbers, keypad numbers
     // home, end only.
     return (
+        (key === 17 || key === 86) ||
         key === 13 ||
         key === 8 ||
         key === 9 ||
         key === 46 ||
-        (key >= 35 && key <= 40) ||
+        (key >= 35 && key <= 36) ||
         (key >= 48 && key <= 57) ||
         (key >= 96 && key <= 105));
   },
