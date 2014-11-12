@@ -9,17 +9,24 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0; }
 
 // placeholder-color
-&::-webkit-input-placeholder {
-  color: $medium-blue;
+input {
+  &::-webkit-input-placeholder {
+    color: $medium-blue;
+  }
+  &::-moz-placeholder {
+    color: $medium-blue;
+  }
+  &::-moz-p {
+    color: $medium-blue;
+  }
+  &:-ms-input-placeholder {
+    color: $medium-blue;
+  }
 }
-&:-moz-placeholder {
+
+textarea:-ms-input-placeholder {
   color: $medium-blue;
-}
-&::-moz-p {
-  color: $medium-blue;
-}
-&:-ms-input-placeholder {
-  color: $medium-blue;
+  opacity: 0.5;
 }
 
 .icon-center {
