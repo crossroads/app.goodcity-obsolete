@@ -7,8 +7,9 @@
     display: block;
     position: inherit;
     margin: 0;
-    bottom: 0;
-  }
+    bottom: 0; }
+  .slick-list {
+    min-height: 19rem; }
 }
 
 .reject_label {
