@@ -3,11 +3,14 @@
     {{#if itemTypeId}}
       <div class="with-btm intro">
         {{ item-details-ui-control itemval=this value=itemTypeName name=itemTypeId }}
+        {{view MyContainerView elementId="my_container_view"}}
+        <br>
+        {{view AddChildViewButton}}
       </div>
       <div class="row">
-        <span class="small-2 columns">&nbsp;</span>
-        <span class="small-8 columns"><a href="#" {{action "accept" }} id="acceptItem" class="button expand">{{t "review_item.accept_item"}}</a></span>
-        <span class="small-2 columns">&nbsp;</span>
+        <span class="small-10 small-offset-1  columns">
+          <a href="#" {{ action "acceptOffer" }} id="acceptItem" class="button expand">{{t "review_item.accept_item"}}</a>
+        </span>
       </div>
     {{else}}
       <p>

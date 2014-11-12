@@ -1,25 +1,19 @@
 <div class="row">
-  <div class="small-2 columns">
-    &nbsp;
-  </div>
-  <div class="small-8 columns detail_container">
-    {{view "item-title-ui-control" name="itemCommentControl" placeholder="Comments" titleid=selectedItemTypeId  titlevalue=selectedItemTypeName }}
+  <div class="small-10 small-offset-1 push-1 columns detail_container">
+    {{view "item-title-ui-control" name="itemCommentControl" placeholder="Comments" titleid=selectedItemTypeId  titlevalue=selectedItemTypeName itemval=this class="item-ui"}}
     <div class="row bottom">
-      <div {{bind-attr class=":small-6 :columns :item-ui :inner"}} tabindex="1">
-        {{view "item-grid-ui-control" type="text" value="1" name="length" placeholder="Qty" maxlength="8" tabindex="1"}}
+      <div {{bind-attr class=":small-6 :columns :item-ui :inner"}}>
+        {{view "item-grid-ui-control" type="text" value="" name="length" placeholder="Qty" maxlength="8"}}
       </div>
-      <div {{bind-attr class=":small-2 :columns :item-ui :inner" }} tabindex="2">
-        {{view "item-grid-ui-control" type="text" value="" name="length" placeholder="L" maxlength="8" tabindex="2"}}
+      <div {{bind-attr class=":small-2 :columns :item-ui :inner" }}>
+        {{view "item-grid-ui-control" type="text" value="" name="length" placeholder="L" maxlength="5"}}
       </div>
-      <div {{bind-attr class=":small-2 :columns :item-ui :inner"}} tabindex="3">
-        {{view "item-grid-ui-control" type="text" value="" name="width" placeholder="W" maxlength="8" tabindex="3"}}
+      <div {{bind-attr class=":small-2 :columns :item-ui :inner"}}>
+        {{view "item-grid-ui-control" type="text" value="" name="width" placeholder="W" maxlength="5"}}
       </div>
-      <div {{bind-attr class=":small-2 :columns :item-ui :inner"}} tabindex="4">
-        {{view "item-grid-ui-control" type="text" value="" name="height" placeholder="H" maxlength="8" tabindex="4"}}
+      <div {{bind-attr class=":small-2 :columns :item-ui :inner"}}>
+        {{view "item-grid-ui-control" type="text" value="" name="height" placeholder="H" maxlength="5"}}
       </div>
     </div>
-  </div>
-  <div class="small-1 columns">
-    &nbsp;
   </div>
 </div>

@@ -6,6 +6,20 @@ input[type=number]::-webkit-outer-spin-button {
   margin: 0;
 }
 
+.icon-center {
+  vertical-align: middle;
+}
+
+.icon-text {
+  padding-top: 0.4rem;
+}
+
+.link-blue {
+  color: #002352;
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+
 .reject-offer {
   ul {
     list-style-type: none;

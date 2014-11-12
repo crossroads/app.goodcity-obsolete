@@ -40,7 +40,7 @@
 }
 
 
-.item-ui input[type="text"][disabled]{
+.item-ui input[type="text"] {
   border: none;
   background: #ffffff;
   box-shadow: none;
@@ -48,6 +48,8 @@
   -moz-box-sizing: none;
   box-sizing: none;
   transition: none;
+  margin: 0rem;
+  height: 100%;
 }
 .is-hide{
   display: none
