@@ -97,13 +97,16 @@ $column-gutter: rem-calc(10);
 // We use these to define default font weights
 // $font-weight-normal: normal !default;
 // $font-weight-bold: bold !default;
-
+$dark-red: #f00;
 $coral-red: #f34d4f;
 $dark-blue: #002352;
+$mid-blue: #1c3b65;
 $medium-blue: #a3aab6;
 $light-blue: #dfe5ec;
+$light-pitch: #fddbdc;
 $white: #fff;
-
+$light-black: #222222;
+$ghost: #FAFAFA;
 // We use these to control various global styles
 // $body-bg: $white;
 $body-bg: $dark-blue;

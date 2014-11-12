@@ -1,6 +1,11 @@
 {{#if mostRecent}}
   <div class='notification_box'>
     <div>{{t "notifications.text" textBinding=mostRecent.text}}</div>
-    <div><button {{action 'view'}}>{{t "notifications.view"}}</button></div>
+    <div>
+      <button {{action 'view'}}>
+        <i class="fa fa-eye fa-lg"></i>
+        {{t "notifications.view"}}
+      </button>
+    </div>
   </div>
 {{/if}}

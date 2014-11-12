@@ -22,6 +22,19 @@ input[type=number]::-webkit-outer-spin-button {
   color: $medium-blue;
 }
 
+.icon-center {
+  vertical-align: middle;
+}
+
+.icon-text {
+  padding-top: 0.4rem;
+}
+
+.link-blue {
+  color: $dark-blue;
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
 
 .reject-offer {
   ul {
@@ -37,8 +50,8 @@ input[type=number]::-webkit-outer-spin-button {
       background: inherit; }
   }
   .error {
-    border-color: #f34d4f!important;
-    background: #fddbdc!important;
+    border-color: $coral-red !important;
+    background: $light-pitch !important;
     margin-bottom: 1.5rem; }
 }
 
@@ -49,7 +62,7 @@ input[type=number]::-webkit-outer-spin-button {
     li {
       margin-right: -5%;
       display: block;
-      border-bottom: 1px solid #1c3b65;
+      border-bottom: 1px solid $mid-blue;
       padding: 2% 0 2% 12%;
       margin-left: -15%; }
   }
@@ -67,7 +80,7 @@ input[type=number]::-webkit-outer-spin-button {
       color: white; }
     }
   .schedule-info {
-    border-bottom: 1px solid #1c3b65;
+    border-bottom: 1px solid $mid-blue;
     padding: 0 2% 2% 15%;
     margin-left: -12%;
     width: 117%; }
@@ -139,23 +152,16 @@ input[type=number]::-webkit-outer-spin-button {
   clear: both;
 }
 .tabs dd {
-  .arrow-down {
-    width: 0;
-    height: 0;
-    border-left: 20px solid transparent;
-    border-right: 20px solid transparent;
-    border-top: 20px solid #f00;
-  }
   a:focus {
     outline: -webkit-focus-ring-color auto 0px;
   }
   a i, a div {
-    color: #a3aab6;
+    color: $medium-blue;
   }
 }
 .tabs dd.active {
   a i, a div {
-    color: #ffffff;
+    color: $white;
   }
 }
 
@@ -167,24 +173,23 @@ input[type=number]::-webkit-outer-spin-button {
   }
 .tabs dd > a, .tabs .tab-title > a {
   display: block;
-  background-color: #002352;
-  color: #222222;
+  background-color: $dark-blue;
+  color: $light-black;
   padding: 1rem 1rem;
   }
 .tabs dd > a:hover, .tabs .tab-title > a:hover {
-  background-color: #002352;
-  color: #222222;
+  background-color: $dark-blue;
+  color: $light-black;
 }
 
 .tabs dd.active a:before {
   margin-left: -11px;
   border-width: 11px;
-  // border-top-color: rgba(0,0,0,0.2);
 }
 
 .tabs dd.active a, .tabs .tab-title.active a {
-  color: #222222;
-  background-color: #002352;
+  color: $light-black;
+  background-color: $dark-blue;
 }
 
 .tabs dd.active a:after, .tabs dd.active a:before {
@@ -200,11 +205,11 @@ input[type=number]::-webkit-outer-spin-button {
 .tabs dd.active a:after {
   margin-left: -10px;
   border-width: 10px;
-  border-top-color: #002352;
+  border-top-color: $dark-blue;
 }
 .tabs-content {
-  background-color: #dfe5ec;
-  color: #000000;
+  background-color: $light-blue;
+  color: $light-black;
   padding: 1rem;
   .tabs-content > .content {
     padding: 0.2125rem 0;
@@ -229,7 +234,7 @@ input[type=number]::-webkit-outer-spin-button {
     div {
       display: block;
       font-size: 0.8rem;
-      color: #a3aab6; }
+      color: $medium-blue; }
   }
 }
 
@@ -239,13 +244,13 @@ input[type="radio"] + label {
 }
 
 .radio a.active {
-  background: #f34d4f;
-  border: 1px solid #f34d4f; }
+  background: $coral-red;
+  border: 1px solid $coral-red; }
 
 .unread_message {
   height: 30px;
   width: 30px;
-  background: #999999;
+  background: $medium-blue;
   -moz-border-radius: 30px;
   -webkit-border-radius: 30px;
   float: right;
@@ -359,26 +364,26 @@ textarea {
 .select2-container {
   width: 100% !important;
   .select2-chosen {
-    color: #000000;
+    color: $light-black;
   }
   .select2-choice {
     padding: 0.5rem;
-    border: 2px solid #fff;
+    border: 2px solid $white;
     height: 2.5625rem;
-    background-color: #FAFAFA;
+    background-color: $ghost;
     -webkit-appearance: none !important;
     -webkit-border-radius: 0px;
-    background-color: #FAFAFA !important;
+    background-color: $ghost !important;
     background-position: 100% center;
     background-repeat: no-repeat;
-    border: 1px solid #FAFAFA;
+    border: 1px solid $ghost;
     font-size: 1.125rem;
     color: rgba(0, 0, 0, 0.75);
     line-height: normal;
     border-radius: 0;
     .select2-arrow {
       border: none;
-      background: #FAFAFA;
+      background: $ghost;
     }
   }
   .select2-input {
@@ -393,91 +398,19 @@ textarea {
 .icon-empty-items {
   width: 70px;
   height: 70px;
-  color: #fafafa;
+  color: $ghost;
   background-size: 70px 70px;
   margin: 0px auto;
   display: block;
 }
-
-/*
-.district-selection ul {
-  padding: 0em;
-  width: 33%;
-}
-
-.territory_menu {
-  width:130px;
-  height:50px;
-  background-color:#ccc;
-  list-style:none;
-  marging-right:10px;
-  display:table-cell;
-  border: solid 1px white;
-  vertical-align:middle;
-  text-align:center;
-  cursor: pointer;
-}
-
-.delivery-image {
-  width: 60px;
-  height: 60px;
-  margin-top: 10px;
-}
-
-.plan_delivery table {
-  width: 400px;
-}
-
-.selectAddress {
-  width: 140px;
-  margin-right: 3px;
-}
-ul.radio-ul {
-  list-style: none;
-}
-ul.radio-ul li p {
-   padding-left: 2%;
-}
-.center {
-  vertical-align: middle;
-  text-align: center;
-}
-
-.inbox_offers a {
-  color: black;
-}
-
-.message_box {
-  background-color: #DDDDDD;
-  color: black;
-  width: 300px;
-  border-radius: 10px;
-  padding: 13px;
-  margin-bottom: 10px;
-}
-
-.message_details {
-  font-size: 13px;
-}
-
-.item_message {
-  float: right;
-  margin-top: -5%;
-}
-
-td.message_block a {
-  text-decoration: none;
-  color: black;
-}
-*/
 
 .notification_box {
   position: fixed;
   top: 0;
   width: 100%;
   padding: 10px 20px;
-  background-color: #EEEEEE;
-  color: #5C5E5E;
+  background-color: $coral-red;
+  color: $white;
   z-index: 2;
   display: table;
 
@@ -485,8 +418,8 @@ td.message_block a {
     display: table-cell;
     vertical-align: middle;
   }
-
   button {
+    color: $white;
     float: right;
     margin-bottom: 0px;
     margin-left: 15px;
