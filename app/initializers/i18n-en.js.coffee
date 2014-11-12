@@ -198,6 +198,7 @@ I18nTranslationsEn =
         "supervisor_message" : "Supervisors"
         "view_lable_guide": "View labeling guide"
         "condition": "Condition"
+        "add_component": "Add component"
 
       # Components
       "upload-images":
