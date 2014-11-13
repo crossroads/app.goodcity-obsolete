@@ -2,7 +2,7 @@
 
   <div class="row">
 
-    <div class="small-12 columns with-btm intro">
+    <div class="small-12 columns intro">
 
       <div class="tour_slides">
         <div>{{ partial "tour/1" }}</div>
@@ -12,11 +12,9 @@
         <div>{{ partial "tour/5" }}</div>
       </div>
 
-      <div class="btm">
-        <div class="row">
-          <div class="small-10 small-offset-1 columns">
-            {{#link-to 'register' classNames="button expand"}}{{t "skip_intro"}}{{/link-to}}
-          </div>
+      <div class="row">
+        <div class="small-10 small-offset-1 columns">
+          {{#link-to 'register' classNames="button expand"}}{{t "skip_intro"}}{{/link-to}}
         </div>
       </div>
 
