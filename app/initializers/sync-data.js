@@ -16,7 +16,7 @@ export default {
     var promises = retrieve(config.APP.PRELOAD_TYPES);
 
     //if logged in
-    if (session.get('currentUserId')) {
+    if (session.get('authToken')) {
       promises.push(store.find("user", session.get('currentUserId')));
       promises = promises.concat(retrieve(config.APP.PRELOAD_AUTHORIZED_TYPES));
     }
@@ -26,8 +26,7 @@ export default {
         var rejected = results.filter(function(item) { return item.state === "rejected"; });
 
         if (rejected.some(function(item) { return item.reason.status === 401; })) {
-          session.set('currentUserId', null);
-          store.init();
+          session.clear();
           window.location = config.baseURL;
         }
         else if (rejected.length > 0) {

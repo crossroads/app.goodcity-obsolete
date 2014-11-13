@@ -28,11 +28,11 @@ export default Ember.ObjectController.extend({
     },
     error: function(reason) {
       if (reason.status === 401) {
-        if (this.session.currentUserId) {
-          this.controllerFor('application').send('logMeOut');
+        if (this.get('isLoggedIn')) {
+          this.send('logMeOut');
         }
         else {
-          this.transitionTo('login');
+          this.transitionToRoute('login');
         }
       } else {
         alert('Something went wrong');
