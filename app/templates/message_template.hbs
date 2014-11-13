@@ -19,15 +19,13 @@
 
     </div>
 
-  <br/>
-
   {{#if controller.offerMessage}}
-    {{body}}<br/> <br/>
+    {{body}}
   {{/if}}
   </div>
 {{/each}}
 
-{{textarea type='text' value=body name="body" rows=5 cols=20 }}
+{{textarea type='text' value=body name="body" rows=5 cols=20 classBinding="addError:error" focus-in="removeError"}}
 
 <br/>
 <button {{action "sendMessage"}}>Send</button>

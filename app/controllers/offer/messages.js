@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import validateMessage from './../validate_message';
 
-export default Ember.ArrayController.extend({
+export default validateMessage.extend({
 
   needs: ["offer"],
   model: [],
@@ -12,6 +13,8 @@ export default Ember.ArrayController.extend({
 
   actions: {
     sendMessage: function() {
+      if(!this._super()) { return false; }
+
       var offer_id = this.get('controllers.offer').get('id');
       var offer = this.store.getById('offer', offer_id);
 
