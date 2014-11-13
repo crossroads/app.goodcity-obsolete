@@ -36,5 +36,9 @@ module.exports = function(app) {
     res.send({"user": users_json ,"jwt_token":"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE0MDkwNDA0MTQsImlzcyI6Ikdvb2RDaXR5SEsiLCJleHAiOjE0MTAyNTAwMTQsIm1vYmlsZSI6Iis4NTI2MTA5MjAwMSIsIm90cF9zZWNyZXRfa2V5IjoiemRycGZ4c2VnM3cyeWt2aSJ9.0nokBv047aUR-xcilAOwudkkHyQem47L7vYiO6irvKE"});
   });
 
+  authRouter.get('/current_user_profile', function(req, res){
+    res.send(users_json);
+  });
+
   app.use('/api/v1/auth/', authRouter);
 };

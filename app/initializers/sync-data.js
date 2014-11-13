@@ -16,8 +16,17 @@ export default {
     var promises = retrieve(config.APP.PRELOAD_TYPES);
 
     //if logged in
-    if (session.get('authToken')) {
-      promises.push(store.find("user", session.get('currentUserId')));
+    if (session.get('authToken') && session.get('currentUserId')) {
+      promises.push(new Ember.RSVP.Promise(function(resolve, reject) {
+        Ember.$.ajax({
+          dataType: "json",
+          url: config.APP.SERVER_PATH + "/auth/current_user_profile",
+          headers: { Authorization: "Bearer " + session.get("authToken") },
+          success: function(data) { Ember.run(function() { store.pushPayload(data); resolve(); }); },
+          error: function(jqXHR) { Ember.run(function() { reject(jqXHR); }); }
+        });
+      }));
+
       promises = promises.concat(retrieve(config.APP.PRELOAD_AUTHORIZED_TYPES));
     }
 

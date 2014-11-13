@@ -33,8 +33,8 @@ export default Ember.Controller.extend({
               _this.set('session.otpAuthKey', null);
 
               _this.store.pushPayload(data.user);
-              var userId = data.user.user.id;
-              var user = _this.store.getById('user', userId);
+              var userId = data.user.user_profile.id;
+              var user = _this.store.getById('userProfile', userId);
 
               Ember.run(function(){
                 _this.get('controllers.application').send('logMeIn', userId);

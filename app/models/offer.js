@@ -26,8 +26,8 @@ export default DS.Model.extend({
   messages:       hasMany('message'),
 
   delivery:       belongsTo('delivery'),
-  createdBy:      belongsTo('user', { inverse: 'offers'}),
-  reviewedBy:     belongsTo('user', { inverse: 'reviewedOffers'}),
+  createdBy:      belongsTo('user'),
+  reviewedBy:     belongsTo('user'),
 
   // User details
   userName:       attr('string'),

@@ -1,66 +1,8 @@
-import Ember from 'ember';
 import DS from 'ember-data';
-import Addressable from './addressable';
 
-var attr = DS.attr,
-  hasMany = DS.hasMany,
-  belongsTo = DS.belongsTo;
+var attr = DS.attr;
 
-var User = Addressable.extend({
+export default DS.Model.extend({
   firstName:   attr('string'),
-  lastName:    attr('string'),
-  mobile:      attr('string'),
-
-  messages:      hasMany('message', { inverse: 'sender', async: true } ),
-  offers:          hasMany('offer', { inverse: 'createdBy', async: true }),
-  reviewedOffers:  hasMany('offer', { inverse: 'reviewedBy', async: true }),
-
-  permission:    belongsTo('permission'),
-
-  image: function(){
-    return false; //"assets/images/default_item.jpg";
-  }.property(),
-
-  nameInitial: function(){
-    return this.get('firstName').charAt(0).capitalize();
-  }.property('firstName'),
-
-  roleInitials: function(){
-    return this.get('isDonor') ? "(D)" : "("+ this.get("permission.name").capitalize().charAt(0) +")";
-  }.property('permission'),
-
-  isDonor: function(){
-    var permission = this.get('permission');
-    return Ember.empty(permission);
-  }.property('permission'),
-
-  isStaff: function(){
-    var permission = this.get('permission');
-    return !Ember.empty(permission);
-  }.property('permission'),
-
-  isReviewer: function(){
-    var permission_name = this.get('permission.name');
-    return permission_name === "Reviewer";
-  }.property('permission'),
-
-  isSupervisor: function(){
-    var permission_name = this.get('permission.name');
-    return permission_name === "Supervisor";
-  }.property('permission'),
-
-  subscriptions: function() {
-    var channels = {};
-    var events = ["update_store","notification"];
-    channels["user_" + this.get('id')] = events;
-    if (this.get("isReviewer")) {
-      channels["reviewer"] = events;
-    } else if (this.get("isSupervisor")) {
-      channels["supervisor"] = events;
-    }
-    return channels;
-  }.property(),
-
+  lastName:    attr('string')
 });
-
-export default User;
