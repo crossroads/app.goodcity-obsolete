@@ -1523,3 +1523,13 @@ $panel-font-color: #4f4f4f;
 // $include-table-visibility-classes: true;
 // $include-legacy-visibility-classes: true;
 // $include-accessibility-classes: true;
+
+$slick-font-path: url("/assets/fonts/");
+$slick-font-family: MuseoSans300, Museo300, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+//$slick-arrow-color: #f34d4f;
+$slick-dot-color: white;
+$slick-dot-color-active: #f34d4f;
+$slick-dot-size: 2rem;
+$slick-loader-path: url("/assets/");
+//$slick-prev-character: '\25C0';
+//$slick-next-character: '\25B6';

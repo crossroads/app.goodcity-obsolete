@@ -33,5 +33,8 @@
     "ember-select-2": "git://github.com/Rodrigora/ember-select-2",
     "express": "^4.10.1",
     "glob": "^4.0.6"
+  },
+  "dependencies": {
+    "slick-carousel": "^1.3.15"
   }
 }

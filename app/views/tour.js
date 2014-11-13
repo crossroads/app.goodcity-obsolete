@@ -1,0 +1,17 @@
+import Ember from 'ember';
+
+export default Ember.View.extend({
+  didInsertElement: function(){
+    Ember.$().ready(function(){
+      Ember.$('.tour_slides').slick({
+        dots: true,
+        autoplay: true,
+        adaptiveHeight: true,
+        speed: 500,
+        arrows: false,
+        touchMove: true,
+        swipe: true
+      });
+    });
+  }
+});
