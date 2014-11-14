@@ -10,5 +10,4 @@ export default sendMessage.extend({
       this._super(false);
     }
   }
-
 });
