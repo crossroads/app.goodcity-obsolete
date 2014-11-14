@@ -1,4 +1,5 @@
 import Ember from "ember";
+import AjaxPromise from '../ajax_promise';
 import config from '../config/environment';
 
 export default Ember.Component.extend({
@@ -42,22 +43,13 @@ export default Ember.Component.extend({
       }
     };
 
-    Ember.$.ajax({
-      type: 'GET',
-      url: config.APP.SERVER_PATH +"/images/generate_signature",
-      dataType: 'json',
-      headers: {
-        'Authorization': 'Bearer ' + this.get('session.authToken')
-      },
-      success: function(data){
-        Ember.run(function() {
-          Ember.$('.cloudinary-fileupload')
-            .attr("data-form-data", JSON.stringify(data))
-            .cloudinary_fileupload(options);
-          component.set('disabled', false);
-        });
-      }
-    });
+    new AjaxPromise("/images/generate_signature", "GET", this.get('session.authToken'))
+      .then(function(data) {
+        Ember.$('.cloudinary-fileupload')
+          .attr("data-form-data", JSON.stringify(data))
+          .cloudinary_fileupload(options);
+        component.set('disabled', false);
+      });
   }.on('didInsertElement')
 
 });

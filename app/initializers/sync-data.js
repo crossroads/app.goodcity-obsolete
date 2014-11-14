@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import AjaxPromise from '../ajax_promise';
 import config from '../config/environment';
 
 export default {
@@ -17,16 +18,10 @@ export default {
 
     //if logged in
     if (session.get('authToken') && session.get('currentUserId')) {
-      promises.push(new Ember.RSVP.Promise(function(resolve, reject) {
-        Ember.$.ajax({
-          dataType: "json",
-          url: config.APP.SERVER_PATH + "/auth/current_user_profile",
-          headers: { Authorization: "Bearer " + session.get("authToken") },
-          success: function(data) { Ember.run(function() { store.pushPayload(data); resolve(); }); },
-          error: function(jqXHR) { Ember.run(function() { reject(jqXHR); }); }
-        });
-      }));
-
+      promises.push(
+        new AjaxPromise("/auth/current_user_profile", "GET", session.get("authToken"))
+          .then(function(data) { store.pushPayload(data); })
+      );
       promises = promises.concat(retrieve(config.APP.PRELOAD_AUTHORIZED_TYPES));
     }
 
