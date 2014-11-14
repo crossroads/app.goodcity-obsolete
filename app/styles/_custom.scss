@@ -1,3 +1,34 @@
+.message_box {
+  background-color: #DDDDDD;
+  color: black;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  .message_details {
+    font-size: 0.7rem; }
+  .item_message {
+    float: right;
+    margin-top: -5%;
+  }
+}
+
+.tabs-content {
+  .message_box {
+    background-color: #FFFFFF;
+    color: black;
+    a {
+      color: black !important; }
+  }
+}
+
+textarea.error {
+  border-color: #f34d4f !important;
+  background: #fddbdc !important;
+  margin-bottom: 1rem;
+}
+
 .plan_delivery {
   font-size: 0.8rem;
   .right {
