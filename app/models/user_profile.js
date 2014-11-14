@@ -3,15 +3,12 @@ import DS from 'ember-data';
 import Addressable from './addressable';
 import UserPermission from './user_permission';
 
-var attr = DS.attr,
-  belongsTo = DS.belongsTo;
+var attr = DS.attr;
 
 export default Addressable.extend(UserPermission, {
   firstName:   attr('string'),
   lastName:    attr('string'),
   mobile:      attr('string'),
-
-  permission:    belongsTo('permission'),
 
   image: function(){
     return false; //"assets/images/default_item.jpg";
@@ -31,6 +28,6 @@ export default Addressable.extend(UserPermission, {
       channels["supervisor"] = events;
     }
     return channels;
-  }.property(),
+  }.property()
 
 });
