@@ -1,12 +1,12 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
-var belongsTo = DS.belongsTo;
-
 export default Ember.Mixin.create({
-  permission:    belongsTo('permission'),
+  permission:    DS.belongsTo('permission'),
 
   roleInitials: function(){
-    return this.get('isDonor') ? "(D)" : "("+ this.get("permission.name").capitalize().charAt(0) +")";
+    return this.get('isDonor') ? "(D)" :
+      "("+ this.get("permission.name").capitalize().charAt(0) +")";
   }.property('permission'),
 
   isDonor: Ember.computed.empty("permission.name"),

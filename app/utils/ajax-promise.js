@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import config from './config/environment';
+import config from '../config/environment';
 
 export default function(url, type, authToken, data, args) {
   return new Ember.RSVP.Promise(function(resolve, reject) {

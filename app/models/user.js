@@ -1,9 +1,9 @@
 import DS from 'ember-data';
-import UserPermission from './user_permission';
+import UserPermissionMixin from '../mixins/user-permission';
 
 var attr = DS.attr;
 
-export default DS.Model.extend(UserPermission, {
+export default DS.Model.extend(UserPermissionMixin, {
   firstName:   attr('string'),
   lastName:    attr('string')
 });

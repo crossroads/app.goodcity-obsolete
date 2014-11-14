@@ -21,13 +21,6 @@ module.exports = function(app) {
       "addressable_type": "User"
     }],
     "districts": [],
-    "permissions": [{
-      "id": 1,
-      "name": "Reviewer"
-    }, {
-      "id": 2,
-      "name": "Supervisor"
-    }],
     "user_profile": {
       "id": 1,
       "first_name": "Tom",

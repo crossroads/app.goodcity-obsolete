@@ -1,11 +1,10 @@
-import Ember from 'ember';
 import DS from 'ember-data';
 import Addressable from './addressable';
-import UserPermission from './user_permission';
+import UserPermissionMixin from '../mixins/user-permission';
 
 var attr = DS.attr;
 
-export default Addressable.extend(UserPermission, {
+export default Addressable.extend(UserPermissionMixin, {
   firstName:   attr('string'),
   lastName:    attr('string'),
   mobile:      attr('string'),

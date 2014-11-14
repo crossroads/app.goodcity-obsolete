@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import AjaxPromise from '../ajax_promise';
+import AjaxPromise from '../utils/ajax-promise';
 import config from '../config/environment';
 
 export default {
@@ -20,7 +20,9 @@ export default {
     if (session.get('authToken') && session.get('currentUserId')) {
       promises.push(
         new AjaxPromise("/auth/current_user_profile", "GET", session.get("authToken"))
-          .then(function(data) { store.pushPayload(data); })
+          .then(function(data) {
+            store.pushPayload(data);
+          })
       );
       promises = promises.concat(retrieve(config.APP.PRELOAD_AUTHORIZED_TYPES));
     }

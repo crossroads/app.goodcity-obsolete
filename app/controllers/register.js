@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import AjaxPromise from '../ajax_promise';
+import AjaxPromise from '../utils/ajax-promise';
 import config from '../config/environment';
 
 export default Ember.Controller.extend({
