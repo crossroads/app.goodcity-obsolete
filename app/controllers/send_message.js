@@ -2,10 +2,9 @@ import Ember from 'ember';
 
 var sendMessage = Ember.ArrayController.extend({
 
-  needs: ["offer"],
+  needs: ["offer", "review_item"],
   sortProperties: ['createdAt'],
   sortAscending: true,
-  offerMessage: true,
 
   invalidMessage: function() {
     return Ember.isBlank(this.get('body'));
@@ -20,7 +19,7 @@ var sendMessage = Ember.ArrayController.extend({
       this.set("addError", false);
     },
 
-    sendMessage: function(is_private) {
+    sendMessage: function(is_private, for_item) {
       if(this.get("invalidMessage")) {
         this.set("addError", true);
         return false;
@@ -33,6 +32,12 @@ var sendMessage = Ember.ArrayController.extend({
       newMessageProperties.offer = offer;
       newMessageProperties.isPrivate = is_private;
       newMessageProperties.createdAt = Date.now();
+
+      if(for_item) {
+        var item_id = this.get('controllers.review_item.id');
+        var item = this.store.getById('item', item_id);
+        newMessageProperties.item = item;
+      }
 
       this.set('body', '');
 
