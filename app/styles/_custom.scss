@@ -8,17 +8,25 @@
   font-size: 0.9rem;
   .message_details {
     font-size: 0.7rem; }
+  .item_message {
+    float: right;
+    margin-top: -5%;
+  }
+}
+
+.tabs-content {
+  .message_box {
+    background-color: #FFFFFF;
+    color: black;
+    a {
+      color: black !important; }
+  }
 }
 
 textarea.error {
   border-color: #f34d4f !important;
   background: #fddbdc !important;
   margin-bottom: 1rem;
-}
-
-.item_message {
-  float: right;
-  margin-top: -5%;
 }
 
 .plan_delivery {
