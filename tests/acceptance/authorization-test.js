@@ -67,7 +67,7 @@ test("On restricted page redirect to offers page if not staff", function() {
 test("On restricted page doesn't redirect if staff", function() {
   expect(2);
 
-  App = startApp({}, '"2"');
+  App = startApp({}, 1);
 
   visit('/');
 

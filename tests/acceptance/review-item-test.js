@@ -6,7 +6,7 @@ var App, testHelper,
 
 module('Display review Item', {
   setup: function() {
-    App = startApp({}, "2");
+    App = startApp({}, 2);
     testHelper = TestHelper.setup(App);
   },
   teardown: function() {

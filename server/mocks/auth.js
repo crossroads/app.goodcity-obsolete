@@ -21,8 +21,14 @@ module.exports = function(app) {
       "addressable_type": "User"
     }],
     "districts": [],
-    "permissions": [],
-    "user": {
+    "permissions": [{
+      "id": 1,
+      "name": "Reviewer"
+    }, {
+      "id": 2,
+      "name": "Supervisor"
+    }],
+    "user_profile": {
       "id": 1,
       "first_name": "Tom",
       "last_name": "Jones",
@@ -37,6 +43,19 @@ module.exports = function(app) {
   });
 
   authRouter.get('/current_user_profile', function(req, res){
+    if (req.header("Authorization").indexOf('pas89df7asjknf') != -1) {
+      users_json.user_profile.permission_id = 2;
+      users_json.user_profile.id = 3;
+    }
+    else if (req.header("Authorization").indexOf('7sakjhf8s6dasd') != -1) {
+      users_json.user_profile.permission_id = 1;
+      users_json.user_profile.id = 2;
+    }
+    else {
+      users_json.user_profile.permission_id = null;
+      users_json.user_profile.id = 1;
+    }
+
     res.send(users_json);
   });
 
