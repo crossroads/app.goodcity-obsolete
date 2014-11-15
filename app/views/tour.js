@@ -7,10 +7,15 @@ export default Ember.View.extend({
         dots: true,
         autoplay: true,
         adaptiveHeight: true,
-        speed: 500,
+        speed: 300,
         arrows: false,
         touchMove: true,
-        swipe: true
+        swipe: true,
+        onAfterChange: function(){
+          if(this.currentSlide === 4){
+            this.autoPlayClear();
+          }
+        }
       });
     });
   }
