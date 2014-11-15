@@ -19,8 +19,7 @@ export default Ember.ObjectController.extend({
       });
       this.transitionToRoute('login');
     },
-    logMeIn: function(userId){
-      this.set("session.currentUserId", userId);
+    logMeIn: function() {
       this.send('setSubscriptions');
     },
     setSubscriptions: function() {

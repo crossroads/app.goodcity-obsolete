@@ -17,12 +17,10 @@ export default {
     var promises = retrieve(config.APP.PRELOAD_TYPES);
 
     //if logged in
-    if (session.get('authToken') && session.get('currentUserId')) {
+    if (session.get('authToken')) {
       promises.push(
         new AjaxPromise("/auth/current_user_profile", "GET", session.get("authToken"))
-          .then(function(data) {
-            store.pushPayload(data);
-          })
+          .then(function(data) { store.pushPayload(data); })
       );
       promises = promises.concat(retrieve(config.APP.PRELOAD_AUTHORIZED_TYPES));
     }

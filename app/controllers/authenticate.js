@@ -27,13 +27,10 @@ export default Ember.Controller.extend({
             _this.setProperties({pin:null, mobilePhone: null});
             _this.set('session.authToken', data.jwt_token);
             _this.set('session.otpAuthKey', null);
-
             _this.store.pushPayload(data.user);
-            var userId = data.user.user_profile.id;
-            var user = _this.store.getById('userProfile', userId);
 
             Ember.run(function(){
-              _this.get('controllers.application').send('logMeIn', userId);
+              _this.get('controllers.application').send('logMeIn');
             });
 
             _this.transitionToRoute('loading');
@@ -47,7 +44,7 @@ export default Ember.Controller.extend({
                 attemptedTransition.retry();
                 _this.set('attemptedTransition', null);
               } else {
-                if (user.get('isDonor')) {
+                if (_this.session.get('currentUser.isDonor')) {
                   _this.transitionToRoute('offers');
                 } else {
                   _this.transitionToRoute('inbox');
