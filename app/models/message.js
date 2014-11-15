@@ -10,7 +10,7 @@ export default DS.Model.extend({
   createdAt:   attr('date'),
   updatedAt:   attr('date'),
   state:       attr('string', {defaultValue: 'read'}),
-  sender:      belongsTo('user', { inverse: 'messages' }),
+  sender:      belongsTo('user'),
   item:        belongsTo('item'),
   itemId:      attr('number'),
   offer:       belongsTo('offer'),

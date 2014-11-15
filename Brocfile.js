@@ -17,6 +17,7 @@ app.import('bower_components/moment/moment.js');
 
 app.import('bower_components/fastclick/lib/fastclick.js');
 app.import('bower_components/foundation/js/foundation.min.js');
+app.import('bower_components/slick.js/slick/slick.min.js');
 app.import('bower_components/jquery-placeholder/jquery.placeholder.js');
 app.import('bower_components/jquery.cookie/jquery.cookie.js');
 app.import('bower_components/modernizr/modernizr.js');

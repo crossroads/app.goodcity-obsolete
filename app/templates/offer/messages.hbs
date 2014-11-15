@@ -1,0 +1,18 @@
+<nav class="tab-bar">
+  <section class="left-small">
+    {{#link-to 'offers' classNames="back"}}{{t "application.home"}}{{/link-to}}
+  </section>
+
+  <section class="middle tab-bar-section">
+    <h1 class="title">Messages</h1>
+  </section>
+</nav>
+
+<section class="main-section">
+  <div class="row">
+    <div class="small-12 columns">
+
+      {{partial 'message_template'}}
+    </div>
+  </div>
+</section>
