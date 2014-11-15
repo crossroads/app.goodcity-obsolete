@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import testSkip from '../helpers/test-skip';
-import '../fixtures/user';
+import '../fixtures/user_profile';
 
 var App, testHelper, hk_user, non_hk_user;
 
