@@ -7,7 +7,7 @@ export default Ember.View.extend({
         dots: true,
         autoplay: true,
         adaptiveHeight: true,
-        speed: 300,
+        speed: 600,
         arrows: false,
         touchMove: true,
         swipe: true,
