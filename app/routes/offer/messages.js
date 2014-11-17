@@ -1,10 +1,6 @@
 import ReadMessagesRoute from './../read_messages';
 
 export default ReadMessagesRoute.extend({
-  renderTemplate: function() {
-    this.render('message_template', {controller: 'offer.messages'});
-  },
-
   model: function() {
     var offerId = this.modelFor('offer').get('id');
     return this.store.filter('message', function(message) {

@@ -1,32 +1,13 @@
 import Ember from 'ember';
+import sendMessage from './../send_message';
 
-export default Ember.ArrayController.extend({
-
-  needs: ["offer", "review_item"],
-  sortProperties: ['createdAt'],
-  sortAscending: true,
+export default sendMessage.extend({
   itemMessage: true,
-
   filteredContent: Ember.computed.filterBy('arrangedContent', 'isPrivate', false),
 
   actions: {
     sendMessage: function() {
-      var offer_id = this.get('controllers.offer').get('id');
-      var offer = this.store.getById('offer', offer_id);
-
-      var item_id = this.get('controllers.review_item.id');
-      var item = this.store.getById('item', item_id);
-
-      var newMessageProperties = this.getProperties('body');
-      newMessageProperties.offer = offer;
-      newMessageProperties.item = item;
-      newMessageProperties.isPrivate = false;
-      newMessageProperties.createdAt = Date.now();
-
-      this.set('body', '');
-
-      var message = this.store.createRecord('message', newMessageProperties);
-      message.save();
+      this._super(false, true);
     },
 
     showMessage: function(message) {

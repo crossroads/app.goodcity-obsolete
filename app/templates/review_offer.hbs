@@ -1,6 +1,10 @@
 <nav class="tab-bar">
   <section class="left-small">
-    {{#link-to 'inbox.under_review' classNames="back"}}{{t "back"}}{{/link-to}}
+    {{#if isSubmittedOffer}}
+      {{#link-to 'inbox' classNames="back"}}{{t "back"}}{{/link-to}}
+    {{else}}
+      {{#link-to 'inbox.under_review' classNames="back"}}{{t "back"}}{{/link-to}}
+    {{/if}}
   </section>
 
   <section class="middle tab-bar-section">

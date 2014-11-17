@@ -1,3 +1,65 @@
+.message_box {
+  background-color: #DDDDDD;
+  color: black;
+  width: 100%;
+  border-radius: 0.5rem;
+  padding: 0.8rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  .message_details {
+    font-size: 0.7rem; }
+  .item_message {
+    float: right;
+    margin-top: -5%;
+  }
+}
+
+.tabs-content {
+  .message_box {
+    background-color: #FFFFFF;
+    color: black;
+    a {
+      color: black !important; }
+  }
+}
+
+textarea.error {
+  border-color: #f34d4f !important;
+  background: #fddbdc !important;
+  margin-bottom: 1rem;
+}
+
+.plan_delivery {
+  font-size: 0.8rem;
+  .right {
+    text-align: right; }
+  .delivery-image {
+    width: 60px;
+    height: 60px;
+    margin-top: 10px; }
+  .button {
+    font-size: 0.9rem;
+    padding: 0.7rem;
+    margin-top: 0.8rem; }
+}
+
+.tour_slides {
+  text-align: center;
+  img {
+    display: inline-block; }
+  .slick-dots {
+    display: block;
+    position: inherit;
+    margin: 0;
+    bottom: 0; }
+  .slick-list {
+    min-height: 19rem; }
+  .slick-slide {
+    padding: 0.1rem; }
+  .register-button {
+    margin-top: 2rem; }
+}
+
 .reject_label {
   width: 90%; }
 
