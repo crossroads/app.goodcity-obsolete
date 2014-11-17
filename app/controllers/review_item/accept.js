@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.Controller.extend({
+export default Ember.ObjectController.extend({
 
   needs: ["review_item", "offer"],
 
@@ -13,10 +13,9 @@ export default Ember.Controller.extend({
     this.set('itemTypeName', '');
   }.observes('controllers.review_item.each'),
 
-  actions: {
-    acceptOffer: function(){
-      alert("accept");
-    }
-
-  }
+  // actions: {
+  //   acceptOffer: function(){
+  //     alert("accept");
+  //   }
+  // }
 });

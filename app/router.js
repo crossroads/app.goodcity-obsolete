@@ -63,6 +63,7 @@ Router.map(function() {
   this.route('districts');
 
   this.route('messages');
+  this.route('packages');
 
   this.resource('inbox', function(){
     this.route('index', {path: '/'});

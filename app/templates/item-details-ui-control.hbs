@@ -1,0 +1,74 @@
+<div class="row">
+  <div class="small-10 small-offset-1 push-1 columns detail_container">
+    <div class="row top">
+      <div class="small-3 columns">
+        {{cloudinary-image imageId=view.itemval.itemDefaultImageId
+          className='fav_image' width=70 height=70}}
+      </div>
+      <div class="small-7 columns head">
+        <span class="item-ui" {{ bind-attr id=view.name }}>
+          {{input
+            type="text"
+            valueBinding="view.value"
+            placeholderBinding="view.placeholder"
+            maxlengthBinding="view.maxlength"
+          }}
+        </span>
+      </div>
+      <div class="small-2 columns icon">
+        <i {{ bind-attr class=":fa :fa-lg isHide:fa-plus:is-hide" }}></i>
+      </div>
+    </div>
+    <div {{bind-attr class="isHide :row :bottom :item-ui" }}>
+      <div class="small-10 columns head">
+        {{input
+          type="text"
+          valueBinding="view.comment"
+          placeholder="Comment"
+          maxlength="50"
+        }}
+      </div>
+      <div class="small-2 columns icon">
+        <i class="fa fa-minus fa-lg"></i>
+      </div>
+    </div>
+    <div class="row bottom">
+      <div {{bind-attr class=":small-6 :columns :item-ui :inner"}}>
+        {{input
+          type="text"
+          name="qty"
+          valueBinding="view.qty"
+          placeholder="Qty"
+          maxlength="8"
+        }}
+      </div>
+      <div {{bind-attr class=":small-2 :columns :item-ui :inner" }}>
+        {{input
+          type="text"
+          name="length"
+          valueBinding="view.length"
+          placeholder="L"
+          maxlength="8"
+        }}
+      </div>
+      <div {{bind-attr class=":small-2 :columns :item-ui :inner"}}>
+        {{input
+          type="text"
+          name="width"
+          valueBinding="view.width"
+          placeholder="W"
+          maxlength="5"
+        }}
+      </div>
+      <div {{bind-attr class=":small-2 :columns :item-ui :inner"}}>
+        {{input
+          type="text"
+          name="height"
+          valueBinding="view.height"
+          placeholder="H"
+          maxlength="5"
+        }}
+      </div>
+    </div>
+  </div>
+</div>
