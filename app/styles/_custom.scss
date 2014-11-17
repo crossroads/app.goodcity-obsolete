@@ -23,6 +23,11 @@
   }
 }
 
+.input_container.error {
+  border: solid  0.2rem #f34d4f !important;
+  background: #fddbdc !important;
+}
+
 textarea.error {
   border-color: #f34d4f !important;
   background: #fddbdc !important;

@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import ValidateItem from './../validate_item';
 
-export default Ember.ObjectController.extend({
+export default ValidateItem.extend({
 
   needs: ["item"],
 
@@ -15,10 +16,14 @@ export default Ember.ObjectController.extend({
   }.property('donorCondition.id'),
 
   actions: {
-    submitItem: function(){
+     submitItem: function() {
+
+      if(this.get("invalidDescription")) {
+        this.set("addError", true);
+        return false;
+      }
 
       var newItemProperties = this.getProperties('id', 'donorDescription', 'imageIdentifiers', 'favouriteImage');
-      if(!(newItemProperties.donorDescription && newItemProperties.donorDescription.trim().length)) { return; }
 
       // Update Item
       var offer_id = this.get('offerId');
