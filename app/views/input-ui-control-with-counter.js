@@ -33,6 +33,8 @@ export default Ember.View.extend({
   // dataType:{String}
   name: null,
 
+  requireValidation: false,
+
   currentCountBinding: 'inputControl.value.length',
 
   charactersKeyedIn: function () {
@@ -58,6 +60,15 @@ export default Ember.View.extend({
     if(this.get('placeholder') === 'item_description') {
       var placeholderText = Ember.I18n.t("items.add_item.description_placeholder");
       this.set('placeholder', placeholderText);
+    }
+  },
+
+  actions: {
+    removeError: function(){
+      if(this.get("requireValidation")) {
+        this.get("controller").send("removeError");
+        return true;
+      }
     }
   }
 });

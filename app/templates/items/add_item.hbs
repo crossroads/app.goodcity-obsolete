@@ -31,7 +31,7 @@
           </div>
 
           <div class="small-8 large-10 columns">
-            {{view "input-ui-control-with-counter" type="textarea" value=donorDescription label="" name="donorDescription" rows=5 placeholder="item_description" maxlength="180"}}
+            {{view "input-ui-control-with-counter" type="textarea" value=donorDescription label="" name="donorDescription" rows=5 placeholder="item_description" maxlength="180" requireValidation=addError }}
             {{input type="hidden" value=offerId name="offerId" }}
           </div>
         </div>

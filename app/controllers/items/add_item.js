@@ -1,9 +1,11 @@
 import Ember from 'ember';
+import ValidateItem from './../validate_item'
 
-export default Ember.Controller.extend({
+export default ValidateItem.extend({
 
   needs: ["offer"],
   offerId: Ember.computed.alias('controllers.offer.id'),
+  isNewItem: true,
 
   previewImageId: function() {
     return localStorage.favourite;
@@ -13,18 +15,23 @@ export default Ember.Controller.extend({
     return JSON.parse(localStorage.image_ids || "[]").length;
   }.property().volatile(),
 
-  isNewItem: true,
-
-  donorConditionId: null,
+  donorConditionId: function(){
+    var donor_conditions = this.store.all('donor_condition');
+    var condition = donor_conditions.filterProperty('name', "New");
+    return condition.get("firstObject.id") || null;
+  }.property().volatile(),
 
   actions: {
     submitItem: function() {
 
-      var newItemProperties = this.getProperties('donorDescription');
+      if(this.get("invalidDescription")) {
+        this.set("addError", true);
+        return false;
+      }
 
-      if(!(newItemProperties.donorDescription && newItemProperties.donorDescription.trim().length)) { return; }
+      var newItemProperties = this.getProperties('donorDescription');
       var donorConditionId = this.get('donorConditionId');
-      if (!donorConditionId) { return; }
+
       newItemProperties.imageIdentifiers = JSON.parse(localStorage.image_ids || "[]");
       newItemProperties.favouriteImage   = localStorage.favourite;
 
