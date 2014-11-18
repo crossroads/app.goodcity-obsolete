@@ -74,6 +74,18 @@ I18nTranslationsEn =
           "free" : "Free"
           "booking_button" : "Details & Booking"
 
+      "gogovan":
+        "porterage":
+          "title" : "Porterage Charges"
+          "driver" : "This needs to be negotiated with driver."
+          "price_factors" : "The price will vary based on many factors, including"
+          "item_count_size" : "How many items of what size"
+          "obstacles" : "Stairs or obstacles"
+          "park_van" : "Ability to park van unattended"
+          "help" : "If you or a friend can help"
+          "unwilling_driver" : "If you have large furniture and/or challenging needs you may find drivers are unwilling to take the job or require a significant price."
+          "thanks" : "Got it, thank you!"
+
       "tour":
         "register" : "Start Now"
         "step1.title" : "Step 1: Register"

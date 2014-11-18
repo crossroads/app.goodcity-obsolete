@@ -1,0 +1,65 @@
+<nav class="tab-bar">
+  <section class="left-small">
+    {{#link-to 'offer.plan_delivery' classNames="back"}}{{t "back"}}{{/link-to}}
+  </section>
+
+  <section class="middle tab-bar-section">
+    <h1 class="title">Book Van</h1>
+  </section>
+</nav>
+
+<section class="main-section">
+  <div class="row">
+    <div class="small-12 columns with-btm">
+
+      <div class="row">
+        <h3>Preferred day/time</h3>
+        Limited to Crossroads' operating hours
+      </div>
+
+      <div class="row">
+        <div class="small-6 columns">
+          <input type='text'>
+        </div>
+        <div class="small-6 columns">
+          <input type='text'>
+        </div>
+      </div>
+
+      <div class="row">
+        <h3>Extra Requirements</h3>
+        <div class='checklist'>
+          {{view Ember.Checkbox }}
+          <label>Speak English</label>
+        </div>
+
+        <div class='checklist'>
+          {{view Ember.Checkbox }}
+          <label>Borrow trolley(s) + $20/piece</label>
+        </div>
+
+        <div class='checklist'>
+          {{view Ember.Checkbox }}
+          <label>Porterage/go up(negotiate with drivers)</label>
+        </div>
+      </div>
+
+      <div class="row">
+        Extra Time(15 minutes waiting time is included for you to load the van. Extra time incurs a charge.)
+      </div>
+
+      <div class="row">
+        {{view Ember.Select}}
+      </div>
+
+      <div class="btm">
+        <div class="row">
+          <div class="small-10 small-offset-1 columns">
+            <button {{action ''}} class='button expand'>Get Quote</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

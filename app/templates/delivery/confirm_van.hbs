@@ -1,0 +1,91 @@
+<nav class="tab-bar">
+  <section class="left-small">
+    {{#link-to 'delivery.book_van' classNames="back"}}{{t "back"}}{{/link-to}}
+  </section>
+
+  <section class="middle tab-bar-section">
+    <h1 class="title">Confirm Van</h1>
+  </section>
+</nav>
+
+<section class="main-section">
+  <div class="row">
+    <div class="small-12 columns with-btm">
+
+      <div class="row">
+        November 7th (Friday),  11:00 am
+        Central -> Crossroads
+        English Speaker, Porterage
+      </div>
+      <hr>
+
+      <div class="row">
+        <div class="small-3 columns">
+          Base fee
+        </div>
+        <div class="small-9 columns">
+          $380
+        </div>
+      </div>
+      <hr>
+
+      <div class="row">
+        <div class="small-3 columns">
+          Porterage
+        </div>
+        <div class="small-6 columns">
+          Negotiate with driver
+        </div>
+        <div class="small-3 columns">
+          {{#link-to 'delivery.porterage_charges' }}Details{{/link-to}}
+        </div>
+      </div>
+      <hr>
+
+      <div class="row">
+        <div class="small-3 columns">
+          Other
+        </div>
+        <div class="small-6 columns">
+          Tolls, parking, etc.
+          not included
+        </div>
+        <div class="small-3 columns">
+          <a href="#">Details</a>
+        </div>
+      </div>
+      <hr>
+
+      <div class="row">
+        Please confirm total price with driver before loading
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">
+          Your Name
+        </div>
+        <div class="small-9 columns">
+          {{input type='text'}}
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="small-3 columns">
+          Phone
+        </div>
+        <div class="small-9 columns">
+          {{input type='text'}}
+        </div>
+      </div>
+
+      <div class="btm">
+        <div class="row">
+          <div class="small-10 small-offset-1 columns">
+            <button {{action ''}} class='button expand'>Confirm & Book</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

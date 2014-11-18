@@ -13,7 +13,14 @@ export default Ember.ObjectController.extend({
 
       var route = this;
       delivery.save().then(function(delivery) {
-        route.transitionToRoute('delivery.book_timeslot', delivery);
+        switch(delivery_type) {
+          case 'alternate':
+            route.transitionToRoute('delivery.book_timeslot', delivery);
+            break;
+          case 'gogovan':
+            route.transitionToRoute('delivery.book_van', delivery);
+            break;
+        }
       });
     }
   }
