@@ -1,3 +1,28 @@
+.confirm-van{
+  .delivery-details {
+    font-size: 1rem;
+    color: white;
+    font-weight: 600;
+  }
+  .charges-details {
+    font-size: 0.8rem;
+    .row {
+      margin: -0.5rem; }
+    .heading {
+      color: white; }
+  }
+  .user-details {
+    font-size: 0.8rem;
+    .confirm {
+      margin-bottom: 1rem; }
+    .input-label > span {
+      height: 2.5rem;
+      vertical-align: middle;
+      display: table-cell;
+    }
+  }
+}
+
 .porterage_charges_text{
   font-size: 1rem;
   margin-bottom: 2rem;

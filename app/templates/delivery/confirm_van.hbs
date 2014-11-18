@@ -4,84 +4,86 @@
   </section>
 
   <section class="middle tab-bar-section">
-    <h1 class="title">Confirm Van</h1>
+    <h1 class="title">{{t "gogovan.confirm_van.title"}}</h1>
   </section>
 </nav>
 
-<section class="main-section">
+<section class="main-section confirm-van">
   <div class="row">
     <div class="small-12 columns with-btm">
 
-      <div class="row">
-        November 7th (Friday),  11:00 am
-        Central -> Crossroads
+      <div class="row delivery-details">
+        November 7th (Friday),  11:00 am<br/>
+        Central → Crossroads<br/>
         English Speaker, Porterage
       </div>
       <hr>
 
-      <div class="row">
-        <div class="small-3 columns">
-          Base fee
+      <div class = 'charges-details'>
+        <div class="row">
+          <div class="small-3 columns heading">
+            {{t "gogovan.confirm_van.base_fee"}}
+          </div>
+          <div class="small-9 columns">
+            $380
+          </div>
         </div>
-        <div class="small-9 columns">
-          $380
-        </div>
-      </div>
-      <hr>
+        <hr>
 
-      <div class="row">
-        <div class="small-3 columns">
-          Porterage
+        <div class="row">
+          <div class="small-3 columns heading">
+            {{t "gogovan.confirm_van.porterage"}}
+          </div>
+          <div class="small-6 columns">
+            Negotiate with driver
+          </div>
+          <div class="small-3 columns">
+            {{#link-to 'delivery.porterage_charges' }}{{t "gogovan.confirm_van.details"}}{{/link-to}}
+          </div>
         </div>
-        <div class="small-6 columns">
-          Negotiate with driver
-        </div>
-        <div class="small-3 columns">
-          {{#link-to 'delivery.porterage_charges' }}Details{{/link-to}}
-        </div>
-      </div>
-      <hr>
+        <hr>
 
-      <div class="row">
-        <div class="small-3 columns">
-          Other
+        <div class="row">
+          <div class="small-3 columns heading">
+            {{t "gogovan.confirm_van.other"}}
+          </div>
+          <div class="small-6 columns">
+            Tolls, parking, etc.
+            not included
+          </div>
+          <div class="small-3 columns">
+            <a href="#">{{t "gogovan.confirm_van.details"}}</a>
+          </div>
         </div>
-        <div class="small-6 columns">
-          Tolls, parking, etc.
-          not included
-        </div>
-        <div class="small-3 columns">
-          <a href="#">Details</a>
-        </div>
-      </div>
-      <hr>
-
-      <div class="row">
-        Please confirm total price with driver before loading
+        <hr>
       </div>
 
-      <div class="row">
-        <div class="small-3 columns">
-          Your Name
-        </div>
-        <div class="small-9 columns">
-          {{input type='text'}}
-        </div>
-      </div>
+      <div class="row user-details">
+        <div class='confirm'>{{t "gogovan.confirm_van.confirm_with_drivar"}}</div>
 
-      <div class="row">
-        <div class="small-3 columns">
-          Phone
+        <div class="row">
+          <div class="small-3 columns input-label">
+            <span>{{t "gogovan.confirm_van.name"}}</span>
+          </div>
+          <div class="small-9 columns">
+            {{input type='text'}}
+          </div>
         </div>
-        <div class="small-9 columns">
-          {{input type='text'}}
+
+        <div class="row">
+          <div class="small-3 columns input-label">
+            <span>{{t "gogovan.confirm_van.phone"}}</span>
+          </div>
+          <div class="small-9 columns">
+            {{input type='text'}}
+          </div>
         </div>
       </div>
 
       <div class="btm">
         <div class="row">
           <div class="small-10 small-offset-1 columns">
-            <button {{action ''}} class='button expand'>Confirm & Book</button>
+            <button {{action ''}} class='button expand'>{{t "gogovan.confirm_van.book_delivery"}}</button>
           </div>
         </div>
       </div>

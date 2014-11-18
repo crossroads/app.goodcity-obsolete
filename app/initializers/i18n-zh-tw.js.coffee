@@ -80,6 +80,17 @@ I18nTranslationsZhTw =
           "unwilling_driver" : "If you have large furniture and/or challenging needs you may find drivers are unwilling to take the job or require a significant price."
           "thanks" : "Got it, thank you!"
 
+        "confirm_van" :
+          "title" : "Confirm Van"
+          "base_fee" : "Base fee"
+          "porterage" : "Porterage"
+          "details" : "Details"
+          "other" : "Other"
+          "confirm_with_drivar" : "Please confirm total price with driver before loading."
+          "name" : "Your Name"
+          "phone" : "Phone"
+          "book_delivery" : "Confirm & Book"
+
       "tour":
         "register" : "現在開始"
         "step1.title" : "第1步：注册"
