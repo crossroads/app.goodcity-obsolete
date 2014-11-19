@@ -8,13 +8,13 @@
   </section>
 </nav>
 
-<section class="main-section">
+<section class="main-section book-van">
   <div class="row">
     <div class="small-12 columns with-btm">
 
       <div class="row">
         <h3>Preferred day/time</h3>
-        Limited to Crossroads' operating hours
+        <div class='description'>Limited to Crossroads' operating hours</div>
       </div>
 
       <div class="row">
@@ -28,24 +28,24 @@
 
       <div class="row">
         <h3>Extra Requirements</h3>
-        <div class='checklist'>
-          {{view Ember.Checkbox }}
-          <label>Speak English</label>
+        <div class='checkbox'>
+          {{view Ember.Checkbox id='1' }}
+          <label for='1'><span>Speak English</span></label>
         </div>
 
-        <div class='checklist'>
-          {{view Ember.Checkbox }}
-          <label>Borrow trolley(s) + $20/piece</label>
+        <div class='checkbox'>
+          {{view Ember.Checkbox id='2' }}
+          <label for='2'><span>Borrow trolley(s) + $20/piece</span></label>
         </div>
 
-        <div class='checklist'>
-          {{view Ember.Checkbox }}
-          <label>Porterage/go up(negotiate with drivers)</label>
+        <div class='checkbox'>
+          {{view Ember.Checkbox id='3' }}
+          <label for='3'><span>Porterage/go up(negotiate with drivers)</span></label>
         </div>
       </div>
 
       <div class="row">
-        Extra Time(15 minutes waiting time is included for you to load the van. Extra time incurs a charge.)
+        <div class='description'>Extra Time(15 minutes waiting time is included for you to load the van. Extra time incurs a charge.)</div>
       </div>
 
       <div class="row">
