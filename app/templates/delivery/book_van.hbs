@@ -18,10 +18,24 @@
 
       <div class="row">
         <div class="small-6 columns">
-          {{view Ember.Select}}
+          {{view "select"
+            content=territories
+            optionValuePath="content.id"
+            optionLabelPath="content.name"
+            selectionBinding='selectedTerritory'
+            valueBinding='territoryId'
+            prompt="All"
+            classNames='selectAddress' }}
         </div>
+
         <div class="small-6 columns">
-          {{view Ember.Select}}
+          {{view "select"
+            contentBinding='districtsByTerritory'
+            optionValuePath="content.id"
+            optionLabelPath="content.name"
+            selectionBinding='selectedDistrict'
+            valueBinding="districtId"
+            classNames='selectAddress district' }}
         </div>
       </div>
 

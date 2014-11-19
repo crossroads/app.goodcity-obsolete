@@ -13,7 +13,11 @@ export default DS.Model.extend({
   }.property('firstName'),
 
   roleInitials: function(){
-    return this.get('isDonor') ? "(D)" :
-      "("+ this.get("permission.name").capitalize().charAt(0) +")";
+    if(this.get('isDonor')) {
+      return "(D)";
+    } else {
+      var permission = this.get("permission.name") || "Donor";
+      return "("+ permission.capitalize().charAt(0) +")";
+    }
   }.property('permission')
 });
