@@ -91,6 +91,18 @@ I18nTranslationsZhTw =
           "phone" : "Phone"
           "book_delivery" : "Confirm & Book"
 
+        "book_van" :
+          "title" : "Book Van"
+          "location" : "Location"
+          "select_day" : "Preferred day/time"
+          "crossroads_time" : "Limited to Crossroads' operating hours"
+          "requirements" : "Extra Requirements"
+          "speak_english" : "Speak English"
+          "trolly_cost" : "Borrow trolley(s) + $20/piece"
+          "porterage" : "Porterage/go up(negotiate with drivers)"
+          "extra_time_charge" : "Extra Time(15 minutes waiting time is included for you to load the van. Extra time incurs a charge.)"
+          "get_quote" : "Get Quote"
+
       "tour":
         "register" : "現在開始"
         "step1.title" : "第1步：注册"

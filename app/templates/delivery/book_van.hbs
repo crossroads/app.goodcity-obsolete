@@ -4,7 +4,7 @@
   </section>
 
   <section class="middle tab-bar-section">
-    <h1 class="title">Book Van</h1>
+    <h1 class="title">{{t "gogovan.book_van.title"}}</h1>
   </section>
 </nav>
 
@@ -13,8 +13,21 @@
     <div class="small-12 columns with-btm">
 
       <div class="row">
-        <h3>Preferred day/time</h3>
-        <div class='description'>Limited to Crossroads' operating hours</div>
+        <h3>{{t "gogovan.book_van.location"}}</h3>
+      </div>
+
+      <div class="row">
+        <div class="small-6 columns">
+          {{view Ember.Select}}
+        </div>
+        <div class="small-6 columns">
+          {{view Ember.Select}}
+        </div>
+      </div>
+
+      <div class="row">
+        <h3>{{t "gogovan.book_van.select_day"}}</h3>
+        <div class='description'>{{t "gogovan.book_van.crossroads_time"}}</div>
       </div>
 
       <div class="row">
@@ -27,25 +40,25 @@
       </div>
 
       <div class="row">
-        <h3>Extra Requirements</h3>
+        <h3>{{t "gogovan.book_van.requirements"}}</h3>
         <div class='checkbox'>
           {{view Ember.Checkbox id='1' }}
-          <label for='1'><span>Speak English</span></label>
+          <label for='1'><span>{{t "gogovan.book_van.speak_english"}}</span></label>
         </div>
 
         <div class='checkbox'>
           {{view Ember.Checkbox id='2' }}
-          <label for='2'><span>Borrow trolley(s) + $20/piece</span></label>
+          <label for='2'><span>{{t "gogovan.book_van.trolly_cost"}}</span></label>
         </div>
 
         <div class='checkbox'>
           {{view Ember.Checkbox id='3' }}
-          <label for='3'><span>Porterage/go up(negotiate with drivers)</span></label>
+          <label for='3'><span>{{t "gogovan.book_van.porterage"}}</span></label>
         </div>
       </div>
 
       <div class="row">
-        <div class='description'>Extra Time(15 minutes waiting time is included for you to load the van. Extra time incurs a charge.)</div>
+        <div class='description'>{{t "gogovan.book_van.extra_time_charge"}}</div>
       </div>
 
       <div class="row">
@@ -55,7 +68,7 @@
       <div class="btm">
         <div class="row">
           <div class="small-10 small-offset-1 columns">
-            <button {{action ''}} class='button expand'>Get Quote</button>
+            <button {{action ''}} class='button expand'>{{t "gogovan.book_van.get_quote"}}</button>
           </div>
         </div>
       </div>
