@@ -1,3 +1,18 @@
+.btn-prepend {
+  position: relative;
+  .mobile-prefix {
+    position: absolute;
+    width: 3.2rem;
+    color: rgba(0, 0, 0, 0.75);
+    text-align: center;
+    font-size: 1.125rem;
+    margin: 0.4rem 0 0 0.4rem;
+    height: 1.7rem;
+    padding-top: 0.03rem; }
+  #mobile {
+    padding-left: 3.5rem; }
+}
+
 .confirm-van{
   .delivery-details {
     font-size: 1rem;
