@@ -15,7 +15,7 @@ export default DS.Model.extend({
   rejectedAt:      attr('date'),
   createdAt:       attr('date'),
   updatedAt:       attr('date'),
-  packageTypeId:   attr('number'),
+  // packageTypeId:   attr('number'),
   item:            belongsTo('item'),
   packageType:     belongsTo('item_type')
 });

@@ -19,14 +19,26 @@ var packages = Ember.ArrayController.extend({
     return this.get('controllers.review_item/accept.defaultImageId');
   }.property('controllers.review_item/accept.defaultImageId'),
 
+
   actions: {
     savePackageType: function(packageDetails){
       var _this = this;
+      var packagePromises = [];
+
       packageDetails.forEach(function(packDetail){
         packDetail.item = _this.store.getById('item', packDetail.itemId);
         packDetail.packageType = _this.store.getById('item_type', packDetail.packageTypeId);
+
         var packageNew = _this.store.createRecord("package", packDetail);
-        packageNew.save();
+        packagePromises.pushObject(packageNew.save());
+      });
+
+      Ember.RSVP.all(packagePromises).then(function() {
+        var acceptItem = {id: _this.get("itemId") , state_event: "accept"};
+        var item = _this.store.update('item', acceptItem);
+        item.save().then(function() {
+          _this.transitionToRoute('review_offer.items');
+        });
       });
     }
   }
