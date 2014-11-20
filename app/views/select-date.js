@@ -16,7 +16,7 @@ export default Ember.View.extend({
         clear: false,
         today: false,
         close: false,
-        onSet: function(context) {
+        onSet: function() {
           _this.set("selection", this.get("select").obj);
         }
       });

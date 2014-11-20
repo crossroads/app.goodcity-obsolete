@@ -38,12 +38,12 @@ export default Ember.ObjectController.extend({
     bookVan: function(){
       var selectedDate = this.get('selectedDate');
       selectedDate.setMinutes(selectedDate.getMinutes() + this.get('selectedTime'));
-      var extraTime = this.get("selectedExtraTime");
 
       var requestProperties = {};
       requestProperties.pickup_time = selectedDate;
       requestProperties.district = this.get('selectedDistrict.id');
       requestProperties.territory = this.get('selectedTerritory.id');
+      requestProperties.extraTime = this.get("selectedExtraTime");
 
     },
   }

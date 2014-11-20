@@ -12,7 +12,7 @@ export default Ember.View.extend({
         clear: '',
         min: [8,30],
         max: [18,0],
-        onSet: function(context) {
+        onSet: function() {
           _this.set("selection", this.get("select").time);
         }
       });
