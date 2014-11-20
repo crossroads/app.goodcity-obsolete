@@ -34,7 +34,8 @@ var packages = Ember.ArrayController.extend({
       });
 
       Ember.RSVP.all(packagePromises).then(function() {
-        var acceptItem = {id: _this.get("itemId") , state_event: "accept"};
+        var acceptItem = {id: _this.get("itemId") , state_event: "accept",
+          itemTypeId: _this.get("itemTypeId")};
         var item = _this.store.update('item', acceptItem);
         item.save().then(function() {
           _this.transitionToRoute('review_offer.items');
