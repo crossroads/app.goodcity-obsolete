@@ -1,34 +1,36 @@
 <div class="row">
-  <div class="small-10 small-offset-1 push-1 columns detail_container">
+  <div class="small-12 columns detail_container">
     <div class="row top">
       <div class="small-3 columns">
         {{cloudinary-image imageId=view.itemval.itemDefaultImageId
           className='fav_image' width=70 height=70}}
       </div>
       <div class="small-7 columns head">
-        <span class="item-ui" {{ bind-attr id=view.name }}>
+        <span class="item-ui">
           {{input
             type="text"
-            valueBinding="view.value"
-            placeholderBinding="view.placeholder"
+            name="itemtypename"
+            valueBinding="view.itemtypename"
+            placeholderBinding="Item Type"
             maxlengthBinding="view.maxlength"
           }}
         </span>
       </div>
-      <div class="small-2 columns icon">
-        <i {{ bind-attr class=":fa :fa-lg isHide:fa-plus:is-hide" }}></i>
+      <div class="small-2 columns icon" {{action "hideComment" on="click" target="view"}}>
+        <i {{ bind-attr class=":fa :fa-lg view.isHide:fa-plus:is-hide" }}></i>
       </div>
     </div>
-    <div {{bind-attr class="isHide :row :bottom :item-ui" }}>
+    <div {{bind-attr class="view.isHide :row :bottom :item-ui" }}>
       <div class="small-10 columns head">
         {{input
           type="text"
+          name="comment"
           valueBinding="view.comment"
-          placeholder="Comment"
+          placeholder="Comments"
           maxlength="50"
         }}
       </div>
-      <div class="small-2 columns icon">
+      <div class="small-2 columns icon" {{action "hideComment" on="click" target="view"}}>
         <i class="fa fa-minus fa-lg"></i>
       </div>
     </div>
@@ -37,7 +39,7 @@
         {{input
           type="text"
           name="qty"
-          valueBinding="view.qty"
+          valueBinding="view.quantity"
           placeholder="Qty"
           maxlength="8"
         }}

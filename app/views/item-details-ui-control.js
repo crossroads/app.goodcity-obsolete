@@ -3,17 +3,21 @@ import Ember from 'ember';
 export default Ember.View.extend({
   templateName: 'item-details-ui-control',
   tagName: 'div',
-  attributeBindings: ["value", "name", "itemval", "width", "height", "length", "qty"],
+  attributeBindings: ["value", "itemid", "itemtypename", "name", "itemval",
+    "width", "height", "length", "quantity", "comment"],
 
-  click: function(event) {
-    var selectedEleClass = event.toElement.className;
-    if((/fa-plus/i.test(selectedEleClass)) || (/fa-minus/i.test(selectedEleClass))) {
-      this.toggleProperty('isHide');
-    }
-  },
+  value: null,
+  itemtypename: null,
+  itemid: null,
   width: null,
   heigth: null,
   length: null,
-  qty: null,
-  value: null
+  quantity: null,
+  isHide: true,
+
+  actions: {
+    hideComment: function(){
+      return this.toggleProperty('isHide');
+    }
+  }
 });

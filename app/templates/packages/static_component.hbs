@@ -1,5 +1,7 @@
-<div name="details">
-  <span>
-    {{view ItemDetailsUiControl itemval=this value=itemTypeName name=itemTypeId width=view.width height=view.height qty=view.qty length=view.length}}
-  </span>
+<div class="row details">
+  <div class="small-2 text-center columns"></div>
+  <div class="small-10 columns">
+    {{view ItemDetailsUiControl itemval=this itemid=this.itemId packagetypeid=this.itemTypeId itemtypename=this.itemTypeName name="static_child_detail" width=view.width height=view.height quantity=view.quantity length=view.length comment=view.comment value=this.itemId}}
+  </div>
 </div>
+<br>

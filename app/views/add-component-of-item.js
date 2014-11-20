@@ -11,28 +11,34 @@ var addComponentOfItem = Ember.View.extend({
         var  ths = this;
         var getContainer = Ember.View.views['my_container_view'];
         var getChildren  = getContainer.get("childViews");
-
+        var arrPackageProperties = [];
         getChildren.forEach(function(chld) {
+          var updated_child_view = chld.get("childViews")[0];
           if (getContainer.get('childViews').contains(chld)) {
-            var packageProperties = {};
-            packageProperties.width = chld.get("width");
-            packageProperties.quantity = chld.get("qty");
-            packageProperties.length = chld.get("length");
-            packageProperties.height = chld.get("height");
-            var package1 = ths.controller.store.createRecord("package", packageProperties);
-            package1.save();
+            var packageProperties={}, itemTypeProperties = {};
+            var child_vals = updated_child_view.getProperties("length",
+                             "height","width","quantity", "comment",
+                             "packagetypeid", "itemid");
+            packageProperties.width = child_vals.width;
+            packageProperties.quantity = child_vals.quantity;
+            packageProperties.length = child_vals.length;
+            packageProperties.height = child_vals.height;
+            packageProperties.notes = child_vals.comment;
+            packageProperties.item_id = child_vals.itemid;
+            packageProperties.package_type_id = child_vals.packagetypeid;
+            arrPackageProperties.pushObject(packageProperties);
           }
         });
+        ths.get("controller").send("savePackageType", arrPackageProperties);
       },
-      addItemTypeComponent: function(event){
+      addItemTypeComponent: function(){
         var containerView = Ember.View.views['my_container_view'];
         var childView = containerView.createChildView(addComponent);
         var childLength = 0;
         childLength  = containerView.get('childViews') ? (containerView.get('childViews').length + 1 ): 0;
         childView.set("id", (childLength));
         containerView.pushObject(childView);
-      }
-    }
-
+      },
+  }
 });
 export default addComponentOfItem;
