@@ -46,10 +46,10 @@
 
       <div class="row">
         <div class="small-7 columns date_selector">
-          {{view "select-date"}}
+          {{view "select-date" name='selectedDate' id='selectedDate' type='date' value='' selectionBinding='selectedDate'}}
         </div>
         <div class="small-5 columns time_selector">
-          {{view "select-time"}}
+          {{view "select-time" name='selectedTime' id='selectedTime' type='text' value='' selectionBinding='selectedTime'}}
         </div>
       </div>
 
@@ -87,7 +87,7 @@
       <div class="btm">
         <div class="row">
           <div class="small-10 small-offset-1 columns">
-            <button {{action ''}} class='button expand'>{{t "gogovan.book_van.get_quote"}}</button>
+            <button {{action 'bookVan'}} class='button expand'>{{t "gogovan.book_van.get_quote"}}</button>
           </div>
         </div>
       </div>

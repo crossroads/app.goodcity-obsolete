@@ -7,6 +7,8 @@ export default Ember.ObjectController.extend({
   districtId: Ember.computed.alias('user.address.district.id'),
   selectedTerritory: {id: null},
   selectedDistrict: {id: null},
+  selectedDate: null,
+  selectedTime: null,
 
   // static-list for now, will fetch from API later
   selectedExtraTime: {id: null},
@@ -31,4 +33,18 @@ export default Ember.ObjectController.extend({
       return this.store.all('district').sortBy("name");
     }
   }.property('selectedTerritory'),
+
+  actions: {
+    bookVan: function(){
+      var selectedDate = this.get('selectedDate');
+      selectedDate.setMinutes(selectedDate.getMinutes() + this.get('selectedTime'));
+      var extraTime = this.get("selectedExtraTime");
+
+      var requestProperties = {};
+      requestProperties.pickup_time = selectedDate;
+      requestProperties.district = this.get('selectedDistrict.id');
+      requestProperties.territory = this.get('selectedTerritory.id');
+
+    },
+  }
 });
