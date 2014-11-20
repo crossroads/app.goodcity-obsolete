@@ -76,7 +76,12 @@
       </div>
 
       <div class="row">
-        {{view Ember.Select}}
+        {{view "select"
+          contentBinding='priceList'
+          optionValuePath="content.id"
+          optionLabelPath="content.name"
+          selectionBinding='selectedExtraTime'
+          valueBinding='defaultPriceOption.id' }}
       </div>
 
       <div class="btm">
