@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import addComponent from './add-component';
-import packages from '../controllers/packages';
 
 var addComponentOfItem = Ember.View.extend({
 
@@ -24,8 +23,8 @@ var addComponentOfItem = Ember.View.extend({
             packageProperties.length = child_vals.length;
             packageProperties.height = child_vals.height;
             packageProperties.notes = child_vals.comment;
-            packageProperties.item_id = child_vals.itemid;
-            packageProperties.package_type_id = child_vals.packagetypeid;
+            packageProperties.itemId = child_vals.itemid;
+            packageProperties.packageTypeId = child_vals.packagetypeid;
             arrPackageProperties.pushObject(packageProperties);
           }
         });

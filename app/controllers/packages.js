@@ -23,6 +23,8 @@ var packages = Ember.ArrayController.extend({
     savePackageType: function(packageDetails){
       var _this = this;
       packageDetails.forEach(function(packDetail){
+        packDetail.item = _this.store.getById('item', packDetail.itemId);
+        packDetail.packageType = _this.store.getById('item_type', packDetail.packageTypeId);
         var packageNew = _this.store.createRecord("package", packDetail);
         packageNew.save();
       });
