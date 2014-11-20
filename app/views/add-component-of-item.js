@@ -15,7 +15,7 @@ var addComponentOfItem = Ember.View.extend({
         getChildren.forEach(function(chld) {
           var updated_child_view = chld.get("childViews")[0];
           if (getContainer.get('childViews').contains(chld)) {
-            var packageProperties={}, itemTypeProperties = {};
+            var packageProperties={};
             var child_vals = updated_child_view.getProperties("length",
                              "height","width","quantity", "comment",
                              "packagetypeid", "itemid");

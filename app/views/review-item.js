@@ -1,9 +1,13 @@
-import Init from './init';
+import Ember from "ember";
 
-export default Init.extend({
- tab: {
-    callback : function (tab) {
-      console.log(tab);
-    },
+export default Ember.View.extend({
+  didInsertElement: function(){
+    Ember.$(document).foundation({
+     tab: {
+        callback : function (tab) {
+          console.log(tab);
+        },
+      }
+    });
   }
 });
