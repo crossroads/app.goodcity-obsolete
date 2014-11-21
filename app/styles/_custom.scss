@@ -357,13 +357,6 @@ input[type="radio"] + label {
   margin-left: 35%;
 }
 
-.loading_image {
-  margin: 1% 0 1% -0.5%;
-  display: none;
-  background: none;
-  color: white;
-}
-
 .progress {
   background: none;
   border: none;
@@ -393,30 +386,6 @@ textarea {
 .fav_image {
   vertical-align: top;
 }
-
-.edit_image_block {
-  display: inline-block;
-  vertical-align: top;
-}
-
-.fav_star img {
-  display: inline-block;
-  width: 1.5%;
-  margin: 0% 0 3.5% -2%;
-}
-
-.image_list li {
-  display: inline;
-}
-
-.image-buttons {
-  display: inline;
-  position: absolute;
-  margin-top: 55%;
-  margin-left: 12%;
-  bottom: 0;
-}
-
 
 .file-input {
   margin-top: 2%;
@@ -492,24 +461,36 @@ textarea {
   display: block;
 }
 
-.notification_box {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: $coral-red;
-  color: $white;
-  z-index: 2;
-  display: table;
+/* cloudinary images */
+.thumb-img img {
+  border: 2px solid grey;
+  border-radius: 2px;
+}
 
-  div {
-    display: table-cell;
-    vertical-align: middle;
-  }
-  button {
-    color: $white;
-    float: right;
-    margin-bottom: 0px;
-    margin-left: 15px;
-  }
+/* helper */
+.center-box {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+.center-item {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+/* layout */
+.main-section, body, html, body > div {
+  /* allows divs to sized by % height of viewport, used on edit_images */
+  height: 100%;
+  display: block;
+}
+
+.btm {
+  position: fixed;
+  padding-top: 5px;
+  background-color: $dark-blue;
 }

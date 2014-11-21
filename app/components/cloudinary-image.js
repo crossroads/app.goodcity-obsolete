@@ -37,10 +37,4 @@ export default Ember.Component.extend({
     return new Ember.Handlebars.SafeString(tag[0].outerHTML);
   }.property('imageId', 'imagePath', 'width', 'height', 'version', 'className'),
 
-  actions: {
-    selectImage: function() {
-      this.sendAction('action', this.get('imageId'));
-    },
-  }
-
 });
