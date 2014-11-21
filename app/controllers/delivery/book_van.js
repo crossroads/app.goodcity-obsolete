@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import AjaxPromise from './../../utils/ajax-promise';
 
 export default Ember.ObjectController.extend({
 
@@ -30,16 +31,30 @@ export default Ember.ObjectController.extend({
 
   actions: {
     bookVan: function(){
-      if(this.get('invalidDate') || this.get('invalidTime')) { return false; }
+      var controller = this;
+      if(controller.get('invalidDate') || controller.get('invalidTime')) { return false; }
 
-      var selectedDate = this.get('selectedDate');
-      selectedDate.setMinutes(selectedDate.getMinutes() + this.get('selectedTime'));
+      var selectedDate = controller.get('selectedDate');
+      selectedDate.setMinutes(selectedDate.getMinutes() + controller.get('selectedTime'));
 
       var requestProperties = {};
       requestProperties.pickup_time = selectedDate;
-      requestProperties.district = this.get('selectedDistrict.id');
-      requestProperties.territory = this.get('selectedTerritory.id');
+      requestProperties.district = controller.get('selectedDistrict.id');
+      requestProperties.territory = controller.get('selectedTerritory.id');
+      requestProperties.need_english = controller.get("speakEnglish");
+      requestProperties.need_cart = controller.get("borrowTrolley");
+      requestProperties.need_carry = controller.get("porterage");
 
+      new AjaxPromise("/gogovan_orders/calculate_price", "POST", controller.get('session.authToken'), requestProperties)
+        .then(function(data) {
+          controller.transitionToRoute('delivery.confirm_van');
+        })
+        .catch(function(xhr) {
+          alert("error");
+        })
+        .finally(function() {
+          console.log("Done.")
+        });
     },
   }
 });
