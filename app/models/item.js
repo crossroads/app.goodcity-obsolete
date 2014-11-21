@@ -8,7 +8,6 @@ export default DS.Model.extend({
   donorDescription:     attr('string'),
   state:                attr('string'),
   offerId:              attr('number'),
-  itemTypeId:           attr('number'),
   rejectReason:         attr('string'),
   rejectionComments:    attr('string'),
   createdAt:            attr('date'),
@@ -17,11 +16,11 @@ export default DS.Model.extend({
   messages:             hasMany('message'),
   images:               hasMany('image'),
   offer:                belongsTo('offer'),
+  itemType:             belongsTo('item_type'),
   donorCondition:       belongsTo('donor_condition'),
   rejectionReason:      belongsTo('rejection_reason'),
   saleable:             attr('boolean'),
   state_event:          attr('string'),
-
   //input to store image public-ids
   imageIdentifiers:     attr('string'),
   favouriteImage:       attr('string'),
