@@ -13,17 +13,8 @@ export default Ember.ObjectController.extend({
   borrowTrolley: false,
   porterage: false,
 
-  // static-list for now, will fetch from API later
-  selectedExtraTime: {id: null},
-  defaultPriceOption: {id: 0, name: "15 min (included)"},
-  priceList: function(){
-    var list = [];
-    list.push(this.get("defaultPriceOption"));
-    for (var i = 5; i <= 120; i = i+5) {
-      list.push({id: i, name: i+" minutes +$"+i});
-    }
-    return list;
-  }.property(),
+  invalidDate: Ember.computed.empty("selectedDate"),
+  invalidTime: Ember.computed.empty("selectedTime"),
 
   territories: function(){
     return this.store.all('territory').sortBy("name");
@@ -39,6 +30,8 @@ export default Ember.ObjectController.extend({
 
   actions: {
     bookVan: function(){
+      if(this.get('invalidDate') || this.get('invalidTime')) { return false; }
+
       var selectedDate = this.get('selectedDate');
       selectedDate.setMinutes(selectedDate.getMinutes() + this.get('selectedTime'));
 
@@ -46,7 +39,6 @@ export default Ember.ObjectController.extend({
       requestProperties.pickup_time = selectedDate;
       requestProperties.district = this.get('selectedDistrict.id');
       requestProperties.territory = this.get('selectedTerritory.id');
-      requestProperties.extraTime = this.get("selectedExtraTime");
 
     },
   }

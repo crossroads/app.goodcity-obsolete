@@ -46,10 +46,10 @@
 
       <div class="row">
         <div class="small-7 columns date_selector">
-          {{view "select-date" name='selectedDate' id='selectedDate' type='date' value='' selectionBinding='selectedDate'}}
+          {{view "select-date" name='selectedDate' id='selectedDate' type='date' value='' selectionBinding='selectedDate' classBinding='invalidDate:error'}}
         </div>
         <div class="small-5 columns time_selector">
-          {{view "select-time" name='selectedTime' id='selectedTime' type='text' value='' selectionBinding='selectedTime'}}
+          {{view "select-time" name='selectedTime' id='selectedTime' type='text' value='' selectionBinding='selectedTime' classBinding='invalidTime:error'}}
         </div>
       </div>
 
@@ -69,19 +69,6 @@
           {{input type="checkbox" name="porterage" checked=porterage id='3' }}
           <label for='3'><span>{{t "gogovan.book_van.porterage"}}</span></label>
         </div>
-      </div>
-
-      <div class="row">
-        <div class='description'>{{t "gogovan.book_van.extra_time_charge"}}</div>
-      </div>
-
-      <div class="row">
-        {{view "select"
-          contentBinding='priceList'
-          optionValuePath="content.id"
-          optionLabelPath="content.name"
-          selectionBinding='selectedExtraTime'
-          valueBinding='defaultPriceOption.id' }}
       </div>
 
       <div class="btm">

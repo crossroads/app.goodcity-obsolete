@@ -1,11 +1,14 @@
 .date_selector {
   .picker__holder {
-    min-width: 280px;
-  }
+    min-width: 280px; }
 }
 
 .pickadate, .timepicker {
   background-color: white !important;
+  &.error {
+    border-color: $coral-red !important;
+    background: $light-pitch !important;
+    margin-bottom: 1.5rem; }
 }
 
 .picker--time {
@@ -22,9 +25,7 @@
 }
 
 .picker {
-  width: 95%;
-}
+  width: 95%; }
 
 .picker__input.picker__input--active {
-  border-color: $medium-blue;
-}
+  border-color: $medium-blue; }
