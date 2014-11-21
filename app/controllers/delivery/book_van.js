@@ -9,6 +9,9 @@ export default Ember.ObjectController.extend({
   selectedDistrict: {id: null},
   selectedDate: null,
   selectedTime: null,
+  speakEnglish: false,
+  borrowTrolley: false,
+  porterage: false,
 
   // static-list for now, will fetch from API later
   selectedExtraTime: {id: null},
