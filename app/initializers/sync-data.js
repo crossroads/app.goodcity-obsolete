@@ -31,7 +31,7 @@ export default {
 
         if (rejected.some(function(item) { return item.reason.status === 401; })) {
           session.clear();
-          window.location = config.baseURL;
+          window.location = config.baseURL + "login";
         }
         else if (rejected.length > 0) {
           rejected.forEach(function(item) { Ember.Logger.error(item.reason); });
