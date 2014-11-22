@@ -308,24 +308,6 @@ textarea:-ms-input-placeholder {
   min-height:100vh
 }
 
-.item-details {
-  .fav-item-image {
-    text-align: center; }
-
-  textarea {
-    font-size: 0.90rem !important;
-    color: black; }
-
-  .edit-image-link {
-    vertical-align: top;
-    display: block;
-    div {
-      display: block;
-      font-size: 0.8rem;
-      color: $medium-blue; }
-  }
-}
-
 input[type="radio"] + label {
   font-size: 0.80rem !important;
   vertical-align: middle;
@@ -357,11 +339,6 @@ input[type="radio"] + label {
   margin-left: 35%;
 }
 
-.progress {
-  background: none;
-  border: none;
-}
-
 .current_image {
   margin-right: 1%;
 }
@@ -387,23 +364,6 @@ textarea {
   vertical-align: top;
 }
 
-.file-input {
-  margin-top: 2%;
-  .file-button {
-    position: relative;
-    overflow: hidden;
-    input[type=file] {
-      position: absolute;
-      top: 0;
-      right: 0;
-      filter: alpha(opacity=0);
-      opacity: 0;
-      display: block;
-      height: 90%
-    }
-  }
-}
-
 .right-small {
   margin-right: 2%;
   width: 5rem;
@@ -418,6 +378,7 @@ textarea {
   display: inline;
 }
 
+/* select2 */
 .select2-container {
   width: 100% !important;
   .select2-chosen {
@@ -462,7 +423,7 @@ textarea {
 }
 
 /* cloudinary images */
-.thumb-img img {
+.thumb-img {
   border: 2px solid grey;
   border-radius: 2px;
 }

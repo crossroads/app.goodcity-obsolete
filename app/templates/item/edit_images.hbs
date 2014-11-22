@@ -41,8 +41,8 @@
     </li>
     {{#each image in images}}
       <li>
-        <a {{action "setPreview" image}} {{bind-attr class=":thumb-img image.selected"}}>
-          <img {{bind-attr src="image.thumbImageUrl" style="thumbImageCss"}} />
+        <a {{action "setPreview" image}} {{bind-attr class="image.selected"}}>
+          <img {{bind-attr src="image.thumbImageUrl" style="thumbImageCss"}} class="thumb-img" />
           <i {{bind-attr class=":fa :fa-star image.favourite::hidden"}}></i>
         </a>
       </li>
