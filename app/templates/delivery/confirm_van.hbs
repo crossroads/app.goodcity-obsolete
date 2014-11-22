@@ -13,7 +13,7 @@
     <div class="small-12 columns with-btm">
 
       <div class="row delivery-details">
-        November 7th (Friday),  11:00 am<br/>
+        {{display-date-time orderDetails.pickupTime}}<br/>
         Central → Crossroads<br/>
         English Speaker, Porterage
       </div>
@@ -25,7 +25,7 @@
             {{t "gogovan.confirm_van.base_fee"}}
           </div>
           <div class="small-9 columns">
-            $380
+            ${{orderDetails.baseFee}}
           </div>
         </div>
         <hr>

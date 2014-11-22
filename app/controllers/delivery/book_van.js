@@ -2,6 +2,7 @@ import Ember from 'ember';
 import AjaxPromise from './../../utils/ajax-promise';
 
 export default Ember.ObjectController.extend({
+  needs: ['delivery'],
 
   user: Ember.computed.alias('session.currentUser'),
   territoryId: Ember.computed.alias('user.address.district.territory.id'),
@@ -34,19 +35,27 @@ export default Ember.ObjectController.extend({
       var controller = this;
       if(controller.get('invalidDate') || controller.get('invalidTime')) { return false; }
 
+      // save address
+      // var addressProperties = {addressType: 'collection',
+      //   district: controller.get('selectedDistrict')}
+      // var address = controller.store.createRecord('address', addressProperties);
+      // address.save();
+
       var selectedDate = controller.get('selectedDate');
       selectedDate.setMinutes(selectedDate.getMinutes() + controller.get('selectedTime'));
 
       var requestProperties = {};
-      requestProperties.pickup_time = selectedDate;
-      requestProperties.district = controller.get('selectedDistrict.id');
-      requestProperties.territory = controller.get('selectedTerritory.id');
-      requestProperties.need_english = controller.get("speakEnglish");
-      requestProperties.need_cart = controller.get("borrowTrolley");
-      requestProperties.need_carry = controller.get("porterage");
+      requestProperties.pickupTime = selectedDate;
+      requestProperties.districtId = controller.get('selectedDistrict.id');
+      requestProperties.territoryId = controller.get('selectedTerritory.id');
+      requestProperties.needEnglish = controller.get("speakEnglish");
+      requestProperties.needCart = controller.get("borrowTrolley");
+      requestProperties.needCarry = controller.get("porterage");
 
-      new AjaxPromise("/gogovan_orders/calculate_price", "POST", controller.get('session.authToken'), requestProperties)
-        .then(function(data) {
+      var order = controller.store.createRecord('gogovan_order', requestProperties);
+
+      new AjaxPromise("/gogovan_orders/calculate_price", "POST", controller.get('session.authToken'), requestProperties).then(function(data) {
+          order.set('baseFee', data['base']);
           controller.transitionToRoute('delivery.confirm_van');
         })
         .catch(function(xhr) {
