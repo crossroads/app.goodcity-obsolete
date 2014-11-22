@@ -7,7 +7,7 @@ export default Ember.ObjectController.extend({
   imagesSortKey: ["id"],
   images: Ember.computed.sort("model.images", "imagesSortKey"),
   previewImage: null,
-  addPhotoLabel: "Add Photo",
+  addPhotoLabel: Ember.I18n.t("items.edit_images.add_photo"),
   isReady: false,
   isExpanded: false,
 
@@ -60,7 +60,7 @@ export default Ember.ObjectController.extend({
 
     deleteImage: function() {
       var _this = this;
-      if (window.confirm("Are you sure you want to delete this image?")) {
+      if (window.confirm(Ember.I18n.t("items.edit_images.delete_confirm"))) {
         this.get("previewImage").destroyRecord().then(function() {
           _this.initPreviewImage();
         });
@@ -87,7 +87,7 @@ export default Ember.ObjectController.extend({
     },
 
     uploadComplete: function() {
-      this.set("addPhotoLabel", "Add Photo");
+      this.set("addPhotoLabel", Ember.I18n.t("items.edit_images.add_photo"));
     },
 
     uploadSuccess: function(e, data) {

@@ -7,16 +7,22 @@
           <img {{bind-attr src="previewImage.imageUrl" class=":center-item isExpanded::hidden"}} />
         </span>
         <div id="main-image-controls">
-          <a {{action "deleteImage"}} title="delete image"><i class="fa fa-trash"></i></a>
-          <a {{action "setFavourite"}} title="set as cover image"><i {{bind-attr class=":fa faStarClass"}}></i></a>
-          <a {{action "expandImage"}} title="expand/compress image"><i {{bind-attr class=":fa faExpandClass"}}></i></a>
+          <a {{action "deleteImage"}} {{translateAttr title="items.edit_images.delete_tooltip"}}>
+            <i class="fa fa-trash"></i>
+          </a>
+          <a {{action "setFavourite"}} {{translateAttr title="items.edit_images.favourite_tooltip"}}>
+            <i {{bind-attr class=":fa faStarClass"}}></i>
+          </a>
+          <a {{action "expandImage"}} {{translateAttr title="items.edit_images.fullscreen_tooltip"}}>
+            <i {{bind-attr class=":fa faExpandClass"}}></i>
+          </a>
         </div>
       </div>
     {{else}}
     <div class="center-box">
       <span class="center-item">
-        <h3>What are you donating?</h3>
-        <p>Take some photos</p>
+        <h3>{{t "items.edit_images.donating_what"}}</h3>
+        <p>{{t "items.edit_images.take_photos"}}</p>
       </span>
     </div>
     {{/unless}}
@@ -43,7 +49,7 @@
     {{/each}}
   </ul>
 
-  <div class="btm" {{bind-attr class="isExpanded:hidden"}}>
+  <div {{bind-attr class=":btm isExpanded:hidden"}}>
     <div class="row">
       <div class="small-6 columns">
         <button {{ action "back"}} class="button expand secondary">{{t "back"}}</button>
