@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import AjaxPromise from './../../utils/ajax-promise';
 
 export default Ember.ObjectController.extend({
   needs: ['delivery'],
@@ -11,7 +10,7 @@ export default Ember.ObjectController.extend({
     confirmOrder: function(){
       var controller = this;
       // address details
-      var district = controller.store.getById("district", controller.get('orderDetails.districtId'))
+      var district = controller.store.getById("district", controller.get('orderDetails.districtId'));
       var addressProperties = {addressType: 'collection',
         district: district};
 
@@ -20,7 +19,7 @@ export default Ember.ObjectController.extend({
       var contact = controller.store.createRecord('contact', contactProperties);
 
       // schedule details
-      var scheduleProperties = { scheduledAt: controller.get('orderDetails.pickupTime'), slotName: controller.get('orderDetails.slot') }
+      var scheduleProperties = { scheduledAt: controller.get('orderDetails.pickupTime'), slotName: controller.get('orderDetails.slot') };
       var schedule = controller.store.createRecord('schedule', scheduleProperties);
 
       var delivery = controller.store.getById("delivery", controller.get('controllers.delivery.id'));
@@ -45,8 +44,8 @@ export default Ember.ObjectController.extend({
                 controller.transitionToRoute('delivery.donation_details');
               });
             })
-            .catch(function(xhr) {
-              alert("There is some error with your bookings. Please try again later.")
+            .catch(function() {
+              alert("There is some error with your bookings. Please try again later.");
               controller.transitionToRoute('delivery.book_van');
             });
           });

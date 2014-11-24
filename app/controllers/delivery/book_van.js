@@ -57,8 +57,8 @@ export default Ember.ObjectController.extend({
           order.set('baseFee', data['base']);
           controller.transitionToRoute('delivery.confirm_van');
         })
-        .catch(function(xhr) {
-          alert("There is some error with your bookings. Please try again later.")
+        .catch(function() {
+          alert("There is some error with your bookings. Please try again later.");
           controller.transitionToRoute('offers.index');
         });
     },
