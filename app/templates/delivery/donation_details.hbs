@@ -63,6 +63,13 @@
             <span class="left">Address</span>
             <strong class="right text-right">{{{contact.address.fullAddress}}}</strong>
           </li>
+
+          {{#if isGogovan}}
+            <li>
+              <span class="left">status</span>
+              <strong class="right text-right">{{{gogovanOrder.status}}}</strong>
+            </li>
+          {{/if}}
         <ul>
 
        </div>

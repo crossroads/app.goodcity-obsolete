@@ -66,7 +66,7 @@
             <span>{{t "gogovan.confirm_van.name"}}</span>
           </div>
           <div class="small-9 columns">
-            {{full-name-input user=user}}
+            {{full-name-input user=user name='userName'}}
           </div>
         </div>
 
@@ -86,7 +86,7 @@
       <div class="btm">
         <div class="row">
           <div class="small-10 small-offset-1 columns">
-            <button {{action ''}} class='button expand'>{{t "gogovan.confirm_van.book_delivery"}}</button>
+            <button {{action 'confirmOrder'}} class='button expand'>{{t "gogovan.confirm_van.book_delivery"}}</button>
           </div>
         </div>
       </div>

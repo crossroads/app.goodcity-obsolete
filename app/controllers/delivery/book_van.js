@@ -35,17 +35,15 @@ export default Ember.ObjectController.extend({
       var controller = this;
       if(controller.get('invalidDate') || controller.get('invalidTime')) { return false; }
 
-      // save address
-      // var addressProperties = {addressType: 'collection',
-      //   district: controller.get('selectedDistrict')}
-      // var address = controller.store.createRecord('address', addressProperties);
-      // address.save();
-
       var selectedDate = controller.get('selectedDate');
+      var deliveryId = controller.get('controllers.delivery').get('id');
+      var delivery = controller.store.getById('delivery', deliveryId);
+
       selectedDate.setMinutes(selectedDate.getMinutes() + controller.get('selectedTime'));
 
       var requestProperties = {};
       requestProperties.pickupTime = selectedDate;
+      requestProperties.slot = Ember.$('#selectedTime').val();
       requestProperties.districtId = controller.get('selectedDistrict.id');
       requestProperties.territoryId = controller.get('selectedTerritory.id');
       requestProperties.needEnglish = controller.get("speakEnglish");
@@ -53,16 +51,15 @@ export default Ember.ObjectController.extend({
       requestProperties.needCarry = controller.get("porterage");
 
       var order = controller.store.createRecord('gogovan_order', requestProperties);
+      order.set('delivery', delivery);
 
       new AjaxPromise("/gogovan_orders/calculate_price", "POST", controller.get('session.authToken'), requestProperties).then(function(data) {
           order.set('baseFee', data['base']);
           controller.transitionToRoute('delivery.confirm_van');
         })
         .catch(function(xhr) {
-          alert("error");
-        })
-        .finally(function() {
-          console.log("Done.")
+          alert("There is some error with your bookings. Please try again later.")
+          controller.transitionToRoute('offers.index');
         });
     },
   }

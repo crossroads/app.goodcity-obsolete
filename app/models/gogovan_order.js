@@ -7,6 +7,7 @@ export default DS.Model.extend({
   bookingId:     attr('number'),
   status:        attr('string'),
   pickupTime:    attr('date'),
+  slot:          attr('string'),
   districtId:    attr('number'),
   territoryId:   attr('number'),
 
