@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from './../../config/environment';
 
 export default Ember.ObjectController.extend({
   needs: ['delivery'],
@@ -23,7 +24,7 @@ export default Ember.ObjectController.extend({
 
       // contact details
       var name = Ember.$("#userName").val();
-      var mobile = Ember.$("#mobile").val();
+      var mobile = config.APP.HK_COUNTRY_CODE + Ember.$("#mobile").val();
       var contactProperties = { name: name, mobile: mobile };
       var contact = controller.store.createRecord('contact', contactProperties);
       orderDetails.setProperties({ name: name, mobile: mobile });
