@@ -4,6 +4,9 @@ var attr = DS.attr,
     belongsTo = DS.belongsTo;
 
 export default DS.Model.extend({
+  name:          attr('string'),
+  mobile:        attr('string'),
+
   bookingId:     attr('number'),
   status:        attr('string'),
   pickupTime:    attr('date'),

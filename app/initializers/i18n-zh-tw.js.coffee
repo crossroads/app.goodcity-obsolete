@@ -7,6 +7,7 @@ I18nTranslationsZhTw =
     Ember.I18n.translation_store = Ember.I18n.translation_store || {}
 
     Ember.I18n.translation_store['zh-tw'] =
+      "crossroads" : "Crossroads"
       'language': 'zh-tw'
       'loading': '加載中...'
       "goodcity.hk" : "好人好市"
@@ -84,6 +85,8 @@ I18nTranslationsZhTw =
           "title" : "Confirm Van"
           "base_fee" : "Base fee"
           "porterage" : "Porterage"
+          "speak_english" : "Speak English"
+          "trolley" : "Borrow trolley(s)"
           "details" : "Details"
           "other" : "Other"
           "confirm_with_drivar" : "Please confirm total price with driver before loading."

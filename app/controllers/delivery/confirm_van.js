@@ -6,20 +6,30 @@ export default Ember.ObjectController.extend({
   user: Ember.computed.alias('session.currentUser'),
   orderDetails: Ember.computed.alias('model'),
 
+  districtName: function(){
+    var district = this.store.getById("district", this.get('districtId'));
+    return district.get('name');
+  }.property(),
+
   actions: {
     confirmOrder: function(){
       var controller = this;
+      var orderDetails = controller.get("orderDetails");
+
       // address details
-      var district = controller.store.getById("district", controller.get('orderDetails.districtId'));
+      var district = controller.store.getById("district", orderDetails.get('districtId'));
       var addressProperties = {addressType: 'collection',
         district: district};
 
       // contact details
-      var contactProperties = { name: Ember.$("#userName").val(), mobile: Ember.$("#mobile").val() };
+      var name = Ember.$("#userName").val();
+      var mobile = Ember.$("#mobile").val();
+      var contactProperties = { name: name, mobile: mobile };
       var contact = controller.store.createRecord('contact', contactProperties);
+      orderDetails.setProperties({ name: name, mobile: mobile });
 
       // schedule details
-      var scheduleProperties = { scheduledAt: controller.get('orderDetails.pickupTime'), slotName: controller.get('orderDetails.slot') };
+      var scheduleProperties = { scheduledAt: orderDetails.get('pickupTime'), slotName: orderDetails.get('slot') };
       var schedule = controller.store.createRecord('schedule', scheduleProperties);
 
       var delivery = controller.store.getById("delivery", controller.get('controllers.delivery.id'));
@@ -36,7 +46,7 @@ export default Ember.ObjectController.extend({
           //save address
           address.save().then(function() {
             delivery.set('contact', contact);
-            controller.get('orderDetails').save().then(function(gogovan_order){
+            orderDetails.save().then(function(gogovan_order){
               delivery.set('gogovanOrder', gogovan_order);
 
               // save delivery

@@ -7,6 +7,7 @@ I18nTranslationsEn =
     Ember.I18n.translation_store = Ember.I18n.translation_store || {}
 
     Ember.I18n.translation_store.en =
+      "crossroads" : "Crossroads"
       "language": "en"
       "loading": "Loading..."
       "goodcity.hk" : "GoodCity.HK"
@@ -90,6 +91,8 @@ I18nTranslationsEn =
           "title" : "Confirm Van"
           "base_fee" : "Base fee"
           "porterage" : "Porterage"
+          "speak_english" : "Speak English"
+          "trolley" : "Borrow trolley(s)"
           "details" : "Details"
           "other" : "Other"
           "confirm_with_drivar" : "Please confirm total price with driver before loading."
