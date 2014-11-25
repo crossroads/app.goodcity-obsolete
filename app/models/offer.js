@@ -47,6 +47,7 @@ export default DS.Model.extend({
   isSubmitted: Ember.computed.equal("state", "submitted"),
   isScheduled: Ember.computed.equal("state", "scheduled"),
   isUnderReview: Ember.computed.equal("state", "under_review"),
+  isReviewed: Ember.computed.equal("state", "reviewed"),
 
   displayImageId: function(){
     var item = this.get("items.content.firstObject");
