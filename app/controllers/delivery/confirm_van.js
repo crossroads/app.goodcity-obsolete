@@ -12,9 +12,14 @@ export default Ember.ObjectController.extend({
     return district.get('name');
   }.property(),
 
+  inProgress: function(key,value) {
+    return (arguments.length > 1) ? value : false;
+  }.property(),
+
   actions: {
     confirmOrder: function(){
       var controller = this;
+      controller.set("inProgress", true);
       var orderDetails = controller.get("orderDetails");
 
       // address details
@@ -53,6 +58,7 @@ export default Ember.ObjectController.extend({
               // save delivery
               delivery.save().then(function() {
                 controller.transitionToRoute('delivery.donation_details');
+                controller.set("inProgress", false);
               });
             })
             .catch(function() {

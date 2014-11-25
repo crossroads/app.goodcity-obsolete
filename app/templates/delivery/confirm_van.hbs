@@ -94,7 +94,7 @@
       <div class="btm">
         <div class="row">
           <div class="small-10 small-offset-1 columns">
-            <button {{action 'confirmOrder'}} class='button expand'>{{t "gogovan.confirm_van.book_delivery"}}</button>
+            <button {{action 'confirmOrder'}} {{bind-attr disabled=inProgress}} class='button expand'>{{t "gogovan.confirm_van.book_delivery"}}</button>
           </div>
         </div>
       </div>
