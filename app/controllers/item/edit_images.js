@@ -16,7 +16,7 @@ export default Ember.ObjectController.extend({
   }.property("images.@each.favourite"),
 
   initPreviewImage: function() {
-    var image = this.get("defaultImage");
+    var image = this.get("displayImage");
     if (image) {
       this.send("setPreview", image);
     }
@@ -96,7 +96,7 @@ export default Ember.ObjectController.extend({
       if (this.get("noImage")) {
         var offer = this.get("controllers.offer.model");
         var defaultDonorCondition = this.store.all("donorCondition").sortBy("id").get("firstObject");
-        var item = this.store.createRecord("item", {offer:offer,donorCondition:defaultDonorCondition});
+        var item = this.store.createRecord("item", {offer:offer,donorCondition:defaultDonorCondition,state:"draft"});
         item.save().then(function() {
           _this.store.createRecord('image', {cloudinaryId: identifier, item: item, favourite: true})
             .save().then(function() { _this.transitionToRoute("item.edit_images", item.get("id")); });

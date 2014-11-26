@@ -11,7 +11,7 @@
     <div class= 'row'>
       {{#each awaitingReview}}
         {{#link-to 'review_item.accept' this}}
-          {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
+          <img {{bind-attr src=displayImageUrl}} class="thumb small" />
         {{/link-to}}
       {{/each}}
     </div>
@@ -21,7 +21,7 @@
     <div class= 'row'>
       {{#each accepted}}
         {{#link-to 'review_item.accept' this}}
-          {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
+          <img {{bind-attr src=displayImageUrl}} class="thumb small" />
         {{/link-to}}
       {{/each}}
     </div>
@@ -31,7 +31,7 @@
     <div class= 'row'>
       {{#each rejected}}
         {{#link-to 'review_item.reject' this}}
-          {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
+          <img {{bind-attr src=displayImageUrl}} class="thumb small" />
         {{/link-to}}
       {{/each}}
     </div>
@@ -43,7 +43,7 @@
     <h3>Items({{content.length}})</h3>
     <div class= 'row'>
       {{#each}}
-        {{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}
+        <img {{bind-attr src=displayImageUrl}} class="thumb small" />
       {{/each}}
     </div>
 

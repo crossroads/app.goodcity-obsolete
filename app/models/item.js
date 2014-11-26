@@ -22,17 +22,15 @@ export default DS.Model.extend({
   rejectionReason:      belongsTo('rejection_reason'),
   saleable:             attr('boolean'),
   state_event:          attr('string'),
-  // favouriteImage or first image
-  defaultImage: function() {
+
+  displayImage: function() {
     return this.get("images").filterBy("favourite").get("firstObject") ||
       this.get("images").sortBy("id").get("firstObject") || null;
   }.property('images.@each.favourite'),
 
-  // defaultImage or placeholder
-  defaultImageURL: function() {
-    return this.get('defaultImage.thumbImageUrl') || "/assets/images/default_item.jpg";
-  }.property('defaultImage'),
+  displayImageUrl: function() {
+    return this.get('displayImage.thumbImageUrl') || "/assets/images/default_item.jpg";
+  }.property('displayImage'),
 
-  defaultImageId: Ember.computed.alias("defaultImage.imageId"),
   imageCount: Ember.computed.alias("images.length")
 });

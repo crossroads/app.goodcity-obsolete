@@ -3,8 +3,8 @@
   <div id="main-image" {{bind-attr class="isExpanded"}}>
     {{#unless noImage}}
       <div {{bind-attr style="previewImageBgCss"}} class="center-box">
-        <span class="center-item">
-          <img {{bind-attr src="previewImage.imageUrl" class=":center-item isExpanded::hidden"}} />
+        <span {{bind-attr class=":center-item isExpanded::hidden"}}>
+          <img {{bind-attr src="previewImage.imageUrl"}} />
         </span>
         <div id="main-image-controls">
           <a {{action "deleteImage"}} {{translateAttr title="items.edit_images.delete_tooltip"}}>
@@ -42,7 +42,7 @@
     {{#each image in images}}
       <li>
         <a {{action "setPreview" image}} {{bind-attr class="image.selected"}}>
-          <img {{bind-attr src="image.thumbImageUrl" style="thumbImageCss"}} class="thumb-img" />
+          <img {{bind-attr src="image.thumbImageUrl" style="thumbImageCss"}} class="thumb" />
           <i {{bind-attr class=":fa :fa-star image.favourite::hidden"}}></i>
         </a>
       </li>

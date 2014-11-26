@@ -10,8 +10,6 @@ export default DS.Model.extend({
   itemId:        attr('number'),
   item:          belongsTo('item'),
 
-  imageId: Ember.computed.alias("cloudinaryId"),
-
   imageUrl: function() {
     return this.generateUrl();
   }.property('cloudinaryId'),
@@ -23,6 +21,9 @@ export default DS.Model.extend({
   generateUrl: function(width, height, crop) {
     //e.g. cloudinaryId = 1406959628/wjvaksnadntp239n6vwe.png
     var id = this.get('cloudinaryId');
+    if (id.indexOf("/") === -1) {
+      return null;
+    }
     var version = id.split("/")[0];
     var filename = id.split("/")[1];
     return Ember.$.cloudinary.url(filename, {

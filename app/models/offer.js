@@ -48,10 +48,10 @@ export default DS.Model.extend({
   isScheduled: Ember.computed.equal("state", "scheduled"),
   isUnderReview: Ember.computed.equal("state", "under_review"),
 
-  displayImageId: function(){
-    var item = this.get("items.content.firstObject");
-    return item ? item.get('favouriteImage'): "";
-  }.property('this.items.@each'),
+  displayImageUrl: function(){
+    return this.get("items").rejectBy("images.length", 0).sortBy("id")
+      .get("firstObject.displayImageUrl") || "/assets/images/default_item.jpg";
+  }.property('items.@each.displayImageUrl'),
 
   isCharitableSale: function() {
     var item = this.get("items.content.firstObject");
@@ -70,6 +70,4 @@ export default DS.Model.extend({
     }
     return status;
   }.property('state')
-
-
 });

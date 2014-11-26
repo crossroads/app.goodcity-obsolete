@@ -29,7 +29,9 @@
         <ul class="small-block-grid-8 medium-block-grid-12 large-block-grid-12 confirmed-items">
           {{#each confirmedItems}}
             <li>
-              <a href="#">{{cloudinary-image imageId=defaultImageId width=50 height=50 className='fav_image'}}</a>
+              <a href="#">
+                <img {{bind-attr src=displayImageUrl}} class="thumb small" />
+              </a>
             </li>
           {{/each}}
         </ul>
