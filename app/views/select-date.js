@@ -17,7 +17,8 @@ export default Ember.View.extend({
         today: false,
         close: false,
         onSet: function() {
-          _this.set("selection", this.get("select").obj);
+          var date = this.get('select') && this.get('select').obj;
+          _this.set("selection", date);
         }
       });
     });

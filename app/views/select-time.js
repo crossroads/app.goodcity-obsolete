@@ -13,7 +13,8 @@ export default Ember.View.extend({
         min: [8,30],
         max: [18,0],
         onSet: function() {
-          _this.set("selection", this.get("select").time);
+          var slot = this.get("select") && this.get("select").time;
+          _this.set("selection", slot);
         }
       });
     });
