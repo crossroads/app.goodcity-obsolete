@@ -1,5 +1,4 @@
 import Ember from "ember";
-import "../../computed/ternary";
 
 export default Ember.ObjectController.extend({
   needs: ["offer"],
@@ -21,9 +20,6 @@ export default Ember.ObjectController.extend({
   }.observes("model"),
 
   //css related
-  faStarClass: Ember.computed.ternary("previewImage.favourite", "fa-star", "fa-star-o"),
-  faExpandClass: Ember.computed.ternary("isExpanded", "fa-compress", "fa-expand"),
-
   previewImageBgCss: function() {
     if (this.get("isExpanded")) {
       return "";
@@ -33,7 +29,7 @@ export default Ember.ObjectController.extend({
 
   thumbImageCss: function() {
     var imgWidth = Math.min(120, Ember.$(window).width() / 4 - 6 * 4);
-    return "width:" + imgWidth + "px; height:" + imgWidth + "px";
+    return "width:" + imgWidth + "px; height:" + imgWidth + "px;";
   }.property(),
 
   actions: {

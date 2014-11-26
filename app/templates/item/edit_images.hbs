@@ -11,10 +11,10 @@
             <i class="fa fa-trash"></i>
           </a>
           <a {{action "setFavourite"}} {{translateAttr title="items.edit_images.favourite_tooltip"}}>
-            <i {{bind-attr class=":fa faStarClass"}}></i>
+            <i {{bind-attr class=":fa previewImage.favourite:fa-star:fa-star-o"}}></i>
           </a>
           <a {{action "expandImage"}} {{translateAttr title="items.edit_images.fullscreen_tooltip"}}>
-            <i {{bind-attr class=":fa faExpandClass"}}></i>
+            <i {{bind-attr class=":fa isExpanded:fa-compress:fa-expand"}}></i>
           </a>
         </div>
       </div>
