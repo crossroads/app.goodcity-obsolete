@@ -1,7 +1,7 @@
 <section class="main-section reject-offer">
   <div class="row">
     <div class="small-12 columns with-btm">
-      <form  class="item-ui">
+      <form  class="ui">
         <ul>
           {{#each rejectionOptions}}
             <li>
@@ -15,8 +15,7 @@
 
           <li>
             {{view 'radio-button' name="selectReason" selection=controller.selectedId value="-1" id="-1" labelText=rejectReason}}
-
-            <label class='reject_label item-ui' for="-1">
+            <label class='reject_label' for="-1">
               {{input type="text" value=rejectReason name="rejectReason" id='rejectReason' placeholder="Custom Reason" classBinding="isBlank:error"}}
             </label>
           </li>

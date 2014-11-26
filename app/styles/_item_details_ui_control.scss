@@ -34,27 +34,11 @@
     padding: 0rem;
   }
 }
-
-
-.item-ui input[type="text"], .item-ui textarea {
-  border: none;
-  background: white;
-  box-shadow: none;
-  -webkit-box-sizing: none;
-  -moz-box-sizing: none;
-  box-sizing: none;
-  transition: none;
-  margin: 0rem;
-  height: 100%;
-  padding: 0.4rem 0.2rem;
-}
-
-.item-ui input[type="text"], .icon, .bottom, textarea {
+.icon, .bottom {
   @media #{$small-only} {
     font-size: 0.8rem;
   }
 }
-
 .is-hide{
   display: none
 }

@@ -602,7 +602,7 @@ label input {
 
 .radio {
   display: table-cell;
-  padding: rem-calc(0 1) !important;
+  padding: rem-calc(0 1);
 
   &:first-child {
     padding-left: 0 !important

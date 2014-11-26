@@ -1,23 +1,19 @@
 <div class="row">
-  <div class="small-12 columns">
-    <span class="form-label">{{t "register.districts"}}</span>
-    <div class="radio-buttons">
-      <span class="radio">
-        <a href='#' class="radio-wrap active" {{action 'findDistrictbyTerritory'}} id='all'>All</a>
-      </span>
-
+  <div class="small-12 columns ui">
+    <label>{{t "register.districts"}}</label>
+    <ul class="radio-buttons">
+      <li class="radio active" {{action 'findDistrictbyTerritory' on="click"}} >All</li>
       {{#each allTerritory}}
-        <span class="radio">
-          <a href='#' class="radio-wrap" {{action 'findDistrictbyTerritory' this}}>{{name}}</a>
-        </span>
+        <li class="radio" {{action "findDistrictbyTerritory" this on="click"}}>
+          {{name}}
+        </li>
       {{/each}}
-
-    </div>
+    </ul>
   </div>
 </div>
 
 <div class="row">
-  <div class="small-12 columns">
+  <div class="small-12 columns ui">
     <label>
       {{view "select"
         contentBinding='districtsByTerritory'
