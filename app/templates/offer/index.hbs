@@ -37,16 +37,13 @@
             {{#each itemsById}}
               <li>
                 {{#link-to 'item.edit' this}}
-                  <div class="list-image small-1 large-1 column">
+                  <span class="list-image">
                     <img {{bind-attr src="displayImageUrl"}} class="thumb" />
-                  </div>
-                  <div class="vcenter small-8 large-10 column">
-                    <h3 class="ellipsis one-line-ellipsis">
-                      {{{donorDescription}}}
-                    </h3>
-                    <div>{{donorCondition.name}}</div>
-                  </div>
-                  <div class="list-image small-2 large-1 column"></div>
+                  </span>
+                  <span class="info">
+                    <h3>{{{donorDescription}}}</h3>
+                    {{donorCondition.name}}
+                  </span>
                 {{/link-to}}
               </li>
             {{/each}}
