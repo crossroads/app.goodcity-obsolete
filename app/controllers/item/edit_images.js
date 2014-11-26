@@ -4,8 +4,6 @@ import "../../computed/ternary";
 export default Ember.ObjectController.extend({
   needs: ["offer"],
   noImage: Ember.computed.empty("images"),
-  imagesSortKey: ["id"],
-  images: Ember.computed.sort("model.images", "imagesSortKey"),
   previewImage: null,
   addPhotoLabel: Ember.I18n.t("items.edit_images.add_photo"),
   isReady: false,
@@ -60,9 +58,16 @@ export default Ember.ObjectController.extend({
 
     deleteImage: function() {
       var _this = this;
+      if (this.get("images.length") === 1) {
+        window.alert(Ember.I18n.t("items.edit_images.cant_delete_last_image"));
+        return;
+      }
       if (window.confirm(Ember.I18n.t("items.edit_images.delete_confirm"))) {
         this.get("previewImage").destroyRecord().then(function() {
           _this.initPreviewImage();
+          if (!_this.get("favouriteImage")) {
+            _this.send("setFavourite");
+          }
         });
       }
     },

@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import ValidateItem from './../validate_item';
 
 export default ValidateItem.extend({
