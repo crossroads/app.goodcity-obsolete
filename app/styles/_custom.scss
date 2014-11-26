@@ -175,6 +175,20 @@ textarea:-ms-input-placeholder {
   text-decoration: underline;
 }
 
+.icon-center {
+  vertical-align: middle;
+}
+
+.icon-text {
+  padding-top: 0.4rem;
+}
+
+.link-blue {
+  color: $dark-blue;
+  font-size: 1.2rem;
+  text-decoration: underline;
+}
+
 .reject-offer {
   ul {
     list-style-type: none;

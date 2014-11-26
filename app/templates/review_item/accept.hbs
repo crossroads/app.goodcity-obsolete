@@ -1,20 +1,4 @@
-<div class="row ">
-  <div class="small-12">
-    {{#if itemTypeId}}
-      <div class="with-btm intro">
-        {{ item-details-ui-control itemval=this value=itemTypeName name=itemTypeId }}
-      </div>
-      <div class="row">
-        <span class="small-2 columns">&nbsp;</span>
-        <span class="small-8 columns"><a href="#" {{action "accept" }} id="acceptItem" class="button expand">{{t "review_item.accept_item"}}</a></span>
-        <span class="small-2 columns">&nbsp;</span>
-      </div>
-    {{else}}
-      <p>
-        <i class="icon-empty-items fa fa-info-circle fa-5x"></i>
-        <p class="no-items">Please choose Item Type first!</p>
-      </p>
-    {{/if}}
-  </div>
-</div>
+<section class="main-section">
+{{ outlet packages }}
+</section>
 

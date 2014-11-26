@@ -216,6 +216,18 @@ I18nTranslationsZhTw =
         "text" : "{{text}}"
         "view": "View"
 
+      "review_item":
+        "accept" : "Accept"
+        "accept_item" : "Accept Item"
+        "reject" : "Reject"
+        "reject_item" : "reject Item"
+        "not_now" : "Not Now"
+        "donor_message" : "Donor"
+        "supervisor_message" : "Supervisors"
+        "view_lable_guide": "View labeling guide"
+        "condition": "Condition"
+        "add_component": "Add component"
+
       "review_offer":
         "review_started_by" : "Started by {{lastName}} {{firstName}}"
 

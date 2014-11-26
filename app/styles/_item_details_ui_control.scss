@@ -8,10 +8,6 @@
   .top{
     border-right: solid 2px #a3aab6;
     height: 100%;
-    .sq_img {
-    // height: 50px;
-    // width: 50px;
-    }
     .head {
       top: 1rem;
       span {
@@ -40,7 +36,7 @@
 }
 
 
-.item-ui input[type="text"][disabled]{
+.item-ui input[type="text"] {
   border: none;
   background: #ffffff;
   box-shadow: none;
@@ -48,6 +44,8 @@
   -moz-box-sizing: none;
   box-sizing: none;
   transition: none;
+  margin: 0rem;
+  height: 100%;
 }
 .is-hide{
   display: none
