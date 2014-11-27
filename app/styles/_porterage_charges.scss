@@ -1,0 +1,16 @@
+.porterage_charges_text{
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  ul {
+    margin-bottom: 2rem;
+    li {
+      color: $coral-red;
+      font-size: 3rem !important;
+      margin: 0 0 -2rem 1rem;
+      span {
+        color: $body-font-color;
+        font-size: 1rem !important;
+        vertical-align: 0.7rem; }
+    }
+  }
+}
