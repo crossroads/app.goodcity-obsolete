@@ -24,7 +24,7 @@ export default Ember.ObjectController.extend({
       return value;
     } else {
       var name = Ember.$("#userName").val();
-      var invalid = (name == undefined) ? false : name.length === 0;
+      var invalid = (name === undefined) ? false : name.length === 0;
       return invalid;
     }
   }.property().volatile(),
