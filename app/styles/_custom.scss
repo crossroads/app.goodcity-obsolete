@@ -16,7 +16,7 @@ h2{
 }
 
 .message_box {
-  background-color: #DDDDDD;
+  background-color: $gainsboro;
   color: black;
   width: 100%;
   border-radius: 0.5rem;
@@ -33,7 +33,7 @@ h2{
 
 .tabs-content {
   .message_box {
-    background-color: #FFFFFF;
+    background-color: white;
     color: black;
     a {
       color: black !important; }
@@ -41,13 +41,13 @@ h2{
 }
 
 .input_container.error {
-  border: solid  0.2rem #f34d4f !important;
-  background: #fddbdc !important;
+  border: solid  0.2rem $coral-red !important;
+  background: $light-pitch !important;
 }
 
 textarea.error {
-  border-color: #f34d4f !important;
-  background: #fddbdc !important;
+  border-color: $coral-red !important;
+  background: $light-pitch !important;
   margin-bottom: 1rem;
 }
 
