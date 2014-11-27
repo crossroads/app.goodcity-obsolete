@@ -2,7 +2,8 @@
   <div class="small-12 columns ui">
     <label>{{t "register.districts"}}</label>
     <ul class="radio-buttons">
-      <li class="radio active" {{action 'findDistrictbyTerritory' on="click"}} >All</li>
+      <li class="radio active" id="all" {{action 'findDistrictbyTerritory'
+      on="click"}}>All</li>
       {{#each allTerritory}}
         <li class="radio" {{action "findDistrictbyTerritory" this on="click"}}>
           {{name}}
