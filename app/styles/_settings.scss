@@ -106,7 +106,8 @@ $light-blue: #dfe5ec;
 $light-pitch: #fddbdc;
 $white: #fff;
 $light-black: #222222;
-$ghost: #FAFAFA;
+$ghost: #fafafa;
+$gainsboro: #dddddd;
 // We use these to control various global styles
 // $body-bg: $white;
 $body-bg: $dark-blue;
@@ -662,8 +663,7 @@ $secondary-button-border-color: #fff;
 
 // We use these to style the labels in different ways
 // $form-label-pointer: pointer;
-// $form-label-font-size: rem-calc(14);
-$form-label-font-size: rem-calc(12);
+$form-label-font-size: rem-calc(16);
 // $form-label-font-weight: $font-weight-normal;
 // $form-label-line-height: 1.5;
 // $form-label-font-color: scale-color($black, $lightness: 30%);

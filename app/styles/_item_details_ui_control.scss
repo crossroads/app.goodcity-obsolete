@@ -1,15 +1,13 @@
 .detail_container {
-  color: #000000;
-  background-color: #fff;
-  border-left: 2px solid #a3aab6 ;
-  border-bottom: 2px solid #a3aab6 ;
-  border-top: 2px solid #a3aab6 ;
-  line-height: 3.5rem !important;
+  color: black;
+  background-color: white;
+  border-width: 1px 0px 1px 1px;
+  border-style: solid;
+  border-color: $medium-blue;
   .top{
-    border-right: solid 2px #a3aab6;
+    border-right: solid 1px $medium-blue;
     height: 100%;
     .head {
-      top: 1rem;
       span {
         top: 1rem;
         font-size: 1rem;
@@ -21,31 +19,24 @@
    }
 }
 .icon {
-    color: #f34d4f;
+    color: $coral-red;
     text-align: right;
+    padding-top: 0.4rem;
   }
 .bottom {
   height: 100%;
-  border-top: solid 2px #a3aab6;
-  border-right: solid 2px #a3aab6;
+  border-top: solid 1px $medium-blue;
+  border-right: solid 1px $medium-blue;
   .inner {
     border-top: none;
-    border-right: solid 2px #a3aab6;
-    right: -0.14rem;
+    border-right: solid 1px $medium-blue;
+    padding: 0rem;
   }
 }
-
-
-.item-ui input[type="text"] {
-  border: none;
-  background: #ffffff;
-  box-shadow: none;
-  -webkit-box-sizing: none;
-  -moz-box-sizing: none;
-  box-sizing: none;
-  transition: none;
-  margin: 0rem;
-  height: 100%;
+.icon, .bottom {
+  @media #{$small-only} {
+    font-size: 0.8rem;
+  }
 }
 .is-hide{
   display: none

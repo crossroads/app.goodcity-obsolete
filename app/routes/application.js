@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.Route.extend({
 
   beforeModel: function () {
-    var language = localStorage.language || Ember.I18n.default_language;
+    var language = this.session.get("language") || Ember.I18n.default_language;
     Ember.I18n.translations = Ember.I18n.translation_store[language];
   },
 
@@ -26,8 +26,7 @@ export default Ember.Route.extend({
 
   actions: {
     setLang: function(language) {
-      Ember.I18n.translations = Ember.I18n.translation_store[language];
-      localStorage.language = language;
+      this.session.set("language", language);
       window.location.reload();
     }
   }
