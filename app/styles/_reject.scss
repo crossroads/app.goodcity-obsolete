@@ -4,9 +4,7 @@
     list-style-position: outside;
     li {
       display: table-row;
-
       input[type="radio"] {
-        // display: inline-block !important;
         display: table-cell;
       }
       input[type="radio"] + label {
