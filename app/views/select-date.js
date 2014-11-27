@@ -10,8 +10,8 @@ export default Ember.View.extend({
     Ember.$().ready(function(){
       Ember.$('.pickadate').pickadate({
         format: 'ddd mmm d',
-        // Disable Sundays, Mondays, 28-november-2014
-        disable: [ 1, 2, [2014,10,28] ],
+        // Disable Sundays, Mondays, 4-december-2014
+        disable: [ 1, 2, [2014,11,4] ],
         min: new Date(),
         clear: false,
         today: false,

@@ -74,7 +74,7 @@
             <span>{{t "gogovan.confirm_van.name"}}</span>
           </div>
           <div class="small-9 columns">
-            {{full-name-input user=user name='userName'}}
+            {{full-name-input user=user name='userName' id='userName' classBinding='invalidName:error' }}
           </div>
         </div>
 
@@ -85,7 +85,7 @@
           <div class="small-9 columns">
             <div class='input_with_prefix'>
               <div class='mobile-prefix'>+852</div>
-              {{view 'numeric-input' value=user.mobile name="mobile" id="mobile" maxlength="8" }}
+              {{view 'numeric-input' value=mobileNumber name="mobile" id="mobile" maxlength="8" classBinding='validMobile::error' }}
             </div>
           </div>
         </div>

@@ -5,7 +5,10 @@ export default Ember.ObjectController.extend({
   needs: ['delivery'],
 
   user: Ember.computed.alias('session.currentUser'),
+  mobileNumber: Ember.computed.alias('user.mobile'),
   orderDetails: Ember.computed.alias('model'),
+
+  validMobile: Ember.computed.equal("mobileNumber.length", 8),
 
   districtName: function(){
     var district = this.store.getById("district", this.get('districtId'));
@@ -16,9 +19,30 @@ export default Ember.ObjectController.extend({
     return (arguments.length > 1) ? value : false;
   }.property(),
 
+  invalidName: function(key, value) {
+    if(arguments.length > 1) {
+      return value;
+    } else {
+      var name = Ember.$("#userName").val();
+      var invalid = (name == undefined) ? false : name.length === 0;
+      return invalid;
+    }
+  }.property().volatile(),
+
   actions: {
+    removeError: function(){
+      this.set('invalidName', false);
+    },
+
     confirmOrder: function(){
       var controller = this;
+
+      if(!controller.get('validMobile')) { return false; }
+      if(controller.get('invalidName')) {
+        controller.set('invalidName', true);
+        return false;
+      }
+
       controller.set("inProgress", true);
       var orderDetails = controller.get("orderDetails");
 
