@@ -64,6 +64,8 @@ export default Ember.ObjectController.extend({
 
       var delivery = controller.store.getById("delivery", controller.get('controllers.delivery.id'));
 
+      var loadingView = this.container.lookup('view:loading').append();
+
       // save schedule
       schedule.save().then(function(schedule) {
         delivery.set('schedule', schedule);
@@ -88,6 +90,8 @@ export default Ember.ObjectController.extend({
             .catch(function() {
               alert("There is some error with your bookings. Please try again later.");
               controller.transitionToRoute('delivery.book_van');
+            }).finally(function() {
+              loadingView.destroy();
             });
           });
         });
