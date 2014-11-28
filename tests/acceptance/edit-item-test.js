@@ -3,7 +3,7 @@ import startApp from '../helpers/start-app';
 import syncDataStub from '../helpers/empty-sync-data-stub';
 
 var TestHelper = Ember.Object.createWithMixins(FactoryGuy.testMixin);
-var App, testHelper, store;
+var App, testHelper, store, offer, item;
 
 module('Edit Item', {
   setup: function() {
@@ -11,6 +11,10 @@ module('Edit Item', {
     testHelper = TestHelper.setup(App);
     store = testHelper.getStore();
     syncDataStub(testHelper);
+
+    offer = store.makeFixture("offer");
+    item = store.makeFixture("item",{offer:offer});
+    store.makeList("donor_condition", 2);
   },
 
   teardown: function() {
@@ -20,13 +24,13 @@ module('Edit Item', {
 });
 
 test("Create Item with details", function() {
-  visit("/offers");
-  visit("/offers/2/items/new");
-  click('button.add_item_link');
+  expect(4);
+
+  var edit_item_url = "/offers/" + offer.id + "/items/" + item.id + "/edit";
+  visit(edit_item_url);
 
   andThen(function() {
-    equal(currentURL(), "/offers/2/items/add_item");
-    equal(find('img.fav_image').attr('id'), testImage1);
+    equal(currentURL(), edit_item_url);
   });
 
   fillIn("textarea[name=donorDescription]", "this is test item");
@@ -36,11 +40,12 @@ test("Create Item with details", function() {
     equal(find("textarea[name=donorDescription]").val(), "this is test item");
   });
 
+  testHelper.handleUpdate("item", item.id);
   click("button:contains('Save Details')");
+  Ember.run(function(){ item.set("state", "submitted"); });
 
   andThen(function(){
-    equal(currentURL(), "/offers/2");
-    equal($.trim(find('.tab-bar-section .title').text()), "Offer items (1)");
-    // equal(find(".item_name").text(), "this is test item");
+    equal(currentURL(), "/offers/" + offer.id);
+    equal($(".info h3").last().text().trim(), "this is test item");
   });
 });

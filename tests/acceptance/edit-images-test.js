@@ -44,7 +44,7 @@ test("Add Image: display previously added images", function() {
     click("a:contains('Add item')");
 
     andThen(function() {
-      equal(edit_images_url, currentURL());
+      equal(currentURL(), edit_images_url);
 
       // preview-image
       equal(find('#main-image img').attr('src'), img1.get("imageUrl"));
@@ -64,7 +64,7 @@ test("Clicking on thumbnail image should change preview-image", function() {
   visit(edit_images_url);
 
   andThen(function() {
-    equal(edit_images_url, currentURL());
+    equal(currentURL(), edit_images_url);
 
     // preview-image
     equal(find('#main-image img').attr('src'), img1.get("imageUrl"));
@@ -85,7 +85,7 @@ test("Change favourite image", function() {
   visit(edit_images_url);
 
   andThen(function() {
-    equal(edit_images_url, currentURL());
+    equal(currentURL(), edit_images_url);
 
     // favourite-image
     equal(find("#photo-list .fa-star:not(.hidden)").prev().attr("src"), img1.get("thumbImageUrl"));
@@ -109,7 +109,7 @@ test("Can't proceed if no images", function() {
   visit(edit_images_url);
 
   andThen(function() {
-    equal(edit_images_url, currentURL());
+    equal(currentURL(), edit_images_url);
 
     equal(find("button:contains('Next')").prop("disabled"), true);
   });
@@ -124,7 +124,7 @@ test("Set another image as favourite if favourite image deleted", function() {
   visit(edit_images_url);
 
   andThen(function() {
-    equal(edit_images_url, currentURL());
+    equal(currentURL(), edit_images_url);
 
     equal(find("#photo-list img").length, 2);
 
@@ -150,7 +150,7 @@ test("Can't delete last image", function() {
   visit(edit_images_url);
 
   andThen(function() {
-    equal(edit_images_url, currentURL());
+    equal(currentURL(), edit_images_url);
   });
 
   click("#main-image-controls .fa-trash");

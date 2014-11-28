@@ -31,7 +31,7 @@ Router.map(function() {
       });
 
       this.resource('item', {path: '/items/:item_id'}, function() {
-        this.route('index');
+        this.route('index', { path: '/'});
         this.route('edit');
         this.route('edit_images');
       });
