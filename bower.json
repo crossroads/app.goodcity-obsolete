@@ -15,7 +15,7 @@
     "qunit": "~1.15.0",
     "cloudinary": "~1.0.12",
     "ember-i18n": "~2.9.0",
-    "ember-data-factory-guy": "~0.7.6",
+    "ember-data-factory-guy": "~0.8.1",
     "moment": "~2.8.3",
     "jquery-timeago": "~1.4.1",
     "foundation": "~5.4.7",
@@ -30,6 +30,9 @@
     "handlebars": "~1.3.0",
     "jquery": "^2.1.1",
     "ember": "~1.8.1",
-    "ember-data": "1.0.0-beta.11"
+    "ember-data": "1.0.0-beta.12"
+  },
+  "devDependencies": {
+    "jquery-mockjax": "~1.6.1"
   }
 }
