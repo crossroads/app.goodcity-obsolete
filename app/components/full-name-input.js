@@ -7,7 +7,7 @@ export default Ember.Component.extend({
   attributeBindings: [ "name", "type", "id", "value"],
 
   focusIn: function(){
-    this.get('controller').send("removeError");
+    Ember.$(this.element).removeClass('error');
   },
 
   didInsertElement: function(){
