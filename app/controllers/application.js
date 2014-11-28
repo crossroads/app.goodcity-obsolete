@@ -27,6 +27,19 @@ export default Ember.ObjectController.extend({
     },
     setSubscriptions: function() {
       this.get('controllers.subscriptions').send('wire');
+    },
+    error: function(reason) {
+      if (reason.status === 401) {
+        if (this.get('isLoggedIn')) {
+          this.send('logMeOut');
+        }
+        else {
+          this.transitionToRoute('login');
+        }
+      } else {
+        alert('Something went wrong');
+        Ember.Logger.error(reason);
+      }
     }
   }
 });

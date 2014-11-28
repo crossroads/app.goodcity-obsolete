@@ -10,7 +10,10 @@ export default function(url, type, authToken, data, args) {
       url: url.indexOf('http') === -1 ? config.APP.SERVER_PATH + url : url,
       headers: authToken ? { Authorization: "Bearer " + authToken } : {},
       success: function(data) { Ember.run(function() { resolve(data); }); },
-      error: function(jqXHR) { Ember.run(function() { reject(jqXHR); }); }
+      error: function(jqXHR) {
+        jqXHR.url = url;
+        Ember.run(function() { reject(jqXHR); });
+      }
     }, args));
   });
 }

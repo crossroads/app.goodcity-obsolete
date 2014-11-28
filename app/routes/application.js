@@ -11,7 +11,7 @@ export default Ember.Route.extend({
     Ember.I18n.translations = Ember.I18n.translation_store[language];
 
     Ember.RSVP.on('error', function(error) {
-      _this.send('error', error);
+      _this.controllerFor("application").send("error", error);
     });
 
     //preload data
@@ -29,7 +29,9 @@ export default Ember.Route.extend({
       promises = promises.concat(retrieve(config.APP.PRELOAD_AUTHORIZED_TYPES));
     }
 
-    return Ember.RSVP.allSettled(promises);
+    return Ember.RSVP.all(promises).catch(function(error) {
+      _this.controllerFor("application").send("error", error);
+    });
   },
 
   renderTemplate: function() {
@@ -58,19 +60,6 @@ export default Ember.Route.extend({
     loading: function() {
       var view = this.container.lookup('view:loading').append();
       this.router.one('didTransition', view, 'destroy');
-    },
-    error: function(reason) {
-      if (reason.status === 401) {
-        if (this.get('isLoggedIn')) {
-          this.send('logMeOut');
-        }
-        else {
-          this.transitionToRoute('login');
-        }
-      } else {
-        alert('Something went wrong');
-        Ember.Logger.error(reason);
-      }
     }
   }
 });
