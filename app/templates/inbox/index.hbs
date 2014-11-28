@@ -46,8 +46,8 @@
                 {{/if}}
               </span>
 
-              <span class="thumb">
-                {{cloudinary-image imageId=displayImageId width=50 height=50 className='fav_image'}}<br/>
+              <span class="list-image">
+                <img {{bind-attr src=displayImageUrl}} class="thumb small" />
               </span>
 
             {{/link-to}}

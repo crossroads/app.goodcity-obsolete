@@ -34,8 +34,8 @@ export default DS.Model.extend({
   userPhone:      attr('string'),
 
   itemCount: function() {
-    return this.get("items.length");
-  }.property('this.items.@each'),
+    return this.get("items").rejectBy("state", "draft").get("length");
+  }.property('items.@each.state'),
 
   unreadMessagesCount: function() {
     return this.get('messages').filterBy('state', 'unread').length;
@@ -49,10 +49,10 @@ export default DS.Model.extend({
   isUnderReview: Ember.computed.equal("state", "under_review"),
   isReviewed: Ember.computed.equal("state", "reviewed"),
 
-  displayImageId: function(){
-    var item = this.get("items.content.firstObject");
-    return item ? item.get('favouriteImage'): "";
-  }.property('this.items.@each'),
+  displayImageUrl: function(){
+    return this.get("items").rejectBy("images.length", 0).sortBy("id")
+      .get("firstObject.displayImageUrl") || "/assets/images/default_item.jpg";
+  }.property('items.@each.displayImageUrl'),
 
   isCharitableSale: function() {
     var item = this.get("items.content.firstObject");
@@ -71,6 +71,4 @@ export default DS.Model.extend({
     }
     return status;
   }.property('state')
-
-
 });

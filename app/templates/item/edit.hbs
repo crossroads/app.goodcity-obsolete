@@ -15,19 +15,10 @@
       <form>
         <div class="row">
           <div class="small-4 large-2 columns fav-item-image">
-
-            {{#if isNewItem }}
-              {{#link-to 'items.new' class='edit-image-link'}}
-                {{cloudinary-image imageId=previewImageId width=100 height=150 className='fav_image'}}
-                <div>{{t "items.add_item.edit_image"}} ({{imageCount}})</div>
-              {{/link-to}}
-            {{else}}
-              {{#link-to 'item.edit_images' class='edit-image-link'}}
-                {{cloudinary-image imageId=previewImageId width=100 height=150 className='fav_image'}}
-                <div>{{t "items.add_item.edit_image"}} ({{imageCount}})</div>
-              {{/link-to}}
-            {{/if}}
-
+            {{#link-to 'item.edit_images' class='edit-image-link'}}
+              <img {{bind-attr src="displayImageUrl"}} class="thumb" style="width:100px;" />
+              <div>{{t "items.add_item.edit_image"}} ({{imageCount}})</div>
+            {{/link-to}}
           </div>
 
           <div class="small-8 large-10 columns">

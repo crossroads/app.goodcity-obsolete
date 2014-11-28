@@ -165,14 +165,21 @@ I18nTranslationsZhTw =
           "plan_delivery" : "Plan Delivery"
 
       "items":
+        "edit_images":
+          "add_photo" : "Add photo"
+          "delete_confirm" : "Are you sure you want to delete this image?"
+          "cant_delete_last_image" : "You must have at least one image"
+          "donating_what" : "What are you donating?"
+          "take_photos" : "Take some photos"
+          "fullscreen_tooltip" : "toggle fullscreen"
+          "favourite_tooltip" : "set as cover image"
+          "delete_tooltip" : "delete image"
+
         "add_item":
           "condition": "條件?"
           "edit_image" : "編輯形像"
           "save" : "Save Details"
           "description_placeholder" : "What is it? How many items? What's the size?"
-
-        "new":
-          "add_photos" : "添加照片本項"
 
       "item":
         "item_details" : "項詳情:"

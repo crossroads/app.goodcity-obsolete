@@ -12,7 +12,7 @@
     <div class="small-12 columns">
       <div class="row top-bottom-margin">
         <div class="small-2 columns">
-          {{cloudinary-image imageId=defaultImageId width=100 height=100 className='fav_image'}}
+          <img {{bind-attr src=displayImageUrl}} class="thumb" style="width:100px;height:100px;" />
         </div>
         <div class="small-10 columns">
           {{donorDescription}}

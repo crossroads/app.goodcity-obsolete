@@ -34,13 +34,10 @@ Router.map(function() {
         this.route('porterage_charges');
       });
 
-      this.resource('items', function(){
-        this.route('new');
-        this.route('add_item');
-        this.resource('item', { path: '/:item_id'}, function(){
-          this.route('edit');
-          this.route('edit_images');
-        });
+      this.resource('item', {path: '/items/:item_id'}, function() {
+        this.route('index', { path: '/'});
+        this.route('edit');
+        this.route('edit_images');
       });
 
       this.resource('review_offer', function(){

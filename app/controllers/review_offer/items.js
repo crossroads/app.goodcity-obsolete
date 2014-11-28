@@ -7,7 +7,7 @@ export default Ember.ArrayController.extend({
   offer: Ember.computed.alias('controllers.offer'),
 
   accepted: Ember.computed.filterBy('content', 'state', 'accepted'),
-  awaitingReview: Ember.computed.filterBy('content', 'state', 'draft'),
+  awaitingReview: Ember.computed.filterBy('content', 'state', 'submitted'),
   rejected: Ember.computed.filterBy('content', 'state', 'rejected'),
 
 

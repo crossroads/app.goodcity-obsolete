@@ -2,7 +2,7 @@ import Ember from 'ember';
 import startApp from '../helpers/start-app';
 
 var App, testHelper,
-  TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
+  TestHelper = Ember.Object.createWithMixins(FactoryGuy.testMixin);
 
 module('Offer Index View', {
   setup: function() {
