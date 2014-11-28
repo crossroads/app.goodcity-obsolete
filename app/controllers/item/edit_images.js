@@ -36,7 +36,7 @@ export default Ember.ObjectController.extend({
 
   //css related
   previewImageBgCss: function() {
-    if (this.get("isExpanded")) {
+    if (this.get("isExpanded") || !this.get("previewImage")) {
       return "";
     }
     return "background-image:url(" + this.get("previewImage.imageUrl") + ")";

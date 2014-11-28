@@ -16,6 +16,7 @@ export default Ember.Component.extend({
   events: ["progress","always","fail","done"],
 
   didInsertElement: function() {
+    this._super();
     var _this = this;
 
     //https://github.com/blueimp/jQuery-File-Upload/wiki/Options
