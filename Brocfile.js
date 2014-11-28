@@ -14,6 +14,13 @@ app.import('bower_components/cloudinary/js/jquery.fileupload-image.js');
 app.import('bower_components/cloudinary/js/jquery.fileupload-validate.js');
 app.import('bower_components/cloudinary/js/jquery.cloudinary.js');
 app.import('bower_components/moment/moment.js');
+app.import('bower_components/pickadate/lib/picker.js');
+app.import('bower_components/pickadate/lib/picker.date.js');
+app.import('bower_components/pickadate/lib/picker.time.js');
+
+app.import("bower_components/pickadate/lib/themes/classic.css");
+app.import("bower_components/pickadate/lib/themes/classic.date.css");
+app.import("bower_components/pickadate/lib/themes/classic.time.css");
 
 app.import('bower_components/fastclick/lib/fastclick.js');
 app.import('bower_components/foundation/js/foundation.min.js');
