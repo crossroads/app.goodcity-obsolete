@@ -56,7 +56,7 @@ export default DS.Model.extend({
 
   isCharitableSale: function() {
     var item = this.get("items.content.firstObject");
-    return (item.get('saleable') ? "Yes" : "No");
+    return ((item && item.get('saleable')) ? "Yes" : "No");
   }.property('this.items.@each'),
 
   status: function(){

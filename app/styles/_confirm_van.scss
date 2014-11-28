@@ -1,6 +1,5 @@
 .confirm-van{
   .delivery-details {
-    font-size: 1rem;
     color: white;
     font-weight: 600;
   }
@@ -25,15 +24,14 @@
     position: relative;
     .mobile-prefix {
       position: absolute;
-      width: 3.2rem;
+      width: 2.3rem;
       color: rgba(0, 0, 0, 0.75);
       text-align: center;
-      font-size: 1.125rem;
-      margin: 0.4rem 0 0 0.4rem;
+      margin: 0.3rem 0 0 0.3rem;
       height: 1.7rem;
       padding-top: 0.03rem; }
     #mobile {
-      padding-left: 3.5rem; }
+      padding-left: 2.6rem; }
   }
   input.error {
     border-color: #f34d4f !important;
