@@ -7,8 +7,7 @@ export default AuthorizeRoute.extend({
     var offerId = this.modelFor('offer').get('id');
 
     return this.store.filter('item', function(item) {
-      return item.get('offerId') === parseInt(offerId);
+      return item.get('offerId') === parseInt(offerId) && item.get("state") !== "draft";
     });
   }
-
 });

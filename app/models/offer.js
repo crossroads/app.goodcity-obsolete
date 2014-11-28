@@ -34,8 +34,8 @@ export default DS.Model.extend({
   userPhone:      attr('string'),
 
   itemCount: function() {
-    return this.get("items.length");
-  }.property('this.items.@each'),
+    return this.get("items").rejectBy("state", "draft").get("length");
+  }.property('items.@each.state'),
 
   unreadMessagesCount: function() {
     return this.get('messages').filterBy('state', 'unread').length;
