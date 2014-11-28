@@ -28,6 +28,10 @@ Router.map(function() {
         this.route('contact_details');
         this.route('thank_offer');
         this.route('donation_details');
+
+        this.route('book_van');
+        this.route('confirm_van');
+        this.route('porterage_charges');
       });
 
       this.resource('item', {path: '/items/:item_id'}, function() {

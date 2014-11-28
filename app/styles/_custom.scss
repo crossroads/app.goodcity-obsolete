@@ -11,8 +11,7 @@ h2{
 }
 .title, .back, .button, h3, ul, .link > a {
   @media #{$small-only} {
-    font-size: 0.8rem !important;
-  }
+    font-size: 0.8rem !important; }
 }
 
 .message_box {

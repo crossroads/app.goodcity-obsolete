@@ -31,13 +31,15 @@
         {{/each}}
       </div>
 
-      <div class="btm">
-        <div class="row">
-          <div class="small-10 small-offset-1 columns">
-            {{#link-to 'offer.plan_delivery' classNames='button expand'}}Plan Delivery{{/link-to}}
+      {{#if isReviewed}}
+        <div class="btm">
+          <div class="row">
+            <div class="small-10 small-offset-1 columns">
+              {{#link-to 'offer.plan_delivery' classNames='button expand'}}Plan Delivery{{/link-to}}
+            </div>
           </div>
         </div>
-      </div>
+      {{/if}}
 
     </div>
   </div>

@@ -47,6 +47,7 @@ export default DS.Model.extend({
   isSubmitted: Ember.computed.equal("state", "submitted"),
   isScheduled: Ember.computed.equal("state", "scheduled"),
   isUnderReview: Ember.computed.equal("state", "under_review"),
+  isReviewed: Ember.computed.equal("state", "reviewed"),
 
   displayImageUrl: function(){
     return this.get("items").rejectBy("images.length", 0).sortBy("id")
@@ -55,7 +56,7 @@ export default DS.Model.extend({
 
   isCharitableSale: function() {
     var item = this.get("items.content.firstObject");
-    return (item.get('saleable') ? "Yes" : "No");
+    return ((item && item.get('saleable')) ? "Yes" : "No");
   }.property('this.items.@each'),
 
   status: function(){
