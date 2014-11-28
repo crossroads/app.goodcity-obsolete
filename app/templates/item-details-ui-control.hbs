@@ -6,7 +6,7 @@
           className='fav_image' width=70 height=70}}
       </div>
       <div class="small-7 columns head">
-        <span class="item-ui">
+        <span class="ui">
           {{input
             type="text"
             name="itemtypename"
@@ -20,7 +20,7 @@
         <i {{ bind-attr class=":fa :fa-lg view.isHide:fa-plus:is-hide" }}></i>
       </div>
     </div>
-    <div {{bind-attr class="view.isHide :row :bottom :item-ui" }}>
+    <div {{bind-attr class="view.isHide :row :bottom :ui" }}>
       <div class="small-10 columns head">
         {{input
           type="text"
@@ -35,36 +35,36 @@
       </div>
     </div>
     <div class="row bottom">
-      <div {{bind-attr class=":small-6 :columns :item-ui :inner"}}>
+      <div {{bind-attr class=":small-6 :columns :ui :inner"}}>
         {{input
-          type="text"
+          type="number"
           name="qty"
           valueBinding="view.quantity"
           placeholder="Qty"
           maxlength="8"
         }}
       </div>
-      <div {{bind-attr class=":small-2 :columns :item-ui :inner" }}>
+      <div {{bind-attr class=":small-2 :columns :ui :inner" }}>
         {{input
-          type="text"
+          type="number"
           name="length"
           valueBinding="view.length"
           placeholder="L"
           maxlength="8"
         }}
       </div>
-      <div {{bind-attr class=":small-2 :columns :item-ui :inner"}}>
+      <div {{bind-attr class=":small-2 :columns :ui :inner"}}>
         {{input
-          type="text"
+          type="number"
           name="width"
           valueBinding="view.width"
           placeholder="W"
           maxlength="5"
         }}
       </div>
-      <div {{bind-attr class=":small-2 :columns :item-ui :inner"}}>
+      <div {{bind-attr class=":small-2 :columns :ui :inner"}}>
         {{input
-          type="text"
+          type="number"
           name="height"
           valueBinding="view.height"
           placeholder="H"

@@ -1,5 +1,22 @@
+body{
+  @media #{$small-only} {
+    font-size: 0.8rem;
+  }
+}
+
+h2{
+  @media #{$small-only} {
+      font-size: 0.9rem;
+  }
+}
+.title, .back, .button, h3, ul, .link > a {
+  @media #{$small-only} {
+    font-size: 0.8rem !important;
+  }
+}
+
 .message_box {
-  background-color: #DDDDDD;
+  background-color: $gainsboro;
   color: black;
   width: 100%;
   border-radius: 0.5rem;
@@ -16,7 +33,7 @@
 
 .tabs-content {
   .message_box {
-    background-color: #FFFFFF;
+    background-color: white;
     color: black;
     a {
       color: black !important; }
@@ -24,13 +41,13 @@
 }
 
 .input_container.error {
-  border: solid  0.2rem #f34d4f !important;
-  background: #fddbdc !important;
+  border: solid  0.2rem $coral-red !important;
+  background: $light-pitch !important;
 }
 
 textarea.error {
-  border-color: #f34d4f !important;
-  background: #fddbdc !important;
+  border-color: $coral-red !important;
+  background: $light-pitch !important;
   margin-bottom: 1rem;
 }
 
@@ -66,7 +83,7 @@ textarea.error {
 }
 
 .reject_label {
-  width: 90%; }
+  width: 100%; }
 
 // hide spinner from number-input
 input[type=number] {-moz-appearance: textfield;}
@@ -98,6 +115,8 @@ textarea:-ms-input-placeholder {
 
 .icon-center {
   vertical-align: middle;
+  text-align: center;
+  margin-right: -1rem;
 }
 
 .icon-text {
@@ -106,8 +125,9 @@ textarea:-ms-input-placeholder {
 
 .link-blue {
   color: $dark-blue;
-  font-size: 1.2rem;
   text-decoration: underline;
+  padding-left: 0.8rem;
+  margin-top: 0.2rem;
 }
 
 .icon-center {
@@ -116,31 +136,6 @@ textarea:-ms-input-placeholder {
 
 .icon-text {
   padding-top: 0.4rem;
-}
-
-.link-blue {
-  color: $dark-blue;
-  font-size: 1.2rem;
-  text-decoration: underline;
-}
-
-.reject-offer {
-  ul {
-    list-style-type: none;
-    list-style-position: outside;
-    input[type="radio"] {
-      display: inline-block !important; }
-    input[type="radio"] + label {
-      font-size: 1.0rem !important;
-      color: black !important; }
-    input[type="radio"]:checked + label {
-      border: none;
-      background: inherit; }
-  }
-  .error {
-    border-color: $coral-red !important;
-    background: $light-pitch !important;
-    margin-bottom: 1.5rem; }
 }
 
 .book-timeslot {
@@ -213,6 +208,7 @@ textarea:-ms-input-placeholder {
   -ms-text-overflow: ellipsis;
   -o-text-overflow: ellipsis;
   line-height: 1.5;    /* fallback */
+  word-break: break-all;
 }
 .one-line-ellipsis {
   max-height: 1.4rem;  /* fallback */
@@ -258,13 +254,18 @@ textarea:-ms-input-placeholder {
   margin-bottom: 0 !important;
   list-style: none;
   float: left;
-  }
+}
+
 .tabs dd > a, .tabs .tab-title > a {
   display: block;
   background-color: $dark-blue;
   color: $light-black;
-  padding: 1rem 1rem;
+  padding: 0.5rem 0rem;
+  @media #{$small-only} {
+    font-size: 0.67rem;
   }
+}
+
 .tabs dd > a:hover, .tabs .tab-title > a:hover {
   background-color: $dark-blue;
   color: $light-black;
@@ -309,13 +310,40 @@ textarea:-ms-input-placeholder {
 }
 
 input[type="radio"] + label {
-  font-size: 0.80rem !important;
   vertical-align: middle;
 }
 
-.radio a.active {
-  background: $coral-red;
-  border: 1px solid $coral-red; }
+.radio-buttons {
+  border-spacing: 0.1rem;
+  color: white;
+  display: table;
+  table-layout: fixed !important;
+  width: 100%;
+  height: 3.2rem;
+  @media #{$small-only} {
+    height: 2.7rem;
+  }
+  .active {
+    background: $coral-red;
+    border: 1px solid $coral-red;
+  }
+  li {
+    border: solid 1px white;
+    vertical-align: middle;
+    text-align: center;
+    @media #{$small-only} {
+      margin: 0.1rem;
+      padding: 0.1rem;
+      font-size: 0.68rem !important;
+    }
+
+    .radio {
+      vertical-align: middle;
+      text-align: center;
+      padding: 0.335rem;
+    }
+  }
+}
 
 .unread_message {
   height: 30px;
@@ -378,41 +406,7 @@ textarea {
   display: inline;
 }
 
-/* select2 */
-.select2-container {
-  width: 100% !important;
-  .select2-chosen {
-    color: $light-black;
-  }
-  .select2-choice {
-    padding: 0.5rem;
-    border: 2px solid $white;
-    height: 2.5625rem;
-    background-color: $ghost;
-    -webkit-appearance: none !important;
-    -webkit-border-radius: 0px;
-    background-color: $ghost !important;
-    background-position: 100% center;
-    background-repeat: no-repeat;
-    border: 1px solid $ghost;
-    font-size: 1.125rem;
-    color: rgba(0, 0, 0, 0.75);
-    line-height: normal;
-    border-radius: 0;
-    .select2-arrow {
-      border: none;
-      background: $ghost;
-    }
-  }
-  .select2-input {
-    width: 100%;
-    border: solid 2px red;
-  }
-  .select2-drop-mask {
-    width: 100%;
-    border: solid 2px red;
-  }
-}
+
 .icon-empty-items {
   width: 70px;
   height: 70px;
