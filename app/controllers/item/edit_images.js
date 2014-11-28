@@ -8,6 +8,21 @@ export default Ember.ObjectController.extend({
   isReady: false,
   isExpanded: false,
 
+  images: function() {
+    //The reason for sorting is because by default it's ordered by favourite
+    //then id order. If another image is made favourite then deleted the first image
+    //by id order is made favourite which can be second image in list which seems random.
+
+    //Sort by id ascending except place new images id = 0 at end
+    return (this.get("model.images") || Ember.A()).toArray().sort(function(a,b) {
+      a = parseInt(a.get("id"));
+      b = parseInt(b.get("id"));
+      if (a === 0) { return 1; }
+      if (b === 0) { return -1; }
+      return a - b;
+    });
+  }.property("model.images.[]"),
+
   favouriteImage: function() {
     return this.get("images").filterBy("favourite").get("firstObject");
   }.property("images.@each.favourite"),
