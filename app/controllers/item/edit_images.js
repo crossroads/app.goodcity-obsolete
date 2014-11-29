@@ -36,11 +36,16 @@ export default Ember.ObjectController.extend({
 
   //css related
   previewImageBgCss: function() {
+    var css = this.get("instructionBoxCss");
     if (this.get("isExpanded") || !this.get("previewImage")) {
-      return "";
+      return css;
     }
+    return css + "background-image:url(" + this.get("previewImage.imageUrl") + ");";
+  }.property("previewImage", "isExpanded"),
+
+  instructionBoxCss: function() {
     var height = Ember.$(window).height() * 0.6;
-    return "background-image:url(" + this.get("previewImage.imageUrl") + ");height:" + height + "px;";
+    return "min-height:" + height + "px;";
   }.property("previewImage", "isExpanded"),
 
   thumbImageCss: function() {

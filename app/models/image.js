@@ -31,6 +31,7 @@ export default DS.Model.extend({
       height: height,
       width: width,
       crop: crop === true ? 'fill' : 'fit',
+      flags: "progressive",
       id: id
     });
   }
