@@ -1,0 +1,5 @@
+dependencies:
+  pre:
+    - bower install
+  cache_directories:
+    - "bower_components"    # relative to the build directory
