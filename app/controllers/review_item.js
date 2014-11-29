@@ -9,7 +9,7 @@ export default Ember.ObjectController.extend({
   }.property('defaultPackage'),
 
   reviewItemTypeId: function(key, value) {
-    return (arguments.length > 1) ? value : this.get('defaultPackage.id')
+    return (arguments.length > 1) ? value : this.get('defaultPackage.id');
   }.property('defaultPackage'),
 
   reviewItemId: function(){

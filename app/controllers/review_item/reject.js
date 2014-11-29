@@ -47,7 +47,7 @@ export default Ember.ObjectController.extend({
       var item = this.store.update('item', rejectProperties);
 
       var currentItem = this.store.getById('item', item_id);
-      var packageDetails = { item: currentItem }
+      var packageDetails = { item: currentItem };
       packageDetails.packageType = this.store.getById('item_type', this.get('itemTypeId'));
       var packageType = this.store.createRecord("package", packageDetails);
 
