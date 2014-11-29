@@ -434,6 +434,9 @@ textarea {
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
+
+  /* needed by IE11 although there's a fix planned */
+  align-items: center;
 }
 
 .center-item {

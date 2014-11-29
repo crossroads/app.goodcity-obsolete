@@ -13,12 +13,12 @@ export default Ember.Component.extend({
   disabled: true,
   attributeBindings: [ "name", "type", "value", "data-cloudinary-field",
     "data-url", "data-form-data", "disabled", "style"],
-  events: ["progress","always","fail","done"],
+  events: ["submit","progress","always","fail","done"],
 
   didInsertElement: function() {
     var _this = this;
 
-    //https://github.com/blueimp/jQuery-File-Upload/wiki/Options
+    // https://github.com/blueimp/jQuery-File-Upload/wiki/Options
     var options = {
       dataType: 'json',
       timeout: 60000,// 1 minute
@@ -31,7 +31,7 @@ export default Ember.Component.extend({
       }
     };
 
-    //forward cloudinary events
+    // forward cloudinary events
     this.get("events").forEach(function(event) {
       if (_this[event]) {
         options[event] = function(e, data) {

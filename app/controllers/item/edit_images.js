@@ -99,7 +99,16 @@ export default Ember.ObjectController.extend({
 
     //file upload
     triggerUpload: function() {
-      Ember.$("#photo-list input[type='file']").click();
+      if(navigator.userAgent.match(/iemobile/i))
+      {
+        //don't know why but on windows phone need to click twice in quick succession
+        //for dialog to appear
+        Ember.$("#photo-list input[type='file']").click().click();
+      }
+      else
+      {
+        Ember.$("#photo-list input[type='file']").click();
+      }
     },
 
     uploadReady: function() {
@@ -107,7 +116,7 @@ export default Ember.ObjectController.extend({
     },
 
     uploadProgress: function(e, data) {
-      var progress = parseInt(data.loaded / data.total * 100, 10);
+      var progress = parseInt(data.loaded / data.total * 100, 10) || 0;
       this.set("addPhotoLabel", progress + "%");
     },
 
