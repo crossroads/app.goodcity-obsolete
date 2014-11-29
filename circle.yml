@@ -1,7 +1,10 @@
 dependencies:
   pre:
     - "bower install"
-    - "ember server &"
-    - "sleep 5"
   cache_directories:
     - "bower_components"    # relative to the build directory
+
+test:
+  pre:
+    - "ember server &"
+    - "sleep 5"
