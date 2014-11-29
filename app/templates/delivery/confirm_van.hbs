@@ -10,7 +10,7 @@
 
 <section class="main-section confirm-van">
   <div class="row ui">
-    <div class="small-12 columns with-btm">
+    <div class="small-12 columns">
 
       <div class="row delivery-details">
         {{display-date-time orderDetails.pickupTime}}<br/>
@@ -91,14 +91,14 @@
         </div>
       </div>
 
-      <div class="btm">
-        <div class="row">
-          <div class="small-10 small-offset-1 columns">
-            <button {{action 'confirmOrder'}} {{bind-attr disabled=inProgress}} class='button expand'>{{t "gogovan.confirm_van.book_delivery"}}</button>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
+
+<div class="btm">
+  <div class="row">
+    <div class="small-10 small-offset-1 columns">
+      <button {{action 'confirmOrder'}} {{bind-attr disabled=inProgress}} class='button expand'>{{t "gogovan.confirm_van.book_delivery"}}</button>
+    </div>
+  </div>
+</div>

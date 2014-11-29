@@ -443,13 +443,27 @@ textarea {
 }
 
 /* layout */
-.main-section, body, html, body > div {
-  /* allows divs to sized by % height of viewport, used on edit_images */
-  height: 100%;
-  display: block;
+body > .ember-view {
+  position: relative;
+  min-height: 100%;
 }
 
 .btm {
-  padding-top: 5px;
-  background-color: $dark-blue;
+  height: 60px;
+  margin: 0 auto;
+  text-align: center;
+  > div {
+    background-color: $dark-blue;
+    position: fixed;
+    bottom: 0;
+    max-width: 768px;
+    width: 100%;
+    .button {
+      margin: 10px 0;
+    }
+  }
+}
+
+.btm, .row {
+  max-width: 768px;
 }

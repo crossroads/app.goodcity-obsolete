@@ -9,7 +9,7 @@
 </nav>
 <section class="main-section">
   <div class="row">
-    <div class="small-12 columns with-btm">
+    <div class="small-12 columns">
 
       <h3>Awaiting Review({{awaitingReview.length}})</h3>
       <div class= 'row'>
@@ -31,16 +31,16 @@
         {{/each}}
       </div>
 
-      {{#if isReviewed}}
-        <div class="btm">
-          <div class="row">
-            <div class="small-10 small-offset-1 columns">
-              {{#link-to 'offer.plan_delivery' classNames='button expand'}}Plan Delivery{{/link-to}}
-            </div>
-          </div>
-        </div>
-      {{/if}}
-
     </div>
   </div>
 </section>
+
+{{#if isReviewed}}
+  <div class="btm">
+    <div class="row">
+      <div class="small-10 small-offset-1 columns">
+        {{#link-to 'offer.plan_delivery' classNames='button expand'}}Plan Delivery{{/link-to}}
+      </div>
+    </div>
+  </div>
+{{/if}}

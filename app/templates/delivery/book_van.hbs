@@ -10,7 +10,7 @@
 
 <section class="main-section book-van">
   <div class="row">
-    <div class="small-12 columns with-btm">
+    <div class="small-12 columns">
 
       <div class="row">
         <h3>{{t "gogovan.book_van.location"}}</h3>
@@ -71,14 +71,14 @@
         </div>
       </div>
 
-      <div class="btm">
-        <div class="row">
-          <div class="small-10 small-offset-1 columns">
-            <button {{action 'bookVan'}} class='button expand'>{{t "gogovan.book_van.get_quote"}}</button>
-          </div>
-        </div>
-      </div>
-
     </div>
   </div>
 </section>
+
+<div class="btm">
+  <div class="row">
+    <div class="small-10 small-offset-1 columns">
+      <button {{action 'bookVan'}} class='button expand'>{{t "gogovan.book_van.get_quote"}}</button>
+    </div>
+  </div>
+</div>
