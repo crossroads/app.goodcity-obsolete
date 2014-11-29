@@ -44,7 +44,7 @@ export default Ember.ObjectController.extend({
   }.property("previewImage", "isExpanded"),
 
   thumbImageCss: function() {
-    var imgWidth = Math.min(120, Ember.$(window).width() / 4 - 6 * 4);
+    var imgWidth = Math.min(120, Ember.$(window).width() / 4 - 14);
     return "width:" + imgWidth + "px; height:" + imgWidth + "px;";
   }.property(),
 
@@ -75,11 +75,14 @@ export default Ember.ObjectController.extend({
         return;
       }
       if (window.confirm(Ember.I18n.t("items.edit_images.delete_confirm"))) {
+        var loadingView = this.container.lookup('view:loading').append();
         this.get("previewImage").destroyRecord().then(function() {
           _this.initPreviewImage();
           if (!_this.get("favouriteImage")) {
             _this.send("setFavourite");
           }
+        }).finally(function() {
+          loadingView.destroy();
         });
       }
     },

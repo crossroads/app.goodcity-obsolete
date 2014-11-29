@@ -4,14 +4,14 @@ import config from '../config/environment';
 
 export default Ember.Route.extend({
 
-  beforeModel: function () {
+  beforeModel: function (transition) {
     var _this = this;
-    
+
     var language = this.session.get("language") || Ember.I18n.default_language;
     Ember.I18n.translations = Ember.I18n.translation_store[language];
 
     Ember.RSVP.on('error', function(error) {
-      _this.controllerFor("application").send("error", error);
+      _this.send("error", error);
     });
 
     //preload data
@@ -30,7 +30,8 @@ export default Ember.Route.extend({
     }
 
     return Ember.RSVP.all(promises).catch(function(error) {
-      _this.controllerFor("application").send("error", error);
+      //will get error if you use _this instead of transition
+      transition.send("error", error);
     });
   },
 
@@ -59,6 +60,20 @@ export default Ember.Route.extend({
     loading: function() {
       var view = this.container.lookup('view:loading').append();
       this.router.one('didTransition', view, 'destroy');
+    },
+    error: function(reason) {
+      if (reason.status === 401) {
+        var controller = this.controllerFor("application");
+        if (controller.get('isLoggedIn')) {
+          controller.send('logMeOut');
+        }
+        else {
+          this.transitionTo('login');
+        }
+      } else {
+        alert('Something went wrong');
+        Ember.Logger.error(reason);
+      }
     }
   }
 });
