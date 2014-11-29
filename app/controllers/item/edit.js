@@ -16,7 +16,9 @@ export default ValidateItem.extend({
       var _this = this;
       var condititon = this.store.getById("donor_condition", this.get("donorConditionId"));
       this.set("donorCondition", condititon);
-      this.set("state_event", "submit");
+      if (this.get("state") === "draft") {
+        this.set("state_event", "submit");
+      }
       var loadingView = this.container.lookup('view:loading').append();
       this.get("model").save().then(function() {
         _this.transitionToRoute('offer');
