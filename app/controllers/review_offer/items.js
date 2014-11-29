@@ -10,7 +10,6 @@ export default Ember.ArrayController.extend({
   awaitingReview: Ember.computed.filterBy('content', 'state', 'submitted'),
   rejected: Ember.computed.filterBy('content', 'state', 'rejected'),
 
-
   actions: {
     startReview: function() {
       var offer = this.store.getById('offer', this.get('offer.id'));

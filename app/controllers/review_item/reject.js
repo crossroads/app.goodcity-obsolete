@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.ObjectController.extend({
   needs: ["review_item", "offer"],
 
+  itemTypeId: Ember.computed.alias('controllers.review_item.reviewItemTypeId'),
+
   isBlank: function(key, value){
     return (arguments.length >1) ? value : false;
   }.property(),
@@ -44,10 +46,17 @@ export default Ember.ObjectController.extend({
 
       var item = this.store.update('item', rejectProperties);
 
+      var currentItem = this.store.getById('item', item_id);
+      var packageDetails = { item: currentItem };
+      packageDetails.packageType = this.store.getById('item_type', this.get('itemTypeId'));
+      var packageType = this.store.createRecord("package", packageDetails);
+
       // Save changes to Item
       var route = this;
-      item.save().then(function() {
-        route.transitionToRoute('review_offer.items');
+      packageType.save().then(function() {
+        item.save().then(function() {
+          route.transitionToRoute('review_offer.items');
+        });
       });
     }
   }
