@@ -10,7 +10,7 @@
 
 <section class="main-section">
   <div class="row ui">
-    <div class="small-12 columns with-btm">
+    <div class="small-12 columns">
       <div class='porterage_charges_text'>
         {{t "gogovan.porterage.driver"}}{{t "gogovan.porterage.price_factors"}}:
 
@@ -23,14 +23,14 @@
 
         {{t "gogovan.porterage.unwilling_driver"}}
       <div>
-
-      <div class="btm">
-        <div class="row">
-          <div class="small-10 small-offset-1 columns">
-            {{#link-to 'delivery.confirm_van' classNames='button secondary expand'}}{{t "gogovan.porterage.thanks"}}{{/link-to}}
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
+
+<div class="btm">
+  <div class="row">
+    <div class="small-10 small-offset-1 columns">
+      {{#link-to 'delivery.confirm_van' classNames='button secondary expand'}}{{t "gogovan.porterage.thanks"}}{{/link-to}}
+    </div>
+  </div>
+</div>

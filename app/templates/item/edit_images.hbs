@@ -1,4 +1,4 @@
-<section class="main-section">
+<section class="main-section row">
 
   <div id="main-image" {{bind-attr class="isExpanded"}}>
     {{#unless noImage}}
@@ -48,16 +48,15 @@
       </li>
     {{/each}}
   </ul>
+</section>
 
-  <div {{bind-attr class=":btm isExpanded:hidden"}}>
-    <div class="row">
-      <div class="small-6 columns">
-        <button {{ action "back"}} class="button expand secondary">{{t "back"}}</button>
-      </div>
-      <div class="small-6 columns">
-        <button {{ action "next"}} {{bind-attr disabled="noImage"}} class="button expand">{{t "next"}}</button>
-      </div>
+<div {{bind-attr class=":btm isExpanded:hidden"}}>
+  <div class="row">
+    <div class="small-6 columns">
+      <button {{ action "back"}} class="button expand secondary">{{t "back"}}</button>
+    </div>
+    <div class="small-6 columns">
+      <button {{ action "next"}} {{bind-attr disabled="noImage"}} class="button expand">{{t "next"}}</button>
     </div>
   </div>
-
-</section>
+</div>

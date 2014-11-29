@@ -39,7 +39,8 @@ export default Ember.ObjectController.extend({
     if (this.get("isExpanded") || !this.get("previewImage")) {
       return "";
     }
-    return "background-image:url(" + this.get("previewImage.imageUrl") + ")";
+    var height = Ember.$(window).height() * 0.6;
+    return "background-image:url(" + this.get("previewImage.imageUrl") + ");height:" + height + "px;";
   }.property("previewImage", "isExpanded"),
 
   thumbImageCss: function() {

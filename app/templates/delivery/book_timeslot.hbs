@@ -10,7 +10,7 @@
 
 <section class="main-section book-timeslot">
   <div class="row">
-    <div class="small-12 columns with-btm">
+    <div class="small-12 columns">
 
       <div class='schedule-info'>Pick preferred date/time. First available times listed below.</div>
 
@@ -25,17 +25,17 @@
           </li>
         {{/each}}
       </ul>
-
-      <div class="btm">
-        <div class="row">
-          <div class="small-6 columns">
-            <button {{ action 'assignSchedule'}} class='button expand'>Book Time</button>
-          </div>
-          <div class="small-6 columns">
-            <a href="#" {{ action ''}} class="button secondary expand">Show More</a>
-          </div>
-        </div>
-      </div>
     </div>
   </div>
 </section>
+
+<div class="btm">
+  <div class="row">
+    <div class="small-6 columns">
+      <button {{ action 'assignSchedule'}} class='button expand'>Book Time</button>
+    </div>
+    <div class="small-6 columns">
+      <a href="#" {{ action ''}} class="button secondary expand">Show More</a>
+    </div>
+  </div>
+</div>
