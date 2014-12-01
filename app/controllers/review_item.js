@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 
-  defaultPackage: Ember.computed.alias('packages.firstObject.packageType'),
+  defaultPackage: Ember.computed.alias('itemType'),
 
   reviewItemTypeName: function(key, value) {
     return (arguments.length > 1) ? value :  this.get('defaultPackage.name');

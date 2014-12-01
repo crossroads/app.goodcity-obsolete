@@ -43,20 +43,14 @@ export default Ember.ObjectController.extend({
 
       var offer_id = this.get('controllers.offer').get('id');
       rejectProperties.offer = this.store.getById('offer', offer_id);
+      rejectProperties.itemType = this.store.getById('item_type', this.get('itemTypeId'));
 
       var item = this.store.update('item', rejectProperties);
 
-      var currentItem = this.store.getById('item', item_id);
-      var packageDetails = { item: currentItem };
-      packageDetails.packageType = this.store.getById('item_type', this.get('itemTypeId'));
-      var packageType = this.store.createRecord("package", packageDetails);
-
       // Save changes to Item
       var route = this;
-      packageType.save().then(function() {
-        item.save().then(function() {
-          route.transitionToRoute('review_offer.items');
-        });
+      item.save().then(function() {
+        route.transitionToRoute('review_offer.items');
       });
     }
   }
