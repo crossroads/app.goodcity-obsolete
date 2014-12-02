@@ -60,7 +60,7 @@ var addComponentOfItem = Ember.View.extend({
           itemtypename:  currentPackage.get('packageName')
         });
         containerView.pushObject(childView);
-      };
+      }
     }
   }
 });
