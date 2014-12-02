@@ -16,13 +16,29 @@ export default Ember.TextField.extend({
         key === 8 ||
         key === 9 ||
         key === 46 ||
-        (key >= 35 && key <= 36) ||
+        key === 39 ||
+        (key >= 35 && key <= 37) ||
         (key >= 48 && key <= 57) ||
         (key >= 96 && key <= 105));
   },
 
-  keyPress: function() {
+  keyPress: function(e) {
+    var key = e.charCode || e.keyCode || 0;
     var inputValue = this.value || "";
-    return (inputValue.length < this.maxlength);
+    var allowed = this.send('isAllowed', key);
+    console.log(allowed);
+    return allowed ? true : (inputValue.length < this.maxlength);
+  },
+
+  actions: {
+    isAllowed: function(key) {
+      var allowed = (key === 13 ||
+        key === 8 ||
+        key === 9 ||
+        key === 46 ||
+        key === 39 ||
+        (key >= 35 && key <= 37));
+      return allowed;
+    }
   }
 });
