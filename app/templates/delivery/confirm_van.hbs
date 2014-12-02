@@ -43,7 +43,11 @@
             {{t "gogovan.confirm_van.porterage"}}
           </div>
           <div class="small-6 columns">
-            Negotiate with driver
+            {{#if orderDetails.needCarry}}
+              {{t "gogovan.confirm_van.negotiate" }}
+            {{else}}
+              {{t "gogovan.confirm_van.no_porterage" }}
+            {{/if}}
           </div>
           <div class="small-3 columns">
             {{#link-to 'delivery.porterage_charges' }}{{t "gogovan.confirm_van.details"}}{{/link-to}}

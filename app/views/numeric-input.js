@@ -11,7 +11,7 @@ export default Ember.TextField.extend({
     // allow ctrl+v, enter, backspace, tab, delete, numbers, keypad numbers
     // home, end only.
     return (
-        (key === 17 || key === 86) ||
+        (e.ctrlKey && key === 86) ||
         key === 13 ||
         key === 8 ||
         key === 9 ||

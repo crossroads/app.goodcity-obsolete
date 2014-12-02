@@ -99,6 +99,8 @@ I18nTranslationsEn =
           "name" : "Your Name"
           "phone" : "Phone"
           "book_delivery" : "Confirm & Book"
+          "negotiate" : "Negotiate with driver"
+          "no_porterage" : "Not Requested"
 
         "book_van" :
           "title" : "Book Van"
