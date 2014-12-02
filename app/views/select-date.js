@@ -19,6 +19,12 @@ export default Ember.View.extend({
         onSet: function() {
           var date = this.get('select') && this.get('select').obj;
           _this.set("selection", date);
+        },
+        onStart: function(){
+          var date = _this.get('selection');
+          if(date) {
+            this.set('select', new Date(date), { format: 'ddd mmm d' });
+          }
         }
       });
     });

@@ -15,6 +15,12 @@ export default Ember.View.extend({
         onSet: function() {
           var slot = this.get("select") && this.get("select").time;
           _this.set("selection", slot);
+        },
+        onStart: function(){
+          var slot = _this.get('selection');
+          if(slot) {
+            this.set('select', slot);
+          }
         }
       });
     });
