@@ -6,5 +6,6 @@ dependencies:
 
 test:
   pre:
-    - "ember server &"
-    - "sleep 5"
+    - ember server:
+      background: true
+    - sleep 5
