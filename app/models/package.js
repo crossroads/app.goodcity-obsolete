@@ -17,5 +17,9 @@ export default DS.Model.extend({
   updatedAt:       attr('date'),
   // packageTypeId:   attr('number'),
   item:            belongsTo('item'),
-  packageType:     belongsTo('item_type')
+  packageType:     belongsTo('item_type'),
+
+  packageName: function() {
+    return this.get('packageType.name');
+  }.property('packageType'),
 });

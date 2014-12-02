@@ -3,7 +3,7 @@
     <i class='fa fa-minus-circle fa-2x icon icon-center' {{ action "removeItemTypeComponent" on="click" target="view" }}></i>
   </div>
   <div class="small-10 columns">
-    {{view ItemDetailsUiControl itemval=this itemid=this.itemId itemtypename=view.itemtypename packagetypeid=view.packagetypeid width=view.width name="child_detail" height=view.height length=view.length quantity=view.quantity comment=view.comment value=this.itemId}}
+    {{view ItemDetailsUiControl itemval=this itemid=this.itemId itemtypename=view.itemtypename packagetypeid=view.packagetypeid width=view.width name="child_detail" height=view.height length=view.length quantity=view.quantity comment=view.comment value=this.itemId id=view.id}}
   </div>
 </div>
 <br>
