@@ -16,7 +16,7 @@ var addComponentOfItem = Ember.View.extend({
         if (getContainer.get('childViews').contains(chld)) {
           var packageProperties = {};
           var child_vals = updated_child_view.getProperties("length", "height",
-            "width", "quantity", "comment", "packagetypeid", "itemid");
+            "width", "quantity", "comment", "packagetypeid", "itemid", 'id');
           packageProperties.width         = child_vals.width;
           packageProperties.quantity      = child_vals.quantity;
           packageProperties.length        = child_vals.length;
@@ -24,6 +24,7 @@ var addComponentOfItem = Ember.View.extend({
           packageProperties.notes         = child_vals.comment;
           packageProperties.itemId        = child_vals.itemid;
           packageProperties.packageTypeId = child_vals.packagetypeid;
+          packageProperties.id            = child_vals.id;
           arrPackageProperties.pushObject(packageProperties);
         }
       });
@@ -33,9 +34,6 @@ var addComponentOfItem = Ember.View.extend({
     addItemTypeComponent: function(){
       var containerView = Ember.View.views['my_container_view'];
       var childView = containerView.createChildView(addComponent);
-      var childLength = 0;
-      childLength = containerView.get('childViews') ? (containerView.get('childViews').length + 1 ): 0;
-      childView.set("id", (childLength));
       containerView.pushObject(childView);
     },
   },
@@ -44,7 +42,7 @@ var addComponentOfItem = Ember.View.extend({
     this._super();
     var packages = this.get('packages.content');
     if(packages.get('length') > 0) {
-      for (var i = packages.get('length') - 1; i >= 0; i--) {
+      for (var i = 0; i < packages.get('length') ; i++) {
         var containerView = Ember.View.views['my_container_view'];
         var childView = containerView.createChildView(addComponent);
         var currentPackage = packages[i];
@@ -55,7 +53,7 @@ var addComponentOfItem = Ember.View.extend({
           width:         currentPackage.get('width'),
           quantity:      currentPackage.get('quantity'),
           comment:       currentPackage.get('notes'),
-          packagetypeid: currentPackage.get('packageTypeId'),
+          packagetypeid: currentPackage.get('packageType.id'),
           itemid:        currentPackage.get('itemId'),
           itemtypename:  currentPackage.get('packageName')
         });

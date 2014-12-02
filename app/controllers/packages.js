@@ -31,7 +31,7 @@ var packages = Ember.ArrayController.extend({
   actions: {
     savePackageType: function(packageDetails){
       var _this = this;
-      var packagePromises = [];
+      var packagePromises = [], packageNew;
 
       var item = this.store.getById('item', this.get('itemId'));
       item.set('itemType', this.store.getById('item_type', this.get('itemTypeId')));
@@ -41,7 +41,11 @@ var packages = Ember.ArrayController.extend({
         packDetail.item = _this.store.getById('item', packDetail.itemId);
         packDetail.packageType = _this.store.getById('item_type', packDetail.packageTypeId);
 
-        var packageNew = _this.store.createRecord("package", packDetail);
+        if(packDetail.id) {
+          packageNew = _this.store.update('package', packDetail);
+        } else {
+          packageNew = _this.store.createRecord("package", packDetail);
+        }
         packagePromises.pushObject(packageNew.save());
       });
 
