@@ -47,7 +47,7 @@ test("Add Image: display previously added images", function() {
       equal(currentURL(), edit_images_url);
 
       // preview-image
-      equal(find('#main-image img').attr('src'), img1.get("imageUrl"));
+      equal(find('#main-image > div').css('background-image'), "url(" + img1.get("imageUrl") + ")");
 
       // thumbnail-image-list
       equal(find("#photo-list img").length, 2);
@@ -67,13 +67,13 @@ test("Clicking on thumbnail image should change preview-image", function() {
     equal(currentURL(), edit_images_url);
 
     // preview-image
-    equal(find('#main-image img').attr('src'), img1.get("imageUrl"));
+    equal(find('#main-image > div').css('background-image'), "url(" + img1.get("imageUrl") + ")");
 
     // find other thumbnail-image
     click("#photo-list .fa-star.hidden");
 
     andThen(function(){
-      equal(find('#main-image img').attr('src'), img2.get("imageUrl"));
+      equal(find('#main-image > div').css('background-image'), "url(" + img2.get("imageUrl") + ")");
     });
   });
 });
