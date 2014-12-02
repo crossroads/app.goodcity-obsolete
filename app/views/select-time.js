@@ -11,7 +11,7 @@ export default Ember.View.extend({
       Ember.$('.timepicker').pickatime({
         clear: '',
         min: [8,30],
-        max: [18,0],
+        max: [16,0],
         onSet: function() {
           var slot = this.get("select") && this.get("select").time;
           _this.set("selection", slot);
