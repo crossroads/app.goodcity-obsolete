@@ -4,7 +4,8 @@ dependencies:
   cache_directories:
     - "bower_components"    # relative to the build directory
 
-machine:
-  post:
+test:
+  pre:
     - ember server:
         background: true
+    - sleep 5
