@@ -37,10 +37,11 @@ export default Ember.ObjectController.extend({
   //css related
   previewImageBgCss: function() {
     var css = this.get("instructionBoxCss");
-    if (this.get("isExpanded") || !this.get("previewImage")) {
+    if (!this.get("previewImage")) {
       return css;
     }
-    return css + "background-image:url(" + this.get("previewImage.imageUrl") + ");";
+    return css + "background-image:url(" + this.get("previewImage.imageUrl") + ");" +
+      "background-size: " + (this.get("isExpanded") ? "contain" : "cover") + ";";
   }.property("previewImage", "isExpanded"),
 
   instructionBoxCss: function() {

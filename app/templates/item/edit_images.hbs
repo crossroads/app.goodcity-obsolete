@@ -2,10 +2,7 @@
 
   <div id="main-image" {{bind-attr class="isExpanded"}}>
     {{#unless noImage}}
-      <div {{bind-attr style="previewImageBgCss"}} class="center-box">
-        <span {{bind-attr class=":center-item isExpanded::hidden"}}>
-          <img {{bind-attr src="previewImage.imageUrl"}} />
-        </span>
+      <div {{bind-attr style="previewImageBgCss"}}>
         <div id="main-image-controls">
           <a {{action "deleteImage"}} {{translateAttr title="items.edit_images.delete_tooltip"}}>
             <i class="fa fa-trash"></i>
