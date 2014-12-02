@@ -7,4 +7,4 @@ dependencies:
 machine:
   post:
     - ember server:
-      background: true
+        background: true
