@@ -1,15 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-
   itemsById: function() {
-    return this.get('items').sortBy('id');
-  }.property('items.[]'),
+    return this.get("items").sortBy("id")
+      .filter(function(item) { return item.get("state") !== "draft"; });
+  }.property("items"),
 
   actions: {
     addItem: function() {
-      localStorage.currentOffer = this.get("id");
-      this.transitionToRoute('items.new');
+      var draftItemId = this.get("items").filterBy("state", "draft").get("firstObject.id") || "new";
+      this.transitionToRoute('item.edit_images', draftItemId);
     },
 
     cancelOffer: function(offer){

@@ -19,17 +19,33 @@ var packages = Ember.ArrayController.extend({
     return this.get('controllers.review_item/accept.defaultImageId');
   }.property('controllers.review_item/accept.defaultImageId'),
 
+  noPackages: function(){
+    return this.get('allPackages.length') === 0;
+  }.property('packages.@each'),
+
+  allPackages: function(){
+    var item = this.store.getById('item', this.get('itemId'));
+    return item.get('packages');
+  }.property('packages.@each'),
 
   actions: {
     savePackageType: function(packageDetails){
       var _this = this;
-      var packagePromises = [];
+      var packagePromises = [], packageNew;
+
+      var item = this.store.getById('item', this.get('itemId'));
+      item.set('itemType', this.store.getById('item_type', this.get('itemTypeId')));
+      packagePromises.pushObject(item.save());
 
       packageDetails.forEach(function(packDetail){
         packDetail.item = _this.store.getById('item', packDetail.itemId);
         packDetail.packageType = _this.store.getById('item_type', packDetail.packageTypeId);
 
-        var packageNew = _this.store.createRecord("package", packDetail);
+        if(packDetail.id) {
+          packageNew = _this.store.update('package', packDetail);
+        } else {
+          packageNew = _this.store.createRecord("package", packDetail);
+        }
         packagePromises.pushObject(packageNew.save());
       });
 

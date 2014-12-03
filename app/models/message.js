@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 var attr = DS.attr,
@@ -16,9 +17,5 @@ export default DS.Model.extend({
   offer:       belongsTo('offer'),
   offerId:     attr('number'),
 
-  itemImageId: function() {
-    var itemId = this.get('itemId');
-    var item = this.store.getById('item', itemId);
-    return item ? item.get('defaultImageId') : null;
-  }.property()
+  itemImageUrl: Ember.computed.alias("item.displayImageUrl")
 });

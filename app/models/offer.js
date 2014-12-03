@@ -34,12 +34,12 @@ export default DS.Model.extend({
   userPhone:      attr('string'),
 
   itemCount: function() {
-    return this.get("items.length");
-  }.property('this.items.@each'),
+    return this.get("items").rejectBy("state", "draft").length;
+  }.property('items.@each.state'),
 
   unreadMessagesCount: function() {
     return this.get('messages').filterBy('state', 'unread').length;
-  }.property('this.messages.@each'),
+  }.property('messages.@each.state'),
 
   approvedtems: Ember.computed.filterBy("items", "state", "accepted"),
   rejectedItems: Ember.computed.filterBy("items", "state", "rejected"),
@@ -47,16 +47,16 @@ export default DS.Model.extend({
   isSubmitted: Ember.computed.equal("state", "submitted"),
   isScheduled: Ember.computed.equal("state", "scheduled"),
   isUnderReview: Ember.computed.equal("state", "under_review"),
+  isReviewed: Ember.computed.equal("state", "reviewed"),
 
-  displayImageId: function(){
-    var item = this.get("items.content.firstObject");
-    return item ? item.get('favouriteImage'): "";
-  }.property('this.items.@each'),
+  displayImageUrl: function(){
+    return this.get("items").rejectBy("images.length", 0).sortBy("id")
+      .get("firstObject.displayImageUrl") || "/assets/images/default_item.jpg";
+  }.property('items.@each.displayImageUrl'),
 
   isCharitableSale: function() {
-    var item = this.get("items.content.firstObject");
-    return (item.get('saleable') ? "Yes" : "No");
-  }.property('this.items.@each'),
+    return this.get("items").rejectBy("saleable", false).length > 0 ? "Yes" : "No";
+  }.property('items.@each.saleable'),
 
   status: function(){
     var state = this.get('state');
@@ -70,6 +70,4 @@ export default DS.Model.extend({
     }
     return status;
   }.property('state')
-
-
 });

@@ -1,10 +1,38 @@
 import Ember from 'ember';
+import AjaxPromise from '../utils/ajax-promise';
+import config from '../config/environment';
 
 export default Ember.Route.extend({
 
-  beforeModel: function () {
-    var language = localStorage.language || Ember.I18n.default_language;
+  beforeModel: function (transition) {
+    var _this = this;
+
+    var language = this.session.get("language") || Ember.I18n.default_language;
     Ember.I18n.translations = Ember.I18n.translation_store[language];
+
+    Ember.RSVP.on('error', function(error) {
+      _this.send("error", error);
+    });
+
+    //preload data
+    var retrieve = function(types) {
+      return types.map(function(type) { return _this.store.find(type); });
+    };
+    var promises = retrieve(config.APP.PRELOAD_TYPES);
+
+    //if logged in
+    if (_this.session.get('authToken')) {
+      promises.push(
+        new AjaxPromise("/auth/current_user_profile", "GET", _this.session.get("authToken"))
+          .then(function(data) { _this.store.pushPayload(data); })
+      );
+      promises = promises.concat(retrieve(config.APP.PRELOAD_AUTHORIZED_TYPES));
+    }
+
+    return Ember.RSVP.all(promises).catch(function(error) {
+      //will get error if you use _this instead of transition
+      transition.send("error", error);
+    });
   },
 
   renderTemplate: function() {
@@ -26,10 +54,26 @@ export default Ember.Route.extend({
 
   actions: {
     setLang: function(language) {
-      Ember.I18n.translations = Ember.I18n.translation_store[language];
-      localStorage.language = language;
+      this.session.set("language", language);
       window.location.reload();
+    },
+    loading: function() {
+      var view = this.container.lookup('view:loading').append();
+      this.router.one('didTransition', view, 'destroy');
+    },
+    error: function(reason) {
+      if (reason.status === 401) {
+        var controller = this.controllerFor("application");
+        if (controller.get('isLoggedIn')) {
+          controller.send('logMeOut');
+        }
+        else {
+          this.transitionTo('login');
+        }
+      } else {
+        alert('Something went wrong');
+        Ember.Logger.error(reason);
+      }
     }
   }
-
 });

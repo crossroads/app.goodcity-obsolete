@@ -2,8 +2,7 @@
   <div class="small-12 columns detail_container">
     <div class="row top">
       <div class="small-3 columns">
-        {{cloudinary-image imageId=view.itemval.itemDefaultImageId
-          className='fav_image' width=70 height=70}}
+        <img {{bind-attr src=view.itemval.itemDefaultImageId}} class="thumb small">
       </div>
       <div class="small-7 columns head">
         <span class="ui">

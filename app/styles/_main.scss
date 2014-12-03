@@ -7,16 +7,11 @@
 }
 
 .main-section {
-  // padding: 0 10px;
   padding: 0 0.4rem;
 
   &.alt {
     background: #dee4eb;
   }
-}
-
-.row {
-  max-width: 768px;
 }
 
 /* === Type === */
@@ -63,7 +58,7 @@ hr {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 
@@ -164,20 +159,6 @@ ul.off-canvas-list li a:hover  {
   padding-top: 1rem;
 }
 
-.with-btm {
-  position: relative;
-  padding-bottom: 80px;
-
-  &.intro {
-    padding-bottom: 4rem;
-  }
-
-  &.intro-home {
-    padding-bottom: 200px;
-  }
-}
-
-
 /* === Icon Bar === */
 
 .icon-bar-wrap {
@@ -212,69 +193,10 @@ ul.off-canvas-list li a:hover  {
 
 /* === Page Specifc === */
 
-.add-photo-frame {
-  margin: 0 -15px 15px -15px !important;
-  background: #111;
-  position: relative;
-}
-
-.frame-out {
-  display: table;
-  width: 100%;
-  margin: 0 auto;
-  max-width: 480px;
-}
-
-.frame-in {
-  display: table-cell;
-  vertical-align: middle;
-  text-align: center;
-  width: 100%;
-}
-
-.frame-in img {
-  width: 100%;
-  max-width: 480px;
-  height: auto;
-}
-
-.frame-photo {
-  position: relative;
-}
-
-.bg-photo {
-  width: 100%;
-  height: auto;
-}
-
 .no-items {
   font-size: 16px;
   color: #a3aab6;
   text-align: center;
-}
-
-.photo-title {
-  margin-top: 8px !important;
-
-  @media screen and (max-height: 480px){
-    display: none;
-  }
-}
-
-.frame-overlay {
-  background: rgba(0,0,0,0.6);
-  border-radius: 10px;
-  position: absolute;
-
-  padding: 15px;
-
-  top: 50%;
-  left: 50%;
-
-  h3,
-  p {
-    margin: 0;
-  }
 }
 
 
@@ -299,7 +221,7 @@ ul.off-canvas-list li a:hover  {
     font-size: rem-calc(12);
   }
 
-  .thumb {
+  .list-image {
     padding-right: 16px;
     width: 76px;
     font: 0/0 a;
@@ -345,11 +267,6 @@ ul.off-canvas-list li a:hover  {
   &.list-items a {
     background: url("/assets/images/icon-more.png") no-repeat right center;
     background-size: 12px 21px;
-  }
-
-  &.list-offer-items a {
-    background: url("/assets/images/icon-edit.png") no-repeat right center;
-    background-size: 24px 19px;
   }
 
   &.list-activity {
@@ -476,44 +393,7 @@ ul.off-canvas-list li a:hover  {
   }
 }
 
-.photo-list {
-  text-align: center;
-  font: 0/0 a;
-
-  @media screen and (max-height: 480px){
-    margin-top: -30px;
-    position: relative;
-  }
-
-  @include block-grid(
-    $per-row: 4,
-    $spacing: 10px,
-    $base-style: true
-  );
-
-  li {
-    position: relative;
-  }
-
-  a {
-    display: block;
-    position: relative;
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-  }
-}
-
 /* === Bottom content === */
-
-.btm {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-}
 
 .nav-steps {
   text-align: center;
@@ -753,24 +633,6 @@ select {
   background-size: 144px 123px;
 }
 
-.icon-delete {
-  display: inline-block;
-  width: 21px;
-  height: 22px;
-  background: url("/assets/images/icon-delete.png") no-repeat;
-  background-size: 21px 22px;
-
-  margin-top: 10px;
-}
-.icon-favorite {
-  display: inline-block;
-  width: 22px;
-  height: 22px;
-  background: url("/assets/images/icon-favorite.png") no-repeat;
-  background-size: 22px 22px;
-
-   margin-top: 10px;
-}
 .icon-previous {
   display: inline-block;
   width: 15px;

@@ -7,6 +7,7 @@ I18nTranslationsEn =
     Ember.I18n.translation_store = Ember.I18n.translation_store || {}
 
     Ember.I18n.translation_store.en =
+      "crossroads" : "Crossroads"
       "language": "en"
       "loading": "Loading..."
       "goodcity.hk" : "GoodCity.HK"
@@ -74,6 +75,45 @@ I18nTranslationsEn =
           "free" : "Free"
           "booking_button" : "Details & Booking"
 
+      "gogovan":
+        "porterage":
+          "title" : "Porterage Charges"
+          "driver" : "This needs to be negotiated with driver."
+          "price_factors" : "The price will vary based on many factors, including"
+          "item_count_size" : "How many items of what size"
+          "obstacles" : "Stairs or obstacles"
+          "park_van" : "Ability to park van unattended"
+          "help" : "If you or a friend can help"
+          "unwilling_driver" : "If you have large furniture and/or challenging needs you may find drivers are unwilling to take the job or require a significant price."
+          "thanks" : "Got it, thank you!"
+
+        "confirm_van" :
+          "title" : "Confirm Van"
+          "base_fee" : "Base fee"
+          "porterage" : "Porterage"
+          "speak_english" : "Speak English"
+          "trolley" : "Borrow trolley(s)"
+          "details" : "Details"
+          "other" : "Other"
+          "confirm_with_drivar" : "Please confirm total price with driver before loading."
+          "name" : "Your Name"
+          "phone" : "Phone"
+          "book_delivery" : "Confirm & Book"
+          "negotiate" : "Negotiate with driver"
+          "no_porterage" : "Not Requested"
+
+        "book_van" :
+          "title" : "Book Van"
+          "location" : "Location"
+          "select_day" : "Preferred day/time"
+          "crossroads_time" : "Limited to Crossroads' operating hours"
+          "requirements" : "Extra Requirements"
+          "speak_english" : "Speak English"
+          "trolly_cost" : "Borrow trolley(s) + $20/piece"
+          "porterage" : "Porterage/go up(negotiate with drivers)"
+          "extra_time_charge" : "Extra Time(15 minutes waiting time is included for you to load the van. Extra time incurs a charge.)"
+          "get_quote" : "Get Quote"
+
       "tour":
         "register" : "Start Now"
         "step1.title" : "Step 1: Register"
@@ -134,14 +174,21 @@ I18nTranslationsEn =
           "plan_delivery" : "Plan Delivery"
 
       "items":
+        "edit_images":
+          "add_photo" : "Add photo"
+          "delete_confirm" : "Are you sure you want to delete this image?"
+          "cant_delete_last_image" : "You must have at least one image"
+          "donating_what" : "What are you donating?"
+          "take_photos" : "Take some photos"
+          "fullscreen_tooltip" : "toggle fullscreen"
+          "favourite_tooltip" : "set as cover image"
+          "delete_tooltip" : "delete image"
+
         "add_item":
           "condition": "Condition?"
           "edit_image" : "Edit photos"
           "save" : "Save Details"
           "description_placeholder" : "What is it? How many items? What's the size?"
-
-        "new":
-          "add_photos" : "Add photos of this item"
 
       "item":
         "item_details" : "Item details:"

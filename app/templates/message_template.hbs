@@ -12,8 +12,10 @@
       {{/if}}
 
       {{#if controller.offerMessage}}
-        {{#if itemImageId}}
-          <div class='item_message'>{{cloudinary-image imageId=this.itemImageId width=50 height=50 className='fav_image'}}</div>
+        {{#if itemImageUrl}}
+          <div class='item_message'>
+            <img {{bind-attr src=itemImageUrl}} class="thumb small" />
+          </div>
         {{/if}}
       {{/if}}
 

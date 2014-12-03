@@ -11,8 +11,7 @@ h2{
 }
 .title, .back, .button, h3, ul, .link > a {
   @media #{$small-only} {
-    font-size: 0.8rem !important;
-  }
+    font-size: 0.8rem !important; }
 }
 
 .message_box {
@@ -309,24 +308,6 @@ textarea:-ms-input-placeholder {
   min-height:100vh
 }
 
-.item-details {
-  .fav-item-image {
-    text-align: center; }
-
-  textarea {
-    font-size: 0.90rem !important;
-    color: black; }
-
-  .edit-image-link {
-    vertical-align: top;
-    display: block;
-    div {
-      display: block;
-      font-size: 0.8rem;
-      color: $medium-blue; }
-  }
-}
-
 input[type="radio"] + label {
   vertical-align: middle;
 }
@@ -385,18 +366,6 @@ input[type="radio"] + label {
   margin-left: 35%;
 }
 
-.loading_image {
-  margin: 1% 0 1% -0.5%;
-  display: none;
-  background: none;
-  color: white;
-}
-
-.progress {
-  background: none;
-  border: none;
-}
-
 .current_image {
   margin-right: 1%;
 }
@@ -420,47 +389,6 @@ textarea {
 
 .fav_image {
   vertical-align: top;
-}
-
-.edit_image_block {
-  display: inline-block;
-  vertical-align: top;
-}
-
-.fav_star img {
-  display: inline-block;
-  width: 1.5%;
-  margin: 0% 0 3.5% -2%;
-}
-
-.image_list li {
-  display: inline;
-}
-
-.image-buttons {
-  display: inline;
-  position: absolute;
-  margin-top: 55%;
-  margin-left: 12%;
-  bottom: 0;
-}
-
-
-.file-input {
-  margin-top: 2%;
-  .file-button {
-    position: relative;
-    overflow: hidden;
-    input[type=file] {
-      position: absolute;
-      top: 0;
-      right: 0;
-      filter: alpha(opacity=0);
-      opacity: 0;
-      display: block;
-      height: 90%
-    }
-  }
 }
 
 .right-small {
@@ -487,24 +415,58 @@ textarea {
   display: block;
 }
 
-.notification_box {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: $coral-red;
-  color: $white;
-  z-index: 2;
-  display: table;
+/* cloudinary images */
+.thumb {
+  border: 2px solid grey;
+  border-radius: 2px;
+}
 
-  div {
-    display: table-cell;
-    vertical-align: middle;
+.thumb.small {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 5px;
+}
+
+/* helper */
+.center-box {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+
+  /* needed by IE11 although there's a fix planned */
+  align-items: center;
+}
+
+.center-item {
+  display: block;
+  margin: auto;
+  text-align: center;
+}
+
+/* layout */
+body > .ember-view {
+  position: relative;
+  min-height: 100%;
+}
+
+.btm {
+  height: 60px;
+  margin: 0 auto;
+  text-align: center;
+  > div {
+    background-color: $dark-blue;
+    position: fixed;
+    bottom: 0;
+    max-width: 768px;
+    width: 100%;
+    .button {
+      margin: 10px 0;
+    }
   }
-  button {
-    color: $white;
-    float: right;
-    margin-bottom: 0px;
-    margin-left: 15px;
-  }
+}
+
+.btm, .row {
+  max-width: 768px;
 }

@@ -17,7 +17,7 @@ FactoryGuy.define('user_profile', {
   default: {
     firstName: FactoryGuy.generate('collectionFirstName'),
     lastName: FactoryGuy.generate('collectionLastName'),
-    },
+  },
   with_non_hk_mobile: {
     mobile: FactoryGuy.generate('collectionMobile'),
     district_id: 1

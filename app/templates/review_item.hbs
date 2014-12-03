@@ -12,7 +12,7 @@
     <div class="small-12 columns">
       <div class="row top-bottom-margin">
         <div class="small-2 columns">
-          {{cloudinary-image imageId=defaultImageId width=100 height=100 className='fav_image'}}
+          <img {{bind-attr src=displayImageUrl}} class="thumb" style="width:100px;height:100px;" />
         </div>
         <div class="small-10 columns">
           {{donorDescription}}
@@ -22,39 +22,41 @@
       </div>
       <div class="row top-bottom-margin">
         <div class="small-12 columns link">
-          {{item-type getItemId="getItemId" }}
+          {{item-type getItemId="getItemId" selectedItemId=reviewItemTypeId selectedItemName=reviewItemTypeName }}
           <a href="#" class="right">View labeling guide</a>
         </div>
      </div>
     <div class="row row-grey">
         <dl class="tabs" data-tab>
-          <dd class="active small-3 columns text-center arrow-down">
-          {{#link-to 'review_item.accept'}}
-            <i class="fa fa-check-circle fa-2x"></i>
-            <div>{{t "review_item.accept"}}</div>
-          {{/link-to}}
-          </a>
-          </dd>
 
-          <dd class="small-3 columns text-center">
+          {{#link-to 'review_item.accept' tagName="dd" classNames="small-3 columns text-center"}}
+            {{#link-to 'review_item.accept'}}
+              <i class="fa fa-check-circle fa-2x"></i>
+              <div>{{t "review_item.accept"}}</div>
+            {{/link-to}}
+          {{/link-to}}
+
+          {{#link-to 'review_item.reject' tagName="dd" classNames="small-3 columns text-center"}}
             {{#link-to 'review_item.reject'}}
               <i class="fa fa-times-circle fa-2x"></i>
               <div>{{t "review_item.reject"}}</div>
             {{/link-to}}
-          </dd>
+          {{/link-to}}
 
-          <dd class="small-3 columns text-center">
+          {{#link-to 'review_item.donor_messages' tagName="dd" classNames="small-3 columns text-center"}}
             {{#link-to 'review_item.donor_messages'}}
-            <i class="fa fa-comment-o fa-2x"></i>
-            <div>{{t "review_item.donor_message"}}</div>
-          {{/link-to}}</dd>
+              <i class="fa fa-comment-o fa-2x"></i>
+              <div>{{t "review_item.donor_message"}}</div>
+            {{/link-to}}
+          {{/link-to}}
 
-          <dd class="small-3 columns text-center">
+          {{#link-to 'review_item.supervisor_messages' tagName="dd" classNames="small-3 columns text-center"}}
             {{#link-to 'review_item.supervisor_messages'}}
               <i class="fa fa-comment-o fa-2x"></i>
               <div>{{t "review_item.supervisor_message"}}</div>
             {{/link-to}}
-          </dd>
+          {{/link-to}}
+
         </dl>
         <div class="tabs-content">
             <br/>

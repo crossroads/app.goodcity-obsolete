@@ -7,7 +7,12 @@ export default Ember.ObjectController.extend({
   itemId: Ember.computed.alias('controllers.review_item.reviewItemId'),
   itemTypeId: Ember.computed.alias('controllers.review_item.reviewItemTypeId'),
   itemTypeName:  Ember.computed.alias('controllers.review_item.reviewItemTypeName'),
-  defaultImageId: Ember.computed.alias('controllers.review_item.defaultImageId'),
+
+  defaultImageId: function(){
+    var itemId = this.get('controllers.review_item.id');
+    var item = this.store.getById('item', itemId);
+    return item.get('displayImageUrl');
+  }.property('controllers.review_item.id'),
 
   reviewItemDidChange: function() {
     this.set('itemTypeId', '');

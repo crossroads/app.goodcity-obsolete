@@ -23,7 +23,9 @@
               <li>
                 {{#if this.isScheduled }}
                   {{#link-to 'delivery.donation_details' this delivery}}
-                    {{partial 'thumb_item_image'}}
+                    <span class="list-image">
+                      <img {{bind-attr src="displayImageUrl"}} class="thumb" />
+                    </span>
                     <span class="info">
                       <h3>{{status}} ({{itemCount}} items)</h3>
                       {{display-date delivery.schedule.scheduledAt}}<br/>
@@ -36,7 +38,9 @@
 
                 {{#if this.isUnderReview}}
                   {{#link-to 'offer.review_status' this}}
-                    {{partial 'thumb_item_image'}}
+                    <span class="list-image">
+                      <img {{bind-attr src="displayImageUrl"}} class="thumb" />
+                    </span>
                     <span class="info">
                       <h3>{{status}} ({{itemCount}} items)</h3>
                       Approved Items: {{approvedtems.length}}<br/>
@@ -49,7 +53,9 @@
 
                 {{#if this.isSubmitted}}
                   {{#link-to 'offer.review_status' this}}
-                    {{partial 'thumb_item_image'}}
+                    <span class="list-image">
+                      <img {{bind-attr src="displayImageUrl"}} class="thumb" />
+                    </span>
                     <span class="info">
                       <h3>{{status}} ({{itemCount}} items)</h3>
                       Approved Items: {{approvedtems.length}}<br/>
@@ -62,7 +68,9 @@
 
                 {{#if this.isDraft }}
                   {{#link-to 'offer' this}}
-                    {{partial 'thumb_item_image'}}
+                    <span class="list-image">
+                      <img {{bind-attr src="displayImageUrl"}} class="thumb" />
+                    </span>
                     <span class="info">
                       <h3>{{t "offers.index.complete_offer"}}<h3>
                       {{partial 'unread_message_bubble'}}
@@ -81,7 +89,7 @@
           <ul class="list">
             <li>
               <a href="#">
-                <span class="thumb">
+                <span class="list-image">
                   <img src="assets/images/thumb.jpg" alt="">
                 </span>
                 <span class="info">
@@ -91,7 +99,7 @@
             </li>
             <li>
               <a href="#">
-                <span class="thumb">
+                <span class="list-image">
                   <img src="assets/images/thumb.jpg" alt="">
                 </span>
                 <span class="info">
@@ -101,7 +109,7 @@
             </li>
             <li>
               <a href="#">
-                <span class="thumb">
+                <span class="list-image">
                   <img src="assets/images/thumb.jpg" alt="">
                 </span>
                 <span class="info">
@@ -111,7 +119,7 @@
             </li>
             <li>
               <a href="#">
-                <span class="thumb">
+                <span class="list-image">
                   <img src="assets/images/thumb.jpg" alt="">
                 </span>
                 <span class="info">

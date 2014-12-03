@@ -6,8 +6,19 @@
 @import "custom";
 @import "input";
 @import "input_ui_control_with_counter";
-@import "loading";
 @import "item_details_ui_control";
+@import "custom_checkbox";
+@import "date_time_picker";
 @import "reject";
 @import "select2";
+@import "book_van";
+@import "confirm_van";
+@import "porterage_charges";
 
+/* template specific */
+@import "templates/loading";
+@import "templates/notifications";
+@import "templates/index";
+@import "templates/item/edit";
+@import "templates/item/edit_images";
+@import "templates/offer/index";
