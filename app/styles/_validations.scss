@@ -1,0 +1,10 @@
+.has-error {
+  color: #f34d4f;
+  input {
+    background: none repeat scroll 0 0 #fddbdc !important;
+    border-color: #f34d4f !important;
+  }
+  p.input-error {
+    display: none !important;
+  }
+}
