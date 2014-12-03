@@ -59,10 +59,11 @@ export default Ember.Controller.extend({
           console.log("Unable to authenticate");
         });
     },
+
     resendPin: function() {
       var _this = this;
       var mobile = this.get('mobile');
-      Ember.$('.loader_image').show();
+      var loadingView = this.container.lookup('view:loading').append();
 
       new AjaxPromise("/auth/send_pin", "POST", null, {mobile: mobile})
         .then(function(data) {
@@ -71,11 +72,10 @@ export default Ember.Controller.extend({
           _this.transitionToRoute('/authenticate');
         })
         .catch(function() {
-          Ember.$('#mobile').addClass('invalid_input');
-          Ember.$('#mobile_error').text('Please enter a valid mobile number');
+          Ember.$('#mobile').closest('.mobile').addClass('error');
         })
         .finally(function() {
-          Ember.$('.loader_image').hide();
+          loadingView.destroy();
         });
     }
   }
