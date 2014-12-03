@@ -6,5 +6,6 @@ dependencies:
 
 test:
   pre:
-    - "ember server &"
-    - "sleep 5"
+    - ./node_modules/ember-cli/bin/ember server:
+        background: true
+    - sleep 5

@@ -2,12 +2,12 @@ import Ember from 'ember';
 
 export default Ember.ArrayController.extend({
   offersWithItems: function(){
-    return this.rejectBy('items.length', 0);
+    return this.rejectBy('itemCount', 0);
   }.property('@each.itemCount'),
 
   actions: {
     newOffer: function(){
-      var empty_offers = this.filterBy('items.length', 0);
+      var empty_offers = this.filterBy('itemCount', 0);
       if (empty_offers.length === 0){
         this.transitionToRoute('offers.new');
       } else {

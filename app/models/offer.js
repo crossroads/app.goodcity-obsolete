@@ -34,12 +34,12 @@ export default DS.Model.extend({
   userPhone:      attr('string'),
 
   itemCount: function() {
-    return this.get("items").rejectBy("state", "draft").get("length");
+    return this.get("items").rejectBy("state", "draft").length;
   }.property('items.@each.state'),
 
   unreadMessagesCount: function() {
     return this.get('messages').filterBy('state', 'unread').length;
-  }.property('this.messages.@each'),
+  }.property('messages.@each.state'),
 
   approvedtems: Ember.computed.filterBy("items", "state", "accepted"),
   rejectedItems: Ember.computed.filterBy("items", "state", "rejected"),
@@ -55,9 +55,8 @@ export default DS.Model.extend({
   }.property('items.@each.displayImageUrl'),
 
   isCharitableSale: function() {
-    var item = this.get("items.content.firstObject");
-    return ((item && item.get('saleable')) ? "Yes" : "No");
-  }.property('this.items.@each'),
+    return this.get("items").rejectBy("saleable", false).length > 0 ? "Yes" : "No";
+  }.property('items.@each.saleable'),
 
   status: function(){
     var state = this.get('state');
