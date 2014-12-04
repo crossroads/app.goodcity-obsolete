@@ -35,6 +35,7 @@ export default Ember.ObjectController.extend({
         this.set("isBlank", true);
         return false; }
 
+      var loadingView = this.container.lookup('view:loading').append();
       rejectProperties.rejectionReason = this.store.getById('rejection_reason', selectedReason);
       rejectProperties.state_event = 'reject';
 
@@ -50,6 +51,7 @@ export default Ember.ObjectController.extend({
       // Save changes to Item
       var route = this;
       item.save().then(function() {
+        loadingView.destroy();
         route.transitionToRoute('review_offer.items');
       });
     }
