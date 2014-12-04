@@ -12,57 +12,54 @@
   </section>
 </nav>
 
-<section class="main-section">
+{{#validatable-form class="form-horizontal" action="registerUser" on="submit"}}
+  <section class="main-section">
+    <div class="row">
+      <div class="small-12 columns">
 
-  <div class="row">
-    <div class="small-12 columns">
+          <div class="mobile">
+            <div class="row">
+              <div class="small-12 columns ui">
+                <label>{{t "register.hk_only"}}</label>
+              </div>
+            </div>
 
-      <form>
+            <div class="row collapse">
+              <div class="small-3 columns ui">
+                <label>+852</label>
+              </div>
+              <div class="small-9 columns ui">
+                {{view 'numeric-input' value=mobilePhone name="mobilePhone" id="mobile" maxlength="8" placeholder="Phone number" required='required' pattern=".{8,}" }}
+              </div>
+            </div>
+          </div>
 
-        <div class="mobile">
           <div class="row">
-            <div class="small-12 columns ui">
-              <label>{{t "register.hk_only"}}</label>
+            <div class="small-6 columns ui">
+              <label>{{t "register.given_name"}}
+                {{input type="text" value=firstName name="firstName" id='first_name' placeholder="John" required='required'}}
+              </label>
+            </div>
+            <div class="small-6 columns ui">
+              <label>{{t "register.family_name"}}
+                {{input type="text" value=lastName name="lastName" id='last_name' placeholder="Doe" required='required'}}
+              </label>
             </div>
           </div>
 
-          <div class="row collapse">
-            <div class="small-3 columns ui">
-              <label>+852</label>
-            </div>
-            <div class="small-9 columns ui">
-              {{view 'numeric-input' value=mobilePhone name="mobilePhone" id="mobile" maxlength="8" placeholder="Phone number" }}
-            </div>
-          </div>
-        </div>
+          {{districts-territory}}
 
-        <div class="row">
-          <div class="small-6 columns ui">
-            <label>{{t "register.given_name"}}
-              {{input type="text" value=firstName name="firstName" id='first_name' placeholder="John"}}
-            </label>
-          </div>
-          <div class="small-6 columns ui">
-            <label>{{t "register.family_name"}}
-              {{input type="text" value=lastName name="lastName" id='last_name' placeholder="Doe"}}
-            </label>
-          </div>
-        </div>
+        <p class="form-note">Please fill in all the fields. <a href="#">How we use your personal information</a></p>
 
-        {{districts-territory}}
+      </div>
+    </div>
+  </section>
 
-      </form>
-
-      <p class="form-note">Please fill in all the fields. <a href="#">How we use your personal information</a></p>
-
+  <div class="btm">
+    <div class="row">
+      <div class="small-10 small-offset-1 columns">
+        <button id="registerUser" type="submit" class="button expand">{{t "register.register"}}</button>
+      </div>
     </div>
   </div>
-</section>
-
-<div class="btm">
-  <div class="row">
-    <div class="small-10 small-offset-1 columns">
-      <a href="#" {{action "registerUser" }} id="registerUser" class="button expand">{{t "register.register"}}</a>
-    </div>
-  </div>
-</div>
+{{/validatable-form}}
