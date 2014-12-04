@@ -1,4 +1,4 @@
-<div {{bind-attr class="view.requireValidation:error :input_container"}} {{action "removeError" on="focusIn" target='view'}}>
+<div class="input_container">
 
     {{#if view.isTextArea}}
 
@@ -9,7 +9,8 @@
         placeholderBinding="view.placeholder"
         maxlengthBinding="view.maxlength"
         rowsBinding="view.rows"
-        classBinding="view.requireValidation:error"
+        requiredBinding="view.required"
+        pattern="^[a-zA-Z0-9]"
         }}
 
     {{else}}
@@ -20,7 +21,7 @@
         valueBinding="view.value"
         placeholderBinding="view.placeholder"
         maxlengthBinding="view.maxlength"
-        classBinding="view.requireValidation:error"
+        requiredBinding="view.required"
         }}
 
     {{/if}}
