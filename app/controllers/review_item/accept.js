@@ -16,7 +16,7 @@ export default Ember.ObjectController.extend({
 
   subItemTypes: function(){
     var parentId = parseInt(this.get('itemTypeId'));
-    var data, _this = this;;
+    var data, _this = this;
     var acceptSubItemTypes = [];
     var store = this.get('store');
     data = store.all('item_type').filterBy('parentId', parentId).filterBy('isItemTypeNode', true);
