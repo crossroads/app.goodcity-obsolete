@@ -6,7 +6,7 @@ export default DS.Model.extend({
   name: attr('string'),
   code: attr('string'),
   parentId: attr('number'),
-
+  isItemTypeNode: attr('boolean', {defaultValue: false}),
   text: "",
   nameChanged: function() {
     this.set("text", this.get("name"));

@@ -16,9 +16,7 @@ export default Ember.Component.extend({
 
   itemTypes: function() {
     var store = this.get('targetObject.store');
-    return store.all('item_type').filter(function(item_type) {
-      return item_type.get('parentId') == null ;
-     });
+    return store.all('item_type').filterBy('parentId', null);
   }.property(),
 
   findSelectedItem: function(){

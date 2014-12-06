@@ -6,13 +6,22 @@
       </div>
       <div class="small-7 columns head">
         <span class="ui">
-          {{input
-            type="text"
-            name="itemtypename"
-            valueBinding="view.itemtypename"
-            placeholderBinding="Item Type"
-            maxlengthBinding="view.maxlength"
-          }}
+          {{#if view.itemval.subItemTypes}}
+            {{view "select"
+              contentBinding='view.itemval.subItemTypes'
+              optionValuePath="content.itemTypeId"
+              optionLabelPath="content.itemTypeName"
+              prompt='Package Type'
+            }}
+          {{else}}
+            {{input
+              type="text"
+              name="itemtypename"
+              valueBinding="view.itemtypename"
+              placeholderBinding="Item Type"
+              maxlengthBinding="view.maxlength"
+            }}
+          {{/if}}
         </span>
       </div>
       <div class="small-2 columns icon" {{action "hideComment" on="click" target="view"}}>

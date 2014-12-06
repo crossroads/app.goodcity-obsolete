@@ -6,7 +6,7 @@ var MyContainerView = Ember.ContainerView.extend({
 
   staticView:  function(){
     var view;
-    if(this.get('noPackages')) {
+    if(this.get('noPackages') && this.get('noSubItemType')) {
       view = Ember.View.create({
         templateName: "packages/static_component",
         id: 0

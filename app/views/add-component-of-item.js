@@ -41,6 +41,20 @@ var addComponentOfItem = Ember.View.extend({
   didInsertElement: function(){
     this._super();
     var packages = this.get('packages.content');
+    var subItemtypes = this.get('subItemTypes');
+    if (!(this.get("noSubItemType"))) {
+        subItemtypes.forEach(function(subitemtype) {
+          var containerView = Ember.View.views['my_container_view'];
+          var childView = containerView.createChildView(addComponent);
+          childView.setProperties({
+            id:            subitemtype.itemTypeId,
+            itemid:        subitemtype.itemId,
+            itemtypename:  subitemtype.itemTypeName
+          });
+        containerView.pushObject(childView);
+        });
+    }
+
     if(packages.get('length') > 0) {
       for (var i = 0; i < packages.get('length') ; i++) {
         var containerView = Ember.View.views['my_container_view'];

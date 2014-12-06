@@ -19,6 +19,14 @@ var packages = Ember.ArrayController.extend({
     return this.get('controllers.review_item/accept.defaultImageId');
   }.property('controllers.review_item/accept.defaultImageId'),
 
+  subItemTypes: function(){
+    return this.get('controllers.review_item/accept.subItemTypes');
+  }.property('controllers.review_item/accept.subItemTypes'),
+
+  noSubItemType: function() {
+    return this.get('subItemTypes.length') === 0;
+  }.property('subItemTypes.@each'),
+
   noPackages: function(){
     return this.get('allPackages.length') === 0;
   }.property('packages.@each'),
@@ -29,6 +37,20 @@ var packages = Ember.ArrayController.extend({
   }.property('packages.@each'),
 
   actions: {
+    removePackageType: function(packageobj) {
+      var _this = this;
+      return _this.store.find('package', packageobj.id).then(function (packageRec) {
+        packageRec.destroyRecord();
+      });
+    },
+    // removeChildViews: function() {
+    //   var getContainer = Ember.View.views['my_container_view'];
+    //   if (getContainer) {
+    //     getContainer.removeAllChildren();
+    //   }
+    //   this.set("noPackages", false);
+    //   alert(this.get("noPackages"));
+    // },
     savePackageType: function(packageDetails){
       var _this = this;
       var packagePromises = [], packageNew;
