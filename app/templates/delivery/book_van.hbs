@@ -54,7 +54,8 @@
               id='selectedDate'
               value=''
               selectionBinding='selectedDate'
-              required='required'}}
+              required='required'
+              pattern="[a-zA-Z]{3}\s?[a-zA-Z]{3}\s?[0-9]{1,2}"}}
           </div>
           <div class="small-5 columns time_selector">
             {{view "select-time"
@@ -62,7 +63,8 @@
               id='selectedTime'
               value=''
               selectionBinding='selectedTime'
-              required='required'}}
+              required='required'
+              pattern="[0-9]{1,2}:(00|30)\s?(AM|PM)"}}
           </div>
         </div>
 
