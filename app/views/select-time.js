@@ -1,9 +1,9 @@
 import Ember from 'ember';
 
-export default Ember.View.extend({
+export default Ember.TextField.extend({
   tagName: 'input',
   classNames: 'timepicker',
-  attributeBindings: [ "name", "type", "value", "id" ],
+  attributeBindings: [ "name", "type", "value", "id", 'required' ],
 
   didInsertElement: function(){
     var _this = this;
@@ -12,6 +12,7 @@ export default Ember.View.extend({
         clear: '',
         min: [8,30],
         max: [16,0],
+        editable: true,
         onSet: function() {
           var slot = this.get("select") && this.get("select").time;
           _this.set("selection", slot);

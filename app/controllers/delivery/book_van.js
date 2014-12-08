@@ -15,9 +15,6 @@ export default Ember.ObjectController.extend({
   borrowTrolley: false,
   porterage: false,
 
-  invalidDate: Ember.computed.empty("selectedDate"),
-  invalidTime: Ember.computed.empty("selectedTime"),
-
   territories: function(){
     return this.store.all('territory').sortBy("name");
   }.property(),
@@ -33,7 +30,6 @@ export default Ember.ObjectController.extend({
   actions: {
     bookVan: function(){
       var controller = this;
-      if(controller.get('invalidDate') || controller.get('invalidTime')) { return false; }
 
       var selectedDate = controller.get('selectedDate');
       var deliveryId = controller.get('controllers.delivery').get('id');
