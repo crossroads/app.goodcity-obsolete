@@ -1,55 +1,106 @@
-<div class='contact_details'>
-  <h3>{{t "contact.title"}}</h3>
-  <hr>
-  <p>{{t "contact.confirm_location"}}</p>
+<nav class="tab-bar">
+  <section class="left-small">
+    {{#link-to 'delivery.book_timeslot' classNames="back"}}{{t "back"}}{{/link-to}}
+  </section>
 
-  <label>{{t "contact.name"}}</label>
-  {{view 'full-name-input' user=user}}
+  <section class="middle tab-bar-section">
+    <h1 class="title">{{t "contact.title"}}</h1>
+  </section>
+</nav>
 
-  <br/>
 
-  <label>{{t "contact.phone"}}</label>
-  <span>+852 {{input type="text" value=user.mobile name="mobile" id="mobile" maxlength="8" data-actual-mobile=""}}</span>
+{{#validatable-form class="form-horizontal" action="saveContactDetails" on="submit"}}
+  <section class="main-section ui contact_details">
+    <div class="row">
+      <div class="small-12 columns">
 
-  <br/>
+        {{t "contact.confirm_location"}}
 
-  <div>{{t "contact.address"}}</div>
-  {{view "select"
-    content=territories
-    optionValuePath="content.id"
-    optionLabelPath="content.name"
-    selectionBinding='selectedTerritory'
-    value=''
-    prompt="All"
-    classNames='selectAddress'
-  }}
+        <div class='row detail_row'>
+          <div class="small-3 columns">
+            <label>{{t "contact.name"}}</label>
+          </div>
+          <div class="small-9 columns">
+            {{view 'full-name-input' id='userName' user=user required='true' pattern="^[\S ]*[\S][\S ]*$" }}
+          </div>
+        </div>
 
-  {{view "select"
-    contentBinding='districtsByTerritory'
-    optionValuePath="content.id"
-    optionLabelPath="content.name"
-    selectionBinding='selectedDistrict'
-    value=''
-    prompt="Select District"
-    classNames='selectAddress district'
-  }}
+        <div class='row detail_row'>
+          <div class="small-3 columns">
+            <label>{{t "contact.phone"}}</label>
+          </div>
+          <div class="small-9 columns">
+            <div class='input_with_prefix'>
+              <div class='mobile-prefix'>+852</div>
+              {{view 'numeric-input' value=user.mobile name="mobile" id="mobile" maxlength="8" required='true' pattern=".{8,}" }}
+            </div>
+          </div>
+        </div>
 
-  <br/>
+        <div class='row detail_row'>
+          {{t "contact.address"}}
+        </div>
 
-  <label>{{t "contact.street"}}</label>
-  {{input type="text" value=street name="street" id="street"}}
+        <div class='row detail_row'>
+          <div class="small-6 columns">
+            {{view "select"
+              content=territories
+              optionValuePath="content.id"
+              optionLabelPath="content.name"
+              selectionBinding='selectedTerritory'
+              value=''
+              prompt="All"
+              classNames='selectAddress' }}
+          </div>
+          <div class="small-6 columns">
+            {{view "select"
+              contentBinding='districtsByTerritory'
+              optionValuePath="content.id"
+              optionLabelPath="content.name"
+              selectionBinding='selectedDistrict'
+              value=''
+              prompt="Select District"
+              classNames='selectAddress district'
+              required='required' }}
+          </div>
+        </div>
 
-  <br/>
+        <div class='row detail_row'>
+          <div class="small-3 columns">
+            <label>{{t "contact.street"}}</label>
+          </div>
+          <div class="small-9 columns">
+            {{input type="text" value=street name="street" id="street" required='required' pattern="^[\S ]*[\S][\S ]*$"}}
+          </div>
+        </div>
 
-  <label>{{t "contact.building"}}</label>
-  {{input type="text" value=building name="building" id="building"}}
+        <div class='row detail_row'>
+          <div class="small-3 columns">
+            <label>{{t "contact.building"}}</label>
+          </div>
+          <div class="small-9 columns">
+            {{input type="text" value=building name="building" id="building" required='required' pattern="^[\S ]*[\S][\S ]*$"}}
+          </div>
+        </div>
 
-  <br/>
+        <div class='row detail_row'>
+          <div class="small-3 columns">
+            <label>{{t "contact.flat"}}</label>
+          </div>
+          <div class="small-9 columns">
+            {{input type="text" value=flat name="flat" id="flat" required='required' pattern="^[\S ]*[\S][\S ]*$"}}
+          </div>
+        </div>
 
-  <label>{{t "contact.flat"}}</label>
-  {{input type="text" value=flat name="flat" id="flat"}}
+      </div>
+    </div>
+  </section>
 
-  <br/>
-
-  <button {{action 'saveContactDetails'}} class="input input_size_sm submitForm">{{t "contact.done"}}</button>
-</div>
+  <div class="btm">
+    <div class="row">
+      <div class="small-10 small-offset-1 columns">
+        <button class="button expand submitForm">{{t "contact.done"}}</button>
+      </div>
+    </div>
+  </div>
+{{/validatable-form}}
