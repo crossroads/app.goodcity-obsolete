@@ -37,12 +37,12 @@
           <div class="row">
             <div class="small-6 columns ui">
               <label>{{t "register.given_name"}}
-                {{input type="text" value=firstName name="firstName" id='first_name' placeholder="John" required='required'}}
+                {{input type="text" value=firstName name="firstName" id='first_name' placeholder="John" required='required' pattern="^[\S ]*[\S][\S ]*$"}}
               </label>
             </div>
             <div class="small-6 columns ui">
               <label>{{t "register.family_name"}}
-                {{input type="text" value=lastName name="lastName" id='last_name' placeholder="Doe" required='required'}}
+                {{input type="text" value=lastName name="lastName" id='last_name' placeholder="Doe" required='required' pattern="^[\S ]*[\S][\S ]*$"}}
               </label>
             </div>
           </div>
