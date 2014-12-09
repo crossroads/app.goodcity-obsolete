@@ -27,8 +27,10 @@
   </div>
 {{/each}}
 
-{{textarea type='text' value=body name="body" rows=5 cols=20 classBinding="addError:error" focus-in="removeError"}}
+{{#validatable-form class="form-horizontal" action="sendMessage" on="submit"}}
+  {{textarea type='text' value=body name="body" rows=5 cols=20 required='true'}}
 
-<br/>
-<button {{action "sendMessage"}}>Send</button>
-</div>
+  <br/>
+  <button>Send</button>
+  </div>
+{{/validatable-form}}
