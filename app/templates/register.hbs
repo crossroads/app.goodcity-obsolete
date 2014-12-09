@@ -29,7 +29,7 @@
                 <label>+852</label>
               </div>
               <div class="small-9 columns ui">
-                {{view 'numeric-input' value=mobilePhone name="mobilePhone" id="mobile" maxlength="8" placeholder="Phone number" required='required' pattern=".{8,}" }}
+                {{view 'numeric-input' value=mobilePhone name="mobilePhone" id="mobile" maxlength="8" placeholder="Phone number" required='true' pattern=".{8,}" }}
               </div>
             </div>
           </div>
@@ -37,12 +37,12 @@
           <div class="row">
             <div class="small-6 columns ui">
               <label>{{t "register.given_name"}}
-                {{input type="text" value=firstName name="firstName" id='first_name' placeholder="John" required='required' pattern="^[\S ]*[\S][\S ]*$"}}
+                {{input type="text" value=firstName name="firstName" id='first_name' placeholder="John" required='true' pattern="^[\S ]*[\S][\S ]*$"}}
               </label>
             </div>
             <div class="small-6 columns ui">
               <label>{{t "register.family_name"}}
-                {{input type="text" value=lastName name="lastName" id='last_name' placeholder="Doe" required='required' pattern="^[\S ]*[\S][\S ]*$"}}
+                {{input type="text" value=lastName name="lastName" id='last_name' placeholder="Doe" required='true' pattern="^[\S ]*[\S][\S ]*$"}}
               </label>
             </div>
           </div>
