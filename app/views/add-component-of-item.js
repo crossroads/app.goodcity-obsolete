@@ -1,5 +1,7 @@
 import Ember from 'ember';
 import addComponent from './add-component';
+import staticComponent from './static-component';
+
 
 var addComponentOfItem = Ember.View.extend({
 
@@ -24,7 +26,7 @@ var addComponentOfItem = Ember.View.extend({
           packageProperties.notes         = child_vals.comment;
           packageProperties.itemId        = child_vals.itemid;
           packageProperties.packageTypeId = child_vals.packagetypeid;
-          packageProperties.id            = child_vals.id;
+          packageProperties.id         = child_vals.pkgid;
           arrPackageProperties.pushObject(packageProperties);
         }
       });
@@ -42,26 +44,21 @@ var addComponentOfItem = Ember.View.extend({
     this._super();
     var packages = this.get('packages.content');
     var subItemtypes = this.get('subItemTypes');
-    if (!(this.get("noSubItemType"))) {
-        subItemtypes.forEach(function(subitemtype) {
-          var containerView = Ember.View.views['my_container_view'];
-          var childView = containerView.createChildView(addComponent);
-          childView.setProperties({
-            id:            subitemtype.itemTypeId,
-            itemid:        subitemtype.itemId,
-            itemtypename:  subitemtype.itemTypeName
-          });
-        containerView.pushObject(childView);
-        });
-    }
-
+    var l=0;
     if(packages.get('length') > 0) {
       for (var i = 0; i < packages.get('length') ; i++) {
         var containerView = Ember.View.views['my_container_view'];
-        var childView = containerView.createChildView(addComponent);
+        var childView;
+        if (l===0) {
+          childView=  containerView.createChildView(staticComponent);
+          }
+          else {
+          childView =  containerView.createChildView(addComponent);
+        }
+
         var currentPackage = packages[i];
         childView.setProperties({
-          id:            currentPackage.get('id'),
+          pkgid:         currentPackage.get('id'),
           length:        currentPackage.get('length'),
           height:        currentPackage.get('height'),
           width:         currentPackage.get('width'),
@@ -69,9 +66,32 @@ var addComponentOfItem = Ember.View.extend({
           comment:       currentPackage.get('notes'),
           packagetypeid: currentPackage.get('packageType.id'),
           itemid:        currentPackage.get('itemId'),
-          itemtypename:  currentPackage.get('packageName')
+          itemtypename:  currentPackage.get('packageName'),
+          packagetype:  currentPackage.get('packageType')
         });
         containerView.pushObject(childView);
+        l++;
+      }
+    }
+    else {
+      if (!(this.get("noSubItemType"))) {
+        subItemtypes.forEach(function(subitemtype) {
+          var containerView = Ember.View.views['my_container_view'];
+          var childView;
+          if (l===0) {
+            childView=  containerView.createChildView(staticComponent);
+            }
+            else {
+            childView =  containerView.createChildView(addComponent);
+          }
+          childView.setProperties({
+            id:            subitemtype.itemTypeId,
+            itemid:        subitemtype.itemId,
+            itemtypename:  subitemtype.itemTypeName
+          });
+        containerView.pushObject(childView);
+        l++;
+        });
       }
     }
   }

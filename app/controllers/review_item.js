@@ -5,16 +5,14 @@ export default Ember.ObjectController.extend({
   defaultPackage: Ember.computed.alias('itemType'),
 
   reviewItemTypeName: function(key, value) {
+    console.log('review_item typename: ', (arguments.length > 1) ? value :  this.get('defaultPackage.name'));
     return (arguments.length > 1) ? value :  this.get('defaultPackage.name');
-  }.property('defaultPackage'),
+  }.property('defaultPackage', 'reviewItemTypeId'),
 
   reviewItemTypeId: function(key, value) {
     return (arguments.length > 1) ? value : this.get('defaultPackage.id');
   }.property('defaultPackage'),
 
-  reviewItemId: function(){
-    return this.get("id");
-  }.property(),
 
   actions: {
     getItemId: function(id, name) {

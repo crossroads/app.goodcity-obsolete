@@ -3,8 +3,9 @@ import Ember from 'ember';
 export default Ember.View.extend({
   templateName: 'item-details-ui-control',
   tagName: 'div',
-  attributeBindings: ["value", "itemid", "itemtypename", "name", "itemval",
-    "width", "height", "length", "quantity", "comment", "subItemtypes"],
+  attributeBindings: ["value", "itemid", "itemtypeid", "itemtypename", "name", "itemval",
+    "width", "height", "length", "quantity", "comment", "subItemtypes", "packageTypeId",
+    "packagetype", "pkgid"],
 
   value: null,
   itemtypename: null,
@@ -15,6 +16,7 @@ export default Ember.View.extend({
   quantity: null,
   isHide: true,
   subItemtypes: null,
+  pkgid: null,
 
   actions: {
     hideComment: function(){

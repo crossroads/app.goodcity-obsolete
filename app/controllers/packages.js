@@ -39,9 +39,13 @@ var packages = Ember.ArrayController.extend({
   actions: {
     removePackageType: function(packageobj) {
       var _this = this;
-      return _this.store.find('package', packageobj.id).then(function (packageRec) {
-        packageRec.destroyRecord();
-      });
+      var existsPackageType = _this.store.all("package").filterBy("id", packageobj.pkgid);
+        if(Ember.empty(existsPackageType)) {
+         return;
+        }
+        else {
+         return existsPackageType.get("firstObject").destroyRecord();
+        }
     },
     // removeChildViews: function() {
     //   var getContainer = Ember.View.views['my_container_view'];
@@ -63,7 +67,7 @@ var packages = Ember.ArrayController.extend({
         packDetail.item = _this.store.getById('item', packDetail.itemId);
         packDetail.packageType = _this.store.getById('item_type', packDetail.packageTypeId);
 
-        if(packDetail.id) {
+        if(packDetail.pkgid) {
           packageNew = _this.store.update('package', packDetail);
         } else {
           packageNew = _this.store.createRecord("package", packDetail);

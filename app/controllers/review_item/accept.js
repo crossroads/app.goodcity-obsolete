@@ -16,15 +16,19 @@ export default Ember.ObjectController.extend({
 
   subItemTypes: function(){
     var parentId = parseInt(this.get('itemTypeId'));
-    var data, _this = this;
+    var dataInItemType, dataInPackage, _this = this;
     var acceptSubItemTypes = [];
     var store = this.get('store');
-    data = store.all('item_type').filterBy('parentId', parentId).filterBy('isItemTypeNode', true);
-    data.forEach(function(subtype) {
+     dataInItemType = store.all('item_type').filterBy('parentId', parentId);
+    if(Ember.empty(dataInItemType)) {
+      dataInItemType = store.all('item_type').filterBy('id', this.get('itemTypeId'));
+    }
+    dataInItemType.forEach(function(subtype) {
       var subItemTypeProperties = {};
       subItemTypeProperties.itemId = _this.get('controllers.review_item.id');
       subItemTypeProperties.itemTypeId = subtype.get("id");
-      subItemTypeProperties.itemTypeName = subtype.get("text");
+      subItemTypeProperties.itemTypeName = subtype.get("name");
+      subItemTypeProperties.isDefaultIType = subtype.get("isItemTypeNode");
       acceptSubItemTypes.pushObject(subItemTypeProperties);
     });
     return acceptSubItemTypes;
