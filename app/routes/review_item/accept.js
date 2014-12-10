@@ -12,7 +12,12 @@ export default AuthorizeRoute.extend({
     });
   },
 
-  model: function() {
+  model: function(params) {
+    return this.paramsFor('review_item').item_id;
+  },
+
+  setupController: function(controller, item) {
+    controller.set('model', item);
   }
 
 });

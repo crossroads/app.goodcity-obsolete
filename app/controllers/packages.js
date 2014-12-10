@@ -29,12 +29,12 @@ var packages = Ember.ArrayController.extend({
 
   noPackages: function(){
     return this.get('allPackages.length') === 0;
-  }.property('packages.@each'),
+  }.property('packages.@each', 'itemId'),
 
   allPackages: function(){
     var item = this.store.getById('item', this.get('itemId'));
     return item.get('packages');
-  }.property('packages.@each'),
+  }.property('packages.@each', 'itemId'),
 
   actions: {
     removePackageType: function(packageobj) {

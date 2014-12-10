@@ -47,6 +47,7 @@ Router.map(function() {
       });
 
       this.resource('review_item', {path: '/review_item/:item_id'},function() {
+        this.route('index', { path: '/'});
         this.route('reject');
         this.route('accept');
         this.route('donor_messages');
