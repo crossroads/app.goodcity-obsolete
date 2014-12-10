@@ -1,21 +1,20 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 import Addressable from './addressable';
-import UserPermissionMixin from '../mixins/user-permission';
 
 var attr = DS.attr;
 
-export default Addressable.extend(UserPermissionMixin, {
+export default Addressable.extend({
   firstName:   attr('string'),
   lastName:    attr('string'),
   mobile:      attr('string'),
 
-  image: function(){
-    return false; //"assets/images/default_item.jpg";
-  }.property(),
+  permission:  DS.belongsTo('permission'),
 
-  nameInitial: function(){
-    return this.get('firstName').charAt(0).capitalize();
-  }.property('firstName'),
+  isDonor: Ember.computed.empty("permission.name"),
+  isStaff: Ember.computed.notEmpty("permission.name"),
+  isReviewer: Ember.computed.equal("permission.name", "Reviewer"),
+  isSupervisor: Ember.computed.equal("permission.name", "Supervisor"),
 
   subscriptions: function() {
     var channels = {};
@@ -28,5 +27,4 @@ export default Addressable.extend(UserPermissionMixin, {
     }
     return channels;
   }.property()
-
 });

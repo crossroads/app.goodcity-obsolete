@@ -10,5 +10,10 @@ export default DS.Model.extend({
 
   offer:         belongsTo('offer'),
   contact:       belongsTo('contact'),
-  schedule:      belongsTo('schedule')
+  schedule:      belongsTo('schedule'),
+  gogovanOrder:  belongsTo('gogovan_order'),
+
+  isGogovan: function() {
+    return this.get('deliveryType') === 'gogovan';
+  }.property('deliveryType')
 });

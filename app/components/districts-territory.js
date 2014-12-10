@@ -34,8 +34,8 @@ export default Ember.Component.extend({
   didInsertElement: function(){
 
     Ember.$().ready(function (){
-      Ember.$(".radio a").click(function(){
-        Ember.$(".radio a").removeClass('active');
+      Ember.$(".radio").click(function(){
+        Ember.$(".radio").removeClass('active');
         Ember.$(this).addClass('active');
       });
     });

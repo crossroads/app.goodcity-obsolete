@@ -3,8 +3,6 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   attributeBindings: ['selectedItemId', 'selectedItemName'],
   selectedItype: {id: null},
-  selectedItemId: null,
-  selectedItemName: "",
 
   selectedItypeObserver: function(){
     return this.set('selectedItemName', this.get('findSelectedItem').get('name'));
@@ -18,7 +16,7 @@ export default Ember.Component.extend({
 
   itemTypes: function() {
     var store = this.get('targetObject.store');
-    return store.all('item_type').sortBy('name');
+    return store.all('item_type').filterBy('parentId', null);
   }.property(),
 
   findSelectedItem: function(){

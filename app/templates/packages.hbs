@@ -1,0 +1,11 @@
+<div class="row ">
+  {{#if itemTypeId}}
+    {{view MyContainerView elementId="my_container_view" noPackages=noPackages noSubItemType=noSubItemType}}
+    {{view addComponentOfItem controller=controller packages=allPackages subItemTypes=subItemTypes noSubItemType=noSubItemType}}
+  {{else}}
+    <p>
+      <i class="icon-empty-items fa fa-info-circle fa-5x"></i>
+      <p class="no-items">Please choose Item Type first!</p>
+    </p>
+  {{/if}}
+</div>

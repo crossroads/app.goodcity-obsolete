@@ -28,15 +28,16 @@ Router.map(function() {
         this.route('contact_details');
         this.route('thank_offer');
         this.route('donation_details');
+
+        this.route('book_van');
+        this.route('confirm_van');
+        this.route('porterage_charges');
       });
 
-      this.resource('items', function(){
-        this.route('new');
-        this.route('add_item');
-        this.resource('item', { path: '/:item_id'}, function(){
-          this.route('edit');
-          this.route('edit_images');
-        });
+      this.resource('item', {path: '/items/:item_id'}, function() {
+        this.route('index', { path: '/'});
+        this.route('edit');
+        this.route('edit_images');
       });
 
       this.resource('review_offer', function(){
@@ -63,6 +64,7 @@ Router.map(function() {
   this.route('districts');
 
   this.route('messages');
+  this.route('packages');
 
   this.resource('inbox', function(){
     this.route('index', {path: '/'});

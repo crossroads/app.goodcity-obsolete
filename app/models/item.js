@@ -1,3 +1,4 @@
+import Ember from 'ember';
 import DS from 'ember-data';
 
 var attr = DS.attr,
@@ -8,7 +9,6 @@ export default DS.Model.extend({
   donorDescription:     attr('string'),
   state:                attr('string'),
   offerId:              attr('number'),
-  itemTypeId:           attr('number'),
   rejectReason:         attr('string'),
   rejectionComments:    attr('string'),
   createdAt:            attr('date'),
@@ -17,43 +17,20 @@ export default DS.Model.extend({
   messages:             hasMany('message'),
   images:               hasMany('image'),
   offer:                belongsTo('offer'),
+  itemType:             belongsTo('item_type'),
   donorCondition:       belongsTo('donor_condition'),
   rejectionReason:      belongsTo('rejection_reason'),
   saleable:             attr('boolean'),
   state_event:          attr('string'),
 
-  //input to store image public-ids
-  imageIdentifiers:     attr('string'),
-  favouriteImage:       attr('string'),
+  displayImage: function() {
+    return this.get("images").filterBy("favourite").get("firstObject") ||
+      this.get("images").sortBy("id").get("firstObject") || null;
+  }.property('images.@each.favourite'),
 
-  // favouriteImage or first image
-  defaultImage: function() {
-    var image;
-    var images = this.get('images');
-    var favourite_image = images && images.findBy('favourite', 'true');
-    if (favourite_image) {
-      image = favourite_image;
-    } else if (images.get('length') > 0) {
-      image = this.get('images.firstObject');
-    } else {
-      image = null;
-    }
-    return image;
-  }.property('this.images.@each'),
+  displayImageUrl: function() {
+    return this.get('displayImage.thumbImageUrl') || "/assets/images/default_item.jpg";
+  }.property('displayImage'),
 
-  // defaultImage or placeholder
-  defaultImageURL: function() {
-    var image = this.get('defaultImage');
-    return (image ? image.get('thumbImageUrl') : "assets/images/default_item.jpg");
-  }.property('defaultImage'),
-
-  defaultImageId: function() {
-    var image = this.get('defaultImage');
-    return (image ? image.get('imageId') : null);
-  }.property('defaultImage'),
-
-  imageCount: function() {
-    return this.get("images.length");
-  }.property('images.@each')
-
+  imageCount: Ember.computed.alias("images.length")
 });

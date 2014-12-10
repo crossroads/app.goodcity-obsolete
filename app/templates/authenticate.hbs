@@ -1,6 +1,6 @@
 <nav class="tab-bar">
   <section class="left-small">
-    {{#link-to 'tour' classNames='back'}}Tour{{/link-to}}
+    {{#link-to 'tour' classNames='back'}}{{t "application.tour"}}{{/link-to}}
   </section>
 
   <section class="middle tab-bar-section">
@@ -9,8 +9,8 @@
 </nav>
 
 <section class="main-section">
-  <div class="small-12 columns with-btm">
-    <form>
+  <div class="small-12 columns">
+    <form class="form-horizontal" {{action "authenticateUser" on="submit"}}>
       <div class="row">
         <div class="small-12 columns">
           <label class="form-label">{{t "_verification_pin.input_code"}}</label>
@@ -22,7 +22,7 @@
           {{view 'numeric-input' value=pin name="pin" id="pin" maxlength="4" placeholder="XXXX"}}
         </div>
         <div class="small-4 columns">
-          <a href="#" {{action "authenticateUser" }} id="submit_pin" class="button expand">{{t "ok"}}</a>
+          <button id="submit_pin" type="submit" class="button expand">{{t "ok"}}</button>
         </div>
       </div>
     <form>

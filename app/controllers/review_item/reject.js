@@ -3,6 +3,8 @@ import Ember from 'ember';
 export default Ember.ObjectController.extend({
   needs: ["review_item", "offer"],
 
+  itemTypeId: Ember.computed.alias('controllers.review_item.reviewItemTypeId'),
+
   isBlank: function(key, value){
     return (arguments.length >1) ? value : false;
   }.property(),
@@ -33,6 +35,7 @@ export default Ember.ObjectController.extend({
         this.set("isBlank", true);
         return false; }
 
+      var loadingView = this.container.lookup('view:loading').append();
       rejectProperties.rejectionReason = this.store.getById('rejection_reason', selectedReason);
       rejectProperties.state_event = 'reject';
 
@@ -41,12 +44,14 @@ export default Ember.ObjectController.extend({
 
       var offer_id = this.get('controllers.offer').get('id');
       rejectProperties.offer = this.store.getById('offer', offer_id);
+      rejectProperties.itemType = this.store.getById('item_type', this.get('itemTypeId'));
 
       var item = this.store.update('item', rejectProperties);
 
       // Save changes to Item
       var route = this;
       item.save().then(function() {
+        loadingView.destroy();
         route.transitionToRoute('review_offer.items');
       });
     }

@@ -9,13 +9,15 @@ export default DS.Model.extend({
   width:           attr('number'),
   height:          attr('number'),
   notes:           attr('string'),
-  item_id:         attr('number'),
   state:           attr('string'),
-  received_at:     attr('date'),
-  rejected_at:     attr('date'),
-  created_at:      attr('date'),
-  updated_at:      attr('date'),
-  package_type_id: attr('number'),
+  receivedAt:      attr('date'),
+  rejectedAt:      attr('date'),
+  createdAt:       attr('date'),
+  updatedAt:       attr('date'),
   item:            belongsTo('item'),
-  package_type:    belongsTo('item_type')
+  packageType:     belongsTo('item_type'),
+
+  packageName: function() {
+    return this.get('packageType.name');
+  }.property('packageType'),
 });

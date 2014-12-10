@@ -33,24 +33,38 @@ export default Ember.View.extend({
   // dataType:{String}
   name: null,
 
+  requireValidation: false,
+
   currentCountBinding: 'inputControl.value.length',
 
   charactersKeyedIn: function () {
-    var control_val = this.get('inputControl.value');
-    var total_count = 0, special_chars;
+    var control_val = this.get('inputControl.value') || "";
+    var total_count = 0, special_chars, special_chars_length;
+
     special_chars = control_val ? control_val.match(/(\r\n|\n|\r)/g) : "";
-    total_count = special_chars != null ? (special_chars.length  + this.get('currentCount')) : this.get('currentCount');
+    special_chars_length = (special_chars && special_chars.length) || 0;
+
+    var currentLength = this.get('currentCount') || control_val.length;
+    total_count = special_chars_length + currentLength;
+
+    var maxlength = this.get("maxlength");
+    if(total_count > maxlength) {
+      var text = this.get('inputControl.value');
+      this.set('inputControl.value', text.substring(0, maxlength-special_chars_length));
+    }
+
     return total_count;
-  }.property('currentCount'),
+  }.property('currentCount').volatile(),
 
   isMaxCharLengthReached: Ember.computed.equal('charactersKeyedIn', 'maxlength'),
 
   keyUp: function () {
-    var char_counter_message = this.get('charactersKeyedIn') + '/' + this.get('maxlength');
-    this.set('message', char_counter_message );
+    this.send("displayCharCount");
   },
 
   didInsertElement: function () {
+    this.send("displayCharCount");
+
     if (!this.get('maxlength')) {
       Ember.assert('InputWithCounter doesn\'t work without a maxlength attribute');
     }
@@ -58,6 +72,20 @@ export default Ember.View.extend({
     if(this.get('placeholder') === 'item_description') {
       var placeholderText = Ember.I18n.t("items.add_item.description_placeholder");
       this.set('placeholder', placeholderText);
+    }
+  },
+
+  actions: {
+    removeError: function(){
+      if(this.get("requireValidation")) {
+        this.get("controller").send("removeError");
+        return true;
+      }
+    },
+
+    displayCharCount: function(){
+      var char_counter_message = this.get('charactersKeyedIn') + '/' + this.get('maxlength');
+      this.set('message', char_counter_message );
     }
   }
 });

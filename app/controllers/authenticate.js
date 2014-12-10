@@ -20,49 +20,48 @@ export default Ember.Controller.extend({
 
       new AjaxPromise("/auth/verify", "POST", null, {pin: pin, otp_auth_key: otp_auth_key})
         .then(function(data) {
-          if (data.error && data.error.length > 0) {
-            Ember.$('.auth_error').show();
-          }
-          else {
-            _this.setProperties({pin:null, mobilePhone: null});
-            _this.set('session.authToken', data.jwt_token);
-            _this.set('session.otpAuthKey', null);
-            _this.store.pushPayload(data.user);
+          _this.setProperties({pin:null, mobilePhone: null});
+          _this.set('session.authToken', data.jwt_token);
+          _this.set('session.otpAuthKey', null);
+          _this.store.pushPayload(data.user);
 
-            Ember.run(function(){
-              _this.get('controllers.application').send('logMeIn');
-            });
+          Ember.run(function(){
+            _this.get('controllers.application').send('logMeIn');
+          });
 
-            _this.transitionToRoute('loading');
+          _this.transitionToRoute('loading');
 
-            var promises = config.APP.PRELOAD_AUTHORIZED_TYPES
-              .map(function(type) { return _this.store.find(type); });
+          var promises = config.APP.PRELOAD_AUTHORIZED_TYPES
+            .map(function(type) { return _this.store.find(type); });
 
-            Ember.RSVP.allSettled(promises).finally(function() {
-              // After login, redirect user to requested url
-              if (attemptedTransition) {
-                attemptedTransition.retry();
-                _this.set('attemptedTransition', null);
+          Ember.RSVP.allSettled(promises).finally(function() {
+            // After login, redirect user to requested url
+            if (attemptedTransition) {
+              attemptedTransition.retry();
+              _this.set('attemptedTransition', null);
+            } else {
+              if (_this.session.get('currentUser.isDonor')) {
+                _this.transitionToRoute('offers');
               } else {
-                if (_this.session.get('currentUser.isDonor')) {
-                  _this.transitionToRoute('offers');
-                } else {
-                  _this.transitionToRoute('inbox');
-                }
+                _this.transitionToRoute('inbox');
               }
-            });
-          }
+            }
+          });
           _this.setProperties({mobilePhone:null, pin: null});
         })
-        .catch(function() {
-          Ember.$('.auth_error').show();
+        .catch(function(jqXHR) {
+          Ember.$('#pin').closest('div').addClass('error');
+          if (jqXHR.status === 422 && jqXHR.responseJSON.errors && jqXHR.responseJSON.errors.pin) {
+            alert(jqXHR.responseJSON.errors.pin);
+          }
           console.log("Unable to authenticate");
         });
     },
+
     resendPin: function() {
       var _this = this;
       var mobile = this.get('mobile');
-      Ember.$('.loader_image').show();
+      var loadingView = this.container.lookup('view:loading').append();
 
       new AjaxPromise("/auth/send_pin", "POST", null, {mobile: mobile})
         .then(function(data) {
@@ -71,11 +70,10 @@ export default Ember.Controller.extend({
           _this.transitionToRoute('/authenticate');
         })
         .catch(function() {
-          Ember.$('#mobile').addClass('invalid_input');
-          Ember.$('#mobile_error').text('Please enter a valid mobile number');
+          Ember.$('#mobile').closest('.mobile').addClass('error');
         })
         .finally(function() {
-          Ember.$('.loader_image').hide();
+          loadingView.destroy();
         });
     }
   }

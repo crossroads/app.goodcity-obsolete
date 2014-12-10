@@ -1,38 +1,41 @@
 <section class="main-section reject-offer">
   <div class="row">
-    <div class="small-12 columns with-btm">
-      <form>
-        <ul>
-          {{#each rejectionOptions}}
-            <li>
-              {{view 'radio-button' name="selectReason" selection=controller.selectedId value=id id=id}}
 
-              <label {{bind-attr for=id}}>
-                {{name}}
+    {{#if itemTypeId}}
+      <div class="small-12 columns">
+        <form class="ui">
+          <ul>
+            {{#each rejectionOptions}}
+              <li>
+                {{view 'radio-button' name="selectReason" selection=controller.selectedId value=id id=id}}
+                <label {{bind-attr for=id}}>
+                  {{name}}
+                </label>
+              </li>
+            {{/each}}
+
+            <li>
+              {{view 'radio-button' name="selectReason" selection=controller.selectedId value="-1" id="-1" labelText=rejectReason}}
+              <label class='reject_label' for="-1">
+                {{input type="text" value=rejectReason name="rejectReason" id='rejectReason' placeholder="Custom Reason" classBinding="isBlank:error"}}
               </label>
             </li>
-          {{/each}}
+          </ul>
 
-          <li>
-            {{view 'radio-button' name="selectReason" selection=controller.selectedId value="-1" id="-1" labelText=rejectReason}}
+          {{textarea type="text" value=rejectionComments name="rejectionComments" id='rejectionComments' placeholder="Additional Comments"}}
+        </form>
 
-            <label class='reject_label' for="-1">
-              {{input type="text" value=rejectReason name="rejectReason" id='rejectReason' placeholder="Custom Reason" classBinding="isBlank:error"}}
-            </label>
-          </li>
-        </ul>
-
-        {{textarea type="text" value=rejectionComments name="rejectionComments" id='rejectionComments' placeholder="Additional Comments"}}
-      </form>
-
-      <div class="btm">
         <div class="row">
           <div class="small-10 small-offset-1 columns">
             <a href="#" {{action "rejectOffer" }} class="button expand rejectOffer">Reject Item</a>
           </div>
         </div>
       </div>
-
-    </div>
+    {{else}}
+      <p>
+        <i class="icon-empty-items fa fa-info-circle fa-5x"></i>
+        <p class="no-items">Please choose Item Type first!</p>
+      </p>
+    {{/if}}
   </div>
 </section>

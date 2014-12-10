@@ -2,11 +2,14 @@ import Ember from 'ember';
 import config from '../config/environment';
 
 export default Ember.ObjectController.extend({
-
   needs: ['subscriptions'],
 
   isLoggedIn: Ember.computed.notEmpty('session.authToken'),
   currentLanguage: Ember.computed.readOnly('Ember.I18n.translations.language'),
+
+  initSubscriptions: function() {
+    this.send('setSubscriptions');
+  }.on("init"),
 
   actions: {
     logMeOut: function(){
@@ -24,29 +27,6 @@ export default Ember.ObjectController.extend({
     },
     setSubscriptions: function() {
       this.get('controllers.subscriptions').send('wire');
-    },
-    error: function(reason) {
-      if (reason.status === 401) {
-        if (this.get('isLoggedIn')) {
-          this.send('logMeOut');
-        }
-        else {
-          this.transitionToRoute('login');
-        }
-      } else {
-        alert('Something went wrong');
-        Ember.Logger.error(reason);
-      }
     }
-  },
-
-  init: function() {
-    var _this = this;
-    this.send('setSubscriptions');
-    Ember.RSVP.on('error', function(error) {
-      _this.send('error', error);
-    });
-    this._super();
   }
-
 });

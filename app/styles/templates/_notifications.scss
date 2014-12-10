@@ -1,0 +1,21 @@
+.notification_box {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  padding: 10px 20px;
+  background-color: $coral-red;
+  color: $white;
+  z-index: 2;
+  display: table;
+
+  div {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  button {
+    color: $white;
+    float: right;
+    margin-bottom: 0px;
+    margin-left: 15px;
+  }
+}
