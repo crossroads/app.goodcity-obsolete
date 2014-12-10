@@ -6,24 +6,8 @@ var sendMessage = Ember.ArrayController.extend({
   sortProperties: ['createdAt'],
   sortAscending: true,
 
-  invalidMessage: function() {
-    return Ember.isBlank(this.get('body'));
-  }.property('body'),
-
-  addError: function(key, value){
-    return (arguments.length > 1) ? value : false;
-  }.property(),
-
   actions: {
-    removeError: function(){
-      this.set("addError", false);
-    },
-
     sendMessage: function(is_private, for_item) {
-      if(this.get("invalidMessage")) {
-        this.set("addError", true);
-        return false;
-      }
 
       var offer_id = this.get('controllers.offer').get('id');
       var offer = this.store.getById('offer', offer_id);

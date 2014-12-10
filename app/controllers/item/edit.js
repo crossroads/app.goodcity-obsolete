@@ -1,18 +1,12 @@
-import ValidateItem from './../validate_item';
+import Ember from 'ember';
 
-export default ValidateItem.extend({
+export default Ember.ObjectController.extend({
   donorConditionId: function() {
     return this.get('donorCondition.id');
   }.property('donorCondition.id'),
 
   actions: {
      submitItem: function() {
-
-      if(this.get("invalidDescription")) {
-        this.set("addError", true);
-        return false;
-      }
-
       var _this = this;
       var condititon = this.store.getById("donor_condition", this.get("donorConditionId"));
       this.set("donorCondition", condititon);

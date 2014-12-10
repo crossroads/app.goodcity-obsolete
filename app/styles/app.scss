@@ -14,6 +14,8 @@
 @import "book_van";
 @import "confirm_van";
 @import "porterage_charges";
+@import "validations";
+@import "placeholder";
 
 /* template specific */
 @import "templates/loading";
@@ -22,3 +24,4 @@
 @import "templates/item/edit";
 @import "templates/item/edit_images";
 @import "templates/offer/index";
+@import "templates/delivery/contact_details";

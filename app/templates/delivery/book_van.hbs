@@ -8,77 +8,93 @@
   </section>
 </nav>
 
-<section class="main-section book-van">
-  <div class="row">
-    <div class="small-12 columns">
+{{#validatable-form class="form-horizontal" action="bookVan" on="submit"}}
+  <section class="main-section book-van">
+    <div class="row">
+      <div class="small-12 columns">
 
-      <div class="row">
-        <h3>{{t "gogovan.book_van.location"}}</h3>
+        <div class="row">
+          <h3>{{t "gogovan.book_van.location"}}</h3>
+        </div>
+
+        <div class="row">
+          <div class="small-6 columns">
+            {{view "select"
+              content=territories
+              optionValuePath="content.id"
+              optionLabelPath="content.name"
+              selectionBinding='selectedTerritory'
+              valueBinding='territoryId'
+              prompt="All"
+              classNames='selectAddress'
+              required='true' }}
+          </div>
+
+          <div class="small-6 columns">
+            {{view "select"
+              contentBinding='districtsByTerritory'
+              optionValuePath="content.id"
+              optionLabelPath="content.name"
+              selectionBinding='selectedDistrict'
+              valueBinding="districtId"
+              classNames='selectAddress district'
+              required='true' }}
+          </div>
+        </div>
+
+        <div class="row">
+          <h3>{{t "gogovan.book_van.select_day"}}</h3>
+          <div class='description'>{{t "gogovan.book_van.crossroads_time"}}</div>
+        </div>
+
+        <div class="row">
+          <div class="small-7 columns date_selector">
+            {{view "select-date"
+              name='selectedDate'
+              id='selectedDate'
+              value=''
+              selectionBinding='selectedDate'
+              required='true'
+              pattern="[a-zA-Z]{3}\s?[a-zA-Z]{3}\s?[0-9]{1,2}"}}
+          </div>
+          <div class="small-5 columns time_selector">
+            {{view "select-time"
+              name='selectedTime'
+              id='selectedTime'
+              value=''
+              selectionBinding='selectedTime'
+              required='true'
+              pattern="[0-9]{1,2}:(00|30)\s?(AM|PM)"}}
+          </div>
+        </div>
+
+        <div class="row ui">
+          <h3>{{t "gogovan.book_van.requirements"}}</h3>
+          <div class='checkbox'>
+            {{input type="checkbox" name="speakEnglish" checked=speakEnglish id='1' }}
+            <label for='1'><span>{{t "gogovan.book_van.speak_english"}}</span></label>
+          </div>
+
+          <div class='checkbox'>
+            {{input type="checkbox" name="borrowTrolley" checked=borrowTrolley id='2' }}
+            <label for='2'><span>{{t "gogovan.book_van.trolly_cost"}}</span></label>
+          </div>
+
+          <div class='checkbox'>
+            {{input type="checkbox" name="porterage" checked=porterage id='3' }}
+            <label for='3'><span>{{t "gogovan.book_van.porterage"}}</span></label>
+          </div>
+        </div>
+
       </div>
+    </div>
+  </section>
 
-      <div class="row">
-        <div class="small-6 columns">
-          {{view "select"
-            content=territories
-            optionValuePath="content.id"
-            optionLabelPath="content.name"
-            selectionBinding='selectedTerritory'
-            valueBinding='territoryId'
-            prompt="All"
-            classNames='selectAddress' }}
-        </div>
-
-        <div class="small-6 columns">
-          {{view "select"
-            contentBinding='districtsByTerritory'
-            optionValuePath="content.id"
-            optionLabelPath="content.name"
-            selectionBinding='selectedDistrict'
-            valueBinding="districtId"
-            classNames='selectAddress district' }}
-        </div>
+  <div class="btm">
+    <div class="row">
+      <div class="small-10 small-offset-1 columns">
+        <button type="submit" class='button expand'>{{t "gogovan.book_van.get_quote"}}</button>
       </div>
-
-      <div class="row">
-        <h3>{{t "gogovan.book_van.select_day"}}</h3>
-        <div class='description'>{{t "gogovan.book_van.crossroads_time"}}</div>
-      </div>
-
-      <div class="row">
-        <div class="small-7 columns date_selector">
-          {{view "select-date" name='selectedDate' id='selectedDate' type='date' value='' selectionBinding='selectedDate' classBinding='invalidDate:error'}}
-        </div>
-        <div class="small-5 columns time_selector">
-          {{view "select-time" name='selectedTime' id='selectedTime' type='text' value='' selectionBinding='selectedTime' classBinding='invalidTime:error'}}
-        </div>
-      </div>
-
-      <div class="row ui">
-        <h3>{{t "gogovan.book_van.requirements"}}</h3>
-        <div class='checkbox'>
-          {{input type="checkbox" name="speakEnglish" checked=speakEnglish id='1' }}
-          <label for='1'><span>{{t "gogovan.book_van.speak_english"}}</span></label>
-        </div>
-
-        <div class='checkbox'>
-          {{input type="checkbox" name="borrowTrolley" checked=borrowTrolley id='2' }}
-          <label for='2'><span>{{t "gogovan.book_van.trolly_cost"}}</span></label>
-        </div>
-
-        <div class='checkbox'>
-          {{input type="checkbox" name="porterage" checked=porterage id='3' }}
-          <label for='3'><span>{{t "gogovan.book_van.porterage"}}</span></label>
-        </div>
-      </div>
-
     </div>
   </div>
-</section>
-
-<div class="btm">
-  <div class="row">
-    <div class="small-10 small-offset-1 columns">
-      <button {{action 'bookVan'}} class='button expand'>{{t "gogovan.book_van.get_quote"}}</button>
-    </div>
-  </div>
-</div>
+{{/validatable-form}}

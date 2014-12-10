@@ -1,14 +1,10 @@
 import Ember from "ember";
 
-export default Ember.Component.extend({
+export default Ember.TextField.extend({
   tagName: "input",
   type:    "text",
   name:    "userName",
-  attributeBindings: [ "name", "type", "id", "value"],
-
-  focusIn: function(){
-    Ember.$(this.element).removeClass('error');
-  },
+  attributeBindings: [ "name", "type", "id", "value", 'required', 'pattern'],
 
   didInsertElement: function(){
     var user = this.get('user');

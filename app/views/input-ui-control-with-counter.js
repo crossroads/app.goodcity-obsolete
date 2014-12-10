@@ -33,7 +33,7 @@ export default Ember.View.extend({
   // dataType:{String}
   name: null,
 
-  requireValidation: false,
+  required: false,
 
   currentCountBinding: 'inputControl.value.length',
 
@@ -76,13 +76,6 @@ export default Ember.View.extend({
   },
 
   actions: {
-    removeError: function(){
-      if(this.get("requireValidation")) {
-        this.get("controller").send("removeError");
-        return true;
-      }
-    },
-
     displayCharCount: function(){
       var char_counter_message = this.get('charactersKeyedIn') + '/' + this.get('maxlength');
       this.set('message', char_counter_message );
