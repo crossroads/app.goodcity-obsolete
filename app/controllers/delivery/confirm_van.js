@@ -8,42 +8,16 @@ export default Ember.ObjectController.extend({
   mobileNumber: Ember.computed.alias('user.mobile'),
   orderDetails: Ember.computed.alias('model'),
 
-  validMobile: Ember.computed.equal("mobileNumber.length", 8),
-
   districtName: function(){
     var district = this.store.getById("district", this.get('districtId'));
     return district.get('name');
   }.property(),
 
-  inProgress: function(key,value) {
-    return (arguments.length > 1) ? value : false;
-  }.property(),
-
-  invalidName: function(key, value) {
-    if(arguments.length > 1) {
-      return value;
-    } else {
-      var name = Ember.$("#userName").val();
-      var invalid = (name === undefined) ? false : name.length === 0;
-      return invalid;
-    }
-  }.property().volatile(),
-
   actions: {
-    removeError: function(){
-      this.set('invalidName', false);
-    },
 
     confirmOrder: function(){
       var controller = this;
-
-      if(!controller.get('validMobile')) { return false; }
-      if(controller.get('invalidName')) {
-        controller.set('invalidName', true);
-        return false;
-      }
-
-      controller.set("inProgress", true);
+      var loadingView = this.container.lookup('view:loading').append();
       var orderDetails = controller.get("orderDetails");
 
       // address details
@@ -63,8 +37,6 @@ export default Ember.ObjectController.extend({
       var schedule = controller.store.createRecord('schedule', scheduleProperties);
 
       var delivery = controller.store.getById("delivery", controller.get('controllers.delivery.id'));
-
-      var loadingView = this.container.lookup('view:loading').append();
 
       // save schedule
       schedule.save().then(function(schedule) {

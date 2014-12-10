@@ -70,20 +70,6 @@ test("cannot register unless mobile number details are entered", function() {
   });
 });
 
-test("should prepend country code +852 internally for api call", function() {
-  expect(3);
-
-  visit('/register');
-  fillIn('#mobile', hk_user.mobile);
-  triggerEvent('#mobile', 'blur');
-
-  andThen(function() {
-    equal(find('#mobile').val(), hk_user.mobile);
-    equal(find('#mobile').attr("data-actual-mobile").substr(0,4), '+852');
-    equal(find('#mobile_error').text(), "");
-  });
-});
-
 test("mobile number length should be 8 digit (excluding country code)", function() {
   expect(1);
 

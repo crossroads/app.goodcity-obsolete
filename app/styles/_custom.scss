@@ -39,17 +39,6 @@ h2{
   }
 }
 
-.input_container.error {
-  border: solid  0.2rem $coral-red !important;
-  background: $light-pitch !important;
-}
-
-textarea.error {
-  border-color: $coral-red !important;
-  background: $light-pitch !important;
-  margin-bottom: 1rem;
-}
-
 .plan_delivery {
   font-size: 0.8rem;
   .right {
@@ -90,27 +79,6 @@ input[type=number]::-webkit-inner-spin-button,
 input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0; }
-
-// placeholder-color
-input {
-  &::-webkit-input-placeholder {
-    color: $medium-blue;
-  }
-  &::-moz-placeholder {
-    color: $medium-blue;
-  }
-  &::-moz-p {
-    color: $medium-blue;
-  }
-  &:-ms-input-placeholder {
-    color: $medium-blue;
-  }
-}
-
-textarea:-ms-input-placeholder {
-  color: $medium-blue;
-  opacity: 0.5;
-}
 
 .icon-center {
   vertical-align: middle;
