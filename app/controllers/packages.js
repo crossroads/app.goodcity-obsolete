@@ -9,7 +9,7 @@ var packages = Ember.ArrayController.extend({
 
   itemTypeId: function(){
     return this.get('controllers.review_item/accept.itemTypeId');
-  }.property('controllers.review_item/accept.itemTypeId'),
+  }.property('controllers.review_item/accept.itemTypeId', 'itemId'),
 
   itemTypeName: function(){
     return this.get('controllers.review_item/accept.itemTypeName');
@@ -21,11 +21,11 @@ var packages = Ember.ArrayController.extend({
 
   subItemTypes: function(){
     return this.get('controllers.review_item/accept.subItemTypes');
-  }.property('controllers.review_item/accept.subItemTypes'),
+  }.property('controllers.review_item/accept.subItemTypes', 'itemId'),
 
   noSubItemType: function() {
     return this.get('subItemTypes.length') === 0;
-  }.property('subItemTypes.@each'),
+  }.property('subItemTypes.@each', 'itemId'),
 
   noPackages: function(){
     return this.get('allPackages.length') === 0;
@@ -67,7 +67,7 @@ var packages = Ember.ArrayController.extend({
         packDetail.item = _this.store.getById('item', packDetail.itemId);
         packDetail.packageType = _this.store.getById('item_type', packDetail.packageTypeId);
 
-        if(packDetail.pkgid) {
+        if(packDetail.id) {
           packageNew = _this.store.update('package', packDetail);
         } else {
           packageNew = _this.store.createRecord("package", packDetail);

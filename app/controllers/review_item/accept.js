@@ -12,11 +12,13 @@ export default Ember.ObjectController.extend({
     var itemId = this.get('itemId');
     var item = this.store.getById('item', itemId);
     return item.get('displayImageUrl');
-  }.property('controllers.review_item.id'),
+  }.property('controllers.review_item.id', 'itemId'),
 
   subItemTypes: function(){
+    console.log("subItemTypes Name: ",  this.get('itemTypeName'));
+    console.log("subItemTypes Get : ", this.get('itemTypeId'));
     var parentId = parseInt(this.get('itemTypeId'));
-    var dataInItemType, dataInPackage, _this = this;
+    var dataInItemType, _this = this;
     var acceptSubItemTypes = [];
     var store = this.get('store');
      dataInItemType = store.all('item_type').filterBy('parentId', parentId);
@@ -39,4 +41,11 @@ export default Ember.ObjectController.extend({
     this.set('itemTypeName', '');
     this.set('itemId', '');
   }.observes('controllers.review_item.each'),
+
+  actions: {
+    setItemTypeDetails: function(itemtypeid, itemtypename){
+      this.set("itemTypeId", itemtypeid);
+      this.set("itemTypeName", itemtypename);
+    }
+  }
 });
