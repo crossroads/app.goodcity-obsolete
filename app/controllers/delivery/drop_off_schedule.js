@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import AjaxPromise from './../../utils/ajax-promise';
-import config from './../../config/environment';
 
 export default Ember.ObjectController.extend({
   needs: ["delivery", "offer"],
@@ -13,8 +12,7 @@ export default Ember.ObjectController.extend({
     if (arguments.length > 1) {
       return value;
     } else {
-      var list, _this = this;
-
+      var _this = this;
       new AjaxPromise("/holidays_list", "GET", this.get('session.authToken'))
       .then(function(data) {
         _this.set("holidays_list", data);
@@ -33,7 +31,7 @@ export default Ember.ObjectController.extend({
       var date = _this.get('selectedDate');
       var slotName = _this.get('slots').filterBy('id', parseInt(selectedSlot)).get('firstObject.name');
 
-      var scheduleProperties = { slot: selectedSlot, scheduledAt: date, slotName: slotName}
+      var scheduleProperties = { slot: selectedSlot, scheduledAt: date, slotName: slotName};
 
       var bookedSchedule = _this.store.createRecord('schedule', scheduleProperties);
       var deliveryId = _this.get('controllers.delivery').get('id');

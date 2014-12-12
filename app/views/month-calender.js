@@ -7,28 +7,30 @@ export default Ember.TextField.extend({
 
   didInsertElement: function(){
     var list = this.get('holidays');
-    var holidays_array = Array();
+    var holidays_array = [];
+    var holidays_count = 0;
 
     if(list) {
-      for (var i = list.length - 1; i >= 0; i--) {
+      holidays_count = list.length;
+      for (var i = holidays_count - 1; i >= 0; i--) {
         var date = new Date(list[i]);
-        var date_array = Array();
+        var date_array = [];
         date_array.push(date.getFullYear());
         date_array.push(date.getMonth());
         date_array.push(date.getDate());
-        holidays_array.push(date_array)
-      };
+        holidays_array.push(date_array);
+      }
     }
 
-    holidays_array.push(1, 2)
+    holidays_array.push(1, 2);
 
     var _this = this;
     Ember.$().ready(function(){
-      var picker = Ember.$('.pickadate').pickadate({
+      Ember.$('.pickadate').pickadate({
         format: 'ddd mmm d',
         disable: holidays_array,
         min: new Date(),
-        max: 14,
+        max: 14 + holidays_count,
         clear: false,
         today: false,
         close: false,
