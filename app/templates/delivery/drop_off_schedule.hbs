@@ -1,0 +1,63 @@
+<nav class="tab-bar">
+  <section class="left-small">
+    {{#link-to 'offer.plan_delivery' classNames="back"}}{{t "back"}}{{/link-to}}
+  </section>
+
+  <section class="middle tab-bar-section">
+    <h1 class="title">Select Schedule</h1>
+  </section>
+</nav>
+
+{{#validatable-form class="form-horizontal" action="bookSchedule" on="submit"}}
+  <section class="main-section drop_off">
+    <div class="row">
+      <div class="small-12 columns">
+
+        <div class="row">
+          <h3>{{t "gogovan.book_van.select_day"}}</h3>
+          <div class='description'>{{t "gogovan.book_van.crossroads_time"}}</div>
+        </div>
+
+        {{#if holidays_list}}
+          <div class="row calender_holder">
+            <div class="small-12 columns">
+              {{view "month-calender"
+                name='selectedDate'
+                id='selectedDate'
+                value=''
+                selectionBinding='selectedDate'
+                required='true'
+                holidays=holidays_list
+                pattern="[a-zA-Z]{3}\s?[a-zA-Z]{3}\s?[0-9]{1,2}"}}
+            </div>
+          </div>
+        {{/if}}
+
+        <div class="row">
+          <div class="small-12 columns">
+            <div class="radio-buttons">
+
+              {{#each slot in slots}}
+                <span class="radio">
+                  {{view 'radio-button' name="selectionTest" selectionBinding='selectedId' value=slot.id id=slot.id}}
+                  <label class="radio-wrap small-only-text-center" {{bind-attr for=slot.id}}>
+                    {{slot.name}}
+                  </label>
+                </span>
+              {{/each}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="btm">
+    <div class="row">
+      <div class="small-10 small-offset-1 columns">
+        <button type="submit" class='button expand'>Book Schedule</button>
+      </div>
+    </div>
+  </div>
+{{/validatable-form}}

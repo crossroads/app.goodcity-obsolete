@@ -32,6 +32,8 @@ Router.map(function() {
         this.route('book_van');
         this.route('confirm_van');
         this.route('porterage_charges');
+
+        this.route('drop_off_schedule');
       });
 
       this.resource('item', {path: '/items/:item_id'}, function() {
