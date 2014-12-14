@@ -8,7 +8,7 @@ export default AuthorizeRoute.extend({
   },
 
   setupController: function(controller, item) {
-    controller.set('model', item);
+    return controller.set('model', item);
   },
 
   renderTemplate: function() {

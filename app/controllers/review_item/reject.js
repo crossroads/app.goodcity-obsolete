@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.ObjectController.extend({
   needs: ["review_item", "offer"],
 
-  itemTypeId: Ember.computed.alias('controllers.review_item.reviewItemTypeId'),
+  itemTypeId: Ember.computed.alias('controllers.review_item.itemTypeId'),
 
   isBlank: function(key, value){
     return (arguments.length >1) ? value : false;

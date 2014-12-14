@@ -6,15 +6,12 @@
       </div>
       <div class="small-7 columns head">
         <span class="ui">
-          hello {{view.packagetype}}
-          yes {{packagetype}}
-
           {{view "select"
             contentBinding='view.itemval.subItemTypes'
             optionValuePath="content.itemTypeId"
             optionLabelPath="content.itemTypeName"
             selectionBinding="view.packagetype"
-            valueBinding="view.packagetypeid"
+            valueBinding="packagetypeid"
             prompt='Package Type'
           }}
         </span>

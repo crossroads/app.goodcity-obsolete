@@ -1,4 +1,6 @@
 import Ember from 'ember';
+import addComponent from '../views/add-component';
+import staticComponent from '../views/static-component';
 
 var packages = Ember.ArrayController.extend({
   needs: ["review_item/accept"],
@@ -9,7 +11,7 @@ var packages = Ember.ArrayController.extend({
 
   itemTypeId: function(){
     return this.get('controllers.review_item/accept.itemTypeId');
-  }.property('controllers.review_item/accept.itemTypeId', 'itemId'),
+  }.property('controllers.review_item/accept.itemTypeId'),
 
   itemTypeName: function(){
     return this.get('controllers.review_item/accept.itemTypeName');
@@ -31,6 +33,12 @@ var packages = Ember.ArrayController.extend({
     return this.get('allPackages.length') === 0;
   }.property('packages.@each', 'itemId'),
 
+  packagetypeid: function(){
+    if(this.get("noPackages")) {
+      return this.get("itemTypeId");
+    }
+  }.property('noPackages', 'noSubItemType', 'itemId'),
+
   allPackages: function(){
     var item = this.store.getById('item', this.get('itemId'));
     return item.get('packages');
@@ -44,20 +52,41 @@ var packages = Ember.ArrayController.extend({
          return;
         }
         else {
-         return existsPackageType.get("firstObject").destroyRecord();
+         existsPackageType.get("firstObject").destroyRecord();
+         return;
         }
     },
-    // removeChildViews: function() {
-    //   var getContainer = Ember.View.views['my_container_view'];
-    //   if (getContainer) {
-    //     getContainer.removeAllChildren();
-    //   }
-    //   this.set("noPackages", false);
-    //   alert(this.get("noPackages"));
-    // },
+    removewAllPackages: function(){
+      var packages = this.get("allPackages.content");
+      // deleted already saved all packages
+      if(packages.length > 0 ) {
+        packages.forEach(function(pkgType) {
+          Ember.run.once(this, function() {
+            pkgType.destroyRecord();
+          });
+        }, this);
+      }
+      return;
+    },
+    renderComponents: function(){
+      this.send("removeChildViews");
+      return;
+    },
+
+    removeChildViews: function() {
+      var getContainer = Ember.View.views['my_container_view'];
+      if (getContainer) {
+        getContainer.removeAllChildren();
+        this.send("renderViews");
+      }
+      return ;
+    },
+
     savePackageType: function(packageDetails){
       var _this = this;
       var packagePromises = [], packageNew;
+
+      _this.send("removewAllPackages");
 
       var item = this.store.getById('item', this.get('itemId'));
       item.set('itemType', this.store.getById('item_type', this.get('itemTypeId')));
@@ -65,7 +94,7 @@ var packages = Ember.ArrayController.extend({
 
       packageDetails.forEach(function(packDetail){
         packDetail.item = _this.store.getById('item', packDetail.itemId);
-        packDetail.packageType = _this.store.getById('item_type', packDetail.packageTypeId);
+        packDetail.packageType = _this.store.getById('item_type', packDetail.packagetypeid);
 
         if(packDetail.id) {
           packageNew = _this.store.update('package', packDetail);
@@ -83,7 +112,45 @@ var packages = Ember.ArrayController.extend({
           _this.transitionToRoute('review_offer.items');
         });
       });
-    }
+      return;
+    },
+
+    renderViews: function(){
+      var packages = this.get("allPackages.content");
+      var subItemtypes = this.get('subItemTypes');
+      var l=0;
+
+      if (!(this.get("noSubItemType"))) {
+        subItemtypes.forEach(function(subitemtype) {
+          var containerView = Ember.View.views['my_container_view'];
+          var childView;
+          if (l===0) {
+            childView=  containerView.createChildView(staticComponent);
+            }
+            else {
+            childView =  containerView.createChildView(addComponent);
+          }
+          childView.setProperties({
+            id:    subitemtype.id,
+            itemtypeid:    subitemtype.id,
+            itemid:        subitemtype.itemId,
+            itemtypename:  subitemtype.itemTypeName,
+            isDefaultIType: subitemtype.isDefaultIType,
+            packagetypeid:  subitemtype.id,
+            packagetype:    subitemtype,
+            subitemtypes:   subitemtype,
+            length:        subitemtype.length,
+            height:        subitemtype.height,
+            width:         subitemtype.width,
+            quantity:      subitemtype.quantity
+          });
+          containerView.pushObject(childView);
+        l++;
+        });
+      }
+    // }
+    return;
   }
+}
 });
 export default packages;

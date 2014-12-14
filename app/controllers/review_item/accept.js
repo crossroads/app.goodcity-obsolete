@@ -2,11 +2,11 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 
-  needs: ["review_item", "offer"],
+  needs: ["review_item", "offer", "packages"],
 
   itemId: Ember.computed.alias('model'),
-  itemTypeId: Ember.computed.alias('controllers.review_item.reviewItemTypeId'),
-  itemTypeName: Ember.computed.alias('controllers.review_item.reviewItemTypeName'),
+  itemTypeId: Ember.computed.alias('controllers.review_item.itemTypeId'),
+  itemTypeName: Ember.computed.alias('controllers.review_item.itemTypeName'),
 
   defaultImageId: function(){
     var itemId = this.get('itemId');
@@ -15,8 +15,6 @@ export default Ember.ObjectController.extend({
   }.property('controllers.review_item.id', 'itemId'),
 
   subItemTypes: function(){
-    console.log("subItemTypes Name: ",  this.get('itemTypeName'));
-    console.log("subItemTypes Get : ", this.get('itemTypeId'));
     var parentId = parseInt(this.get('itemTypeId'));
     var dataInItemType, _this = this;
     var acceptSubItemTypes = [];
@@ -28,13 +26,13 @@ export default Ember.ObjectController.extend({
     dataInItemType.forEach(function(subtype) {
       var subItemTypeProperties = {};
       subItemTypeProperties.itemId = _this.get('controllers.review_item.id');
-      subItemTypeProperties.itemTypeId = subtype.get("id");
+      subItemTypeProperties.id = subtype.get("id");
       subItemTypeProperties.itemTypeName = subtype.get("name");
       subItemTypeProperties.isDefaultIType = subtype.get("isItemTypeNode");
       acceptSubItemTypes.pushObject(subItemTypeProperties);
     });
     return acceptSubItemTypes;
-  }.property("itemTypeId"),
+  }.property("controllers.review_item.itemTypeName", "itemTypeId"),
 
   reviewItemDidChange: function() {
     this.set('itemTypeId', '');
@@ -46,6 +44,7 @@ export default Ember.ObjectController.extend({
     setItemTypeDetails: function(itemtypeid, itemtypename){
       this.set("itemTypeId", itemtypeid);
       this.set("itemTypeName", itemtypename);
+      this.get('controllers.packages').send('renderComponents');
     }
   }
 });

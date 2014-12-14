@@ -5,21 +5,22 @@ export default Ember.ObjectController.extend({
 
   defaultPackage: Ember.computed.alias('itemType'),
 
-  reviewItemTypeName: function(key, value) {
+  itemTypeName: function(key, value) {
     return (arguments.length > 1) ? value :  this.get('defaultPackage.name');
   }.property('defaultPackage'),
 
-  reviewItemTypeId: function(key, value) {
+  itemTypeId: function(key, value) {
     return (arguments.length > 1) ? value : this.get('defaultPackage.id');
-  }.property('defaultPackage'),
+  }.property('defaultPackage' ),
 
-  reviewItemId: function(){
+  itemId: function(){
     return this.get("id");
   }.property(''),
+
   actions: {
     getItemId: function(id, name) {
-      this.set('reviewItemTypeId', id);
-      this.set('reviewItemTypeName', name);
+      this.set('itemTypeId', id);
+      this.set('itemTypeName', name);
       this.get('controllers.review_item/accept').send('setItemTypeDetails', id, name);
       return;
     }
