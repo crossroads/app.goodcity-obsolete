@@ -15,6 +15,7 @@ export default Ember.ObjectController.extend({
       }
       var loadingView = this.container.lookup('view:loading').append();
       this.get("model").save().then(function() {
+        _this.set("state_event", null);
         _this.transitionToRoute('offer');
       }).finally(function() {
         loadingView.destroy();
