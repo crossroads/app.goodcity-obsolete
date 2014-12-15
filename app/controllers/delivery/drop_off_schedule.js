@@ -13,7 +13,7 @@ export default Ember.ObjectController.extend({
       return value;
     } else {
       var _this = this;
-      new AjaxPromise("/available_dates", "GET", this.get('session.authToken'))
+      new AjaxPromise("/available_dates", "GET", this.get('session.authToken'), {schedule_days: 10})
       .then(function(data) {
         _this.set("available_dates", data);
         value = data;
