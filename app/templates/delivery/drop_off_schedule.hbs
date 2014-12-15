@@ -18,7 +18,7 @@
           <div class='description'>{{t "gogovan.book_van.crossroads_time"}}</div>
         </div>
 
-        {{#if holidays_list}}
+        {{#if available_dates}}
           <div class="row calender_holder">
             <div class="small-12 columns">
               {{view "month-calender"
@@ -27,7 +27,7 @@
                 value=''
                 selectionBinding='selectedDate'
                 required='true'
-                holidays=holidays_list
+                available=available_dates
                 pattern="[a-zA-Z]{3}\s?[a-zA-Z]{3}\s?[0-9]{1,2}"}}
             </div>
           </div>

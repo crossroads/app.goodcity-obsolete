@@ -8,19 +8,19 @@ export default Ember.ObjectController.extend({
   selectedId: 2,
   selectedDate: null,
 
-  holidays_list: function(key, value){
+  available_dates: function(key, value){
     if (arguments.length > 1) {
       return value;
     } else {
       var _this = this;
-      new AjaxPromise("/holidays_list", "GET", this.get('session.authToken'))
+      new AjaxPromise("/available_dates", "GET", this.get('session.authToken'))
       .then(function(data) {
-        _this.set("holidays_list", data);
+        _this.set("available_dates", data);
         value = data;
       });
       return value;
     }
-  }.property('holidays_list.[]'),
+  }.property('available_dates.[]'),
 
   actions: {
     bookSchedule: function() {
