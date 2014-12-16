@@ -52,7 +52,7 @@ test("Confirm and Submit Offer", function(){
   click("a[href='/offers/1/confirm']");
 
   andThen(function() {
-    equal(/Confirm/i.test($('body h3').text()), true);
+    equal(/Confirm/i.test($('body h1').text()), true);
     equal(currentURL(), "/offers/" + offer.id + "/confirm");
 
     // confirm offer page has submit link
