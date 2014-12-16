@@ -1,9 +1,32 @@
-<h3>{{t "offer.confirm.heading"}}</h3>
+<nav class="tab-bar">
+  <section class="left-small">
+    {{#link-to 'offer.index' this classNames="back"}}{{t "back"}}{{/link-to}}
+  </section>
 
-<p>{{t "offer.confirm.thank"}}</p>
+  <section class="middle tab-bar-section">
+    <h1 class="title">{{t "offer.confirm.heading"}}</h1>
+  </section>
+</nav>
 
-<p>{{t "offer.confirm.review"}}</p>
+<section class="main-section">
+  <div class="row ui">
+    <div class="small-12 columns confirm_order">
 
-<p>{{t "offer.confirm.notice"}}</p>
+      <p><span class="icon-no-items"></span></p>
 
-{{#link-to 'offer.submit'}}OK! Next{{/link-to}}
+      <p>{{t "offer.confirm.thank"}}</p>
+
+      <p>{{t "offer.confirm.review"}}</p>
+
+      <p>{{t "offer.confirm.notice"}}</p>
+
+    </div>
+  </div>
+</section>
+
+<div class="btm">
+  <div class="row">
+    <div class="small-12 columns">
+      {{#link-to 'offer.submit' classNames="button expand"}}OK! Next{{/link-to}}
+  </div>
+</div>
