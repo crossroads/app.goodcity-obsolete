@@ -61,7 +61,7 @@ test("Confirm and Submit Offer", function(){
     click("a[href='/offers/" + offer.id + "/submit']");
 
     andThen(function() {
-      equal(/Sale of goods/i.test($('body h3').text()), true);
+      equal(/Sale of goods/i.test($('body h1').text()), true);
       equal(currentURL(), "/offers/" + offer.id + "/submit");
 
 
