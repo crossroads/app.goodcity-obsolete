@@ -1,9 +1,10 @@
 import Ember from 'ember';
-import addComponent from '../views/add-component';
-import staticComponent from '../views/static-component';
+import PackageComponentMixin from '../mixins/package-component';
 
-var packages = Ember.ArrayController.extend({
+var packages = Ember.ArrayController.extend(PackageComponentMixin, {
   needs: ["review_item/accept"],
+
+  isPackageDeleted: Ember.computed.alias('controllers.review_item/accept.isPackageDeleted'),
 
   itemId: function(){
     return this.get('controllers.review_item/accept.itemId');
@@ -56,18 +57,7 @@ var packages = Ember.ArrayController.extend({
          return;
         }
     },
-    removewAllPackages: function(){
-      var packages = this.get("allPackages.content");
-      // deleted already saved all packages
-      if(packages.length > 0 ) {
-        packages.forEach(function(pkgType) {
-          Ember.run.once(this, function() {
-            pkgType.destroyRecord();
-          });
-        }, this);
-      }
-      return;
-    },
+
     renderComponents: function(){
       this.send("removeChildViews");
       return;
@@ -82,12 +72,9 @@ var packages = Ember.ArrayController.extend({
       return ;
     },
 
-    savePackageType: function(packageDetails){
+    addNewPackage: function(packageDetails){
       var _this = this;
       var packagePromises = [], packageNew;
-
-      _this.send("removewAllPackages");
-
       var item = this.store.getById('item', this.get('itemId'));
       item.set('itemType', this.store.getById('item_type', this.get('itemTypeId')));
       packagePromises.pushObject(item.save());
@@ -112,45 +99,29 @@ var packages = Ember.ArrayController.extend({
           _this.transitionToRoute('review_offer.items');
         });
       });
-      return;
     },
 
-    renderViews: function(){
-      var packages = this.get("allPackages.content");
-      var subItemtypes = this.get('subItemTypes');
-      var l=0;
+    savePackageType: function(packageDetails){
+      var ths = this;
+      var packagePromises = [];
+      var packages = ths.get("allPackages.content");
 
-      if (!(this.get("noSubItemType"))) {
-        subItemtypes.forEach(function(subitemtype) {
-          var containerView = Ember.View.views['my_container_view'];
-          var childView;
-          if (l===0) {
-            childView=  containerView.createChildView(staticComponent);
-            }
-            else {
-            childView =  containerView.createChildView(addComponent);
-          }
-          childView.setProperties({
-            id:    subitemtype.id,
-            itemtypeid:    subitemtype.id,
-            itemid:        subitemtype.itemId,
-            itemtypename:  subitemtype.itemTypeName,
-            isDefaultIType: subitemtype.isDefaultIType,
-            packagetypeid:  subitemtype.id,
-            packagetype:    subitemtype,
-            subitemtypes:   subitemtype,
-            length:        subitemtype.length,
-            height:        subitemtype.height,
-            width:         subitemtype.width,
-            quantity:      subitemtype.quantity
+      if(ths.get("isPackageDeleted") && packages.length > 0) {
+        ths.store.find('package', {item: ths.get("itemId")}).then(function(pkgs) {
+          pkgs.forEach(function(pkg) {
+            pkg.deleteRecord();
+            packagePromises.pushObject(pkg);
           });
-          containerView.pushObject(childView);
-        l++;
+        return Ember.RSVP.all(pkgs.invoke('save'));
+        }).then(function() {
+          ths.send("addNewPackage", packageDetails);
         });
       }
-    // }
-    return;
+      else{
+        ths.send("addNewPackage", packageDetails);
+      }
+      return;
+    }
   }
-}
 });
 export default packages;

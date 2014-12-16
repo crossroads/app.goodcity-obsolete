@@ -34,6 +34,10 @@ export default Ember.ObjectController.extend({
     return acceptSubItemTypes;
   }.property("controllers.review_item.itemTypeName", "itemTypeId"),
 
+  isPackageDeleted: function(key, value){
+    return (arguments.length > 1) ? value :  false;
+  }.property('itemTypeId'),
+
   reviewItemDidChange: function() {
     this.set('itemTypeId', '');
     this.set('itemTypeName', '');
@@ -44,6 +48,7 @@ export default Ember.ObjectController.extend({
     setItemTypeDetails: function(itemtypeid, itemtypename){
       this.set("itemTypeId", itemtypeid);
       this.set("itemTypeName", itemtypename);
+      this.set("isPackageDeleted", true);
       this.get('controllers.packages').send('renderComponents');
     }
   }
