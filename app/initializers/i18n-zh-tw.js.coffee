@@ -147,6 +147,7 @@ I18nTranslationsZhTw =
           "notice": "因為需要更改每日和<br>存儲是有限我們 赔礼 这<br>我們有時不能接受<br>有些項目."
           "review": "專家志願者將開始回顧的你的品目隨即."
           "thank": "謝謝!"
+          "next" : "OK! Next"
         "submit":
           "heading": "出售的商品"
           "message": "有時候，對於捐贈項目的最佳途，以幫助窮人是一個慈善機構把它賣掉。是出售物品的好嗎"
