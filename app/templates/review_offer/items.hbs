@@ -9,9 +9,9 @@
 
     <h3>Awaiting Review({{awaitingReview.length}})</h3>
     <div class= 'row'>
-      {{#each awaitingReview}}
-        {{#link-to 'review_item' this}}
-          <img {{bind-attr src=displayImageUrl}} class="thumb small" />
+      {{#each item in awaitingReview}}
+        {{#link-to 'review_item.accept' item}}
+          <img {{bind-attr src=item.displayImageUrl}} class="thumb small" />
         {{/link-to}}
       {{/each}}
     </div>
@@ -19,9 +19,9 @@
 
     <h3>Approved({{accepted.length}})</h3>
     <div class= 'row'>
-      {{#each accepted}}
-        {{#link-to 'review_item' this}}
-          <img {{bind-attr src=displayImageUrl}} class="thumb small" />
+      {{#each item in accepted}}
+        {{#link-to 'review_item.accept' item}}
+          <img {{bind-attr src=item.displayImageUrl}} class="thumb small" />
         {{/link-to}}
       {{/each}}
     </div>
@@ -29,9 +29,9 @@
 
     <h3>Rejected({{rejected.length}})</h3>
     <div class= 'row'>
-      {{#each rejected}}
-        {{#link-to 'review_item.reject' this}}
-          <img {{bind-attr src=displayImageUrl}} class="thumb small" />
+      {{#each item in rejected}}
+        {{#link-to 'review_item.reject' item}}
+          <img {{bind-attr src=item.displayImageUrl}} class="thumb small" />
         {{/link-to}}
       {{/each}}
     </div>
@@ -40,10 +40,10 @@
     <button {{action 'startReview'}}>Start Review</button>
     <br/>
 
-    <h3>Items({{content.length}})</h3>
+    <h3>Items({{model.length}})</h3>
     <div class= 'row'>
-      {{#each}}
-        <img {{bind-attr src=displayImageUrl}} class="thumb small" />
+      {{#each item in model}}
+        <img {{bind-attr src=item.displayImageUrl}} class="thumb small" />
       {{/each}}
     </div>
 

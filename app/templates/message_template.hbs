@@ -1,20 +1,20 @@
 <div>
-{{#each filteredContent}}
-  <div class='message_box' {{bind-attr id=this.id}}>
+{{#each message in filteredContent}}
+  <div class='message_box' {{bind-attr id=message.id}}>
     <div class='message_details'>
-      {{t "full_name" firstNameBinding=this.sender.firstName lastNameBinding=this.sender.lastName}}
-      {{this.sender.roleInitials}}
+      {{t "full_name" firstNameBinding=message.sender.firstName lastNameBinding=message.sender.lastName}}
+      {{message.sender.roleInitials}}
       <br/>
       {{view 'time-ago' timeValue=createdAt}}
 
       {{#if controller.itemMessage}}
-        <a href="#/" {{action showMessage this}}>see here</a>
+        <a href="#/" {{action showMessage message}}>see here</a>
       {{/if}}
 
       {{#if controller.offerMessage}}
-        {{#if itemImageUrl}}
+        {{#if message.itemImageUrl}}
           <div class='item_message'>
-            <img {{bind-attr src=itemImageUrl}} class="thumb small" />
+            <img {{bind-attr src=message.itemImageUrl}} class="thumb small" />
           </div>
         {{/if}}
       {{/if}}

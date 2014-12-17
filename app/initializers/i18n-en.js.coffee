@@ -155,6 +155,7 @@ I18nTranslationsEn =
           "notice": "Because needs change daily and <br> storage is limited we apologise that <br> we sometimes cannot accept <br> some items."
           "review": "Expert volunteers will start reviewing <br> your items immediately."
           "thank": "Thank You!"
+          "next" : "OK! Next"
         "submit":
           "heading": "Sale of goods"
           "message": "Occasionally, the best way <br> for a donated item to help the poor <br> is for a charity to sell it. Is sale <br> of item(s) okay?"
