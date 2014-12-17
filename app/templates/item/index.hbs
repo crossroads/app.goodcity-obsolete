@@ -7,8 +7,8 @@
 
 <div>{{t "images"}}</div>
 
-{{#each images}}
-  <img {{bind-attr src="thumbImageUrl"}}>
+{{#each image in images}}
+  <img {{bind-attr src="image.thumbImageUrl"}}>
 {{/each}}
 
 <button {{action 'back' this}} class='backButton'>{{t "back" }}</button>

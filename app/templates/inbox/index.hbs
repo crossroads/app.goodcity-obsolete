@@ -22,32 +22,32 @@
   <div class="row">
     <div class="small-12 columns">
       <ul class="list list-activity">
-        {{#each}}
+        {{#each offer in model}}
           <li>
-            {{#link-to 'review_offer' this}}
+            {{#link-to 'review_offer' offer}}
               <span class="avatar">
-                <span class="no-avatar">{{this.createdBy.nameInitial}}</span>
+                <span class="no-avatar">{{offer.createdBy.nameInitial}}</span>
               </span>
 
               <span class="info">
                 <h3>
-                  {{t "full_name" firstNameBinding=createdBy.firstName lastNameBinding=createdBy.lastName}}
+                  {{t "full_name" firstNameBinding=offer.createdBy.firstName lastNameBinding=offer.createdBy.lastName}}
                 </h3>
-                <p>{{t "inbox.new_items"}}: {{itemCount}}</p>
-                {{#if this.unreadMessagesCount}}
-                  <p>{{t "inbox.unread_messages" unreadMessagesCountBinding=unreadMessagesCount}}</p>
+                <p>{{t "inbox.new_items"}}: {{offer.itemCount}}</p>
+                {{#if offer.unreadMessagesCount}}
+                  <p>{{t "inbox.unread_messages" unreadMessagesCountBinding=offer.unreadMessagesCount}}</p>
                 {{/if}}
-                <p>{{createdBy.address.district.name}}</p>
+                <p>{{offer.createdBy.address.district.name}}</p>
 
                 {{#if controller.newOffers}}
-                  {{view 'time-ago' timeValue=submittedAt}}
+                  {{view 'time-ago' timeValue=offer.submittedAt}}
                 {{else}}
-                  {{view 'time-ago' timeValue=reviewedAt}}
+                  {{view 'time-ago' timeValue=offer.reviewedAt}}
                 {{/if}}
               </span>
 
               <span class="list-image">
-                <img {{bind-attr src=displayImageUrl}} class="thumb small" />
+                <img {{bind-attr src=offer.displayImageUrl}} class="thumb small" />
               </span>
 
             {{/link-to}}
