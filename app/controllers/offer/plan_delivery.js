@@ -20,6 +20,9 @@ export default Ember.ObjectController.extend({
           case 'gogovan':
             route.transitionToRoute('delivery.book_van', delivery);
             break;
+          case 'drop_off':
+            route.transitionToRoute('delivery.drop_off_schedule', delivery);
+            break;
         }
       });
     }

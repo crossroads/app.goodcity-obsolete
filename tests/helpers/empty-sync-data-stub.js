@@ -6,6 +6,7 @@ import '../fixtures/donor_condition';
 import '../fixtures/rejection_reason';
 import '../fixtures/permission';
 import '../fixtures/user_profile';
+import '../fixtures/timeslot';
 
 export default function(testHelper) {
   config.APP.PRELOAD_TYPES.concat(config.APP.PRELOAD_AUTHORIZED_TYPES).forEach(function(type) {

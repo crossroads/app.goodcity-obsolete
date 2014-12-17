@@ -14,6 +14,10 @@ export default DS.Model.extend({
   gogovanOrder:  belongsTo('gogovan_order'),
 
   isGogovan: function() {
-    return this.get('deliveryType') === 'gogovan';
+    return this.get('deliveryType') === 'Gogovan';
+  }.property('deliveryType'),
+
+  noDropOff: function() {
+    return this.get('deliveryType') !== 'Drop Off';
   }.property('deliveryType')
 });

@@ -26,5 +26,9 @@ export default Addressable.extend({
       channels["supervisor"] = events;
     }
     return channels;
-  }.property()
+  }.property(),
+
+  fullName: function(){
+    return (this.get('firstName') + " " + this.get('lastName'));
+  }.property('firstName', 'lastName')
 });
