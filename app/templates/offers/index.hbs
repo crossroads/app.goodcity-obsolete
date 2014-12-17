@@ -1,6 +1,6 @@
 <div class="off-canvas-wrap" data-offcanvas>
   <div class="inner-wrap">
-    {{outlet appMenuList}}
+    {{outlet "appMenuList"}}
 
     <nav class="tab-bar">
       <section class="left-small">
@@ -19,57 +19,57 @@
           <a href="#" {{action 'newOffer'}} class="button expand">{{t "offers.index.new_donation"}}</a>
 
           <ul class="list list-items">
-            {{#each offersWithItems}}
+            {{#each offer in offersWithItems}}
               <li>
-                {{#if this.isScheduled }}
-                  {{#link-to 'delivery.donation_details' this delivery}}
+                {{#if offer.isScheduled }}
+                  {{#link-to 'delivery.donation_details' offer offer.delivery}}
                     <span class="list-image">
-                      <img {{bind-attr src="displayImageUrl"}} class="thumb" />
+                      <img {{bind-attr src="offer.displayImageUrl"}} class="thumb" />
                     </span>
                     <span class="info">
-                      <h3>{{status}} ({{itemCount}} items)</h3>
-                      {{display-date delivery.schedule.scheduledAt}}<br/>
-                      {{delivery.schedule.slotName}}<br/>
+                      <h3>{{offer.status}} ({{offer.itemCount}} items)</h3>
+                      {{display-date offer.delivery.schedule.scheduledAt}}<br/>
+                      {{offer.delivery.schedule.slotName}}<br/>
                       {{partial 'unread_message_bubble'}}
                     </span>
 
                   {{/link-to}}
                 {{/if}}
 
-                {{#if this.isUnderReview}}
-                  {{#link-to 'offer.review_status' this}}
+                {{#if offer.isUnderReview}}
+                  {{#link-to 'offer.review_status' offer}}
                     <span class="list-image">
-                      <img {{bind-attr src="displayImageUrl"}} class="thumb" />
+                      <img {{bind-attr src="offer.displayImageUrl"}} class="thumb" />
                     </span>
                     <span class="info">
-                      <h3>{{status}} ({{itemCount}} items)</h3>
-                      Approved Items: {{approvedtems.length}}<br/>
-                      Rejected Items: {{rejectedItems.length}}<br/>
+                      <h3>{{offer.status}} ({{offer.itemCount}} items)</h3>
+                      Approved Items: {{offer.approvedtems.length}}<br/>
+                      Rejected Items: {{offer.rejectedItems.length}}<br/>
                       {{partial 'unread_message_bubble'}}
                     </span>
 
                   {{/link-to}}
                 {{/if}}
 
-                {{#if this.isSubmitted}}
-                  {{#link-to 'offer.review_status' this}}
+                {{#if offer.isSubmitted}}
+                  {{#link-to 'offer.review_status' offer}}
                     <span class="list-image">
-                      <img {{bind-attr src="displayImageUrl"}} class="thumb" />
+                      <img {{bind-attr src="offer.displayImageUrl"}} class="thumb" />
                     </span>
                     <span class="info">
-                      <h3>{{status}} ({{itemCount}} items)</h3>
-                      Approved Items: {{approvedtems.length}}<br/>
-                      Rejected Items: {{rejectedItems.length}}
+                      <h3>{{offer.status}} ({{offer.itemCount}} items)</h3>
+                      Approved Items: {{offer.approvedtems.length}}<br/>
+                      Rejected Items: {{offer.rejectedItems.length}}
                       {{partial 'unread_message_bubble'}}
                     </span>
 
                   {{/link-to}}
                 {{/if}}
 
-                {{#if this.isDraft }}
-                  {{#link-to 'offer' this}}
+                {{#if offer.isDraft }}
+                  {{#link-to 'offer' offer}}
                     <span class="list-image">
-                      <img {{bind-attr src="displayImageUrl"}} class="thumb" />
+                      <img {{bind-attr src="offer.displayImageUrl"}} class="thumb" />
                     </span>
                     <span class="info">
                       <h3>{{t "offers.index.complete_offer"}}<h3>
@@ -103,7 +103,7 @@
                   <img src="assets/images/thumb.jpg" alt="">
                 </span>
                 <span class="info">
-                  Donate a “top five” item & get 20% off a replacement from Fortress.
+                  Donate a “top five” item &amp; get 20% off a replacement from Fortress.
                 </span>
               </a>
             </li>
@@ -113,7 +113,7 @@
                   <img src="assets/images/thumb.jpg" alt="">
                 </span>
                 <span class="info">
-                  Donate a “top five” item & get 20% off a replacement from Fortress.
+                  Donate a “top five” item &amp; get 20% off a replacement from Fortress.
                 </span>
               </a>
             </li>
@@ -123,7 +123,7 @@
                   <img src="assets/images/thumb.jpg" alt="">
                 </span>
                 <span class="info">
-                  Donate a “top five” item & get 20% off a replacement from Fortress.
+                  Donate a “top five” item &amp; get 20% off a replacement from Fortress.
                 </span>
               </a>
             </li>
@@ -134,4 +134,3 @@
 
   </div>
 </div>
-

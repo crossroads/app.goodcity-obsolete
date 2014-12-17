@@ -15,12 +15,12 @@
       <div class='schedule-info'>Pick preferred date/time. First available times listed below.</div>
 
       <ul>
-        {{#each}}
+        {{#each item in model}}
           <li>
-            {{view 'radio-button' name="timeslot" selection=this.controller.isSelected value=id id=id}}
+            {{view 'radio-button' name="timeslot" selection=this.controller.isSelected value=item.id id=item.id}}
             <label {{bind-attr for=id}}>
-              <label class='schdule-date' {{bind-attr for=id}}>{{display-date scheduledAt}}</label><br/>
-              {{slotName}}
+              <label class='schdule-date' {{bind-attr for=id}}>{{display-date item.scheduledAt}}</label><br/>
+              {{item.slotName}}
             </label>
           </li>
         {{/each}}

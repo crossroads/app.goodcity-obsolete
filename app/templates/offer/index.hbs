@@ -34,15 +34,15 @@
           <p class="link text-right"><a href="#" {{action 'cancelOffer' this}}>{{t "offer.index.cancel"}}</a></p>
 
           <ul class="list list-offer-items">
-            {{#each itemsById}}
+            {{#each item in itemsById}}
               <li>
-                {{#link-to 'item.edit' this}}
+                {{#link-to 'item.edit' item}}
                   <span class="list-image">
-                    <img {{bind-attr src="displayImageUrl"}} class="thumb" />
+                    <img {{bind-attr src="item.displayImageUrl"}} class="thumb" />
                   </span>
                   <span class="info">
-                    <h3 class="ellipsis one-line-ellipsis">{{{donorDescription}}}</h3>
-                    {{donorCondition.name}}
+                    <h3 class="ellipsis one-line-ellipsis">{{{item.donorDescription}}}</h3>
+                    {{item.donorCondition.name}}
                   </span>
                 {{/link-to}}
               </li>
