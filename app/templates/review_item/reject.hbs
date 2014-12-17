@@ -5,10 +5,10 @@
       <div class="small-12 columns">
         <form class="ui">
           <ul>
-            {{#each rejectionOptions}}
+            {{#each item in rejectionOptions}}
               <li>
-                {{view 'radio-button' name="selectReason" selection=controller.selectedId value=id id=id}}
-                <label {{bind-attr for=id}}>
+                {{view 'radio-button' name="selectReason" selection=controller.selectedId value=item.id id=item.id}}
+                <label {{bind-attr for=item.id}}>
                   {{name}}
                 </label>
               </li>

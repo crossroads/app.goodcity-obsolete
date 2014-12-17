@@ -13,9 +13,9 @@
 
       <h3>Awaiting Review({{awaitingReview.length}})</h3>
       <div class= 'row'>
-        {{#each awaitingReview}}
-          {{#link-to 'item.index' this}}
-            <img {{bind-attr src=displayImageUrl}} class="thumb small">
+        {{#each item in awaitingReview}}
+          {{#link-to 'item.index' item}}
+            <img {{bind-attr src=item.displayImageUrl}} class="thumb small">
           {{/link-to}}
         {{/each}}
       </div>
@@ -24,9 +24,9 @@
 
       <h3>Rejected({{rejected.length}})</h3>
       <div class= 'row'>
-        {{#each rejected}}
-          {{#link-to 'item.index' this}}
-            <img {{bind-attr src=displayImageUrl}} class="thumb small">
+        {{#each item in rejected}}
+          {{#link-to 'item.index' item}}
+            <img {{bind-attr src=item.displayImageUrl}} class="thumb small">
           {{/link-to}}
         {{/each}}
       </div>

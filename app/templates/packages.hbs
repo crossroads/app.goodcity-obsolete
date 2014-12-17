@@ -1,7 +1,7 @@
 <div class="row ">
   {{#if itemTypeId}}
-    {{view MyContainerView elementId="my_container_view" noPackages=noPackages}}
-    {{view addComponentOfItem controller=controller packages=allPackages}}
+    {{view "my-container-view" elementId="my_container_view" noPackages=noPackages}}
+    {{view "addComponentOfItem" controller=controller packages=allPackages}}
   {{else}}
     <p>
       <i class="icon-empty-items fa fa-info-circle fa-5x"></i>

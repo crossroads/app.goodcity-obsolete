@@ -36,12 +36,7 @@ app.import({
 app.import('vendor/ember-pusher.js');
 app.import('bower_components/jquery-timeago/jquery.timeago.js');
 
-//~ For the moment, ember-18n requires full version of handlebars.
-//~ This is being removed, see https://github.com/jamesarosen/ember-i18n/pull/114
-app.import({
-  development: 'bower_components/handlebars/handlebars.js',
-  production:  'bower_components/handlebars/handlebars.js'
-});
+app.import('bower_components/handlebars/handlebars.runtime.js');
 app.import('bower_components/ember-i18n/lib/i18n.js');
 app.import('bower_components/ember-i18n/lib/i18n-plurals.js');
 
