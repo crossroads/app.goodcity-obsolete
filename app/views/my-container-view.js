@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 var MyContainerView = Ember.ContainerView.extend({
   classNames: ["row"],
-  childViews: Ember.computed.alias('staticView'),
+  childViews: Ember.computed.alias("staticView"),
 
   staticView:  function(){
     var view;

@@ -49,7 +49,7 @@ var packages = Ember.ArrayController.extend(PackageComponentMixin, {
     removePackageType: function(packageobj) {
       var _this = this;
       var existsPackageType = _this.store.all("package").filterBy("id", packageobj.pkgid);
-        if(Ember.empty(existsPackageType)) {
+        if(Ember.isEmpty(existsPackageType)) {
          return;
         }
         else {

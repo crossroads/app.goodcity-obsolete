@@ -20,6 +20,11 @@ export default Ember.View.extend({
   packagetypeid: null,
   packagetype: null,
 
+  didInsertElement: function () {
+    if (Ember.isEmpty(this.get("quantity"))) {
+      this.set("quantity", 1);
+    }
+  },
   actions: {
     hideComment: function(){
       return this.toggleProperty('isHide');

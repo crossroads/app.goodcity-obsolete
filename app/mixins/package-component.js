@@ -75,13 +75,12 @@ var PackageComponentMixin = Ember.Mixin.create({
       return;
     },
     renderComponent: function(){
-      this._super();
-      var packages = this.get('packages.arrangedContent');
-      var subItemtypes = this.get('subItemTypes');
-      var packageType = this.get('subItemTypes');
-      var l=0;
-
+      var _this = this;
+      var packages = _this.get('packages.arrangedContent');
+      var subItemtypes = _this.get('subItemTypes');
+      var l = 0;
       if(packages.get('length') > 0) {
+        // _this.send("createUpdateChildView", packages);
         for (var i = 0; i < packages.get('length') ; i++) {
           var containerView = Ember.View.views['my_container_view'];
           var childView;
@@ -136,10 +135,42 @@ var PackageComponentMixin = Ember.Mixin.create({
           });
         }
       }
+    },
+
+    createUpdateChildView: function(packageViewDetails){
+      var pkgCount=0;
+      for (var i = 0; i < packageViewDetails.get('length') ; i++) {
+          var containerView = Ember.View.views['my_container_view'];
+          var childView;
+          if (pkgCount===0) {
+            childView=  containerView.createChildView(staticComponent);
+            }
+            else {
+            childView =  containerView.createChildView(addComponent);
+          }
+
+          var currentPackage = packageViewDetails[i];
+          childView.setProperties({
+            pkgid:         currentPackage.get('id'),
+            length:        currentPackage.get('length'),
+            height:        currentPackage.get('height'),
+            width:         currentPackage.get('width'),
+            quantity:      currentPackage.get('quantity'),
+            comment:       currentPackage.get('notes'),
+            packagetypeid: currentPackage.get('packageType.id'),
+            itemid:        currentPackage.get('itemId'),
+            itemtypename:  currentPackage.get('packageName'),
+            itemtypeid:    currentPackage.get('packageType.id'),
+            packagetype:   currentPackage.get('packageType')
+          });
+          containerView.pushObject(childView);
+          pkgCount++;
+        }
     }
   },
   didInsertElement: function() {
-    this.send("renderComponent");
+    this._super();
+    return this.send("renderComponent");
   },
 
 });

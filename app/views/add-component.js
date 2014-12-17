@@ -5,7 +5,7 @@ var addComponent = Ember.View.extend({
 
   actions: {
     removeItemTypeComponent: function() {
-      var containerView = Ember.View.views['my_container_view'];
+      var containerView = Ember.View.views["my_container_view"];
       var packageObj = this;
       containerView.get("controller").send("removePackageType", packageObj);
       containerView.removeChild(this);

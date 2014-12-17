@@ -1,6 +1,5 @@
 <section class="main-section reject-offer">
   <div class="row">
-
     {{#if itemTypeId}}
       <div class="small-12 columns">
         <form class="ui">
@@ -9,7 +8,7 @@
               <li>
                 {{view 'radio-button' name="selectReason" selection=controller.selectedId value=item.id id=item.id}}
                 <label {{bind-attr for=item.id}}>
-                  {{name}}
+                  {{item.name}}
                 </label>
               </li>
             {{/each}}
