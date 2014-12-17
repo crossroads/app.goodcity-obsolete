@@ -4,8 +4,14 @@ import AjaxPromise from './../../utils/ajax-promise';
 export default Ember.ObjectController.extend({
   needs: ["delivery", "offer"],
 
-  slots: [ {id: 1, name: "9AM-11PM"}, {id: 2, name: "11AM-1PM" }, {id: 3, name: "2PM-4PM"}, {id: 4, name: "4PM-6PM"} ],
-  selectedId: 2,
+  slots: function() {
+    return this.store.all('timeslot').sortBy('id');
+  }.property('timeslot.@each'),
+
+  selectedId: function(){
+    return this.get('slots.firstObject.id');
+  }.property('slots'),
+
   selectedDate: null,
 
   available_dates: function(key, value){
@@ -29,7 +35,7 @@ export default Ember.ObjectController.extend({
       var _this = this;
       var selectedSlot = _this.get('selectedId');
       var date = _this.get('selectedDate');
-      var slotName = _this.get('slots').filterBy('id', parseInt(selectedSlot)).get('firstObject.name');
+      var slotName = _this.get('slots').filterBy('id', selectedSlot).get('firstObject.name');
 
       var scheduleProperties = { slot: selectedSlot, scheduledAt: date, slotName: slotName};
 
