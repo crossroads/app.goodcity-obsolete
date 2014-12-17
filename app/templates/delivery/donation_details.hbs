@@ -55,16 +55,18 @@
           </li>
           <li>
             <span class="left">Contact Name</span>
-            <strong class="right">{{contact.name}}</strong>
+            <strong class="right">{{userName}}</strong>
           </li>
           <li>
             <span class="left">Contact Phone</span>
-            <strong class="right">{{contact.mobile}}</strong>
+            <strong class="right">{{userMobile}}</strong>
           </li>
-          <li>
-            <span class="left">Address</span>
-            <strong class="right text-right">{{{contact.address.fullAddress}}}</strong>
-          </li>
+          {{#if noDropOff}}
+            <li>
+              <span class="left">Address</span>
+              <strong class="right text-right">{{{contact.address.fullAddress}}}</strong>
+            </li>
+          {{/if}}
 
           {{#if isGogovan}}
             <li>
