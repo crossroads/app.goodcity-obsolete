@@ -25,16 +25,18 @@ export default Ember.ObjectController.extend({
     }
     dataInItemType.forEach(function(subtype) {
       var subItemTypeProperties = {};
+      subItemTypeProperties.id= parseInt(subtype.get("id"));
       subItemTypeProperties.itemId = _this.get('controllers.review_item.id');
-      subItemTypeProperties.id = subtype.get("id");
-      subItemTypeProperties.itemTypeName = subtype.get("name");
-      subItemTypeProperties.isDefaultIType = subtype.get("isItemTypeNode");
+      subItemTypeProperties.itemTypeId = parseInt(subtype.get("id"));
+      subItemTypeProperties.name = subtype.get("name");
+      subItemTypeProperties.isItemTypeNode = subtype.get("isItemTypeNode");
+      subItemTypeProperties.parentId = subtype.get("parentId");
       acceptSubItemTypes.pushObject(subItemTypeProperties);
     });
     return acceptSubItemTypes;
   }.property("controllers.review_item.itemTypeName", "itemTypeId"),
 
-  isPackageDeleted: function(key, value){
+  isItemTypeChanged: function(key, value){
     return (arguments.length > 1) ? value :  false;
   }.property('itemTypeId'),
 
@@ -48,7 +50,7 @@ export default Ember.ObjectController.extend({
     setItemTypeDetails: function(itemtypeid, itemtypename){
       this.set("itemTypeId", itemtypeid);
       this.set("itemTypeName", itemtypename);
-      this.set("isPackageDeleted", true);
+      this.set("isItemTypeChanged", true);
       this.get('controllers.packages').send('renderComponents');
     }
   }

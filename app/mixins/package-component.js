@@ -24,7 +24,7 @@ var PackageComponentMixin = Ember.Mixin.create({
           packageProperties.length        = child_vals.length;
           packageProperties.height        = child_vals.height;
           packageProperties.notes         = child_vals.comment;
-          packageProperties.packagetypeid = child_vals.packagetype.id;
+          packageProperties.packagetypeid = child_vals.packagetypeid;
           packageProperties.packagetype   = child_vals.packagetype;
 
           arrPackageProperties.pushObject(packageProperties);
@@ -55,18 +55,18 @@ var PackageComponentMixin = Ember.Mixin.create({
             childView =  containerView.createChildView(addComponent);
           }
           childView.setProperties({
-            id:    subitemtype.id,
-            itemtypeid:    subitemtype.id,
-            itemid:        subitemtype.itemId,
-            itemtypename:  subitemtype.itemTypeName,
-            isDefaultIType: subitemtype.isDefaultIType,
-            packagetypeid:  subitemtype.id,
+            id:             subitemtype.itemTypeId,
+            itemtypeid:     subitemtype.itemTypeId,
+            itemid:         subitemtype.itemId,
+            itemtypename:   subitemtype.name,
+            isDefaultIType: subitemtype.isItemTypeNode,
+            packagetypeid:  subitemtype.itemTypeId,
             packagetype:    subitemtype,
             subitemtypes:   subitemtype,
-            length:        subitemtype.length,
-            height:        subitemtype.height,
-            width:         subitemtype.width,
-            quantity:      subitemtype.quantity
+            length:         subitemtype.length,
+            height:         subitemtype.height,
+            width:          subitemtype.width,
+            quantity:       subitemtype.quantity
           });
           containerView.pushObject(childView);
         l++;
@@ -99,11 +99,11 @@ var PackageComponentMixin = Ember.Mixin.create({
             width:         currentPackage.get('width'),
             quantity:      currentPackage.get('quantity'),
             comment:       currentPackage.get('notes'),
-            packagetypeid: currentPackage.get('packageType.id'),
             itemid:        currentPackage.get('itemId'),
-            itemtypename:  currentPackage.get('packageName'),
-            itemtypeid:    currentPackage.get('packageType.id'),
-            packagetype:   currentPackage.get('packageType')
+            itemtypeid:    currentPackage.get('packageTypeObject.id'),
+            itemtypename:  currentPackage.get('packageTypeObject.name'),
+            packagetypeid: currentPackage.get('packageTypeObject.id'),
+            packagetype:   currentPackage.get('packageTypeObject')
           });
           containerView.pushObject(childView);
           l++;
@@ -121,12 +121,12 @@ var PackageComponentMixin = Ember.Mixin.create({
               childView =  containerView.createChildView(addComponent);
             }
             childView.setProperties({
-              id:             subitemtype.id,
-              itemtypeid:     subitemtype.id,
+              id:             subitemtype.itemTypeId,
+              itemtypeid:     subitemtype.itemTypeId,
               itemid:         subitemtype.itemId,
-              itemtypename:   subitemtype.itemTypeName,
-              isDefaultIType: subitemtype.isDefaultIType,
-              packagetypeid:  subitemtype.id,
+              itemtypename:   subitemtype.name,
+              isDefaultIType: subitemtype.isItemTypeNode,
+              packagetypeid:  subitemtype.itemTypeId,
               packagetype:    subitemtype,
               subitemtypes:   subitemtype,
             });
@@ -157,11 +157,11 @@ var PackageComponentMixin = Ember.Mixin.create({
             width:         currentPackage.get('width'),
             quantity:      currentPackage.get('quantity'),
             comment:       currentPackage.get('notes'),
-            packagetypeid: currentPackage.get('packageType.id'),
+            packagetypeid: currentPackage.get('packageTypeObject.id'),
             itemid:        currentPackage.get('itemId'),
-            itemtypename:  currentPackage.get('packageName'),
-            itemtypeid:    currentPackage.get('packageType.id'),
-            packagetype:   currentPackage.get('packageType')
+            itemtypename:  currentPackage.get('packageTypeObject.name'),
+            itemtypeid:    currentPackage.get('packageTypeObject.id'),
+            packagetype:   currentPackage.get('packageTypeObject')
           });
           containerView.pushObject(childView);
           pkgCount++;

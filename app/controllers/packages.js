@@ -4,7 +4,7 @@ import PackageComponentMixin from '../mixins/package-component';
 var packages = Ember.ArrayController.extend(PackageComponentMixin, {
   needs: ["review_item/accept"],
 
-  isPackageDeleted: Ember.computed.alias('controllers.review_item/accept.isPackageDeleted'),
+  isItemTypeChanged: Ember.computed.alias('controllers.review_item/accept.isItemTypeChanged'),
 
   itemId: function(){
     return this.get('controllers.review_item/accept.itemId');
@@ -106,7 +106,7 @@ var packages = Ember.ArrayController.extend(PackageComponentMixin, {
       var packagePromises = [];
       var packages = ths.get("allPackages.content");
 
-      if(ths.get("isPackageDeleted") && packages.length > 0) {
+      if(ths.get("isItemTypeChanged") && packages.length > 0) {
         ths.store.find('package', {item: ths.get("itemId")}).then(function(pkgs) {
           pkgs.forEach(function(pkg) {
             pkg.deleteRecord();
