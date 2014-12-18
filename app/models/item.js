@@ -8,7 +8,6 @@ var attr = DS.attr,
 export default DS.Model.extend({
   donorDescription:     attr('string'),
   state:                attr('string'),
-  offerId:              attr('number'),
   rejectReason:         attr('string'),
   rejectionComments:    attr('string'),
   createdAt:            attr('date'),
