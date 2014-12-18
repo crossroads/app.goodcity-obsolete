@@ -1,6 +1,6 @@
 <nav class="tab-bar">
   <section class="left-small">
-    {{#link-to 'offer.index' this.offerId classNames="back"}}{{t "back"}}{{/link-to}}
+    {{#link-to 'offer.index' this.offer.id classNames="back"}}{{t "back"}}{{/link-to}}
   </section>
 
   <section class="middle tab-bar-section">
@@ -24,11 +24,11 @@
 
             <div class="small-8 large-10 columns">
               {{view "input-ui-control-with-counter" type="textarea" value=donorDescription label="" name="donorDescription" rows=5 placeholder="item_description" maxlength="180" required='true' }}
-              {{input type="hidden" value=offerId name="offerId" }}
+              {{input type="hidden" value=offer.id name="offerId" }}
             </div>
           </div>
 
-          {{donor-conditions selectedId=donorConditionId}}
+          {{donor-conditions selectedId=donorCondition.id}}
 
       </div>
     </div>

@@ -11,8 +11,7 @@ export default ReadMessagesRoute.extend({
     var itemId = this.modelFor('reviewItem').get('id');
 
     return this.store.filter('message', function(message) {
-      return message.get('itemId') === parseInt(itemId);
+      return message.get('item.id') === itemId;
     });
   }
-
 });
