@@ -9,7 +9,6 @@ export default DS.Model.extend({
   building:    attr('string'),
   street:      attr('string'),
   addressType: attr('string'),
-  addressableId:   attr('number'),
   addressableType: attr('string'),
 
   district:    belongsTo('district'),

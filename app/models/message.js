@@ -13,9 +13,7 @@ export default DS.Model.extend({
   state:       attr('string', {defaultValue: 'read'}),
   sender:      belongsTo('user'),
   item:        belongsTo('item'),
-  itemId:      attr('number'),
   offer:       belongsTo('offer'),
-  offerId:     attr('number'),
 
   itemImageUrl: Ember.computed.alias("item.displayImageUrl")
 });
