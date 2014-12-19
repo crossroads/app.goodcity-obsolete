@@ -1,9 +1,11 @@
 import Ember from 'ember';
 import DS from 'ember-data';
+import '../computed/foreign-key';
 
 var attr = DS.attr,
     belongsTo = DS.belongsTo,
-    hasMany   = DS.hasMany;
+    hasMany   = DS.hasMany,
+    foreignKey = Ember.computed.foreignKey;
 
 export default DS.Model.extend({
   donorDescription:     attr('string'),
@@ -18,6 +20,7 @@ export default DS.Model.extend({
   offer:                belongsTo('offer'),
   itemType:             belongsTo('item_type'),
   donorCondition:       belongsTo('donor_condition'),
+  donorConditionId:     foreignKey('donorCondition.id'),
   rejectionReason:      belongsTo('rejection_reason'),
   saleable:             attr('boolean'),
   state_event:          attr('string'),
