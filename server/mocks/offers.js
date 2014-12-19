@@ -8,6 +8,8 @@ module.exports = function(app) {
       { "id": "1", "state": "draft", "item_ids": ["1", "2"], "delivery_id": null },
       { "id": "2", "state": "draft", "delivery_id": null },
       { "id": "3", "language": "en", "state": "submitted",
+        "created_by_id": "1", "item_ids": ["4"], "delivery_id": null },
+      { "id": "4", "language": "en", "state": "under_review",
         "created_by_id": "1", "item_ids": ["4"], "delivery_id": null,
         "reviewed_by_id": "2" }
     ],
