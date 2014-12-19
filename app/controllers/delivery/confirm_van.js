@@ -11,7 +11,7 @@ export default Ember.ObjectController.extend({
   districtName: function(){
     var district = this.store.getById("district", this.get('districtId'));
     return district.get('name');
-  }.property(),
+  }.property('districtId'),
 
   actions: {
 

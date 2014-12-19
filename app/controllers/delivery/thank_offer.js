@@ -10,7 +10,7 @@ export default Ember.ObjectController.extend({
       var deliveryId = this.get('controllers.delivery.id');
       return this.store.getById('delivery', deliveryId);
     }
-  }.property(),
+  }.property('model'),
 
   actions:{
     done: function(){

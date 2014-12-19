@@ -6,12 +6,12 @@ export default Ember.ObjectController.extend({
   user: function(){
     var userId = this.session.get("currentUser.id");
     return this.store.getById('user_profile', userId);
-  }.property(),
+  }.property().volatile(),
 
   confirmedItems: function(){
     var items = this.get('offer.items');
     return items && items.filterBy('state', 'accepted');
-  }.property('offer.items.@each'),
+  }.property('offer.items.@each.state'),
 
   userName: function(){
     return this.get('contact.name') || this.get("user.fullName");
