@@ -5,7 +5,7 @@
       {{t "full_name" firstNameBinding=message.sender.firstName lastNameBinding=message.sender.lastName}}
       {{message.sender.roleInitials}}
       <br/>
-      {{view 'time-ago' timeValue=createdAt}}
+      {{view 'time-ago' timeValue=message.createdAt}}
 
       {{#if controller.itemMessage}}
         <a href="#/" {{action showMessage message}}>see here</a>
@@ -22,7 +22,7 @@
     </div>
 
   {{#if controller.offerMessage}}
-    {{body}}
+    {{message.body}}
   {{/if}}
   </div>
 {{/each}}
