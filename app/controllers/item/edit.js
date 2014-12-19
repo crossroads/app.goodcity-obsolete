@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.ObjectController.extend({
   formData: function() {
     return {
-      id: this.get("id"),
       donorConditionId: this.get("donorConditionId"),
       donorDescription: this.get("donorDescription")
     };
