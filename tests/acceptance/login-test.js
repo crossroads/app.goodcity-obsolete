@@ -72,6 +72,20 @@ test("Logout clears authToken", function() {
   });
 });
 
-testSkip("User is able to resend the sms code", function() {
+test("User is able to resend the sms code", function() {
   expect(1);
+
+  $.mockjax({url:"/api/v1/auth/send_pi*",responseText:{
+    "otp_auth_key" : "/JqONEgEjrZefDV3ZIQsNA=="
+  }});
+
+  logoutUser('/authenticate');
+  visit('/authenticate');
+
+  click("#resend-pin");
+
+  andThen(function() {
+    equal(window.localStorage.otpAuthKey, '"/JqONEgEjrZefDV3ZIQsNA=="');
+  });
+
 });
