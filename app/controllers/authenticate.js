@@ -20,7 +20,7 @@ export default Ember.Controller.extend({
 
       new AjaxPromise("/auth/verify", "POST", null, {pin: pin, otp_auth_key: otp_auth_key})
         .then(function(data) {
-          _this.setProperties({pin:null, mobilePhone: null});
+          _this.setProperties({pin:null});
           _this.set('session.authToken', data.jwt_token);
           _this.set('session.otpAuthKey', null);
           _this.store.pushPayload(data.user);
@@ -47,7 +47,7 @@ export default Ember.Controller.extend({
               }
             }
           });
-          _this.setProperties({mobilePhone:null, pin: null});
+          _this.setProperties({pin: null});
         })
         .catch(function(jqXHR) {
           Ember.$('#pin').closest('div').addClass('error');
@@ -66,7 +66,7 @@ export default Ember.Controller.extend({
       new AjaxPromise("/auth/send_pin", "POST", null, {mobile: mobile})
         .then(function(data) {
           _this.set('session.otpAuthKey', data.otp_auth_key);
-          _this.setProperties({mobilePhone:null, pin:null});
+          _this.setProperties({pin:null});
           _this.transitionToRoute('/authenticate');
         })
         .catch(function() {

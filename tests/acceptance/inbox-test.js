@@ -34,6 +34,6 @@ test("display submiited offer", function() {
     andThen(function() {
       equal(currentURL(), "/offers/3/review_offer/items");
       equal(find("button:contains('Start Review')").length, 1);
-    })
+    });
   });
 });
