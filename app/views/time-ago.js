@@ -17,10 +17,8 @@ export default Ember.View.extend({
     });
   },
 
-  timeString: function(){
-    var timeValue = this.timeValue || (new Date());
-    var timeString = timeValue.toString();
-    return (new Date(timeString).toISOString());
+  timeString: function() {
+    var timeValue = this.timeValue || new Date();
+    return new Date(timeValue).toISOString();
   }.property()
-
 });
