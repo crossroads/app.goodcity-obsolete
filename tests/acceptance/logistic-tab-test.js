@@ -29,7 +29,7 @@ test("for completed review of items", function() {
   andThen(function(){
     equal($.trim($('h3').text()), "Accepted Items (1)");
     equal($(".gogovan-req input[type='radio']").length, 3);
-    equal($(".gogovan-req select option").length, 8);
+    equal($(".gogovan-req select option").length, 9);
     equal(find("a:contains('Complete Review')").length, 1);
   });
 });
