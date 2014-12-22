@@ -14,14 +14,14 @@ export default Ember.ObjectController.extend({
   }.property(),
 
   crossroadsOptions: function() {
-    return ["1/8", "2/8", "3/8", "4/8", "5/8", "6/8", "7/8", "1"];
+    return this.store.all('crossroads_transport_type');
   }.property(),
 
   actions: {
 
     completeReview: function() {
       var gogovanOption = this.get('selectedGogovanOption');
-      var crossroadsOption = this.get('selectedCrossroadsOption');
+      var crossroadsOption = this.get('selectedCrossroadsOption.name');
       var loadingView = this.container.lookup('view:loading').append();
 
       var offerProperties = {
