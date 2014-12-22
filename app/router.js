@@ -73,6 +73,7 @@ Router.map(function() {
     this.route('index', {path: '/'});
     this.route('under_review');
     this.route('my_list');
+    this.route('reviewed');
   });
 });
 
