@@ -22,7 +22,7 @@ test('Offers list & link to add items', function() {
 
   andThen(function() {
     // display offers that have at least 1 items
-    equal(find('.list-items li').length, 2);
+    equal(find('.list-items li').length, 3);
 
     // test: link to complete offers
     equal(find("a:contains('Complete this Offer')").length, 1);
@@ -35,7 +35,7 @@ test("Offers Details", function() {
   visit('/offers');
 
   andThen(function() {
-    equal(find('.list-items li').length, 2);
+    equal(find('.list-items li').length, 3);
     var offer_detail = find('.list-items li').first().text();
       var offer_detail_text = $.trim(offer_detail.replace(/\s+/g, " "));
 

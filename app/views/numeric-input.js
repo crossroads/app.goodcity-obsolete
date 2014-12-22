@@ -22,7 +22,7 @@ export default Ember.TextField.extend({
 
   keyUp: function(){
     var value = this.value;
-    if(value.search(/^\d{8}$/) !== 0){
+    if(value && value.search(/^\d{8}$/) !== 0){
       this.set('value', value.replace(/\D/g,''));
     }
   },

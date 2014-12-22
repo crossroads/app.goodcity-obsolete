@@ -46,6 +46,7 @@ Router.map(function() {
         this.route('items');
         this.route('messages');
         this.route('supervisor_messages');
+        this.route('logistics');
       });
 
       this.resource('review_item', {path: '/review_item/:item_id'},function() {
