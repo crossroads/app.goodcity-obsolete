@@ -36,14 +36,14 @@
                   {{/link-to}}
                 {{/if}}
 
-                {{#if offer.isUnderReview}}
+                {{#if offer.isReviewing}}
                   {{#link-to 'offer.review_status' offer}}
                     <span class="list-image">
                       <img {{bind-attr src="offer.displayImageUrl"}} class="thumb" />
                     </span>
                     <span class="info">
                       <h3>{{offer.status}} ({{offer.itemCount}} items)</h3>
-                      Approved Items: {{offer.approvedtems.length}}<br/>
+                      Approved Items: {{offer.approvedItems.length}}<br/>
                       Rejected Items: {{offer.rejectedItems.length}}<br/>
                       {{partial 'unread_message_bubble'}}
                     </span>
@@ -58,7 +58,7 @@
                     </span>
                     <span class="info">
                       <h3>{{offer.status}} ({{offer.itemCount}} items)</h3>
-                      Approved Items: {{offer.approvedtems.length}}<br/>
+                      Approved Items: {{offer.approvedItems.length}}<br/>
                       Rejected Items: {{offer.rejectedItems.length}}
                       {{partial 'unread_message_bubble'}}
                     </span>
