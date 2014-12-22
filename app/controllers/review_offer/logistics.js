@@ -29,13 +29,13 @@ export default Ember.ObjectController.extend({
         gogovan_transport: gogovanOption,
         crossroads_transport: crossroadsOption,
         state_event: 'finish_review',
-        id: this.get('id') }
+        id: this.get('id') };
 
       // var offer = this.store.update('offer', offerProperties);
       var route = this;
       var url   = "/offers/"+this.get('id')+"/complete_review";
 
-      new AjaxPromise(url, "PUT", this.get('session.authToken'), {offer: offerProperties}).then(function(data) {
+      new AjaxPromise(url, "PUT", this.get('session.authToken'), {offer: offerProperties}).then(function() {
         loadingView.destroy();
         route.transitionToRoute('review_offer.items');
       });
