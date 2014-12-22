@@ -1,0 +1,74 @@
+<section class="main-section ui">
+  <div class="row">
+
+    {{#if pendingItem}}
+      <p>
+        <p><span class="icon-no-items"></span></p>
+        <p class="no-items">
+          Please finish reviewing items first!
+        </p>
+      </p>
+
+    {{else}}
+
+      <div class="small-12 columns">
+        <h3>Accepted Items ({{accepted.length}})</h3>
+        {{#each item in accepted}}
+          {{#link-to ''}}
+            <img {{bind-attr src=item.displayImageUrl}} class="thumbnail" />
+          {{/link-to}}
+        {{/each}}
+      </div>
+
+      {{#if isReviewed}}
+
+        <div class="small-12 columns">
+          <div class = 'transport_details'>
+            Gogovan Reqirement: {{gogovanTransport}}
+          </div>
+          <div class = 'transport_details'>
+            Crossroads Requirement: {{crossroadsTransport}}
+          </div>
+        </div>
+
+      {{else}}
+
+        <div class="small-12 columns gogovan-req">
+          <div class='description'>Gogovan Hire Requirement</div>
+
+          {{#each option in gogovanOptions}}
+            <span class="radio">
+              {{view 'radio-button' name="selectionTest" selectionBinding='selectedGogovanOption' value=option id=option}}
+              <label class="radio-wrap small-only-text-center" {{bind-attr for=option}}>
+                {{option}}
+              </label>
+            </span>
+          {{/each}}
+
+        </div>
+
+        <div class="small-12 columns gogovan-req">
+          <div class='description'>What portion of the Crossroads truck will this offer take up?</div>
+
+          {{view "select"
+            contentBinding='crossroadsOptions'
+            optionLabelPath='content'
+            optionValuePath='content'
+            selectionBinding='selectedCrossroadsOption'
+            value=''}}
+        </div>
+
+        <div class="">
+          <div class="row">
+            <div class="small-12 columns complete-review-button">
+              <a href="#" {{action "completeReview" }} class="button expand">Complete Review</a>
+            </div>
+          </div>
+        </div>
+
+      {{/if}}
+
+    {{/if}}
+  </div>
+</section>
+
