@@ -36,11 +36,11 @@
         <div class="small-12 columns gogovan-req">
           <div class='description'>Gogovan Hire Requirement</div>
 
-          {{#each option in gogovanOptions}}
+          {{#each gogovanOptions}}
             <span class="radio">
-              {{view 'radio-button' name="selectionTest" selectionBinding='selectedGogovanOption' value=option id=option}}
-              <label class="radio-wrap small-only-text-center" {{bind-attr for=option}}>
-                {{option}}
+              {{view 'radio-button' name="selectionTest" selectionBinding='controller.selectedGogovanOption' value=name id=id}}
+              <label class="radio-wrap small-only-text-center" {{bind-attr for=id}}>
+                {{name}}
               </label>
             </span>
           {{/each}}

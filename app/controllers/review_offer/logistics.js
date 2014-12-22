@@ -5,13 +5,12 @@ export default Ember.ObjectController.extend({
 
   selectedGogovanOption: null,
   selectedCrossroadsOption: null,
-  completed: false,
 
   accepted: Ember.computed.filterBy('items', 'state', 'accepted'),
   pendingItem: Ember.computed.filterBy('items', 'state', 'submitted'),
 
   gogovanOptions: function() {
-    return ["Van", "5.5t Truck", "Disable"];
+    return this.store.all('gogovan_transport_type');
   }.property(),
 
   crossroadsOptions: function() {
@@ -31,11 +30,11 @@ export default Ember.ObjectController.extend({
         state_event: 'finish_review',
         id: this.get('id') };
 
-      // var offer = this.store.update('offer', offerProperties);
       var route = this;
-      var url   = "/offers/"+this.get('id')+"/complete_review";
+      var url   = "/offers/" + this.get('id') + "/complete_review";
 
-      new AjaxPromise(url, "PUT", this.get('session.authToken'), {offer: offerProperties}).then(function() {
+      new AjaxPromise(url, "PUT", this.get('session.authToken'), {offer: offerProperties}).then(function(data) {
+        route.store.pushPayload(data);
         loadingView.destroy();
         route.transitionToRoute('review_offer.items');
       });
