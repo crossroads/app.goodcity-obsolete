@@ -4,12 +4,16 @@
   </section>
 
   <section class="middle tab-bar-section">
-    <h1 class="title">{{t "offer.review-status.heading"}}</h1>
+    <h1 class="title">Offer Details</h1>
   </section>
 </nav>
-<section class="main-section">
+<section class="main-section offer_details">
   <div class="row">
     <div class="small-12 columns">
+
+      <div class= 'row'>
+        {{partial 'offer/status_message'}}
+      </div>
 
       <h3>Awaiting Review({{awaitingReview.length}})</h3>
       <div class= 'row'>

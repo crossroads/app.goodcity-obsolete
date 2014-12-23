@@ -14,7 +14,7 @@ export default Ember.ObjectController.extend({
 
       offer.save().then(function() {
         loadingView.destroy();
-        route.transitionToRoute('offer.review_status');
+        route.transitionToRoute('offer.offer_details');
       });
     }
   }

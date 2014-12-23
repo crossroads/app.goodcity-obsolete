@@ -1,0 +1,20 @@
+<div {{bind-attr class=":offer-status isSubmitted isUnderReview isReviewed isScheduled"}}>
+  <div class='status-message'>
+    {{#if model.isSubmitted}}
+      Your offer is awaiting review.
+    {{/if}}
+
+    {{#if isUnderReview}}
+      Your offer is being reviewed by {{model.reviewedBy.fullName}}
+    {{/if}}
+
+    {{#if isReviewed}}
+      Review complete! Please {{#link-to "offer.plan_delivery"}}arrange transport{{/link-to}}
+    {{/if}}
+
+    {{#if isScheduled}}
+      Collection booked <i class="fa fa-truck fa-1x"></i> Mon 24th, afternoon
+    {{/if}}
+  </div>
+</div>
+
