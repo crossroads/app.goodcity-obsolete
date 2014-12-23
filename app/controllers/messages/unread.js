@@ -26,7 +26,7 @@ export default Ember.ArrayController.extend({
         return;
       }
 
-      var uniqueOfferIds = this.mapBy('offerId').uniq();
+      var uniqueOfferIds = this.mapBy('offer.id').uniq();
 
       if (uniqueOfferIds.length > 1) {
         this.transitionToRoute("offers.index");

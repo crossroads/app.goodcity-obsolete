@@ -7,7 +7,7 @@ export default Ember.ArrayController.extend({
 
   actions: {
     newOffer: function(){
-      var empty_offers = this.filterBy('itemCount', 0);
+      var empty_offers = this.filterBy('itemCount', 0).sortBy('id');
       if (empty_offers.length === 0){
         this.transitionToRoute('offers.new');
       } else {

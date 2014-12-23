@@ -7,7 +7,6 @@ var attr = DS.attr,
 export default DS.Model.extend({
   favourite:     attr('boolean'),
   cloudinaryId:  attr('string'),
-  itemId:        attr('number'),
   item:          belongsTo('item'),
 
   imageUrl: function() {

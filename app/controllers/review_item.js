@@ -15,7 +15,7 @@ export default Ember.ObjectController.extend({
 
   itemId: function(){
     return this.get("id");
-  }.property(''),
+  }.property('model'),
 
   actions: {
     getItemId: function(id, name) {

@@ -12,7 +12,7 @@ export default Ember.TextField.extend({
         clear: '',
         min: [8,30],
         max: [16,0],
-        editable: true,
+        // editable: true,
         onSet: function() {
           var slot = this.get("select") && this.get("select").time;
           _this.set("selection", slot);

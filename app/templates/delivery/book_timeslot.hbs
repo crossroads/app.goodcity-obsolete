@@ -19,7 +19,7 @@
           <li>
             {{view 'radio-button' name="timeslot" selection=this.controller.isSelected value=item.id id=item.id}}
             <label {{bind-attr for=id}}>
-              <label class='schdule-date' {{bind-attr for=id}}>{{display-date item.scheduledAt}}</label><br/>
+              <label class='schdule-date' {{bind-attr for=item.id}}>{{display-date item.scheduledAt}}</label><br/>
               {{item.slotName}}
             </label>
           </li>

@@ -22,6 +22,17 @@
 
       <br/>
 
+      <h3>Accepted({{accepted.length}})</h3>
+      <div class= 'row'>
+        {{#each item in accepted}}
+          {{#link-to 'item.index' item}}
+            <img {{bind-attr src=item.displayImageUrl}} class="thumb small">
+          {{/link-to}}
+        {{/each}}
+      </div>
+
+      <br/>
+
       <h3>Rejected({{rejected.length}})</h3>
       <div class= 'row'>
         {{#each item in rejected}}
@@ -35,7 +46,7 @@
   </div>
 </section>
 
-{{#if isReviewed}}
+{{#if isAccepted}}
   <div class="btm">
     <div class="row">
       <div class="small-10 small-offset-1 columns">

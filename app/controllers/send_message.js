@@ -15,7 +15,8 @@ var sendMessage = Ember.ArrayController.extend({
       var newMessageProperties = this.getProperties('body');
       newMessageProperties.offer = offer;
       newMessageProperties.isPrivate = is_private;
-      newMessageProperties.createdAt = Date.now();
+      newMessageProperties.createdAt = new Date();
+      newMessageProperties.sender = this.store.getById('user', this.session.get("currentUser.id"));
 
       if(for_item) {
         var item_id = this.get('controllers.review_item.id');

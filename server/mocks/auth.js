@@ -17,7 +17,6 @@ module.exports = function(app) {
       "flat": null,
       "building": null,
       "district_id": null,
-      "addressable_id": 15,
       "addressable_type": "User"
     }],
     "districts": [],
@@ -25,8 +24,6 @@ module.exports = function(app) {
       "id": 1,
       "first_name": "Tom",
       "last_name": "Jones",
-      "mobile": "12345678",
-      "address_id": 1,
       "permission_id": null
     }
   };
