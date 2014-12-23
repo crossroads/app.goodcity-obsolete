@@ -1,9 +1,9 @@
 module.exports = function(app) {
   var express = require('express');
-  var crossroadsTransportTypesRouter = express.Router();
-  crossroadsTransportTypesRouter.get('/', function(req, res) {
+  var crossroadsTransportsRouter = express.Router();
+  crossroadsTransportsRouter.get('/', function(req, res) {
     res.send({
-      "crossroads_transport_types": [
+      "crossroads_transports": [
         {"id": 1,"name": "1/8 Truck"},
         {"id": 2,"name": "2/8 Truck"},
         {"id": 3,"name": "3/8 Truck"},
@@ -15,5 +15,5 @@ module.exports = function(app) {
       ]
     });
   });
-  app.use('/api/v1/crossroads_transport_types', crossroadsTransportTypesRouter);
+  app.use('/api/v1/crossroads_transports', crossroadsTransportsRouter);
 };

@@ -1,6 +1,6 @@
-var types = ["1/8 Truck", "2/8 Truck", "8/8 Truck"];
+var types = ["Van", "5.5t Truck", "Disable"];
 
-FactoryGuy.define('crossroads_transport_type', {
+FactoryGuy.define('gogovan_transport', {
   default: {
     name: FactoryGuy.generate(function(num) {
       return types[Math.floor(Math.random()*(types.length))];

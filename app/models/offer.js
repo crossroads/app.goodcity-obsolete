@@ -19,8 +19,8 @@ export default DS.Model.extend({
   state_event:    attr('string'),
   reviewedAt:     attr('date'),
 
-  gogovanTransport:    attr('string'),
-  crossroadsTransport: attr('string'),
+  gogovanTransport:    belongsTo('gogovan_transport'),
+  crossroadsTransport: belongsTo('crossroads_transport'),
 
   // used for items of current-offer
   saleable:       attr('boolean'),

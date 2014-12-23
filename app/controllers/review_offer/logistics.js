@@ -3,30 +3,32 @@ import AjaxPromise from './../../utils/ajax-promise';
 
 export default Ember.ObjectController.extend({
 
-  selectedGogovanOption: null,
   selectedCrossroadsOption: null,
-
   accepted: Ember.computed.filterBy('items', 'state', 'accepted'),
   pendingItem: Ember.computed.filterBy('items', 'state', 'submitted'),
 
+  selectedGogovanOption: function(){
+    return this.get('gogovanOptions.firstObject.id');
+  }.property(),
+
   gogovanOptions: function() {
-    return this.store.all('gogovan_transport_type');
+    return this.store.all('gogovan_transport');
   }.property(),
 
   crossroadsOptions: function() {
-    return this.store.all('crossroads_transport_type');
+    return this.store.all('crossroads_transport');
   }.property(),
 
   actions: {
 
     completeReview: function() {
-      var gogovanOption = this.get('selectedGogovanOption');
-      var crossroadsOption = this.get('selectedCrossroadsOption.name');
+      var gogovanOptionId = this.get('selectedGogovanOption');
+      var crossroadsOptionId = this.get('selectedCrossroadsOption.id');
       var loadingView = this.container.lookup('view:loading').append();
 
       var offerProperties = {
-        gogovan_transport: gogovanOption,
-        crossroads_transport: crossroadsOption,
+        gogovan_transport_id: gogovanOptionId,
+        crossroads_transport_id: crossroadsOptionId,
         state_event: 'finish_review',
         id: this.get('id') };
 

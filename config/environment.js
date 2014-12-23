@@ -31,7 +31,7 @@ module.exports = function(environment) {
       NAMESPACE: 'api/v1',
 
       PRELOAD_TYPES: ["territory"],
-      PRELOAD_AUTHORIZED_TYPES: ["offer","item_type","donor_condition","rejection_reason","permission", "timeslot", "gogovan_transport_type", "crossroads_transport_type"]
+      PRELOAD_AUTHORIZED_TYPES: ["offer","item_type","donor_condition","rejection_reason","permission", "timeslot", "gogovan_transport", "crossroads_transport"]
     }
   };
 

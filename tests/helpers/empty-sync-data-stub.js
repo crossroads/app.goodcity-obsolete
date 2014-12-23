@@ -7,8 +7,8 @@ import '../fixtures/rejection_reason';
 import '../fixtures/permission';
 import '../fixtures/user_profile';
 import '../fixtures/timeslot';
-import '../fixtures/gogovan_transport_type';
-import '../fixtures/crossroads_transport_type';
+import '../fixtures/gogovan_transport';
+import '../fixtures/crossroads_transport';
 
 export default function(testHelper) {
   config.APP.PRELOAD_TYPES.concat(config.APP.PRELOAD_AUTHORIZED_TYPES).forEach(function(type) {
