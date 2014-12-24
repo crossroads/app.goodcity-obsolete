@@ -13,7 +13,7 @@
     {{/if}}
 
     {{#if isScheduled}}
-      {{t 'offer.offer_details.scheduled_status'}} <i class="fa fa-truck"></i> {{schedule-time-status model.delivery.schedule.scheduledAt}}, {{model.delivery.schedule.dayTime}}
+      {{t 'offer.offer_details.scheduled_status'}} <i class="fa fa-truck"></i> <b>{{schedule-time-status model.delivery.schedule.scheduledAt}}, {{model.delivery.schedule.dayTime}}</b>
     {{/if}}
   </div>
 </div>
