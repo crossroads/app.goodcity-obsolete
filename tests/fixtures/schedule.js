@@ -10,7 +10,7 @@ FactoryGuy.define('schedule',{
   default: {
     resource:     FactoryGuy.generate('name'),
     slot:         FactoryGuy.generate('slot'),
-    slotName:     'slot name',
+    slotName:     'Afternoon, 2pm-4pm',
     zone:         'zone',
     scheduledAt:  '12/01/2014'
   }

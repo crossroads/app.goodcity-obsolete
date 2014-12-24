@@ -164,7 +164,7 @@ I18nTranslationsZhTw =
         "offer_details" :
           "heading" : "Offer Details"
           "submitted_status": "Your offer is awaiting review."
-          "in_review_status": "Your offer is being reviewed by {{firstName}} {{lastName}}"
+          "in_review_status": "Your offer is being reviewed by {{lastName}} {{firstName}}."
           "scheduled_status": "Collection booked"
           "reviewed_message": "Review complete!"
           "please": "Please"
