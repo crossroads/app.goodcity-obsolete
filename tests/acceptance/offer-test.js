@@ -68,7 +68,7 @@ test("Confirm and Submit Offer", function(){
       click("button:contains('Yes')");
 
       andThen(function() {
-        equal(currentURL(), "/offers/" + offer.id + "/review_status");
+        equal(currentURL(), "/offers/" + offer.id + "/offer_details");
       });
     });
   });

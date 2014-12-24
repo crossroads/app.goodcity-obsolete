@@ -1,19 +1,19 @@
 <div {{bind-attr class=":offer-status isSubmitted isUnderReview isReviewed isScheduled"}}>
   <div class='status-message'>
     {{#if model.isSubmitted}}
-      Your offer is awaiting review.
+      {{t 'offer.offer_details.submitted_status'}}
     {{/if}}
 
     {{#if isUnderReview}}
-      Your offer is being reviewed by {{model.reviewedBy.fullName}}
+      {{t 'offer.offer_details.in_review_status' firstNameBinding=model.reviewedBy.firstName lastNameBinding=model.reviewedBy.lastName}}
     {{/if}}
 
     {{#if isReviewed}}
-      Review complete! Please {{#link-to "offer.plan_delivery"}}arrange transport{{/link-to}}
+      {{t 'offer.offer_details.reviewed_message'}} {{t 'offer.offer_details.please'}}  {{#link-to "offer.plan_delivery"}}{{t 'offer.offer_details.transport'}}{{/link-to}}
     {{/if}}
 
     {{#if isScheduled}}
-      Collection booked <i class="fa fa-truck fa-1x"></i> Mon 24th, afternoon
+      {{t 'offer.offer_details.scheduled_status'}} <i class="fa fa-truck"></i> {{schedule-time-status model.delivery.schedule.scheduledAt}}, {{model.delivery.schedule.dayTime}}
     {{/if}}
   </div>
 </div>

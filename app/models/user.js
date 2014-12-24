@@ -20,8 +20,4 @@ export default DS.Model.extend({
       return "("+ permission.capitalize().charAt(0) +")";
     }
   }.property('permission'),
-
-  fullName: function(){
-    return (this.get('firstName') + " " + this.get('lastName'));
-  }.property('firstName', 'lastName')
 });
