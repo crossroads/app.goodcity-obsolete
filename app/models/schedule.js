@@ -10,5 +10,17 @@ export default DS.Model.extend({
   zone:        attr('string'),
   scheduledAt: attr('date'),
 
-  deliveries:   hasMany('delivery')
+  deliveries:   hasMany('delivery'),
+
+  dayTime: function() {
+    var slot  = this.get('slotName');
+    var value = slot.split(',');
+    if(value.length > 1) {
+      value = value[0];
+    } else {
+      value = slot.split(':')[0];
+      value = (parseInt(value) > 8 && parseInt(value) < 12 ) ? "Morning" : "Afternoon";
+    }
+    return value;
+  }.property("slotName"),
 });

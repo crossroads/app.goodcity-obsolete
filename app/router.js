@@ -18,7 +18,7 @@ Router.map(function() {
       this.route('index', { path: '/'});
       this.route('confirm');
       this.route('submit');
-      this.route('review_status');
+      this.route('offer_details');
       this.route('messages');
       this.route('plan_delivery');
 

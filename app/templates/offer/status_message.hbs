@@ -1,0 +1,20 @@
+<div {{bind-attr class=":offer-status isSubmitted isUnderReview isReviewed isScheduled"}}>
+  <div class='status-message'>
+    {{#if model.isSubmitted}}
+      {{t 'offer.offer_details.submitted_status'}}
+    {{/if}}
+
+    {{#if isUnderReview}}
+      {{t 'offer.offer_details.in_review_status' firstNameBinding=model.reviewedBy.firstName lastNameBinding=model.reviewedBy.lastName}}
+    {{/if}}
+
+    {{#if isReviewed}}
+      {{t 'offer.offer_details.reviewed_message'}} {{t 'offer.offer_details.please'}} {{#link-to "offer.plan_delivery"}}{{t 'offer.offer_details.transport'}}{{/link-to}}.
+    {{/if}}
+
+    {{#if isScheduled}}
+      {{t 'offer.offer_details.scheduled_status'}} <i class="fa fa-truck"></i> <b>{{schedule-time-status model.delivery.schedule.scheduledAt}}, {{model.delivery.schedule.dayTime}}</b>
+    {{/if}}
+  </div>
+</div>
+

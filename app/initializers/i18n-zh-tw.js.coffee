@@ -161,9 +161,14 @@ I18nTranslationsZhTw =
           "description" : "說明"
           "condition" : "條件"
 
-        "review-status" :
-          "heading" : "複查狀態"
-          "plan_delivery" : "Plan Delivery"
+        "offer_details" :
+          "heading" : "Offer Details"
+          "submitted_status": "Your offer is awaiting review."
+          "in_review_status": "Your offer is being reviewed by {{lastName}} {{firstName}}."
+          "scheduled_status": "Collection booked"
+          "reviewed_message": "Review complete!"
+          "please": "Please"
+          "transport": "arrange transport"
 
       "items":
         "edit_images":

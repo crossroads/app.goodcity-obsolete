@@ -1,15 +1,19 @@
-<nav class="tab-bar">
+<nav class="tab-bar offer_details_title">
   <section class="left-small">
     {{#link-to 'offers.index' classNames="back"}}{{t "back"}}{{/link-to}}
   </section>
 
   <section class="middle tab-bar-section">
-    <h1 class="title">{{t "offer.review-status.heading"}}</h1>
+    <h1 class="title">{{t 'offer.offer_details.heading'}}</h1>
   </section>
 </nav>
-<section class="main-section">
+<section class="main-section offer_details">
   <div class="row">
     <div class="small-12 columns">
+
+      <div class= 'row'>
+        {{partial 'offer/status_message'}}
+      </div>
 
       <h3>Awaiting Review({{awaitingReview.length}})</h3>
       <div class= 'row'>

@@ -19,5 +19,5 @@ export default DS.Model.extend({
       var permission = this.get("permission.name") || "Donor";
       return "("+ permission.capitalize().charAt(0) +")";
     }
-  }.property('permission')
+  }.property('permission'),
 });
