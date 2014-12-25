@@ -1,11 +1,11 @@
 import Ember from 'ember';
 
-var addComponent = Ember.View.extend({
-    templateName: "packages/add_component",
+var addPackageComponent = Ember.View.extend({
+    templateName: "packages/add_item_type_component",
 
   actions: {
     removeItemTypeComponent: function() {
-      var containerView = Ember.View.views["my_container_view"];
+      var containerView = Ember.View.views["package_container_view"];
       var packageObj = this;
       containerView.get("controller").send("removePackageType", packageObj);
       containerView.removeChild(this);
@@ -13,4 +13,4 @@ var addComponent = Ember.View.extend({
   }
 });
 
-export default addComponent;
+export default addPackageComponent;

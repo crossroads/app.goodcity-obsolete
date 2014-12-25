@@ -5,22 +5,10 @@ var packages = Ember.ArrayController.extend(PackageComponentMixin, {
   needs: ["review_item/accept"],
 
   isItemTypeChanged: Ember.computed.alias('controllers.review_item/accept.isItemTypeChanged'),
-
-  itemId: function(){
-    return this.get('controllers.review_item/accept.itemId');
-  }.property('controllers.review_item/accept.itemId'),
-
-  itemTypeId: function(){
-    return this.get('controllers.review_item/accept.itemTypeId');
-  }.property('controllers.review_item/accept.itemTypeId'),
-
-  itemTypeName: function(){
-    return this.get('controllers.review_item/accept.itemTypeName');
-  }.property('controllers.review_item/accept.itemTypeName'),
-
-  itemDefaultImageId: function(){
-    return this.get('controllers.review_item/accept.defaultImageId');
-  }.property('controllers.review_item/accept.defaultImageId'),
+  itemId: Ember.computed.alias('controllers.review_item/accept.itemId'),
+  itemTypeId: Ember.computed.alias('controllers.review_item/accept.itemTypeId'),
+  itemTypeName: Ember.computed.alias('controllers.review_item/accept.itemTypeName'),
+  itemDefaultImageId: Ember.computed.alias('controllers.review_item/accept.defaultImageId'),
 
   subItemTypes: function(){
     return this.get('controllers.review_item/accept.subItemTypes');
@@ -64,7 +52,7 @@ var packages = Ember.ArrayController.extend(PackageComponentMixin, {
     },
 
     removeChildViews: function() {
-      var getContainer = Ember.View.views['my_container_view'];
+      var getContainer = Ember.View.views['package_container_view'];
       if (getContainer) {
         getContainer.removeAllChildren();
         this.send("renderViews");

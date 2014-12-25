@@ -1,12 +1,12 @@
 import Ember from 'ember';
-import addComponent from '../views/add-component';
-import staticComponent from '../views/static-component';
+import addPackageComponent from '../views/add-package-component';
+import staticPackageComponent from '../views/static-package-component';
 
 var PackageComponentMixin = Ember.Mixin.create({
   actions: {
     acceptOffer: function(){
       var  ths = this;
-      var getContainer = Ember.View.views['my_container_view'];
+      var getContainer = Ember.View.views['package_container_view'];
       var getChildren  = getContainer.get("childViews");
       var arrPackageProperties = [];
       getChildren.forEach(function(chld) {
@@ -34,8 +34,8 @@ var PackageComponentMixin = Ember.Mixin.create({
     },
 
     addItemTypeComponent: function(){
-      var containerView = Ember.View.views['my_container_view'];
-      var childView = containerView.createChildView(addComponent);
+      var containerView = Ember.View.views['package_container_view'];
+      var childView = containerView.createChildView(addPackageComponent);
       containerView.pushObject(childView);
     },
 
@@ -46,13 +46,13 @@ var PackageComponentMixin = Ember.Mixin.create({
 
       if (!(this.get("noSubItemType"))) {
         subItemtypes.forEach(function(subitemtype) {
-          var containerView = Ember.View.views['my_container_view'];
+          var containerView = Ember.View.views['package_container_view'];
           var childView;
           if (l===0) {
-            childView=  containerView.createChildView(staticComponent);
+            childView=  containerView.createChildView(staticPackageComponent);
             }
             else {
-            childView =  containerView.createChildView(addComponent);
+            childView =  containerView.createChildView(addPackageComponent);
           }
           childView.setProperties({
             id:             subitemtype.itemTypeId,
@@ -82,13 +82,13 @@ var PackageComponentMixin = Ember.Mixin.create({
       if(packages.get('length') > 0) {
         // _this.send("createUpdateChildView", packages);
         for (var i = 0; i < packages.get('length') ; i++) {
-          var containerView = Ember.View.views['my_container_view'];
+          var containerView = Ember.View.views['package_container_view'];
           var childView;
           if (l===0) {
-            childView=  containerView.createChildView(staticComponent);
+            childView=  containerView.createChildView(staticPackageComponent);
             }
             else {
-            childView =  containerView.createChildView(addComponent);
+            childView =  containerView.createChildView(addPackageComponent);
           }
 
           var currentPackage = packages[i];
@@ -112,13 +112,13 @@ var PackageComponentMixin = Ember.Mixin.create({
       else {
         if (!(this.get("noSubItemType"))) {
           subItemtypes.forEach(function(subitemtype) {
-            var containerView = Ember.View.views['my_container_view'];
+            var containerView = Ember.View.views['package_container_view'];
             var childView;
             if (l===0) {
-              childView=  containerView.createChildView(staticComponent);
+              childView=  containerView.createChildView(staticPackageComponent);
               }
               else {
-              childView =  containerView.createChildView(addComponent);
+              childView =  containerView.createChildView(addPackageComponent);
             }
             childView.setProperties({
               id:             subitemtype.itemTypeId,
@@ -140,13 +140,13 @@ var PackageComponentMixin = Ember.Mixin.create({
     createUpdateChildView: function(packageViewDetails){
       var pkgCount=0;
       for (var i = 0; i < packageViewDetails.get('length') ; i++) {
-          var containerView = Ember.View.views['my_container_view'];
+          var containerView = Ember.View.views['package_container_view'];
           var childView;
           if (pkgCount===0) {
-            childView=  containerView.createChildView(staticComponent);
+            childView=  containerView.createChildView(staticPackageComponent);
             }
             else {
-            childView =  containerView.createChildView(addComponent);
+            childView =  containerView.createChildView(addPackageComponent);
           }
 
           var currentPackage = packageViewDetails[i];

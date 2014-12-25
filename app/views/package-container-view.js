@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-var MyContainerView = Ember.ContainerView.extend({
+var PackageContainerView = Ember.ContainerView.extend({
   classNames: ["row"],
   childViews: Ember.computed.alias("staticView"),
 
@@ -8,7 +8,7 @@ var MyContainerView = Ember.ContainerView.extend({
     var view;
     if(this.get('noPackages') && this.get('noSubItemType')) {
       view = Ember.View.create({
-        templateName: "packages/static_component",
+        templateName: "packages/static_item_type_component",
         id: 0
       });
     }
@@ -16,4 +16,4 @@ var MyContainerView = Ember.ContainerView.extend({
   }.property(),
 });
 
-export default MyContainerView;
+export default PackageContainerView;
