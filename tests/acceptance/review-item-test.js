@@ -20,7 +20,7 @@ test("Display Item under review", function() {
   visit("/offers/1/review_item/4");
 
   andThen(function(){
-    equal(currentURL(), "/offers/1/review_item/4");
+    equal(currentURL(), "/offers/1/review_item/4/accept");
     equal(/Review Item:/i.test($('body').text()), true);
     equal(/Velit fugit amet quos ut minima quis/i.test($('body').text()), true);
     equal(/Condition: New/i.test($('body').text()), true);

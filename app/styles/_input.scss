@@ -1,7 +1,7 @@
 .ui {
   padding-top: 0.4rem;
   padding-bottom: 0.4rem;
-  input, textarea, select {
+  input, textarea, select, input[type="text"][readonly] {
     border: none;
     background: white;
     box-shadow: none;
