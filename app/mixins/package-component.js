@@ -137,35 +137,35 @@ var PackageComponentMixin = Ember.Mixin.create({
       }
     },
 
-    createUpdateChildView: function(packageViewDetails){
+    createUpdateChildView: function(packageViewDetails) {
       var pkgCount=0;
       for (var i = 0; i < packageViewDetails.get('length') ; i++) {
-          var containerView = Ember.View.views['package_container_view'];
-          var childView;
-          if (pkgCount===0) {
-            childView=  containerView.createChildView(staticPackageComponent);
-            }
-            else {
-            childView =  containerView.createChildView(addPackageComponent);
+        var containerView = Ember.View.views['package_container_view'];
+        var childView;
+        if (pkgCount===0) {
+          childView=  containerView.createChildView(staticPackageComponent);
           }
-
-          var currentPackage = packageViewDetails[i];
-          childView.setProperties({
-            pkgid:         currentPackage.get('id'),
-            length:        currentPackage.get('length'),
-            height:        currentPackage.get('height'),
-            width:         currentPackage.get('width'),
-            quantity:      currentPackage.get('quantity'),
-            comment:       currentPackage.get('notes'),
-            packagetypeid: currentPackage.get('packageTypeObject.id'),
-            itemid:        currentPackage.get('itemId'),
-            itemtypename:  currentPackage.get('packageTypeObject.name'),
-            itemtypeid:    currentPackage.get('packageTypeObject.id'),
-            packagetype:   currentPackage.get('packageTypeObject')
-          });
-          containerView.pushObject(childView);
-          pkgCount++;
+          else {
+          childView =  containerView.createChildView(addPackageComponent);
         }
+
+        var currentPackage = packageViewDetails[i];
+        childView.setProperties({
+          pkgid:         currentPackage.get('id'),
+          length:        currentPackage.get('length'),
+          height:        currentPackage.get('height'),
+          width:         currentPackage.get('width'),
+          quantity:      currentPackage.get('quantity'),
+          comment:       currentPackage.get('notes'),
+          packagetypeid: currentPackage.get('packageTypeObject.id'),
+          itemid:        currentPackage.get('itemId'),
+          itemtypename:  currentPackage.get('packageTypeObject.name'),
+          itemtypeid:    currentPackage.get('packageTypeObject.id'),
+          packagetype:   currentPackage.get('packageTypeObject')
+        });
+        containerView.pushObject(childView);
+        pkgCount++;
+      }
     }
   },
   didInsertElement: function() {
