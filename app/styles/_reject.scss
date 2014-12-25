@@ -5,9 +5,7 @@
     li {
       display: table-row;
       input[type="radio"] {
-        // display: table-cell;
         display: inline-block;
-        margin: 0.7rem 0.5rem;
       }
 
       input[type="radio"] + label {

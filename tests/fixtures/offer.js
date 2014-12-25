@@ -10,6 +10,8 @@ FactoryGuy.define('offer', {
     estimatedSize: '12cm',
     notes: 'dummy text',
     createdBy: FactoryGuy.belongsTo("user"),
+    reviewedBy: FactoryGuy.belongsTo("user"),
+    delivery: FactoryGuy.belongsTo("delivery"),
     createdAt: '12/01/2014',
     updatedAt: '12/01/2014'
   },

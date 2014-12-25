@@ -160,6 +160,7 @@ I18nTranslationsEn =
           "heading": "Sale of goods"
           "message": "Occasionally, the best way <br> for a donated item to help the poor <br> is for a charity to sell it. Is sale <br> of item(s) okay?"
 
+
         "index":
           "item_count" : "Offer items ({{itemCount}})"
           "add_item" : "Add item"
@@ -170,9 +171,14 @@ I18nTranslationsEn =
           "description" : "Description"
           "condition" : "Condition"
 
-        "review-status" :
-          "heading" : "Review Status"
-          "plan_delivery" : "Plan Delivery"
+        "offer_details" :
+          "heading" : "Offer Details"
+          "submitted_status": "Your offer is awaiting review."
+          "in_review_status": "Your offer is being reviewed by {{firstName}} {{lastName}}."
+          "scheduled_status": "Collection booked"
+          "reviewed_message": "Review complete!"
+          "please": "Please"
+          "transport": "arrange transport"
 
       "items":
         "edit_images":
