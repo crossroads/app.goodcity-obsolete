@@ -11,41 +11,40 @@
   <div class="row">
     <div class="small-12 columns">
 
-      <div class= 'row'>
-        {{partial 'offer/status_message'}}
+      {{partial 'offer/offer_top_section'}}
+
+      <div class="tabs-content">
+        <h3>Awaiting Review({{awaitingReview.length}})</h3>
+        <div class= 'row'>
+          {{#each item in awaitingReview}}
+            {{#link-to 'item.index' item}}
+              <img {{bind-attr src=item.displayImageUrl}} class="thumb small">
+            {{/link-to}}
+          {{/each}}
+        </div>
+
+        <br/>
+
+        <h3>Accepted({{accepted.length}})</h3>
+        <div class= 'row'>
+          {{#each item in accepted}}
+            {{#link-to 'item.index' item}}
+              <img {{bind-attr src=item.displayImageUrl}} class="thumb small">
+            {{/link-to}}
+          {{/each}}
+        </div>
+
+        <br/>
+
+        <h3>Rejected({{rejected.length}})</h3>
+        <div class= 'row'>
+          {{#each item in rejected}}
+            {{#link-to 'item.index' item}}
+              <img {{bind-attr src=item.displayImageUrl}} class="thumb small">
+            {{/link-to}}
+          {{/each}}
+        </div>
       </div>
-
-      <h3>Awaiting Review({{awaitingReview.length}})</h3>
-      <div class= 'row'>
-        {{#each item in awaitingReview}}
-          {{#link-to 'item.index' item}}
-            <img {{bind-attr src=item.displayImageUrl}} class="thumb small">
-          {{/link-to}}
-        {{/each}}
-      </div>
-
-      <br/>
-
-      <h3>Accepted({{accepted.length}})</h3>
-      <div class= 'row'>
-        {{#each item in accepted}}
-          {{#link-to 'item.index' item}}
-            <img {{bind-attr src=item.displayImageUrl}} class="thumb small">
-          {{/link-to}}
-        {{/each}}
-      </div>
-
-      <br/>
-
-      <h3>Rejected({{rejected.length}})</h3>
-      <div class= 'row'>
-        {{#each item in rejected}}
-          {{#link-to 'item.index' item}}
-            <img {{bind-attr src=item.displayImageUrl}} class="thumb small">
-          {{/link-to}}
-        {{/each}}
-      </div>
-
     </div>
   </div>
 </section>

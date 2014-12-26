@@ -1,4 +1,41 @@
 .offer_details {
+
+  dl.tabs {
+    margin-top: -1rem;
+    border-bottom: 1px solid #334f75;
+
+    @media #{$small-only} {
+      margin-right: -0.5rem;
+      margin-left: -0.5rem;
+    }
+
+    span.tab_title {
+      margin-left: 0.3rem;
+      vertical-align: sub;
+      display: inline-block;
+      text-align: left;
+      width: 3rem;
+    }
+
+    i.unread {
+      vertical-align: top;
+      color: #f34d4f;
+      font-size: 0.7rem;
+
+      @media #{$small-only} {
+        font-size: 0.5rem;
+      }
+    }
+  }
+
+  .tabs dd.active a:after {
+    border-top-color: #334f75;
+  }
+
+  .tabs-content {
+    background-color: inherit;
+  }
+
   .offer-status {
     text-align: center;
     margin-bottom: 1.2rem;

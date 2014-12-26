@@ -180,6 +180,9 @@ I18nTranslationsEn =
           "please": "Please"
           "transport": "arrange transport"
 
+        "transport_details" :
+          "heading" : "Transport Details"
+
       "items":
         "edit_images":
           "add_photo" : "Add photo"
