@@ -5,7 +5,7 @@ export default AuthorizeRoute.extend({
 
   model: function() {
     return this.store.filter('offer', function(offer) {
-        return offer.get('state') === 'submitted';
+      return offer.get('state') === 'submitted';
     });
   },
 

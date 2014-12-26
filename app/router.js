@@ -18,9 +18,11 @@ Router.map(function() {
       this.route('index', { path: '/'});
       this.route('confirm');
       this.route('submit');
-      this.route('offer_details');
       this.route('messages');
       this.route('plan_delivery');
+
+      this.route('offer_details');
+      this.route('transport_details');
 
       this.resource('delivery', { path: '/delivery/:delivery_id'}, function(){
         this.route('book_timeslot');
