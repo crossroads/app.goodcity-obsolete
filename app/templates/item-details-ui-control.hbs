@@ -6,12 +6,13 @@
       </div>
       <div class="small-7 columns head">
         <span class="ui">
-          {{input
-            type="text"
-            name="itemtypename"
-            valueBinding="view.itemtypename"
-            placeholderBinding="Item Type"
-            maxlengthBinding="view.maxlength"
+          {{view "select"
+            contentBinding='view.itemval.subItemTypes'
+            optionValuePath="content.itemTypeId"
+            optionLabelPath="content.name"
+            selection="view.packagetype"
+            valueBinding="view.packagetypeid"
+            prompt='Package Type'
           }}
         </span>
       </div>
@@ -41,6 +42,7 @@
           valueBinding="view.quantity"
           placeholder="Qty"
           maxlength="8"
+          required="required"
         }}
       </div>
       <div {{bind-attr class=":small-2 :columns :ui :inner" }}>
@@ -50,6 +52,7 @@
           valueBinding="view.length"
           placeholder="L"
           maxlength="8"
+          required="required"
         }}
       </div>
       <div {{bind-attr class=":small-2 :columns :ui :inner"}}>
@@ -59,6 +62,7 @@
           valueBinding="view.width"
           placeholder="W"
           maxlength="5"
+          required="required"
         }}
       </div>
       <div {{bind-attr class=":small-2 :columns :ui :inner"}}>
@@ -68,6 +72,7 @@
           valueBinding="view.height"
           placeholder="H"
           maxlength="5"
+          required="required"
         }}
       </div>
     </div>

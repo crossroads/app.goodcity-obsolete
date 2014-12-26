@@ -4,16 +4,14 @@
     list-style-position: outside;
     li {
       display: table-row;
-
       input[type="radio"] {
         display: inline-block;
-        margin: 0.5rem 0rem;
       }
 
       input[type="radio"] + label {
         display: table-cell;
         color: black !important;
-        width: 85%;
+        width: 95.6%;
         @media #{$small-only} {
           font-size: 0.8rem;
         }

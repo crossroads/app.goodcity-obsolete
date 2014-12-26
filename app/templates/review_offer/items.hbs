@@ -10,7 +10,7 @@
     <h3>Awaiting Review({{awaitingReview.length}})</h3>
     <div class= 'row'>
       {{#each item in awaitingReview}}
-        {{#link-to 'review_item.accept' item}}
+        {{#link-to 'review_item' item}}
           <img {{bind-attr src=item.displayImageUrl}} class="thumb small" />
         {{/link-to}}
       {{/each}}

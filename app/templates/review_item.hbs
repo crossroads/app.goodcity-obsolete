@@ -22,13 +22,12 @@
       </div>
       <div class="row top-bottom-margin">
         <div class="small-12 columns link">
-          {{item-type getItemId="getItemId" selectedItemId=reviewItemTypeId selectedItemName=reviewItemTypeName }}
+          {{item-type getItemId="getItemId" selectedItemId=itemTypeId selectedItemName=itemTypeName }}
           <a href="#" class="right">View labeling guide</a>
         </div>
      </div>
     <div class="row row-grey">
         <dl class="tabs" data-tab>
-
           {{#link-to 'review_item.accept' tagName="dd" classNames="small-3 columns text-center"}}
             {{#link-to 'review_item.accept'}}
               <i class="fa fa-check-circle fa-2x"></i>
