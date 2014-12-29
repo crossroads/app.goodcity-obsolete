@@ -44,6 +44,10 @@ export default DS.Model.extend({
     return this.get('messages').filterBy('state', 'unread').length;
   }.property('messages.@each.state'),
 
+  hasUnreadMessages: function() {
+    return this.get('unreadMessagesCount') > 0;
+  }.property('unreadMessagesCount'),
+
   approvedItems: Ember.computed.filterBy("items", "state", "accepted"),
   rejectedItems: Ember.computed.filterBy("items", "state", "rejected"),
   isDraft: Ember.computed.equal("state", "draft"),
