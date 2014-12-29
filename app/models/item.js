@@ -38,7 +38,7 @@ export default DS.Model.extend({
 
   // unread messages
   unreadMessages: function() {
-    return this.get('messages').filterBy('state', 'unread').sortBy('createdAt');
+    return this.get('messages').filterBy('state', 'unread').sortBy('id');
   }.property('messages.@each.state'),
 
   unreadMessagesCount: function() {
@@ -53,7 +53,11 @@ export default DS.Model.extend({
   // last message
   lastMessage: function() {
     var messages = this.get('messages');
-    return messages.get('length') > 0 ? messages.sortBy('createdAt').get('lastObject') : "";
+    return messages.get('length') > 0 ? messages.sortBy('id').get('lastObject') : null;
+  }.property('messages'),
+
+  lastReadMessage: function() {
+    return this.get('messages').filterBy('state', 'read').sortBy('id').get('lastObject');
   }.property('messages'),
 
   // last diaply message

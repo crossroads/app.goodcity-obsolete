@@ -94,4 +94,13 @@ export default DS.Model.extend({
     var count = this.get('unreadOfferMessages.length');
     return count > 0 ? count : '';
   }.property('unreadOfferMessages'),
+
+  isOffer: function(argument) {
+    return this.get('constructor.typeKey') === 'offer';
+  }.property('this'),
+
+  lastMessage: function() {
+    var messages = this.get('messages');
+    return messages.get('length') > 0 ? messages.sortBy('id').get('lastObject') : null;
+  }.property('messages'),
 });

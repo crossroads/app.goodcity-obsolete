@@ -16,75 +16,81 @@
       <div class="tabs-content">
 
         <ul class="list list-offer-items">
-          <li>
-            {{#link-to ''}}
-              <span class="item-image image">
-                <i class="fa fa-bullhorn thumb"></i>
-              </span>
-              <span class="info">
-                <div class="row item-name">
-                  <div class="small-10 columns">
-                    General Messages
-                  </div>
-                  <div class="small-2 columns right">
-                    {{message-time model.lastUnreadMessage.createdAt}}
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="small-1 columns">
-                    {{#if model.lastUnreadMessage}}
-                      <span class="no-avatar">{{model.lastUnreadMessage.sender.nameInitial}}</span>
-                    {{/if}}
-                  </div>
-                  <div class="small-10 columns">
-                    <div class='ellipsis two-line-ellipsis message-text'>{{model.lastUnreadMessage.body}}</div>
-                  </div>
-                  <div class="small-1 columns right">
-                    {{#if model.unreadOfferMessages.length}}
-                      <span class='unread_length'>{{model.unreadOfferMessagesCount}}</span>
-                    {{/if}}
-                  </div>
-                </div>
-              </span>
-            {{/link-to}}
-          </li>
 
           {{#each item in sortedItems}}
             <li>
-              {{#link-to ''}}
-                <span class="item-image">
-                  <img {{bind-attr src="item.displayImageUrl"}} class="thumb" />
-                </span>
 
-                <span class="info">
-                  <div class="row item-name">
-                    <div class="small-10 columns">
-                      <div class="ellipsis one-line-ellipsis item-name">{{{item.donorDescription}}}</div>
-                    </div>
-                    <div class="small-2 columns right">
-                      {{message-time item.lastDisplayMessage.createdAt}}
-                    </div>
-                  </div>
+              {{#if item.isOffer}}
 
-                  <div class="row">
-                    <div class="small-1 columns">
-                      {{#if item.lastDisplayMessage}}
-                        <span class="no-avatar">{{item.lastDisplayMessage.sender.nameInitial}}</span>
-                      {{/if}}
-                    </div>
-                    <div class="small-10 columns">
-                      <div class='ellipsis two-line-ellipsis message-text'>
-                        {{item.lastDisplayMessage.body}}
+                {{#link-to ''}}
+                  <span class="item-image image">
+                    <i class="fa fa-bullhorn thumb"></i>
+                  </span>
+                  <span class="info">
+                    <div class="row item-name">
+                      <div class="small-10 columns">
+                        General Messages
+                      </div>
+                      <div class="small-2 columns right">
+                        {{message-time model.lastUnreadMessage.createdAt}}
                       </div>
                     </div>
-                    <div class="small-1 columns right">
-                      {{#if item.unreadMessages.length}}
-                        <span class='unread_length'>{{item.unreadMessagesCount}}</span>
+                    <div class="row">
+                      <div class="small-1 columns">
+                        {{#if model.lastUnreadMessage}}
+                          <span class="no-avatar">{{model.lastUnreadMessage.sender.nameInitial}}</span>
                         {{/if}}
+                      </div>
+                      <div class="small-10 columns">
+                        <div class='ellipsis two-line-ellipsis message-text'>{{model.lastUnreadMessage.body}}</div>
+                      </div>
+                      <div class="small-1 columns right">
+                        {{#if model.unreadOfferMessages.length}}
+                          <span class='unread_length'>{{model.unreadOfferMessagesCount}}</span>
+                        {{/if}}
+                      </div>
                     </div>
-                  </div>
-                </span>
-              {{/link-to}}
+                  </span>
+                {{/link-to}}
+
+              {{else}}
+
+                {{#link-to ''}}
+                  <span class="item-image">
+                    <img {{bind-attr src="item.displayImageUrl"}} class="thumb" />
+                  </span>
+
+                  <span class="info">
+                    <div class="row item-name">
+                      <div class="small-10 columns">
+                        <div class="ellipsis one-line-ellipsis item-name">{{item.class}} {{{item.donorDescription}}}</div>
+                      </div>
+                      <div class="small-2 columns right">
+                        {{message-time item.lastDisplayMessage.createdAt}}
+                      </div>
+                    </div>
+
+                    <div class="row">
+                      <div class="small-1 columns">
+                        {{#if item.lastDisplayMessage}}
+                          <span class="no-avatar">{{item.lastDisplayMessage.sender.nameInitial}}</span>
+                        {{/if}}
+                      </div>
+                      <div class="small-10 columns">
+                        <div class='ellipsis two-line-ellipsis message-text'>
+                          {{item.lastDisplayMessage.body}}
+                        </div>
+                      </div>
+                      <div class="small-1 columns right">
+                        {{#if item.unreadMessages.length}}
+                          <span class='unread_length'>{{item.unreadMessagesCount}}</span>
+                          {{/if}}
+                      </div>
+                    </div>
+                  </span>
+                {{/link-to}}
+
+              {{/if}}
             </li>
           {{/each}}
         </ul>

@@ -2,20 +2,13 @@ import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
 
-  sortedItems: Ember.computed.sort('model.items', function (a, b) {
-    //sort by has unread messages and then by read messages
-    if(a.get('lastDisplayMessage.id') > 0 && b.get('lastDisplayMessage.id') === 0) {
-      return -1;
-    }
-    else if (a.get('lastDisplayMessage.id') === 0 && b.get('lastDisplayMessage.id') > 0) {
-      return 1;
-    }
-    else if (a.get('lastDisplayMessage.id') > b.get('lastDisplayMessage.id')) {
-      return -1;
-    }
-    else {
-      return 1;
-    }
-  })
+  sortProperties: ["lastMessage.state:desc", "lastMessage.id:desc"],
+  sortedItems: Ember.computed.sort("offerWithItems", "sortProperties"),
+
+  offerWithItems: function() {
+    var content = this.get('items.content');
+    content.push(this);
+    return content;
+  }.property(),
 
 });
