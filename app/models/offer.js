@@ -82,12 +82,13 @@ export default DS.Model.extend({
     return status;
   }.property('state'),
 
-  lastUnreadMessage: function() {
-    return this.get('unreadOfferMessages.lastObject');
-  }.property('messages.@each.state'),
+  isOffer: function() {
+    return this.get('constructor.typeKey') === 'offer';
+  }.property('this'),
 
+  // unread offer-messages
   unreadOfferMessages: function(){
-    return this.get('messages').filterBy('state', 'unread').filterBy('item', null).sort('createdAt');
+    return this.get('messages').filterBy('state', 'unread').filterBy('item', null).sortBy('id');
   }.property('messages.@each.state'),
 
   unreadOfferMessagesCount: function(){
@@ -95,12 +96,9 @@ export default DS.Model.extend({
     return count > 0 ? count : '';
   }.property('unreadOfferMessages'),
 
-  isOffer: function() {
-    return this.get('constructor.typeKey') === 'offer';
-  }.property('this'),
-
+  // recent offer message
   lastMessage: function() {
-    var messages = this.get('messages');
-    return messages.get('length') > 0 ? messages.sortBy('id').get('lastObject') : null;
+    var messages = this.get('messages').filterBy('item', null).sortBy('id');
+    return messages.get('length') > 0 ? messages.get('lastObject') : null;
   }.property('messages'),
 });

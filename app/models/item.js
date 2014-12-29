@@ -46,22 +46,8 @@ export default DS.Model.extend({
     return count > 0 ? count : null ;
   }.property('unreadMessages'),
 
-  lastUnreadMessage: function() {
-    return this.get('unreadMessages').get('lastObject');
-  }.property('unreadMessages'),
-
   // last message
   lastMessage: function() {
-    var messages = this.get('messages');
-    return messages.get('length') > 0 ? messages.sortBy('id').get('lastObject') : null;
-  }.property('messages'),
-
-  lastReadMessage: function() {
-    return this.get('messages').filterBy('state', 'read').sortBy('id').get('lastObject');
-  }.property('messages'),
-
-  // last diaply message
-  lastDisplayMessage: function() {
-    return this.get('lastUnreadMessage') || this.get('lastMessage');
+    return this.get('messages').sortBy('id').get('lastObject');
   }.property('messages'),
 });
