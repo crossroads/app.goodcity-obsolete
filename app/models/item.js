@@ -34,5 +34,30 @@ export default DS.Model.extend({
     return this.get('displayImage.thumbImageUrl') || "/assets/images/default_item.jpg";
   }.property('displayImage'),
 
-  imageCount: Ember.computed.alias("images.length")
+  imageCount: Ember.computed.alias("images.length"),
+
+  // unread messages
+  unreadMessages: function() {
+    return this.get('messages').filterBy('state', 'unread').sortBy('createdAt');
+  }.property('messages.@each.state'),
+
+  unreadMessagesCount: function() {
+    var count = this.get('unreadMessages').length;
+    return count > 0 ? count : null ;
+  }.property('unreadMessages'),
+
+  lastUnreadMessage: function() {
+    return this.get('unreadMessages').get('lastObject');
+  }.property('unreadMessages'),
+
+  // last message
+  lastMessage: function() {
+    var messages = this.get('messages');
+    return messages.get('length') > 0 ? messages.sortBy('createdAt').get('lastObject') : "";
+  }.property('messages'),
+
+  // last diaply message
+  lastDisplayMessage: function() {
+    return this.get('lastUnreadMessage') || this.get('lastMessage');
+  }.property('messages'),
 });

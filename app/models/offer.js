@@ -80,5 +80,18 @@ export default DS.Model.extend({
       case 'scheduled' : status = 'Collection'; break;
     }
     return status;
-  }.property('state')
+  }.property('state'),
+
+  lastUnreadMessage: function() {
+    return this.get('unreadOfferMessages.lastObject');
+  }.property('messages.@each.state'),
+
+  unreadOfferMessages: function(){
+    return this.get('messages').filterBy('state', 'unread').filterBy('item', null).sort('createdAt');
+  }.property('messages.@each.state'),
+
+  unreadOfferMessagesCount: function(){
+    var count = this.get('unreadOfferMessages.length');
+    return count > 0 ? count : '';
+  }.property('unreadOfferMessages'),
 });
