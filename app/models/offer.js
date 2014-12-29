@@ -95,7 +95,7 @@ export default DS.Model.extend({
     return count > 0 ? count : '';
   }.property('unreadOfferMessages'),
 
-  isOffer: function(argument) {
+  isOffer: function() {
     return this.get('constructor.typeKey') === 'offer';
   }.property('this'),
 
