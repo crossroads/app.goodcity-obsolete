@@ -34,6 +34,59 @@
 
   .tabs-content {
     background-color: inherit;
+    padding-left: 0;
+
+    ul {
+      @media #{$small-only} {
+        font-size: 0.7rem !important
+      }
+    }
+
+    .list-offer-items {
+      a {
+        background: none;
+        padding-right: 0;
+      }
+
+      li {
+        border-bottom: 1px solid #334f75;
+        padding: 1rem 0 1rem 0;
+        margin-bottom: 0;
+
+        @media #{$small-only} {
+          margin-right: -2rem;
+          margin-left: -2rem;
+          padding-right: 2rem;
+          padding-left: 2rem;
+        }
+
+        .info {
+          vertical-align: top;
+          .item-name {
+            font-weight: bold;
+            color: white;
+          }
+          i {
+            color: #f34d4f;
+            float: right;
+            margin-top: 0.7rem;
+            font-size: 1rem;
+          }
+          span.count {
+            position: absolute;
+            margin-top: 0.7rem;
+            margin-left: 0.2rem;
+            color: black;
+            font-weight: bold;
+          }
+          .message-text{
+            @media #{$small-only} {
+              margin-left: 0.5rem;
+            }
+          }
+        }
+      }
+    }
   }
 
   .offer-status {
@@ -72,4 +125,65 @@
   &.tab-bar {
     margin-bottom: 0;
   }
+}
+
+.right {
+  text-align: right !important;
+}
+
+.item-image {
+  width: 4rem;
+  padding-right: 1rem;
+
+  .status_badge {
+    color: white;
+    font-weight: bold;
+    font-size: 0.5rem;
+    text-align: center;
+    margin-top: -0.7rem;
+    position: absolute;
+    width: 3rem;
+  }
+
+  .accept_badge {
+    @extend .status_badge;
+    background-color: #6EA94A;
+  }
+
+  .reject_badge {
+    @extend .status_badge;
+    background-color: #f34d4f;
+  }
+
+  i {
+    background-color: #f34d4f;
+    padding: 0.4rem;
+    color: white;
+    font-size: 2rem;
+  }
+}
+
+.unread_length {
+  @media #{$small-only} {
+    line-height: 0.9rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    font-size: 0.6rem;
+    float: none;
+  }
+
+  line-height: 1.2rem;
+  width: 1.2rem;
+  height: 1.2rem;
+  font-size: 1rem;
+
+  display: block;
+  color: #002352;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 50%;
+  background: #ee4c4e;
+  font-weight: bold;
+  margin-top: 0.2rem;
+  float: inherit;
 }

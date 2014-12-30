@@ -179,6 +179,9 @@ I18nTranslationsEn =
           "reviewed_message": "Review complete!"
           "please": "Please"
           "transport": "arrange transport"
+          "offer_messages": "General Messages"
+          "accepted": "Accepted"
+          "not_needed": "Not needed"
 
         "transport_details" :
           "heading" : "Transport Details"

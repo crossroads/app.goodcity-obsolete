@@ -12,6 +12,7 @@ import '../fixtures/user_profile';
 import '../fixtures/timeslot';
 import '../fixtures/gogovan_transport';
 import '../fixtures/crossroads_transport';
+import '../fixtures/message';
 
 export default function(testHelper) {
   config.APP.PRELOAD_TYPES.concat(config.APP.PRELOAD_AUTHORIZED_TYPES).forEach(function(type) {

@@ -22,7 +22,7 @@
             {{#each offer in offersWithItems}}
               <li>
                 {{#if offer.isScheduled }}
-                  {{#link-to 'delivery.donation_details' offer offer.delivery}}
+                  {{#link-to 'offer.offer_details' offer}}
                     <span class="list-image">
                       <img {{bind-attr src="offer.displayImageUrl"}} class="thumb" />
                     </span>

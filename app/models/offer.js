@@ -44,6 +44,10 @@ export default DS.Model.extend({
     return this.get('messages').filterBy('state', 'unread').length;
   }.property('messages.@each.state'),
 
+  hasUnreadMessages: function() {
+    return this.get('unreadMessagesCount') > 0;
+  }.property('unreadMessagesCount'),
+
   approvedItems: Ember.computed.filterBy("items", "state", "accepted"),
   rejectedItems: Ember.computed.filterBy("items", "state", "rejected"),
   isDraft: Ember.computed.equal("state", "draft"),
@@ -80,5 +84,25 @@ export default DS.Model.extend({
       case 'scheduled' : status = 'Collection'; break;
     }
     return status;
-  }.property('state')
+  }.property('state'),
+
+  isOffer: function() {
+    return this.get('constructor.typeKey') === 'offer';
+  }.property('this'),
+
+  // unread offer-messages
+  unreadOfferMessages: function(){
+    return this.get('messages').filterBy('state', 'unread').filterBy('item', null).sortBy('id');
+  }.property('messages.@each.state'),
+
+  unreadOfferMessagesCount: function(){
+    var count = this.get('unreadOfferMessages.length');
+    return count > 0 ? count : '';
+  }.property('unreadOfferMessages'),
+
+  // recent offer message
+  lastMessage: function() {
+    var messages = this.get('messages').filterBy('item', null).sortBy('id');
+    return messages.get('length') > 0 ? messages.get('lastObject') : null;
+  }.property('messages'),
 });

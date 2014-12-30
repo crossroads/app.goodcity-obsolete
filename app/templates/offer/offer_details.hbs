@@ -14,47 +14,19 @@
       {{partial 'offer/offer_top_section'}}
 
       <div class="tabs-content">
-        <h3>Awaiting Review({{awaitingReview.length}})</h3>
-        <div class= 'row'>
-          {{#each item in awaitingReview}}
-            {{#link-to 'item.index' item}}
-              <img {{bind-attr src=item.displayImageUrl}} class="thumb small">
-            {{/link-to}}
+        <ul class="list list-offer-items">
+
+          {{#each item in sortedItems}}
+            <li>
+              {{#if item.isOffer}}
+                {{partial 'offer/recent_offer_message'}}
+              {{else}}
+                {{partial 'offer/recent_item_message'}}
+              {{/if}}
+            </li>
           {{/each}}
-        </div>
-
-        <br/>
-
-        <h3>Accepted({{accepted.length}})</h3>
-        <div class= 'row'>
-          {{#each item in accepted}}
-            {{#link-to 'item.index' item}}
-              <img {{bind-attr src=item.displayImageUrl}} class="thumb small">
-            {{/link-to}}
-          {{/each}}
-        </div>
-
-        <br/>
-
-        <h3>Rejected({{rejected.length}})</h3>
-        <div class= 'row'>
-          {{#each item in rejected}}
-            {{#link-to 'item.index' item}}
-              <img {{bind-attr src=item.displayImageUrl}} class="thumb small">
-            {{/link-to}}
-          {{/each}}
-        </div>
+        </ul>
       </div>
     </div>
   </div>
 </section>
-
-{{#if isAccepted}}
-  <div class="btm">
-    <div class="row">
-      <div class="small-10 small-offset-1 columns">
-        {{#link-to 'offer.plan_delivery' classNames='button expand'}}Plan Delivery{{/link-to}}
-      </div>
-    </div>
-  </div>
-{{/if}}

@@ -25,6 +25,9 @@ export default DS.Model.extend({
   saleable:             attr('boolean'),
   state_event:          attr('string'),
 
+  isAccepted: Ember.computed.equal("state", "accepted"),
+  isRejected: Ember.computed.equal("state", "rejected"),
+
   displayImage: function() {
     return this.get("images").filterBy("favourite").get("firstObject") ||
       this.get("images").sortBy("id").get("firstObject") || null;
@@ -34,5 +37,20 @@ export default DS.Model.extend({
     return this.get('displayImage.thumbImageUrl') || "/assets/images/default_item.jpg";
   }.property('displayImage'),
 
-  imageCount: Ember.computed.alias("images.length")
+  imageCount: Ember.computed.alias("images.length"),
+
+  // unread messages
+  unreadMessages: function() {
+    return this.get('messages').filterBy('state', 'unread').sortBy('id');
+  }.property('messages.@each.state'),
+
+  unreadMessagesCount: function() {
+    var count = this.get('unreadMessages').length;
+    return count > 0 ? count : null ;
+  }.property('unreadMessages'),
+
+  // last message
+  lastMessage: function() {
+    return this.get('messages').sortBy('id').get('lastObject');
+  }.property('messages'),
 });

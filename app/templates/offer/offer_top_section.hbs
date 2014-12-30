@@ -7,7 +7,9 @@
     {{#link-to 'offer.offer_details' tagName="dd" classNames="small-6 columns text-center"}}
       {{#link-to 'offer.offer_details'}}
         <i class="fa fa-comment-o fa-2x"></i>
-        <i class="fa fa-circle fa-1x unread"></i>
+        {{#if model.hasUnreadMessages}}
+          <i class="fa fa-circle fa-1x unread"></i>
+        {{/if}}
         <span class='tab_title'>{{t 'offer.offer_details.heading'}}</span>
       {{/link-to}}
     {{/link-to}}

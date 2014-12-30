@@ -1,0 +1,22 @@
+.no-avatar {
+  @media #{$small-only} {
+    line-height: 1.2rem;
+    width: 1.1rem;
+    height: 1.1rem;
+    font-size: 0.7rem;
+  }
+
+  line-height: 1.8rem;
+  width: 1.8rem;
+  height: 1.8rem;
+  font-size: 1.2rem;
+
+  display: block;
+  color: #fff;
+  text-transform: uppercase;
+  text-align: center;
+  border-radius: 50%;
+  background: #ee4c4e;
+  font-weight: bold;
+  margin-top: 0.2rem;
+}
