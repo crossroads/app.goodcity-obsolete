@@ -204,9 +204,11 @@ I18nTranslationsEn =
           "description_placeholder" : "What is it? How many items? What's the size?"
 
       "item":
-        "item_details" : "Item details:"
+        "item_details" : "Item details"
         "donor_description": "Description: {{donorDescription}}"
         "condition": "Condition: {{condition}}"
+        "cancel" : "Cancel Item"
+        "edit" : "Edit Item"
 
       "_resend":
         "no_sms" : "Haven't received SMS code?"
