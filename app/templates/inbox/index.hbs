@@ -14,7 +14,7 @@
           {{#if controller.reviewedOffers}}
             Reviewed Offers
           {{else}}
-            {{t "inbox.my_offers"}}
+            {{t "inbox.in_review"}}
           {{/if}}
         {{/if}}
       {{/if}}({{this.length}})
@@ -26,7 +26,7 @@
   <div class="row">
     <div class="small-12 columns">
       <ul class="list list-activity">
-        {{#each offer in model}}
+        {{#each offer in arrangedContent}}
           <li>
             {{#link-to 'review_offer' offer}}
               <span class="avatar">
@@ -38,7 +38,7 @@
                   {{t "full_name" firstNameBinding=offer.createdBy.firstName lastNameBinding=offer.createdBy.lastName}}
                 </h3>
                 <p>{{t "inbox.new_items"}}: {{offer.itemCount}}</p>
-                {{#if offer.unreadMessagesCount}}
+                {{#if offer.hasUnreadMessages}}
                   <p>{{t "inbox.unread_messages" unreadMessagesCountBinding=offer.unreadMessagesCount}}</p>
                 {{/if}}
                 <p>{{offer.createdBy.address.district.name}}</p>

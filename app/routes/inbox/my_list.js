@@ -8,9 +8,10 @@ export default AuthorizeRoute.extend({
   },
 
   model: function() {
-    var currentUser = this.get('session.currentUser');
+    var currentUserId = this.get('session.currentUser.id');
+    var currentUser = this.store.getById('user', currentUserId);
     return this.store.filter('offer', function(offer) {
-        return offer.get('reviewedBy') === currentUser;
+      return offer.get('state') === 'under_review' && offer.get('reviewedBy') === currentUser;
     });
   }
 });
