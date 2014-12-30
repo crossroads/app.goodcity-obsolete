@@ -25,6 +25,9 @@ export default DS.Model.extend({
   saleable:             attr('boolean'),
   state_event:          attr('string'),
 
+  isAccepted: Ember.computed.equal("state", "accepted"),
+  isRejected: Ember.computed.equal("state", "rejected"),
+
   displayImage: function() {
     return this.get("images").filterBy("favourite").get("firstObject") ||
       this.get("images").sortBy("id").get("firstObject") || null;

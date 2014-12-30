@@ -135,6 +135,26 @@
   width: 4rem;
   padding-right: 1rem;
 
+  .status_badge {
+    color: white;
+    font-weight: bold;
+    font-size: 0.5rem;
+    text-align: center;
+    margin-top: -0.7rem;
+    position: absolute;
+    width: 3rem;
+  }
+
+  .accept_badge {
+    @extend .status_badge;
+    background-color: #6EA94A;
+  }
+
+  .reject_badge {
+    @extend .status_badge;
+    background-color: #f34d4f;
+  }
+
   i {
     background-color: #f34d4f;
     padding: 0.4rem;

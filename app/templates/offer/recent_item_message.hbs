@@ -1,6 +1,8 @@
 {{#link-to ''}}
   <span class="item-image">
     <img {{bind-attr src="item.displayImageUrl"}} class="thumb" />
+    {{#if item.isAccepted}}<div class='accept_badge'>Accepted</div>{{/if}}
+    {{#if item.isRejected}}<div class='reject_badge'>Not needed</div>{{/if}}
   </span>
 
   <span class="info">
