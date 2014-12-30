@@ -30,20 +30,18 @@ test("Display Item Details", function() {
 
   andThen(function(){
     equal(currentURL(), display_item_url);
-    equal(/Description: example1/i.test($('body').text()), true);
-
-    // item images count
-    equal(find("img").length, 2);
+    equal(/example1/i.test($('body').text()), true);
+    equal(find("img").length, 1);
   });
 });
 
-test("Back button redirects to its offer", function() {
+test("Back button redirects to its offer details", function() {
   expect(1);
 
   visit(display_item_url);
-  click('button.backButton');
+  click('.back');
 
   andThen(function() {
-    equal(currentURL(), "/offers/" + offer.id);
+    equal(currentURL(), "/offers/" + offer.id + "/offer_details");
   });
 });
