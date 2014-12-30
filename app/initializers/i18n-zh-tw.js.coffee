@@ -169,6 +169,7 @@ I18nTranslationsZhTw =
           "reviewed_message": "Review complete!"
           "please": "Please"
           "transport": "arrange transport"
+          "offer_messages": "General Messages"
 
       "items":
         "edit_images":
