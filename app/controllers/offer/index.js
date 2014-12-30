@@ -25,12 +25,5 @@ export default Ember.ObjectController.extend({
         });
       }
     },
-
-    removeItem: function(item) {
-      if(confirm("Are you sure? This cannot be undone.")) {
-        this.get('items').removeObject(item);
-        item.destroyRecord();
-      }
-    }
   }
 });

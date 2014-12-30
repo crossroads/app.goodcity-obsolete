@@ -6,8 +6,8 @@
     <h1 class="title">{{t "item.item_details"}}</h1>
   </section>
 </nav>
-<section class="main-section">
-  <div class="row item-details">
+<section class="main-section item-details">
+  <div class="row">
     <div class="small-12 columns">
       <div class="row">
         <div class="small-3 large-2 columns fav-item-image">
@@ -20,12 +20,15 @@
           </div>
         </div>
       </div>
-      <div class="row">
-        <div class="small-offset-7 small-5 large-offset-9 large-3 columns link">
-          <a href="#" {{action '' this}}>{{t "item.cancel"}}</a>
-          <a href="#" {{action '' this}}>{{t "item.edit"}}</a>
-        </div>
+      <div class="row item_actions">
+        <a href="#" {{action 'removeItem'}}>{{t "item.cancel"}}</a>
+        {{#link-to 'item.edit' this class='edit_item_link'}}{{t "item.edit"}}{{/link-to}}
       </div>
+    </div>
+  </div>
+  <div class='row'>
+    <div class="small-12 columns">
+      {{partial 'message_template'}}
     </div>
   </div>
 </section>
