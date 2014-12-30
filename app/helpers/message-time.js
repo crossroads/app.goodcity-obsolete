@@ -8,7 +8,7 @@ export default Ember.Handlebars.makeBoundHelper(function(value) {
   var day_difference = Math.floor((current_time - message_time) / _MS_PER_DAY);
 
   if(!message_time) {
-    return ""
+    return "";
   } else if(day_difference === 0) {
     return moment(message_time).format('HH:mm');
   } else if(day_difference < 7) {
