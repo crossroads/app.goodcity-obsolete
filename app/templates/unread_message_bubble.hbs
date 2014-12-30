@@ -1,7 +1,7 @@
-{{#if this.unreadMessagesCount}}
+{{#if offer.hasUnreadMessages}}
   <div class='unread_message'>
-    {{#link-to 'offer.messages' this}}
-      <div class='message_count'>{{unreadMessagesCount}}</div>
+    {{#link-to 'offer.messages' offer}}
+      <div class='unread_length'>{{offer.unreadMessagesCount}}</div>
     {{/link-to}}
   </div>
 {{/if}}
