@@ -2,7 +2,7 @@
 
   dl.tabs {
     margin-top: -1rem;
-    border-bottom: 1px solid #334f75;
+    border-bottom: 1px solid $light-blue;
 
     @media #{$small-only} {
       margin-right: -0.5rem;
@@ -19,7 +19,7 @@
 
     i.unread {
       vertical-align: top;
-      color: #f34d4f;
+      color: $alert-color;
       font-size: 0.7rem;
 
       @media #{$small-only} {
@@ -29,7 +29,7 @@
   }
 
   .tabs dd.active a:after {
-    border-top-color: #334f75;
+    border-top-color: $light-blue;
   }
 
   .tabs-content {
@@ -49,7 +49,7 @@
       }
 
       li {
-        border-bottom: 1px solid #334f75;
+        border-bottom: 1px solid $light-blue;
         padding: 1rem 0 1rem 0;
         margin-bottom: 0;
 
@@ -67,7 +67,7 @@
             color: white;
           }
           i {
-            color: #f34d4f;
+            color: $alert-color;
             float: right;
             margin-top: 0.7rem;
             font-size: 1rem;
@@ -102,22 +102,22 @@
   }
 
   .is-submitted {
-    background-color: #FC8229;
+    background-color: $bright-orange;
   }
 
   .is-under-review, .is-scheduled {
-    background-color: #f34d4f;
+    background-color: $alert-color;
   }
 
   .is-reviewed {
-    background-color: #6EA94A;
+    background-color: $bar-green;
     a {
       text-decoration: underline;
     }
   }
 
   .status-message {
-    color: #FFF;
+    color: $white;
   }
 }
 
@@ -147,16 +147,16 @@
 
   .accept_badge {
     @extend .status_badge;
-    background-color: #6EA94A;
+    background-color: $bar-green;
   }
 
   .reject_badge {
     @extend .status_badge;
-    background-color: #f34d4f;
+    background-color: $alert-color;
   }
 
   i {
-    background-color: #f34d4f;
+    background-color: $alert-color;
     padding: 0.4rem;
     color: white;
     font-size: 2rem;
@@ -178,11 +178,11 @@
   font-size: 1rem;
 
   display: block;
-  color: #002352;
+  color: $dark-blue;
   text-transform: uppercase;
   text-align: center;
   border-radius: 50%;
-  background: #ee4c4e;
+  background: $bright-red;
   font-weight: bold;
   margin-top: 0.2rem;
   float: inherit;
