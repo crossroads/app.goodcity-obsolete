@@ -209,6 +209,10 @@ I18nTranslationsEn =
         "condition": "Condition: {{condition}}"
         "cancel" : "Cancel Item"
         "edit" : "Edit Item"
+        "submitted_status": "This item is awaiting review."
+        "in_review_status": "This item is being reviewed."
+        "accepted_status": "This item has been accepted."
+        "rejected_status": "This item has been rejected."
 
       "_resend":
         "no_sms" : "Haven't received SMS code?"

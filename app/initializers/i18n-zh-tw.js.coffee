@@ -192,6 +192,12 @@ I18nTranslationsZhTw =
         "item_details" : "項詳情:"
         "donor_description": "說明: {{donorDescription}}"
         "condition": "條件: {{condition}}"
+        "cancel" : "Cancel Item"
+        "edit" : "Edit Item"
+        "submitted_status": "This item is awaiting review."
+        "in_review_status": "This item is being reviewed."
+        "accepted_status": "This item has been accepted."
+        "rejected_status": "This item has been rejected."
 
       "_resend":
         "no_sms" : "沒有收到短信代碼?"

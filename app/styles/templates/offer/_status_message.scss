@@ -1,0 +1,30 @@
+.offer-status {
+  text-align: center;
+  margin-bottom: 1.2rem;
+  line-height: 1.8rem;
+
+  @media #{$small-only} {
+    line-height: 1.4rem;
+    margin-right: -0.5rem;
+    margin-left: -0.5rem;
+  }
+}
+
+.is-submitted {
+  background-color: #FC8229;
+}
+
+.is-under-review, .is-scheduled, .is-rejected {
+  background-color: #f34d4f;
+}
+
+.is-reviewed, .is-accepted {
+  background-color: #6EA94A;
+  a {
+    text-decoration: underline;
+  }
+}
+
+.status-message {
+  color: #FFF;
+}

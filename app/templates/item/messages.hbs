@@ -1,4 +1,4 @@
-<nav class="tab-bar">
+<nav class="tab-bar item_details_title">
   <section class="left-small">
     {{#link-to 'offer.offer_details' item.offer classNames="back"}}{{t "back"}}{{/link-to}}
   </section>
@@ -9,6 +9,10 @@
 <section class="main-section item-details">
   <div class="row">
     <div class="small-12 columns">
+      <div class= 'row'>
+        {{partial 'item/status_message'}}
+      </div>
+
       <div class="row">
         <div class="small-3 large-2 columns fav-item-image">
           <img {{bind-attr src="item.displayImageUrl"}} class="thumb" style="width:100px;" />
@@ -26,6 +30,7 @@
       </div>
     </div>
   </div>
+
   <div class='row'>
     <div class="small-12 columns">
       {{partial 'message_template'}}
