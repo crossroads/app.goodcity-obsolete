@@ -1,4 +1,4 @@
-.message_box {
+.message_bubble_box {
   background-color: $gainsboro;
   color: black;
   width: 100%;
@@ -29,8 +29,15 @@
   }
 }
 
-.message_box:after
-{
+.my_message {
+  @extend .message_bubble_box;
+}
+
+.received_message {
+  @extend .message_bubble_box;
+}
+
+.message_arrow {
   content: '';
   position: absolute;
   border-style: solid;
@@ -40,5 +47,16 @@
   width: 0;
   z-index: 1;
   bottom: -0.5rem;
+}
+
+.received_message:after
+{
+  @extend .message_arrow;
   left: 1.5rem;
+}
+
+.my_message:after
+{
+  @extend .message_arrow;
+  right: 1.5rem;
 }

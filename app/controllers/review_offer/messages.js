@@ -5,12 +5,11 @@ export default sendMessage.extend({
 
   offerMessage: true,
   displayMessage: true,
-  filteredContent: Ember.computed.filterBy('allMessages', 'isPrivate'),
+  filteredContent: Ember.computed.filterBy('allMessages', 'isPrivate', false),
 
   actions: {
     sendMessage: function() {
-      this._super(true);
+      this._super(false);
     }
   }
 });
-

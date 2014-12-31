@@ -14,6 +14,7 @@ export default DS.Model.extend({
   sender:      belongsTo('user'),
   item:        belongsTo('item'),
   offer:       belongsTo('offer'),
+  myMessage:   false,
 
   itemImageUrl: Ember.computed.alias("item.displayImageUrl")
 });

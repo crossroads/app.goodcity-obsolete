@@ -5,7 +5,7 @@ export default sendMessage.extend({
 
   needs: ['item/index', 'item'],
   displayMessage: true,
-  filteredContent: Ember.computed.filterBy('arrangedContent', 'isPrivate', false),
+  filteredContent: Ember.computed.filterBy('allMessages', 'isPrivate', false),
 
   item: function() {
     var itemId = this.get('controllers.item.id');
