@@ -4,8 +4,8 @@
   }
 
   input, select {
-    background: none repeat scroll 0 0 #fddbdc !important;
-    border-color: #f34d4f !important;
+    background: none repeat scroll 0 0 $light-pitch !important;
+    border-color: $alert-color !important;
   }
 
   textarea {

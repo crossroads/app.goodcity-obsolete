@@ -10,7 +10,7 @@
   padding: 0 0.4rem;
 
   &.alt {
-    background: #dee4eb;
+    background: $light-grey;
   }
 }
 
@@ -39,19 +39,19 @@ h2 {
 
   a {
   font-size: rem-calc(15);
-  color: #a3aab6 !important;
+  color: $medium-blue !important;
   text-decoration: underline;
   }
 }
 
 a {
-  color: #fff !important;
+  color: $white !important;
 }
 
 hr {
   height: 0;
   border: 0;
-  border-bottom: 1px solid #334f75;
+  border-bottom: 1px solid $light-blue;
   margin-left: rem-calc(-15);
   margin-right: rem-calc(-15);
   margin-top: rem-calc(15) !important;
@@ -65,7 +65,7 @@ hr {
 /* === Tab Bar === */
 
 .tab-bar {
-  border-bottom: 1px solid #334f75;
+  border-bottom: 1px solid $light-blue;
   margin-bottom: rem-calc(25);
 }
 
@@ -75,7 +75,7 @@ hr {
 }
 
 .back {
-  color: #a3aab6 !important;
+  color: $medium-blue !important;
   font-size: rem-calc(14);
   display: block;
   margin-left: rem-calc(15);
@@ -98,7 +98,7 @@ hr {
 }
 
 .top-bar-link {
-  color: #a3aab6 !important;
+  color: $medium-blue !important;
   font-size: rem-calc(14);
   display: block;
   margin-right: rem-calc(15);
@@ -123,11 +123,11 @@ hr {
 */
 
 ul.off-canvas-list li label {
-  border-bottom: 1px solid #3d4959;
+  border-bottom: 1px solid $dust-black;
 }
 
 ul.off-canvas-list li a:hover  {
-  background: #2b384a !important;
+  background: $dust-blue !important;
 }
 
 .off-canvas-list {
@@ -149,7 +149,7 @@ ul.off-canvas-list li a:hover  {
 /* ERROR BELOW THIS */
 
 .note {
-  background: #1a3964;
+  background: $mid-blue;
   padding: rem-calc(8 15);
   margin-bottom: rem-calc(40);
 }
@@ -168,7 +168,7 @@ ul.off-canvas-list li a:hover  {
 }
 
 .icon-bar .fa {
-  color: #536785;
+  color: $smokey-blue;
 }
 
 .above-icon-bar {
@@ -195,7 +195,7 @@ ul.off-canvas-list li a:hover  {
 
 .no-items {
   font-size: 16px;
-  color: #a3aab6;
+  color: $body-font-color;
   text-align: center;
 }
 
@@ -245,7 +245,7 @@ ul.off-canvas-list li a:hover  {
   a {
     display: table;
     width: 100%;
-    color: #a3aab6 !important;
+    color: $body-font-color !important;
   }
 
   > li > a > span {
@@ -275,7 +275,7 @@ ul.off-canvas-list li a:hover  {
     margin-right: -15px;
 
     li {
-      border-bottom: 1px solid #1c3b65;
+      border-bottom: 1px solid $mid-blue;
       margin: 0 !important;
     }
 
@@ -303,11 +303,11 @@ ul.off-canvas-list li a:hover  {
   display: block;
   width: 15px;
   height: 15px;
-  color: #fff;
+  color: $white;
   text-transform: uppercase;
   text-align: center;
   border-radius: 50%;
-  background: #ee4c4e;
+  background: $bright-red;
   font-weight: bold;
   font-size: rem-calc(10);
   float: right;
@@ -322,7 +322,7 @@ ul.off-canvas-list li a:hover  {
   padding: 0;
   list-style: none;
   font-size: 16px;
-  color: #a3aab6;
+  color: $medium-blue;
 
   li {
     position: relative;
@@ -353,7 +353,7 @@ ul.off-canvas-list li a:hover  {
   list-style: none;
 
   li {
-    border-bottom: 1px solid #334f75;
+    border-bottom: 1px solid $light-blue;
     margin: rem-calc(0 -15);
     padding: rem-calc(5 15);
     @extend %clearfix;
@@ -365,7 +365,7 @@ ul.off-canvas-list li a:hover  {
 
   strong {
     font-size: rem-calc(14);
-    color: #fff;
+    color: $white;
     font-weight: normal;
   }
 }
@@ -398,12 +398,12 @@ ul.off-canvas-list li a:hover  {
     height: 10px;
     border-radius: 50%;
     display: block;
-    border: 1px solid #8091a9;
+    border: 1px solid $tabbar-menu-icon-color;
   }
 
   li.active a {
-    background: #f34d4f;
-    border-color: #f34d4f;
+    background: $slick-dot-color-active;
+    border-color: $slick-dot-color-active;
   }
 }
 
@@ -419,10 +419,10 @@ ul.off-canvas-list li a:hover  {
 
   a {
     text-decoration: underline;
-    color: #a3aab6;
+    color: $medium-blue;
   }
   .active a {
-    color: #fff;
+    color: $white;
   }
 }
 
@@ -440,7 +440,7 @@ ul.off-canvas-list li a:hover  {
   font-size: rem-calc(12) !important;
 
   a {
-    color: #a3aab6 !important;
+    color: $medium-blue !important;
     text-decoration: underline;
   }
 }
@@ -455,8 +455,8 @@ label input {
 }
 
 .error input {
-  border-color: #f34d4f !important;
-  background: #fddbdc !important
+  border-color: $slick-dot-color-active !important;
+  background: $light-pitch !important
 }
 
 .radio-buttons {
@@ -486,9 +486,9 @@ label input {
   font-weight: normal;
   margin: rem-calc(0 1) !important;
   padding: rem-calc(9 5);
-  color: #fff;
+  color: $white;
   /* font-size: rem-calc(15) !important; */
-  border: 1px solid #fff;
+  border: 1px solid $white;
   width: 100%;
   text-align: center;
 }
@@ -498,18 +498,18 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked + label  {
-  background: #f34d4f;
-  border: 1px solid #f34d4f;
+  background: $slick-dot-color-active;
+  border: 1px solid $slick-dot-color-active;
 }
 
 .styled-select {
   width: 100%;
   height: 36px;
   overflow: hidden;
-  border: 2px solid #bbd147;
-  color: #c2b8d0;
+  border: 2px solid $bright-green;
+  color: $light-purple;
   text-transform: uppercase;
-  background: #fff url(/assets/images/arrow.png) no-repeat 97%;
+  background: $white url(/assets/images/arrow.png) no-repeat 97%;
   font-size: rem-calc(21);
   font-family: 'museo_sans300';
 
@@ -525,7 +525,7 @@ select {
   line-height: 36px;
   height: 36px;
   -webkit-appearance: none;
-  color: #c2b8d0;
+  color: $light-purple;
   text-transform: uppercase;
 }
 

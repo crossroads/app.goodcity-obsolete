@@ -11,20 +11,20 @@
 }
 
 .is-submitted {
-  background-color: #FC8229;
+  background-color: $bright-orange;
 }
 
 .is-under-review, .is-scheduled, .is-rejected {
-  background-color: #f34d4f;
+  background-color: $alert-color;
 }
 
 .is-reviewed, .is-accepted {
-  background-color: #6EA94A;
+  background-color: $bar-green;
   a {
     text-decoration: underline;
   }
 }
 
 .status-message {
-  color: #FFF;
+  color: $white;
 }

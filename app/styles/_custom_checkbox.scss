@@ -1,5 +1,5 @@
 input[type="checkbox"] {
-  background: none repeat scroll 0 0 red;
+  background: none repeat scroll 0 0 $coral-red;
   color: red;
   visibility: hidden;
 }
@@ -23,7 +23,7 @@ input[type="checkbox"] {
     top: 0;
     left: 0;
     background: white;
-    border:1px solid #ccc; }
+    border:1px solid $iron; }
 }
 
 .checkbox label:after {

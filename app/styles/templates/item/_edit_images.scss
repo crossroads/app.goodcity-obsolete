@@ -11,8 +11,8 @@
     }
   }
   .disabled {
-    border-color: #BAB3B3 !important;
-    color: #BAB3B3 !important;
+    border-color: $org-grey !important;
+    color: $org-grey !important;
   }
   .fa-star {
     position: absolute;
@@ -27,7 +27,7 @@
   color: white;
   border: white 2px dashed;
   border-radius: 2px;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: $white-with-shadow;
   text-align: center;
   padding: 5px;
 }
@@ -46,7 +46,7 @@
 
 #main-image-controls {
   color: white;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: $black-with-shadow;
   position: absolute;
   bottom: 0;
   left: 0;

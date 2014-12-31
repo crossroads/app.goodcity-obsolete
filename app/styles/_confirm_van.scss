@@ -1,6 +1,6 @@
 .confirm-van{
   .delivery-details {
-    color: white;
+    color: $white;
     font-weight: 600;
   }
   .charges-details {
@@ -8,7 +8,7 @@
     .row {
       margin: -0.5rem; }
     .heading {
-      color: white; }
+      color: $white; }
   }
   .user-details {
     .confirm {
@@ -37,8 +37,8 @@
       padding-left: 2.8rem; }
   }
   input.error {
-    border-color: #f34d4f !important;
-    background: #fddbdc !important;
+    border-color: $slick-dot-color-active !important;
+    background: $light-pitch !important;
     margin-bottom: 1rem;
   }
 }
