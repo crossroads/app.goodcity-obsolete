@@ -29,9 +29,17 @@
   }
 
   .tabs dd.active a:after {
-    border-top-color: $light-blue;
+    border-color: rgba(136, 183, 213, 0);
+    border-top-color: $dark-blue ;
+    border-width: 8px;
+    margin-left: -8px;
   }
-
+  .tabs dd.active a:before {
+    border-color: rgba(255, 255, 255, 0);
+    border-top-color:$light-blue;
+    border-width: 10px;
+    margin-left: -10px;
+  }
   .tabs-content {
     background-color: inherit;
     padding-left: 0;
