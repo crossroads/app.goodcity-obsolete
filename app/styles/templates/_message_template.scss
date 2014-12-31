@@ -46,7 +46,7 @@
   display: block;
   width: 0;
   z-index: 1;
-  bottom: -0.5rem;
+  bottom: -0.4rem;
 }
 
 .received_message:after
@@ -59,4 +59,18 @@
 {
   @extend .message_arrow;
   right: 1.5rem;
+}
+
+.message-form {
+  button {
+    padding: 0.7rem;
+    border-radius: 0.2rem;
+    line-height: 0.8rem;
+    width: 5rem;
+
+    @media #{$small-only} {
+      font-size: 0.9rem;
+      width: 4rem;
+    }
+  }
 }
