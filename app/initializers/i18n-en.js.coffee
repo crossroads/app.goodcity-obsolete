@@ -174,8 +174,10 @@ I18nTranslationsEn =
         "offer_details" :
           "heading" : "Offer Details"
           "submitted_status": "Your offer is awaiting review."
-          "in_review_status": "Your offer is being reviewed by {{firstName}} {{lastName}}."
-          "scheduled_status": "Collection booked"
+          "in_review_status": "Your offer is being reviewed by {{firstName}}."
+          "is_collection": "Collection"
+          "is_drop_off": "Drop-off"
+          "is_gogovan": "Van Booked"
           "reviewed_message": "Review complete!"
           "please": "Please"
           "transport": "arrange transport"
