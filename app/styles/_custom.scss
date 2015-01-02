@@ -14,22 +14,6 @@ h2{
     font-size: 0.8rem !important; }
 }
 
-.message_box {
-  background-color: $white;
-  color: black;
-  width: 100%;
-  border-radius: 0.5rem;
-  padding: 0.8rem;
-  margin-bottom: 0.5rem;
-  font-size: 0.9rem;
-  .message_details {
-    font-size: 0.7rem; }
-  .item_message {
-    float: right;
-    margin-top: -5%;
-  }
-}
-
 .tabs-content {
   .message_box {
     background-color: $white;

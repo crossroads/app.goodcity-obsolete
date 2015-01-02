@@ -3,9 +3,8 @@ import ReadMessagesRoute from './../read_messages';
 export default ReadMessagesRoute.extend({
   staffRestricted: true,
 
-  controllerName: 'offer.messages',
   renderTemplate: function() {
-    this.render('message_template');
+    this.render('message_template', {controller: 'review_offer.messages'});
   },
 
   model: function() {

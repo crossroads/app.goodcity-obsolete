@@ -164,8 +164,10 @@ I18nTranslationsZhTw =
         "offer_details" :
           "heading" : "Offer Details"
           "submitted_status": "Your offer is awaiting review."
-          "in_review_status": "Your offer is being reviewed by {{lastName}} {{firstName}}."
-          "scheduled_status": "Collection booked"
+          "in_review_status": "Your offer is being reviewed by {{firstName}}."
+          "is_collection": "Collection"
+          "is_drop_off": "Drop-off"
+          "is_gogovan": "Van Booked"
           "reviewed_message": "Review complete!"
           "please": "Please"
           "transport": "arrange transport"
@@ -192,6 +194,12 @@ I18nTranslationsZhTw =
         "item_details" : "項詳情:"
         "donor_description": "說明: {{donorDescription}}"
         "condition": "條件: {{condition}}"
+        "cancel" : "Cancel Item"
+        "edit" : "Edit Item"
+        "submitted_status": "This item is awaiting review."
+        "in_review_status": "This item is being reviewed."
+        "accepted_status": "This item has been accepted."
+        "rejected_status": "This item has been rejected."
 
       "_resend":
         "no_sms" : "沒有收到短信代碼?"

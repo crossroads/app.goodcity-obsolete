@@ -174,8 +174,10 @@ I18nTranslationsEn =
         "offer_details" :
           "heading" : "Offer Details"
           "submitted_status": "Your offer is awaiting review."
-          "in_review_status": "Your offer is being reviewed by {{firstName}} {{lastName}}."
-          "scheduled_status": "Collection booked"
+          "in_review_status": "Your offer is being reviewed by {{firstName}}."
+          "is_collection": "Collection"
+          "is_drop_off": "Drop-off"
+          "is_gogovan": "Van Booked"
           "reviewed_message": "Review complete!"
           "please": "Please"
           "transport": "arrange transport"
@@ -209,6 +211,10 @@ I18nTranslationsEn =
         "condition": "Condition: {{condition}}"
         "cancel" : "Cancel Item"
         "edit" : "Edit Item"
+        "submitted_status": "This item is awaiting review."
+        "in_review_status": "This item is being reviewed."
+        "accepted_status": "This item has been accepted."
+        "rejected_status": "This item has been rejected."
 
       "_resend":
         "no_sms" : "Haven't received SMS code?"

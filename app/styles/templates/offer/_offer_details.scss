@@ -96,37 +96,6 @@
       }
     }
   }
-
-  .offer-status {
-    text-align: center;
-    margin-bottom: 1.2rem;
-    line-height: 1.8rem;
-
-    @media #{$small-only} {
-      line-height: 1.4rem;
-      margin-right: -0.5rem;
-      margin-left: -0.5rem;
-    }
-  }
-
-  .is-submitted {
-    background-color: $bright-orange;
-  }
-
-  .is-under-review, .is-scheduled {
-    background-color: $alert-color;
-  }
-
-  .is-reviewed {
-    background-color: $bar-green;
-    a {
-      text-decoration: underline;
-    }
-  }
-
-  .status-message {
-    color: $white;
-  }
 }
 
 .offer_details_title {

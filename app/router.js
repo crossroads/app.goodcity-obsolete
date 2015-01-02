@@ -42,6 +42,7 @@ Router.map(function() {
         this.route('index', { path: '/'});
         this.route('edit');
         this.route('edit_images');
+        this.route('messages');
       });
 
       this.resource('review_offer', function(){

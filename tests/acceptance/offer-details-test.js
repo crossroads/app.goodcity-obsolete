@@ -69,3 +69,25 @@ test("ordering of message threads", function() {
     equal(offer_message_thread.indexOf("General Messages") > 0, true);
   });
 });
+
+test("visit items message threads", function() {
+  visit('/offers/' + offer.id + "/offer_details");
+  andThen(function() {
+    // latest item message thread
+    click(".list li:eq(0) a");
+    andThen(function() {
+      equal(currentURL(), "/offers/" + offer.id + "/items/3/messages");
+    });
+  });
+});
+
+test("visit offer message threads", function() {
+  visit('/offers/' + offer.id + "/offer_details");
+  andThen(function() {
+    //offer message thread
+    click(".list li:eq(1) a");
+    andThen(function() {
+      equal(currentURL(), "/offers/" + offer.id + "/messages");
+    });
+  });
+});

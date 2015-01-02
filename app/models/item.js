@@ -28,6 +28,14 @@ export default DS.Model.extend({
   isAccepted: Ember.computed.equal("state", "accepted"),
   isRejected: Ember.computed.equal("state", "rejected"),
 
+  isSubmitted: function(){
+    return this.get('state') === 'submitted' && this.get('offer.state') === 'submitted';
+  }.property('this'),
+
+  isUnderReview: function(){
+    return this.get('state') === 'submitted' && this.get('offer.state') === 'under_review';
+  }.property('this'),
+
   displayImage: function() {
     return this.get("images").filterBy("favourite").get("firstObject") ||
       this.get("images").sortBy("id").get("firstObject") || null;

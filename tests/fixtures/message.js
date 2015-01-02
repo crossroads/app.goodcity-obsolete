@@ -4,7 +4,7 @@ FactoryGuy.define('message', {
     item: FactoryGuy.belongsTo("item"),
     sender: FactoryGuy.belongsTo("user"),
     state: 'unread',
-    isPrivate: "false",
+    isPrivate: false,
     body: "Message Example Test"
   }
 });
