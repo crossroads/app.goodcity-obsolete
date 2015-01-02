@@ -11,8 +11,10 @@ export default Ember.View.extend({
   animateNotification: function(){
     clearTimeout(this.get('timeoutId'));
     var box = Ember.$('.notification_box').hide();
-    box.slideDown();
-    var id = window.setTimeout(function() { box.slideUp(); }, 6000);
-    this.set('timeoutId', id);
+    if (this.get('controller.mostRecent')) {
+      box.slideDown();
+      var id = window.setTimeout(function() { box.slideUp(); }, 6000);
+      this.set('timeoutId', id);
+    }
   }
 });
