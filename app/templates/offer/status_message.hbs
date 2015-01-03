@@ -5,7 +5,8 @@
     {{/if}}
 
     {{#if isUnderReview}}
-      {{t 'offer.offer_details.in_review_status' firstNameBinding=model.reviewedBy.firstName}}
+      <span class="no-avatar">{{model.reviewedBy.nameInitial}}</span>
+      <span>{{t 'offer.offer_details.in_review_status' firstNameBinding=model.reviewedBy.firstName}}</span>
     {{/if}}
 
     {{#if isReviewed}}
