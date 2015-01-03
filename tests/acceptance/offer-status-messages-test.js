@@ -49,7 +49,11 @@ test("Display offer status for offer under review", function() {
 
   andThen(function() {
     equal(currentURL(), "/offers/" + offer2.id + "/offer_details");
-    equal($.trim(find('.status-message').text()), "Your offer is being reviewed by "+ reviewerName +".");
+
+    // message detail
+    var status = $.trim(find('.status-message').text());
+    equal(status.indexOf("Your offer is being reviewed by "+ reviewerName +".") > 0, true);
+    equal(status.indexOf(reviewer.get('nameInitial')) >= 0, true);
   });
 });
 
