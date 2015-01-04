@@ -51,7 +51,7 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
     },
 
     notification: function(data) {
-      data.date = new Date(data.date);
+      data.date = new Date(JSON.parse(data).date);
       this.get("controllers.notifications").pushObject(data);
     }
   }
