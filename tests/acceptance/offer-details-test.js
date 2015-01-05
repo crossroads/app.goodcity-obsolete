@@ -15,10 +15,10 @@ module('Display Offer Details', {
 
     reviewer = store.makeFixture("user");
     offer = store.makeFixture("offer", {state:"under_review", reviewedBy: reviewer});
+    message1 = store.makeFixture("message", {sender: reviewer, offer: offer, item: null});
     item1 = store.makeFixture("item", {state:"accepted", offer: offer});
     item2 = store.makeFixture("item", {state:"rejected", offer: offer});
     item3 = store.makeFixture("item", {state:"submitted", offer: offer});
-    message1 = store.makeFixture("message", {sender: reviewer, offer: offer, item: null});
     message2 = store.makeFixture("message", {sender: reviewer, offer: offer, item: item3});
   },
 

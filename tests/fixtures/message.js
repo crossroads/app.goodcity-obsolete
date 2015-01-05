@@ -5,7 +5,8 @@ FactoryGuy.define('message', {
     sender: FactoryGuy.belongsTo("user"),
     state: 'unread',
     isPrivate: false,
-    body: "Message Example Test"
+    body: "Message Example Test",
+    createdAt: new Date(),
   }
 });
 
