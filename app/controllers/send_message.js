@@ -42,6 +42,7 @@ var sendMessage = Ember.ArrayController.extend({
       message.save();
 
       this.set('body', '');
+      Ember.$("body").animate({ scrollTop: Ember.$(document).height() }, 1000);
     }
   }
 
