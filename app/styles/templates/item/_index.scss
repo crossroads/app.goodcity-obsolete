@@ -1,7 +1,6 @@
 .item-details {
-  .seperator {
-    border-bottom: 1px solid;
-  }
+  border-bottom: 1px solid $light-blue;
+  margin-bottom: 1rem;
 
   .ellipsis {
     margin-bottom: 0;
@@ -26,8 +25,4 @@
   &.tab-bar {
     margin-bottom: 0;
   }
-}
-
-.seperator {
-  color: #334f75;
 }
