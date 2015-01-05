@@ -49,7 +49,7 @@ export default DS.Model.extend({
 
   // unread messages
   unreadMessages: function() {
-    return this.get('messages').filterBy('state', 'unread').sortBy('id');
+    return this.get('messages').filterBy('state', 'unread').sortBy('createdAt');
   }.property('messages.@each.state'),
 
   unreadMessagesCount: function() {
@@ -59,6 +59,6 @@ export default DS.Model.extend({
 
   // last message
   lastMessage: function() {
-    return this.get('messages').sortBy('id').get('lastObject');
-  }.property('messages'),
+    return this.get('messages').sortBy('createdAt').get('lastObject');
+  }.property('messages.@each'),
 });

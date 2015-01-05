@@ -92,7 +92,7 @@ export default DS.Model.extend({
 
   // unread offer-messages
   unreadOfferMessages: function(){
-    return this.get('messages').filterBy('state', 'unread').filterBy('item', null).sortBy('id');
+    return this.get('messages').filterBy('state', 'unread').filterBy('item', null).sortBy('createdAt');
   }.property('messages.@each.state'),
 
   unreadOfferMessagesCount: function(){
@@ -102,7 +102,7 @@ export default DS.Model.extend({
 
   // recent offer message
   lastMessage: function() {
-    var messages = this.get('messages').filterBy('item', null).sortBy('id');
+    var messages = this.get('messages').filterBy('item', null).sortBy('createdAt');
     return messages.get('length') > 0 ? messages.get('lastObject') : null;
-  }.property('messages'),
+  }.property('messages.@each'),
 });
