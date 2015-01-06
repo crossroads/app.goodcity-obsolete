@@ -10,11 +10,13 @@ export default Ember.View.extend({
   },
 
   checked: function() {
-    if(Ember.$.trim(this.labelText).length > '0'){
-      return true;
-    } else {
-      return this.get("value") === this.get("selection");
+
+    // This block added for setting selection of reject item options.
+    if(Ember.$.trim(this.labelText).length > '0' && this.get('selection.isController')){
+      this.set("selection", '-1');
     }
+
+    return this.get("value") === this.get("selection");
   }.property('selection'),
 
 });
