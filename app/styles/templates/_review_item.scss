@@ -1,0 +1,106 @@
+.review_item {
+  // .btm{
+  //   width: 100%;
+  //   position: absolute;
+  //   text-align:center;
+  //   // .message-textbar {
+  //   //   border: solid 2px red;
+  //   //   display: inline-block;
+  //   //   zoom: 1;
+  //   //   width: 97%;
+  //   //   left: 2.9%;
+  //   //   // left: 20%;
+  //   //   // @media #{$small-only} {width: 20rem;}
+  //   //   // @media #{$medium-only} { width: 63rem;}
+  //   //   // @media #{$large-only} { width: 42.8rem;}
+  //   // }
+  // }
+  .msg-form{
+    margin-left:-1rem;
+    z-index: 10;
+    background: $light-grey;
+    // padding: 1rem;
+
+    // @media #{$small-only} {
+    //   width: 96%;
+    //   border: solid 2px red;
+    // }
+    // @media #{$medium-only} {
+    //   width: 76.4%;
+    //   border: solid 2px yellow;
+    // }
+    // @media #{$large-only} {
+    //   width: 61%;
+    //   border: solid 2px orange;
+    // }
+  }
+  .tabs-content {
+    background-color: $light-grey;
+    color: inherit;
+    width: 100%;
+
+    .btm{
+      width: 100%;
+      position: absolute;
+      text-align:center;
+     .message-textbar {
+          border: solid 2px red;
+          display: inline-block;
+          zoom: 1;
+          width: 97%;
+          left: 2.6%;
+          @media #{$medium-only} {
+            width: 79.7%;
+            left: 10.8%;
+            border: solid 2px green;
+          }
+          @media #{$large-only} {
+            width: 60.5%;
+            left: 20.2%;
+            border: solid 2px blue;
+          }
+          // left: 20%;
+          // @media #{$small-only} {width: 20rem;}
+          // @media #{$medium-only} { width: 63rem;}
+          // @media #{$large-only} { width: 42.8rem;}
+      }
+    }
+    // .btm {
+    //   // .message-textbar{
+    //   //   margin-left: -1rem;
+    //   //   @media #{$small-only} {
+    //   //     width: 94%;
+    //   //     border: solid 2px red;
+    //   //   }
+    //   //   @media #{$medium-up} {
+    //   //     width: 80%;
+    //   //     border: solid 2px blue;
+    //   //   }
+    //   //   @media #{$medium-only} {
+    //   //     width: 79%;
+    //   //     border: solid 2px green;
+    //   //   }
+    //   //   @media #{$large-only} {
+    //   //     width: 73%;
+    //   //     border: solid 2px orange;
+    //   //   }
+    //   //   @media #{$xlarge-only} {
+    //   //     width: 60%;
+    //   //     border: solid 2px yellow;
+    //   //   }
+    //   //   @media #{$xxlarge-only} {
+    //   //     width: 60%;
+    //   //     border: solid 2px black;
+    //   //   }
+    //   // }
+    // }
+
+  }
+  .row-grey {
+    height: 100%;
+    background: $light-grey;
+    .tabs {
+      background: $dark-blue;
+    }
+  }
+}
