@@ -14,9 +14,9 @@ export default Ember.ObjectController.extend({
     if(arguments.length > 1) {
       return value;
     } else {
-      if(this.get('rejectionReason.id')) {
-        return this.get('rejectionReason.id');
-      } else {
+      var reasonId = this.get('rejectionReason.id');
+      if(reasonId) { return reasonId; }
+      else {
         if(this.get("rejectReason") && this.get("rejectReason").length > 0) {
           return this.set("selectedId", "-1");
         } else {
@@ -24,7 +24,11 @@ export default Ember.ObjectController.extend({
         }
       }
     }
-  }.property('rejectionReason.id', 'rejectReason'),
+  }.property('rejectionReason.id'),
+
+  setCustomReason: function(){
+    this.set("selectedId", "-1");
+  }.observes('model.rejectReason'),
 
   rejectionOptions: function() {
     return this.store.all('rejection_reason').sortBy('id');
@@ -39,7 +43,9 @@ export default Ember.ObjectController.extend({
         this.set("isBlank", true);
         return false; }
 
-      if(selectedReason !== "-1") { rejectProperties.rejectReason = null; }
+      if(selectedReason !== "-1") {
+        rejectProperties.rejectReason = null;
+        this.set('rejectReason', null); }
 
       var loadingView = this.container.lookup('view:loading').append();
       rejectProperties.rejectionReason = this.store.getById('rejection_reason', selectedReason);
