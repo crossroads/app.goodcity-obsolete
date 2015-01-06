@@ -12,7 +12,7 @@ export default Ember.Component.extend({
   "data-url": config.APP.CLOUD_URL,
   disabled: true,
   attributeBindings: [ "name", "type", "value", "data-cloudinary-field",
-    "data-url", "data-form-data", "disabled", "style"],
+    "data-url", "data-form-data", "disabled", "style", "accept"],
   events: ["submit","progress","always","fail","done"],
 
   didInsertElement: function() {
