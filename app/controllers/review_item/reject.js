@@ -27,7 +27,9 @@ export default Ember.ObjectController.extend({
   }.property('rejectionReason.id'),
 
   setCustomReason: function(){
-    this.set("selectedId", "-1");
+    if(this.get("rejectReason") && this.get("rejectReason").length > 0) {
+      this.set("selectedId", "-1");
+    }
   }.observes('model.rejectReason'),
 
   rejectionOptions: function() {
