@@ -10,7 +10,7 @@ var App,
     territory,
     district;
 
-var TestHelper = Ember.Object.createWithMixins(FactoryGuy.testMixin);
+var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
 
 module('Acceptance: Register', {
   setup: function() {

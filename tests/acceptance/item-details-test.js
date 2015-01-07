@@ -2,20 +2,19 @@ import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import syncDataStub from '../helpers/empty-sync-data-stub';
 
-var TestHelper = Ember.Object.createWithMixins(FactoryGuy.testMixin);
-var App, testHelper, store, offer1, reviewer, item1, message1;
+var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
+var App, testHelper, offer1, reviewer, item1, message1;
 
 module('Display Item Details', {
   setup: function() {
     App = startApp();
     testHelper = TestHelper.setup(App);
-    store = testHelper.getStore();
     syncDataStub(testHelper);
 
-    reviewer = store.makeFixture("user");
-    offer1 = store.makeFixture("offer", {state:"under_review", reviewedBy: reviewer});
-    item1 = store.makeFixture("item", {state:"submitted", offer: offer1, donorDescription: "Test Item Description"});
-    message1 = store.makeFixture("message", {sender: reviewer, offer: offer1, item: item1, state: "read"});
+    reviewer = FactoryGuy.make("user");
+    offer1 = FactoryGuy.make("offer", {state:"under_review", reviewedBy: reviewer});
+    item1 = FactoryGuy.make("item", {state:"submitted", offer: offer1, donorDescription: "Test Item Description"});
+    message1 = FactoryGuy.make("message", {sender: reviewer, offer: offer1, item: item1, state: "read"});
   },
 
   teardown: function() {

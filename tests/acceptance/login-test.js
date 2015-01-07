@@ -5,7 +5,7 @@ import '../fixtures/user_profile';
 
 var App, testHelper, hk_user, non_hk_user;
 
-var TestHelper = Ember.Object.createWithMixins(FactoryGuy.testMixin);
+var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
 
 module('Acceptance: Login', {
   setup: function() {

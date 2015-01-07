@@ -40,7 +40,7 @@ var PackageComponentMixin = Ember.Mixin.create({
     },
 
     renderViews: function(){
-      // var packages = this.get("allPackages.content");
+      // var packages = this.get("allPackages").toArray();
       var subItemtypes = this.get('subItemTypes');
       var l=0;
 

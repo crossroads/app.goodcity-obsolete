@@ -16,11 +16,11 @@ var packages = Ember.ArrayController.extend(PackageComponentMixin, {
 
   noSubItemType: function() {
     return this.get('subItemTypes.length') === 0;
-  }.property('subItemTypes.@each', 'itemId'),
+  }.property('subItemTypes.[]', 'itemId'),
 
   noPackages: function(){
     return this.get('allPackages.length') === 0;
-  }.property('packages.@each', 'itemId'),
+  }.property('packages.[]', 'itemId'),
 
   packagetypeid: function(){
     if(this.get("noPackages")) {
@@ -31,7 +31,7 @@ var packages = Ember.ArrayController.extend(PackageComponentMixin, {
   allPackages: function(){
     var item = this.store.getById('item', this.get('itemId'));
     return item.get('packages');
-  }.property('packages.@each', 'itemId'),
+  }.property('packages.[]', 'itemId'),
 
   actions: {
     removePackageType: function(packageobj) {
@@ -92,7 +92,7 @@ var packages = Ember.ArrayController.extend(PackageComponentMixin, {
     savePackageType: function(packageDetails){
       var ths = this;
       var packagePromises = [];
-      var packages = ths.get("allPackages.content");
+      var packages = ths.get("allPackages").toArray();
 
       if(ths.get("isItemTypeChanged") && packages.length > 0) {
         ths.store.find('package', {item: ths.get("itemId")}).then(function(pkgs) {

@@ -60,5 +60,5 @@ export default DS.Model.extend({
   // last message
   lastMessage: function() {
     return this.get('messages').sortBy('createdAt').get('lastObject');
-  }.property('messages.@each'),
+  }.property('messages.[]'),
 });
