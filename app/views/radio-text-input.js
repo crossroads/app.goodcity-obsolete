@@ -7,7 +7,6 @@ export default Ember.TextField.extend({
   attributeBindings: [ "name", "type", "id", "value", 'pattern'],
 
   focusIn: function() {
-    console.log(this.get('controller'));
     this.get('parentView.controller').send('setRejectOption');
   }
 });
