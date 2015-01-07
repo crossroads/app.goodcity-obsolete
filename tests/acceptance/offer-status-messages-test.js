@@ -2,31 +2,30 @@ import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import syncDataStub from '../helpers/empty-sync-data-stub';
 
-var TestHelper = Ember.Object.createWithMixins(FactoryGuy.testMixin);
-var App, testHelper, store, offer1, offer2, reviewer, reviewerName,
+var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
+var App, testHelper, offer1, offer2, reviewer, reviewerName,
   offer3, offer4, delivery1, delivery2, offer5, delivery3, offer6;
 
 module('Display Offer Status', {
   setup: function() {
     App = startApp();
     testHelper = TestHelper.setup(App);
-    store = testHelper.getStore();
     syncDataStub(testHelper);
 
-    reviewer = store.makeFixture("user");
-    offer1 = store.makeFixture("offer", {state:"submitted"});
-    offer2 = store.makeFixture("offer", {state:"under_review", reviewedBy: reviewer});
+    reviewer = FactoryGuy.make("user");
+    offer1 = FactoryGuy.make("offer", {state:"submitted"});
+    offer2 = FactoryGuy.make("offer", {state:"under_review", reviewedBy: reviewer});
     reviewerName = reviewer.get("firstName");
-    offer3 = store.makeFixture("offer", {state:"reviewed"});
+    offer3 = FactoryGuy.make("offer", {state:"reviewed"});
 
-    delivery1 = store.makeFixture('delivery', {deliveryType: "Alternate"});
-    offer4 = store.makeFixture("offer", {state:"scheduled", delivery: delivery1});
+    delivery1 = FactoryGuy.make('delivery', {deliveryType: "Alternate"});
+    offer4 = FactoryGuy.make("offer", {state:"scheduled", delivery: delivery1});
 
-    delivery2 = store.makeFixture('delivery', {deliveryType: "Gogovan"});
-    offer5 = store.makeFixture("offer", {state:"scheduled", delivery: delivery2});
+    delivery2 = FactoryGuy.make('delivery', {deliveryType: "Gogovan"});
+    offer5 = FactoryGuy.make("offer", {state:"scheduled", delivery: delivery2});
 
-    delivery3 = store.makeFixture('delivery', {deliveryType: "Drop Off"});
-    offer6 = store.makeFixture("offer", {state:"scheduled", delivery: delivery3});
+    delivery3 = FactoryGuy.make('delivery', {deliveryType: "Drop Off"});
+    offer6 = FactoryGuy.make("offer", {state:"scheduled", delivery: delivery3});
   },
 
   teardown: function() {
