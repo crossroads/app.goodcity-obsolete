@@ -37,6 +37,10 @@ export default Ember.ObjectController.extend({
   }.property(),
 
   actions: {
+    setRejectOption: function(){
+      this.set("selectedId", "-1");
+    },
+
     rejectOffer: function(){
       var selectedReason = this.get('selectedId');
       var rejectProperties = this.getProperties('rejectReason', 'rejectionComments');
