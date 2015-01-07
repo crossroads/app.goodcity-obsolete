@@ -1,0 +1,38 @@
+<div class="tabs-content item-content">
+  <ul class="list list-offer-items">
+
+    {{#each item in sortedItems}}
+      <li>
+        {{#if item.isOffer}}
+          {{partial 'offer/recent_offer_message'}}
+        {{else}}
+          {{#if controller.staffPage}}
+            {{#if item.isAccepted}}
+              {{#link-to 'review_item.accept' item}}
+                {{partial 'offer/recent_item_message'}}
+              {{/link-to}}
+            {{/if}}
+
+            {{#if item.isRejected}}
+              {{#link-to 'review_item.reject' item}}
+                {{partial 'offer/recent_item_message'}}
+              {{/link-to}}
+            {{/if}}
+
+            {{#if item.isUnderReview}}
+              {{#link-to 'review_item' item}}
+                {{partial 'offer/recent_item_message'}}
+              {{/link-to}}
+            {{/if}}
+
+          {{else}}
+            {{#link-to 'item.messages' item}}
+              {{partial 'offer/recent_item_message'}}
+            {{/link-to}}
+          {{/if}}
+
+        {{/if}}
+      </li>
+    {{/each}}
+  </ul>
+</div>

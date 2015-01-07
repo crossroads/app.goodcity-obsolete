@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.ObjectController.extend({
+var offerDetails = Ember.ObjectController.extend({
 
   sortProperties: ["lastMessage.createdAt:desc"],
   sortedItems: Ember.computed.sort("offerWithItems", "sortProperties"),
@@ -12,3 +12,5 @@ export default Ember.ObjectController.extend({
   }.property('model', 'items.@each.lastMessage'),
 
 });
+
+export default offerDetails;

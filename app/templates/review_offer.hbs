@@ -15,10 +15,9 @@
     <h1 class="title">Review Offer</h1>
   </section>
 </nav>
-<section class="main-section review_offer">
+<section class="main-section review_offer offer_details">
   <div class="row">
-
-    <div class="row row-grey">
+    <div class="small-12 columns">
       <dl class="tabs" data-tab>
 
         {{#link-to 'review_offer.items' tagName="dd" classNames="small-4 columns text-center"}}
@@ -43,10 +42,9 @@
         {{/link-to}}
 
       </dl>
-      <div class="tabs-content">
-        <br/>
-        {{outlet}}
-      </div>
+
+      {{outlet}}
+
     </div>
   </div>
 </section>
