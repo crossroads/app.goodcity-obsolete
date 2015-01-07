@@ -2,24 +2,23 @@ import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import syncDataStub from '../helpers/empty-sync-data-stub';
 
-var TestHelper = Ember.Object.createWithMixins(FactoryGuy.testMixin);
-var App, testHelper, store, offer, reviewer, item1, item2, item3,
+var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
+var App, testHelper, offer, reviewer, item1, item2, item3,
   message1, message2;
 
 module('Display Offer Details', {
   setup: function() {
     App = startApp();
     testHelper = TestHelper.setup(App);
-    store = testHelper.getStore();
     syncDataStub(testHelper);
 
-    reviewer = store.makeFixture("user");
-    offer = store.makeFixture("offer", {state:"under_review", reviewedBy: reviewer});
-    message1 = store.makeFixture("message", {sender: reviewer, offer: offer, item: null});
-    item1 = store.makeFixture("item", {state:"accepted", offer: offer});
-    item2 = store.makeFixture("item", {state:"rejected", offer: offer});
-    item3 = store.makeFixture("item", {state:"submitted", offer: offer});
-    message2 = store.makeFixture("message", {sender: reviewer, offer: offer, item: item3});
+    reviewer = FactoryGuy.make("user");
+    offer = FactoryGuy.make("offer", {state:"under_review", reviewedBy: reviewer});
+    message1 = FactoryGuy.make("message", {sender: reviewer, offer: offer, item: null});
+    item1 = FactoryGuy.make("item", {state:"accepted", offer: offer});
+    item2 = FactoryGuy.make("item", {state:"rejected", offer: offer});
+    item3 = FactoryGuy.make("item", {state:"submitted", offer: offer});
+    message2 = FactoryGuy.make("message", {sender: reviewer, offer: offer, item: item3});
   },
 
   teardown: function() {
