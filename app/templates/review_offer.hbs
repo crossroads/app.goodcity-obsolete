@@ -1,4 +1,4 @@
-<nav class="tab-bar">
+<nav {{bind-attr class=":tab-bar offer.isSubmitted:offer_details_title offer.isUnderReview:offer_details_title"}} >
   <section class="left-small">
     {{#if isSubmittedOffer}}
       {{#link-to 'inbox' classNames="back"}}{{t "back"}}{{/link-to}}
@@ -15,7 +15,10 @@
     <h1 class="title">Review Offer</h1>
   </section>
 </nav>
+
 <section class="main-section review_offer offer_details">
+  {{partial 'review_offer/offer_review_status_bar'}}
+
   <div class="row">
     <div class="small-12 columns">
       <dl class="tabs" data-tab>
@@ -27,8 +30,8 @@
           {{/link-to}}
         {{/link-to}}
 
-        {{#link-to 'review_offer.messages' tagName="dd" classNames="small-4 columns text-center"}}
-          {{#link-to 'review_offer.messages'}}
+        {{#link-to 'review_offer.donor_details' tagName="dd" classNames="small-4 columns text-center"}}
+          {{#link-to 'review_offer.donor_details'}}
             <i class="fa fa-user fa-2x"></i>
             <div>Donor</div>
           {{/link-to}}
@@ -44,7 +47,6 @@
       </dl>
 
       {{outlet}}
-
     </div>
   </div>
 </section>

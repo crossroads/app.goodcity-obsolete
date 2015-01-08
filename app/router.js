@@ -50,6 +50,7 @@ Router.map(function() {
         this.route('messages');
         this.route('supervisor_messages');
         this.route('logistics');
+        this.route('donor_details');
       });
 
       this.resource('review_item', {path: '/review_item/:item_id'},function() {
