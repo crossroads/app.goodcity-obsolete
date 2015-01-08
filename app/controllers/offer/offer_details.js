@@ -6,9 +6,9 @@ export default Ember.ObjectController.extend({
   sortedItems: Ember.computed.sort("offerWithItems", "sortProperties"),
 
   offerWithItems: function() {
-    var elements = this.get('items').toArray();
+    var elements = this.get('items.content');
     elements.push(this);
     return elements.uniq();
-  }.property('model', 'items.@each.lastMessage'),
+  }.property('model', 'items.@each', 'items.@each.messages.@each', 'messages.@each'),
 
 });

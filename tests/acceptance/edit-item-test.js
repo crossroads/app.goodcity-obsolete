@@ -2,18 +2,19 @@ import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import syncDataStub from '../helpers/empty-sync-data-stub';
 
-var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
-var App, testHelper, offer, item;
+var TestHelper = Ember.Object.createWithMixins(FactoryGuy.testMixin);
+var App, testHelper, store, offer, item;
 
 module('Edit Item', {
   setup: function() {
     App = startApp();
     testHelper = TestHelper.setup(App);
+    store = testHelper.getStore();
     syncDataStub(testHelper);
 
-    offer = FactoryGuy.make("offer");
-    item = FactoryGuy.make("item",{offer:offer});
-    FactoryGuy.makeList("donor_condition", 2);
+    offer = store.makeFixture("offer");
+    item = store.makeFixture("item",{offer:offer});
+    store.makeList("donor_condition", 2);
   },
 
   teardown: function() {

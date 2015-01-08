@@ -2,7 +2,7 @@ import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import syncDataStub from '../helpers/empty-sync-data-stub';
 
-var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
+var TestHelper = Ember.Object.createWithMixins(FactoryGuy.testMixin);
 var App, testHelper, store, offer1, offer2, item2, item1, item3, item4;
 
 module('Display Item Status', {
@@ -12,13 +12,13 @@ module('Display Item Status', {
     store = testHelper.getStore();
     syncDataStub(testHelper);
 
-    offer1 = FactoryGuy.make("offer", {state:"submitted"});
-    item1 = FactoryGuy.make("item", {offer: offer1, state:"submitted"});
+    offer1 = store.makeFixture("offer", {state:"submitted"});
+    item1 = store.makeFixture("item", {offer: offer1, state:"submitted"});
 
-    offer2 = FactoryGuy.make("offer", {state:"under_review"});
-    item2 = FactoryGuy.make("item", {offer: offer2, state:"submitted"});
-    item3 = FactoryGuy.make("item", {offer: offer2, state:"accepted"});
-    item4 = FactoryGuy.make("item", {offer: offer2, state:"rejected"});
+    offer2 = store.makeFixture("offer", {state:"under_review"});
+    item2 = store.makeFixture("item", {offer: offer2, state:"submitted"});
+    item3 = store.makeFixture("item", {offer: offer2, state:"accepted"});
+    item4 = store.makeFixture("item", {offer: offer2, state:"rejected"});
   },
 
   teardown: function() {

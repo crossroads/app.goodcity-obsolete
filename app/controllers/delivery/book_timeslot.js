@@ -15,7 +15,7 @@ export default Ember.ArrayController.extend({
       var offerId = _this.get('controllers.offer').get('id');
 
       bookedSchedule.save().then(function(schedule) {
-        var delivery = _this.store.push('delivery', {
+        var delivery = _this.store.update('delivery', {
             id: deliveryId,
             schedule: schedule,
             offer: offerId

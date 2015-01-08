@@ -2,7 +2,7 @@ import Ember from 'ember';
 import startApp from '../helpers/start-app';
 import syncDataStub from '../helpers/empty-sync-data-stub';
 
-var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
+var TestHelper = Ember.Object.createWithMixins(FactoryGuy.testMixin);
 var App, testHelper, store, offer, item1, item2, image;
 
 module('Display Offer', {
@@ -12,10 +12,10 @@ module('Display Offer', {
     store = testHelper.getStore();
     syncDataStub(testHelper);
 
-    offer = FactoryGuy.make("offer");
-    item1 = FactoryGuy.make("item", {offer:offer,state:"submitted"});
-    item2 = FactoryGuy.make("item", {offer:offer,state:"submitted"});
-    image = FactoryGuy.make("image", {item:item1,favourite:true});
+    offer = store.makeFixture("offer");
+    item1 = store.makeFixture("item", {offer:offer,state:"submitted"});
+    item2 = store.makeFixture("item", {offer:offer,state:"submitted"});
+    image = store.makeFixture("image", {item:item1,favourite:true});
   },
 
   teardown: function() {
@@ -75,7 +75,7 @@ test("Confirm and Submit Offer", function(){
 });
 
 test("Cancel Offer - redirect to offers", function() {
-  FactoryGuy.makeList("offer", 2);
+  store.makeList("offer", 2);
   visit("/offers/" + offer.id);
   click("a:contains('Cancel Offer')");
   andThen(function() {

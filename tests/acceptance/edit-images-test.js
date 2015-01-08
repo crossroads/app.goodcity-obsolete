@@ -4,14 +4,15 @@ import syncDataStub from '../helpers/empty-sync-data-stub';
 import '../fixtures/item';
 import '../fixtures/image';
 
-var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
-var App, testHelper;
+var TestHelper = Ember.Object.createWithMixins(FactoryGuy.testMixin);
+var App, testHelper, store;
 var offer, item, img1, img2, edit_images_url;
 
 module('Edit Images', {
   setup: function() {
     App = startApp();
     testHelper = TestHelper.setup(App);
+    store = testHelper.getStore();
     syncDataStub(testHelper);
 
     $.mockjax({url:"/api/v1/images/generate_signatur*",responseText:{
@@ -21,10 +22,10 @@ module('Edit Images', {
       "timestamp": 1407854176
     }});
 
-    offer = FactoryGuy.make("offer");
-    item = FactoryGuy.make("item",{offer:offer});
-    img1 = FactoryGuy.make("image", {item:item,favourite:true});
-    img2 = FactoryGuy.make("image", {item:item,favourite:false});
+    offer = store.makeFixture("offer");
+    item = store.makeFixture("item",{offer:offer});
+    img1 = store.makeFixture("image", {item:item,favourite:true});
+    img2 = store.makeFixture("image", {item:item,favourite:false});
     edit_images_url = "/offers/" + offer.id + "/items/" + item.id + "/edit_images";
   },
 
@@ -102,7 +103,7 @@ test("Change favourite image", function() {
 test("Can't proceed if no images", function() {
   expect(2);
 
-  item = FactoryGuy.make("item",{offer:offer});
+  item = store.makeFixture("item",{offer:offer});
   edit_images_url = "/offers/" + offer.id + "/items/" + item.id + "/edit_images";
 
   visit(edit_images_url);
@@ -142,8 +143,8 @@ test("Set another image as favourite if favourite image deleted", function() {
 test("Can't delete last image", function() {
   expect(2);
 
-  item = FactoryGuy.make("item",{offer:offer});
-  img1 = FactoryGuy.make("image", {item:item,favourite:true});
+  item = store.makeFixture("item",{offer:offer});
+  img1 = store.makeFixture("image", {item:item,favourite:true});
   edit_images_url = "/offers/" + offer.id + "/items/" + item.id + "/edit_images";
 
   visit(edit_images_url);

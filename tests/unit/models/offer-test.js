@@ -30,9 +30,9 @@ testSkip('Count of items within an offer', function () {
   var store  = this.store();
 
   Ember.run(function() {
-    var item1 = FactoryGuy.make('item', { state: 'draft' });
-    var item2 = FactoryGuy.make('item', { state: 'draft' });
-    var offer = FactoryGuy.make('offer', { items: [item1.id, item2.id] });
+    var item1 = store.makeFixture('item', { state: 'draft' });
+    var item2 = store.makeFixture('item', { state: 'draft' });
+    var offer = store.makeFixture('offer', { items: [item1.id, item2.id] });
 
     return store.find('offer', offer.id).then(function(offer1){
       offer1.get('items').then(function(items){

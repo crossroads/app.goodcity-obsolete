@@ -49,7 +49,7 @@
     "currentPath",
     "currentRouteName",
     "FactoryGuy",
-    "FactoryGuyTestMixin",
+    "FactoryGuy.testMixin",
     "logoutUser",
     "lookup",
     "skipTest"
