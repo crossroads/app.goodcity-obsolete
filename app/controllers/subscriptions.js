@@ -39,12 +39,10 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
         this.store.push("user", sender);
       }
 
-      if (data.operation === "create") {
-        this.store.push(type, item);
-      } else if (data.operation === "update" && !existingItem) {
+      if (data.operation === "update" && !existingItem) {
         this.store.find(type, item.id);
-      } else if (data.operation === "update") {
-        this.store.update(type, item);
+      } else if (data.operation === "update" || data.operation === "create") {
+        this.store.push(type, item);
       } else if (existingItem) { //delete
         this.store.unloadRecord(existingItem);
       }
