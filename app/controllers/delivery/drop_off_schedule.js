@@ -45,7 +45,7 @@ export default Ember.ObjectController.extend({
       var offer = _this.store.getById('offer', offerId);
 
       bookedSchedule.save().then(function(schedule) {
-        var delivery = _this.store.push('delivery', {
+        var delivery = _this.store.update('delivery', {
             id: deliveryId,
             schedule: schedule,
             offer: offerId

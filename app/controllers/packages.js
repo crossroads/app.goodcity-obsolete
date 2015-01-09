@@ -16,11 +16,11 @@ var packages = Ember.ArrayController.extend(PackageComponentMixin, {
 
   noSubItemType: function() {
     return this.get('subItemTypes.length') === 0;
-  }.property('subItemTypes.[]', 'itemId'),
+  }.property('subItemTypes.@each', 'itemId'),
 
   noPackages: function(){
     return this.get('allPackages.length') === 0;
-  }.property('packages.[]', 'itemId'),
+  }.property('packages.@each', 'itemId'),
 
   packagetypeid: function(){
     if(this.get("noPackages")) {
@@ -31,7 +31,7 @@ var packages = Ember.ArrayController.extend(PackageComponentMixin, {
   allPackages: function(){
     var item = this.store.getById('item', this.get('itemId'));
     return item.get('packages');
-  }.property('packages.[]', 'itemId'),
+  }.property('packages.@each', 'itemId'),
 
   actions: {
     removePackageType: function(packageobj) {
@@ -72,7 +72,7 @@ var packages = Ember.ArrayController.extend(PackageComponentMixin, {
         packDetail.packageType = _this.store.getById('item_type', packDetail.packagetypeid);
 
         if(packDetail.id) {
-          packageNew = _this.store.push('package', packDetail);
+          packageNew = _this.store.update('package', packDetail);
         } else {
           packageNew = _this.store.createRecord("package", packDetail);
         }
@@ -82,7 +82,7 @@ var packages = Ember.ArrayController.extend(PackageComponentMixin, {
       Ember.RSVP.all(packagePromises).then(function() {
         var acceptItem = {id: _this.get("itemId") , state_event: "accept",
           itemType: _this.store.getById('item_type', _this.get("itemTypeId"))};
-        var item = _this.store.push('item', acceptItem);
+        var item = _this.store.update('item', acceptItem);
         item.save().then(function() {
           _this.transitionToRoute('review_offer.items');
         });
@@ -92,7 +92,7 @@ var packages = Ember.ArrayController.extend(PackageComponentMixin, {
     savePackageType: function(packageDetails){
       var ths = this;
       var packagePromises = [];
-      var packages = ths.get("allPackages").toArray();
+      var packages = ths.get("allPackages.content");
 
       if(ths.get("isItemTypeChanged") && packages.length > 0) {
         ths.store.find('package', {item: ths.get("itemId")}).then(function(pkgs) {
