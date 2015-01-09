@@ -3,10 +3,11 @@ import startApp from '../helpers/start-app';
 import syncDataStub from '../helpers/empty-sync-data-stub';
 
 var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
-var App, testHelper, offer1, reviewer, item1, message1;
+var App, testHelper, offer1, reviewer, item1, message1, originalAlert;
 
 module('Display Item Details', {
   setup: function() {
+    originalAlert = window.alert;
     App = startApp();
     testHelper = TestHelper.setup(App);
     syncDataStub(testHelper);
@@ -18,6 +19,7 @@ module('Display Item Details', {
   },
 
   teardown: function() {
+    window.alert = originalAlert;
     Em.run(function() { testHelper.teardown(); });
     Ember.run(App, 'destroy');
   }
@@ -41,6 +43,21 @@ test("item details", function() {
     equal($('.item_actions a').length, 2);
     equal($('.item_actions a:eq(0)').text(), "Cancel Item");
     equal($('.item_actions a:eq(1)').text(), "Edit Item");
+  });
+});
+
+test("item deletion", function() {
+  var expectedText = Ember.I18n.t("item.cant_delete_last_item");
+  window.alert = function(text) {
+    equal(text, expectedText, 'expected ' + text + ' to be ' + expectedText);
+  };
+
+  visit('/offers/' + offer1.id + "/items/"+ item1.id +"/messages");
+  andThen(function() {
+    click($('.item_actions a:eq(0)'));
+    andThen(function() {
+      equal(currentURL(), '/offers/' + offer1.id + "/items/"+ item1.id +"/messages");
+    });
   });
 });
 
