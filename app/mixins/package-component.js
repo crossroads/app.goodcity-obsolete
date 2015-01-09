@@ -81,7 +81,7 @@ var PackageComponentMixin = Ember.Mixin.create({
       var l = 0;
       if(packages.get('length') > 0) {
         // _this.send("createUpdateChildView", packages);
-        for (var i = 0; i < packages.get('length') ; i++) {
+        packages.forEach(function(currentPackage) {
           var containerView = Ember.View.views['package_container_view'];
           var childView;
           if (l===0) {
@@ -91,7 +91,6 @@ var PackageComponentMixin = Ember.Mixin.create({
             childView =  containerView.createChildView(addPackageComponent);
           }
 
-          var currentPackage = packages[i];
           childView.setProperties({
             pkgid:         currentPackage.get('id'),
             length:        currentPackage.get('length'),
@@ -107,7 +106,7 @@ var PackageComponentMixin = Ember.Mixin.create({
           });
           containerView.pushObject(childView);
           l++;
-        }
+        });
       }
       else {
         if (!(this.get("noSubItemType"))) {
