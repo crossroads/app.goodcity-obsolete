@@ -200,8 +200,6 @@ I18nTranslationsZhTw =
         "in_review_status": "This item is being reviewed."
         "accepted_status": "This item has been accepted."
         "rejected_status": "This item has been rejected."
-        "delete_confirm" : "Are you sure? This cannot be undone."
-        "cant_delete_last_item" : "You must have at least one item."
 
       "_resend":
         "no_sms" : "沒有收到短信代碼?"
