@@ -1,6 +1,10 @@
 <nav class="tab-bar">
   <section class="left-small">
-    {{#link-to 'offer.offer_details' offer classNames="back"}}{{t "back"}}{{/link-to}}
+    {{#if staffMessagesPage}}
+      {{#link-to 'review_offer.items' offer classNames="back"}}{{t "back"}}{{/link-to}}
+    {{else}}
+      {{#link-to 'offer.offer_details' offer classNames="back"}}{{t "back"}}{{/link-to}}
+    {{/if}}
   </section>
 
   <section class="middle tab-bar-section">
