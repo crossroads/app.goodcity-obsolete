@@ -12,21 +12,8 @@
     <div class="small-12 columns">
 
       {{partial 'offer/offer_top_section'}}
+      {{partial 'offer/message_section'}}
 
-      <div class="tabs-content">
-        <ul class="list list-offer-items">
-
-          {{#each item in sortedItems}}
-            <li>
-              {{#if item.isOffer}}
-                {{partial 'offer/recent_offer_message'}}
-              {{else}}
-                {{partial 'offer/recent_item_message'}}
-              {{/if}}
-            </li>
-          {{/each}}
-        </ul>
-      </div>
     </div>
   </div>
 </section>

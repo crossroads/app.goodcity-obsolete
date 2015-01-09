@@ -8,8 +8,8 @@ FactoryGuy.define('item_type', {
     }
   },
   default: {
-    name:            FactoryGuy.generate("name"),
-    code:            FactoryGuy.generate("code")
+    name: FactoryGuy.generate("name"),
+    code: FactoryGuy.generate("code")
   }
 });
 

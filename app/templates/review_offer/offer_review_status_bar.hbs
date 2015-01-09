@@ -1,0 +1,18 @@
+{{#if offer.isUnderReview }}
+  <div class="offer-status is-under-review">
+    <div class='status-message review_message'>
+      {{t "review_offer.review_started_by" firstNameBinding=offer.reviewedBy.firstName lastNameBinding=offer.reviewedBy.lastName}}
+      {{view 'time-ago' timeValue=offer.reviewedAt}}
+    </div>
+  </div>
+{{/if}}
+
+{{#if offer.isSubmitted}}
+  <a href="#" {{action 'startReview'}} class='start_review_link'>
+    <div class="offer-status is-under-review">
+      <div class='status-message'>
+        Start Review
+      </div>
+    </div>
+  </a>
+{{/if}}

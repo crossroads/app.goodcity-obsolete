@@ -11,6 +11,7 @@ export default sendMessage.extend({
 
   displayMessage: true,
   filteredContent: Ember.computed.filterBy('allMessages', 'isPrivate', false),
+  staffMessagesPage: Ember.computed.alias('session.currentUser.isStaff'),
 
   actions: {
     sendMessage: function() {
