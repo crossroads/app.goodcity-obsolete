@@ -4,7 +4,15 @@
     {{#each item in sortedItems}}
       <li>
         {{#if item.isOffer}}
-          {{partial 'offer/recent_offer_message'}}
+          {{#if staffMessagesPage}}
+            {{#link-to 'offer.donor_messages' model}}
+              {{partial 'offer/recent_offer_message'}}
+            {{/link-to}}
+          {{else}}
+            {{#link-to 'offer.messages' model}}
+              {{partial 'offer/recent_offer_message'}}
+            {{/link-to}}
+          {{/if}}
         {{else}}
           {{#if controller.staffPage}}
             {{#if item.isAccepted}}
