@@ -105,7 +105,7 @@ test("visit offer message threads", function() {
     //offer message thread
     click(".list li a:contains('General Messages')");
     andThen(function() {
-      equal(currentURL(), "/offers/" + offer.id + "/messages");
+      equal(currentURL(), "/offers/" + offer.id + "/donor_messages");
     });
   });
 });
