@@ -49,9 +49,9 @@ export default Ember.ArrayController.extend({
     if(this.get('session.currentUser.isDonor')) {
       notification.route = ["offer.messages", offerId];
     } else if (message.is_private) {
-      notification.route = ["review_offer.supervisor_messages", offerId];
+      notification.route = ["offer.supervisor_messages", offerId];
     } else {
-      notification.route = ["review_offer.messages", offerId];
+      notification.route = ["offer.donor_messages", offerId];
     }
   },
 
