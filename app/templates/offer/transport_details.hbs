@@ -13,8 +13,60 @@
 
       {{partial 'offer/offer_top_section'}}
 
-      <div class="tabs-content">
+      <div class="tabs-content transport-content">
+        {{#if model.isReviewed}}
 
+        {{else}}
+          <div class='wait_transport'>
+            Transport arrangements can be made<br> once the review is complete
+            <i class="fa fa-info-circle fa-4x info-icon"></i>
+          </div>
+        {{/if}}
+
+        {{#if model.isReviewing}}
+          {{#if model.approvedItems}}
+            <hr>
+            <div class="row">
+              <div class="small-12 columns">
+                Items accepted so far ({{model.approvedItems.length}})
+              </div>
+            </div>
+            <div class="row">
+              <div class="small-12 columns items_list">
+                 {{#each item in model.approvedItems}}
+                   <img {{bind-attr src="item.displayImageUrl"}} class="thumb" />
+                 {{/each}}
+              </div>
+            </div>
+          {{/if}}
+        {{/if}}
+
+        <hr>
+        <div class="row">
+          <div class="small-6 columns">
+            District
+          </div>
+          <div class="small-6 columns right strong">
+            Tsuen wan
+          </div>
+        </div>
+
+        <hr>
+        <div class="row">
+          <div class="small-6 columns">
+            Charity sale ok?
+          </div>
+          <div class="small-6 columns right strong">
+            Yes
+          </div>
+        </div>
+
+        <hr>
+        <div class="row edit-details">
+          <div class="small-12 columns right">
+            <a href='#'>Modify district or charity sale details</a>
+          </div>
+        </div>
       </div>
     </div>
   </div>
