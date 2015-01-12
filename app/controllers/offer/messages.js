@@ -9,8 +9,6 @@ export default sendMessage.extend({
     return this.store.getById('offer', offerId);
   }.property('controllers.offer.id'),
 
-  displayMessage: true,
-  filteredContent: Ember.computed.filterBy('allMessages', 'isPrivate', false),
   staffMessagesPage: Ember.computed.alias('session.currentUser.isStaff'),
 
   actions: {

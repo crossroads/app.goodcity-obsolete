@@ -46,13 +46,13 @@ test("offer-messages thread details", function() {
     // display 'General Messages' thread
     equal($('div:contains("General Messages"):last').length, 1);
 
-    var offer_message_tread_text = $('div:contains("General Messages"):last').closest('span.info').text();
+    var offer_message_thread_text = $('div:contains("General Messages"):last').closest('span.info').text();
 
     // display latest offer message in 'General Messages' thread
-    equal(offer_message_tread_text.indexOf(message1.get('body')) > 0, true);
+    equal(offer_message_thread_text.indexOf(message1.get('body')) > 0, true);
 
     // display unread offer message count in 'General Messages' thread
-    equal(offer_message_tread_text.indexOf('1') > 0, true);
+    equal(offer_message_thread_text.indexOf('1') > 0, true);
   });
 });
 

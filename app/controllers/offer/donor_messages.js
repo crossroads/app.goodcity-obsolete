@@ -1,11 +1,9 @@
-import Ember from 'ember';
 import sendMessage from './../send_message';
 
 export default sendMessage.extend({
   needs: ['offer'],
 
   staffMessagesPage: true,
-  filteredContent: Ember.computed.filterBy('allMessages', 'isPrivate', false),
 
   offer: function(){
     var offerId = this.get('controllers.offer').get('id');
