@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import sendMessage from './../send_message';
 
 export default sendMessage.extend({
@@ -9,11 +8,10 @@ export default sendMessage.extend({
     return this.store.getById('offer', offerId);
   }.property('controllers.offer.id'),
 
-  staffMessagesPage: Ember.computed.alias('session.currentUser.isStaff'),
-
   actions: {
     sendMessage: function() {
-      this._super(false);
+      this._super(true);
     }
   }
 });
+

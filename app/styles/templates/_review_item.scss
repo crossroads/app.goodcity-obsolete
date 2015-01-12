@@ -9,4 +9,14 @@
       background: $dark-blue;
     }
   }
+
+  i.unread {
+    vertical-align: top;
+    color: $alert-color;
+    font-size: 0.7rem;
+
+    @media #{$small-only} {
+      font-size: 0.5rem;
+    }
+  }
 }

@@ -1,35 +1,18 @@
 <section class="message-section">
   <div class="row">
     <div class="small-12 columns">
-
-      {{#each message in filteredContent}}
+      {{#each message in allMessages}}
         <div {{bind-attr class='message.myMessage:my_message:received_message'}} {{bind-attr id=message.id}}>
           <div class='message_details'>
             {{t "full_name" firstNameBinding=message.sender.firstName lastNameBinding=message.sender.lastName}}
             {{message.sender.roleInitials}}
             <br/>
             {{view 'time-ago' timeValue=message.createdAt}}
-
-            {{#if controller.itemMessage}}
-              <a href="#/" {{action showMessage message}}>see here</a>
-            {{/if}}
-
-            {{#if controller.offerMessage}}
-              {{#if message.itemImageUrl}}
-                <div class='item_message'>
-                  <img {{bind-attr src=message.itemImageUrl}} class="thumb small" />
-                </div>
-              {{/if}}
-            {{/if}}
-
           </div>
 
-        {{#if controller.displayMessage}}
           {{message.body}}
-        {{/if}}
         </div>
       {{/each}}
-
     </div>
   </div>
 </section>
