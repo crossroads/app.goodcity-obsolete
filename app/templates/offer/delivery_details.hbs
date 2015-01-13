@@ -1,19 +1,19 @@
 <div class = 'row delivery-details'>
   <div class="small-12 columns">
     <h3>
-    {{#if model.delivery.isAlternate}}
+    {{#if delivery.isAlternate}}
       {{t 'offer.offer_details.is_collection'}}
     {{/if}}
 
-    {{#if model.delivery.isDropOff}}
+    {{#if delivery.isDropOff}}
       {{t 'offer.offer_details.is_drop_off'}}
     {{/if}}
 
-    {{#if model.delivery.isGogovan}}
+    {{#if delivery.isGogovan}}
       {{t 'offer.offer_details.is_gogovan'}}
     {{/if}}
 
-    : {{schedule-date model.delivery.schedule.scheduledAt}}
+    : {{schedule-date delivery.schedule.scheduledAt}}
     </h3>
 
     <div class="row">
@@ -35,7 +35,7 @@
         Booking Time
       </div>
       <div class="small-6 columns right strong">
-        {{model.delivery.schedule.slotName}}
+        {{delivery.schedule.slotName}}
       </div>
     </div>
 
@@ -59,14 +59,14 @@
       </div>
     </div>
 
-    {{#if model.delivery.noDropOff}}
+    {{#if delivery.noDropOff}}
       <hr>
       <div class="row">
         <div class="small-6 columns">
           Address
         </div>
         <div class="small-6 columns right strong">
-          {{{model.delivery.contact.address.fullAddress}}}
+          {{{delivery.contact.address.fullAddress}}}
         </div>
       </div>
     {{/if}}
@@ -77,7 +77,7 @@
         District
       </div>
       <div class="small-6 columns right strong">
-        Tsuen wan
+        {{district}}
       </div>
     </div>
 
@@ -87,7 +87,7 @@
         Charity sale ok?
       </div>
       <div class="small-6 columns right strong">
-        Yes
+        {{model.isCharitableSale}}
       </div>
     </div>
 
