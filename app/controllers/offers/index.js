@@ -6,8 +6,9 @@ export default Ember.ArrayController.extend({
   }.property('@each.itemCount'),
 
   actions: {
-    newOffer: function(){
-      var empty_offers = this.filterBy('itemCount', 0).filterBy('state', 'draft').sortBy('id');
+    newOffer: function(allOffers){
+      var offers = allOffers || this;
+      var empty_offers = offers.filterBy('itemCount', 0).filterBy('state', 'draft').sortBy('id');
       if (empty_offers.length === 0){
         this.transitionToRoute('offers.new');
       } else {

@@ -14,69 +14,83 @@
       {{partial 'offer/offer_top_section'}}
 
       <div class="tabs-content transport-content">
-        {{#if model.isScheduled}}
-          {{partial 'offer/delivery_details'}}
+        {{#if model.isClosed}}
+          <div class='wait_transport'>
+            There are no items to transport<br> from this offer.
+            <i class="fa fa-info-circle fa-4x info-icon"></i>
+          </div>
+
+          <div class="row">
+            <div class="small-8 small-offset-2 columns">
+              <a href="#" {{action 'newOffer'}} class="button expand">{{t "offers.index.new_donation"}}</a>
+            </div>
+          </div>
+
         {{else}}
-
-          {{#if model.isReviewed}}
-
-            <div class="row">
-              <div class="small-8 small-offset-2 columns">
-                {{#link-to 'offer.plan_delivery' model class="button expand arrange_transport"}}Arrange Transport{{/link-to}}
-              </div>
-            </div>
-
+          {{#if model.isScheduled}}
+            {{partial 'offer/delivery_details'}}
           {{else}}
-            <div class='wait_transport'>
-              Transport arrangements can be made<br> once the review is complete
-              <i class="fa fa-info-circle fa-4x info-icon"></i>
-            </div>
-          {{/if}}
 
-          {{#if model.isReviewing}}
-            {{#if model.approvedItems}}
-              <hr>
+            {{#if model.isReviewed}}
+
               <div class="row">
-                <div class="small-12 columns">
-                  Items accepted so far ({{model.approvedItems.length}})
+                <div class="small-8 small-offset-2 columns">
+                  {{#link-to 'offer.plan_delivery' model class="button expand arrange_transport"}}Arrange Transport{{/link-to}}
                 </div>
               </div>
-              <div class="row">
-                <div class="small-12 columns items_list">
-                   {{#each item in model.approvedItems}}
-                     <img {{bind-attr src="item.displayImageUrl"}} class="thumb" />
-                   {{/each}}
-                </div>
+
+            {{else}}
+              <div class='wait_transport'>
+                Transport arrangements can be made<br> once the review is complete
+                <i class="fa fa-info-circle fa-4x info-icon"></i>
               </div>
             {{/if}}
+
+            {{#if model.isReviewing}}
+              {{#if model.approvedItems}}
+                <hr>
+                <div class="row">
+                  <div class="small-12 columns">
+                    Items accepted so far ({{model.approvedItems.length}})
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="small-12 columns items_list">
+                     {{#each item in model.approvedItems}}
+                       <img {{bind-attr src="item.displayImageUrl"}} class="thumb" />
+                     {{/each}}
+                  </div>
+                </div>
+              {{/if}}
+            {{/if}}
+
+            <hr>
+            <div class="row">
+              <div class="small-6 columns">
+                District
+              </div>
+              <div class="small-6 columns right strong">
+                {{district}}
+              </div>
+            </div>
+
+            <hr>
+            <div class="row">
+              <div class="small-6 columns">
+                Charity sale ok?
+              </div>
+              <div class="small-6 columns right strong">
+                {{model.isCharitableSale}}
+              </div>
+            </div>
+
+            <hr>
+            <div class="row edit-details">
+              <div class="small-12 columns right">
+                <a href='#'>Modify district or charity sale details</a>
+              </div>
+            </div>
           {{/if}}
-
-          <hr>
-          <div class="row">
-            <div class="small-6 columns">
-              District
-            </div>
-            <div class="small-6 columns right strong">
-              {{district}}
-            </div>
-          </div>
-
-          <hr>
-          <div class="row">
-            <div class="small-6 columns">
-              Charity sale ok?
-            </div>
-            <div class="small-6 columns right strong">
-              {{model.isCharitableSale}}
-            </div>
-          </div>
-
-          <hr>
-          <div class="row edit-details">
-            <div class="small-12 columns right">
-              <a href='#'>Modify district or charity sale details</a>
-            </div>
-          </div>
         {{/if}}
       </div>
     </div>

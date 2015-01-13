@@ -1,6 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
+  needs: ['offers/index'],
   delivery: Ember.computed.alias('model.delivery'),
 
   user: function(){
@@ -18,5 +19,12 @@ export default Ember.ObjectController.extend({
 
   district: function(){
     return this.get('delivery.contact.address.district.name') || this.get("user.address.district.name");
-  }.property('user', 'delivery')
+  }.property('user', 'delivery'),
+
+  actions: {
+    newOffer: function(){
+      var offers = this.store.all('offer');
+      this.get('controllers.offers/index').send('newOffer', offers);
+    },
+  }
 });
