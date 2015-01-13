@@ -36,14 +36,27 @@
   }
 
   .items_list {
-    margin: 0.7rem 0;
+    margin: 0.5rem 0;
 
     .thumb {
       width: 3rem;
+      margin-bottom: 0.3rem;
 
       @media #{$small-only} {
         width: 2rem;
       }
+    }
+  }
+
+  .arrange_transport {
+    margin: 3rem 0;
+  }
+
+  .delivery-details {
+    padding-top: 1rem;
+
+    .transport-buttons {
+      margin-top: 1rem;
     }
   }
 }

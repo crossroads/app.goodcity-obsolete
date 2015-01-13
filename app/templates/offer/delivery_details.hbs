@@ -1,0 +1,104 @@
+<div class = 'row delivery-details'>
+  <div class="small-12 columns">
+    <h3>
+    {{#if model.delivery.isAlternate}}
+      {{t 'offer.offer_details.is_collection'}}
+    {{/if}}
+
+    {{#if model.delivery.isDropOff}}
+      {{t 'offer.offer_details.is_drop_off'}}
+    {{/if}}
+
+    {{#if model.delivery.isGogovan}}
+      {{t 'offer.offer_details.is_gogovan'}}
+    {{/if}}
+
+    : {{schedule-date model.delivery.schedule.scheduledAt}}
+    </h3>
+
+    <div class="row">
+      <div class="small-12 columns">
+        Accepted items to be transported
+      </div>
+    </div>
+    <div class="row">
+      <div class="small-12 columns items_list">
+         {{#each item in model.approvedItems}}
+           <img {{bind-attr src="item.displayImageUrl"}} class="thumb" />
+         {{/each}}
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="small-6 columns">
+        Booking Time
+      </div>
+      <div class="small-6 columns right strong">
+        {{model.delivery.schedule.slotName}}
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="small-6 columns">
+        Contact Name
+      </div>
+      <div class="small-6 columns right strong">
+        {{userName}}
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="small-6 columns">
+        Contact Phone
+      </div>
+      <div class="small-6 columns right strong">
+        {{userMobile}}
+      </div>
+    </div>
+
+    {{#if model.delivery.noDropOff}}
+      <hr>
+      <div class="row">
+        <div class="small-6 columns">
+          Address
+        </div>
+        <div class="small-6 columns right strong">
+          {{{model.delivery.contact.address.fullAddress}}}
+        </div>
+      </div>
+    {{/if}}
+
+    <hr>
+    <div class="row">
+      <div class="small-6 columns">
+        District
+      </div>
+      <div class="small-6 columns right strong">
+        Tsuen wan
+      </div>
+    </div>
+
+    <hr>
+    <div class="row">
+      <div class="small-6 columns">
+        Charity sale ok?
+      </div>
+      <div class="small-6 columns right strong">
+        Yes
+      </div>
+    </div>
+
+    <hr>
+    <div class="row transport-buttons">
+      <div class="small-5 columns">
+        {{#link-to '' classNames='button expand'}}Modify{{/link-to}}
+      </div>
+      <div class="small-7 columns">
+        <a href="#" class="button secondary expand">Cancel Booking</a>
+      </div>
+    </div>
+  </div>
+</div>
