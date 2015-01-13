@@ -1,11 +1,8 @@
-import Ember from 'ember';
 import sendMessage from './../send_message';
 
 export default sendMessage.extend({
 
   needs: ['item/index', 'item'],
-  displayMessage: true,
-  filteredContent: Ember.computed.filterBy('allMessages', 'isPrivate', false),
 
   item: function() {
     var itemId = this.get('controllers.item.id');

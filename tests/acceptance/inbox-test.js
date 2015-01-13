@@ -33,7 +33,7 @@ test("display submiited offer", function() {
     click("ul.list li:first a");
     andThen(function() {
       equal(currentURL(), "/offers/3/review_offer/items");
-      equal(find("button:contains('Start Review')").length, 1);
+      equal(find("a:contains('Start Review')").length, 1);
     });
   });
 });

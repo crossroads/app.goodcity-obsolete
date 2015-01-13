@@ -1,0 +1,45 @@
+<div class="tabs-content item-content">
+  <ul class="list list-offer-items">
+
+    {{#each item in sortedItems}}
+      <li>
+        {{#if item.isOffer}}
+          {{#if staffMessagesPage}}
+            {{#link-to 'offer.donor_messages' model}}
+              {{partial 'offer/recent_offer_message'}}
+            {{/link-to}}
+          {{else}}
+            {{#link-to 'offer.messages' model}}
+              {{partial 'offer/recent_offer_message'}}
+            {{/link-to}}
+          {{/if}}
+        {{else}}
+          {{#if controller.staffPage}}
+            {{#if item.isAccepted}}
+              {{#link-to 'review_item.accept' item}}
+                {{partial 'offer/recent_item_message'}}
+              {{/link-to}}
+            {{else}}
+              {{#if item.isRejected}}
+                {{#link-to 'review_item.reject' item}}
+                  {{partial 'offer/recent_item_message'}}
+                {{/link-to}}
+              {{else}}
+                {{#link-to 'review_item' item}}
+                  {{partial 'offer/recent_item_message'}}
+                {{/link-to}}
+              {{/if}}
+            {{/if}}
+
+          {{else}}
+            {{#link-to 'item.messages' item}}
+              {{partial 'offer/recent_item_message'}}
+            {{/link-to}}
+          {{/if}}
+
+        {{/if}}
+      </li>
+
+    {{/each}}
+  </ul>
+</div>

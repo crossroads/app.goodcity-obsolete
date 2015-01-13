@@ -10,6 +10,7 @@
 <section class="main-section review_item">
   <div class="row">
     <div class="small-12 columns">
+
       <div class="row top-bottom-margin">
         <div class="small-2 columns">
           <img {{bind-attr src=displayImageUrl}} class="thumb" style="width:100px;" />
@@ -20,13 +21,15 @@
           Condition: {{donorCondition.name}}
         </div>
       </div>
+
       <div class="row top-bottom-margin">
         <div class="small-12 columns link">
           {{item-type getItemId="getItemId" selectedItemId=itemTypeId selectedItemName=itemTypeName }}
           <a href="#" class="right">View labeling guide</a>
         </div>
-     </div>
-    <div class="row row-grey">
+      </div>
+
+      <div class="row row-grey">
         <dl class="tabs" data-tab>
           {{#link-to 'review_item.accept' tagName="dd" classNames="small-3 columns text-center"}}
             {{#link-to 'review_item.accept'}}
@@ -45,6 +48,9 @@
           {{#link-to 'review_item.donor_messages' tagName="dd" classNames="small-3 columns text-center"}}
             {{#link-to 'review_item.donor_messages'}}
               <i class="fa fa-comment-o fa-2x"></i>
+              {{#if hasUnreadDonorMessages}}
+                <i class="fa fa-circle fa-1x unread"></i>
+              {{/if}}
               <div>{{t "review_item.donor_message"}}</div>
             {{/link-to}}
           {{/link-to}}
@@ -52,6 +58,9 @@
           {{#link-to 'review_item.supervisor_messages' tagName="dd" classNames="small-3 columns text-center"}}
             {{#link-to 'review_item.supervisor_messages'}}
               <i class="fa fa-comment-o fa-2x"></i>
+              {{#if hasUnreadPrivateMessages}}
+                <i class="fa fa-circle fa-1x unread"></i>
+              {{/if}}
               <div>{{t "review_item.supervisor_message"}}</div>
             {{/link-to}}
           {{/link-to}}

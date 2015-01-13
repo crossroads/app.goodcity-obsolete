@@ -50,7 +50,17 @@ export default DS.Model.extend({
   // unread messages
   unreadMessages: function() {
     return this.get('messages').filterBy('state', 'unread').sortBy('createdAt');
-  }.property('messages.@each.state'),
+  }.property('messages.@each.state', 'messages.@each'),
+
+  // unread offer-messages by donor
+  hasUnreadDonorMessages: function(){
+    return this.get('unreadMessages').filterBy('isPrivate', false).length > 0;
+  }.property('unreadMessages'),
+
+  // unread offer-messages by supervisor-reviewer
+  hasUnreadPrivateMessages: function(){
+    return this.get('unreadMessages').filterBy('isPrivate', true).length > 0;
+  }.property('unreadMessages'),
 
   unreadMessagesCount: function() {
     var count = this.get('unreadMessages').length;

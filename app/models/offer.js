@@ -40,14 +40,6 @@ export default DS.Model.extend({
     return this.get("items").rejectBy("state", "draft").length;
   }.property('items.@each.state'),
 
-  unreadMessagesCount: function() {
-    return this.get('messages').filterBy('state', 'unread').length;
-  }.property('messages.@each.state'),
-
-  hasUnreadMessages: function() {
-    return this.get('unreadMessagesCount') > 0;
-  }.property('unreadMessagesCount'),
-
   approvedItems: Ember.computed.filterBy("items", "state", "accepted"),
   rejectedItems: Ember.computed.filterBy("items", "state", "rejected"),
   isDraft: Ember.computed.equal("state", "draft"),
@@ -90,14 +82,33 @@ export default DS.Model.extend({
     return this.get('constructor.typeKey') === 'offer';
   }.property('this'),
 
+  // unread offer-items messages
+  unreadMessagesCount: function() {
+    return this.get('messages').filterBy('state', 'unread').length;
+  }.property('messages.@each.state', 'messages.@each'),
+
+  hasUnreadMessages: function() {
+    return this.get('unreadMessagesCount') > 0;
+  }.property('unreadMessagesCount'),
+
   // unread offer-messages
   unreadOfferMessages: function(){
     return this.get('messages').filterBy('state', 'unread').filterBy('item', null).sortBy('createdAt');
-  }.property('messages.@each.state'),
+  }.property('messages.@each', 'messages.@each.state'),
 
   unreadOfferMessagesCount: function(){
     var count = this.get('unreadOfferMessages.length');
     return count > 0 ? count : '';
+  }.property('unreadOfferMessages'),
+
+  // unread offer-messages by donor
+  hasUnreadDonorMessages: function(){
+    return this.get('unreadOfferMessages').filterBy('isPrivate', false).length > 0;
+  }.property('unreadOfferMessages'),
+
+  // unread offer-messages by supervisor-reviewer
+  hasUnreadPrivateMessages: function(){
+    return this.get('unreadOfferMessages').filterBy('isPrivate', true).length > 0;
   }.property('unreadOfferMessages'),
 
   // recent offer message

@@ -2,8 +2,6 @@ import Ember from 'ember';
 import sendMessage from './../send_message';
 
 export default sendMessage.extend({
-  itemMessage: true,
-  filteredContent: Ember.computed.filterBy('allMessages', 'isPrivate', false),
 
   actions: {
     sendMessage: function() {

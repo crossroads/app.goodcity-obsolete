@@ -50,7 +50,7 @@ test("message details", function() {
     equal(currentURL(), '/offers/' + offer1.id + "/items/"+ item1.id +"/messages");
 
     // message detail
-    var messageDetails = $.trim(find('.my_message').text());
+    var messageDetails = $.trim(find('.message_details').parent().text());
     equal(messageDetails.indexOf(message1.get('body')) > 0, true);
     equal(messageDetails.indexOf(message1.get('sender.firstName')) >= 0, true);
 
@@ -66,9 +66,9 @@ test("send message", function() {
     fillIn('.message-form textarea', "example4");
     click("button:contains('Send')");
     andThen(function() {
-      equal($('.my_message').length, 2);
+      equal($('.message_details').parent().length, 2);
 
-      var messageDetails = $.trim($($('.my_message')[1]).text());
+      var messageDetails = $.trim($($('.message_details:last').parent()).text());
       equal(messageDetails.indexOf('example4') > 0, true);
       equal(messageDetails.indexOf(reviewer.get('firstName')) >= 0, true);
     });

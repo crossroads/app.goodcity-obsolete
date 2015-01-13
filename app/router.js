@@ -18,8 +18,11 @@ Router.map(function() {
       this.route('index', { path: '/'});
       this.route('confirm');
       this.route('submit');
-      this.route('messages');
       this.route('plan_delivery');
+
+      this.route('messages');
+      this.route('donor_messages');
+      this.route('supervisor_messages');
 
       this.route('offer_details');
       this.route('transport_details');
@@ -47,9 +50,8 @@ Router.map(function() {
 
       this.resource('review_offer', function(){
         this.route('items');
-        this.route('messages');
-        this.route('supervisor_messages');
         this.route('logistics');
+        this.route('donor_details');
       });
 
       this.resource('review_item', {path: '/review_item/:item_id'},function() {

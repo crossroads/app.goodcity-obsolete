@@ -33,7 +33,9 @@ test("display submiited offer", function() {
     click("ul.list li:first a");
     andThen(function() {
       equal(currentURL(), "/offers/4/review_offer/items");
-      equal($.trim($('.review_message').text()), "Started by Jaleel Ondricka");
+
+      var reviewStatus = $.trim($('.review_message').text());
+      equal(reviewStatus.indexOf("Started by Jaleel Ondricka") >= 0, true);
     });
   });
 });

@@ -3,7 +3,16 @@
     background-color: inherit;
     color: inherit;
   }
+
   .message-textbar{
     position: relative;
+  }
+
+  .review_message div {
+    display: inline;
+  }
+
+  .start_review_link {
+    text-decoration: underline;
   }
 }
