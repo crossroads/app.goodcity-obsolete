@@ -21,51 +21,6 @@
           <ul class="list list-items">
             {{#each offer in offersWithItems}}
               <li>
-                {{#if offer.isScheduled }}
-                  {{#link-to 'offer.offer_details' offer}}
-                    <span class="list-image">
-                      <img {{bind-attr src="offer.displayImageUrl"}} class="thumb" />
-                    </span>
-                    <span class="info">
-                      <h3>{{offer.status}} ({{offer.itemCount}} items)</h3>
-                      {{display-date offer.delivery.schedule.scheduledAt}}<br/>
-                      {{offer.delivery.schedule.slotName}}<br/>
-                      {{partial 'unread_message_bubble'}}
-                    </span>
-
-                  {{/link-to}}
-                {{/if}}
-
-                {{#if offer.isReviewing}}
-                  {{#link-to 'offer.offer_details' offer}}
-                    <span class="list-image">
-                      <img {{bind-attr src="offer.displayImageUrl"}} class="thumb" />
-                    </span>
-                    <span class="info">
-                      <h3>{{offer.status}} ({{offer.itemCount}} items)</h3>
-                      Approved Items: {{offer.approvedItems.length}}<br/>
-                      Rejected Items: {{offer.rejectedItems.length}}<br/>
-                      {{partial 'unread_message_bubble'}}
-                    </span>
-
-                  {{/link-to}}
-                {{/if}}
-
-                {{#if offer.isSubmitted}}
-                  {{#link-to 'offer.offer_details' offer}}
-                    <span class="list-image">
-                      <img {{bind-attr src="offer.displayImageUrl"}} class="thumb" />
-                    </span>
-                    <span class="info">
-                      <h3>{{offer.status}} ({{offer.itemCount}} items)</h3>
-                      Approved Items: {{offer.approvedItems.length}}<br/>
-                      Rejected Items: {{offer.rejectedItems.length}}
-                      {{partial 'unread_message_bubble'}}
-                    </span>
-
-                  {{/link-to}}
-                {{/if}}
-
                 {{#if offer.isDraft }}
                   {{#link-to 'offer' offer}}
                     <span class="list-image">
@@ -76,6 +31,34 @@
                       {{partial 'unread_message_bubble'}}
                     </span>
                   {{/link-to}}
+                {{else}}
+                  {{#if offer.isScheduled }}
+                    {{#link-to 'offer.offer_details' offer}}
+                      <span class="list-image">
+                        <img {{bind-attr src="offer.displayImageUrl"}} class="thumb" />
+                      </span>
+                      <span class="info">
+                        <h3>{{offer.status}} ({{offer.itemCount}} items)</h3>
+                        {{display-date offer.delivery.schedule.scheduledAt}}<br/>
+                        {{offer.delivery.schedule.slotName}}<br/>
+                        {{partial 'unread_message_bubble'}}
+                      </span>
+                    {{/link-to}}
+                  {{else}}
+
+                    {{#link-to 'offer.offer_details' offer}}
+                      <span class="list-image">
+                        <img {{bind-attr src="offer.displayImageUrl"}} class="thumb" />
+                      </span>
+                      <span class="info">
+                        <h3>{{offer.status}} ({{offer.itemCount}} items)</h3>
+                        Approved Items: {{offer.approvedItems.length}}<br/>
+                        Rejected Items: {{offer.rejectedItems.length}}<br/>
+                        {{partial 'unread_message_bubble'}}
+                      </span>
+                    {{/link-to}}
+
+                  {{/if}}
                 {{/if}}
 
               </li>

@@ -3,7 +3,7 @@ import startApp from '../helpers/start-app';
 import syncDataStub from '../helpers/empty-sync-data-stub';
 
 var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
-var App, testHelper, offer1, offer2, reviewer, reviewerName,
+var App, testHelper, offer1, offer2, reviewer, reviewerName, offer7,
   offer3, offer4, delivery1, delivery2, offer5, delivery3, offer6;
 
 module('Display Offer Status', {
@@ -26,6 +26,8 @@ module('Display Offer Status', {
 
     delivery3 = FactoryGuy.make('delivery', {deliveryType: "Drop Off"});
     offer6 = FactoryGuy.make("offer", {state:"scheduled", delivery: delivery3});
+
+    offer7 = FactoryGuy.make("offer", {state:"closed"});
   },
 
   teardown: function() {
@@ -89,5 +91,14 @@ test("Display offer status for scheduled offer: Drop Off", function() {
   andThen(function() {
     equal(currentURL(), "/offers/" + offer6.id + "/offer_details");
     equal($.trim(find('.status-message').text().replace(/\s{2,}/g, ' ')), "Drop-off Mon 1st , Afternoon");
+  });
+});
+
+test("Display offer status for closed offer", function() {
+  visit('/offers/' + offer7.id + "/offer_details");
+
+  andThen(function() {
+    equal(currentURL(), "/offers/" + offer7.id + "/offer_details");
+    equal($.trim(find('.status-message').text()), "Offer closed. No items needed, Sorry.");
   });
 });

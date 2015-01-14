@@ -1,4 +1,4 @@
-<div {{bind-attr class=":offer-status isSubmitted isUnderReview isReviewed isScheduled"}}>
+<div {{bind-attr class=":offer-status isSubmitted isUnderReview isReviewed isScheduled isClosed"}}>
   <div class='status-message'>
     {{#if model.isSubmitted}}
       {{t 'offer.offer_details.submitted_status'}}
@@ -11,6 +11,10 @@
 
     {{#if isReviewed}}
       {{t 'offer.offer_details.reviewed_message'}} {{t 'offer.offer_details.please'}} {{#link-to "offer.plan_delivery"}}{{t 'offer.offer_details.transport'}}{{/link-to}}.
+    {{/if}}
+
+    {{#if isClosed}}
+      {{t 'offer.offer_details.closed_offer_message'}}
     {{/if}}
 
     {{#if isScheduled}}

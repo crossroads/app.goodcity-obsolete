@@ -47,6 +47,7 @@ export default DS.Model.extend({
   isScheduled: Ember.computed.equal("state", "scheduled"),
   isUnderReview: Ember.computed.equal("state", "under_review"),
   isReviewed: Ember.computed.equal("state", "reviewed"),
+  isClosed: Ember.computed.equal("state", "closed"),
 
   isReviewing: function(){
     return this.get('isUnderReview') || this.get('isReviewed');
