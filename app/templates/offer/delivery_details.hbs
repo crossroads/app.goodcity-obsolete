@@ -18,7 +18,7 @@
 
     <div class="row">
       <div class="small-12 columns">
-        Accepted items to be transported
+        {{t 'offer.transport_details.accepted_items'}}
       </div>
     </div>
     <div class="row">
@@ -32,7 +32,7 @@
     <hr>
     <div class="row">
       <div class="small-6 columns">
-        Booking Time
+        {{t 'offer.transport_details.time'}}
       </div>
       <div class="small-6 columns right strong">
         {{delivery.schedule.slotName}}
@@ -42,7 +42,7 @@
     <hr>
     <div class="row">
       <div class="small-6 columns">
-        Contact Name
+        {{t 'offer.transport_details.name'}}
       </div>
       <div class="small-6 columns right strong">
         {{userName}}
@@ -52,7 +52,7 @@
     <hr>
     <div class="row">
       <div class="small-6 columns">
-        Contact Phone
+        {{t 'offer.transport_details.phone'}}
       </div>
       <div class="small-6 columns right strong">
         {{userMobile}}
@@ -63,7 +63,7 @@
       <hr>
       <div class="row">
         <div class="small-6 columns">
-          Address
+          {{t 'offer.transport_details.address'}}
         </div>
         <div class="small-6 columns right strong">
           {{{delivery.contact.address.fullAddress}}}
@@ -74,7 +74,7 @@
     <hr>
     <div class="row">
       <div class="small-6 columns">
-        District
+        {{t 'offer.transport_details.district'}}
       </div>
       <div class="small-6 columns right strong">
         {{district}}
@@ -84,7 +84,7 @@
     <hr>
     <div class="row">
       <div class="small-6 columns">
-        Charity sale ok?
+        {{t 'offer.transport_details.charity_sale'}}
       </div>
       <div class="small-6 columns right strong">
         {{model.isCharitableSale}}
@@ -94,10 +94,10 @@
     <hr>
     <div class="row transport-buttons">
       <div class="small-5 columns">
-        {{#link-to '' classNames='button expand'}}Modify{{/link-to}}
+        {{#link-to '' classNames='button expand'}}{{t 'offer.transport_details.modify'}}{{/link-to}}
       </div>
       <div class="small-7 columns">
-        <a href="#" class="button secondary expand">Cancel Booking</a>
+        <a href="#" class="button secondary expand">{{t 'offer.transport_details.cancel_booking'}}</a>
       </div>
     </div>
   </div>

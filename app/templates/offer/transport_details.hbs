@@ -16,7 +16,7 @@
       <div class="tabs-content transport-content">
         {{#if model.isClosed}}
           <div class='wait_transport'>
-            There are no items to transport<br> from this offer.
+            {{t 'offer.transport_details.no_items'}}
             <i class="fa fa-info-circle fa-4x info-icon"></i>
           </div>
 
@@ -35,13 +35,13 @@
 
               <div class="row">
                 <div class="small-8 small-offset-2 columns">
-                  {{#link-to 'offer.plan_delivery' model class="button expand arrange_transport"}}Arrange Transport{{/link-to}}
+                  {{#link-to 'offer.plan_delivery' model class="button expand arrange_transport"}}{{t 'offer.transport_details.arrange_transport'}}{{/link-to}}
                 </div>
               </div>
 
             {{else}}
               <div class='wait_transport'>
-                Transport arrangements can be made<br> once the review is complete.
+                {{t 'offer.transport_details.wait_for_transport'}}
                 <i class="fa fa-info-circle fa-4x info-icon"></i>
               </div>
             {{/if}}
@@ -51,7 +51,7 @@
                 <hr>
                 <div class="row">
                   <div class="small-12 columns">
-                    Items accepted so far ({{model.approvedItems.length}})
+                    {{t 'offer.transport_details.accepted_items_count' acceptedCountBinding=model.approvedItems.length}}
                   </div>
                 </div>
                 <div class="row">
@@ -67,7 +67,7 @@
             <hr>
             <div class="row">
               <div class="small-6 columns">
-                District
+                {{t 'offer.transport_details.district'}}
               </div>
               <div class="small-6 columns right strong">
                 {{district}}
@@ -77,7 +77,7 @@
             <hr>
             <div class="row">
               <div class="small-6 columns">
-                Charity sale ok?
+                {{t 'offer.transport_details.charity_sale'}}
               </div>
               <div class="small-6 columns right strong">
                 {{model.isCharitableSale}}
@@ -87,7 +87,7 @@
             <hr>
             <div class="row edit-details">
               <div class="small-12 columns right">
-                <a href='#'>Modify district or charity sale details</a>
+                <a href='#'>{{t 'offer.transport_details.modify_transport'}}</a>
               </div>
             </div>
           {{/if}}

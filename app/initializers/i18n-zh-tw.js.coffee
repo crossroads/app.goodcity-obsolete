@@ -173,6 +173,23 @@ I18nTranslationsZhTw =
           "transport": "arrange transport"
           "offer_messages": "General Messages"
 
+        "transport_details" :
+          "heading": "Transport Details"
+          "no_items": "There are no items to transport<br> from this offer."
+          "accepted_items": "Accepted items to be transported"
+          "time": "Booking Time"
+          "name": "Contact Name"
+          "phone": "Contact Phone"
+          "address": "Address"
+          "district": "District"
+          "charity_sale": "Charity sale ok?"
+          "modify": "Modify"
+          "cancel_booking": "Cancel Booking"
+          "arrange_transport": "Arrange Transport"
+          "wait_for_transport": "Transport arrangements can be made<br> once the review is complete."
+          "modify_transport": "Modify district or charity sale details"
+          "accepted_items_count": "Items accepted so far ({{acceptedCount}})"
+
       "items":
         "edit_images":
           "add_photo" : "Add photo"
