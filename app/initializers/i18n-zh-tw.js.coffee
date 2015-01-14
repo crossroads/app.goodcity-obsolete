@@ -172,6 +172,9 @@ I18nTranslationsZhTw =
           "please": "Please"
           "transport": "arrange transport"
           "offer_messages": "General Messages"
+          "accepted": "Accepted"
+          "not_needed": "Not needed"
+          "closed_offer_message": "Offer closed. No items needed, Sorry."
 
         "transport_details" :
           "heading": "Transport Details"
