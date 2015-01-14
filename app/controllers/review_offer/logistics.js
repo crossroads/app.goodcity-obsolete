@@ -12,11 +12,11 @@ export default Ember.ObjectController.extend({
   }.property(),
 
   gogovanOptions: function() {
-    return this.store.all('gogovan_transport');
+    return this.store.all('gogovan_transport').sortBy('id');
   }.property(),
 
   crossroadsOptions: function() {
-    return this.store.all('crossroads_transport');
+    return this.store.all('crossroads_transport').sortBy('name');
   }.property(),
 
   actions: {
