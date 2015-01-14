@@ -18,7 +18,7 @@ module('Display Transport Details', {
     item2  = FactoryGuy.make("item", {state:"accepted", offer: offer2});
     offer3 = FactoryGuy.make("offer", {state:"reviewed"});
     item3  = FactoryGuy.make("item", {state:"accepted", offer: offer3});
-    delivery = FactoryGuy.make("delivery", {deliveryType: "Alternate"})
+    delivery = FactoryGuy.make("delivery", {deliveryType: "Alternate"});
     offer4 = FactoryGuy.make("offer", {state:"scheduled"});
     item4  = FactoryGuy.make("item", {state:"accepted", offer: offer4});
   },
