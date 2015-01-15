@@ -7,7 +7,7 @@ var offerDetails = Ember.ObjectController.extend({
   staffMessagesPage: Ember.computed.alias('session.currentUser.isStaff'),
 
   offerWithItems: function() {
-    var elements = []
+    var elements = [];
     this.get('items.content').forEach(function(item){ elements.push(item); });
     elements.push(this);
     return elements.uniq();
