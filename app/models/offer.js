@@ -86,7 +86,7 @@ export default DS.Model.extend({
   // unread offer-items messages
   unreadMessagesCount: function() {
     return this.get('messages').filterBy('state', 'unread').length;
-  }.property('messages.@each.state', 'messages.@each'),
+  }.property('messages.@each.state'),
 
   hasUnreadMessages: function() {
     return this.get('unreadMessagesCount') > 0;
@@ -95,7 +95,7 @@ export default DS.Model.extend({
   // unread offer-messages
   unreadOfferMessages: function(){
     return this.get('messages').filterBy('state', 'unread').filterBy('item', null).sortBy('createdAt');
-  }.property('messages.@each', 'messages.@each.state'),
+  }.property('messages.@each.state'),
 
   unreadOfferMessagesCount: function(){
     var count = this.get('unreadOfferMessages.length');

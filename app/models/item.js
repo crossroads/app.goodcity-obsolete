@@ -50,7 +50,7 @@ export default DS.Model.extend({
   // unread messages
   unreadMessages: function() {
     return this.get('messages').filterBy('state', 'unread').sortBy('createdAt');
-  }.property('messages.@each.state', 'messages.@each'),
+  }.property('messages.@each.state'),
 
   // unread offer-messages by donor
   hasUnreadDonorMessages: function(){
