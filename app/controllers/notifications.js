@@ -45,13 +45,26 @@ export default Ember.ArrayController.extend({
 
     var message = notification.entity;
     var offerId = message.offer_id;
+    var itemId = message.item_id;
 
     if(this.get('session.currentUser.isDonor')) {
-      notification.route = ["offer.messages", offerId];
+      if(itemId) {
+        notification.route = ["item.messages", offerId, itemId];
+      } else{
+        notification.route = ["offer.messages", offerId];
+      }
     } else if (message.is_private) {
-      notification.route = ["offer.supervisor_messages", offerId];
+      if(itemId) {
+        notification.route = ["review_item.supervisor_messages", offerId, itemId];
+      } else{
+        notification.route = ["offer.supervisor_messages", offerId];
+      }
     } else {
-      notification.route = ["offer.donor_messages", offerId];
+      if(itemId) {
+        notification.route = ["review_item.donor_messages", offerId, itemId];
+      } else{
+        notification.route = ["offer.donor_messages", offerId];
+      }
     }
   },
 
