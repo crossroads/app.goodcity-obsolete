@@ -52,6 +52,11 @@ export default Ember.ObjectController.extend({
       this.set("itemTypeName", itemtypename);
       this.set("isItemTypeChanged", true);
       this.get('controllers.packages').send('renderComponents');
+    },
+    // Bad hack added need to remove it soon and need to find a better
+    // way to tackle controller in mixin which is called via View
+    savePackageType: function(packageDetails){
+      this.get('controllers.packages').send('savePackageType', packageDetails);
     }
   }
 });

@@ -2,7 +2,7 @@ import Ember from 'ember';
 import addPackageComponent from '../views/add-package-component';
 import staticPackageComponent from '../views/static-package-component';
 
-var PackageComponentMixin = Ember.Mixin.create({
+export default Ember.Mixin.create({
   actions: {
     acceptOffer: function(){
       var  ths = this;
@@ -10,8 +10,7 @@ var PackageComponentMixin = Ember.Mixin.create({
       var getChildren  = getContainer.get("childViews");
       var arrPackageProperties = [];
       getChildren.forEach(function(chld) {
-        // var updated_child_view = chld.get("childViews")[0];
-        var packageItemId = ths.get("itemid");
+        var packageItemId = ths.get("itemId");
         if (getContainer.get('childViews').contains(chld)) {
           var packageProperties = {};
           var child_vals = chld.getProperties("length", "height",
@@ -30,7 +29,10 @@ var PackageComponentMixin = Ember.Mixin.create({
           arrPackageProperties.pushObject(packageProperties);
         }
       });
-      ths.get("controller").send("savePackageType", arrPackageProperties);
+      // Should not be using this way. For now added this until I get bettwe
+      // way to pass the actual controller
+      var cntName = "controllers.%@".fmt(ths.get("controllers.needs.firstObject"));
+      ths.get(cntName).send("savePackageType", arrPackageProperties);
     },
 
     addItemTypeComponent: function(){
@@ -40,7 +42,6 @@ var PackageComponentMixin = Ember.Mixin.create({
     },
 
     renderViews: function(){
-      // var packages = this.get("allPackages.content");
       var subItemtypes = this.get('subItemTypes');
       var l=0;
 
@@ -174,4 +175,4 @@ var PackageComponentMixin = Ember.Mixin.create({
   },
 
 });
-export default PackageComponentMixin;
+
