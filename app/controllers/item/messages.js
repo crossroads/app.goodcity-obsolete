@@ -5,9 +5,9 @@ export default sendMessage.extend({
   needs: ['item/index', 'item'],
 
   item: function() {
-    var itemId = this.get('controllers.item.id');
+    var itemId = this.get('controllers.item.model.id');
     return this.store.getById('item', itemId);
-  }.property('controllers.item.id'),
+  }.property().volatile(),
 
   actions: {
     sendMessage: function() {

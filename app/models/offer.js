@@ -54,8 +54,7 @@ export default DS.Model.extend({
   }.property('isUnderReview', 'isReviewed'),
 
   displayImageUrl: function(){
-    return this.get("items").rejectBy("images.length", 0).sortBy("id")
-      .get("firstObject.displayImageUrl") || "/assets/images/default_item.jpg";
+    return this.get("items.firstObject.displayImageUrl") || "/assets/images/default_item.jpg";
   }.property('items.@each.displayImageUrl'),
 
   isCharitableSale: function() {
