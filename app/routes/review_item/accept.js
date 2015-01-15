@@ -7,10 +7,6 @@ export default AuthorizeRoute.extend({
     return this.paramsFor('review_item').item_id;
   },
 
-  setupController: function(controller, item) {
-    return controller.set('model', item);
-  },
-
   renderTemplate: function() {
     this.render();
     this.render('packages', {
