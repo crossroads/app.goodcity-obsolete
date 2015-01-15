@@ -10,21 +10,21 @@ export default Ember.Route.extend({
     var language = this.session.get("language") || Ember.I18n.default_language;
     Ember.I18n.translations = Ember.I18n.translation_store[language];
 
-    Ember.onerror = function(err) {
+    Ember.onerror = function(error) {
       Airbrake.push({
-        error: err
+        error: error
       });
-      _this.send("error", err);
-    };
-
-    window.onerror = function(err){
-        Airbrake.push(err);
+      _this.send("error", error);
     };
 
     Ember.RSVP.on('error', function(error) {
       Airbrake.push(error);
       _this.send("error", error);
     });
+
+    window.onerror = function(error){
+        Airbrake.push(err);
+    };
 
     //preload data
     var retrieve = function(types) {
