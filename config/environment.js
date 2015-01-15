@@ -19,7 +19,10 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
-
+      //Airbrake Js keys
+      AIRBRAKE_HOST: "http://localhost:5000",
+      AIRBRAKE_PROJECT_ID: 0,
+      AIRBRAKE_PROJECT_KEY: "d2c630e346aa5e47f90cf2c8456ff249",
       // Cloudinary Keys
       CLOUD_NAME: 'ddoadcjjl',
       CLOUD_API_KEY: 926849638736153,
