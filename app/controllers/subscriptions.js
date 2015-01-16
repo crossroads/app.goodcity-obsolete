@@ -30,22 +30,23 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
       var type = Object.keys(data.item)[0];
       var item = this.store.normalize(type, data.item[type]);
       var existingItem = this.store.getById(type, item.id);
+      item['id'] = item['id'] || item[Object.keys(item)[0]].id;
 
-      if (sender.id === parseInt(this.session.get("currentUser.id"))) {
-        return;
-      }
+      // if (sender.id === parseInt(this.session.get("currentUser.id"))) {
+      //   return;
+      // }
 
       if (!this.store.hasRecordForId("user", sender.id)) {
         this.store.push("user", sender);
       }
 
-      if (data.operation === "create") {
+      if (data.operation === "create" && !existingItem) {
         this.store.push(type, item);
       } else if (data.operation === "update" && !existingItem) {
         this.store.find(type, item.id);
       } else if (data.operation === "update") {
         this.store.update(type, item);
-      } else if (existingItem) { //delete
+      } else if (existingItem && !existingItem.get('isDirty')) { //delete
         this.store.unloadRecord(existingItem);
       }
     },
