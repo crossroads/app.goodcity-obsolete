@@ -2,36 +2,37 @@ import Ember from 'ember';
 import addPackageComponent from '../views/add-package-component';
 import staticPackageComponent from '../views/static-package-component';
 
-export default Ember.Mixin.create({
-  packageDetails: function() {
-    var  ths = this;
-    var getContainer = Ember.View.views['package_container_view'];
-    var getChildren  = getContainer.get("childViews");
-    var arrPackageProperties = [];
-    getChildren.forEach(function(chld) {
-      var packageItemId = ths.get("itemId");
-      if (getContainer.get('childViews').contains(chld)) {
-        var packageProperties = {};
-        var child_vals = chld.getProperties("length", "height",
-          "width", "quantity", "comment", "packagetype", "packagetypeid",
-          "pkgid");
-        packageProperties.itemId        = packageItemId;
-        packageProperties.id            = child_vals.pkgid;
-        packageProperties.width         = child_vals.width;
-        packageProperties.quantity      = child_vals.quantity;
-        packageProperties.length        = child_vals.length;
-        packageProperties.height        = child_vals.height;
-        packageProperties.notes         = child_vals.comment;
-        packageProperties.packagetypeid = child_vals.packagetypeid;
-        packageProperties.packagetype   = child_vals.packagetype;
-
-        arrPackageProperties.pushObject(packageProperties);
-      }
-    });
-    return arrPackageProperties;
-  }.property().volatile(),
-
+var PackageComponentMixin = Ember.Mixin.create({
   actions: {
+    acceptOffer: function(){
+      var  ths = this;
+      var getContainer = Ember.View.views['package_container_view'];
+      var getChildren  = getContainer.get("childViews");
+      var arrPackageProperties = [];
+      getChildren.forEach(function(chld) {
+        // var updated_child_view = chld.get("childViews")[0];
+        var packageItemId = ths.get("itemid");
+        if (getContainer.get('childViews').contains(chld)) {
+          var packageProperties = {};
+          var child_vals = chld.getProperties("length", "height",
+            "width", "quantity", "comment", "packagetype", "packagetypeid",
+            "pkgid");
+          packageProperties.itemId        = packageItemId;
+          packageProperties.id            = child_vals.pkgid;
+          packageProperties.width         = child_vals.width;
+          packageProperties.quantity      = child_vals.quantity;
+          packageProperties.length        = child_vals.length;
+          packageProperties.height        = child_vals.height;
+          packageProperties.notes         = child_vals.comment;
+          packageProperties.packagetypeid = child_vals.packagetypeid;
+          packageProperties.packagetype   = child_vals.packagetype;
+
+          arrPackageProperties.pushObject(packageProperties);
+        }
+      });
+      ths.get("controller").send("savePackageType", arrPackageProperties);
+    },
+
     addItemTypeComponent: function(){
       var containerView = Ember.View.views['package_container_view'];
       var childView = containerView.createChildView(addPackageComponent);
@@ -39,6 +40,7 @@ export default Ember.Mixin.create({
     },
 
     renderViews: function(){
+      // var packages = this.get("allPackages.content");
       var subItemtypes = this.get('subItemTypes');
       var l=0;
 
@@ -172,4 +174,4 @@ export default Ember.Mixin.create({
   },
 
 });
-
+export default PackageComponentMixin;
