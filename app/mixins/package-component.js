@@ -3,38 +3,35 @@ import addPackageComponent from '../views/add-package-component';
 import staticPackageComponent from '../views/static-package-component';
 
 export default Ember.Mixin.create({
+  packageDetails: function() {
+    var  ths = this;
+    var getContainer = Ember.View.views['package_container_view'];
+    var getChildren  = getContainer.get("childViews");
+    var arrPackageProperties = [];
+    getChildren.forEach(function(chld) {
+      var packageItemId = ths.get("itemId");
+      if (getContainer.get('childViews').contains(chld)) {
+        var packageProperties = {};
+        var child_vals = chld.getProperties("length", "height",
+          "width", "quantity", "comment", "packagetype", "packagetypeid",
+          "pkgid");
+        packageProperties.itemId        = packageItemId;
+        packageProperties.id            = child_vals.pkgid;
+        packageProperties.width         = child_vals.width;
+        packageProperties.quantity      = child_vals.quantity;
+        packageProperties.length        = child_vals.length;
+        packageProperties.height        = child_vals.height;
+        packageProperties.notes         = child_vals.comment;
+        packageProperties.packagetypeid = child_vals.packagetypeid;
+        packageProperties.packagetype   = child_vals.packagetype;
+
+        arrPackageProperties.pushObject(packageProperties);
+      }
+    });
+    return arrPackageProperties;
+  }.property().volatile(),
+
   actions: {
-    acceptOffer: function(){
-      var  ths = this;
-      var getContainer = Ember.View.views['package_container_view'];
-      var getChildren  = getContainer.get("childViews");
-      var arrPackageProperties = [];
-      getChildren.forEach(function(chld) {
-        var packageItemId = ths.get("itemId");
-        if (getContainer.get('childViews').contains(chld)) {
-          var packageProperties = {};
-          var child_vals = chld.getProperties("length", "height",
-            "width", "quantity", "comment", "packagetype", "packagetypeid",
-            "pkgid");
-          packageProperties.itemId        = packageItemId;
-          packageProperties.id            = child_vals.pkgid;
-          packageProperties.width         = child_vals.width;
-          packageProperties.quantity      = child_vals.quantity;
-          packageProperties.length        = child_vals.length;
-          packageProperties.height        = child_vals.height;
-          packageProperties.notes         = child_vals.comment;
-          packageProperties.packagetypeid = child_vals.packagetypeid;
-          packageProperties.packagetype   = child_vals.packagetype;
-
-          arrPackageProperties.pushObject(packageProperties);
-        }
-      });
-      // Should not be using this way. For now added this until I get bettwe
-      // way to pass the actual controller
-      var cntName = "controllers.%@".fmt(ths.get("controllers.needs.firstObject"));
-      ths.get(cntName).send("savePackageType", arrPackageProperties);
-    },
-
     addItemTypeComponent: function(){
       var containerView = Ember.View.views['package_container_view'];
       var childView = containerView.createChildView(addPackageComponent);
