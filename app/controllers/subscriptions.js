@@ -37,7 +37,7 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
 
       if (data.operation === "create" && !existingItem) {
         var dirtyRecords = this.store.all(type).filterBy('id', null);
-        if(dirtyRecord.length > 0) {
+        if(dirtyRecords.length > 0) {
           dirtyRecords.forEach(function(record){
             record.unloadRecord();
           });
