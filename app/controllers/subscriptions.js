@@ -25,36 +25,40 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
     },
 
     // each action below is an event in a channel
-    updateStore: function(data){
-      var sender = this.store.normalize("user", data.sender.user);
-      var type = Object.keys(data.item)[0];
-      var item = this.store.normalize(type, data.item[type]);
-      var existingItem = this.store.getById(type, item.id);
+    updateStore: function(data) {
+      this.store.pushPayload(data.sender);
 
-      if (!this.store.hasRecordForId("user", sender.id)) {
-        this.store.push("user", sender);
-      }
-
-      if (data.operation === "create" && !existingItem) {
-        var dirtyRecords = this.store.all(type).filterBy('id', null);
-        if(dirtyRecords.length > 0) {
-          dirtyRecords.forEach(function(record){
-            record.unloadRecord();
-          });
-        }
-        this.store.push(type, item);
-      } else if (data.operation === "update" && !existingItem) {
-        this.store.find(type, item.id);
-      } else if (data.operation === "update") {
-        this.store.update(type, item);
-      } else if (existingItem && !existingItem.get('isDirty')) { //delete
-        this.store.unloadRecord(existingItem);
+      // if current user is sender then still process updateStore in case object was
+      // created in API instead of APP, however updateStore message is sent before response
+      // to APP save so add 2 sec delay to allow save response to be processed first
+      if (parseInt(data.sender.user.id) === parseInt(this.session.get("currentUser.id"))) {
+        Ember.run.later(this, this._processUpdateStore, data, 2000);
+      } else {
+        Ember.run.bind(this, this._processUpdateStore, data);
       }
     },
 
     notification: function(data) {
       data.date = new Date(data.date);
       this.get("controllers.notifications").pushObject(data);
+    }
+  },
+
+  _processUpdateStore: function(data) {
+    var type = Object.keys(data.item)[0];
+    var item = this.store.normalize(type, data.item[type]);
+    var existingItem = this.store.getById(type, item.id);
+
+    if (data.operation === "create" && existingItem) {
+      this.store.update(type, item);
+    } else if (data.operation === "create") {
+      this.store.push(type, item);
+    } else if (data.operation === "update" && !existingItem) {
+      this.store.find(type, item.id);
+    } else if (data.operation === "update") {
+      this.store.update(type, item);
+    } else if (existingItem) { //delete
+      this.store.unloadRecord(existingItem);
     }
   }
 });
