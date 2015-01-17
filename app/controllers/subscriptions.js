@@ -28,13 +28,17 @@ export default Ember.Controller.extend(EmberPusher.Bindings, {
     updateStore: function(data) {
       this.store.pushPayload(data.sender);
 
-      // if current user is sender then still process updateStore in case object was
-      // created or updated in API instead of APP, however updateStore message is sent
-      // before response to APP save so add 2 sec delay to allow save response to be processed first
+      // if current user is sender then still process updateStore
+      // in case object was created or updated in API instead of APP,
+      // however updateStore message is sent before response to APP save
+      // so add 2 sec delay to allow save response to be processed first.
 
       // we don't need to delay updates, in fact if we do delay updates we risk
       // processing someone elses update before ours even though ours occurred first
-      if (["create","delete"].contains(data.operation) && parseInt(data.sender.user.id) === parseInt(this.session.get("currentUser.id"))) {
+
+      var fromCurrentUser = parseInt(data.sender.user.id) === parseInt(this.session.get("currentUser.id"));
+
+      if (["create","delete"].contains(data.operation) && fromCurrentUser) {
         Ember.run.later(this, this._processUpdateStore, data, 2000);
       } else {
         Ember.run.next(this, this._processUpdateStore, data);
