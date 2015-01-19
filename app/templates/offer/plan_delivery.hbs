@@ -12,35 +12,37 @@
   <div class="row">
     <div class="small-12 columns">
 
-      <div class="row">
-        <div class="small-8 columns left">
-          <h3>{{t "plan_delivery.fastest.title"}} <i class="fa fa-check-circle"></i></h3>
-          {{t "plan_delivery.fastest.info"}}<br/>
-          <a href="#" {{action 'startDelivery' 'gogovan'}} class="button">{{t "plan_delivery.fastest.booking_button"}}</a>
+      {{#if hasGogovanTransport}}
+        <div class="row">
+          <div class="small-8 columns left">
+            <h3>{{t "plan_delivery.fastest.title"}} <i class="fa fa-check-circle"></i></h3>
+            {{t "plan_delivery.fastest.info"}}<br/>
+            <a href="#" {{action 'startDelivery' 'gogovan'}} class="button">{{t "plan_delivery.fastest.booking_button"}}</a>
+          </div>
+          <div class="small-4 columns right">
+            <div class="cost">{{t "plan_delivery.fastest.cost"}}</div>
+            {{#link-to '' class='learn_more'}}{{t "plan_delivery.fastest.learn_more"}}{{/link-to}}<br/>
+            <img src="assets/images/gogo-van.jpg" class='delivery-image'/>
+          </div>
         </div>
-        <div class="small-4 columns right">
-          <div class="cost">{{t "plan_delivery.fastest.cost"}}</div>
-          {{#link-to '' class='learn_more'}}{{t "plan_delivery.fastest.learn_more"}}{{/link-to}}<br/>
-          <img src="assets/images/gogo-van.jpg" class='delivery-image'/>
-        </div>
-      </div>
+        <hr>
+      {{/if}}
 
-      <hr>
-
-      <div class="row">
-        <div class="small-8 columns left">
-          <h3>{{t "plan_delivery.alternate.title"}}</h3>
-          {{t "plan_delivery.alternate.info"}}<br/>
-          <a href="#" {{action 'startDelivery' 'alternate'}} class="button">{{t "plan_delivery.alternate.booking_button"}}</a>
+      {{#if offer.hasCrossroadsTransport}}
+        <div class="row">
+          <div class="small-8 columns left">
+            <h3>{{t "plan_delivery.alternate.title"}}</h3>
+            {{t "plan_delivery.alternate.info"}}<br/>
+            <a href="#" {{action 'startDelivery' 'alternate'}} class="button">{{t "plan_delivery.alternate.booking_button"}}</a>
+          </div>
+          <div class="small-4 columns right">
+            <div class="cost">{{t "plan_delivery.alternate.cost" costBinding=offer.crossroadsTruckCost}}</div>
+            {{#link-to '' class='learn_more'}}{{t "plan_delivery.fastest.learn_more"}}{{/link-to}}<br/>
+            <img src="assets/images/alternate-delivery.jpg" class='delivery-image'/>
+          </div>
         </div>
-        <div class="small-4 columns right">
-          <div class="cost">{{t "plan_delivery.alternate.cost" costBinding=offer.crossroads_truck_cost}}</div>
-          {{#link-to '' class='learn_more'}}{{t "plan_delivery.fastest.learn_more"}}{{/link-to}}<br/>
-          <img src="assets/images/alternate-delivery.jpg" class='delivery-image'/>
-        </div>
-      </div>
-
-      <hr>
+        <hr>
+      {{/if}}
 
       <div class="row">
         <div class="small-8 columns left">

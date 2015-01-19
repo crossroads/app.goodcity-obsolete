@@ -18,7 +18,7 @@ export default DS.Model.extend({
   submittedAt:    attr('date'),
   state_event:    attr('string'),
   reviewedAt:     attr('date'),
-  crossroads_truck_cost: attr('number'),
+  crossroadsTruckCost: attr('number'),
 
   gogovanTransport:    belongsTo('gogovan_transport'),
   crossroadsTransport: belongsTo('crossroads_transport'),
@@ -118,4 +118,12 @@ export default DS.Model.extend({
     var messages = this.get('messages').filterBy('item', null).sortBy('createdAt');
     return messages.get('length') > 0 ? messages.get('lastObject') : null;
   }.property('messages.@each'),
+
+  hasCrossroadsTransport: function(){
+    return this.get('crossroadsTransport') && this.get('crossroadsTransport.name') !== 'Disable';
+  }.property('crossroadsTransport'),
+
+  hasGogovanTransport: function(){
+    return this.get('gogovanTransport') && this.get('gogovanTransport.name') !== 'Disable';
+  }.property('gogovanTransport')
 });
