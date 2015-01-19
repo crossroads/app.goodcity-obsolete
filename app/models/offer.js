@@ -74,6 +74,7 @@ export default DS.Model.extend({
       case 'submitted' : status = 'Submitted'; break;
       case 'reviewed' : status = 'Collection'; break;
       case 'scheduled' : status = 'Collection'; break;
+      case 'closed' : status = 'Closed'; break;
     }
     return status;
   }.property('state'),

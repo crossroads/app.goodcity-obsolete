@@ -53,7 +53,7 @@ export default Ember.ObjectController.extend({
         delivery.save().then(function(){
           offer.set('state', 'scheduled');
           loadingView.destroy();
-          _this.transitionToRoute('delivery.donation_details');
+          _this.transitionToRoute('offer.transport_details', offer);
         });
       });
     }
