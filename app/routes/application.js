@@ -23,7 +23,7 @@ export default Ember.Route.extend({
     });
 
     window.onerror = function(error){
-        Airbrake.push(err);
+        Airbrake.push(error);
     };
 
     //preload data
