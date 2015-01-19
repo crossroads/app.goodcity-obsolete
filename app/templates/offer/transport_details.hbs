@@ -51,7 +51,11 @@
                 <hr>
                 <div class="row">
                   <div class="small-12 columns">
-                    {{t 'offer.transport_details.accepted_items_count' acceptedCountBinding=model.approvedItems.length}}
+                    {{#if model.isReviewed}}
+                      {{t 'offer.transport_details.accepted_items'}}
+                    {{else}}
+                      {{t 'offer.transport_details.accepted_items_count' acceptedCountBinding=model.approvedItems.length}}
+                    {{/if}}
                   </div>
                 </div>
                 <div class="row">
