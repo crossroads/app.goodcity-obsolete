@@ -14,14 +14,14 @@
 
       <div class="row">
         <div class="small-8 columns left">
-          <h3>{{t "plan_delivery.fastest.title"}}</h3>
+          <h3>{{t "plan_delivery.fastest.title"}} <i class="fa fa-check-circle"></i></h3>
           {{t "plan_delivery.fastest.info"}}<br/>
           <a href="#" {{action 'startDelivery' 'gogovan'}} class="button">{{t "plan_delivery.fastest.booking_button"}}</a>
         </div>
         <div class="small-4 columns right">
-          {{t "plan_delivery.fastest.cost"}}<br/>
-          {{t "plan_delivery.fastest.discount"}}<br/>
-          <img src="assets/images/gogo-van.png" class='delivery-image'/>
+          <div class="cost">{{t "plan_delivery.fastest.cost"}}</div>
+          {{#link-to '' class='learn_more'}}{{t "plan_delivery.fastest.learn_more"}}{{/link-to}}<br/>
+          <img src="assets/images/gogo-van.jpg" class='delivery-image'/>
         </div>
       </div>
 
@@ -34,9 +34,9 @@
           <a href="#" {{action 'startDelivery' 'alternate'}} class="button">{{t "plan_delivery.alternate.booking_button"}}</a>
         </div>
         <div class="small-4 columns right">
-          {{t "plan_delivery.alternate.cost"}}<br/>
-          {{#link-to ''}}{{t "plan_delivery.alternate.cost.info"}}{{/link-to}}<br/>
-          <img src="assets/images/alternate-delivery.jpeg" class='delivery-image'/>
+          <div class="cost">{{t "plan_delivery.alternate.cost"}}</div>
+          {{#link-to '' class='learn_more'}}{{t "plan_delivery.fastest.learn_more"}}{{/link-to}}<br/>
+          <img src="assets/images/alternate-delivery.jpg" class='delivery-image'/>
         </div>
       </div>
 
@@ -49,8 +49,8 @@
           <a href="#" {{action 'startDelivery' 'drop_off'}} class="button">{{t "plan_delivery.crossroads.booking_button"}}</a>
         </div>
         <div class="small-4 columns right">
-          {{t "plan_delivery.crossroads.free"}}<br/>
-          <img src="assets/images/logo_foundation.png" class='delivery-image'/>
+          <div class="cost">{{t "plan_delivery.crossroads.free"}}</div>
+          <img src="assets/images/PlanTransport_DropOff.jpg" class='delivery-image'/>
         </div>
       </div>
 
