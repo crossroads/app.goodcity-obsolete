@@ -34,7 +34,7 @@
           <a href="#" {{action 'startDelivery' 'alternate'}} class="button">{{t "plan_delivery.alternate.booking_button"}}</a>
         </div>
         <div class="small-4 columns right">
-          <div class="cost">{{t "plan_delivery.alternate.cost"}}</div>
+          <div class="cost">{{t "plan_delivery.alternate.cost" costBinding=offer.crossroads_truck_cost}}</div>
           {{#link-to '' class='learn_more'}}{{t "plan_delivery.fastest.learn_more"}}{{/link-to}}<br/>
           <img src="assets/images/alternate-delivery.jpg" class='delivery-image'/>
         </div>

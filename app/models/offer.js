@@ -18,6 +18,7 @@ export default DS.Model.extend({
   submittedAt:    attr('date'),
   state_event:    attr('string'),
   reviewedAt:     attr('date'),
+  crossroads_truck_cost: attr('number'),
 
   gogovanTransport:    belongsTo('gogovan_transport'),
   crossroadsTransport: belongsTo('crossroads_transport'),

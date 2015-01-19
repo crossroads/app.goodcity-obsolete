@@ -65,7 +65,7 @@ I18nTranslationsEn =
         "alternate" :
           "title" : "Alternative"
           "info" : "Wait 14+ days until our team<br/>can collect from your area."
-          "cost" : "Fee $150"
+          "cost" : "Fee {{cost}}"
           "booking_button" : "Go to Booking"
 
         "crossroads" :

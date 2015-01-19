@@ -3,6 +3,12 @@ import Ember from 'ember';
 export default Ember.ObjectController.extend({
   needs: ["offer"],
 
+  offerId: Ember.computed.alias('controllers.offer.id'),
+
+  offer: function(){
+    return this.store.getById('offer', this.get('offerId'));
+  }.property('offerId'),
+
   actions: {
     startDelivery: function(delivery_type) {
       var offerId = this.get('controllers.offer').get('id');
