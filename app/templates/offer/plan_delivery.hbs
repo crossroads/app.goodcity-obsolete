@@ -20,7 +20,7 @@
             <a href="#" {{action 'startDelivery' 'gogovan'}} class="button">{{t "plan_delivery.fastest.booking_button"}}</a>
           </div>
           <div class="small-4 columns right">
-            <div class="cost">{{t "plan_delivery.fastest.cost"}}</div>
+            <div class="cost">{{t "plan_delivery.fastest.cost" costBinding=gogovanPrice}}</div>
             {{#link-to '' class='learn_more'}}{{t "plan_delivery.fastest.learn_more"}}{{/link-to}}<br/>
             <img src="assets/images/gogo-van.jpg" class='delivery-image'/>
           </div>

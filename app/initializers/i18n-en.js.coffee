@@ -58,7 +58,7 @@ I18nTranslationsEn =
         "fastest" :
           "title" : "Fastest"
           "info" : "Hire a vehicle with a few clicks.<br/>Recommended!"
-          "cost" : "From $190"
+          "cost" : "From {{cost}}"
           "booking_button" : "Go to Booking"
           "learn_more": "Learn More"
 
