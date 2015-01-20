@@ -12,7 +12,7 @@ export default Ember.Mixin.create({
     return childView;
   },
 
-  _setSubItemType: function(subItemType, index) {
+  _createSubItemTypeView: function(subItemType, index) {
     this._createChildView(index === 0).setProperties({
       id:             subItemType.itemTypeId,
       itemtypeid:     subItemType.itemTypeId,
@@ -29,7 +29,7 @@ export default Ember.Mixin.create({
     });
   },
 
-  _setPackage: function(currentPackage, index) {
+  _createPackageView: function(currentPackage, index) {
     this._createChildView(index === 0).setProperties({
       pkgid:         currentPackage.get('id'),
       length:        currentPackage.get('length'),
@@ -45,36 +45,36 @@ export default Ember.Mixin.create({
     });
   },
 
+  packageDetails: function() {
+    var  itemId = this.get("itemid");
+    var containerView = Ember.View.views['package_container_view'];
+    var packageDetails = [];
+
+    containerView.get("childViews").forEach(function(childView) {
+      var packageValues = childView.getProperties("length", "height",
+        "width", "quantity", "packagetype", "packagetypeid");
+      packageValues.id = childView.get("pkgid");
+      packageValues.itemId = itemId;
+      packageValues.notes = childView.get("comment");
+      packageDetails.pushObject(packageValues);
+    });
+
+    return packageDetails;
+  }.property().volatile(),
+
   actions: {
-    acceptOffer: function() {
-      var  itemId = this.get("itemid");
-      var containerView = Ember.View.views['package_container_view'];
-      var packageValuesArray = [];
-
-      containerView.get("childViews").forEach(function(childView) {
-        var packageValues = childView.getProperties("length", "height",
-          "width", "quantity", "packagetype", "packagetypeid");
-        packageValues.id = childView.get("pkgid");
-        packageValues.itemId = itemId;
-        packageValues.notes = childView.get("comment");
-        packageValuesArray.pushObject(packageValues);
-      });
-
-      this.get("controller").send("savePackageType", packageValuesArray);
-    },
-
     addItemTypeComponent: function() {
       this._createChildView(false);
     },
 
     renderViews: function() {
       if (!this.get("noSubItemType")) {
-        this.get('subItemTypes').forEach(this._setSubItemType, this);
+        this.get('subItemTypes').forEach(this._createSubItemTypeView, this);
       }
     },
 
     createUpdateChildView: function(packageViewDetails) {
-      packageViewDetails.forEach(this._setPackage, this);
+      packageViewDetails.forEach(this._createPackageView, this);
     }
   },
 
@@ -82,10 +82,10 @@ export default Ember.Mixin.create({
     var packages = this.get('packages');
 
     if(packages.get('length') > 0) {
-      packages.forEach(this._setPackage, this);
+      packages.forEach(this._createPackageView, this);
     }
     else if (!this.get("noSubItemType")) {
-      this.get('subItemTypes').forEach(this._setSubItemType, this);
+      this.get('subItemTypes').forEach(this._createSubItemTypeView, this);
     }
   }.on('didInsertElement')
 });

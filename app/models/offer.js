@@ -54,8 +54,7 @@ export default DS.Model.extend({
   }.property('isUnderReview', 'isReviewed'),
 
   displayImageUrl: function(){
-    return this.get("items").rejectBy("images.length", 0).sortBy("id")
-      .get("firstObject.displayImageUrl") || "/assets/images/default_item.jpg";
+    return this.get("items.firstObject.displayImageUrl") || "/assets/images/default_item.jpg";
   }.property('items.@each.displayImageUrl'),
 
   isCharitableSale: function() {
@@ -75,6 +74,7 @@ export default DS.Model.extend({
       case 'submitted' : status = 'Submitted'; break;
       case 'reviewed' : status = 'Collection'; break;
       case 'scheduled' : status = 'Collection'; break;
+      case 'closed' : status = 'Closed'; break;
     }
     return status;
   }.property('state'),
@@ -86,7 +86,7 @@ export default DS.Model.extend({
   // unread offer-items messages
   unreadMessagesCount: function() {
     return this.get('messages').filterBy('state', 'unread').length;
-  }.property('messages.@each.state', 'messages.@each'),
+  }.property('messages.@each.state'),
 
   hasUnreadMessages: function() {
     return this.get('unreadMessagesCount') > 0;
@@ -95,7 +95,7 @@ export default DS.Model.extend({
   // unread offer-messages
   unreadOfferMessages: function(){
     return this.get('messages').filterBy('state', 'unread').filterBy('item', null).sortBy('createdAt');
-  }.property('messages.@each', 'messages.@each.state'),
+  }.property('messages.@each.state'),
 
   unreadOfferMessagesCount: function(){
     var count = this.get('unreadOfferMessages.length');

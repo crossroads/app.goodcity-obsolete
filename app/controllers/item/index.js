@@ -4,10 +4,17 @@ export default Ember.ObjectController.extend({
 
   actions: {
     removeItem: function(item) {
+      var controller = this;
+
       if(confirm("Are you sure? This cannot be undone.")) {
-        item.get('offer.items').removeObject(item);
-        item.destroyRecord();
-        this.transitionToRoute("offer.offer_details");
+        var loadingView = controller.container.lookup('view:loading').append();
+        var offer = item.get('offer');
+        offer.get('items').removeObject(item);
+
+        item.destroyRecord().then(function(){
+          loadingView.destroy();
+          controller.transitionToRoute("offer.offer_details");
+        });
       }
     }
   }

@@ -89,10 +89,11 @@ var packages = Ember.ArrayController.extend(PackageComponentMixin, {
       });
     },
 
-    savePackageType: function(packageDetails){
+    acceptOffer: function(){
       var ths = this;
       var packagePromises = [];
       var packages = ths.get("allPackages").toArray();
+      var packageDetails = this.get('packageDetails');
 
       if(ths.get("isItemTypeChanged") && packages.length > 0) {
         ths.store.find('package', {item: ths.get("itemId")}).then(function(pkgs) {

@@ -57,7 +57,7 @@ export default Ember.ObjectController.extend({
               // save delivery
               delivery.save().then(function() {
                 offer.set('state', 'scheduled');
-                controller.transitionToRoute('delivery.donation_details');
+                controller.transitionToRoute('offer.transport_details', offer);
                 controller.set("inProgress", false);
               });
             })

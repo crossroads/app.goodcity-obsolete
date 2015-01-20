@@ -8,9 +8,10 @@ var offerDetails = Ember.ObjectController.extend({
 
   offerWithItems: function() {
     var elements = this.get('items').toArray();
+    this.get('items.content').forEach(function(item){ elements.push(item); });
     elements.push(this);
     return elements.uniq();
-  }.property('model', 'items.@each.lastMessage'),
+  }.property('model', 'items.@each.messages.@each'),
 
 });
 
