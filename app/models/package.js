@@ -22,7 +22,7 @@ export default DS.Model.extend({
   }.property('packageType'),
 
   packageTypeObject: function() {
-     var packageTypeContent = this.get('packageType.content');
+     var packageTypeContent = this.get('packageType');
      var packageTypeObj = {};
      packageTypeObj.id = parseInt(packageTypeContent.get("id"));
      packageTypeObj.itemTypeId = parseInt(packageTypeContent.get("id"));

@@ -3,15 +3,15 @@ import Ember from 'ember';
 var offerDetails = Ember.ObjectController.extend({
 
   sortProperties: ["lastMessage.createdAt:desc"],
-  sortedItems: Ember.computed.sort("offerWithItems", "sortProperties"),
+  sortedItems: Ember.computed.sort("offerAndItems", "sortProperties"),
   staffMessagesPage: Ember.computed.alias('session.currentUser.isStaff'),
 
-  offerWithItems: function() {
-    var elements = [];
-    this.get('items.content').forEach(function(item){ elements.push(item); });
+  offerAndItems: function() {
+    var elements = this.get('items').rejectBy('state', 'draft').toArray();
+    // add offer to array for general messages display
     elements.push(this);
-    return elements.uniq();
-  }.property('model', 'items.@each.messages.@each'),
+    return elements;
+  }.property('items.@each.state'),
 
 });
 

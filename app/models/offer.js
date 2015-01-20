@@ -116,5 +116,5 @@ export default DS.Model.extend({
   lastMessage: function() {
     var messages = this.get('messages').filterBy('item', null).sortBy('createdAt');
     return messages.get('length') > 0 ? messages.get('lastObject') : null;
-  }.property('messages.@each'),
+  }.property('messages.[]'),
 });
