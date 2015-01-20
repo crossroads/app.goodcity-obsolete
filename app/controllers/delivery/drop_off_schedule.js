@@ -45,7 +45,7 @@ export default Ember.ObjectController.extend({
       var offer = _this.store.getById('offer', offerId);
 
       bookedSchedule.save().then(function(schedule) {
-        var delivery = _this.store.update('delivery', {
+        var delivery = _this.store.push('delivery', {
             id: deliveryId,
             schedule: schedule,
             offer: offerId
@@ -53,7 +53,7 @@ export default Ember.ObjectController.extend({
         delivery.save().then(function(){
           offer.set('state', 'scheduled');
           loadingView.destroy();
-          _this.transitionToRoute('delivery.donation_details');
+          _this.transitionToRoute('offer.transport_details', offer);
         });
       });
     }

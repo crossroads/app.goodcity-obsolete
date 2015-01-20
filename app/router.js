@@ -32,7 +32,6 @@ Router.map(function() {
         this.route('available_time_slots');
         this.route('contact_details');
         this.route('thank_offer');
-        this.route('donation_details');
 
         this.route('book_van');
         this.route('confirm_van');

@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-  needs: ['delivery'],
+  needs: ['delivery', 'offer'],
 
   contact: function(key, value) {
     if(arguments.length > 1) {
@@ -14,7 +14,8 @@ export default Ember.ObjectController.extend({
 
   actions:{
     done: function(){
-      this.transitionToRoute('offers.index');
+      var offerId = this.get('controllers.offer.id');
+      this.transitionToRoute('offer.transport_details', offerId);
     }
   }
 });

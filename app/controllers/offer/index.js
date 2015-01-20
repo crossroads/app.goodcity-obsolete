@@ -14,7 +14,7 @@ export default Ember.ObjectController.extend({
 
     cancelOffer: function(offer){
       if(confirm("Are you sure? This cannot be undone.")) {
-        var items = offer.get('items').content;
+        var items = offer.get('items').toArray();
         items.forEach(function(item) {
           item.unloadRecord();
         });

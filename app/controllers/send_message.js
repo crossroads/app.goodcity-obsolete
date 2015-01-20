@@ -33,7 +33,7 @@ var sendMessage = Ember.ArrayController.extend({
       newMessageProperties.sender = this.store.getById('user', this.session.get("currentUser.id"));
 
       if(for_item) {
-        var item_id = this.get('controllers.review_item.id') || this.get('controllers.item.id');
+        var item_id = this.get('controllers.review_item.id') || this.get('controllers.item.model.id');
         var item = this.store.getById('item', item_id);
         newMessageProperties.item = item;
       }

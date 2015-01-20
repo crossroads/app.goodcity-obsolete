@@ -54,19 +54,18 @@ I18nTranslationsEn =
         "all" : "All"
 
       "plan_delivery":
-        "title" : "Plan Delivery"
+        "title" : "Plan Transport"
         "fastest" :
           "title" : "Fastest"
-          "info" : "Book a van & driver at your<br/>preferred time with 1 click!<br/>Recommended!"
-          "cost" : "Cost $390-$600"
-          "discount" : "Get 5% off with our<br/>partner"
+          "info" : "Hire a vehicle with a few clicks.<br/>Recommended!"
+          "cost" : "From $190"
           "booking_button" : "Go to Booking"
+          "learn_more": "Learn More"
 
         "alternate" :
           "title" : "Alternative"
-          "info" : "Wait 12-14 days until our<br/>volunteers can collect."
-          "cost" : "Cost $150"
-          "cost.info" : "About this charge"
+          "info" : "Wait 14+ days until our team<br/>can collect from your area."
+          "cost" : "Fee $150"
           "booking_button" : "Go to Booking"
 
         "crossroads" :

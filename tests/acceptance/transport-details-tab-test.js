@@ -53,7 +53,7 @@ test("for reviewed offer", function() {
     equal(currentURL(), "/offers/" + offer3.id + "/transport_details");
     equal($('.transport-content .row:first a').text(), "Arrange Transport");
     equal($('.transport-content .row:first a').attr('href'), "/offers/"+ offer3.id +"/plan_delivery");
-    equal($.trim($('.transport-content .row:eq(1)').text()), "Items accepted so far (1)");
+    equal($.trim($('.transport-content .row:eq(1)').text()), "Accepted items to be transported");
     equal($(".items_list img").length, 1);
   });
 });
