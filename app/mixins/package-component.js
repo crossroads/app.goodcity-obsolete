@@ -46,7 +46,8 @@ export default Ember.Mixin.create({
   },
 
   packageDetails: function() {
-    var  itemId = this.get("itemid");
+    // Here itemId is package property not the component attribute
+    var  itemId = this.get("itemId");
     var containerView = Ember.View.views['package_container_view'];
     var packageDetails = [];
 
