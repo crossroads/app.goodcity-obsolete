@@ -9,6 +9,8 @@ export default sendMessage.extend({
     return this.store.getById('item', itemId);
   }.property().volatile(),
 
+  noMessage: Ember.computed.equal("model.length", 0),
+
   actions: {
     sendMessage: function() {
       this._super(false, true);

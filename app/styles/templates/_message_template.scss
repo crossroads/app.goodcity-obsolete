@@ -61,6 +61,11 @@
   right: 1.5rem;
 }
 
+.message-section {
+  .icon-empty-items {
+    color: $body-font-color;
+  }
+}
 
 .message-form {
   margin-bottom: 2rem;
