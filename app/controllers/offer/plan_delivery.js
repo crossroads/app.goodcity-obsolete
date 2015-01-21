@@ -6,6 +6,10 @@ export default Ember.ObjectController.extend({
 
   offerId: Ember.computed.alias('controllers.offer.id'),
 
+  isChinesePage: function(){
+    return Ember.I18n.translations.language === 'zh-tw';
+  }.property(),
+
   offer: function(){
     return this.store.getById('offer', this.get('offerId'));
   }.property('offerId'),
