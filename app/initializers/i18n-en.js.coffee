@@ -61,12 +61,14 @@ I18nTranslationsEn =
           "cost" : "From {{cost}}"
           "booking_button" : "Go to Booking"
           "learn_more": "Learn More"
+          "gogovan_charges": "Gogovan Charges"
 
         "alternate" :
           "title" : "Alternative"
           "info" : "Wait 14+ days until our team<br/>can collect from your area."
           "cost" : "Fee {{cost}}"
           "booking_button" : "Go to Booking"
+          "collection_charges": "Collection Charges"
 
         "crossroads" :
           "title" : "Deliver to Us"
