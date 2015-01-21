@@ -31,10 +31,6 @@
     "qunit": "~1.16.0"
   },
   "resolutions": {
-    "handlebars": "~2.0.0",
-    "ember": "~1.9.1",
-    "ember-i18n": "3.0.0-beta2",
-    "loader.js": "stefanpenner/loader.js#~1.0.1",
     "jquery-placeholder": "~2.1.0",
     "ember-data": "1.0.0-beta.14.1"
   }
