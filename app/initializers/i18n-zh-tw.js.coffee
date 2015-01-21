@@ -57,7 +57,7 @@ I18nTranslationsZhTw =
           "info" : "Hire a vehicle with a few clicks.<br/>Recommended!"
           "cost" : "From {{cost}}"
           "learn_more": "Learn More"
-          "gogovan_charges": "Gogovan Charges"
+          "gogovan_charges": "Gogovan Bookings"
 
         "alternate" :
           "title" : "另類"

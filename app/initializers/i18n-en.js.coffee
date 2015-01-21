@@ -61,7 +61,7 @@ I18nTranslationsEn =
           "cost" : "From {{cost}}"
           "booking_button" : "Go to Booking"
           "learn_more": "Learn More"
-          "gogovan_charges": "Gogovan Charges"
+          "gogovan_charges": "Gogovan Bookings"
 
         "alternate" :
           "title" : "Alternative"
