@@ -13,6 +13,7 @@ export default DS.Model.extend({
   slot:          attr('string'),
   districtId:    attr('number'),
   territoryId:   attr('number'),
+  offerId:       attr('number'),
 
   needEnglish:   attr('boolean'),
   needCart:      attr('boolean'),

@@ -1,7 +1,41 @@
 import Ember from 'ember';
+import AjaxPromise from './../../utils/ajax-promise';
 
 export default Ember.ObjectController.extend({
   needs: ["offer"],
+
+  offerId: Ember.computed.alias('controllers.offer.id'),
+
+  isChinesePage: function(){
+    return Ember.I18n.translations.language === 'zh-tw';
+  }.property(),
+
+  offer: function(){
+    return this.store.getById('offer', this.get('offerId'));
+  }.property('offerId'),
+
+  gogovanPrice: function(key, value) {
+    if (arguments.length > 1) {
+      return value;
+    } else {
+      var controller = this;
+      var user = controller.session.get('currentUser');
+      var request = {};
+      request.districtId = user.get('address.district.id');
+      request.offerId = controller.get("offerId");
+
+      new AjaxPromise("/gogovan_orders/calculate_price", "POST", controller.get('session.authToken'), request).then(function(data) {
+          controller.set("gogovanPrice", data['base']);
+          value = data['base'];
+        })
+        .catch(function() {
+          alert("There is some error with Gogovan API.");
+          controller.transitionToRoute('offer.offer_details', controller.get('offer'));
+        });
+
+      return value || '';
+    }
+  }.property('offerId'),
 
   actions: {
     startDelivery: function(delivery_type) {
