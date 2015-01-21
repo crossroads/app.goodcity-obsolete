@@ -64,7 +64,7 @@ export default Ember.ObjectController.extend({
       rejectProperties.offer = this.store.getById('offer', offer_id);
       rejectProperties.itemType = this.store.getById('item_type', this.get('itemTypeId'));
 
-      var item = this.store.update('item', rejectProperties);
+      var item = this.store.push('item', rejectProperties);
 
       // Save changes to Item
       var route = this;

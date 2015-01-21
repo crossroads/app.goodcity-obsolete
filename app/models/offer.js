@@ -117,7 +117,7 @@ export default DS.Model.extend({
   lastMessage: function() {
     var messages = this.get('messages').filterBy('item', null).sortBy('createdAt');
     return messages.get('length') > 0 ? messages.get('lastObject') : null;
-  }.property('messages.@each'),
+  }.property('messages.[]'),
 
   hasCrossroadsTransport: function(){
     return this.get('crossroadsTransport') && this.get('crossroadsTransport.name') !== 'Disable';
@@ -125,5 +125,5 @@ export default DS.Model.extend({
 
   hasGogovanTransport: function(){
     return this.get('gogovanTransport') && this.get('gogovanTransport.name') !== 'Disable';
-  }.property('gogovanTransport')
+  }.property('gogovanTransport'),
 });
