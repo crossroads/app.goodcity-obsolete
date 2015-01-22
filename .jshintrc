@@ -4,7 +4,7 @@
     "window": true,
     "-Promise": true,
     "moment" : true,
-    "EmberPusher": true
+    "io": true
   },
   "browser" : true,
   "boss" : true,

@@ -16,18 +16,6 @@ export default Addressable.extend({
   isReviewer: Ember.computed.equal("permission.name", "Reviewer"),
   isSupervisor: Ember.computed.equal("permission.name", "Supervisor"),
 
-  subscriptions: function() {
-    var channels = {};
-    var events = ["update_store","notification"];
-    channels["user_" + this.get('id')] = events;
-    if (this.get("isReviewer")) {
-      channels["reviewer"] = events;
-    } else if (this.get("isSupervisor")) {
-      channels["supervisor"] = events;
-    }
-    return channels;
-  }.property(),
-
   fullName: function(){
     return (this.get('firstName') + " " + this.get('lastName'));
   }.property('firstName', 'lastName')
