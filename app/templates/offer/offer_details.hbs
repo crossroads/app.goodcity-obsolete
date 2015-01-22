@@ -1,6 +1,8 @@
 <nav class="tab-bar offer_details_title">
   <section class="left-small">
-    {{#link-to 'offers.index' classNames="back"}}{{t "back"}}{{/link-to}}
+    {{#if hasMultipleOffers}}
+      {{#link-to 'offers.index' classNames="back"}}{{t "back"}}{{/link-to}}
+    {{/if}}
   </section>
 
   <section class="middle tab-bar-section">

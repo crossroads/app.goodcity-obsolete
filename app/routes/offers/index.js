@@ -12,7 +12,12 @@ export default AuthorizeRoute.extend({
       case 0 : route.transitionTo('offers.new'); break;
       case 1 :
         if(my_offers.get('firstObject.state') === 'draft') {
-          route.transitionTo('offer', my_offers.get('firstObject'));
+          var firstOffer = my_offers.get('firstObject');
+          if(firstOffer.get('itemCount') === 0) {
+            route.transitionTo('offer', firstOffer);
+          } else {
+            route.transitionTo('offer.offer_details', firstOffer);
+          }
         }
     }
   },

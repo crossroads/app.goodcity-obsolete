@@ -60,7 +60,7 @@ export default Ember.ObjectController.extend({
     },
 
     back: function() {
-      this.transitionToRoute("offer");
+      this.transitionToRoute("offer.offer_details");
     },
 
     setPreview: function(image) {
