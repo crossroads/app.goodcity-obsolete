@@ -18,7 +18,7 @@ export default Ember.ObjectController.extend({
       this.setProperties(this.get("formData"));
       this.get("model").save().then(function() {
         _this.set("state_event", null);
-        _this.transitionToRoute('offer');
+        _this.transitionToRoute('offer.offer_details');
       }).finally(function() {
         loadingView.destroy();
       });

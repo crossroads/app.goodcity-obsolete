@@ -44,7 +44,7 @@ test("Create Item with details", function() {
   Ember.run(function(){ item.set("state", "submitted"); });
 
   andThen(function(){
-    equal(currentURL(), "/offers/" + offer.id);
-    equal($(".info h3").last().text().trim(), "this is test item");
+    equal(currentURL(), "/offers/" + offer.id + "/offer_details");
+    equal($('.item-content li:eq(0) .ellipsis').text(), "this is test item");
   });
 });

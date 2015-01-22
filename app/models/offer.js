@@ -130,4 +130,9 @@ export default DS.Model.extend({
   hasGogovanTransport: function(){
     return this.get('gogovanTransport') && this.get('gogovanTransport.name') !== 'Disable';
   }.property('gogovanTransport'),
+
+  // display "General Messages Thread"
+  displayGeneralMessages: function(){
+    return !(this.get('isDraft') && this.get('lastMessage') === null);
+  }.property('state', 'lastMessage'),
 });
