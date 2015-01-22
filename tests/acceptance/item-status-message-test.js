@@ -62,11 +62,3 @@ test("Display offer status for reviewed offer", function() {
     equal($.trim(find('.status-message').text()), "This item has been rejected.");
   });
 });
-
-test("Display info text if no messages", function() {
-  visit('/offers/' + offer1.id + "/items/"+ item2.id +"/messages");
-
-  andThen(function() {
-    equal($.trim(find('.no-items').text()), "If we have questions when reviewing this item we will chat with you here.If you want to add comment to this item for our reviewers, type it below.");
-  });
-});
