@@ -2,7 +2,7 @@ import Ember from 'ember';
 
 var offerDetails = Ember.ObjectController.extend({
 
-  sortProperties: ["lastMessage.createdAt:desc", "updatedAt:desc"],
+  sortProperties: ["updatedAt:desc", "lastMessage.createdAt:desc"],
   sortedItems: Ember.computed.sort("offerAndItems", "sortProperties"),
   staffMessagesPage: Ember.computed.alias('session.currentUser.isStaff'),
 
