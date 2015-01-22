@@ -1,53 +1,53 @@
 import Ember from 'ember';
+import config from '../config/environment';
 
-export default Ember.Controller.extend(EmberPusher.Bindings, {
-  needs: ["notifications"],
+export default Ember.Controller.extend({
+  needs: ["notifications", "application"],
+  socket: null,
 
   actions: {
-
     wire: function() {
-      var controller = this;
-      var channels = this.get('session.currentUser.subscriptions') || {};
-      for (var channel in channels) {
-        controller.pusher.wire(controller, channel, channels[channel]);
-      }
+      var socket = io(config.APP.SOCKETIO_WEBSERVICE_URL + "?token=" + encodeURIComponent(this.session.get("authToken")));
+      socket.on("connect", function() { console.log("ws connected"); });
+      socket.on("disconnect", function() { console.log("ws disconnected"); });
+      socket.on("error", Ember.run.bind(this, function(data) { throw new Error("websocket: " + data); }));
+      socket.on("notification", Ember.run.bind(this, this.notification));
+      socket.on("update_store", Ember.run.bind(this, this.updateStore));
+      this.set("socket", socket);
     },
 
     unwire: function() {
-      var controller = this;
-      var channels = this.get('session.currentUser.subscriptions');
-      var bindings = this.pusher.get("bindings");
-      for(var channel in channels) {
-        if (typeof bindings[channel] !== "undefined") {
-          controller.pusher.unwire(controller, channel, channels[channel]);
-        }
+      var socket = this.get("socket");
+      if (socket) {
+        socket.close();
+        this.set("socket", null);
       }
-    },
+    }
+  },
 
-    // each action below is an event in a channel
-    updateStore: function(data) {
-      this.store.pushPayload(data.sender);
+  notification: function(data) {
+    data.date = new Date(data.date);
+    this.get("controllers.notifications").pushObject(data);
+  },
 
-      // if current user is sender then still process updateStore
-      // in case object was created or updated in API instead of APP,
-      // however updateStore message is sent before response to APP save
-      // so add 2 sec delay to allow save response to be processed first.
+  // each action below is an event in a channel
+  updateStore: function(data) {
+    this.store.pushPayload(data.sender);
 
-      // we don't need to delay updates, in fact if we do delay updates we risk
-      // processing someone elses update before ours even though ours occurred first
+    // if current user is sender then still process updateStore
+    // in case object was created or updated in API instead of APP,
+    // however updateStore message is sent before response to APP save
+    // so add 2 sec delay to allow save response to be processed first.
 
-      var fromCurrentUser = parseInt(data.sender.user.id) === parseInt(this.session.get("currentUser.id"));
+    // we don't need to delay updates, in fact if we do delay updates we risk
+    // processing someone elses update before ours even though ours occurred first
 
-      if (["create","delete"].contains(data.operation) && fromCurrentUser) {
-        Ember.run.later(this, this._processUpdateStore, data, 2000);
-      } else {
-        Ember.run.next(this, this._processUpdateStore, data);
-      }
-    },
+    var fromCurrentUser = parseInt(data.sender.user.id) === parseInt(this.session.get("currentUser.id"));
 
-    notification: function(data) {
-      data.date = new Date(data.date);
-      this.get("controllers.notifications").pushObject(data);
+    if (["create","delete"].contains(data.operation) && fromCurrentUser) {
+      Ember.run.later(this, this._processUpdateStore, data, 2000);
+    } else {
+      Ember.run.next(this, this._processUpdateStore, data);
     }
   },
 

@@ -58,15 +58,17 @@ I18nTranslationsEn =
         "fastest" :
           "title" : "Fastest"
           "info" : "Hire a vehicle with a few clicks.<br/>Recommended!"
-          "cost" : "From $190"
+          "cost" : "From {{cost}}"
           "booking_button" : "Go to Booking"
           "learn_more": "Learn More"
+          "gogovan_charges": "Gogovan Bookings"
 
         "alternate" :
           "title" : "Alternative"
           "info" : "Wait 14+ days until our team<br/>can collect from your area."
-          "cost" : "Fee $150"
+          "cost" : "Fee {{cost}}"
           "booking_button" : "Go to Booking"
+          "collection_charges": "Collection Charges"
 
         "crossroads" :
           "title" : "Deliver to Us"

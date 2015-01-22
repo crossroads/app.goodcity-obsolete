@@ -38,7 +38,7 @@ export default function startApp(attrs, permissionId) {
   window.confirm = function(message) { console.log("Confirm: " + message); return true; };
 
   //needed by application controller init
-  lookup("controller:subscriptions").pusher = { wire: function() {} };
+  lookup("controller:subscriptions")._actions.wire = function() {};
 
   return App;
 }

@@ -45,6 +45,7 @@ export default Ember.ObjectController.extend({
       requestProperties.needEnglish = controller.get("speakEnglish");
       requestProperties.needCart = controller.get("borrowTrolley");
       requestProperties.needCarry = controller.get("porterage");
+      requestProperties.offerId = delivery.get('offer.id');
 
       var order = controller.store.createRecord('gogovan_order', requestProperties);
       order.set('delivery', delivery);
