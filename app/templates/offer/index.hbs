@@ -6,8 +6,15 @@
   <section class="middle tab-bar-section">
     <h1 class="title">{{t "offer.index.item_count" itemCountBinding=itemCount}}</h1>
   </section>
+  <section id="camera_delete_bar" class="right-small">
+    <a id="camera_icon" title="Camera" class="fontawe-icons">
+      <i class="fa fa-camera"></i>
+    </a>
+    <a title="Delete" class="fontawe-icons">
+      <i class="fa fa-trash"></i>
+    </a>
+  </section>
 </nav>
-
 <section class="main-section">
   <div class="row">
     <div class="small-12 columns">
@@ -21,10 +28,10 @@
           <div class="row">
             {{#if isDraft}}
               <div class="small-6 columns">
-                <a href="#" {{action 'addItem'}} class="button secondary expand"><span class="icon-add"></span>{{t "offer.index.add_item"}}</a>
+                <a href="#" {{action 'addItem'}} id="add_item" class="button secondary expand"><span class="icon-add"></span>{{t "offer.index.add_item"}}</a>
               </div>
               <div class="small-6 columns">
-                {{#link-to 'offer.confirm' classNames='button expand'}}{{t "offer.index.confirm"}}{{/link-to}}
+                {{#link-to 'offer.confirm' id="all_done" classNames='button expand'}}{{t "offer.index.confirm"}}{{/link-to}}
               </div>
             {{else}}
               {{#link-to 'offer.offer_details' classNames='button expand'}}{{t "offer.index.review"}}{{/link-to}}
@@ -34,8 +41,9 @@
           <p class="link text-right"><a href="#" {{action 'cancelOffer' this}}>{{t "offer.index.cancel"}}</a></p>
 
           <ul class="list list-offer-items">
+
             {{#each item in itemsById}}
-              <li>
+              <li {{bind-attr id="_view.contentIndex"}}>
                 {{#link-to 'item.edit' item}}
                   <span class="list-image">
                     <img {{bind-attr src="item.displayImageUrl"}} class="thumb" />
@@ -66,3 +74,6 @@
     </div>
   </div>
 </section>
+{{!-- {{#if firstEverItem }} --}}
+{{partial "offer/display_joyride"}}
+{{!-- {{/if}} --}}

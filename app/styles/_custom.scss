@@ -113,7 +113,7 @@ input[type=number]::-webkit-outer-spin-button {
   border: none;
   a {
     float: right;
-    font-size:14px; }
+  }
 }
 
 .unread_message_count {
@@ -387,4 +387,17 @@ body > .ember-view {
 
 .btm, .row {
   max-width: 768px;
+}
+.fontawe-icons {
+  padding: 0rem 0.2rem;
+}
+.joyride-content-wrapper {
+  .button { border: solid 1px $white; }
+}
+.joyride-tip-guide{
+  width: 10rem;
+  border: solid 1px $white;
+ .joyride-nub.top {
+  border-color: $white;
+ }
 }

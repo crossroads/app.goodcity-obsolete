@@ -6,6 +6,21 @@ export default Ember.ObjectController.extend({
       .filter(function(item) { return item.get("state") !== "draft"; });
   }.property("items"),
 
+ firstEverItem: function(){
+  var currentDateTime = new Date();
+  var itemCreated = new Date(this.get("createdAt").getTime() + 120000);
+  console.log('current: ', currentDateTime);
+  console.log('itemCreated: ', itemCreated);
+  console.log('diff: ', itemCreated - currentDateTime );
+
+  if((this.get("offersCount") === 1 ) && (this.get("itemCount") === 1) && (currentDateTime <= itemCreated))
+  {
+    return true;
+  }
+  else
+    { return false;}
+ }.property("offers.count", "items.count"),
+
   actions: {
     addItem: function() {
       var draftItemId = this.get("items").filterBy("state", "draft").get("firstObject.id") || "new";
@@ -24,6 +39,6 @@ export default Ember.ObjectController.extend({
           route.transitionToRoute('offers.index');
         });
       }
-    },
+    }
   }
 });
