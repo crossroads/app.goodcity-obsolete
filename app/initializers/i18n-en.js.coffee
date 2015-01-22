@@ -237,6 +237,10 @@ I18nTranslationsEn =
         "accepted_status": "This item has been accepted."
         "rejected_status": "This item has been rejected."
 
+        "messages":
+          "info_text1": "If we have questions when reviewing this item we will chat with you here."
+          "info_text2": "If you want to add comment to this item for our reviewers, type it below."
+
       "_resend":
         "no_sms" : "Haven't received SMS code?"
         "please_wait" : "Please wait 5 minutes..."
