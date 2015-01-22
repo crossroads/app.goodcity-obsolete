@@ -22,6 +22,20 @@ var offerDetails = Ember.ObjectController.extend({
       var draftItemId = this.get("items").filterBy("state", "draft").get("firstObject.id") || "new";
       this.transitionToRoute('item.edit_images', draftItemId);
     },
+
+    cancelOffer: function(offer){
+      if(confirm("Are you sure? This cannot be undone.")) {
+        var items = offer.get('items').toArray();
+        items.forEach(function(item) {
+          item.unloadRecord();
+        });
+
+        var route = this;
+        offer.destroyRecord().then(function(){
+          route.transitionToRoute('offers.index');
+        });
+      }
+    },
   }
 
 });
