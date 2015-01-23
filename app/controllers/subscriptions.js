@@ -7,13 +7,16 @@ export default Ember.Controller.extend({
 
   actions: {
     wire: function() {
-      var socket = io(config.APP.SOCKETIO_WEBSERVICE_URL + "?token=" + encodeURIComponent(this.session.get("authToken")));
       var name = this.session.get("currentUser.fullName");
+      Ember.run.next(function() { Ember.$("#ws-status").text("Offline - " + name); });
+      var connectUrl = config.APP.SOCKETIO_WEBSERVICE_URL + "?token=" + encodeURIComponent(this.session.get("authToken"));
+      var socket = io(connectUrl, {autoConnect:false});
       socket.on("connect", function() { Ember.$("#ws-status").text("Online - " + name); });
       socket.on("disconnect", function() { Ember.$("#ws-status").text("Offline - " + name); });
       socket.on("error", Ember.run.bind(this, function(data) { throw new Error("websocket: " + data); }));
       socket.on("notification", Ember.run.bind(this, this.notification));
       socket.on("update_store", Ember.run.bind(this, this.updateStore));
+      socket.connect(); // manually connect since it's not auto-connecting if you logout and then back in
       this.set("socket", socket);
     },
 
@@ -23,6 +26,7 @@ export default Ember.Controller.extend({
         socket.close();
         this.set("socket", null);
       }
+      Ember.$("#ws-status").text("Offline");
     }
   },
 
