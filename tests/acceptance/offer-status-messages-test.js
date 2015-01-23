@@ -13,21 +13,21 @@ module('Display Offer Status', {
     syncDataStub(testHelper);
 
     reviewer = FactoryGuy.make("user");
-    offer1 = FactoryGuy.make("offer", {state:"submitted"});
-    offer2 = FactoryGuy.make("offer", {state:"under_review", reviewedBy: reviewer});
+    offer1 = FactoryGuy.make("offer_with_items", {state:"submitted"});
+    offer2 = FactoryGuy.make("offer_with_items", {state:"under_review", reviewedBy: reviewer});
     reviewerName = reviewer.get("firstName");
-    offer3 = FactoryGuy.make("offer", {state:"reviewed"});
+    offer3 = FactoryGuy.make("offer_with_items", {state:"reviewed"});
 
     delivery1 = FactoryGuy.make('delivery', {deliveryType: "Alternate"});
-    offer4 = FactoryGuy.make("offer", {state:"scheduled", delivery: delivery1});
+    offer4 = FactoryGuy.make("offer_with_items", {state:"scheduled", delivery: delivery1});
 
     delivery2 = FactoryGuy.make('delivery', {deliveryType: "Gogovan"});
-    offer5 = FactoryGuy.make("offer", {state:"scheduled", delivery: delivery2});
+    offer5 = FactoryGuy.make("offer_with_items", {state:"scheduled", delivery: delivery2});
 
     delivery3 = FactoryGuy.make('delivery', {deliveryType: "Drop Off"});
-    offer6 = FactoryGuy.make("offer", {state:"scheduled", delivery: delivery3});
+    offer6 = FactoryGuy.make("offer_with_items", {state:"scheduled", delivery: delivery3});
 
-    offer7 = FactoryGuy.make("offer", {state:"closed"});
+    offer7 = FactoryGuy.make("offer_with_items", {state:"closed"});
   },
 
   teardown: function() {

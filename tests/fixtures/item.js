@@ -7,7 +7,7 @@ FactoryGuy.define('item', {
     }
   },
   default: {
-    state:            'draft',
+    state:            'submitted',
     createdAt:        '12/01/2014',
     updatedAt:        '12/01/2014',
     donorDescription: FactoryGuy.generate("description"),

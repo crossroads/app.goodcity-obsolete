@@ -7,7 +7,9 @@ var offerDetails = Ember.ObjectController.extend({
   staffMessagesPage: Ember.computed.alias('session.currentUser.isStaff'),
 
   offerAndItems: function() {
-    var elements = this.get('items').rejectBy('state', 'draft').toArray();
+    // avoid deleted-items which are not persisted yet.
+    var elements = this.get('items').rejectBy('state', 'draft').rejectBy('isDeleted', true).toArray();
+
     // add offer to array for general messages display
     elements.push(this);
     return elements;

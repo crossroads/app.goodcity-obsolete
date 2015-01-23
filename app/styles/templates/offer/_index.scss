@@ -1,30 +1,9 @@
-.list-offer-items a {
-  background: url("/assets/images/icon-edit.png") no-repeat right center;
-  background-size: 24px 19px;
-  padding-right: 30px;
-}
+.offer-index {
+  ul {
+    margin-top: 1rem !important;
 
-.unread_message {
-  -moz-border-radius: 30px;
-  -webkit-border-radius: 30px;
-  float: right;
-  margin-right: 1rem;
-  margin-top: -2.5rem;
-
-  @media #{$small-only} {
-    margin-top: -2.2rem;
-  }
-
-  a {
-    background: none !important;
-  }
-
-  .unread_length {
-    @media #{$small-only} {
-      line-height: 1.1rem;
-      width: 1rem;
-      height: 1rem;
-      font-size: 0.7rem;
+    li:last-child {
+      border-bottom: 1px solid $light-blue !important;
     }
   }
 }
