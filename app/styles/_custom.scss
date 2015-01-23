@@ -396,11 +396,18 @@ body > .ember-view {
   position: fixed;
   bottom: 0;
   left: 0;
-  background-color: #F5F5F5;
+  background-color: $ghost;
   font-size: 9px;
   color: black;
   padding: 2px;
   z-index: 9999;
   border-top: 1px solid black;
   border-right: 1px solid black;
+}
+
+a.disabled{
+  cursor: default;
+  i{
+    color: $body-font-color;
+  }
 }
