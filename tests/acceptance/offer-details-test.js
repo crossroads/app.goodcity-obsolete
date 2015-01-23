@@ -3,7 +3,7 @@ import startApp from '../helpers/start-app';
 import syncDataStub from '../helpers/empty-sync-data-stub';
 
 var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
-var App, testHelper, offer, reviewer, item1, item2, item3,
+var App, testHelper, offer, offer2, offer3, reviewer, item1, item2, item3,
   message1, message2;
 
 module('Display Offer Details', {
@@ -19,6 +19,8 @@ module('Display Offer Details', {
     item2 = FactoryGuy.make("item", {state:"rejected", offer: offer});
     item3 = FactoryGuy.make("item", {state:"submitted", offer: offer});
     message2 = FactoryGuy.make("message", {sender: reviewer, offer: offer, item: item3});
+    offer2 = FactoryGuy.make("offer_with_items", {state:"closed"});
+    offer3 = FactoryGuy.make("offer_with_items", {state:"scheduled"});
   },
 
   teardown: function() {
@@ -87,6 +89,37 @@ test("visit offer message threads", function() {
     click(".list li:eq(1) a");
     andThen(function() {
       equal(currentURL(), "/offers/" + offer.id + "/messages");
+    });
+  });
+});
+
+//if offer has atleast one item and not closed or received
+test("disaply header Icons", function() {
+  visit('/offers/' + offer.id + "/offer_details");
+  andThen(function() {
+    andThen(function() {
+      equal($('#camera_delete_bar').length, 1);
+    });
+  });
+});
+
+
+//if offer is closed or received
+test("hide header Icons", function() {
+  visit('/offers/' + offer2.id + "/offer_details");
+  andThen(function() {
+    andThen(function() {
+      equal($('#camera_delete_bar').length, 0);
+    });
+  });
+});
+
+//if offer is scheduled
+test("disable camera icon", function() {
+  visit('/offers/' + offer3.id + "/offer_details");
+  andThen(function() {
+    andThen(function() {
+      equal($("#camera_icon").hasClass("disabled"), true);
     });
   });
 });
