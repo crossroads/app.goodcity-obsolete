@@ -6,6 +6,20 @@ var offerDetails = Ember.ObjectController.extend({
   sortedItems: Ember.computed.sort("offerAndItems", "sortProperties"),
   staffMessagesPage: Ember.computed.alias('session.currentUser.isStaff'),
 
+  firstEverItem: function(){
+    var currentDateTime = new Date();
+    var itemCreated = new Date(this.get("createdAt").getTime() + 120000);
+
+    if((this.get("offersCount") === 1 ) &&
+       (this.get("itemCount") === 1) &&
+       (currentDateTime <= itemCreated)) {
+      return true;
+    }
+    else {
+      return false;
+    }
+   }.property("offers.count", "items.count"),
+
   offerAndItems: function() {
     // avoid deleted-items which are not persisted yet.
     var elements = this.get('items').rejectBy('state', 'draft').rejectBy('isDeleted', true).toArray();

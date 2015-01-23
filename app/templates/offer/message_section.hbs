@@ -2,24 +2,21 @@
   <ul class="list list-offer-items">
 
     {{#each item in sortedItems}}
-      {{#if item.isOffer}}
-        {{#if staffMessagesPage}}
-          <li>
+      <li {{bind-attr id="_view.contentIndex"}}>
+        {{#if item.isOffer}}
+          {{#if staffMessagesPage}}
             {{#link-to 'offer.donor_messages' model}}
               {{partial 'offer/recent_offer_message'}}
             {{/link-to}}
-          </li>
-        {{else}}
-          {{#if item.displayGeneralMessages}}
-            <li>
+          {{else}}
+            {{#if item.displayGeneralMessages}}
               {{#link-to 'offer.messages' model}}
                 {{partial 'offer/recent_offer_message'}}
               {{/link-to}}
-            </li>
+            {{/if}}
           {{/if}}
-        {{/if}}
-      {{else}}
-        <li>
+
+        {{else}}
           {{#if controller.staffPage}}
             {{#if item.isAccepted}}
               {{#link-to 'review_item.accept' item}}
@@ -36,14 +33,14 @@
                 {{/link-to}}
               {{/if}}
             {{/if}}
-
           {{else}}
             {{#link-to 'item.messages' item}}
               {{partial 'offer/recent_item_message'}}
             {{/link-to}}
           {{/if}}
-        </li>
-      {{/if}}
+        {{/if}}
+      </li>
     {{/each}}
+
   </ul>
 </div>

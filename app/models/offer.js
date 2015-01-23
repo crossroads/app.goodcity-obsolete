@@ -37,6 +37,10 @@ export default DS.Model.extend({
   userName:       attr('string'),
   userPhone:      attr('string'),
 
+  offersCount: function() {
+    return this.store.all("offer").get("length");
+  }.property(''),
+
   itemCount: function() {
     return this.get("items").rejectBy("state", "draft").length;
   }.property('items.@each.state'),
