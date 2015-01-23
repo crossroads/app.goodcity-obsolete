@@ -123,11 +123,11 @@ export default DS.Model.extend({
   }.property('messages.[]'),
 
   hasCrossroadsTransport: function(){
-    return this.get('crossroadsTransport') && this.get('crossroadsTransport.name') !== 'Disable';
+    return this.get('crossroadsTransport') && this.get('crossroadsTransport.name') !== Ember.I18n.t("offer.disable");
   }.property('crossroadsTransport'),
 
   hasGogovanTransport: function(){
-    return this.get('gogovanTransport') && this.get('gogovanTransport.name') !== 'Disable';
+    return this.get('gogovanTransport') && this.get('gogovanTransport.name') !== Ember.I18n.t("offer.disable");
   }.property('gogovanTransport'),
 
   // display "General Messages Thread"

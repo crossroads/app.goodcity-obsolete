@@ -149,6 +149,7 @@ I18nTranslationsEn =
           "unread_messages" : "Unread messages: {{unreadMessagesCount}}"
 
       "offer":
+        "disable": "Disable"
         "details" : "Offer details"
         "no_items" : "You don't have any items in this offer yet. Please add your first item!",
         "confirm":
