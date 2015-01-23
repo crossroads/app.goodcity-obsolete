@@ -71,4 +71,15 @@ export default DS.Model.extend({
   lastMessage: function() {
     return this.get('messages').sortBy('createdAt').get('lastObject');
   }.property('messages.[]'),
+
+  // to sort on offer-details page for updated-item and latest-message
+  latestUpdatedTime: function(){
+    var value;
+    switch(Ember.compare(this.get('lastMessage.createdAt'), this.get('updatedAt'))) {
+      case 0 :
+      case 1 : value = this.get('lastMessage.createdAt'); break;
+      case -1 : value = this.get('updatedAt'); break;
+    }
+    return value;
+  }.property('lastMessage'),
 });

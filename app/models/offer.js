@@ -131,4 +131,15 @@ export default DS.Model.extend({
   displayGeneralMessages: function(){
     return !(this.get('isDraft') && this.get('lastMessage') === null);
   }.property('state', 'lastMessage'),
+
+  // to sort on offer-details page for updated-offer and latest-message
+  latestUpdatedTime: function(){
+    var value;
+    switch(Ember.compare(this.get('lastMessage.createdAt'), this.get('updatedAt'))) {
+      case 0 :
+      case 1 : value = this.get('lastMessage.createdAt'); break;
+      case -1 : value = this.get('updatedAt'); break;
+    }
+    return value;
+  }.property('lastMessage'),
 });
