@@ -388,3 +388,16 @@ body > .ember-view {
 .btm, .row {
   max-width: 768px;
 }
+
+#ws-status {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background-color: #F5F5F5;
+  font-size: 9px;
+  color: black;
+  padding: 2px;
+  z-index: 9999;
+  border-top: 1px solid black;
+  border-right: 1px solid black;
+}
