@@ -397,9 +397,10 @@ body > .ember-view {
 .joyride-tip-guide{
   width: 10rem;
   border: solid 1px $white;
- .joyride-nub.top {
-  border-color: $white;
- }
+  .joyride-nub.top {
+    border-color: $white;
+  }
+}
 
 #ws-status {
   position: fixed;
@@ -412,4 +413,10 @@ body > .ember-view {
   z-index: 9999;
   border-top: 1px solid black;
   border-right: 1px solid black;
+}
+a.disabled{
+  cursor: default;
+  i{
+    color: $body-font-color;
+  }
 }
