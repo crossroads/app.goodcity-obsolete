@@ -18,7 +18,6 @@ export default DS.Model.extend({
   submittedAt:    attr('date'),
   state_event:    attr('string'),
   reviewedAt:     attr('date'),
-  crossroadsTruckCost: attr('number'),
 
   gogovanTransport:    belongsTo('gogovan_transport'),
   crossroadsTransport: belongsTo('crossroads_transport'),
@@ -36,6 +35,10 @@ export default DS.Model.extend({
   // User details
   userName:       attr('string'),
   userPhone:      attr('string'),
+
+  crossroadsTruckCost: function(){
+    return this.get('crossroadsTransport.cost');
+  }.property('crossroadsTransport'),
 
   itemCount: function() {
     return this.get("items").rejectBy("state", "draft").length;
