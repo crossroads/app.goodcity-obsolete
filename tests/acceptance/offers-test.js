@@ -44,7 +44,7 @@ test("Offers Details", function() {
 
     // test: complete this offer link
     var complete_offer_link = find('.list-items li').first().find('a');
-    equal(complete_offer_link.attr('href'), "/offers/1");
+    equal(complete_offer_link.attr('href'), "/offers/1/offer_details");
     equal($.trim(complete_offer_link.text()), "Complete this Offer");
   });
 });

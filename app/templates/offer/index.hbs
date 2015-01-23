@@ -1,79 +1,26 @@
 <nav class="tab-bar">
   <section class="left-small">
-    {{#link-to 'offers' classNames="back"}}{{t "application.home"}}{{/link-to}}
+    {{#if hasMultipleOffers}}
+      {{#link-to 'offers' classNames="back"}}{{t "application.home"}}{{/link-to}}
+    {{/if}}
   </section>
 
   <section class="middle tab-bar-section">
     <h1 class="title">{{t "offer.index.item_count" itemCountBinding=itemCount}}</h1>
   </section>
-  <section id="camera_delete_bar" class="right-small">
-    <a id="camera_icon" title="Camera" class="fontawe-icons">
-      <i class="fa fa-camera"></i>
-    </a>
-    <a title="Delete" class="fontawe-icons">
-      <i class="fa fa-trash"></i>
-    </a>
-  </section>
 </nav>
+
 <section class="main-section">
   <div class="row">
     <div class="small-12 columns">
+      <p><span class="icon-no-items"></span></p>
+      <p class="no-items">You don't have any items in this offer yet. Please add your first item!</p>
 
-      {{#if isDirty}}
-        {{partial 'loading'}}
-      {{else}}
-
-        {{#if itemCount }}
-
-          <div class="row">
-            {{#if isDraft}}
-              <div class="small-6 columns">
-                <a href="#" {{action 'addItem'}} id="add_item" class="button secondary expand"><span class="icon-add"></span>{{t "offer.index.add_item"}}</a>
-              </div>
-              <div class="small-6 columns">
-                {{#link-to 'offer.confirm' id="all_done" classNames='button expand'}}{{t "offer.index.confirm"}}{{/link-to}}
-              </div>
-            {{else}}
-              {{#link-to 'offer.offer_details' classNames='button expand'}}{{t "offer.index.review"}}{{/link-to}}
-            {{/if}}
-          </div>
-
-          <p class="link text-right"><a href="#" {{action 'cancelOffer' this}}>{{t "offer.index.cancel"}}</a></p>
-
-          <ul class="list list-offer-items">
-
-            {{#each item in itemsById}}
-              <li {{bind-attr id="_view.contentIndex"}}>
-                {{#link-to 'item.edit' item}}
-                  <span class="list-image">
-                    <img {{bind-attr src="item.displayImageUrl"}} class="thumb" />
-                  </span>
-                  <span class="info">
-                    <h3 class="ellipsis one-line-ellipsis">{{{item.donorDescription}}}</h3>
-                    {{item.donorCondition.name}}
-                  </span>
-                {{/link-to}}
-              </li>
-            {{/each}}
-          </ul>
-
-        {{else}}
-
-          <p><span class="icon-no-items"></span></p>
-          <p class="no-items">You don't have any items in this offer yet. Please add your first item!</p>
-
-          <div class="row">
-            <div class="small-10 small-offset-1 columns">
-              <a href="#" {{action "addItem"}} class="button expand"><span class="icon-add"></span>{{t "offer.index.add_item"}}</a>
-            </div>
-          </div>
-
-        {{/if}}
-
-      {{/if}}
+      <div class="row">
+        <div class="small-10 small-offset-1 columns">
+          <a href="#" {{action "addItem"}} class="button expand"><span class="icon-add"></span>{{t "offer.index.add_item"}}</a>
+        </div>
+      </div>
     </div>
   </div>
 </section>
-{{!-- {{#if firstEverItem }} --}}
-{{partial "offer/display_joyride"}}
-{{!-- {{/if}} --}}

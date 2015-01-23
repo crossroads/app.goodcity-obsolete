@@ -60,7 +60,11 @@ export default Ember.ObjectController.extend({
     },
 
     back: function() {
-      this.transitionToRoute("offer");
+      if(this.get('offer.itemCount') === 0){
+        this.transitionToRoute("offers");
+      } else {
+        this.transitionToRoute("offer.offer_details");
+      }
     },
 
     setPreview: function(image) {
