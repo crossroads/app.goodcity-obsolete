@@ -29,9 +29,9 @@ var offerDetails = Ember.ObjectController.extend({
     return elements;
   }.property('items.@each.state'),
 
-  hasMultipleOffers: function(){
-    return this.store.all('offer').get('length') > 1;
-  }.property('model'),
+  displayHomeLink: function(){
+    return this.store.all('offer').rejectBy('state', 'draft').get('length') > 0;
+  }.property('state'),
 
   actions: {
     addItem: function() {

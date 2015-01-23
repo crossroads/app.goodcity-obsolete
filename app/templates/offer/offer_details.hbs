@@ -1,6 +1,6 @@
 <nav {{bind-attr class=":tab-bar :offer_details_title model.isDraft::non-draft"}}>
   <section class="left-small">
-    {{#if hasMultipleOffers}}
+    {{#if displayHomeLink}}
       {{#link-to 'offers.index' classNames="back"}}{{t "back"}}{{/link-to}}
     {{/if}}
   </section>
