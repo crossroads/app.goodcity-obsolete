@@ -8,8 +8,9 @@ export default Ember.Controller.extend({
   actions: {
     wire: function() {
       var socket = io(config.APP.SOCKETIO_WEBSERVICE_URL + "?token=" + encodeURIComponent(this.session.get("authToken")));
-      socket.on("connect", function() { Ember.$("#ws-status").text("Connected"); });
-      socket.on("disconnect", function() { Ember.$("#ws-status").text("Disconnected"); });
+      var name = this.session.get("currentUser.fullName");
+      socket.on("connect", function() { Ember.$("#ws-status").text("Online - " + name); });
+      socket.on("disconnect", function() { Ember.$("#ws-status").text("Offline - " + name); });
       socket.on("error", Ember.run.bind(this, function(data) { throw new Error("websocket: " + data); }));
       socket.on("notification", Ember.run.bind(this, this.notification));
       socket.on("update_store", Ember.run.bind(this, this.updateStore));
