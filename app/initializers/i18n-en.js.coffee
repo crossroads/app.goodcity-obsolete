@@ -161,7 +161,6 @@ I18nTranslationsEn =
           "heading": "Sale of goods"
           "message": "Occasionally, the best way <br> for a donated item to help the poor <br> is for a charity to sell it. Is sale <br> of item(s) okay?"
 
-
         "index":
           "item_count" : "Offer items ({{itemCount}})"
           "add_item" : "Add item"
@@ -203,6 +202,12 @@ I18nTranslationsEn =
           "wait_for_transport": "Transport arrangements can be made<br> once the review is complete."
           "modify_transport": "Modify district or charity sale details"
           "accepted_items_count": "Items accepted so far ({{acceptedCount}})"
+
+        "display_joyride" :
+          "camera": "Tap <i class='fa fa-camera'></i> to add more items"
+          "delete": "Tap <i class='fa fa-trash'></i> to cancel your offer"
+          "all_done_next": "When all done adding items, proceed to the next step"
+          "first_item": "Select an item to view or modify it."
 
       "items":
         "edit_images":
