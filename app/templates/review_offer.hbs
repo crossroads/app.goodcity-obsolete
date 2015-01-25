@@ -6,7 +6,11 @@
       {{#if isReviewedOffer}}
         {{#link-to 'inbox.reviewed' classNames="back"}}{{t "back"}}{{/link-to}}
       {{else}}
-        {{#link-to 'inbox.under_review' classNames="back"}}{{t "back"}}{{/link-to}}
+        {{#if isScheduledOffer}}
+          {{#link-to 'inbox.scheduled' classNames="back"}}{{t "back"}}{{/link-to}}
+        {{else}}
+          {{#link-to 'inbox.under_review' classNames="back"}}{{t "back"}}{{/link-to}}
+        {{/if}}
       {{/if}}
     {{/if}}
   </section>

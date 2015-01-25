@@ -1,7 +1,8 @@
 import Ember from 'ember';
 import AjaxPromise from './../../utils/ajax-promise';
+import transportDetails from './../offer/transport_details';
 
-export default Ember.ObjectController.extend({
+export default transportDetails.extend({
 
   selectedCrossroadsOption: null,
   accepted: Ember.computed.filterBy('items', 'state', 'accepted'),
@@ -9,6 +10,11 @@ export default Ember.ObjectController.extend({
 
   selectedGogovanOption: function(){
     return this.get('gogovanOptions.firstObject.id');
+  }.property(),
+
+  allRejectedItems: function(){
+    var rejectedItems = Ember.computed.filterBy('items', 'state', 'rejected');
+    return rejectedItems.length === this.get('items.lrngth');
   }.property(),
 
   gogovanOptions: function() {

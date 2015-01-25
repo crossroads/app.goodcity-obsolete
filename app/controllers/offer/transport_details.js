@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.ObjectController.extend({
+var transportDetails =  Ember.ObjectController.extend({
   needs: ['offers/index'],
   delivery: Ember.computed.alias('model.delivery'),
 
@@ -28,3 +28,5 @@ export default Ember.ObjectController.extend({
     },
   }
 });
+
+export default transportDetails

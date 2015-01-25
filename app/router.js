@@ -81,6 +81,7 @@ Router.map(function() {
     this.route('under_review');
     this.route('my_list');
     this.route('reviewed');
+    this.route('scheduled');
   });
 });
 
