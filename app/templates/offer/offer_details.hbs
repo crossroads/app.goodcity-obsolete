@@ -8,14 +8,24 @@
   <section class="middle tab-bar-section">
     <h1 class="title">{{t 'offer.offer_details.heading'}}</h1>
   </section>
+  <section id="camera_delete_bar" class="right-small">
+    <a id="camera_icon" title="Camera" class="fontawe-icons">
+      <i class="fa fa-camera"></i>
+    </a>
+    <a title="Delete" class="fontawe-icons">
+      <i class="fa fa-trash"></i>
+    </a>
+  </section>
 </nav>
 <section class="main-section offer_details">
   <div class="row">
     <div class="small-12 columns">
-
       {{partial 'offer/offer_top_section'}}
       {{partial 'offer/message_section'}}
-
     </div>
   </div>
 </section>
+
+{{#if firstEverItem }}
+  {{partial "offer/display_joyride"}}
+{{/if}}

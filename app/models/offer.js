@@ -40,6 +40,10 @@ export default DS.Model.extend({
     return this.get('crossroadsTransport.cost');
   }.property('crossroadsTransport'),
 
+  offersCount: function() {
+    return this.store.all("offer").get("length");
+  }.property(''),
+
   itemCount: function() {
     return this.get("items").rejectBy("state", "draft").length;
   }.property('items.@each.state'),

@@ -195,7 +195,11 @@ I18nTranslationsZhTw =
           "wait_for_transport": "Transport arrangements can be made<br> once the review is complete."
           "modify_transport": "Modify district or charity sale details"
           "accepted_items_count": "Items accepted so far ({{acceptedCount}})"
-
+        "display_joyride" :
+          "camera": ""
+          "delete": ""
+          "all_done_next": ""
+          "first_item": ""
       "items":
         "edit_images":
           "add_photo" : "Add photo"
