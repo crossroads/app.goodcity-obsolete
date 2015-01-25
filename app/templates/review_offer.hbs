@@ -1,4 +1,4 @@
-<nav {{bind-attr class=":tab-bar offer.isSubmitted:offer_details_title offer.isUnderReview:offer_details_title"}} >
+<nav {{bind-attr class=":tab-bar offer.isSubmitted:offer_details_title offer.isUnderReview:offer_details_title :non-draft"}} >
   <section class="left-small">
     {{#if isSubmittedOffer}}
       {{#link-to 'inbox' classNames="back"}}{{t "back"}}{{/link-to}}
