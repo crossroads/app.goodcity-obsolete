@@ -1,13 +1,17 @@
 import Ember from 'ember';
 import startApp from '../helpers/start-app';
 
-var App, testHelper,
+var App, testHelper, offer, item, reviewer,
   TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
 
 module('Review Offer Logistics', {
   setup: function() {
     App = startApp({}, 2);
     testHelper = TestHelper.setup(App);
+
+    reviewer = FactoryGuy.make("user");
+    offer = FactoryGuy.make("offer", { id: 100, state: "under_review", reviewedBy:  reviewer });
+    item = FactoryGuy.make("item", {id: 100, offer: offer, state: "submitted"});
   },
   teardown: function() {
     Em.run(function() { testHelper.teardown(); });
@@ -16,7 +20,7 @@ module('Review Offer Logistics', {
 });
 
 test("for pending review of items", function() {
-  visit("/offers/3/review_offer/logistics");
+  visit("/offers/"+ offer.id +"/review_offer/logistics");
 
   andThen(function(){
     equal($.trim($('p.no-items').text()), "Please finish reviewing items first!");

@@ -14,7 +14,7 @@ export default transportDetails.extend({
 
   allRejectedItems: function(){
     var rejectedItems = Ember.computed.filterBy('items', 'state', 'rejected');
-    return rejectedItems.length === this.get('items.lrngth');
+    return rejectedItems.length === this.get('items.length');
   }.property(),
 
   gogovanOptions: function() {

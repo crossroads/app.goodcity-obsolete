@@ -29,4 +29,4 @@ var transportDetails =  Ember.ObjectController.extend({
   }
 });
 
-export default transportDetails
+export default transportDetails;
