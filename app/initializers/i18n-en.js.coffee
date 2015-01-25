@@ -58,7 +58,7 @@ I18nTranslationsEn =
         "fastest" :
           "title" : "Fastest"
           "info" : "Hire a vehicle with a few clicks.<br/>Recommended!"
-          "cost" : "From {{cost}}"
+          "cost" : "From ${{cost}}"
           "booking_button" : "Go to Booking"
           "learn_more": "Learn More"
           "gogovan_charges": "Gogovan Bookings"
@@ -66,7 +66,7 @@ I18nTranslationsEn =
         "alternate" :
           "title" : "Alternative"
           "info" : "Wait 14+ days until our team<br/>can collect from your area."
-          "cost" : "Fee {{cost}}"
+          "cost" : "Fee ${{cost}}"
           "booking_button" : "Go to Booking"
           "collection_charges": "Collection Charges"
 
