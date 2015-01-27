@@ -1,22 +1,25 @@
 <div class="tabs-content item-content">
-  <ul class="list list-offer-items">
+  <ul class="list list-offer-items" id="joyride-end">
 
     {{#each item in sortedItems}}
-      <li {{bind-attr id="_view.contentIndex"}}>
-        {{#if item.isOffer}}
-          {{#if staffMessagesPage}}
+      {{#if item.isOffer}}
+        {{#if staffMessagesPage}}
+          <li>
             {{#link-to 'offer.donor_messages' model}}
               {{partial 'offer/recent_offer_message'}}
             {{/link-to}}
-          {{else}}
-            {{#if item.displayGeneralMessages}}
+          </li>
+        {{else}}
+          {{#if item.displayGeneralMessages}}
+            <li>
               {{#link-to 'offer.messages' model}}
                 {{partial 'offer/recent_offer_message'}}
               {{/link-to}}
-            {{/if}}
+            </li>
           {{/if}}
-
-        {{else}}
+        {{/if}}
+      {{else}}
+        <li>
           {{#if controller.staffPage}}
             {{#if item.isAccepted}}
               {{#link-to 'review_item.accept' item}}
@@ -33,14 +36,14 @@
                 {{/link-to}}
               {{/if}}
             {{/if}}
+
           {{else}}
             {{#link-to 'item.messages' item}}
               {{partial 'offer/recent_item_message'}}
             {{/link-to}}
           {{/if}}
-        {{/if}}
-      </li>
+        </li>
+      {{/if}}
     {{/each}}
-
   </ul>
 </div>

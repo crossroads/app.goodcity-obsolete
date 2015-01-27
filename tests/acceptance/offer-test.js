@@ -37,7 +37,7 @@ test("Display offer details", function() {
     equal(find("a[href='/offers/" + offer.id + "/confirm']").length, 1);
 
     // list of all items
-    equal(find('.item-content li').length, 2);
+    equal(find('.item-content li img').length, 2);
 
     // favourite image for 'item2': default image
     equal(find('img[src="/assets/images/default_item.jpg"]').length, 1);

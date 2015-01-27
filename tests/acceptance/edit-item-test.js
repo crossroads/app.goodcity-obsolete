@@ -11,8 +11,8 @@ module('Edit Item', {
     testHelper = TestHelper.setup(App);
     syncDataStub(testHelper);
 
-    offer = FactoryGuy.make("offer");
-    item = FactoryGuy.make("item",{offer:offer});
+    offer = FactoryGuy.make("offer", { state: "draft" });
+    item = FactoryGuy.make("item",{ offer:offer, state: "draft" });
     FactoryGuy.makeList("donor_condition", 2);
   },
 
