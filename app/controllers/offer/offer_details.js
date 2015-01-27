@@ -27,7 +27,7 @@ var offerDetails = Ember.ObjectController.extend({
     // add offer to array for general messages display
     elements.push(this);
     return elements;
-  }.property('items.@each.state', 'items.@each.lastMessage'),
+  }.property('items.@each.state'),
 
   displayHomeLink: function(){
     return this.store.all('offer').rejectBy('state', 'draft').get('length') > 0;
@@ -41,6 +41,7 @@ var offerDetails = Ember.ObjectController.extend({
 
     cancelOffer: function(offer){
       if(confirm("Are you sure? This cannot be undone.")) {
+        var loadingView = this.container.lookup('view:loading').append();
         var items = offer.get('items').toArray();
         items.forEach(function(item) {
           item.unloadRecord();
@@ -48,12 +49,16 @@ var offerDetails = Ember.ObjectController.extend({
 
         var route = this;
         offer.destroyRecord().then(function(){
+          loadingView.destroy();
           route.transitionToRoute('offers.index');
         });
       }
     },
-  }
 
+    addMoreItem: function() {
+      if(!this.get("preventNewItem")){ this.send("addItem"); }
+    }
+  }
 });
 
 export default offerDetails;
