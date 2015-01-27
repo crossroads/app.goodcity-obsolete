@@ -12,13 +12,13 @@
           {{t "inbox.my_offers"}}
         {{else}}
           {{#if controller.reviewedOffers}}
-            Reviewed Offers
+            {{t "inbox.reviewed_offers"}}
           {{else}}
             {{#if controller.scheduledOffers}}
-              Scheduled Offers
+              {{t "inbox.scheduled_offers"}}
             {{else}}
               {{#if controller.closedOffers}}
-                Closed Offers
+                {{t "inbox.closed_offers"}}
               {{else}}
                 {{t "inbox.in_review"}}
               {{/if}}

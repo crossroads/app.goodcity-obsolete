@@ -11,7 +11,7 @@ export default transportDetails.extend({
   allRejectedItems: function(){
     var rejectedItems = this.get('items').filterBy('state', 'rejected');
     return rejectedItems.get('length') === this.get('items.length');
-  }.property(),
+  }.property('items.@each.state'),
 
   selectedGogovanOption: function(){
     return this.get('gogovanOptions.firstObject.id');
@@ -63,7 +63,6 @@ export default transportDetails.extend({
         loadingView.destroy();
         route.transitionToRoute('review_offer.items');
       });
-
     }
   }
 });

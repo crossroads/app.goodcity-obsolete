@@ -8,17 +8,17 @@
         {{#if allRejectedItems}}
           <div class='noTransportItems'>
             <i class="icon-empty-items fa fa-info-circle fa-5x"></i>
-            <div class='info-text'>No items to transport.</div>
+            <div class='info-text'>{{t "logistics.no_items"}}</div>
 
             {{#if isClosed}}
-              <div class='info-text'>This offer is closed now.</div>
+              <div class='info-text'>{{t "logistics.offer_closed"}}</div>
             {{else}}
               <div class="row transport-buttons">
                 <div class="small-6 columns">
-                  <a href="#" {{action 'closeOffer'}} class="button secondary expand">Close Offer</a>
+                  <a href="#" {{action 'closeOffer'}} class="button secondary expand">{{t "logistics.close_offer"}}</a>
                 </div>
                 <div class="small-6 columns">
-                  {{#link-to 'offer.donor_messages' this classNames='button expand'}}Message Donor{{/link-to}}
+                  {{#link-to 'offer.donor_messages' this classNames='button expand'}}{{t "logistics.message_donor"}}{{/link-to}}
                 </div>
               </div>
             {{/if}}
@@ -28,14 +28,14 @@
             <p>
               <p><span class="icon-no-items"></span></p>
               <p class="no-items">
-                Please finish reviewing items first!
+                {{t "logistics.finish_review_request"}}
               </p>
             </p>
 
           {{else}}
 
             <div class="small-12 columns">
-              <h3>Accepted Items ({{accepted.length}})</h3>
+              <h3>{{t "logistics.accepted_items"}} ({{accepted.length}})</h3>
               {{#each item in accepted}}
                 {{#link-to ''}}
                   <img {{bind-attr src=item.displayImageUrl}} class="thumbnail" />
@@ -47,10 +47,10 @@
 
               <div class="small-12 columns">
                 <div class = 'transport_details'>
-                  Gogovan Reqirement: {{gogovanTransport.name}}
+                  {{t "logistics.gogovan_requirement"}}: {{gogovanTransport.name}}
                 </div>
                 <div class = 'transport_details'>
-                  Crossroads Requirement: {{crossroadsTransport.name}}
+                  {{t "logistics.crossroads_requirement"}}: {{crossroadsTransport.name}}
                 </div>
               </div>
 
