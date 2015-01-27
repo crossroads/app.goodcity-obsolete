@@ -5,7 +5,11 @@
     {{/if}}
 
     {{#if isUnderReview}}
-      <span class="no-avatar">{{model.reviewedBy.nameInitial}}</span>
+      {{#if reviewedBy.displayImageUrl}}
+        <span><img {{bind-attr src="reviewedBy.displayImageUrl"}} class="no-avatar"/></span>
+      {{else}}
+        <span class="no-avatar">{{model.reviewedBy.nameInitial}}</span>
+      {{/if}}
       <span>{{t 'offer.offer_details.in_review_status' firstNameBinding=model.reviewedBy.firstName}}</span>
     {{/if}}
 
