@@ -37,10 +37,10 @@ test("Offers Details", function() {
   andThen(function() {
     equal(find('.list-items li').length, 3);
     var offer_detail = find('.list-items li').first().text();
-      var offer_detail_text = $.trim(offer_detail.replace(/\s+/g, " "));
+    var offer_detail_text = $.trim(offer_detail.replace(/\s+/g, " "));
 
-      // test: offer details
-      equal(offer_detail_text, "Complete this Offer");
+    // test: offer details
+    equal(offer_detail_text, "Complete this Offer");
 
     // test: complete this offer link
     var complete_offer_link = find('.list-items li').first().find('a');
