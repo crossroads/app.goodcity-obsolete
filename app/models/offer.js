@@ -154,6 +154,6 @@ export default DS.Model.extend({
 
   preventNewItem:  function(){
     return this.get('isReviewed') || this.get('isScheduled');
-  }.property('item.state'),
+  }.property('items.@each.state'),
 
 });

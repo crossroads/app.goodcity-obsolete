@@ -56,10 +56,7 @@ var offerDetails = Ember.ObjectController.extend({
     },
 
     addMoreItem: function() {
-      if(!this.get("preventNewItem"))
-      {
-        this.send("addItem");
-      }
+      if(!this.get("preventNewItem")){ this.send("addItem"); }
     }
   }
 });
