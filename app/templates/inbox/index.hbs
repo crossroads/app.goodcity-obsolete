@@ -17,7 +17,11 @@
             {{#if controller.scheduledOffers}}
               Scheduled Offers
             {{else}}
-              {{t "inbox.in_review"}}
+              {{#if controller.closedOffers}}
+                Closed Offers
+              {{else}}
+                {{t "inbox.in_review"}}
+              {{/if}}
             {{/if}}
           {{/if}}
         {{/if}}

@@ -82,6 +82,7 @@ Router.map(function() {
     this.route('my_list');
     this.route('reviewed');
     this.route('scheduled');
+    this.route('closed');
   });
 });
 
