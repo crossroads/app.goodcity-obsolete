@@ -67,7 +67,7 @@ module.exports = function(environment) {
     // RESTAdapter Settings
     ENV.APP.API_HOST_URL = 'http://api.goodcity.hk';
     ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + '/' + ENV.APP.NAMESPACE;
-    ENV.APP.SOCKETIO_WEBSERVICE_URL = 'http://socket.goodcity.hk/goodcity';
+    ENV.APP.SOCKETIO_WEBSERVICE_URL = 'https://socketio-webservice.azurewebsites.net/goodcity';
   }
 
   return ENV;
