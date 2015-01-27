@@ -10,14 +10,18 @@
             <i class="icon-empty-items fa fa-info-circle fa-5x"></i>
             <div class='info-text'>No items to transport.</div>
 
-            <div class="row transport-buttons">
-              <div class="small-6 columns">
-                <a href="#" class="button secondary expand">Close Offer</a>
+            {{#if isClosed}}
+              <div class='info-text'>This offer is closed now.</div>
+            {{else}}
+              <div class="row transport-buttons">
+                <div class="small-6 columns">
+                  <a href="#" {{action 'closeOffer'}} class="button secondary expand">Close Offer</a>
+                </div>
+                <div class="small-6 columns">
+                  {{#link-to 'offer.donor_messages' this classNames='button expand'}}Message Donor{{/link-to}}
+                </div>
               </div>
-              <div class="small-6 columns">
-                {{#link-to '' classNames='button expand'}}Message Donor{{/link-to}}
-              </div>
-            </div>
+            {{/if}}
           </div>
         {{else}}
           {{#if pendingItem}}

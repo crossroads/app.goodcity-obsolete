@@ -8,14 +8,14 @@ export default transportDetails.extend({
   accepted: Ember.computed.filterBy('items', 'state', 'accepted'),
   pendingItem: Ember.computed.filterBy('items', 'state', 'submitted'),
 
-  selectedGogovanOption: function(){
-    return this.get('gogovanOptions.firstObject.id');
+  allRejectedItems: function(){
+    var rejectedItems = this.get('items').filterBy('state', 'rejected');
+    return rejectedItems.get('length') === this.get('items.length');
   }.property(),
 
-  allRejectedItems: function(){
-    var rejectedItems = Ember.computed.filterBy('items', 'state', 'rejected');
-    return rejectedItems.length === this.get('items.length');
-  }.property(),
+  selectedGogovanOption: function(){
+    return this.get('gogovanOptions.firstObject.id');
+  }.property('gogovanOptions'),
 
   gogovanOptions: function() {
     return this.store.all('gogovan_transport').sortBy('id');
@@ -46,6 +46,24 @@ export default transportDetails.extend({
         loadingView.destroy();
         route.transitionToRoute('review_offer.items');
       });
+    },
+
+    closeOffer: function(){
+      var loadingView = this.container.lookup('view:loading').append();
+
+      var offerProperties = {
+        state_event: 'close',
+        id: this.get('id') };
+
+      var route = this;
+      var url   = "/offers/" + this.get('id') + "/close_offer";
+
+      new AjaxPromise(url, "PUT", this.get('session.authToken'), {offer: offerProperties}).then(function(data) {
+        route.store.pushPayload(data);
+        loadingView.destroy();
+        route.transitionToRoute('review_offer.items');
+      });
+
     }
   }
 });
