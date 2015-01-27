@@ -390,6 +390,9 @@ body > .ember-view {
 }
 .fontawe-icons {
   padding: 0rem 0.2rem;
+  @media #{$small-only} {
+    font-size: 1.0rem;
+  }
 }
 
 #ws-status {
