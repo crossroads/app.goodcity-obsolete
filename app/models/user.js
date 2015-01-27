@@ -1,7 +1,5 @@
 import DS from 'ember-data';
 
-var attr = DS.attr;
-
 var attr = DS.attr,
   belongsTo = DS.belongsTo;
 
