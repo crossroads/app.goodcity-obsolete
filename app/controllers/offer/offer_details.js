@@ -8,7 +8,7 @@ var offerDetails = Ember.ObjectController.extend({
 
   firstEverItem: function(){
     var currentDateTime = new Date();
-    var itemCreated = new Date(this.get("createdAt") + 120000);
+    var itemCreated = new Date(this.get("createdAt").getTime() + 120000);
 
     if((this.get("offersCount") === 1 ) &&
        (this.get("itemCount") === 1) &&
