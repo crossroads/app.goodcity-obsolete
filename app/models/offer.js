@@ -18,7 +18,6 @@ export default DS.Model.extend({
   submittedAt:    attr('date'),
   state_event:    attr('string'),
   reviewedAt:     attr('date'),
-  crossroadsTruckCost: attr('number'),
 
   gogovanTransport:    belongsTo('gogovan_transport'),
   crossroadsTransport: belongsTo('crossroads_transport'),
@@ -36,6 +35,10 @@ export default DS.Model.extend({
   // User details
   userName:       attr('string'),
   userPhone:      attr('string'),
+
+  crossroadsTruckCost: function(){
+    return this.get('crossroadsTransport.cost');
+  }.property('crossroadsTransport'),
 
   offersCount: function() {
     return this.store.all("offer").get("length");
@@ -125,11 +128,11 @@ export default DS.Model.extend({
   }.property('messages.[]'),
 
   hasCrossroadsTransport: function(){
-    return this.get('crossroadsTransport') && this.get('crossroadsTransport.name') !== 'Disable';
+    return this.get('crossroadsTransport') && this.get('crossroadsTransport.name') !== Ember.I18n.t("offer.disable");
   }.property('crossroadsTransport'),
 
   hasGogovanTransport: function(){
-    return this.get('gogovanTransport') && this.get('gogovanTransport.name') !== 'Disable';
+    return this.get('gogovanTransport') && this.get('gogovanTransport.name') !== Ember.I18n.t("offer.disable");
   }.property('gogovanTransport'),
 
   // display "General Messages Thread"

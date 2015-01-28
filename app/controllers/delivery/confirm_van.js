@@ -61,10 +61,6 @@ export default Ember.ObjectController.extend({
                 controller.transitionToRoute('offer.transport_details', offer);
                 controller.set("inProgress", false);
               });
-            })
-            .catch(function() {
-              alert("There is some error with your bookings. Please try again later.");
-              controller.transitionToRoute('delivery.book_van');
             }).finally(function() {
               loadingView.destroy();
             });

@@ -55,14 +55,14 @@ I18nTranslationsZhTw =
           "title" : "最快"
           "booking_button" : "前往預訂"
           "info" : "Hire a vehicle with a few clicks.<br/>Recommended!"
-          "cost" : "From {{cost}}"
+          "cost" : "From ${{cost}}"
           "learn_more": "Learn More"
           "gogovan_charges": "Gogovan Bookings"
 
         "alternate" :
           "title" : "另類"
           "info" : "Wait 14+ days until our team<br/>can collect from your area."
-          "cost" : "Fee {{cost}}"
+          "cost" : "Fee ${{cost}}"
           "booking_button" : "前往預訂"
           "collection_charges": "Collection Charges"
 

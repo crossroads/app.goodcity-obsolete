@@ -53,10 +53,6 @@ export default Ember.ObjectController.extend({
       new AjaxPromise("/gogovan_orders/calculate_price", "POST", controller.get('session.authToken'), requestProperties).then(function(data) {
           order.set('baseFee', data['base']);
           controller.transitionToRoute('delivery.confirm_van');
-        })
-        .catch(function() {
-          alert("There is some error with your bookings. Please try again later.");
-          controller.transitionToRoute('offers.index');
         });
     },
   }

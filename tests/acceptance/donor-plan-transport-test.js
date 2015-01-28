@@ -72,7 +72,7 @@ test("Crossroads Transport option details", function() {
     // Crossroads Transport option is disabled
     var options_text = $(".plan_delivery .small-12.columns .row:eq(1)").text();
     equal(options_text.indexOf('Alternative') >= 0, true);
-    equal(options_text.indexOf('Fee 200') >= 0, true);
+    equal(options_text.indexOf('Fee $200') >= 0, true);
   });
 });
 
@@ -87,7 +87,7 @@ test("Gogovan Transport option details", function() {
     // Crossroads Transport option is disabled
     var options_text = $(".plan_delivery .small-12.columns .row:eq(0)").text();
     equal(options_text.indexOf('Fastest') >= 0, true);
-    equal(options_text.indexOf('From 120') >= 0, true);
+    equal(options_text.indexOf('From $120') >= 0, true);
   });
 });
 

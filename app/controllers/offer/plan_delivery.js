@@ -27,10 +27,6 @@ export default Ember.ObjectController.extend({
       new AjaxPromise("/gogovan_orders/calculate_price", "POST", controller.get('session.authToken'), request).then(function(data) {
           controller.set("gogovanPrice", data['base']);
           value = data['base'];
-        })
-        .catch(function() {
-          alert("There is some error with Gogovan API.");
-          controller.transitionToRoute('offer.offer_details', controller.get('offer'));
         });
 
       return value || '';
