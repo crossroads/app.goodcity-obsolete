@@ -240,7 +240,7 @@ I18nTranslationsEn =
 
         "messages":
           "info_text1": "If we have questions when reviewing this item we will chat with you here."
-          "info_text2": "If you want to add comment to this item for our reviewers, type it below."
+          "info_text2": "If you want to add a comment to this item for our reviewers, type it below."
 
       "_resend":
         "no_sms" : "Haven't received SMS code?"
@@ -271,6 +271,9 @@ I18nTranslationsEn =
         "in_review" : "In Review"
         "my_list" : "My List"
         "my_offers" : "My Offers"
+        "reviewed_offers": "Reviewed Offers"
+        "scheduled_offers": "Scheduled Offers"
+        "closed_offers": "Closed Offers"
 
       "messages":
         "unread" : "Unread ({{unreadCount}})"
@@ -281,6 +284,16 @@ I18nTranslationsEn =
 
       "review_offer":
         "review_started_by" : "Started by {{firstName}} {{lastName}}"
+
+      "logistics":
+        "no_items": "No items to transport."
+        "offer_closed": "This offer is closed now."
+        "close_offer": "Close Offer"
+        "message_donor": "Message Donor"
+        "finish_review_request": "Please finish reviewing items first!"
+        "accepted_items": "Accepted Items"
+        "gogovan_requirement": "Gogovan Reqirement"
+        "crossroads_requirement": "Crossroads Requirement"
 
       "review_item":
         "accept" : "Accept"

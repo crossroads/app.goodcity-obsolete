@@ -56,6 +56,7 @@ export default DS.Model.extend({
   isUnderReview: Ember.computed.equal("state", "under_review"),
   isReviewed: Ember.computed.equal("state", "reviewed"),
   isClosed: Ember.computed.equal("state", "closed"),
+  isReceived: Ember.computed.equal("state", "received"),
 
   isReviewing: function(){
     return this.get('isUnderReview') || this.get('isReviewed');
@@ -149,4 +150,13 @@ export default DS.Model.extend({
     }
     return value;
   }.property('lastMessage'),
+
+  showOfferIcons:  function(){
+    return this.get("itemCount") > 0 && !(this.get('isClosed') || this.get('isReceived'));
+  }.property('items.@each.state'),
+
+  preventNewItem:  function(){
+    return this.get('isReviewed') || this.get('isScheduled');
+  }.property('items.@each.state'),
+
 });

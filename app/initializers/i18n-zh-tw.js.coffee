@@ -257,6 +257,9 @@ I18nTranslationsZhTw =
         "in_review" : "In Review"
         "my_list" : "My List"
         "my_offers" : "My Offers"
+        "reviewed_offers": "Reviewed Offers"
+        "scheduled_offers": "Scheduled Offers"
+        "closed_offers": "Closed Offers"
 
       "messages":
         "unread" : "Unread ({{unreadCount}})"
@@ -279,6 +282,16 @@ I18nTranslationsZhTw =
 
       "review_offer":
         "review_started_by" : "Started by {{lastName}} {{firstName}}"
+
+      "logistics":
+        "no_items": "No items to transport."
+        "offer_closed": "This offer is closed now."
+        "close_offer": "Close Offer"
+        "message_donor": "Message Donor"
+        "finish_review_request": "Please finish reviewing items first!"
+        "accepted_items": "Accepted Items"
+        "gogovan_requirement": "Gogovan Reqirement"
+        "crossroads_requirement": "Crossroads Requirement"
 
       # Components
       "upload-images":
