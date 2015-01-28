@@ -4,7 +4,6 @@ import '../../computed/local-storage';
 export default Ember.View.extend({
   didInsertElement: function() {
     var _this = this;
-    Ember.$(document).foundation('joyride', 'start');
 
     Ember.$().ready(function(){
       cloudinaryError();
