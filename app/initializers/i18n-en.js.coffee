@@ -239,7 +239,7 @@ I18nTranslationsEn =
 
         "messages":
           "info_text1": "If we have questions when reviewing this item we will chat with you here."
-          "info_text2": "If you want to add comment to this item for our reviewers, type it below."
+          "info_text2": "If you want to add a comment to this item for our reviewers, type it below."
 
       "_resend":
         "no_sms" : "Haven't received SMS code?"
