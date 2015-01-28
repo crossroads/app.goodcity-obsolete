@@ -18,6 +18,8 @@ export default DS.Model.extend({
   submittedAt:    attr('date'),
   state_event:    attr('string'),
   reviewedAt:     attr('date'),
+  receivedAt:     attr('date'),
+  reviewCompletedAt: attr('date'),
 
   gogovanTransport:    belongsTo('gogovan_transport'),
   crossroadsTransport: belongsTo('crossroads_transport'),
@@ -61,6 +63,15 @@ export default DS.Model.extend({
   isReviewing: function(){
     return this.get('isUnderReview') || this.get('isReviewed');
   }.property('isUnderReview', 'isReviewed'),
+
+  allItemsReviewed: function(){
+    return this.get('isUnderReview') && this.get('items').filterBy('state', 'submitted').get('length') === 0;
+  }.property('items.@each.state'),
+
+  allItemsRejected: function(){
+    var rejectedItems = this.get('items').filterBy('state', 'rejected');
+    return rejectedItems.get('length') === this.get('items.length');
+  }.property('items.@each.state'),
 
   displayImageUrl: function(){
     return this.get("items.firstObject.displayImageUrl") || "/assets/images/default_item.jpg";

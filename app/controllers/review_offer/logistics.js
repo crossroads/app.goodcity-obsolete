@@ -8,11 +8,6 @@ export default transportDetails.extend({
   accepted: Ember.computed.filterBy('items', 'state', 'accepted'),
   pendingItem: Ember.computed.filterBy('items', 'state', 'submitted'),
 
-  allRejectedItems: function(){
-    var rejectedItems = this.get('items').filterBy('state', 'rejected');
-    return rejectedItems.get('length') === this.get('items.length');
-  }.property('items.@each.state'),
-
   selectedGogovanOption: function(){
     return this.get('gogovanOptions.firstObject.id');
   }.property('gogovanOptions'),

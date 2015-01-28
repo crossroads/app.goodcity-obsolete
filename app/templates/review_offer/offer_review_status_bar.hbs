@@ -1,18 +1,91 @@
-{{#if offer.isUnderReview }}
-  <div class="offer-status is-under-review">
+{{#if offer.isReceived}}
+  <div class="offer-status is-received">
     <div class='status-message review_message'>
-      {{t "review_offer.review_started_by" firstNameBinding=offer.reviewedBy.firstName lastNameBinding=offer.reviewedBy.lastName}}
-      {{view 'time-ago' timeValue=offer.reviewedAt}}
+      Goods received by {{offer.createdBy.firstName}} {{offer.createdBy.lastName}} {{view 'time-ago' timeValue=offer.receivedAt}}
     </div>
   </div>
 {{/if}}
 
 {{#if offer.isSubmitted}}
   <a href="#" {{action 'startReview'}} class='start_review_link'>
-    <div class="offer-status is-under-review">
+    <div class="offer-status is-submitted">
       <div class='status-message'>
         Start Review
       </div>
     </div>
   </a>
+{{/if}}
+
+{{#if offer.isClosed}}
+  <div class="offer-status is-closed">
+    <div class='status-message review_message'>
+      Offer closed by {{offer.reviewedBy.firstName}} {{offer.reviewedBy.lastName}} {{view 'time-ago' timeValue=offer.reviewCompletedAt}}
+    </div>
+  </div>
+{{else}}
+
+  {{#if offer.allItemsRejected}}
+    <div class="offer-status is-submitted">
+      <div class='status-message'>
+        No items needed <i class="fa fa-frown-o"></i> {{#link-to 'review_offer.logistics' offer }}Close Offer{{/link-to}}
+      </div>
+    </div>
+  {{else}}
+    {{#if offer.allItemsReviewed}}
+      <div class="offer-status is-submitted">
+        <div class='status-message'>
+          All items reviewed <i class="fa fa-smile-o"></i> {{#link-to 'review_offer.logistics' offer }}Set logistics{{/link-to}} to complete
+        </div>
+      </div>
+    {{else}}
+      {{#if offer.isUnderReview }}
+        <div class="offer-status is-under-review">
+          <div class='status-message review_message'>
+            {{t "review_offer.review_started_by" firstNameBinding=offer.reviewedBy.firstName lastNameBinding=offer.reviewedBy.lastName}}
+            {{view 'time-ago' timeValue=offer.reviewedAt}}
+          </div>
+        </div>
+      {{/if}}
+    {{/if}}
+  {{/if}}
+
+{{/if}}
+
+{{#if offer.isReviewed}}
+  <div class="offer-status is-reviewed">
+    <div class='status-message review_message'>
+      Reviewed {{view 'time-ago' timeValue=offer.reviewCompletedAt}}. User to plan transport.
+    </div>
+  </div>
+{{/if}}
+
+{{#if offer.isScheduled}}
+  <div class="offer-status is-scheduled">
+    <div class='status-message'>
+      {{#if offer.delivery.isAlternate}}
+        {{t 'offer.offer_details.is_collection'}}
+      {{/if}}
+
+      {{#if offer.delivery.isDropOff}}
+        {{t 'offer.offer_details.is_drop_off'}}
+      {{/if}}
+
+      {{#if offer.delivery.isGogovan}}
+        {{t 'offer.offer_details.is_gogovan'}}
+      {{/if}}
+
+      <i class="fa fa-truck"></i>
+      <b>
+        {{#if offer.delivery.isGogovan}}
+          {{offer.delivery.schedule.slotName}},
+        {{/if}}
+
+        {{schedule-time-status offer.delivery.schedule.scheduledAt}}
+
+        {{#if offer.delivery.noGogovan}}
+          , {{offer.delivery.schedule.dayTime}}
+        {{/if}}
+      </b>
+    </div>
+  </div>
 {{/if}}

@@ -5,7 +5,7 @@
       {{#if isScheduled}}
         {{partial 'offer/delivery_details'}}
       {{else}}
-        {{#if allRejectedItems}}
+        {{#if allItemsRejected}}
           <div class='noTransportItems'>
             <i class="icon-empty-items fa fa-info-circle fa-5x"></i>
             <div class='info-text'>{{t "logistics.no_items"}}</div>

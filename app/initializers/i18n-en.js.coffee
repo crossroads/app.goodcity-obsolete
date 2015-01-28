@@ -274,6 +274,7 @@ I18nTranslationsEn =
         "reviewed_offers": "Reviewed Offers"
         "scheduled_offers": "Scheduled Offers"
         "closed_offers": "Closed Offers"
+        "received_offers": "Received Offers"
 
       "messages":
         "unread" : "Unread ({{unreadCount}})"
