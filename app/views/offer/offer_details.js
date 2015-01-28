@@ -4,6 +4,11 @@ import '../../computed/local-storage';
 export default Ember.View.extend({
   didInsertElement: function() {
     var _this = this;
+
+    Ember.$().ready(function(){
+      cloudinaryError();
+    });
+
     Ember.$(document).foundation({
       joyride : {
         modal: true,
@@ -17,6 +22,12 @@ export default Ember.View.extend({
           _this.get("controller").set("joyrideSeen", true); }
       }
     }).foundation('joyride', 'start');
+
+    function cloudinaryError(){
+      Ember.$('.reviewer-avatar').on("error", function(){
+        _this.get('controller').send('handleBrokenImage');
+      });
+    }
   }
 });
 

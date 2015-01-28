@@ -1,10 +1,12 @@
 import DS from 'ember-data';
 
-var attr = DS.attr;
+var attr = DS.attr,
+  belongsTo = DS.belongsTo;
 
 export default DS.Model.extend({
   firstName:   attr('string'),
   lastName:    attr('string'),
+  image:       belongsTo('image'),
 
   permission:  DS.belongsTo('permission'),
 
@@ -20,4 +22,12 @@ export default DS.Model.extend({
       return "("+ permission.capitalize().charAt(0) +")";
     }
   }.property('permission'),
+
+  displayImageUrl: function(key, value) {
+    if(arguments.length > 1) {
+      return value;
+    } else {
+      return this.get('image.thumbImageUrl');
+    }
+  }.property('image'),
 });
