@@ -1,10 +1,12 @@
 import Ember from 'ember';
+import '../../computed/local-storage';
 
 var offerDetails = Ember.ObjectController.extend({
 
   sortProperties: ["latestUpdatedTime:desc"],
   sortedItems: Ember.computed.sort("offerAndItems", "sortProperties"),
   staffMessagesPage: Ember.computed.alias('session.currentUser.isStaff'),
+  joyrideSeen:  Ember.computed.localStorage(),
 
   firstEverItem: function(){
     var currentDateTime = new Date();
@@ -12,13 +14,14 @@ var offerDetails = Ember.ObjectController.extend({
 
     if((this.get("offersCount") === 1 ) &&
        (this.get("itemCount") === 1) &&
+       (this.get("joyrideSeen") !== true) &&
        (currentDateTime <= itemCreated)) {
       return true;
     }
     else {
       return false;
     }
-   }.property("offers.count", "items.count"),
+   }.property("offers.count", "items.count", "joyrideSeen"),
 
   offerAndItems: function() {
     // avoid deleted-items which are not persisted yet.

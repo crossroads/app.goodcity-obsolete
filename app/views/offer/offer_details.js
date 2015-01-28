@@ -1,21 +1,35 @@
 import Ember from 'ember';
+import '../../computed/local-storage';
 
 export default Ember.View.extend({
   didInsertElement: function() {
-    var currentView = this;
+    var _this = this;
     Ember.$(document).foundation('joyride', 'start');
 
     Ember.$().ready(function(){
-      cloudinaryError(currentView);
+      cloudinaryError();
     });
 
-    function cloudinaryError(currentView){
+    Ember.$(document).foundation({
+      joyride : {
+        modal: true,
+        nub_position: 'top',
+        tip_animation_fade_speed: 1300,
+        tip_animation: 'fade',
+        tip_location_patterns: {
+          top: ['bottom'],
+        },
+        post_ride_callback: function(){
+          _this.get("controller").set("joyrideSeen", true); }
+      }
+    }).foundation('joyride', 'start');
+
+    function cloudinaryError(){
       Ember.$('.reviewer-avatar').on("error", function(){
-        currentView.get('controller').send('handleBrokenImage');
+        _this.get('controller').send('handleBrokenImage');
       });
     }
-  },
-
+  }
 });
 
 
