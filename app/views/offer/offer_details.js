@@ -2,12 +2,25 @@ import Ember from 'ember';
 import '../../computed/local-storage';
 
 export default Ember.View.extend({
+  cloudinaryError: function() {
+    var _this = this;
+    Ember.$('.reviewer-avatar').on("error", function(){
+      _this.send('handleBrokenImage');
+    });
+  },
+
+  offerStateDidChange: function() {
+    var _this = this;
+    var state = _this.get("controller.model.state");
+    if(state === "under_review"){
+      setTimeout(function(){
+        _this.cloudinaryError();
+      }, 1);
+    }
+  }.observes('controller.model.state'),
+
   didInsertElement: function() {
     var _this = this;
-
-    Ember.$().ready(function(){
-      cloudinaryError();
-    });
 
     Ember.$(document).foundation({
       joyride : {
@@ -22,12 +35,12 @@ export default Ember.View.extend({
           _this.get("controller").set("joyrideSeen", true); }
       }
     }).foundation('joyride', 'start');
+  },
 
-    function cloudinaryError(){
-      Ember.$('.reviewer-avatar').on("error", function(){
-        _this.get('controller').send('handleBrokenImage');
-      });
-    }
+  actions: {
+    handleBrokenImage: function() {
+      this.get("controller.reviewedBy").set("displayImageUrl", null);
+    },
   }
 });
 
