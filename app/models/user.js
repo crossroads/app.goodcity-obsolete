@@ -23,7 +23,11 @@ export default DS.Model.extend({
     }
   }.property('permission'),
 
-  displayImageUrl: function() {
-    return this.get('image.thumbImageUrl');
+  displayImageUrl: function(key, value) {
+    if(arguments.length > 1) {
+      return value;
+    } else {
+      return this.get('image.thumbImageUrl');
+    }
   }.property('image'),
 });
