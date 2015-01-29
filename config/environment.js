@@ -10,19 +10,12 @@ module.exports = function(environment) {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
         // e.g. 'with-controller': true
-
         I18N_TRANSLATE_HELPER_SPAN: false //switch to future version default to suppress warning
       },
       I18N_COMPILE_WITHOUT_HANDLEBARS: true //switch to future version default to suppress warning
     },
 
     APP: {
-      // Here you can pass flags/options to your application instance
-      // when it is created
-      //Airbrake Js keys
-      AIRBRAKE_HOST: "https://errbit.crossroads.org.hk",
-      AIRBRAKE_PROJECT_ID: 0,
-      AIRBRAKE_PROJECT_KEY: "010f0d73f56efb6150cb2744e814e46b",
       // Cloudinary Keys
       CLOUD_NAME: 'ddoadcjjl',
       CLOUD_API_KEY: 926849638736153,
@@ -38,6 +31,7 @@ module.exports = function(environment) {
   };
 
   if (environment === 'development') {
+
     ENV.APP.LOG_RESOLVER = true;
     ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
@@ -71,6 +65,10 @@ module.exports = function(environment) {
     ENV.APP.API_HOST_URL = 'http://api.goodcity.hk';
     ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + '/' + ENV.APP.NAMESPACE;
     ENV.APP.SOCKETIO_WEBSERVICE_URL = 'http://socket.goodcity.hk/goodcity';
+    //Airbrake Js keys
+    ENV.APP.AIRBRAKE_HOST = "https://errbit.crossroads.org.hk";
+    ENV.APP.AIRBRAKE_PROJECT_ID = 0;
+    ENV.APP.AIRBRAKE_PROJECT_KEY = "010f0d73f56efb6150cb2744e814e46b";
   }
 
   return ENV;
