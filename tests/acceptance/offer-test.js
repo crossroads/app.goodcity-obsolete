@@ -49,7 +49,7 @@ test("Display offer details", function() {
 
 test("Confirm and Submit Offer", function(){
   visit("/offers/" + offer.id + "/offer_details");
-  click("a[href='/offers/1/confirm']");
+  click("a[href='/offers/"+ offer.id +"/confirm']");
 
   andThen(function() {
     equal(/Confirm/i.test($('body h1').text()), true);

@@ -71,7 +71,6 @@ test("send message", function() {
 
       var messageDetails = $.trim($($('.message_details:last').parent()).text());
       equal(messageDetails.indexOf('example4') > 0, true);
-      equal(messageDetails.indexOf(reviewer.get('firstName')) >= 0, true);
     });
   });
 });

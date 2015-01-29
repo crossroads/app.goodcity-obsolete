@@ -10,13 +10,13 @@ module('Review Offer Logistics', {
     testHelper = TestHelper.setup(App);
 
     reviewer = FactoryGuy.make("user");
-    offer = FactoryGuy.make("offer", { id: 100, state: "under_review", reviewedBy:  reviewer });
-    item = FactoryGuy.make("item", {id: 100, offer: offer, state: "submitted"});
-    offer2 = FactoryGuy.make("offer", { id: 101, state:"scheduled"});
-    item2  = FactoryGuy.make("item", { id: 101, state:"accepted", offer: offer2});
+    offer = FactoryGuy.make("offer", { state: "under_review", reviewedBy:  reviewer });
+    item = FactoryGuy.make("item", { offer: offer, state: "submitted"});
+    offer2 = FactoryGuy.make("offer", { state:"scheduled"});
+    item2  = FactoryGuy.make("item", { state:"accepted", offer: offer2});
 
-    offer3 = FactoryGuy.make("offer", { id: 102, state: "under_review" });
-    item3 = FactoryGuy.make("item", { id: 102, state:"rejected", offer: offer3 });
+    offer3 = FactoryGuy.make("offer", { state: "under_review" });
+    item3 = FactoryGuy.make("item", { state:"rejected", offer: offer3 });
   },
   teardown: function() {
     Em.run(function() { testHelper.teardown(); });

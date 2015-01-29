@@ -24,7 +24,7 @@ module('Donor Plan Transport:', {
 
     gogovan_transport2 = FactoryGuy.make('gogovan_transport', { name: 'Van' });
     crossroads_transport2 = FactoryGuy.make('crossroads_transport', { name: 'Disable' });
-    offer2 = FactoryGuy.make("offer", { id: '100', state: 'reviewed', gogovanTransport: gogovan_transport2, crossroadsTransport: crossroads_transport2 });
+    offer2 = FactoryGuy.make("offer", { state: 'reviewed', gogovanTransport: gogovan_transport2, crossroadsTransport: crossroads_transport2 });
   },
 
   teardown: function() {

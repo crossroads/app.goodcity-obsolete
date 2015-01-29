@@ -1,7 +1,14 @@
 import itemsFactory from './item';
 
 FactoryGuy.define('offer', {
+  sequences: {
+    id: function(num) {
+      return num + 100;
+    },
+  },
+
   default: {
+    id: FactoryGuy.generate('id'),
     language: 'en',
     state: 'draft',
     origin: 'trial',

@@ -10,11 +10,11 @@ module('Reviewer: Display Item Messages', {
     App = startApp({}, 2);
     testHelper = TestHelper.setup(App);
 
-    offer = FactoryGuy.make("offer", { id: 100, state:"under_review"});
-    item = FactoryGuy.make("item", { id: 100, state:"submitted", offer: offer});
-    message1 = FactoryGuy.make("message", {id: 101, offer: offer, item: item});
-    message2 = FactoryGuy.make("message", {id: 102, offer: offer, item: item, body: "Message from Donor"});
-    message3 = FactoryGuy.make("message", {id: 103, offer: offer, item: item, body: "Message from Supervisor", isPrivate: true});
+    offer = FactoryGuy.make("offer", { state:"under_review"});
+    item = FactoryGuy.make("item", { state:"submitted", offer: offer});
+    message1 = FactoryGuy.make("message", { offer: offer, item: item});
+    message2 = FactoryGuy.make("message", { offer: offer, item: item, body: "Message from Donor"});
+    message3 = FactoryGuy.make("message", { offer: offer, item: item, body: "Message from Supervisor", isPrivate: true});
   },
 
   teardown: function() {
@@ -50,10 +50,10 @@ test("item-messages from donor should add unread bubble in donor message tab", f
   andThen(function() {
     equal(currentURL(), "/offers/" + offer.id + "/review_item/" + item.id + "/supervisor_messages");
 
-    var message4 = FactoryGuy.make("message", {id: 104, offer: offer, item: item, body: "Second Message from Donor"});
+    var message4 = FactoryGuy.make("message", { offer: offer, item: item, body: "Second Message from Donor"});
 
     // if message received from donor, add unread bubble mark
-    equal($("a[href='/offers/100/review_item/100/donor_messages'] i.unread").length, 1);
+    equal($("a[href='/offers/"+ offer.id +"/review_item/"+ item.id +"/donor_messages'] i.unread").length, 1);
   });
 });
 
@@ -62,9 +62,9 @@ test("offer-messages from staff should add unread bubble in supervisor message t
   andThen(function() {
     equal(currentURL(), "/offers/" + offer.id + "/review_item/" + item.id + "/donor_messages");
 
-    var message5 = FactoryGuy.make("message", {id: 105, offer: offer, item: item, body: "Second Message from Supervisor", isPrivate: true});
+    var message5 = FactoryGuy.make("message", { offer: offer, item: item, body: "Second Message from Supervisor", isPrivate: true});
 
     // if message received from donor, add unread bubble mark
-    equal($("a[href='/offers/100/review_item/100/supervisor_messages'] i.unread").length, 1);
+    equal($("a[href='/offers/"+ offer.id +"/review_item/"+ item.id +"/supervisor_messages'] i.unread").length, 1);
   });
 });

@@ -7,7 +7,7 @@ var App, testHelper, offer1, offer2, reviewer, reviewer1, reviewerName,
   offer7, offer3, offer4, delivery1, delivery2, offer5, delivery3, offer6,
   offer8, reviewer1Name;
 
-module('Display Offer Status', {
+module('Donor: Display Offer Status', {
   setup: function() {
     App = startApp();
     testHelper = TestHelper.setup(App);
