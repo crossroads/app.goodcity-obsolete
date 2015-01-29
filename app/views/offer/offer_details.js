@@ -2,23 +2,6 @@ import Ember from 'ember';
 import '../../computed/local-storage';
 
 export default Ember.View.extend({
-  cloudinaryError: function() {
-    var _this = this;
-    Ember.$('.reviewer-avatar').on("error", function(){
-      _this.send('handleBrokenImage');
-    });
-  },
-
-  offerStateDidChange: function() {
-    var _this = this;
-    var state = _this.get("controller.model.state");
-    if(state === "under_review"){
-      setTimeout(function(){
-        _this.cloudinaryError();
-      }, 1);
-    }
-  }.observes('controller.model.state'),
-
   didInsertElement: function() {
     var _this = this;
 
@@ -36,12 +19,6 @@ export default Ember.View.extend({
       }
     }).foundation('joyride', 'start');
   },
-
-  actions: {
-    handleBrokenImage: function() {
-      this.get("controller.reviewedBy").set("displayImageUrl", null);
-    },
-  }
 });
 
 
