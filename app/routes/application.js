@@ -12,7 +12,7 @@ export default Ember.Route.extend({
 
     var sendErrorsViaAirbrake = function(error){
       if(config.environment === "production") {
-        Airbrake.push(error);
+        Airbrake.push({error: error});
       }
     };
 
