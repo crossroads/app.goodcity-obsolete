@@ -30,7 +30,6 @@ export default Ember.ObjectController.extend({
       var mobile = config.APP.HK_COUNTRY_CODE + Ember.$("#mobile").val();
       var contactProperties = { name: name, mobile: mobile };
       var contact = controller.store.createRecord('contact', contactProperties);
-      orderDetails.setProperties({ name: name, mobile: mobile });
 
       // schedule details
       var scheduleProperties = { scheduledAt: orderDetails.get('pickupTime'), slotName: orderDetails.get('slot') };
@@ -38,6 +37,8 @@ export default Ember.ObjectController.extend({
 
       var delivery = controller.store.getById("delivery", controller.get('controllers.delivery.id'));
       var offer = delivery.get('offer');
+
+      orderDetails.setProperties({ name: name, mobile: mobile, offerId: offer.get('id') });
 
       // save schedule
       schedule.save().then(function(schedule) {
@@ -60,10 +61,6 @@ export default Ember.ObjectController.extend({
                 controller.transitionToRoute('offer.transport_details', offer);
                 controller.set("inProgress", false);
               });
-            })
-            .catch(function() {
-              alert("There is some error with your bookings. Please try again later.");
-              controller.transitionToRoute('delivery.book_van');
             }).finally(function() {
               loadingView.destroy();
             });

@@ -22,7 +22,7 @@ module('Edit Images', {
     }});
 
     offer = FactoryGuy.make("offer");
-    item = FactoryGuy.make("item",{offer:offer});
+    item = FactoryGuy.make("item",{offer:offer, state: "draft"});
     img1 = FactoryGuy.make("image", {item:item,favourite:true});
     img2 = FactoryGuy.make("image", {item:item,favourite:false});
     edit_images_url = "/offers/" + offer.id + "/items/" + item.id + "/edit_images";

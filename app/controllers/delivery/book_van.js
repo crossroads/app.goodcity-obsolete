@@ -45,6 +45,7 @@ export default Ember.ObjectController.extend({
       requestProperties.needEnglish = controller.get("speakEnglish");
       requestProperties.needCart = controller.get("borrowTrolley");
       requestProperties.needCarry = controller.get("porterage");
+      requestProperties.offerId = delivery.get('offer.id');
 
       var order = controller.store.createRecord('gogovan_order', requestProperties);
       order.set('delivery', delivery);
@@ -52,10 +53,6 @@ export default Ember.ObjectController.extend({
       new AjaxPromise("/gogovan_orders/calculate_price", "POST", controller.get('session.authToken'), requestProperties).then(function(data) {
           order.set('baseFee', data['base']);
           controller.transitionToRoute('delivery.confirm_van');
-        })
-        .catch(function() {
-          alert("There is some error with your bookings. Please try again later.");
-          controller.transitionToRoute('offers.index');
         });
     },
   }

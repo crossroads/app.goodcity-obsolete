@@ -36,6 +36,14 @@ export default DS.Model.extend({
   userName:       attr('string'),
   userPhone:      attr('string'),
 
+  crossroadsTruckCost: function(){
+    return this.get('crossroadsTransport.cost');
+  }.property('crossroadsTransport'),
+
+  offersCount: function() {
+    return this.store.all("offer").get("length");
+  }.property(''),
+
   itemCount: function() {
     return this.get("items").rejectBy("state", "draft").length;
   }.property('items.@each.state'),
@@ -48,6 +56,7 @@ export default DS.Model.extend({
   isUnderReview: Ember.computed.equal("state", "under_review"),
   isReviewed: Ember.computed.equal("state", "reviewed"),
   isClosed: Ember.computed.equal("state", "closed"),
+  isReceived: Ember.computed.equal("state", "received"),
 
   isReviewing: function(){
     return this.get('isUnderReview') || this.get('isReviewed');
@@ -117,4 +126,37 @@ export default DS.Model.extend({
     var messages = this.get('messages').filterBy('item', null).sortBy('createdAt');
     return messages.get('length') > 0 ? messages.get('lastObject') : null;
   }.property('messages.[]'),
+
+  hasCrossroadsTransport: function(){
+    return this.get('crossroadsTransport') && this.get('crossroadsTransport.name') !== Ember.I18n.t("offer.disable");
+  }.property('crossroadsTransport'),
+
+  hasGogovanTransport: function(){
+    return this.get('gogovanTransport') && this.get('gogovanTransport.name') !== Ember.I18n.t("offer.disable");
+  }.property('gogovanTransport'),
+
+  // display "General Messages Thread"
+  displayGeneralMessages: function(){
+    return !(this.get('isDraft') && this.get('lastMessage') === null);
+  }.property('state', 'lastMessage'),
+
+  // to sort on offer-details page for updated-offer and latest-message
+  latestUpdatedTime: function(){
+    var value;
+    switch(Ember.compare(this.get('lastMessage.createdAt'), this.get('updatedAt'))) {
+      case 0 :
+      case 1 : value = this.get('lastMessage.createdAt'); break;
+      case -1 : value = this.get('updatedAt'); break;
+    }
+    return value;
+  }.property('lastMessage'),
+
+  showOfferIcons:  function(){
+    return this.get("itemCount") > 0 && !(this.get('isClosed') || this.get('isReceived'));
+  }.property('items.@each.state'),
+
+  preventNewItem:  function(){
+    return this.get('isReviewed') || this.get('isScheduled');
+  }.property('items.@each.state'),
+
 });

@@ -19,6 +19,8 @@ Router.map(function() {
       this.route('confirm');
       this.route('submit');
       this.route('plan_delivery');
+      this.route('collection_charges');
+      this.route('gogovan_charges');
 
       this.route('messages');
       this.route('donor_messages');
@@ -79,6 +81,8 @@ Router.map(function() {
     this.route('under_review');
     this.route('my_list');
     this.route('reviewed');
+    this.route('scheduled');
+    this.route('closed');
   });
 });
 

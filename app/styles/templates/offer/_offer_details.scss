@@ -1,4 +1,4 @@
-.offer_details {
+.offer_details, .offer-index {
   margin-bottom: 1.5rem;
 
   dl.tabs {
@@ -96,14 +96,22 @@
           }
         }
       }
+
+      li:last-child {
+        border-bottom: none;
+      }
+
+      li:first-child {
+        border-top: 1px solid $light-blue;
+      }
+
     }
   }
 }
 
-.offer_details_title {
-  &.tab-bar {
-    margin-bottom: 0;
-  }
+.offer_details_title.tab-bar {
+  &.non-draft {
+  margin-bottom: 0; }
 }
 
 .message-time {

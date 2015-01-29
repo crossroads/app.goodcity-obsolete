@@ -1,15 +1,21 @@
 import Ember from 'ember';
 import AjaxPromise from './../../utils/ajax-promise';
+import transportDetails from './../offer/transport_details';
 
-export default Ember.ObjectController.extend({
+export default transportDetails.extend({
 
   selectedCrossroadsOption: null,
   accepted: Ember.computed.filterBy('items', 'state', 'accepted'),
   pendingItem: Ember.computed.filterBy('items', 'state', 'submitted'),
 
+  allRejectedItems: function(){
+    var rejectedItems = this.get('items').filterBy('state', 'rejected');
+    return rejectedItems.get('length') === this.get('items.length');
+  }.property('items.@each.state'),
+
   selectedGogovanOption: function(){
     return this.get('gogovanOptions.firstObject.id');
-  }.property(),
+  }.property('gogovanOptions'),
 
   gogovanOptions: function() {
     return this.store.all('gogovan_transport').sortBy('id');
@@ -34,6 +40,23 @@ export default Ember.ObjectController.extend({
 
       var route = this;
       var url   = "/offers/" + this.get('id') + "/complete_review";
+
+      new AjaxPromise(url, "PUT", this.get('session.authToken'), {offer: offerProperties}).then(function(data) {
+        route.store.pushPayload(data);
+        loadingView.destroy();
+        route.transitionToRoute('review_offer.items');
+      });
+    },
+
+    closeOffer: function(){
+      var loadingView = this.container.lookup('view:loading').append();
+
+      var offerProperties = {
+        state_event: 'close',
+        id: this.get('id') };
+
+      var route = this;
+      var url   = "/offers/" + this.get('id') + "/close_offer";
 
       new AjaxPromise(url, "PUT", this.get('session.authToken'), {offer: offerProperties}).then(function(data) {
         route.store.pushPayload(data);

@@ -25,19 +25,19 @@ module('Display Offer', {
 });
 
 test("Display offer details", function() {
-  visit('/offers/' + offer.id);
+  visit('/offers/' + offer.id + "/offer_details");
 
   andThen(function() {
     // offer show page
-    equal(currentURL(), "/offers/" + offer.id);
-    equal($.trim(find('.tab-bar-section .title').text()), "Offer items (2)");
+    equal(currentURL(), "/offers/" + offer.id + "/offer_details");
+    equal($.trim(find('.tab-bar-section .title').text()), "Offer Details");
 
     // add-item & remove-item buttons and confirm offer link
     // equal(find("a:contains('Add Item')").length, 1);
     equal(find("a[href='/offers/" + offer.id + "/confirm']").length, 1);
 
     // list of all items
-    equal(find('.list-offer-items li').length, 2);
+    equal(find('.item-content li img').length, 2);
 
     // favourite image for 'item2': default image
     equal(find('img[src="/assets/images/default_item.jpg"]').length, 1);
@@ -48,7 +48,7 @@ test("Display offer details", function() {
 });
 
 test("Confirm and Submit Offer", function(){
-  visit("/offers/" + offer.id);
+  visit("/offers/" + offer.id + "/offer_details");
   click("a[href='/offers/1/confirm']");
 
   andThen(function() {
@@ -71,14 +71,5 @@ test("Confirm and Submit Offer", function(){
         equal(currentURL(), "/offers/" + offer.id + "/offer_details");
       });
     });
-  });
-});
-
-test("Cancel Offer - redirect to offers", function() {
-  FactoryGuy.makeList("offer", 2);
-  visit("/offers/" + offer.id);
-  click("a:contains('Cancel Offer')");
-  andThen(function() {
-    equal(currentURL(), "/offers");
   });
 });

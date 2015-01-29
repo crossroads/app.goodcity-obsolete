@@ -58,15 +58,17 @@ I18nTranslationsEn =
         "fastest" :
           "title" : "Fastest"
           "info" : "Hire a vehicle with a few clicks.<br/>Recommended!"
-          "cost" : "From $190"
+          "cost" : "From ${{cost}}"
           "booking_button" : "Go to Booking"
           "learn_more": "Learn More"
+          "gogovan_charges": "Gogovan Bookings"
 
         "alternate" :
           "title" : "Alternative"
           "info" : "Wait 14+ days until our team<br/>can collect from your area."
-          "cost" : "Fee $150"
+          "cost" : "Fee ${{cost}}"
           "booking_button" : "Go to Booking"
+          "collection_charges": "Collection Charges"
 
         "crossroads" :
           "title" : "Deliver to Us"
@@ -147,6 +149,7 @@ I18nTranslationsEn =
           "unread_messages" : "Unread messages: {{unreadMessagesCount}}"
 
       "offer":
+        "disable": "Disable"
         "details" : "Offer details"
         "no_items" : "You don't have any items in this offer yet. Please add your first item!",
         "confirm":
@@ -158,7 +161,6 @@ I18nTranslationsEn =
         "submit":
           "heading": "Sale of goods"
           "message": "Occasionally, the best way <br> for a donated item to help the poor <br> is for a charity to sell it. Is sale <br> of item(s) okay?"
-
 
         "index":
           "item_count" : "Offer items ({{itemCount}})"
@@ -202,6 +204,12 @@ I18nTranslationsEn =
           "modify_transport": "Modify district or charity sale details"
           "accepted_items_count": "Items accepted so far ({{acceptedCount}})"
 
+        "display_joyride" :
+          "camera": "Tap <i class='fa fa-camera'></i> to add more items"
+          "delete": "Tap <i class='fa fa-trash'></i> to cancel your offer"
+          "all_done_next": "When all done adding items, proceed to the next step"
+          "first_item": "Select an item to view or modify it."
+
       "items":
         "edit_images":
           "add_photo" : "Add photo"
@@ -229,6 +237,10 @@ I18nTranslationsEn =
         "in_review_status": "This item is being reviewed."
         "accepted_status": "This item has been accepted."
         "rejected_status": "This item has been rejected."
+
+        "messages":
+          "info_text1": "If we have questions when reviewing this item we will chat with you here."
+          "info_text2": "If you want to add a comment to this item for our reviewers, type it below."
 
       "_resend":
         "no_sms" : "Haven't received SMS code?"
@@ -259,6 +271,9 @@ I18nTranslationsEn =
         "in_review" : "In Review"
         "my_list" : "My List"
         "my_offers" : "My Offers"
+        "reviewed_offers": "Reviewed Offers"
+        "scheduled_offers": "Scheduled Offers"
+        "closed_offers": "Closed Offers"
 
       "messages":
         "unread" : "Unread ({{unreadCount}})"
@@ -269,6 +284,16 @@ I18nTranslationsEn =
 
       "review_offer":
         "review_started_by" : "Started by {{firstName}} {{lastName}}"
+
+      "logistics":
+        "no_items": "No items to transport."
+        "offer_closed": "This offer is closed now."
+        "close_offer": "Close Offer"
+        "message_donor": "Message Donor"
+        "finish_review_request": "Please finish reviewing items first!"
+        "accepted_items": "Accepted Items"
+        "gogovan_requirement": "Gogovan Reqirement"
+        "crossroads_requirement": "Crossroads Requirement"
 
       "review_item":
         "accept" : "Accept"

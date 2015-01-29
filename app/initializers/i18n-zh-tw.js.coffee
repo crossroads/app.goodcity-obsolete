@@ -53,16 +53,19 @@ I18nTranslationsZhTw =
         "title" : "計劃交付"
         "fastest" :
           "title" : "最快"
-          "info" : "預訂一輛麵包車和驅動程序在你的<br/>首選 時間同1點擊!<br/>推薦!"
-          "cost" : "耗資390-600美元"
-          "discount" : "獲取5％折扣 同我們的 <br/>合作夥伴"
           "booking_button" : "前往預訂"
+          "info" : "Hire a vehicle with a few clicks.<br/>Recommended!"
+          "cost" : "From ${{cost}}"
+          "learn_more": "Learn More"
+          "gogovan_charges": "Gogovan Bookings"
+
         "alternate" :
           "title" : "另類"
-          "info" : "等待12-14天直到我們的<br/>志願者可以收集."
-          "cost" : "成本150美元"
-          "cost.info" : "關於這項收費"
+          "info" : "Wait 14+ days until our team<br/>can collect from your area."
+          "cost" : "Fee ${{cost}}"
           "booking_button" : "前往預訂"
+          "collection_charges": "Collection Charges"
+
         "crossroads" :
           "title" : "交付给我们"
           "info" : "Drop off at Tuen Mun during<br/>our hours of operation."
@@ -192,7 +195,11 @@ I18nTranslationsZhTw =
           "wait_for_transport": "Transport arrangements can be made<br> once the review is complete."
           "modify_transport": "Modify district or charity sale details"
           "accepted_items_count": "Items accepted so far ({{acceptedCount}})"
-
+        "display_joyride" :
+          "camera": ""
+          "delete": ""
+          "all_done_next": ""
+          "first_item": ""
       "items":
         "edit_images":
           "add_photo" : "Add photo"
@@ -250,6 +257,9 @@ I18nTranslationsZhTw =
         "in_review" : "In Review"
         "my_list" : "My List"
         "my_offers" : "My Offers"
+        "reviewed_offers": "Reviewed Offers"
+        "scheduled_offers": "Scheduled Offers"
+        "closed_offers": "Closed Offers"
 
       "messages":
         "unread" : "Unread ({{unreadCount}})"
@@ -272,6 +282,16 @@ I18nTranslationsZhTw =
 
       "review_offer":
         "review_started_by" : "Started by {{lastName}} {{firstName}}"
+
+      "logistics":
+        "no_items": "No items to transport."
+        "offer_closed": "This offer is closed now."
+        "close_offer": "Close Offer"
+        "message_donor": "Message Donor"
+        "finish_review_request": "Please finish reviewing items first!"
+        "accepted_items": "Accepted Items"
+        "gogovan_requirement": "Gogovan Reqirement"
+        "crossroads_requirement": "Crossroads Requirement"
 
       # Components
       "upload-images":

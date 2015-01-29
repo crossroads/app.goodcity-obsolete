@@ -3,8 +3,9 @@ import startApp from '../helpers/start-app';
 import syncDataStub from '../helpers/empty-sync-data-stub';
 
 var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
-var App, testHelper, offer1, offer2, reviewer, reviewerName, offer7,
-  offer3, offer4, delivery1, delivery2, offer5, delivery3, offer6;
+var App, testHelper, offer1, offer2, reviewer, reviewer1, reviewerName,
+  offer7, offer3, offer4, delivery1, delivery2, offer5, delivery3, offer6,
+  offer8, reviewer1Name;
 
 module('Display Offer Status', {
   setup: function() {
@@ -13,21 +14,23 @@ module('Display Offer Status', {
     syncDataStub(testHelper);
 
     reviewer = FactoryGuy.make("user");
-    offer1 = FactoryGuy.make("offer", {state:"submitted"});
-    offer2 = FactoryGuy.make("offer", {state:"under_review", reviewedBy: reviewer});
+    reviewer1 = FactoryGuy.make("user_with_image");
+    offer1 = FactoryGuy.make("offer_with_items", {state:"submitted"});
+    offer2 = FactoryGuy.make("offer_with_items", {state:"under_review", reviewedBy: reviewer});
     reviewerName = reviewer.get("firstName");
-    offer3 = FactoryGuy.make("offer", {state:"reviewed"});
+    offer3 = FactoryGuy.make("offer_with_items", {state:"reviewed"});
 
     delivery1 = FactoryGuy.make('delivery', {deliveryType: "Alternate"});
-    offer4 = FactoryGuy.make("offer", {state:"scheduled", delivery: delivery1});
+    offer4 = FactoryGuy.make("offer_with_items", {state:"scheduled", delivery: delivery1});
 
     delivery2 = FactoryGuy.make('delivery', {deliveryType: "Gogovan"});
-    offer5 = FactoryGuy.make("offer", {state:"scheduled", delivery: delivery2});
+    offer5 = FactoryGuy.make("offer_with_items", {state:"scheduled", delivery: delivery2});
 
     delivery3 = FactoryGuy.make('delivery', {deliveryType: "Drop Off"});
-    offer6 = FactoryGuy.make("offer", {state:"scheduled", delivery: delivery3});
+    offer6 = FactoryGuy.make("offer_with_items", {state:"scheduled", delivery: delivery3});
 
-    offer7 = FactoryGuy.make("offer", {state:"closed"});
+    offer7 = FactoryGuy.make("offer_with_items", {state:"closed"});
+    offer8 =  FactoryGuy.make("offer_with_items", {state:"under_review", reviewedBy: reviewer1});
   },
 
   teardown: function() {
@@ -45,6 +48,7 @@ test("Display offer status for submitted offer", function() {
   });
 });
 
+// display initial char with message
 test("Display offer status for offer under review", function() {
   visit('/offers/' + offer2.id + "/offer_details");
 
@@ -55,6 +59,15 @@ test("Display offer status for offer under review", function() {
     var status = $.trim(find('.status-message').text());
     equal(status.indexOf("Your offer is being reviewed by "+ reviewerName +".") > 0, true);
     equal(status.indexOf(reviewer.get('nameInitial')) >= 0, true);
+  });
+});
+
+//display image with message
+test("Display offer status with image", function() {
+  visit('/offers/' + offer8.id + "/offer_details");
+  andThen(function() {
+    var image_tag = $('.status-message img.no-avatar');
+    equal(image_tag.length, 1);
   });
 });
 

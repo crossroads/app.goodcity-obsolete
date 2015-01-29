@@ -29,13 +29,8 @@ app.import('bower_components/slick.js/slick/slick.min.js');
 app.import('bower_components/jquery-placeholder/jquery.placeholder.js');
 app.import('bower_components/jquery.cookie/jquery.cookie.js');
 app.import('bower_components/modernizr/modernizr.js');
-
-app.import({
-  development: 'vendor/pusher.js',
-  test: 'vendor/pusher-test-stub.js'
-});
-app.import('vendor/ember-pusher.js');
 app.import('bower_components/jquery-timeago/jquery.timeago.js');
+app.import('bower_components/socket.io-client/socket.io.js');
 
 app.import('bower_components/handlebars/handlebars.runtime.js');
 app.import('bower_components/ember-i18n/lib/i18n.js');

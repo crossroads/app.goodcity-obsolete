@@ -14,7 +14,7 @@ module('Display Item', {
     offer = FactoryGuy.make("offer");
     item = FactoryGuy.make("item",{offer:offer});
     FactoryGuy.makeList("image", 2, {item:item});
-    display_item_url = "/offers/" + offer.id + "/items/" + item.id;
+    display_item_url = "/offers/" + offer.id + "/items/" + item.id + "/messages";
   },
   teardown: function() {
     Em.run(function() { testHelper.teardown(); });

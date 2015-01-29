@@ -10,6 +10,9 @@ FactoryGuy.define('user', {
   default: {
     firstName: FactoryGuy.generate('collectionFirstName'),
     lastName: FactoryGuy.generate('collectionLastName')
+  },
+  user_with_image: {
+    image: FactoryGuy.belongsTo('image')
   }
 });
 export default {};

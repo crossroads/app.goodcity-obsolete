@@ -11,8 +11,8 @@ module('Edit Item', {
     testHelper = TestHelper.setup(App);
     syncDataStub(testHelper);
 
-    offer = FactoryGuy.make("offer");
-    item = FactoryGuy.make("item",{offer:offer});
+    offer = FactoryGuy.make("offer", { state: "draft" });
+    item = FactoryGuy.make("item",{ offer:offer, state: "draft" });
     FactoryGuy.makeList("donor_condition", 2);
   },
 
@@ -44,7 +44,7 @@ test("Create Item with details", function() {
   Ember.run(function(){ item.set("state", "submitted"); });
 
   andThen(function(){
-    equal(currentURL(), "/offers/" + offer.id);
-    equal($(".info h3").last().text().trim(), "this is test item");
+    equal(currentURL(), "/offers/" + offer.id + "/offer_details");
+    equal($('.item-content li:eq(0) .ellipsis').text(), "this is test item");
   });
 });

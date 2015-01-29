@@ -8,7 +8,9 @@ export default Ember.ObjectController.extend({
   currentLanguage: Ember.computed.readOnly('Ember.I18n.translations.language'),
 
   initSubscriptions: function() {
-    this.send('setSubscriptions');
+    if (this.get("isLoggedIn")) {
+      this.send('setSubscriptions');
+    }
   }.on("init"),
 
   actions: {
