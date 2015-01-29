@@ -4,6 +4,8 @@
     "window": true,
     "-Promise": true,
     "moment" : true,
+    "EmberPusher": true,
+    "Airbrake": true,
     "io": true
   },
   "browser" : true,
