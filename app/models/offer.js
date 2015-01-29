@@ -95,6 +95,7 @@ export default DS.Model.extend({
       case 'reviewed' : status = 'Collection'; break;
       case 'scheduled' : status = 'Collection'; break;
       case 'closed' : status = 'Closed'; break;
+      case 'received' : status = 'Received'; break;
     }
     return status;
   }.property('state'),
