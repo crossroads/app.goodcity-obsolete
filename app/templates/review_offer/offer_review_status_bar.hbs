@@ -16,6 +16,14 @@
   </a>
 {{/if}}
 
+{{#if offer.isReviewed}}
+  <div class="offer-status is-reviewed">
+    <div class='status-message review_message'>
+      Reviewed {{view 'time-ago' timeValue=offer.reviewCompletedAt}}. User to plan transport.
+    </div>
+  </div>
+{{/if}}
+
 {{#if offer.isClosed}}
   <div class="offer-status is-closed">
     <div class='status-message review_message'>
@@ -27,7 +35,7 @@
   {{#if offer.allItemsRejected}}
     <div class="offer-status is-submitted">
       <div class='status-message'>
-        No items needed <i class="fa fa-frown-o"></i> {{#link-to 'review_offer.logistics' offer }}Close Offer{{/link-to}}
+        No items needed <i class="fa fa-frown-o"></i> <a href="#" {{action 'closeOffer'}}>Close Offer</a>
       </div>
     </div>
   {{else}}
@@ -48,15 +56,6 @@
       {{/if}}
     {{/if}}
   {{/if}}
-
-{{/if}}
-
-{{#if offer.isReviewed}}
-  <div class="offer-status is-reviewed">
-    <div class='status-message review_message'>
-      Reviewed {{view 'time-ago' timeValue=offer.reviewCompletedAt}}. User to plan transport.
-    </div>
-  </div>
 {{/if}}
 
 {{#if offer.isScheduled}}
