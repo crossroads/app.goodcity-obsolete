@@ -1,5 +1,12 @@
 FactoryGuy.define('message', {
+  sequences: {
+    id: function(num) {
+      return num + 100;
+    },
+  },
+
   default: {
+    id: FactoryGuy.generate('id'),
     offer: FactoryGuy.belongsTo("offer"),
     item: FactoryGuy.belongsTo("item"),
     sender: FactoryGuy.belongsTo("user"),

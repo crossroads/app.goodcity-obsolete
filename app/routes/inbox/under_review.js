@@ -9,7 +9,7 @@ export default AuthorizeRoute.extend({
 
   model: function() {
     return this.store.filter('offer', function(offer) {
-        return offer.get('state') === 'under_review';
+      return offer.get('isUnderReview');
     });
   }
 });

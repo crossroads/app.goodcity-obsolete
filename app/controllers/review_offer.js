@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import AjaxPromise from './../utils/ajax-promise';
 
 export default Ember.ObjectController.extend({
   offer: Ember.computed.alias('model'),
@@ -12,6 +13,23 @@ export default Ember.ObjectController.extend({
 
       adapter.ajax(url, 'PUT').then(function(response) {
         controller.store.pushPayload(response);
+      });
+    },
+
+    closeOffer: function(){
+      var loadingView = this.container.lookup('view:loading').append();
+
+      var offerProperties = {
+        state_event: 'close',
+        id: this.get('id') };
+
+      var route = this;
+      var url   = "/offers/" + this.get('id') + "/close_offer";
+
+      new AjaxPromise(url, "PUT", this.get('session.authToken'), {offer: offerProperties}).then(function(data) {
+        route.store.pushPayload(data);
+        loadingView.destroy();
+        route.transitionToRoute('review_offer.items');
       });
     }
   }

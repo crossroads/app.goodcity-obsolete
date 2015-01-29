@@ -274,6 +274,7 @@ I18nTranslationsEn =
         "reviewed_offers": "Reviewed Offers"
         "scheduled_offers": "Scheduled Offers"
         "closed_offers": "Closed Offers"
+        "received_offers": "Received Offers"
 
       "messages":
         "unread" : "Unread ({{unreadCount}})"
@@ -284,6 +285,16 @@ I18nTranslationsEn =
 
       "review_offer":
         "review_started_by" : "Started by {{firstName}} {{lastName}}"
+        "no_items": "No items needed"
+        "close_offer": "Close Offer"
+        "items_reviewed": "All items reviewed"
+        "set_logistics": "Set logistics"
+        "to_complete": "to complete"
+        "plan_transport": "User to plan transport."
+        "reviewed": "Reviewed"
+        "start_review": "Start Review"
+        "goods_received_by" : "Goods received by {{firstName}} {{lastName}}"
+        "offer_closed_by": "Offer closed by {{firstName}} {{lastName}}"
 
       "logistics":
         "no_items": "No items to transport."

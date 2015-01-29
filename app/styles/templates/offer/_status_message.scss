@@ -8,6 +8,10 @@
     margin-left: -0.4rem;
     margin-right: -0.4rem;
   }
+
+  a {
+    text-decoration: underline;
+  }
 }
 
 .is-submitted {
@@ -20,11 +24,16 @@
 
 .is-reviewed, .is-accepted {
   background-color: $bar-green;
-  a {
-    text-decoration: underline;
-  }
 }
 
 .status-message {
   color: $white;
+}
+
+.is-closed {
+  background-color: $black;
+}
+
+.is-received {
+  background-color: $sky-blue;
 }

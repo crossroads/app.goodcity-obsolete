@@ -11,12 +11,12 @@ module('Reviewer: Display Offer Tab', {
     App = startApp({}, 2);
     testHelper = TestHelper.setup(App);
 
-    offer = FactoryGuy.make("offer", { id: 100, state:"under_review"});
-    message1 = FactoryGuy.make("message", {id: 101, sender: donor, offer: offer, item: null});
-    item1 = FactoryGuy.make("item", {id: 102, state:"accepted", offer: offer});
-    item2 = FactoryGuy.make("item", {id: 103, state:"rejected", offer: offer});
-    item3 = FactoryGuy.make("item", {id: 101, state:"submitted", offer: offer});
-    message2 = FactoryGuy.make("message", {id: 102, sender: donor, offer: offer, item: item3});
+    offer = FactoryGuy.make("offer", { state:"under_review"});
+    message1 = FactoryGuy.make("message", { sender: donor, offer: offer, item: null});
+    item1 = FactoryGuy.make("item", { state:"accepted", offer: offer});
+    item2 = FactoryGuy.make("item", { state:"rejected", offer: offer});
+    item3 = FactoryGuy.make("item", { state:"submitted", offer: offer});
+    message2 = FactoryGuy.make("message", { sender: donor, offer: offer, item: item3});
   },
 
   teardown: function() {
@@ -74,7 +74,7 @@ test("visit pending review item", function() {
   andThen(function() {
     click(".list li a:contains('"+ item3.get('donorDescription') +"')");
     andThen(function() {
-      equal(currentURL(), "/offers/" + offer.id + "/review_item/101/accept");
+      equal(currentURL(), "/offers/" + offer.id + "/review_item/"+ item3.id +"/accept");
     });
   });
 });
@@ -84,7 +84,7 @@ test("visit accepted item", function() {
   andThen(function() {
     click(".list li a:contains('"+ item1.get('donorDescription') +"')");
     andThen(function() {
-      equal(currentURL(), "/offers/" + offer.id + "/review_item/102/accept");
+      equal(currentURL(), "/offers/" + offer.id + "/review_item/"+ item1.id +"/accept");
     });
   });
 });
@@ -94,7 +94,7 @@ test("visit rejected item", function() {
   andThen(function() {
     click(".list li a:contains('"+ item2.get('donorDescription') +"')");
     andThen(function() {
-      equal(currentURL(), "/offers/" + offer.id + "/review_item/103/reject");
+      equal(currentURL(), "/offers/" + offer.id + "/review_item/"+ item2.id +"/reject");
     });
   });
 });

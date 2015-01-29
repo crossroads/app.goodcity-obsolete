@@ -77,7 +77,7 @@ test("visit items message threads", function() {
     // latest item message thread
     click(".list li:eq(0) a");
     andThen(function() {
-      equal(currentURL(), "/offers/" + offer.id + "/items/3/messages");
+      equal(currentURL(), "/offers/" + offer.id + "/items/" + item3.id + "/messages");
     });
   });
 });

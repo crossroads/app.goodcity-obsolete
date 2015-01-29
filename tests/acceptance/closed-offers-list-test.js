@@ -8,8 +8,8 @@ module('Closed Offers List', {
   setup: function() {
     App = startApp({}, 2);
     testHelper = TestHelper.setup(App);
-    offer = FactoryGuy.make("offer", { id: 100, state: "closed" });
-    item = FactoryGuy.make("item", { id: 100, state: "rejected", offer: offer });
+    offer = FactoryGuy.make("offer", { state: "closed" });
+    item = FactoryGuy.make("item", { state: "rejected", offer: offer });
   },
   teardown: function() {
     Em.run(function() { testHelper.teardown(); });
