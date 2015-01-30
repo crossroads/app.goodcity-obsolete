@@ -24,10 +24,20 @@ export default Ember.ArrayController.extend({
     var notificationUrl = router.generate.apply(router, notification.route);
     if (currentUrl === notificationUrl) {
       this.removeObject(notification);
+      this.markRecentMessageAsRead(notification.entity);
       return this.retrieveMostRecent();
     }
 
     return notification;
+  },
+
+  markRecentMessageAsRead: function(message) {
+    var controller = this;
+    var adapter = this.container.lookup('adapter:application');
+    var url = adapter.buildURL('message', message.id) + '/mark_read';
+    adapter.ajax(url, 'PUT').then(function(response) {
+      controller.store.pushPayload(response);
+    });
   },
 
   setRoute: function(notification) {
