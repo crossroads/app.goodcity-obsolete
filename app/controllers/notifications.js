@@ -22,8 +22,8 @@ export default Ember.ArrayController.extend({
     var router = this.get("target");
     var currentUrl = router.get("url");
     var notificationUrl = router.generate.apply(router, notification.route);
+    this.removeObject(notification);
     if (currentUrl === notificationUrl) {
-      this.removeObject(notification);
       this.markRecentMessageAsRead(notification.entity);
       return this.retrieveMostRecent();
     }
