@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import AjaxPromise from '../utils/ajax-promise';
-import ErrorHandler from '../utils/error-handler';
 import config from '../config/environment';
 
 export default Ember.Route.extend({
@@ -80,7 +79,9 @@ export default Ember.Route.extend({
         }
       } else {
         alert('Something went wrong');
-        ErrorHandler(reason);
+        if(config.environment === "production") {
+          Airbrake.push({error: reason });
+        }
       }
     }
   }
