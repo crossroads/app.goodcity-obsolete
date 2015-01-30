@@ -65,12 +65,13 @@ export default DS.Model.extend({
   }.property('isUnderReview', 'isReviewed'),
 
   allItemsReviewed: function(){
-    return this.get('isUnderReview') && this.get('items').filterBy('state', 'submitted').get('length') === 0;
+    var reviewedItems = this.get('items').rejectBy("state", "draft").filterBy('state', 'submitted');
+    return this.get('isUnderReview') && reviewedItems.get('length') === 0;
   }.property('items.@each.state'),
 
   allItemsRejected: function(){
-    var rejectedItems = this.get('items').filterBy('state', 'rejected');
-    return rejectedItems.get('length') === this.get('items.length');
+    var rejectedItems = this.get('items').rejectBy("state", "draft").filterBy('state', 'rejected');
+    return rejectedItems.get('length') === this.get('itemCount');
   }.property('items.@each.state'),
 
   displayImageUrl: function(){
