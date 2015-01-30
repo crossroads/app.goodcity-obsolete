@@ -7,7 +7,7 @@ moduleForModel('offer', 'Offer Model', {
     'model:donor_condition', 'model:delivery', 'model:user', 'model:schedule',
     'model:rejection_reason', 'model:contact', 'model:permission',
     'model:gogovan_transport', 'model:crossroads_transport', 'model:item_type',
-    'model:gogovan_order']
+    'model:gogovan_order', 'model:address']
 });
 
 test('offer is a valid ember-data Model', function () {
