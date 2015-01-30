@@ -64,6 +64,10 @@ export default DS.Model.extend({
     return this.get('isUnderReview') || this.get('isReviewed');
   }.property('isUnderReview', 'isReviewed'),
 
+  nonEmptyOffer: function(){
+    return this.get('itemCount') > 0;
+  }.property('items.@each'),
+
   allItemsReviewed: function(){
     var reviewedItems = this.get('items').rejectBy("state", "draft").filterBy('state', 'submitted');
     return this.get('isUnderReview') && reviewedItems.get('length') === 0;
