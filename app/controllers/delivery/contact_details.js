@@ -41,6 +41,7 @@ export default Ember.ObjectController.extend({
         addressProperties.addressable = contact;
         var address = route.store.createRecord('address', addressProperties);
         address.save().then(function() {
+          address.set('addressableType', 'Contact');
           var delivery = route.store.push('delivery', {
             id: deliveryId,
             contact: contact,

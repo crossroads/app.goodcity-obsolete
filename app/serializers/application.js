@@ -10,22 +10,13 @@ export default DS.ActiveModelSerializer.extend({
       payload.address.addressableType = payload.address.addressable_type;
     }
 
-    if (payload.addresses) {
-      payload.addresses.forEach(function(address) {
-        address.addressable     = address.addressable_id;
-        address.addressableType = address.addressable_type;
-      });
-    }
-
     return this._super(store, type, payload, id, requestType);
   },
   extractArray: function(store, type, payload, id, requestType) {
     if (payload.addresses) {
       payload.addresses.forEach(function(address) {
-        console.log(address);
         address.addressable     = address.addressable_id;
         address.addressableType = address.addressable_type;
-        // console.log(address);
       });
     }
 
