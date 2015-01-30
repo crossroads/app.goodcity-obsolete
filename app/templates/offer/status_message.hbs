@@ -7,7 +7,7 @@
     {{#if isUnderReview}}
       {{#if reviewedBy.displayImageUrl}}
         <span>
-          {{view 'cloudinary-img' src=reviewedBy.displayImageUrl class="no-avatar"}}
+          {{view 'custom-img-tag' src=reviewedBy.displayImageUrl class="no-avatar"}}
         </span>
       {{else}}
         <span class="no-avatar">{{model.reviewedBy.nameInitial}}</span>
