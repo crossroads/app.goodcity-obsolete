@@ -59,6 +59,11 @@ export default Ember.Controller.extend({
   _processUpdateStore: function(data) {
     var type = Object.keys(data.item)[0];
     var item = this.store.normalize(type, data.item[type]);
+
+    if(type === 'address'){
+      item.addressable = item.addressable_id;
+    }
+
     var existingItem = this.store.getById(type, item.id);
 
     if (data.operation === "update" && !existingItem) {
