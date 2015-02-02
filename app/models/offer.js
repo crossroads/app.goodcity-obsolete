@@ -64,13 +64,18 @@ export default DS.Model.extend({
     return this.get('isUnderReview') || this.get('isReviewed');
   }.property('isUnderReview', 'isReviewed'),
 
+  nonEmptyOffer: function(){
+    return this.get('itemCount') > 0;
+  }.property('items.@each'),
+
   allItemsReviewed: function(){
-    return this.get('isUnderReview') && this.get('items').filterBy('state', 'submitted').get('length') === 0;
+    var reviewedItems = this.get('items').rejectBy("state", "draft").filterBy('state', 'submitted');
+    return this.get('isUnderReview') && reviewedItems.get('length') === 0;
   }.property('items.@each.state'),
 
   allItemsRejected: function(){
-    var rejectedItems = this.get('items').filterBy('state', 'rejected');
-    return rejectedItems.get('length') === this.get('items.length');
+    var rejectedItems = this.get('items').rejectBy("state", "draft").filterBy('state', 'rejected');
+    return rejectedItems.get('length') === this.get('itemCount');
   }.property('items.@each.state'),
 
   displayImageUrl: function(){
@@ -95,6 +100,7 @@ export default DS.Model.extend({
       case 'reviewed' : status = 'Collection'; break;
       case 'scheduled' : status = 'Collection'; break;
       case 'closed' : status = 'Closed'; break;
+      case 'received' : status = 'Received'; break;
     }
     return status;
   }.property('state'),
