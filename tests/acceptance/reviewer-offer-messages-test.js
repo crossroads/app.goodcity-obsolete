@@ -3,14 +3,19 @@ import startApp from '../helpers/start-app';
 import syncDataStub from '../helpers/empty-sync-data-stub';
 
 var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
-var App, testHelper, offer, reviewer, message1, message2, message3;
+var App, testHelper, offer, reviewer, message1, message2, message3,
+  message4, message5, user1, user2, offer1;
 
 module('Reviewer: Display Offer Messages', {
   setup: function() {
     App = startApp({}, 2);
     testHelper = TestHelper.setup(App);
-
+    user1 = FactoryGuy.make("user");
+    user2 = FactoryGuy.make("user_with_image");
     offer = FactoryGuy.make("offer", { state:"under_review"});
+    offer1 = FactoryGuy.make("offer", { createdBy: user1, state:"under_review"});
+    message4 = FactoryGuy.make("message", {offer: offer1, sender: user2, item: null, body: "Message from donor1"});
+    message5 = FactoryGuy.make("message", {offer: offer1, sender: user1, item: null, body: "Message from donor2"});
     message1 = FactoryGuy.make("message", {offer: offer, item: null});
     message2 = FactoryGuy.make("message", {offer: offer, item: null, body: "Message from Donor"});
     message3 = FactoryGuy.make("message", {offer: offer, item: null, body: "Message from Supervisor", isPrivate: true});
@@ -65,5 +70,22 @@ test("offer-messages from staff should add unread bubble in supervisor message t
 
     // if message received from donor, add unread bubble mark
     equal($("a[href='/offers/"+ offer.id +"/supervisor_messages'] i.unread").length, 1);
+  });
+});
+
+test("offer-message with image", function() {
+  visit('/offers/' + offer1.id + "/donor_messages");
+  andThen(function() {
+    var src = $(".received_message#"+message4.id+" img").attr("src");
+    equal(src.indexOf("cloudinary") > 0, true);
+  });
+});
+
+//default image if not present
+test("offer-message with image", function() {
+  visit('/offers/' + offer1.id + "/donor_messages");
+  andThen(function() {
+    var src = $(".received_message#"+message5.id+" img").attr("src");
+    equal(src.indexOf("cloudinary") > 0, false);
   });
 });
