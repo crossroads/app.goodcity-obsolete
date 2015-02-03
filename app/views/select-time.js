@@ -12,6 +12,7 @@ export default Ember.TextField.extend({
         clear: '',
         min: [10,0],
         max: [16,0],
+
         onSet: function() {
           var slot = this.get("select") && this.get("select").time;
           _this.set("selection", slot);
@@ -33,19 +34,10 @@ export default Ember.TextField.extend({
             var currentTime = new Date();
             var hours = currentTime.getHours();
             var minutes = currentTime.getMinutes();
-
-            if(minutes > 30) {
-              hours += 1; minutes = 0;
-            } else {
-              minutes = 30;
-            }
-
-            var totalMins = hours*60 + minutes;
-
-            this.set('min', {hour: hours, mins: minutes, time: totalMins, pick: totalMins});
-            this.set('select', null);
+            minutes = minutes > 30 ? 30 : 0;
+            this.set('disable', [{ from: [9,0], to: [hours, minutes] }]);
           } else {
-            this.set('min', {hour: 10, mins: 0, time: 600, pick: 600});
+            this.set('enable', [{ from: [10,0], to: [16, 0] }]);
           }
         },
       });
