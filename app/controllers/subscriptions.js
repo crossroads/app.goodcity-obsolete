@@ -64,6 +64,12 @@ export default Ember.Controller.extend({
 
     var type = Object.keys(data.item)[0];
     var item = this.store.normalize(type, data.item[type]);
+
+    if(type === 'address'){
+      item.addressable = item.addressable_id;
+      delete item.addressable_id;
+    }
+
     var existingItem = this.store.getById(type, item.id);
 
     // update_store message is sent before response to APP save so ignore
