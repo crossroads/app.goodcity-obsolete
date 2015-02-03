@@ -62,6 +62,7 @@ export default Ember.Controller.extend({
 
     if(type === 'address'){
       item.addressable = item.addressable_id;
+      delete item.addressable_id;
     }
 
     var existingItem = this.store.getById(type, item.id);
