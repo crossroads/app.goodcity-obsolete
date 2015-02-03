@@ -3,31 +3,22 @@ import AjaxPromise from '../utils/ajax-promise';
 import config from '../config/environment';
 
 export default Ember.Route.extend({
-
   beforeModel: function (transition) {
     var _this = this;
 
     var language = this.session.get("language") || Ember.I18n.default_language;
     Ember.I18n.translations = Ember.I18n.translation_store[language];
 
-    var sendErrorsViaAirbrake = function(error){
-      if(config.environment === "production") {
-        Airbrake.push({error: error});
-      }
-    };
-
     Ember.onerror = function(error) {
-      sendErrorsViaAirbrake(error);
       _this.send("error", error);
     };
 
     Ember.RSVP.on('error', function(error) {
-      sendErrorsViaAirbrake(error);
       _this.send("error", error);
     });
 
     window.onerror = function(error){
-      sendErrorsViaAirbrake(error);
+      _this.send("error", error);
     };
 
     //preload data
@@ -88,7 +79,9 @@ export default Ember.Route.extend({
         }
       } else {
         alert('Something went wrong');
-        Ember.Logger.error(reason);
+        if(config.environment === "production") {
+          Airbrake.push({error: reason });
+        }
       }
     }
   }

@@ -30,11 +30,11 @@ export default DS.Model.extend({
 
   isSubmitted: function(){
     return this.get('state') === 'submitted' && this.get('offer.state') === 'submitted';
-  }.property('this'),
+  }.property('state', 'offer.state'),
 
   isUnderReview: function(){
     return this.get('state') === 'submitted' && this.get('offer.state') === 'under_review';
-  }.property('this'),
+  }.property('state', 'offer.state'),
 
   displayImage: function() {
     return this.get("images").filterBy("favourite").get("firstObject") ||
