@@ -11,10 +11,15 @@
         {{#each message in allMessages}}
           <div {{bind-attr class='message.myMessage:my_message:received_message'}} {{bind-attr id=message.id}}>
             <div class='message_details'>
-              {{t "full_name" firstNameBinding=message.sender.firstName lastNameBinding=message.sender.lastName}}
-              {{message.sender.roleInitials}}
-              <br/>
-              {{view 'time-ago' timeValue=message.createdAt}}
+              {{#if message.myMessage}}
+                {{t "messages.owner" }}
+              {{else}}
+                {{view 'custom-img-tag' src=message.sender.displayImageUrl class="user-avatar"}}
+                {{t "full_name" firstNameBinding=message.sender.firstName lastNameBinding=message.sender.lastName}}
+                {{message.sender.roleInitials}}
+              {{/if}}
+              →
+              {{disaply-message-time message.createdAt}}
             </div>
 
             {{message.body}}

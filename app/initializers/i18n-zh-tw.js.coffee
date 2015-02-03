@@ -263,6 +263,7 @@ I18nTranslationsZhTw =
 
       "messages":
         "unread" : "Unread ({{unreadCount}})"
+        "owner" : "You"
 
       "notifications":
         "text" : "{{text}}"
