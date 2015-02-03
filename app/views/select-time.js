@@ -36,7 +36,9 @@ export default Ember.TextField.extend({
             var minutes = currentTime.getMinutes();
             minutes = minutes > 30 ? 30 : 0;
             this.set('disable', [{ from: [9,0], to: [hours, minutes] }]);
+            this.set('enable', false);
           } else {
+            this.set('enable', true);
             this.set('enable', [{ from: [10,0], to: [16, 0] }]);
           }
         },
