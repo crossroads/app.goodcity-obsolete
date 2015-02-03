@@ -1,12 +1,35 @@
 .drop_off {
-  .calender_holder {
-    height: 20rem; }
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
 
-  .picker__holder {
-    min-width: 280px; }
-
-  #selectedDate {
-    opacity: 0;
-    height: 0;
+  .date_selector {
+    padding-left: 0 !important;
   }
+
+  .time_selector {
+    padding-right: 0 !important;
+  }
+
+  .description {
+    text-align: justify;
+    a {
+      text-decoration: underline;
+      color: inherit !important;
+    }
+  }
+
+  .fa-clock-o:before {
+    position: absolute;
+  }
+
+  .fa-clock-o {
+    margin-right: 2rem;
+    font-size: 2rem;
+    float: right;
+    display: inline;
+  }
+
+  select {
+    font-size: 1rem;
+    position: absolute; }
 }

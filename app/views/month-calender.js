@@ -30,21 +30,16 @@ export default Ember.TextField.extend({
         clear: false,
         today: false,
         close: false,
-        // editable: true,
 
         onSet: function() {
           var date = this.get('select') && this.get('select').obj;
           _this.set("selection", date);
         },
         onStart: function(){
-          this.open();
           var date = _this.get('selection');
           if(date) {
             this.set('select', new Date(date), { format: 'ddd mmm d' });
           }
-        },
-        onClose: function() {
-          this.open();
         },
       });
     });

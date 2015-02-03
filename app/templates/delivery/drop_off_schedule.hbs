@@ -14,13 +14,13 @@
       <div class="small-12 columns">
 
         <div class="row">
-          <h3>{{t "gogovan.book_van.select_day"}}</h3>
+          <h3>When can we expect your delivery?</h3>
           <div class='description'>{{t "gogovan.book_van.crossroads_time"}}</div>
         </div>
 
-        {{#if available_dates}}
-          <div class="row calender_holder">
-            <div class="small-12 columns">
+        <div class="row">
+          <div class="small-7 columns date_selector">
+            {{#if available_dates}}
               {{view "month-calender"
                 name='selectedDate'
                 id='selectedDate'
@@ -29,23 +29,32 @@
                 required='true'
                 available=available_dates
                 pattern="[a-zA-Z]{3}\s?[a-zA-Z]{3}\s?[0-9]{1,2}"}}
-            </div>
+            {{/if}}
           </div>
-        {{/if}}
+
+          <div class="small-5 columns time_selector">
+            {{view "select"
+              contentBinding='slots'
+              optionLabelPath='content.name'
+              optionValuePath='content.id'
+              selectionBinding='selectedId'
+              prompt='Time'
+              required='true'}}
+            <i class="fa fa-clock-o"></i>
+          </div>
+        </div>
 
         <div class="row">
-          <div class="small-12 columns">
-            <div class="radio-buttons">
+          <div class='description'>
+            <a href="https://maps.google.com/?saddr=Current+Location&daddr=Crossroads+Foundation,+2+Castle+Peak+Road+-+So+Kwun+Wat,+Hong+Kong" target="_blank">How to find crossroads</a> (will open in new tab)
+          </div>
 
-              {{#each slot in slots}}
-                <span class="radio">
-                  {{view 'radio-button' name="selectionTest" selectionBinding='selectedId' value=slot.id id=slot.id}}
-                  <label class="radio-wrap small-only-text-center" {{bind-attr for=slot.id}}>
-                    {{slot.name}}
-                  </label>
-                </span>
-              {{/each}}
-            </div>
+          <div class='description'>
+            We will also message you a link to our map location so you have it handy when you need it!
+          </div>
+
+          <div class='description'>
+            Please arrive during our operating hours to ensure we can successfully receive your kind donation.
           </div>
         </div>
 

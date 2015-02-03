@@ -35,7 +35,7 @@ export default Ember.ObjectController.extend({
       var _this = this;
       var selectedSlot = _this.get('selectedId');
       var date = _this.get('selectedDate');
-      var slotName = _this.get('slots').filterBy('id', selectedSlot).get('firstObject.name');
+      var slotName = _this.get('slots').filterBy('id', selectedSlot.get('id')).get('firstObject.name');
 
       var scheduleProperties = { slot: selectedSlot, scheduledAt: date, slotName: slotName};
 
