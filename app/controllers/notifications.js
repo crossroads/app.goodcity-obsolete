@@ -26,7 +26,7 @@ export default Ember.ArrayController.extend(readMessageMixin, {
     this.removeObject(notification);
     if (currentUrl === notificationUrl) {
       if (notification.entity_type === "message"){
-        var message = this.store.getById("message", notification.entity.id)
+        var message = this.store.getById("message", notification.entity.id);
         this.markMessageAsRead(message);
       }
       return this.retrieveMostRecent();
