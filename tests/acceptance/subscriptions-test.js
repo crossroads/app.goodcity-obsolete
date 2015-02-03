@@ -28,11 +28,11 @@ test("updateStore doesn't process before response to model.save request", functi
   $.mockjaxSettings.logging = true;
   $.mockjax({url:"/api/v1/offer*",status:201,response: function(){
     Ember.run(function() {
-      subscriptions.updateStore({
+      subscriptions.update_store({
         item: {"offer":offer},
         sender: {"user":user.toJSON({includeId:true})},
         operation: "create"
-      });
+      }, function(){});
     });
     this.responseText = {"offer":offer};
   }});
