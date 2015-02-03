@@ -10,8 +10,8 @@ export default Ember.TextField.extend({
     Ember.$().ready(function(){
       Ember.$('.timepicker').pickatime({
         clear: '',
-        min: [10,0],
-        max: [16,0],
+        min: [10,0], // start from 10 AM
+        max: [16,0], // end at 4 PM
 
         onSet: function() {
           var slot = this.get("select") && this.get("select").time;
