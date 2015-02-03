@@ -41,10 +41,9 @@ export default Ember.Controller.extend({
       return;
     }
 
-    var emptyFunc = function() {};
     events.forEach(function(args) {
       var event = args[0];
-      this[event].apply(this, args.slice(1).concat(emptyFunc));
+      this[event].apply(this, args.slice(1));
     }, this);
 
     success();
@@ -84,6 +83,8 @@ export default Ember.Controller.extend({
       this.store.unloadRecord(existingItem);
     }
 
-    success();
+    if (success) {
+      success();
+    }
   }
 });
