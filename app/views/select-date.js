@@ -21,6 +21,7 @@ export default Ember.TextField.extend({
         onSet: function() {
           var date = this.get('select') && this.get('select').obj;
           _this.set("selection", date);
+          Ember.$('.timepicker').val('');
         },
         onStart: function(){
           var date = _this.get('selection');
