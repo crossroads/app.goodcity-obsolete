@@ -1,6 +1,7 @@
 import Ember from 'ember';
+import readMessageMixin from '../mixins/read-message';
 
-export default Ember.ArrayController.extend({
+export default Ember.ArrayController.extend(readMessageMixin, {
   sortProperties: ['date'],
   sortAscending: false,
   model: [],
@@ -25,21 +26,13 @@ export default Ember.ArrayController.extend({
     this.removeObject(notification);
     if (currentUrl === notificationUrl) {
       if (notification.entity_type === "message"){
-        this.markRecentMessageAsRead(notification.entity);
+        var message = this.store.getById("message", notification.entity.id)
+        this.markMessageAsRead(message);
       }
       return this.retrieveMostRecent();
     }
 
     return notification;
-  },
-
-  markRecentMessageAsRead: function(message) {
-    var controller = this;
-    var adapter = this.container.lookup('adapter:application');
-    var url = adapter.buildURL('message', message.id) + '/mark_read';
-    adapter.ajax(url, 'PUT').then(function(response) {
-      controller.store.pushPayload(response);
-    });
   },
 
   setRoute: function(notification) {

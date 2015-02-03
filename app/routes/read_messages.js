@@ -1,16 +1,14 @@
 import AuthorizeRoute from './authorize';
+import readMessageMixin from '../mixins/read-message';
 
-var ReadMessagesRoute = AuthorizeRoute.extend({
+var ReadMessagesRoute = AuthorizeRoute.extend(readMessageMixin, {
 
   afterModel: function(messages) {
+    var _this = this;
     var unreadMessages = messages.filterBy('state', 'unread');
-    var adapter = this.container.lookup('adapter:application');
 
     unreadMessages.forEach(function(message) {
-      var url = adapter.buildURL('message', message.get('id')) + '/mark_read';
-      adapter.ajax(url, 'PUT').then(function(response) {
-        message.setProperties(response.message);
-      });
+      _this.markMessageAsRead(message);
     });
   }
 
