@@ -1,6 +1,12 @@
 import Ember from 'ember';
 import config from '../config/environment';
 
+function run(func) {
+  if (func) {
+    func();
+  }
+}
+
 export default Ember.Controller.extend({
   needs: ["notifications", "application"],
   socket: null,
@@ -37,7 +43,7 @@ export default Ember.Controller.extend({
   batch: function(events, success) {
     // if ember recently loaded (current data store already up to date) or not logged in ignore batch event
     if (Date.now() - this.get("created") < 2000 || !this.get("controllers.application.isLoggedIn")) {
-      success();
+      run(success);
       return;
     }
 
@@ -46,16 +52,17 @@ export default Ember.Controller.extend({
       this[event].apply(this, args.slice(1));
     }, this);
 
-    success();
+    run(success);
   },
 
   resync: function() {
     window.location = window.location.href;
   },
 
-  notification: function(data) {
+  notification: function(data, success) {
     data.date = new Date(data.date);
     this.get("controllers.notifications").pushObject(data);
+    run(success);
   },
 
   // each action below is an event in a channel
@@ -78,6 +85,7 @@ export default Ember.Controller.extend({
     var existingItemIsDeleting = existingItem && existingItem.get("isDeleted") && existingItem.get("isSaving");
     if (data.operation === "create" && fromCurrentUser && hasNewItemSaving ||
       data.operation === "delete" && fromCurrentUser && existingItemIsDeleting) {
+      run(success);
       return;
     }
 
@@ -89,8 +97,6 @@ export default Ember.Controller.extend({
       this.store.unloadRecord(existingItem);
     }
 
-    if (success) {
-      success();
-    }
+    run(success);
   }
 });
