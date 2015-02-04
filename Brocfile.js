@@ -2,7 +2,10 @@
 
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
-var app = new EmberApp();
+var app = new EmberApp({
+  minifyCSS: { enabled: false },
+  minifyJS: { enabled: false }
+});
 
 app.import('bower_components/cloudinary/js/jquery.ui.widget.js');
 app.import('bower_components/cloudinary/js/jquery.iframe-transport.js');
