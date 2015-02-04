@@ -15,4 +15,16 @@
   .start_review_link {
     text-decoration: underline;
   }
+
+  .waiting {
+    cursor: default;
+    .offer-status {
+      opacity: 0.8;
+      img {
+        position: fixed;
+        padding-left: 0.5rem;
+        padding-top: 0.3rem;
+      }
+    }
+  }
 }

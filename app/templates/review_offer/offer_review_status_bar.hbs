@@ -8,10 +8,13 @@
   {{/if}}
 
   {{#if offer.isSubmitted}}
-    <a href="#" {{action 'startReview'}} class='start_review_link'>
+    <a href="#" {{action 'startReview'}} {{bind-attr class="isStartReviewClicked:waiting:start_review_link"}}>
       <div class="offer-status is-submitted">
         <div class='status-message'>
           {{t "review_offer.start_review"}}
+          {{#if isStartReviewClicked}}
+            <img src="/assets/images/waiting.gif" alt="">
+          {{/if}}
         </div>
       </div>
     </a>

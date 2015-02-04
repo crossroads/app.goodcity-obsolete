@@ -78,6 +78,7 @@ export default Ember.Route.extend({
           this.transitionTo('login');
         }
       } else {
+        console.log(reason);
         alert('Something went wrong');
         if(config.environment === "production") {
           Airbrake.push({error: reason });
