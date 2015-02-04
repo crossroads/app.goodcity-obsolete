@@ -1,8 +1,6 @@
+// more common styles are in drop_off.scss file
 .book-van {
-  .description {
-    font-size: 0.77rem;
-    margin-bottom: 1rem;
-    line-height: 1.2rem; }
-  select {
-    font-size: 1rem; }
+  .location-dropdown select {
+    position: inherit;
+  }
 }

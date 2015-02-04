@@ -9,7 +9,7 @@
 </nav>
 
 {{#validatable-form class="form-horizontal" action="bookVan" on="submit"}}
-  <section class="main-section book-van">
+  <section class="main-section book-van ui">
     <div class="row">
       <div class="small-12 columns">
 
@@ -17,7 +17,7 @@
           <h3>{{t "gogovan.book_van.location"}}</h3>
         </div>
 
-        <div class="row">
+        <div class="row location-dropdown">
           <div class="small-6 columns">
             {{view "select"
               content=territories
@@ -42,6 +42,7 @@
           </div>
         </div>
 
+        <br/>
         <div class="row">
           <h3>{{t "gogovan.book_van.select_day"}}</h3>
           <div class='description'>{{t "gogovan.book_van.crossroads_time"}}</div>
@@ -55,7 +56,9 @@
               value=''
               selectionBinding='selectedDate'
               required='true'
+              placeholder='Date'
               pattern="[a-zA-Z]{3}\s?[a-zA-Z]{3}\s?[0-9]{1,2}"}}
+            <i class="fa fa-calendar calender_icon"></i>
           </div>
           <div class="small-5 columns time_selector">
             {{view "select-time"
@@ -64,7 +67,9 @@
               value=''
               selectionBinding='selectedTime'
               required='true'
+              placeholder='Time'
               pattern="[0-9]{1,2}:(00|30)\s?(AM|PM)"}}
+            <i class="fa fa-clock-o time_icon"></i>
           </div>
         </div>
 
