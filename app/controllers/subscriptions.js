@@ -12,16 +12,34 @@ export default Ember.Controller.extend({
   socket: null,
   created: null,
 
+  updateStatus: function() {
+    var socket = this.get("socket");
+    var status = socket && socket.connected && navigator.onLine ? "Online" : "Offline";
+    status += " - " + this.session.get("currentUser.fullName");
+    if (socket && socket.io.engine) {
+      status += " (" + socket.io.engine.transport.name + ")";
+    }
+    Ember.$("#ws-status").text(status);
+  }.observes("socket"),
+
+  controllerInit: function() {
+    var updateStatus = Ember.run.bind(this, this.updateStatus);
+    window.addEventListener("online", updateStatus);
+    window.addEventListener("offline", updateStatus);
+  }.on("init"),
+
   actions: {
     wire: function() {
-      var name = this.session.get("currentUser.fullName");
-      Ember.run.next(function() { Ember.$("#ws-status").text("Offline - " + name); });
+      var updateStatus = Ember.run.bind(this, this.updateStatus);
       var connectUrl = config.APP.SOCKETIO_WEBSERVICE_URL + "?token=" + encodeURIComponent(this.session.get("authToken"));
       var socket = io(connectUrl, {autoConnect:false});
       this.set("created", Date.now());
       this.set("socket", socket);
-      socket.on("connect", function() { Ember.$("#ws-status").text("Online - " + name); });
-      socket.on("disconnect", function() { Ember.$("#ws-status").text("Offline - " + name); });
+      socket.on("connect", function() {
+        updateStatus();
+        socket.io.engine.on("upgrade", updateStatus);
+      });
+      socket.on("disconnect", updateStatus);
       socket.on("error", Ember.run.bind(this, function(data) { throw new Error("websocket: " + data); }));
       socket.on("notification", Ember.run.bind(this, this.notification));
       socket.on("update_store", Ember.run.bind(this, this.update_store));
@@ -36,7 +54,6 @@ export default Ember.Controller.extend({
         socket.close();
         this.set("socket", null);
       }
-      Ember.$("#ws-status").text("Offline");
     }
   },
 
