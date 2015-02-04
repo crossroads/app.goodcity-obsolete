@@ -49,7 +49,7 @@ export default Ember.TextField.extend({
     });
 
     function validateForm(){
-      Ember.$('.drop_off').click(function(){
+      Ember.$('.button.drop_off').click(function(){
         return checkInput(Ember.$('#selectedDate'));
       });
     }
