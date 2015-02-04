@@ -3,6 +3,9 @@
     {{#if itemTypeId}}
       <div class="small-12 columns">
         <form class="ui">
+          {{#if noReasonSelected}}
+            <div class="error-box"><i class="fa fa-times-circle"></i>Please choose a reason.</div>
+          {{/if}}
           <ul>
             {{#each item in rejectionOptions}}
               <li>
@@ -21,7 +24,7 @@
             </li>
           </ul>
 
-          {{textarea type="text" value=rejectionComments name="rejectionComments" id='rejectionComments' placeholder="Additional Comments"}}
+          {{textarea type="text" value=rejectionComments name="rejectionComments" id='rejectionComments' placeholder="Message to donor about the rejection of this item"}}
         </form>
 
         <div class="row">

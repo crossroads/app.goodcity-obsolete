@@ -9,9 +9,14 @@ export default Ember.ObjectController.extend({
     return (arguments.length >1) ? value : false;
   }.property(),
 
+  noReasonSelected: function(key, value){
+    return (arguments.length >1) ? value : false;
+  }.property(),
+
   selectedId: function(key, value){
     this.set("isBlank", false);
     if(arguments.length > 1) {
+      this.set('noReasonSelected', false);
       return value;
     } else {
       var reasonId = this.get('rejectionReason.id');
@@ -19,8 +24,6 @@ export default Ember.ObjectController.extend({
       else {
         if(this.get("rejectReason") && this.get("rejectReason").length > 0) {
           return this.set("selectedId", "-1");
-        } else {
-          return "1";
         }
       }
     }
@@ -36,6 +39,19 @@ export default Ember.ObjectController.extend({
     return this.store.all('rejection_reason').sortBy('id');
   }.property(),
 
+  setRejectComments: function(){
+    var reasonRecord = this.store.getById('rejection_reason', this.get('selectedId'));
+    var reason = reasonRecord && reasonRecord.get('name')
+    var message;
+    switch(reason) {
+      case "Quality": message = "Bad Quality"; break;
+      case "Size" : message = "Bad Size"; break;
+      case "Supply/Demand" : message = "Bad Supply"; break;
+      default: message = null; break;
+    }
+    this.set('rejectionComments', message);
+  }.property('rejectionReason.id'),
+
   actions: {
     setRejectOption: function(){
       this.set("selectedId", "-1");
@@ -43,6 +59,11 @@ export default Ember.ObjectController.extend({
 
     rejectOffer: function(){
       var selectedReason = this.get('selectedId');
+      if(!this.get('selectedReason')) {
+        this.set('noReasonSelected', true);
+        return false;
+      }
+
       var rejectProperties = this.getProperties('rejectReason', 'rejectionComments');
 
       if(selectedReason === "-1" && Ember.$.trim(rejectProperties.rejectReason).length === 0) {
