@@ -115,6 +115,13 @@ I18nTranslationsEn =
           "extra_time_charge" : "Extra Time(15 minutes waiting time is included for you to load the van. Extra time incurs a charge.)"
           "get_quote" : "Get Quote"
 
+      "drop-off":
+        "expect_delivery": "When can we expect your delivery?"
+        "find_crossroads": "How to find crossroads"
+        "open_new_tab": "will open in new tab"
+        "message_map_link": "We will also message you a link to our map location so you have it handy when you need it!"
+        "arrive_on_time": "Please arrive during our operating hours to ensure we can successfully receive your kind donation."
+
       "tour":
         "register" : "Start Now"
         "step1.title" : "Step 1: Register"
