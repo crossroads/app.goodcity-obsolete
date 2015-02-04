@@ -1,21 +1,45 @@
 import Ember from 'ember';
 import config from '../config/environment';
 
+function run(func) {
+  if (func) {
+    func();
+  }
+}
+
 export default Ember.Controller.extend({
   needs: ["notifications", "application"],
   socket: null,
   created: null,
 
+  updateStatus: function() {
+    var socket = this.get("socket");
+    var status = socket && socket.connected && navigator.onLine ? "Online" : "Offline";
+    status += " - " + this.session.get("currentUser.fullName");
+    if (socket && socket.io.engine) {
+      status += " (" + socket.io.engine.transport.name + ")";
+    }
+    Ember.$("#ws-status").text(status);
+  }.observes("socket"),
+
+  controllerInit: function() {
+    var updateStatus = Ember.run.bind(this, this.updateStatus);
+    window.addEventListener("online", updateStatus);
+    window.addEventListener("offline", updateStatus);
+  }.on("init"),
+
   actions: {
     wire: function() {
-      var name = this.session.get("currentUser.fullName");
-      Ember.run.next(function() { Ember.$("#ws-status").text("Offline - " + name); });
+      var updateStatus = Ember.run.bind(this, this.updateStatus);
       var connectUrl = config.APP.SOCKETIO_WEBSERVICE_URL + "?token=" + encodeURIComponent(this.session.get("authToken"));
       var socket = io(connectUrl, {autoConnect:false});
       this.set("created", Date.now());
       this.set("socket", socket);
-      socket.on("connect", function() { Ember.$("#ws-status").text("Online - " + name); });
-      socket.on("disconnect", function() { Ember.$("#ws-status").text("Offline - " + name); });
+      socket.on("connect", function() {
+        updateStatus();
+        socket.io.engine.on("upgrade", updateStatus);
+      });
+      socket.on("disconnect", updateStatus);
       socket.on("error", Ember.run.bind(this, function(data) { throw new Error("websocket: " + data); }));
       socket.on("notification", Ember.run.bind(this, this.notification));
       socket.on("update_store", Ember.run.bind(this, this.update_store));
@@ -30,14 +54,13 @@ export default Ember.Controller.extend({
         socket.close();
         this.set("socket", null);
       }
-      Ember.$("#ws-status").text("Offline");
     }
   },
 
   batch: function(events, success) {
     // if ember recently loaded (current data store already up to date) or not logged in ignore batch event
     if (Date.now() - this.get("created") < 2000 || !this.get("controllers.application.isLoggedIn")) {
-      success();
+      run(success);
       return;
     }
 
@@ -46,16 +69,17 @@ export default Ember.Controller.extend({
       this[event].apply(this, args.slice(1));
     }, this);
 
-    success();
+    run(success);
   },
 
   resync: function() {
     window.location = window.location.href;
   },
 
-  notification: function(data) {
+  notification: function(data, success) {
     data.date = new Date(data.date);
     this.get("controllers.notifications").pushObject(data);
+    run(success);
   },
 
   // each action below is an event in a channel
@@ -78,6 +102,7 @@ export default Ember.Controller.extend({
     var existingItemIsDeleting = existingItem && existingItem.get("isDeleted") && existingItem.get("isSaving");
     if (data.operation === "create" && fromCurrentUser && hasNewItemSaving ||
       data.operation === "delete" && fromCurrentUser && existingItemIsDeleting) {
+      run(success);
       return;
     }
 
@@ -89,8 +114,6 @@ export default Ember.Controller.extend({
       this.store.unloadRecord(existingItem);
     }
 
-    if (success) {
-      success();
-    }
+    run(success);
   }
 });
