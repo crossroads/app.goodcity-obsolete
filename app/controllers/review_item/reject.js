@@ -41,7 +41,7 @@ export default Ember.ObjectController.extend({
 
   setRejectComments: function(){
     var reasonRecord = this.store.getById('rejection_reason', this.get('selectedId'));
-    var reason = reasonRecord && reasonRecord.get('name')
+    var reason = reasonRecord && reasonRecord.get('name');
     var message;
     switch(reason) {
       case "Quality": message = "Bad Quality"; break;
@@ -50,7 +50,7 @@ export default Ember.ObjectController.extend({
       default: message = null; break;
     }
     this.set('rejectionComments', message);
-  }.property('rejectionReason.id'),
+  }.observes('selectedId'),
 
   actions: {
     setRejectOption: function(){
@@ -59,7 +59,7 @@ export default Ember.ObjectController.extend({
 
     rejectOffer: function(){
       var selectedReason = this.get('selectedId');
-      if(!this.get('selectedReason')) {
+      if(selectedReason === undefined) {
         this.set('noReasonSelected', true);
         return false;
       }
