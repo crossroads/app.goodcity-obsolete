@@ -43,11 +43,15 @@ export default Ember.ObjectController.extend({
     var reasonRecord = this.store.getById('rejection_reason', this.get('selectedId'));
     var reason = reasonRecord && reasonRecord.get('name');
     var message;
+
     switch(reason) {
       case "Quality": message = "Unfortunately we cannot receive this item. Some categories of items are very difficult for us to distribute unless they are in excellent condition."; break;
       case "Size" : message = "Unfortunately we cannot receive this item. Very few of our clients are able to accommodate large items in their homes."; break;
       case "Supply/Demand" : message = "Unfortunately we cannot receive this item because we have a large quantity already in stock."; break;
-      default: message = "Unfortunately we cannot receive this item."; break;
+    }
+
+    if(this.get('selectedId') === "-1") {
+      message = "Unfortunately we cannot receive this item.";
     }
     this.set('rejectionComments', message);
   }.observes('selectedId'),
@@ -68,7 +72,8 @@ export default Ember.ObjectController.extend({
         return false;
       }
 
-      var rejectProperties = this.getProperties('rejectReason', 'rejectionComments');
+      var rejectProperties = this.getProperties('rejectReason');
+      rejectProperties.rejectionComments = this.get('rejectionComments');
 
       if(selectedReason === "-1" && Ember.$.trim(rejectProperties.rejectReason).length === 0) {
         this.set("isBlank", true);
@@ -90,7 +95,10 @@ export default Ember.ObjectController.extend({
       rejectProperties.itemType = this.store.getById('item_type', this.get('itemTypeId'));
 
       // send message to donor
-      this.get("controllers.sendMessage").send("sendRejectMessage", rejectProperties.rejectionComments);
+      var message = rejectProperties.rejectionComments;
+      if(!Ember.isBlank(message)) {
+        this.get("controllers.sendMessage").send("sendRejectMessage", message);
+      }
 
       var item = this.store.push('item', rejectProperties);
 
