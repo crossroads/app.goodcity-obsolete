@@ -32,7 +32,7 @@ export default Ember.Controller.extend({
     wire: function() {
       var updateStatus = Ember.run.bind(this, this.updateStatus);
       var connectUrl = config.APP.SOCKETIO_WEBSERVICE_URL + "?token=" + encodeURIComponent(this.session.get("authToken"));
-      var socket = io(connectUrl, {autoConnect:false});
+      var socket = io(connectUrl, {autoConnect:false,forceNew:true});
       this.set("created", Date.now());
       this.set("socket", socket);
       socket.on("connect", function() {
