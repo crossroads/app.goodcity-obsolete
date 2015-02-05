@@ -9,7 +9,7 @@
 </nav>
 
 {{#validatable-form class="form-horizontal" action="bookVan" on="submit"}}
-  <section class="main-section book-van">
+  <section class="main-section book-van ui">
     <div class="row">
       <div class="small-12 columns">
 
@@ -17,7 +17,7 @@
           <h3>{{t "gogovan.book_van.location"}}</h3>
         </div>
 
-        <div class="row">
+        <div class="row location-dropdown">
           <div class="small-6 columns">
             {{view "select"
               content=territories
@@ -42,12 +42,12 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row time_heading">
           <h3>{{t "gogovan.book_van.select_day"}}</h3>
           <div class='description'>{{t "gogovan.book_van.crossroads_time"}}</div>
         </div>
 
-        <div class="row">
+        <div class="row time_inputs">
           <div class="small-7 columns date_selector">
             {{view "select-date"
               name='selectedDate'
@@ -55,7 +55,9 @@
               value=''
               selectionBinding='selectedDate'
               required='true'
+              placeholder='Date'
               pattern="[a-zA-Z]{3}\s?[a-zA-Z]{3}\s?[0-9]{1,2}"}}
+            <i class="fa fa-calendar calender_icon"></i>
           </div>
           <div class="small-5 columns time_selector">
             {{view "select-time"
@@ -64,11 +66,13 @@
               value=''
               selectionBinding='selectedTime'
               required='true'
+              placeholder='Time'
               pattern="[0-9]{1,2}:(00|30)\s?(AM|PM)"}}
+            <i class="fa fa-clock-o time_icon"></i>
           </div>
         </div>
 
-        <div class="row ui">
+        <div class="row extra_details">
           <h3>{{t "gogovan.book_van.requirements"}}</h3>
           <div class='checkbox'>
             {{input type="checkbox" name="speakEnglish" checked=speakEnglish id='1' }}

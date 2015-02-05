@@ -3,7 +3,7 @@ import Ember from 'ember';
 export default Ember.TextField.extend({
   tagName: 'input',
   classNames: 'timepicker',
-  attributeBindings: [ "name", "type", "value", "id", 'required', 'pattern' ],
+  attributeBindings: [ "name", "type", "value", "id", 'required', 'pattern', 'placeholder'],
 
   didInsertElement: function(){
     var _this = this;
