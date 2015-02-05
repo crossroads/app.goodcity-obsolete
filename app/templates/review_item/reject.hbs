@@ -24,7 +24,9 @@
             </li>
           </ul>
 
-          {{textarea type="text" value=rejectionComments name="rejectionComments" id='rejectionComments' placeholder="Message to donor about the rejection of this item"}}
+          {{textarea type="text" value=rejectionComments name="rejectionComments" id='rejectionComments' placeholder="Message to donor about the rejection of this item" rows=3}}
+          <i {{action "clearRejectionComments"}}class="fa fa-times-circle remove-text"></i>
+
         </form>
 
         <div class="row">

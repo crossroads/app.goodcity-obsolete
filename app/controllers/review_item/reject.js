@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-  needs: ["review_item", "offer"],
+  needs: ["review_item", "offer", "sendMessage"],
 
   itemTypeId: Ember.computed.alias('controllers.review_item.itemTypeId'),
 
@@ -44,10 +44,10 @@ export default Ember.ObjectController.extend({
     var reason = reasonRecord && reasonRecord.get('name');
     var message;
     switch(reason) {
-      case "Quality": message = "Bad Quality"; break;
-      case "Size" : message = "Bad Size"; break;
-      case "Supply/Demand" : message = "Bad Supply"; break;
-      default: message = null; break;
+      case "Quality": message = "Unfortunately we cannot receive this item. Some categories of items are very difficult for us to distribute unless they are in excellent condition."; break;
+      case "Size" : message = "Unfortunately we cannot receive this item. Very few of our clients are able to accommodate large items in their homes."; break;
+      case "Supply/Demand" : message = "Unfortunately we cannot receive this item because we have a large quantity already in stock."; break;
+      default: message = "Unfortunately we cannot receive this item."; break;
     }
     this.set('rejectionComments', message);
   }.observes('selectedId'),
@@ -55,6 +55,10 @@ export default Ember.ObjectController.extend({
   actions: {
     setRejectOption: function(){
       this.set("selectedId", "-1");
+    },
+
+    clearRejectionComments: function(){
+      this.set('rejectionComments', '');
     },
 
     rejectOffer: function(){
@@ -85,6 +89,9 @@ export default Ember.ObjectController.extend({
       rejectProperties.offer = this.store.getById('offer', offer_id);
       rejectProperties.itemType = this.store.getById('item_type', this.get('itemTypeId'));
 
+      // send message to donor
+      this.get("controllers.sendMessage").send("sendRejectMessage", rejectProperties.rejectionComments);
+
       var item = this.store.push('item', rejectProperties);
 
       // Save changes to Item
@@ -93,7 +100,7 @@ export default Ember.ObjectController.extend({
         loadingView.destroy();
         route.transitionToRoute('review_offer.items');
       });
-    }
+    },
   }
 
 });
