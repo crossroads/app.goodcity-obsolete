@@ -26,6 +26,10 @@ var transportDetails =  Ember.ObjectController.extend({
       var offers = this.store.all('offer');
       this.get('controllers.offers/index').send('newOffer', offers);
     },
+
+    handleBrokenImage: function() {
+      this.get("reviewedBy").set("displayImageUrl", null);
+    }
   }
 });
 

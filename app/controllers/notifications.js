@@ -4,11 +4,26 @@ import readMessageMixin from '../mixins/read-message';
 export default Ember.ArrayController.extend(readMessageMixin, {
   sortProperties: ['date'],
   sortAscending: true,
+  showItemImage: false,
+  itemImageUrl: null,
+  senderImageUrl: null,
 
   nextNotification: function() {
     //retrieveNextNotification is not implemented here because it needs to call itself
     return this.retrieveNextNotification();
   }.property('[]'),
+
+  showItem: function(notification) {
+    var itemId = notification.entity.item_id;
+    var url;
+    this.set("showItemImage", itemId);
+    if(itemId){
+      url = this.store.getById('item', itemId).get("displayImageUrl");
+      this.set('itemImageUrl', url);
+    }
+    var url = this.store.getById("user", notification.entity.sender_id).get("displayImageUrl");
+    this.set('senderImageUrl', url);
+  },
 
   retrieveNextNotification: function() {
     var notification = this.get('firstObject');
@@ -30,7 +45,7 @@ export default Ember.ArrayController.extend(readMessageMixin, {
       this.removeObject(notification);
       return this.retrieveNextNotification();
     }
-
+    this.showItem(notification);
     return notification;
   },
 

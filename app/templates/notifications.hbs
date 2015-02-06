@@ -1,9 +1,17 @@
-<div class='notification_box'>
-  <div>{{t "notifications.text" textBinding=nextNotification.text}}</div>
-  <div>
-    <button {{action 'view'}}>
-      <i class="fa fa-eye fa-lg"></i>
-      {{t "notifications.view"}}
-    </button>
-  </div>
+<div class="contain-to-grid sticky">
+  <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
+    <div class="row">
+      <a {{action 'view'}} class='notification_box'>
+        {{#if controller.showItemImage}}
+          <div class="small-2 large-1">
+            <img {{bind-attr src=itemImageUrl}} class="image-item" alt="">
+          </div>
+        {{/if}}
+        <div class="small-9 large-9 notification-text">{{t "notifications.text" textBinding=nextNotification.text}}</div>
+        <div class="small-1">
+          {{view 'custom-img-tag' src=senderImageUrl class="user-avatar"}}
+        </div>
+      </a>
+    </div>
+  </nav>
 </div>

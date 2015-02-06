@@ -9,7 +9,7 @@ export default Ember.View.extend({
 
   animateNotification: function(){
     Ember.run.cancel(this.get("timer"));
-    var box = Ember.$(".notification_box");
+    var box = Ember.$('.contain-to-grid');
     var notification = this.get("controller.nextNotification");
     if (!notification) { box.hide(); return; }
     if (box.is(":hidden")) { box.slideDown(); }
