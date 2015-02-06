@@ -34,7 +34,7 @@
 
   textarea {
     margin: 0 0 1rem 1rem;
-    padding-right: 1rem;
+    padding-right: 2rem;
     height: 5rem;
 
     @media #{$small-only} {
@@ -60,9 +60,10 @@
     position: absolute;
     z-index: 10;
     cursor: pointer;
+    color: $light-gray;
 
-    margin-left: -1.1rem;
-    margin-top: 0.13rem;
+    margin-left: -1.3rem;
+    margin-top: 0.4rem;
     font-size: 1rem;
   }
 

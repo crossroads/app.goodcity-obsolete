@@ -4,7 +4,10 @@
       <div class="small-12 columns">
         <form class="ui">
           {{#if noReasonSelected}}
-            <div class="error-box"><i class="fa fa-exclamation-triangle"></i>Please choose a reason.</div>
+            <div class="error-box">
+              <i class="fa fa-exclamation-triangle"></i>
+              {{t 'reject.option_error'}}
+            </div>
           {{/if}}
           <ul>
             {{#each item in rejectionOptions}}
@@ -24,21 +27,20 @@
             </li>
           </ul>
 
-          {{textarea type="text" value=rejectionComments name="rejectionComments" id='rejectionComments' placeholder="Message to donor about the rejection of this item" rows=3}}
-          <i {{action "clearRejectionComments"}}class="fa fa-times-circle remove-text"></i>
+          {{reject-message-field selectedId=selectedId itemId=itemId}}
 
         </form>
 
         <div class="row">
           <div class="small-8 small-offset-2 columns">
-            <a href="#" {{action "rejectOffer" }} class="button expand rejectOffer">Reject Item</a>
+            <a href="#" {{action "rejectOffer" }} class="button expand rejectOffer">{{t 'reject.reject_item'}}</a>
           </div>
         </div>
       </div>
     {{else}}
       <p>
         <i class="icon-empty-items fa fa-info-circle fa-5x"></i>
-        <p class="no-items">Please choose Item Type first!</p>
+        <p class="no-items">{{t 'reject.select_type'}}</p>
       </p>
     {{/if}}
   </div>

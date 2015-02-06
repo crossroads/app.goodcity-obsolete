@@ -4,6 +4,7 @@ export default Ember.ObjectController.extend({
   needs: ["review_item", "offer", "sendMessage"],
 
   itemTypeId: Ember.computed.alias('controllers.review_item.itemTypeId'),
+  itemId: Ember.computed.alias('controllers.review_item.id'),
 
   isBlank: function(key, value){
     return (arguments.length >1) ? value : false;
@@ -23,46 +24,19 @@ export default Ember.ObjectController.extend({
       if(reasonId) { return reasonId; }
       else {
         if(this.get("rejectReason") && this.get("rejectReason").length > 0) {
-          return this.set("selectedId", "-1");
+          return "-1";
         }
       }
     }
   }.property('rejectionReason.id'),
 
-  setCustomReason: function(){
-    if(this.get("rejectReason") && this.get("rejectReason").length > 0) {
-      this.set("selectedId", "-1");
-    }
-  }.observes('model.rejectReason'),
-
   rejectionOptions: function() {
     return this.store.all('rejection_reason').sortBy('id');
   }.property(),
 
-  setRejectComments: function(){
-    var reasonRecord = this.store.getById('rejection_reason', this.get('selectedId'));
-    var reason = reasonRecord && reasonRecord.get('name');
-    var message;
-
-    switch(reason) {
-      case "Quality": message = "Unfortunately we cannot receive this item. Some categories of items are very difficult for us to distribute unless they are in excellent condition."; break;
-      case "Size" : message = "Unfortunately we cannot receive this item. Very few of our clients are able to accommodate large items in their homes."; break;
-      case "Supply/Demand" : message = "Unfortunately we cannot receive this item because we have a large quantity already in stock."; break;
-    }
-
-    if(this.get('selectedId') === "-1") {
-      message = "Unfortunately we cannot receive this item.";
-    }
-    this.set('rejectionComments', message);
-  }.observes('selectedId'),
-
   actions: {
     setRejectOption: function(){
       this.set("selectedId", "-1");
-    },
-
-    clearRejectionComments: function(){
-      this.set('rejectionComments', '');
     },
 
     rejectOffer: function(){
@@ -72,8 +46,9 @@ export default Ember.ObjectController.extend({
         return false;
       }
 
+      var message = Ember.$('#rejectMessage').val();
       var rejectProperties = this.getProperties('rejectReason');
-      rejectProperties.rejectionComments = this.get('rejectionComments');
+      rejectProperties.rejectionComments = message;
 
       if(selectedReason === "-1" && Ember.$.trim(rejectProperties.rejectReason).length === 0) {
         this.set("isBlank", true);
@@ -95,7 +70,6 @@ export default Ember.ObjectController.extend({
       rejectProperties.itemType = this.store.getById('item_type', this.get('itemTypeId'));
 
       // send message to donor
-      var message = rejectProperties.rejectionComments;
       if(!Ember.isBlank(message)) {
         this.get("controllers.sendMessage").send("sendRejectMessage", message);
       }
