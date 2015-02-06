@@ -10,19 +10,35 @@ function run(func) {
 export default Ember.Controller.extend({
   needs: ["notifications", "application"],
   socket: null,
-  created: null,
+  created: Date.now(),
+  lastOnline: Date.now(),
+  clientTtl: 0,
+  online: true,
 
   updateStatus: function() {
     var socket = this.get("socket");
-    var status = socket && socket.connected && navigator.onLine ? "Online" : "Offline";
+    var online = socket && socket.connected && navigator.onLine;
+    var status = online ? "Online" : "Offline";
     status += " - " + this.session.get("currentUser.fullName");
     if (socket && socket.io.engine) {
       status += " (" + socket.io.engine.transport.name + ")";
     }
     Ember.$("#ws-status").text(status);
+    this.set("online", online);
   }.observes("socket"),
 
-  controllerInit: function() {
+  // resync if offline longer than clientTtl
+  checkClientTtl: function() {
+    var online = this.get("online");
+    var clientTtl = this.get("clientTtl");
+    if (online && clientTtl !== 0 && (Date.now() - this.get("lastOnline")) > clientTtl * 1000) {
+      this.resync();
+    } else if (!online) {
+      this.set("lastOnline", Date.now());
+    }
+  }.observes("online"),
+
+  initController: function() {
     var updateStatus = Ember.run.bind(this, this.updateStatus);
     window.addEventListener("online", updateStatus);
     window.addEventListener("offline", updateStatus);
@@ -33,7 +49,6 @@ export default Ember.Controller.extend({
       var updateStatus = Ember.run.bind(this, this.updateStatus);
       var connectUrl = config.APP.SOCKETIO_WEBSERVICE_URL + "?token=" + encodeURIComponent(this.session.get("authToken"));
       var socket = io(connectUrl, {autoConnect:false,forceNew:true});
-      this.set("created", Date.now());
       this.set("socket", socket);
       socket.on("connect", function() {
         updateStatus();
@@ -43,8 +58,12 @@ export default Ember.Controller.extend({
       socket.on("error", Ember.run.bind(this, function(data) { throw new Error("websocket: " + data); }));
       socket.on("notification", Ember.run.bind(this, this.notification));
       socket.on("update_store", Ember.run.bind(this, this.update_store));
-      socket.on("batch", Ember.run.bind(this, this.batch));
-      socket.on("resync", Ember.run.bind(this, this.resync));
+      socket.on("_batch", Ember.run.bind(this, this.batch));
+      socket.on("_resync", Ember.run.bind(this, this.resync));
+      socket.on("_settings", Ember.run.bind(this, function(settings) {
+        this.set("clientTtl", settings.client_ttl);
+        this.set("lastOnline", Date.now());
+      }));
       socket.connect(); // manually connect since it's not auto-connecting if you logout and then back in
     },
 
