@@ -46,9 +46,8 @@ export default Ember.ObjectController.extend({
         return false;
       }
 
-      var message = Ember.$('#rejectMessage').val();
       var rejectProperties = this.getProperties('rejectReason');
-      rejectProperties.rejectionComments = message;
+      rejectProperties.rejectionComments = Ember.$('#rejectMessage').val();
 
       if(selectedReason === "-1" && Ember.$.trim(rejectProperties.rejectReason).length === 0) {
         this.set("isBlank", true);
@@ -68,11 +67,6 @@ export default Ember.ObjectController.extend({
       var offer_id = this.get('controllers.offer').get('id');
       rejectProperties.offer = this.store.getById('offer', offer_id);
       rejectProperties.itemType = this.store.getById('item_type', this.get('itemTypeId'));
-
-      // send message to donor
-      if(!Ember.isBlank(message)) {
-        this.get("controllers.sendMessage").send("sendRejectMessage", message);
-      }
 
       var item = this.store.push('item', rejectProperties);
 
