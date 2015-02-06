@@ -3,15 +3,15 @@ import readMessageMixin from '../mixins/read-message';
 
 export default Ember.ArrayController.extend(readMessageMixin, {
   sortProperties: ['date'],
-  sortAscending: false,
+  sortAscending: true,
 
-  mostRecent: function() {
-    //retrieveMostRecent is not implemented here because it needs to call itself
-    return this.retrieveMostRecent();
+  nextNotification: function() {
+    //retrieveNextNotification is not implemented here because it needs to call itself
+    return this.retrieveNextNotification();
   }.property('[]'),
 
-  retrieveMostRecent: function() {
-    var notification = this.get('lastObject');
+  retrieveNextNotification: function() {
+    var notification = this.get('firstObject');
     if (!notification) {
       return null;
     }
@@ -28,7 +28,7 @@ export default Ember.ArrayController.extend(readMessageMixin, {
         this.markMessageAsRead(message);
       }
       this.removeObject(notification);
-      return this.retrieveMostRecent();
+      return this.retrieveNextNotification();
     }
 
     return notification;
@@ -74,7 +74,7 @@ export default Ember.ArrayController.extend(readMessageMixin, {
 
   actions: {
     view: function() {
-      var notification = this.get("mostRecent");
+      var notification = this.get("nextNotification");
       this.removeObject(notification);
       this.transitionToRoute.apply(this, notification.route);
     }

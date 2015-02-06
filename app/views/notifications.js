@@ -15,7 +15,7 @@ export default Ember.View.extend({
 
   animateNotification: function(){
     Ember.run.cancel(this.get("timer"));
-    var notification = this.get("controller.mostRecent");
+    var notification = this.get("controller.nextNotification");
     var box = Ember.$(".notification_box");
     if (box.is(":hidden")) { box.slideDown(); }
     var controller = this.get("controller");
