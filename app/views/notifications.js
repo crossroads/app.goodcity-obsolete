@@ -3,20 +3,15 @@ import Ember from "ember";
 export default Ember.View.extend({
   timer: 0,
 
-  initView: function() {
-    Ember.$(".notification_box").hide();
-  }.on("didInsertElement"),
-
   notifyMessage: function(){
-    if (this.get("controller.length") > 0) {
-      Ember.run.once(this, this.animateNotification);
-    }
-  }.observes("controller.[]"),
+    Ember.run.once(this, this.animateNotification);
+  }.observes("controller.[]").on("didInsertElement"),
 
   animateNotification: function(){
     Ember.run.cancel(this.get("timer"));
-    var notification = this.get("controller.nextNotification");
     var box = Ember.$(".notification_box");
+    var notification = this.get("controller.nextNotification");
+    if (!notification) { box.hide(); return; }
     if (box.is(":hidden")) { box.slideDown(); }
     var controller = this.get("controller");
     var removeNotification = function() {
