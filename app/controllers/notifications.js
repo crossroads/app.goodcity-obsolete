@@ -4,15 +4,14 @@ import readMessageMixin from '../mixins/read-message';
 export default Ember.ArrayController.extend(readMessageMixin, {
   sortProperties: ['date'],
   sortAscending: false,
-  model: [],
 
   mostRecent: function() {
     //retrieveMostRecent is not implemented here because it needs to call itself
     return this.retrieveMostRecent();
-  }.property('model.[]'),
+  }.property('[]'),
 
   retrieveMostRecent: function() {
-    var notification = this.get('model.lastObject');
+    var notification = this.get('lastObject');
     if (!notification) {
       return null;
     }
@@ -23,12 +22,12 @@ export default Ember.ArrayController.extend(readMessageMixin, {
     var router = this.get("target");
     var currentUrl = router.get("url");
     var notificationUrl = router.generate.apply(router, notification.route);
-    this.removeObject(notification);
     if (currentUrl === notificationUrl) {
       if (notification.entity_type === "message"){
         var message = this.store.getById("message", notification.entity.id);
         this.markMessageAsRead(message);
       }
+      this.removeObject(notification);
       return this.retrieveMostRecent();
     }
 
