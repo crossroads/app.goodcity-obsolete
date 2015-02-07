@@ -10,10 +10,10 @@ function run(func) {
 export default Ember.Controller.extend({
   needs: ["notifications", "application"],
   socket: null,
-  created: Date.now(),
   lastOnline: Date.now(),
   clientTtl: 0,
   online: true,
+  deviceId: Math.random().toString().substring(2),
 
   updateStatus: function() {
     var socket = this.get("socket");
@@ -47,7 +47,9 @@ export default Ember.Controller.extend({
   actions: {
     wire: function() {
       var updateStatus = Ember.run.bind(this, this.updateStatus);
-      var connectUrl = config.APP.SOCKETIO_WEBSERVICE_URL + "?token=" + encodeURIComponent(this.session.get("authToken"));
+      var connectUrl = config.APP.SOCKETIO_WEBSERVICE_URL +
+        "?token=" + encodeURIComponent(this.session.get("authToken")) +
+        "&deviceId=" + this.get("deviceId");
       var socket = io(connectUrl, {autoConnect:false,forceNew:true});
       this.set("socket", socket);
       socket.on("connect", function() {
@@ -77,12 +79,6 @@ export default Ember.Controller.extend({
   },
 
   batch: function(events, success) {
-    // if ember recently loaded (current data store already up to date) or not logged in ignore batch event
-    if (Date.now() - this.get("created") < 2000 || !this.get("controllers.application.isLoggedIn")) {
-      run(success);
-      return;
-    }
-
     events.forEach(function(args) {
       var event = args[0];
       this[event].apply(this, args.slice(1));
