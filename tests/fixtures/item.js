@@ -1,4 +1,5 @@
 import offersFactory from './offer';
+import itemTypesFactory from './item_type';
 
 FactoryGuy.define('item', {
   sequences: {
@@ -19,6 +20,9 @@ FactoryGuy.define('item', {
   },
   item_with_offer: {
     offer: FactoryGuy.belongsTo('offer')
+  },
+  item_with_type: {
+    itemType: FactoryGuy.belongsTo('item_type')
   }
 });
 
