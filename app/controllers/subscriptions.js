@@ -11,7 +11,7 @@ export default Ember.Controller.extend({
   needs: ["notifications", "application"],
   socket: null,
   lastOnline: Date.now(),
-  clientTtl: 0,
+  deviceTtl: 0,
   online: true,
   deviceId: Math.random().toString().substring(2),
 
@@ -27,11 +27,11 @@ export default Ember.Controller.extend({
     this.set("online", online);
   }.observes("socket"),
 
-  // resync if offline longer than clientTtl
-  checkClientTtl: function() {
+  // resync if offline longer than deviceTtl
+  checkdeviceTtl: function() {
     var online = this.get("online");
-    var clientTtl = this.get("clientTtl");
-    if (online && clientTtl !== 0 && (Date.now() - this.get("lastOnline")) > clientTtl * 1000) {
+    var deviceTtl = this.get("deviceTtl");
+    if (online && deviceTtl !== 0 && (Date.now() - this.get("lastOnline")) > deviceTtl * 1000) {
       this.resync();
     } else if (!online) {
       this.set("lastOnline", Date.now());
@@ -63,7 +63,7 @@ export default Ember.Controller.extend({
       socket.on("_batch", Ember.run.bind(this, this.batch));
       socket.on("_resync", Ember.run.bind(this, this.resync));
       socket.on("_settings", Ember.run.bind(this, function(settings) {
-        this.set("clientTtl", settings.client_ttl);
+        this.set("deviceTtl", settings.device_ttl);
         this.set("lastOnline", Date.now());
       }));
       socket.connect(); // manually connect since it's not auto-connecting if you logout and then back in
