@@ -1,7 +1,6 @@
 <aside class="left-off-canvas-menu">
   <ul class="off-canvas-list">
     <li><label>App menu</label></li>
-    <li>{{#link-to 'index'}}{{t "application.home"}}{{/link-to}}</li>
 
     {{#if session.currentUser.isStaff}}
       <li>{{#link-to 'inbox'}}{{t "inbox.title"}}{{/link-to}}</li>

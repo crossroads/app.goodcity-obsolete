@@ -12,8 +12,11 @@
   <div>
     <p>{{t "index.donate_goods"}}</p>
     <div class="row">
-      <div class="small-12 columns">
-        {{#link-to 'tour' classNames="button expand"}}{{t "index.how"}}{{/link-to}}
+      <div class="small-6 columns">
+        {{#link-to 'tour' classNames="button expand secondary"}}{{t "index.how"}}{{/link-to}}
+      </div>
+      <div class="small-6 columns">
+        {{#link-to 'register' classNames="button expand"}}{{t "index.start"}}{{/link-to}}
       </div>
     </div>
     {{ language-switcher currentLanguage=currentLanguage action="setLang"}}
