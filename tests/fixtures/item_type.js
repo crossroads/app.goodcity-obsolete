@@ -1,5 +1,8 @@
 FactoryGuy.define('item_type', {
   sequences: {
+    id: function(num) {
+      return num + 100;
+    },
     name: function(num) {
       return 'Category' + num;
     },
@@ -8,8 +11,10 @@ FactoryGuy.define('item_type', {
     }
   },
   default: {
+    id:   FactoryGuy.generate('id'),
     name: FactoryGuy.generate("name"),
-    code: FactoryGuy.generate("code")
+    code: FactoryGuy.generate("code"),
+    parentId: null
   }
 });
 
