@@ -2,11 +2,39 @@
   <div class="row">
     <div class="small-12 columns intro">
       <div class="tour_slides">
-        <div>{{ partial "tour/1" }}</div>
-        <div>{{ partial "tour/2" }}</div>
-        <div>{{ partial "tour/3" }}</div>
-        <div>{{ partial "tour/4" }}</div>
-        <div>{{ partial "tour/5" }}</div>
+
+        <ul class="list-intro">
+          <li>
+            <span class="icon-photograph"></span>
+            1. Photograph & describe
+            quality items. What we receive.
+          </li>
+          <li>
+            <span class="icon-describe"></span>
+            2. Submit for live review
+            We'll chat if we have questions
+          </li>
+          <li>
+            <span class="icon-repeat"></span>
+            3. Arrange transport
+            for accepted items. Quick & easy.
+          </li>
+          <li>
+            <span class="icon-repeat"></span>
+            4. People are helped
+            How you're making a Good City.
+          </li>
+        </ul>
+
+        <div class="row register-button">
+          <div class="small-10 small-offset-1 columns">
+            {{#link-to 'register' classNames="button expand"}}
+              {{t "skip_intro"}}
+            {{/link-to}}
+            Frequently Asked Questions
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
