@@ -10,10 +10,6 @@ export default Ember.View.extend({
     var default_image = "/assets/images/default_user_image.jpg";
     var state = _this.get("controller.model.state");
 
-    //if image is not present
-    if(!state && this.src === null)
-    { this.set("src", default_image); }
-
     this.$().on('error', function(){
       if(state === "under_review"){
         _this.get('controller').send('handleBrokenImage');

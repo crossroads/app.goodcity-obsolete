@@ -5,7 +5,7 @@
     {{/if}}
 
     {{#if isUnderReview}}
-      {{#if reviewedBy.displayImageUrl}}
+      {{#if reviewedBy.hasImage}}
         <span>
           {{view 'custom-img-tag' src=reviewedBy.displayImageUrl class="no-avatar"}}
         </span>

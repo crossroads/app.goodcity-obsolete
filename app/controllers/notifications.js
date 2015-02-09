@@ -21,7 +21,7 @@ export default Ember.ArrayController.extend(readMessageMixin, {
       url = this.store.getById('item', itemId).get("displayImageUrl");
       this.set('itemImageUrl', url);
     }
-    var url = this.store.getById("user", notification.entity.sender_id).get("displayImageUrl");
+    url = this.store.getById("user", notification.entity.sender_id).get("displayImageUrl");
     this.set('senderImageUrl', url);
   },
 
