@@ -24,11 +24,15 @@ export default Addressable.extend({
     }
   }.property('permission'),
 
-  displayImageUrl: function(key, value) {
+  displayImageUrl: function() {
+    return this.get('image.thumbImageUrl');
+  }.property('image'),
+
+  hasImage: function(key, value){
     if(arguments.length > 1) {
       return value;
     } else {
-      return this.get('image.thumbImageUrl');
+      return this.get('displayImageUrl');
     }
-  }.property('image'),
+  },
 });

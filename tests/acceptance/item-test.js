@@ -30,7 +30,7 @@ test("Display Item Details", function() {
   andThen(function(){
     equal(currentURL(), display_item_url);
     equal($('body').text().indexOf(item.get('donorDescription')) >= 0, true);
-    equal(find("img").length, 1);
+    equal(find("img.thumb").length, 1);
   });
 });
 

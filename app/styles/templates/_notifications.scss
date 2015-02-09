@@ -1,21 +1,49 @@
 .notification_box {
-  position: fixed;
   top: 0;
-  width: 100%;
-  padding: 10px 20px;
-  background-color: $coral-red;
+  @media #{$small-only} {
+    padding-left: 2px;
+  }
   color: $white;
   z-index: 2;
   display: table;
-
+  width: 100%;
   div {
     display: table-cell;
     vertical-align: middle;
   }
+
+  .notification-text {
+    padding-left: 5px;
+  }
+
   button {
     color: $white;
     float: right;
     margin-bottom: 0px;
     margin-left: 15px;
+  }
+
+  .image-item {
+    width: 2.5rem;
+  }
+
+  .user-avatar {
+    height: 1.6rem;
+    width: 1.6rem;
+    float: right;
+    @media #{$small-only} {
+      margin-right: 1rem;
+    }
+  }
+}
+.contain-to-grid {
+  background: $coral-red;
+ .top-bar {
+    margin: 0 0;
+    max-width: 100%;
+    background: $coral-red;
+    .row {
+      max-width: 768px;
+    }
   }
 }

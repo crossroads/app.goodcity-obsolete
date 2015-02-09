@@ -63,7 +63,7 @@ var offerDetails = Ember.ObjectController.extend({
     },
 
     handleBrokenImage: function() {
-      this.get("reviewedBy").set("displayImageUrl", null);
+      this.get("reviewedBy").set("hasImage", null);
     },
   }
 });
