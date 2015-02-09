@@ -40,10 +40,16 @@ export default Ember.Controller.extend({
               attemptedTransition.retry();
               _this.set('attemptedTransition', null);
             } else {
-              if (_this.session.get('currentUser.isDonor')) {
-                _this.transitionToRoute('offers');
+              var currentUser = _this.get('session.currentUser');
+              if (currentUser.get('isStaff')) {
+                var myOffers = _this.store.all('offer').filterBy('reviewedBy.id', currentUser.get('id'));
+                if(myOffers.get('length') > 0) {
+                  _this.transitionTo('inbox.my_list');
+                } else {
+                  _this.transitionTo('inbox');
+                }
               } else {
-                _this.transitionToRoute('inbox');
+                _this.transitionTo('/offers');
               }
             }
           });

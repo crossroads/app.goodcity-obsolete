@@ -24,7 +24,8 @@ I18nTranslationsZhTw =
       "ok" : "行"
       "index.title" : "十字路口基金會禮物"
       "index.donate_goods" : "捐出你的精品給需要的人"
-      "index.how" : "它是如何工作的？"
+      "index.how" : "Learn How"
+      "index.start" : "Start Now"
       "full_name" : "{{lastName}} {{firstName}}"
       "select_district" : "Select a district"
 

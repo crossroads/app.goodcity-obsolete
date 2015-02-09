@@ -24,7 +24,8 @@ I18nTranslationsEn =
       "ok" : "OK"
       "index.title" : "Crossroads Foundation Presents"
       "index.donate_goods" : "Donate your quality goods to people in need"
-      "index.how" : "How Does It Work?"
+      "index.how" : "Learn How"
+      "index.start" : "Start Now"
       "full_name" : "{{firstName}} {{lastName}}"
       "select_district" : "Select a district"
 
