@@ -1,23 +1,8 @@
 import Ember from 'ember';
+import addressDetails from './address_details';
 
-export default Ember.ObjectController.extend({
+export default addressDetails.extend({
   needs: ["delivery"],
-
-  selectedTerritory: {id: null},
-  selectedDistrict: {id: null},
-  user: Ember.computed.alias('session.currentUser'),
-
-  territories: function(){
-    return this.store.all('territory');
-  }.property(),
-
-  districtsByTerritory: function() {
-    if(this.selectedTerritory && this.selectedTerritory.id) {
-      return this.selectedTerritory.get('districts');
-    } else {
-      return this.store.all('district');
-    }
-  }.property('selectedTerritory'),
 
   actions: {
     saveContactDetails: function() {

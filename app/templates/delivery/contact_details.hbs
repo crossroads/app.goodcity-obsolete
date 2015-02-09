@@ -42,27 +42,7 @@
         </div>
 
         <div class='row detail_row'>
-          <div class="small-6 columns">
-            {{view "select"
-              content=territories
-              optionValuePath="content.id"
-              optionLabelPath="content.name"
-              selectionBinding='selectedTerritory'
-              value=''
-              prompt="All"
-              classNames='selectAddress' }}
-          </div>
-          <div class="small-6 columns">
-            {{view "select"
-              contentBinding='districtsByTerritory'
-              optionValuePath="content.id"
-              optionLabelPath="content.name"
-              selectionBinding='selectedDistrict'
-              value=''
-              prompt="Select District"
-              classNames='selectAddress district'
-              required='true' }}
-          </div>
+          {{partial 'delivery/address_details'}}
         </div>
 
         <div class='row detail_row'>
