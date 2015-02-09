@@ -326,6 +326,19 @@ I18nTranslationsEn =
         "condition": "Condition"
         "add_component": "Add component"
 
+      "reject":
+        "select_type": "Please choose Item Type first!"
+        "option_error": "Please choose a reason."
+        "reject_item": "Reject Item"
+        "quality" : "Quality"
+        "size": "Size"
+        "supply": "Supply/Demand"
+        "message_placeholder" : "Message to donor about the rejection of this item"
+        "reject_message" : "Unfortunately we cannot receive this item. "
+        "quality_message" : "Some categories of items are very difficult for us to distribute unless they are in excellent condition."
+        "size_message" : "Very few of our clients are able to accommodate large items in their homes."
+        "supply_message" : "Unfortunately we cannot receive this item because we have a large quantity already in stock."
+
       # Components
       "upload-images":
         "angles" : "Got all the angles of this item?"

@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   selectedItype: {id: null},
 
   selectedItypeObserver: function(){
-    return this.set('selectedItemName', this.get('findSelectedItem').get('name'));
+    return this.set('selectedItemName', this.get('findSelectedItem.name'));
   }.observes('selectedItemId'),
 
   change: function(value) {

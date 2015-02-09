@@ -1,36 +1,34 @@
 import Ember from 'ember';
 
 export default Ember.ObjectController.extend({
-  needs: ["review_item", "offer"],
+  needs: ["review_item", "offer", "sendMessage"],
 
   itemTypeId: Ember.computed.alias('controllers.review_item.itemTypeId'),
+  itemId: Ember.computed.alias('controllers.review_item.id'),
 
   isBlank: function(key, value){
+    return (arguments.length >1) ? value : false;
+  }.property(),
+
+  noReasonSelected: function(key, value){
     return (arguments.length >1) ? value : false;
   }.property(),
 
   selectedId: function(key, value){
     this.set("isBlank", false);
     if(arguments.length > 1) {
+      this.set('noReasonSelected', false);
       return value;
     } else {
       var reasonId = this.get('rejectionReason.id');
       if(reasonId) { return reasonId; }
       else {
         if(this.get("rejectReason") && this.get("rejectReason").length > 0) {
-          return this.set("selectedId", "-1");
-        } else {
-          return "1";
+          return "-1";
         }
       }
     }
   }.property('rejectionReason.id'),
-
-  setCustomReason: function(){
-    if(this.get("rejectReason") && this.get("rejectReason").length > 0) {
-      this.set("selectedId", "-1");
-    }
-  }.observes('model.rejectReason'),
 
   rejectionOptions: function() {
     return this.store.all('rejection_reason').sortBy('id');
@@ -43,7 +41,13 @@ export default Ember.ObjectController.extend({
 
     rejectOffer: function(){
       var selectedReason = this.get('selectedId');
-      var rejectProperties = this.getProperties('rejectReason', 'rejectionComments');
+      if(selectedReason === undefined) {
+        this.set('noReasonSelected', true);
+        return false;
+      }
+
+      var rejectProperties = this.getProperties('rejectReason');
+      rejectProperties.rejectionComments = Ember.$('#rejectMessage').val();
 
       if(selectedReason === "-1" && Ember.$.trim(rejectProperties.rejectReason).length === 0) {
         this.set("isBlank", true);
@@ -72,7 +76,7 @@ export default Ember.ObjectController.extend({
         loadingView.destroy();
         route.transitionToRoute('review_offer.items');
       });
-    }
+    },
   }
 
 });
