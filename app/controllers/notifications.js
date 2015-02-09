@@ -21,7 +21,9 @@ export default Ember.ArrayController.extend(readMessageMixin, {
       url = this.store.getById('item', itemId).get("displayImageUrl");
       this.set('itemImageUrl', url);
     }
-    url = this.store.getById("user", notification.entity.sender_id).get("displayImageUrl");
+
+    var userId = notification.entity_type === "message" ? notification.entity.sender_id : notification.entity.created_by_id;
+    url = this.store.getById("user", userId).get("displayImageUrl");
     this.set('senderImageUrl', url);
   },
 
@@ -45,9 +47,7 @@ export default Ember.ArrayController.extend(readMessageMixin, {
       this.removeObject(notification);
       return this.retrieveNextNotification();
     }
-    if (notification.entity_type === "message") {
-      this.showItem(notification);
-    }
+    this.showItem(notification);
     return notification;
   },
 
