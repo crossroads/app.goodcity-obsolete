@@ -45,7 +45,9 @@ export default Ember.ArrayController.extend(readMessageMixin, {
       this.removeObject(notification);
       return this.retrieveNextNotification();
     }
-    this.showItem(notification);
+    if (notification.entity_type === "message") {
+      this.showItem(notification);
+    }
     return notification;
   },
 
