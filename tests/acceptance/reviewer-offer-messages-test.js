@@ -80,12 +80,3 @@ test("offer-message with image", function() {
     equal(src.indexOf("cloudinary") > 0, true);
   });
 });
-
-//default image if not present
-test("offer-message with image", function() {
-  visit('/offers/' + offer1.id + "/donor_messages");
-  andThen(function() {
-    var src = $(".received_message#"+message5.id+" img").attr("src");
-    equal(src.indexOf("cloudinary") > 0, false);
-  });
-});
