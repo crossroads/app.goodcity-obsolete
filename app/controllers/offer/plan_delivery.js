@@ -44,13 +44,13 @@ export default Ember.ObjectController.extend({
       var route = this;
       delivery.save().then(function(delivery) {
         switch(delivery_type) {
-          case 'alternate':
+          case 'Alternate':
             route.transitionToRoute('delivery.book_timeslot', delivery);
             break;
-          case 'gogovan':
+          case 'Gogovan':
             route.transitionToRoute('delivery.book_van', delivery);
             break;
-          case 'drop_off':
+          case 'Drop Off':
             route.transitionToRoute('delivery.drop_off_schedule', delivery);
             break;
         }
