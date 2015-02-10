@@ -32,7 +32,7 @@ I18nTranslationsEn =
       "application":
         "home" : "Home"
         "all_offers" : "All Offers"
-        "login" : "Login"
+        "login" : "Log in"
         "logout" : "Logout"
         "register" : "Register"
         "tour" : "Tour"
