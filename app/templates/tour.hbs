@@ -4,7 +4,7 @@
   </section>
 
   <section class="middle tab-bar-section">
-    <h1 class="title">Learn How</h1>
+    <h1 class="title">{{t "index.how"}}</h1>
   </section>
 
   <section id="camera_delete_bar" class="right-small">
@@ -20,32 +20,32 @@
         <ul class="list-intro">
           <li>
             <span><i class="fa fa-camera"></i></span>
-            <div class='strong'>1. Photograph & describe</div>
-            <div class='info'>quality items. {{#link-to ''class='info_link'}}What we receive.{{/link-to}}
+            <div class='strong'>{{t "tour.step1.title"}}</div>
+            <div class='info'>{{t "tour.quality_items"}} {{#link-to ''class='info_link'}}{{t "tour.we_receive"}}{{/link-to}}
           </li>
           <li>
             <span><i class="fa fa-comments-o"></i></span>
-            <div class='strong'>2. Submit for live review</div>
-            <div class='info'>We'll chat if we have questions</div>
+            <div class='strong'>{{t "tour.step2.title"}}</div>
+            <div class='info'>{{t "tour.chat_questions"}}</div>
           </li>
           <li>
             <span><i class="fa fa-truck"></i></span>
-            <div class='strong'>3. Arrange transport</div>
-            <div class='info'>for accepted items. {{#link-to ''class='info_link'}}Quick & easy{{/link-to}}.</div>
+            <div class='strong'>{{t "tour.step3.title"}}</div>
+            <div class='info'>{{t "tour.accepted_items"}} {{#link-to ''class='info_link'}}{{t "tour.quick_easy"}}{{/link-to}}.</div>
           </li>
           <li>
             <span><i class="fa fa-users"></i></span>
-            <div class='strong'>4. People are helped</div>
-            <div class='info'>{{#link-to ''class='info_link'}}How you're making a Good City.{{/link-to}}</div>
+            <div class='strong'>{{t "tour.step4.title"}}</div>
+            <div class='info'>{{#link-to ''class='info_link'}}{{t "tour.make_goodcity"}}{{/link-to}}</div>
           </li>
         </ul>
 
         <div class="row register-button">
           <div class="small-10 small-offset-1 columns">
             {{#link-to 'register' classNames="button expand"}}
-              Start Now
+              {{t "index.start"}}
             {{/link-to}}
-            {{#link-to ''class='info_link'}}Frequently Asked Questions{{/link-to}}
+            {{#link-to ''class='info_link'}}{{t "tour.faq"}}{{/link-to}}
           </div>
         </div>
 
