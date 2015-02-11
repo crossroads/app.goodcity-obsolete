@@ -7,11 +7,13 @@
             <img {{bind-attr src=itemImageUrl}} alt="">
           {{/if}}
         </div>
-        <div class="small-8 large-10 columns notification-text ellipsis one-line-ellipsis">
-          <span>
+        <div class="small-8 large-10 columns msg-with-arrow">
+          <div class="notification-text ellipsis one-line-ellipsis">
+            {{t "notifications.text" textBinding=nextNotification.text}}
+          </div>
+          <div class="arrow-icon">
             <i class="fa fa-arrow-circle-right"></i>
-          </span>
-          {{t "notifications.text" textBinding=nextNotification.text}}
+          </div>
         </div>
         <div class="small-2 large-1 columns">
           {{view 'custom-img-tag' src=senderImageUrl class="user-avatar"}}
