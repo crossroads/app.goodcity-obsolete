@@ -1,14 +1,19 @@
 <div class="contain-to-grid sticky">
-  <nav class="top-bar" data-topbar role="navigation" data-options="sticky_on: large">
+  <nav class="top-bar" data-topbar role="navigation">
     <div class="row">
       <a {{action 'view'}} class='notification_box'>
-        {{#if controller.showItemImage}}
-          <div class="small-2 large-1">
-            <img {{bind-attr src=itemImageUrl}} class="image-item" alt="">
-          </div>
-        {{/if}}
-        <div class="small-9 large-9 notification-text">{{t "notifications.text" textBinding=nextNotification.text}}</div>
-        <div class="small-1">
+        <div class="small-2 large-1 columns image-item">
+          {{#if controller.showItemImage}}
+            <img {{bind-attr src=itemImageUrl}} alt="">
+          {{/if}}
+        </div>
+        <div class="small-8 large-10 columns notification-text ellipsis one-line-ellipsis">
+          <span>
+            <i class="fa fa-arrow-circle-right"></i>
+          </span>
+          {{t "notifications.text" textBinding=nextNotification.text}}
+        </div>
+        <div class="small-2 large-1 columns">
           {{view 'custom-img-tag' src=senderImageUrl class="user-avatar"}}
         </div>
       </a>
