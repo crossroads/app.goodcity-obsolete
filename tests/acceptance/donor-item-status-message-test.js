@@ -5,7 +5,7 @@ import syncDataStub from '../helpers/empty-sync-data-stub';
 var TestHelper = Ember.Object.createWithMixins(FactoryGuyTestMixin);
 var App, testHelper, store, offer1, offer2, item2, item1, item3, item4;
 
-module('Display Item Status', {
+module('Donor: Display Item Status', {
   setup: function() {
     App = startApp();
     testHelper = TestHelper.setup(App);
