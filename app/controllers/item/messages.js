@@ -6,11 +6,12 @@ export default sendMessage.extend({
   needs: ['item/index', 'item'],
 
   noMessage: Ember.computed.equal("model.length", 0),
+  messageItem: Ember.computed.alias("model.firstObject.item"),
 
   item: function() {
     var itemId = this.get('controllers.item.model.id');
     return this.store.getById('item', itemId);
-  }.property().volatile(),
+  }.property('controllers.item.id', 'messageItem'),
 
   actions: {
     sendMessage: function() {
