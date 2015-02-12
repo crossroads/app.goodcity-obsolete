@@ -21,7 +21,36 @@ export default Ember.TextField.extend({
         onSet: function() {
           var date = this.get('select') && this.get('select').obj;
           _this.set("selection", date);
-          Ember.$('.timepicker').val('');
+          Ember.$('#selectedTime').val('');
+
+          var selectedDate = date;
+          var currentDate = new Date();
+          var currentYear = currentDate.getFullYear().toString();
+          selectedDate = new Date(selectedDate + " " + currentYear);
+          currentDate.setHours(0,0,0,0);
+          selectedDate.setHours(0,0,0,0);
+
+          if(selectedDate.getTime() === currentDate.getTime()) {
+            var currentTime = new Date();
+            var hours = currentTime.getHours();
+            var minutes = currentTime.getMinutes();
+            minutes = minutes > 30 ? 30 : 0;
+            var total_mins = hours*60 + minutes;
+            total_mins = total_mins > 960 ? 960 : total_mins;
+
+            // disabled all previous options
+            Ember.$("#selectedTime option[value="+total_mins+"]").prevAll().each(function() {
+                Ember.$( this ).attr( "disabled", "disabled" );
+              });
+            // disable current option
+            Ember.$("#selectedTime option[value="+total_mins+"]").attr('disabled', 'disabled');
+
+          } else {
+
+            Ember.$("#selectedTime option").each(function() {
+                Ember.$( this ).removeAttr( "disabled" );
+              });
+          }
         },
         onStart: function(){
           var date = _this.get('selection');

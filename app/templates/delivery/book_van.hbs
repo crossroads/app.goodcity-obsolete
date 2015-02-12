@@ -39,14 +39,15 @@
             <i class="fa fa-calendar calender_icon"></i>
           </div>
           <div class="small-5 columns time_selector">
-            {{view "select-time"
-              name='selectedTime'
-              id='selectedTime'
-              value=''
+            {{view "select"
+              content=controller.timeSlots
+              optionValuePath="content.id"
+              optionLabelPath="content.name"
               selectionBinding='selectedTime'
               required='true'
-              placeholder='Time'
-              pattern="[0-9]{1,2}:(00|30)\s?(AM|PM)"}}
+              prompt='Time'
+              id='selectedTime'
+              pattern="[0-9]{1,2}:(00|30)\s?(AM|PM)" }}
             <i class="fa fa-clock-o time_icon"></i>
           </div>
         </div>
