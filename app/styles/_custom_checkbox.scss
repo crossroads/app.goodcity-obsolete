@@ -5,15 +5,15 @@ input[type="checkbox"] {
 }
 
 .checkbox {
-  width: 22rem;
   margin-bottom: 1rem;
   position: relative;
 
   span {
-    margin-left: 2rem;
+    padding-left: 2rem;
     position: relative;
     display: block;
-    width: 18rem; }
+    width: 15rem;
+    font-size: 0.7rem; }
 
   label {
     cursor: pointer;
