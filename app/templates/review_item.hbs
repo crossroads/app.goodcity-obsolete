@@ -1,4 +1,4 @@
-<nav class="tab-bar">
+<nav class="tab-bar item_details_title">
   <section class="left-small">
     {{#link-to 'review_offer' classNames="back"}}{{t "back"}}{{/link-to}}
   </section>
@@ -10,6 +10,9 @@
 <section class="main-section review_item">
   <div class="row">
     <div class="small-12 columns">
+      <div class= 'row'>
+        {{partial 'item/status_message'}}
+      </div>
 
       <div class="row top-bottom-margin">
         <div class="small-2 columns">
