@@ -4,6 +4,7 @@ export default Ember.ObjectController.extend({
   needs: ['review_item/accept'],
 
   defaultPackage: Ember.computed.alias('itemType'),
+  item: Ember.computed.alias('model'),
 
   itemTypeName: function(key, value) {
     return (arguments.length > 1) ? value :  this.get('defaultPackage.name');
