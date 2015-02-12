@@ -25,14 +25,14 @@ export default Addressable.extend({
   }.property('permission'),
 
   displayImageUrl: function() {
-    return this.get('image.thumbImageUrl');
+    return this.get('image.thumbImageUrl') || "/assets/images/default_user_image.jpg";
   }.property('image'),
 
   hasImage: function(key, value){
     if(arguments.length > 1) {
       return value;
     } else {
-      return this.get('displayImageUrl');
+      return this.get('image.thumbImageUrl');
     }
-  },
+  }.property('image'),
 });
