@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import AjaxPromise from './../../utils/ajax-promise';
 import addressDetails from './address_details';
 
