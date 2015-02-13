@@ -5,6 +5,7 @@ import '../fixtures/schedule';
 import '../fixtures/delivery';
 import '../fixtures/offer';
 import '../fixtures/item_type';
+import '../fixtures/package';
 import '../fixtures/donor_condition';
 import '../fixtures/rejection_reason';
 import '../fixtures/permission';
