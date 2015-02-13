@@ -70,7 +70,7 @@ export default DS.Model.extend({
 
   allItemsReviewed: function(){
     var reviewedItems = this.get('items').rejectBy("state", "draft").filterBy('state', 'submitted');
-    return this.get('isUnderReview') && reviewedItems.get('length') === 0;
+    return reviewedItems.get('length') === 0;
   }.property('items.@each.state'),
 
   allItemsRejected: function(){
