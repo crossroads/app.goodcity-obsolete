@@ -28,7 +28,7 @@ export default Ember.Component.extend({
       }
 
       if(this.get('selectedId') === "-1") {
-        message = "Unfortunately we cannot receive this item.";
+        message = Ember.I18n.t("reject.reject_message");
       }
       return message;
     }
