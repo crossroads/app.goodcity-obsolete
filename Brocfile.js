@@ -4,7 +4,8 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 var app = new EmberApp({
   minifyCSS: { enabled: false },
-  minifyJS: { enabled: false }
+  minifyJS: { enabled: false },
+  vendorFiles: { 'handlebars.js': null }
 });
 
 app.import('bower_components/cloudinary/js/jquery.ui.widget.js');
