@@ -26,7 +26,7 @@ export default Ember.TextField.extend({
           var selectedDate = date;
           var currentDate = new Date();
           var currentYear = currentDate.getFullYear().toString();
-          selectedDate = new Date(selectedDate + " " + currentYear);
+          // selectedDate = new Date(selectedDate + " " + currentYear);
           currentDate.setHours(0,0,0,0);
           selectedDate.setHours(0,0,0,0);
 
@@ -40,13 +40,13 @@ export default Ember.TextField.extend({
 
             // disabled all previous options
             Ember.$("#selectedTime option[value="+total_mins+"]").prevAll().each(function() {
-                Ember.$( this ).attr( "disabled", "disabled" );
+                Ember.$( this ).prop('disabled', true);
+
               });
             // disable current option
-            Ember.$("#selectedTime option[value="+total_mins+"]").attr('disabled', 'disabled');
+            Ember.$("#selectedTime option[value="+total_mins+"]").prop('disabled', true);
 
           } else {
-
             Ember.$("#selectedTime option").each(function() {
                 Ember.$( this ).removeAttr( "disabled" );
               });
