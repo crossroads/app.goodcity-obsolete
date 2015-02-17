@@ -25,7 +25,7 @@ export default Ember.TextField.extend({
 
           var selectedDate = date;
           var currentDate = new Date();
-          var currentYear = currentDate.getFullYear().toString();
+          // var currentYear = currentDate.getFullYear().toString();
           // selectedDate = new Date(selectedDate + " " + currentYear);
           currentDate.setHours(0,0,0,0);
           selectedDate.setHours(0,0,0,0);
