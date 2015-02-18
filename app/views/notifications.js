@@ -18,16 +18,12 @@ export default Ember.View.extend({
   removeNotification: function(box, notification) {
     var controller = this.get("controller");
     var remove = function() { controller.removeObject(notification); };
-    if (controller.get("length") === 1) {
-      box.slideUp(400, remove);
-    } else {
+    var newNotification = controller.retrieveNotification(1);
+    if (newNotification) {
       remove();
-      notification = controller.get("nextNotification");
-      if (notification) {
-        Ember.run.later(this, this.removeNotification, box, notification, 6000);
-      } else {
-        box.slideUp(400);
-      }
+      Ember.run.later(this, this.removeNotification, box, newNotification, 6000);
+    } else {
+      box.slideUp(400, remove);
     }
   }
 });

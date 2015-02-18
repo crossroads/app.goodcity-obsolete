@@ -6,13 +6,13 @@ export default Ember.ArrayController.extend({
   sortAscending: true,
 
   nextNotification: function() {
-    //retrieveNextNotification is not implemented here because it needs to call itself
-    return this.retrieveNextNotification();
+    //retrieveNotification is not implemented here because it needs to call itself
+    return this.retrieveNotification();
   }.property("[]"),
 
-  retrieveNextNotification: function() {
+  retrieveNotification: function(index) {
     // not sure why but model.firstObject is undefined when there's one notification
-    var notification = this.get("model")[0];
+    var notification = this.get("model")[index || 0];
     if (!notification) {
       return null;
     }
@@ -26,7 +26,7 @@ export default Ember.ArrayController.extend({
 
     if (currentUrl === actionUrl) {
       this.removeObject(notification);
-      return this.retrieveNextNotification();
+      return this.retrieveNotification(index);
     }
 
     return notification;
