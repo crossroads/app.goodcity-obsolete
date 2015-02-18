@@ -7,13 +7,13 @@ export default Ember.TextField.extend({
 
   didInsertElement: function(){
     var _this = this;
+    var date = new Date();
     Ember.$().ready(function(){
       Ember.$('.pickadate').pickadate({
         format: 'ddd mmm d',
 
-        // Disable Sundays, Mondays, 25-december-2014
-        disable: [ 1, 2, [2014,11,25] ],
-        min: new Date(),
+        disable: [ 1, 2 ],
+        min: [date.getUTCFullYear(), date.getMonth(), date.getDate()],
         clear: false,
         today: false,
         close: false,
