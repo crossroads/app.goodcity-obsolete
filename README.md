@@ -43,6 +43,9 @@ npm install -g phantomjs
 * `ember build`
 * `ember build --environment=production`
 
+To build for PhoneGap run:
+`phonegap=true ember build --environment=production`
+
 ## Upgrading Ember CLI
 
 Follow these steps to update the project version of ember-cli.

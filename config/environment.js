@@ -71,5 +71,10 @@ module.exports = function(environment) {
     ENV.APP.AIRBRAKE_PROJECT_KEY = "010f0d73f56efb6150cb2744e814e46b";
   }
 
+  if (process.env.phonegap) {
+    delete ENV.baseURL;
+    ENV.locationType = "none";
+  }
+
   return ENV;
 };
