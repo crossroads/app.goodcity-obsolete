@@ -1,4 +1,2 @@
 import Init from './init';
-
-export default Init.extend({
-});
+export default Init.extend();

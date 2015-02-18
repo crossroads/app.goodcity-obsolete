@@ -398,8 +398,8 @@ ul.off-canvas-list li a:hover  {
   }
 
   li.active a {
-    background: $slick-dot-color-active;
-    border-color: $slick-dot-color-active;
+    background: $coral-red;
+    border-color: $coral-red;
   }
 }
 
@@ -451,7 +451,7 @@ label input {
 }
 
 .error input {
-  border-color: $slick-dot-color-active !important;
+  border-color: $coral-red !important;
   background: $light-pitch !important
 }
 
@@ -494,8 +494,8 @@ input[type="radio"] {
 }
 
 input[type="radio"]:checked + label  {
-  background: $slick-dot-color-active;
-  border: 1px solid $slick-dot-color-active;
+  background: $coral-red;
+  border: 1px solid $coral-red;
 }
 
 .styled-select {
