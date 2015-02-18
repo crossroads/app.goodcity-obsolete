@@ -1,5 +1,6 @@
-import Ember from 'ember';
-import config from '../config/environment';
+import Ember from "ember";
+import config from "../config/environment";
+import messagesUtil from "../utils/messages";
 
 function run(func) {
   if (func) {
@@ -104,7 +105,7 @@ export default Ember.Controller.extend({
     var type = Object.keys(data.item)[0];
     var item = this.store.normalize(type, data.item[type]);
 
-    if(type === 'address'){
+    if (type === "address") {
       item.addressable = item.addressable_id;
       delete item.addressable_id;
     }
@@ -129,5 +130,18 @@ export default Ember.Controller.extend({
     }
 
     run(success);
+
+    // mark message as read if message will appear in current view
+    if (type === "message") {
+      var router = this.get("target");
+      var currentUrl = router.get("url");
+      var messageRoute = messagesUtil.getRoute(this.container, data.item[type]);
+      var messageUrl = router.generate.apply(router, messageRoute);
+
+      if (currentUrl === messageUrl) {
+        var message = this.store.getById("message", item.id);
+        messagesUtil.markRead(this.container, message);
+      }
+    }
   }
 });

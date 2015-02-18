@@ -1,17 +1,9 @@
 import AuthorizeRoute from './authorize';
-import readMessageMixin from '../mixins/read-message';
+import messagesUtil from '../utils/messages';
 
-var ReadMessagesRoute = AuthorizeRoute.extend(readMessageMixin, {
-
+export default AuthorizeRoute.extend({
   afterModel: function(messages) {
-    var _this = this;
-    var unreadMessages = messages.filterBy('state', 'unread');
-
-    unreadMessages.forEach(function(message) {
-      _this.markMessageAsRead(message);
-    });
+    var markRead = messagesUtil.markRead.bind(this, this.container);
+    messages.filterBy('state', 'unread').forEach(markRead);
   }
-
 });
-
-export default ReadMessagesRoute;
