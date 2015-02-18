@@ -69,13 +69,17 @@ export default Ember.ObjectController.extend({
     },
 
     showPreviousImage: function() {
-      var currentCount = this.get('currentImageCount') - 1;
-      this.set('currentImageCount', currentCount);
+      if(this.get('leftArrow')) {
+        var currentCount = this.get('currentImageCount') - 1;
+        this.set('currentImageCount', currentCount);
+      }
     },
 
     showNextImage: function() {
-      var currentCount = this.get('currentImageCount') + 1;
-      this.set('currentImageCount', currentCount);
+      if(this.get('rightArrow')) {
+        var currentCount = this.get('currentImageCount') + 1;
+        this.set('currentImageCount', currentCount);
+      }
     },
   }
 });
