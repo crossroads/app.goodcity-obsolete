@@ -10,3 +10,23 @@
   text-align: center;
   padding-top: 1rem;
 }
+
+#status {
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
+  background-color: black;
+  font-size: 0.6rem;
+  color: white;
+  padding: 0.5rem;
+  z-index: 9999;
+  border-radius: 0.2rem;
+}
+
+.online {
+  display: none;
+}
+
+.offline {
+  display: block;
+}
