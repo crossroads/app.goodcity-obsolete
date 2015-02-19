@@ -23,11 +23,11 @@
 
               <span class="info">
                 <h3>
-                  {{t "full_name" firstNameBinding=offer.createdBy.firstName lastNameBinding=offer.createdBy.lastName}}
+                  {{t "full_name" firstName=offer.createdBy.firstName lastName=offer.createdBy.lastName}}
                 </h3>
                 <p>{{t "inbox.new_items"}}: {{offer.itemCount}}</p>
                 {{#if offer.hasUnreadMessages}}
-                  <p>{{t "inbox.unread_messages" unreadMessagesCountBinding=offer.unreadMessagesCount}}</p>
+                  <p>{{t "inbox.unread_messages" unreadMessagesCount=offer.unreadMessagesCount}}</p>
                 {{/if}}
                 <p>{{offer.createdBy.address.district.name}}</p>
 

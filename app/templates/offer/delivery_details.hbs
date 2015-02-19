@@ -3,13 +3,9 @@
     <h3>
     {{#if delivery.isAlternate}}
       {{t 'offer.offer_details.is_collection'}}
-    {{/if}}
-
-    {{#if delivery.isDropOff}}
+    {{else if delivery.isDropOff}}
       {{t 'offer.offer_details.is_drop_off'}}
-    {{/if}}
-
-    {{#if delivery.isGogovan}}
+    {{else if delivery.isGogovan}}
       {{t 'offer.offer_details.is_gogovan'}}
     {{/if}}
 
