@@ -23,8 +23,9 @@ export default Init.extend({
 
     if(!isOnline) {
       status.removeClass("online").addClass("offline");
-      status.text("Attempting to connect to app.goodcity.hk...");
+      Ember.$("#status span").text("Attempting to connect to app.goodcity.hk...");
     } else {
+      Ember.$("#status span").text("Online - " + view.get("currentUser.fullName"));
       status.removeClass("offline").addClass("online");
     }
   },
