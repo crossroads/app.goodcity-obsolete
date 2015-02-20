@@ -15,8 +15,15 @@
       </div>
 
       <div class="row">
-        <div class="small-3 large-2 columns fav-item-image">
-          <img {{bind-attr src="item.displayImageUrl"}} class="thumb" style="width:100px;" />
+        <div class="small-3 large-2 columns fav-item-image" id="lightGallery">
+          <div {{bind-attr data-src=item.displayImage.imageUrl}} >
+            <img {{bind-attr src=item.displayImageUrl}} class="thumb" style="width:100px;" />
+          </div>
+          {{#each image in item.nonFavouriteImages}}
+            <div class="hidden" {{bind-attr data-src=image.imageUrl}} >
+              <img {{bind-attr src=image.imageUrl}} />
+            </div >
+          {{/each}}
         </div>
         <div class="small-9 large-10 columns">
           <h3 class="ellipsis two-line-ellipsis">{{item.donorDescription}}</h3>
