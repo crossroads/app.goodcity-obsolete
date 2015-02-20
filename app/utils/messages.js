@@ -1,5 +1,3 @@
-import Ember from "ember";
-
 export default {
   markRead: function(container, message) {
     var adapter = container.lookup("adapter:application");

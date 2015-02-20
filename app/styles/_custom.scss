@@ -395,19 +395,6 @@ body > .ember-view {
   }
 }
 
-#ws-status {
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  background-color: $ghost;
-  font-size: 9px;
-  color: black;
-  padding: 2px;
-  z-index: 9999;
-  border-top: 1px solid black;
-  border-right: 1px solid black;
-}
-
 a.disabled{
   cursor: default;
   i{
