@@ -34,13 +34,16 @@
 =========== Ember-data Upgrade ============
 
 1. In bower.json
+ ```sh
    ember-data version: "1.0.0-beta.15"
+  ```
 2. bower install
 
 
 ==============Glabal Upgrade===============
-
+ ```sh
   npm uninstall -g ember-cli
   npm install -g ember-cli
   ember install
   bower install
+  ```
