@@ -30,7 +30,7 @@ I have done following changes in the app:
   ```
 2. bower install
 
-#Developers have to follow these steps to use u[graded versions
+####Developers have to follow these steps to use upgraded versions
  ```
   npm uninstall -g ember-cli
   npm cache clean
