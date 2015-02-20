@@ -1,15 +1,17 @@
 import Init from './init';
-export default Init.extend({
-  hammerOptions: {
-    swipe_velocity: 0.5
-  },
-  gestures: {
-    swipeLeft: function() {
-      this.get("controller").send("showNextImage");
-    },
+import Ember from 'ember';
 
-    swipeRight: function() {
-      this.get("controller").send("showPreviousImage");
-    }
-  }
+export default Init.extend({
+  initiatePreview: function(){
+    Ember.$().ready(function(){
+      Ember.$("#lightGallery").lightGallery({
+        thumbnail: false,
+        hideControlOnEnd: true,
+        closable: false,
+        counter: true,
+        swipeThreshold : 50,
+        enableTouch : true,
+      });
+    });
+  }.on('didInsertElement')
 });
