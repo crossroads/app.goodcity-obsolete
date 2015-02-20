@@ -15,10 +15,11 @@ I have done following changes in the app:
   b) ember-cli-htmlbars version "^0.7.4" 
   ```
 
-4. Added changes in app:
+4. Added changes in templates/:
   - For translation:
     ```
     Replace {{t "notifications.text" textBinding=nextNotification.text}} by {{t "notifications.text" text=nextNotification.text}}
+    
     Replace {{translateAttr title="items.edit_images.delete_tooltip"}} by title={{t "items.edit_images.delete_tooltip"}}
      ```
  -  Changed else-if ladder 
@@ -28,7 +29,6 @@ I have done following changes in the app:
  ```
    ember-data version: "1.0.0-beta.15"
   ```
-2. bower install
 
 ####Developers have to follow these steps to use upgraded versions
  ```
