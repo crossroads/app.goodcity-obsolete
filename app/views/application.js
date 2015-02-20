@@ -10,7 +10,7 @@ export default Init.extend({
   observeUserStatus: function() {
     var view = this;
     window.currentView = view;
-    if(this.get('currentUser')){ view.updateOnlineStatus(); }
+    view.updateOnlineStatus();
 
     window.addEventListener('online',  view.updateOnlineStatus);
     window.addEventListener('offline', view.updateOnlineStatus);
@@ -25,7 +25,8 @@ export default Init.extend({
       status.removeClass("online").addClass("offline");
       Ember.$("#status span").text("Attempting to connect to app.goodcity.hk...");
     } else {
-      Ember.$("#status span").text("Online - " + view.get("currentUser.fullName"));
+      var statusText = view.get('currentUser') ? (" - " + view.get("currentUser.fullName")) : "";
+      Ember.$("#status span").text("Online" + statusText );
       status.removeClass("offline").addClass("online");
     }
   },
