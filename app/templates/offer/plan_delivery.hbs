@@ -20,7 +20,7 @@
             <a href="#" {{action 'startDelivery' 'Gogovan'}} class="button">{{t "plan_delivery.fastest.booking_button"}}</a>
           </div>
           <div class="small-4 columns right">
-            <div class="cost">{{t "plan_delivery.fastest.cost" costBinding=gogovanPrice}}</div>
+            <div class="cost">{{t "plan_delivery.fastest.cost" cost=gogovanPrice}}</div>
             {{#link-to 'offer.gogovan_charges' class='learn_more'}}{{t "plan_delivery.fastest.learn_more"}}{{/link-to}}<br/>
             <img src="assets/images/gogo-van.jpg" class='delivery-image'/>
           </div>
@@ -36,7 +36,7 @@
             <a href="#" {{action 'startDelivery' 'Alternate'}} class="button">{{t "plan_delivery.alternate.booking_button"}}</a>
           </div>
           <div class="small-4 columns right">
-            <div class="cost">{{t "plan_delivery.alternate.cost" costBinding=offer.crossroadsTruckCost}}</div>
+            <div class="cost">{{t "plan_delivery.alternate.cost" cost=offer.crossroadsTruckCost}}</div>
             {{#link-to 'offer.collection_charges' class='learn_more'}}{{t "plan_delivery.fastest.learn_more"}}{{/link-to}}<br/>
             <img src="assets/images/alternate-delivery.jpg" class='delivery-image'/>
           </div>

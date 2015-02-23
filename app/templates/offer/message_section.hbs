@@ -9,14 +9,12 @@
               {{partial 'offer/recent_offer_message'}}
             {{/link-to}}
           </li>
-        {{else}}
-          {{#if item.displayGeneralMessages}}
-            <li>
-              {{#link-to 'offer.messages' model}}
-                {{partial 'offer/recent_offer_message'}}
-              {{/link-to}}
-            </li>
-          {{/if}}
+        {{else if item.displayGeneralMessages}}
+          <li>
+            {{#link-to 'offer.messages' model}}
+              {{partial 'offer/recent_offer_message'}}
+            {{/link-to}}
+          </li>
         {{/if}}
       {{else}}
         <li>
@@ -25,16 +23,14 @@
               {{#link-to 'review_item.accept' item}}
                 {{partial 'offer/recent_item_message'}}
               {{/link-to}}
+            {{else if item.isRejected}}
+              {{#link-to 'review_item.reject' item}}
+                {{partial 'offer/recent_item_message'}}
+              {{/link-to}}
             {{else}}
-              {{#if item.isRejected}}
-                {{#link-to 'review_item.reject' item}}
-                  {{partial 'offer/recent_item_message'}}
-                {{/link-to}}
-              {{else}}
-                {{#link-to 'review_item' item}}
-                  {{partial 'offer/recent_item_message'}}
-                {{/link-to}}
-              {{/if}}
+              {{#link-to 'review_item' item}}
+                {{partial 'offer/recent_item_message'}}
+              {{/link-to}}
             {{/if}}
 
           {{else}}

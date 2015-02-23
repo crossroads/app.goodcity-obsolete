@@ -44,12 +44,12 @@ export default Ember.Controller.extend({
               if (currentUser.get('isStaff')) {
                 var myOffers = _this.store.all('offer').filterBy('reviewedBy.id', currentUser.get('id'));
                 if(myOffers.get('length') > 0) {
-                  _this.transitionTo('inbox.my_list');
+                  _this.transitionToRoute('inbox.my_list');
                 } else {
-                  _this.transitionTo('inbox');
+                  _this.transitionToRoute('inbox');
                 }
               } else {
-                _this.transitionTo('/offers');
+                _this.transitionToRoute('/offers');
               }
             }
           });

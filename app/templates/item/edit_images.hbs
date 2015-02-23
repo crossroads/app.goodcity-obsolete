@@ -4,13 +4,13 @@
     {{#unless noImage}}
       <div {{bind-attr style="previewImageBgCss"}}>
         <div id="main-image-controls">
-          <a {{action "deleteImage"}} {{translateAttr title="items.edit_images.delete_tooltip"}}>
+          <a {{action "deleteImage"}} title={{t "items.edit_images.delete_tooltip"}}>
             <i class="fa fa-trash"></i>
           </a>
-          <a {{action "setFavourite"}} {{translateAttr title="items.edit_images.favourite_tooltip"}}>
+          <a {{action "setFavourite"}} title={{t "items.edit_images.favourite_tooltip"}}>
             <i {{bind-attr class=":fa previewImage.favourite:fa-star:fa-star-o"}}></i>
           </a>
-          <a {{action "expandImage"}} {{translateAttr title="items.edit_images.fullscreen_tooltip"}}>
+          <a {{action "expandImage"}} title={{t "items.edit_images.fullscreen_tooltip"}}>
             <i {{bind-attr class=":fa isExpanded:fa-compress:fa-expand"}}></i>
           </a>
         </div>
