@@ -1,7 +1,6 @@
-import Init from './init';
 import Ember from 'ember';
 
-export default Init.extend({
+export default Ember.View.extend({
   initiatePreview: function(){
     Ember.$().ready(function(){
       Ember.$("#lightGallery").lightGallery({
