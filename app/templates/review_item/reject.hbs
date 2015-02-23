@@ -22,7 +22,7 @@
             <li>
               {{view 'radio-button' name="selectReason" selection=controller.selectedId value="-1" id="-1" labelText=rejectReason}}
               <label class='reject_label' for="-1">
-                {{view 'radio-text-input' value=rejectReason name="rejectReason" id='rejectReason' placeholder="Custom Reason" class="isBlank:error"}}
+                {{view 'radio-text-input' value=rejectReason name="rejectReason" id='rejectReason' placeholder="Custom Reason" classBinding="isBlank:error"}}
               </label>
             </li>
           </ul>
