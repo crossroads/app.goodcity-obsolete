@@ -41,6 +41,10 @@ export default DS.Model.extend({
       this.get("images").sortBy("id").get("firstObject") || null;
   }.property('images.@each.favourite'),
 
+  nonFavouriteImages: function(){
+    return this.get("images").rejectBy("favourite", true);
+  }.property('images.@each.favourite'),
+
   displayImageUrl: function() {
     return this.get('displayImage.thumbImageUrl') || "/assets/images/default_item.jpg";
   }.property('displayImage'),

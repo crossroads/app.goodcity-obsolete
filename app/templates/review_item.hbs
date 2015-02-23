@@ -9,39 +9,22 @@
 </nav>
 <section class="main-section review_item">
 
-  <div class= 'row'>
-    <div id="main-image" {{bind-attr class="isExpanded:is-expanded:hidden"}}>
-      <div {{bind-attr style="previewImageBgCss"}}>
-        <div id="main-image-controls">
-          <a {{action "expandImage"}} {{translateAttr title="items.edit_images.fullscreen_tooltip"}}>
-            <i class="fa fa-compress"></i>
-          </a>
-          <div class='right'>
-            <a {{action "showPreviousImage"}}>
-              <i {{bind-attr class=":fa leftArrow:fa-caret-left"}}></i>
-            </a>
-            <span>{{currentImageCount}} of {{images.length}}</span>
-            <a {{action "showNextImage"}}>
-              <i {{bind-attr class=":fa rightArrow:fa-caret-right"}}></i>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-  <div {{bind-attr class=":row isExpanded:hidden"}} >
+  <div class="row" >
     <div class="small-12 columns">
       <div class= 'row'>
         {{partial 'item/status_message'}}
       </div>
 
       <div class="row top-bottom-margin">
-        <div class="small-2 columns">
-          <a href='#' {{action expandImage }}>
+        <div class="small-2 columns" id="lightGallery">
+          <div {{bind-attr data-src=displayImage.imageUrl}} >
             <img {{bind-attr src=displayImageUrl}} class="thumb" style="width:100px;" />
-          </a>
+          </div>
+          {{#each image in nonFavouriteImages}}
+            <div class="hidden" {{bind-attr data-src=image.imageUrl}} >
+              <img {{bind-attr src=image.imageUrl}} />
+            </div >
+          {{/each}}
         </div>
         <div class="small-10 columns">
           <h3 class="ellipsis two-line-ellipsis">{{donorDescription}}</h3>
