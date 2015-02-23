@@ -37,7 +37,6 @@ I have done following changes in the app:
   bower cache clean
   rm -rf node_modules bower_components dist tmp
   npm install -g ember-cli
-  ember install:npm ember-cli
-  ember install
+  npm install
   bower install
 ```
