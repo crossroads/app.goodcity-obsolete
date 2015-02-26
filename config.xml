@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0" id="hk.goodcity.app" versionCode="10" version="1.0.0">
+  <name>GoodCity</name>
+  <description>The GoodCity initiative is a new way to donate quality goods in Hong Kong. See www.goodcity.hk for more details.</description>
+  <author href="https://www.crossroads.org.hk">Crossroads</author>
+  <icon src="assets/images/goodcity-icon-128-dc6be17e1905d2419a2583eee8f408b9.png" />
+</widget>
