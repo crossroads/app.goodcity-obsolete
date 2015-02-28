@@ -79,9 +79,9 @@ export default Ember.Route.extend({
         }
       } else {
         console.log(reason);
-        alert('Something went wrong');
-        if(config.environment === "production") {
-          Airbrake.push({error: reason });
+        alert('Error! Check console');
+        if(["staging", "production"].indexOf(config.environment)) {
+          Airbrake.push({error: reason});
         }
       }
     }

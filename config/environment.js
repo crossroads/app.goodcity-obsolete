@@ -60,11 +60,23 @@ module.exports = function(environment) {
     ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + '/' + ENV.APP.NAMESPACE;
   }
 
-  if (environment === 'production') {
+  if (environment === 'staging') {
     // RESTAdapter Settings
-    ENV.APP.API_HOST_URL = 'http://api.goodcity.hk';
+    ENV.APP.API_HOST_URL = 'https://api-staging.goodcity.hk';
     ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + '/' + ENV.APP.NAMESPACE;
     ENV.APP.SOCKETIO_WEBSERVICE_URL = 'http://socket.goodcity.hk/goodcity';
+    //~ ENV.APP.SOCKETIO_WEBSERVICE_URL = 'https://socket-staging.goodcity.hk:81/goodcity';
+    //Airbrake Js keys
+    ENV.APP.AIRBRAKE_HOST = "https://errbit.crossroads.org.hk";
+    ENV.APP.AIRBRAKE_PROJECT_ID = 0;
+    ENV.APP.AIRBRAKE_PROJECT_KEY = "010f0d73f56efb6150cb2744e814e46b";
+  }
+
+  if (environment === 'production') {
+    // RESTAdapter Settings
+    ENV.APP.API_HOST_URL = 'https://api.goodcity.hk';
+    ENV.APP.SERVER_PATH  = ENV.APP.API_HOST_URL + '/' + ENV.APP.NAMESPACE;
+    ENV.APP.SOCKETIO_WEBSERVICE_URL = 'https://socket.goodcity.hk:81/goodcity';
     //Airbrake Js keys
     ENV.APP.AIRBRAKE_HOST = "https://errbit.crossroads.org.hk";
     ENV.APP.AIRBRAKE_PROJECT_ID = 0;
